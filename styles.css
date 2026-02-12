@@ -305,6 +305,30 @@ footer {
     background: #ff8555;
 }
 
+/* Delete Account Warning */
+.delete-warning {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 16px;
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid #FF6B35;
+    border-radius: 12px;
+    align-items: flex-start;
+}
+
+.delete-warning .warning-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.delete-warning p {
+    color: #FFAA88;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .logo-icon {

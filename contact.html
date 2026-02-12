@@ -29,13 +29,17 @@
                 
                 <div class="form-group">
                     <label for="subject">What can we help you with? *</label>
-                    <select id="subject" name="subject" required>
+                    <select id="subject" name="subject" required onchange="toggleDeleteWarning()">
                         <option value="">Select an option...</option>
                         <option value="Report an issue">🐛 Report an issue</option>
                         <option value="Help us improve">💡 Help us improve</option>
                         <option value="Delete my account">🗑️ Delete my account</option>
                         <option value="Other">📝 Other</option>
                     </select>
+                    <div id="deleteWarning" class="delete-warning" style="display: none;">
+                        <span class="warning-icon">⚠️</span>
+                        <p>Please inform below the reason of deletion and tap Send Message. In 30 days, we will completely delete your user data, including personal information, preferences, cities and landmarks visited.</p>
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -74,6 +78,17 @@
     </div>
     
     <script>
+        // Toggle delete warning message
+        function toggleDeleteWarning() {
+            const subject = document.getElementById('subject').value;
+            const warning = document.getElementById('deleteWarning');
+            if (subject === 'Delete my account') {
+                warning.style.display = 'flex';
+            } else {
+                warning.style.display = 'none';
+            }
+        }
+        
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
