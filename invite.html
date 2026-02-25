@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited to Urban Tales!</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description" content="Join Urban Tales and get bonus coins with your exclusive invite code!">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="You're Invited to Urban Tales!">
+    <meta property="og:description" content="Download Urban Tales and get bonus coins with your exclusive invite code!">
+    <meta property="og:image" content="https://urbantales.net/banner.png">
+    <meta property="og:url" content="https://urbantales.net/invite">
+    
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🏛️</span>
+                <h1>Urban Tales</h1>
+            </div>
+        </header>
+        
+        <main>
+            <div class="invite-hero">
+                <span class="invite-icon">🎁</span>
+                <h2>You've Been Invited!</h2>
+                <p class="invite-subtitle">A friend wants you to explore cities with AI-powered audio guides</p>
+            </div>
+
+            <div class="promo-section">
+                <p class="promo-label">Your Exclusive Promo Code</p>
+                <div class="promo-code-box">
+                    <span id="promo-code">ANJOS26</span>
+                    <button class="copy-btn" onclick="copyPromoCode()" id="copy-btn">
+                        <span class="copy-icon">📋</span>
+                        Copy
+                    </button>
+                </div>
+                <p class="promo-hint">Enter this code when you sign up to get bonus coins!</p>
+            </div>
+
+            <div class="download-section">
+                <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" 
+                   class="download-btn" 
+                   target="_blank"
+                   id="download-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+                </a>
+                <p class="download-hint">Tap to download from Google Play</p>
+            </div>
+
+            <div class="steps-section">
+                <h3>How to Claim Your Bonus</h3>
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <span class="step-text">Download Urban Tales</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <span class="step-text">Create an account</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-text">Enter promo code <strong id="step-code">ANJOS26</strong></span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <span class="step-text">Enjoy your bonus coins! 🎉</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="qr-section">
+                <p class="qr-label">Share this invite</p>
+                <div id="qr-code"></div>
+                <p class="qr-hint">Scan to share with friends</p>
+            </div>
+        </main>
+        
+        <footer>
+            <nav class="footer-links">
+                <a href="/">Home</a>
+                <span class="divider">•</span>
+                <a href="/privacy">Privacy Policy</a>
+                <span class="divider">•</span>
+                <a href="/contact">Contact Us</a>
+            </nav>
+            <p class="copyright">© 2026 Urban Tales. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Get promo code from URL parameter or use default
+        const urlParams = new URLSearchParams(window.location.search);
+        const promoCode = urlParams.get('code') || 'ANJOS26';
+        
+        // Update all promo code displays
+        document.getElementById('promo-code').textContent = promoCode;
+        document.getElementById('step-code').textContent = promoCode;
+        
+        // Generate QR code for this invite link
+        const currentUrl = window.location.origin + '/invite?code=' + promoCode;
+        new QRCode(document.getElementById('qr-code'), {
+            text: currentUrl,
+            width: 150,
+            height: 150,
+            colorDark: '#FF6B35',
+            colorLight: '#1A1A1A',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // Copy promo code function
+        function copyPromoCode() {
+            const code = document.getElementById('promo-code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.innerHTML = '<span class="copy-icon">✓</span> Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="copy-icon">📋</span> Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

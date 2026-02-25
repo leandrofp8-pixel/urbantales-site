@@ -83,7 +83,21 @@ main {
     margin-bottom: 32px;
 }
 
-/* App Badges */
+/* App Badges Section */
+.app-badges-section {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.coming-soon-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FF6B35;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
 .app-badges {
     display: flex;
     justify-content: center;
@@ -96,8 +110,80 @@ main {
     transition: transform 0.2s;
 }
 
-.app-badge:hover img {
+.app-badge:hover:not(.disabled) img {
     transform: scale(1.05);
+}
+
+.app-badge.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(30%);
+}
+
+/* Beta Testers Section */
+.beta-testers-section {
+    margin-top: 24px;
+}
+
+.beta-card {
+    background: linear-gradient(135deg, #2A2A2A 0%, #1f1f1f 100%);
+    border: 1px solid #FF6B35;
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.beta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #FF6B35, #ff8555, #FF6B35);
+}
+
+.beta-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.beta-card h2 {
+    color: #FF6B35;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.beta-card p {
+    color: #CCCCCC;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto 16px;
+}
+
+.beta-cta {
+    color: #FFFFFF !important;
+    font-weight: 500;
+}
+
+.beta-email {
+    color: #FF6B35;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 8px;
+    background: rgba(255, 107, 53, 0.15);
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.beta-email:hover {
+    background: rgba(255, 107, 53, 0.3);
+    color: #ff8555;
 }
 
 /* Footer */
@@ -329,6 +415,202 @@ footer {
     margin: 0;
 }
 
+/* Invite Page */
+.invite-hero {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.invite-icon {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.invite-hero h2 {
+    color: #FF6B35;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.invite-subtitle {
+    color: #CCCCCC;
+    font-size: 18px;
+}
+
+.promo-section {
+    background: linear-gradient(135deg, #2A2A2A 0%, #1f1f1f 100%);
+    border: 2px solid #FF6B35;
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.promo-label {
+    color: #888;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.promo-code-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+#promo-code {
+    font-size: 36px;
+    font-weight: 800;
+    color: #FF6B35;
+    letter-spacing: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(255, 107, 53, 0.2);
+    border: 1px solid #FF6B35;
+    border-radius: 10px;
+    color: #FF6B35;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 107, 53, 0.3);
+}
+
+.copy-btn.copied {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.copy-icon {
+    font-size: 16px;
+}
+
+.promo-hint {
+    color: #CCCCCC;
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+.download-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.download-btn {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+}
+
+.download-btn img {
+    height: 60px;
+}
+
+.download-hint {
+    color: #888;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.steps-section {
+    background: #2A2A2A;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+}
+
+.steps-section h3 {
+    color: #FFFFFF;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    background: #FF6B35;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.step-text {
+    color: #CCCCCC;
+    font-size: 16px;
+}
+
+.step-text strong {
+    color: #FF6B35;
+}
+
+.qr-section {
+    text-align: center;
+    padding: 24px;
+    background: #2A2A2A;
+    border-radius: 16px;
+}
+
+.qr-label {
+    color: #888;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+#qr-code {
+    display: inline-block;
+    padding: 16px;
+    background: #1A1A1A;
+    border-radius: 12px;
+}
+
+#qr-code img {
+    display: block;
+}
+
+.qr-hint {
+    color: #666;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .logo-icon {
@@ -350,5 +632,52 @@ footer {
     .app-badges {
         flex-direction: column;
         align-items: center;
+    }
+    
+    .beta-card {
+        padding: 32px 20px;
+    }
+    
+    .beta-card h2 {
+        font-size: 20px;
+    }
+    
+    .beta-card p {
+        font-size: 15px;
+    }
+    
+    .beta-icon {
+        font-size: 40px;
+    }
+    
+    /* Invite page mobile */
+    .invite-icon {
+        font-size: 48px;
+    }
+    
+    .invite-hero h2 {
+        font-size: 26px;
+    }
+    
+    .invite-subtitle {
+        font-size: 16px;
+    }
+    
+    #promo-code {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+    
+    .promo-section {
+        padding: 24px 16px;
+    }
+    
+    .promo-code-box {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .steps-section {
+        padding: 24px 20px;
     }
 }
