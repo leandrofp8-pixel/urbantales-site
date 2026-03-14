@@ -71,11 +71,6 @@ p { margin: 0 0 1rem; color: var(--muted); }
   object-fit: contain;
   flex-shrink: 0;
 }
-.hero-image img {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-}
 .brand-copy span { display: block; }
 .brand-copy .name { color: var(--text); }
 .brand-copy .tag { color: var(--muted); font-size: 0.84rem; font-weight: 500; }
@@ -308,4 +303,16 @@ p { margin: 0 0 1rem; color: var(--muted); }
   .hero-card, .feature, .city-card, .faq-item, .landmark-card, .cta-box, .stat { padding: 1.15rem; }
   .actions, .store-row { flex-direction: column; }
   .button, .store-badge { width: 100%; }
+}
+/* Hero image size control */
+.hero-image img {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+}
+
+/* Center the hero image */
+.hero-image {
+  display: flex;
+  justify-content: center;
 }
