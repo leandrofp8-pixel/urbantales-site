@@ -1,149 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're Invited to Urban Tales!</title>
-  <meta name="description" content="Join Urban Tales and get bonus coins with your exclusive invite code.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <meta property="og:title" content="You're Invited to Urban Tales!">
-  <meta property="og:description" content="Download Urban Tales and get bonus coins with your exclusive invite code.">
-  <meta property="og:image" content="https://urbantales.net/banner.png">
-  <meta property="og:url" content="https://urbantales.net/invite.html">
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-  <style>
-    .invite-wrap{max-width:760px;margin:0 auto}
-    .invite-hero-card,.promo-card,.steps-card,.qr-card{padding:28px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);margin-top:24px}
-    .invite-kicker{letter-spacing:2px;color:#ffb77b;font-size:.8rem;margin-bottom:8px}
-    .invite-title{font-size:2.4rem;line-height:1.05;margin:0 0 12px}
-    .invite-subtitle{color:#ccc;font-size:1.05rem;margin:0}
-    .promo-label,.qr-label{color:#ffb77b;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
-    .promo-code-box{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .promo-code{font-size:2rem;font-weight:800;letter-spacing:1px;padding:12px 16px;border-radius:14px;background:#171212;border:1px solid rgba(255,255,255,.08)}
-    .copy-btn{padding:12px 18px;border-radius:24px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;font-weight:600}
-    .copy-btn.copied{background:#ff9d4d;color:#000;border-color:#ff9d4d}
-    .promo-hint,.download-hint,.qr-hint{color:#bbb}
-    .store-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
-    .store-badges a img{height:56px;display:block}
-    .steps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
-    .step{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
-    .step-number{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#ff9d4d;color:#000;font-weight:800;flex-shrink:0}
-    #qr-code{margin-top:14px}
-    #qr-code img{margin:0 auto}
-    .invite-footer-links{display:flex;gap:16px;flex-wrap:wrap}
-    .invite-footer-links a{color:#ddd;text-decoration:none}
-    @media(max-width:800px){
-      .invite-title{font-size:2rem}
-      .steps-grid{grid-template-columns:1fr}
-      .store-badges{justify-content:center}
-      .invite-wrap{text-align:left}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited to Urban Tales!</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description" content="Join Urban Tales and get bonus coins with your exclusive invite code!">
+    <meta property="og:title" content="You're Invited to Urban Tales!">
+    <meta property="og:description" content="Download Urban Tales and get bonus coins with your exclusive invite code!">
+    <meta property="og:image" content="https://urbantales.net/banner.png">
+    <meta property="og:url" content="https://urbantales.net/invite">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <img src="icon.png" alt="Urban Tales logo">
-        <div>
-          <div class="name">Urban Tales</div>
-          <div style="font-size:.8rem;color:#aaa">Self-guided audio tours</div>
-        </div>
-      </a>
-      <nav>
-        <a href="index.html#how">How it works</a>
-        <a href="index.html#cities">Cities</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy Policy</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <div class="invite-wrap">
-      <section class="invite-hero-card">
-        <div class="invite-kicker">EXCLUSIVE INVITE</div>
-        <h1 class="invite-title">You’ve been invited to Urban Tales.</h1>
-        <p class="invite-subtitle">Use your promo code, download the app and start exploring cities with self-guided audio stories.</p>
-      </section>
-
-      <section class="promo-card">
-        <div class="promo-label">Your promo code</div>
-        <div class="promo-code-box">
-          <div class="promo-code" id="promo-code">ANJOS26</div>
-          <button class="copy-btn" onclick="copyPromoCode()" id="copy-btn">Copy code</button>
-        </div>
-        <p class="promo-hint">Enter this code when you sign up to receive your bonus coins.</p>
-
-        <div class="store-badges">
-          <!-- Replace the href below with your real iOS App Store URL -->
-          <a href="#" target="_blank" id="ios-download-btn" aria-label="Download on the App Store">
-            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-          </a>
-
-          <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" target="_blank" id="android-download-btn" aria-label="Get it on Google Play">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
-          </a>
-        </div>
-        <p class="download-hint">Download the app on iPhone or Android and use your code after creating an account.</p>
-      </section>
-
-      <section class="steps-card">
-        <div class="promo-label">How to claim your bonus</div>
-        <div class="steps-grid">
-          <div class="step"><span class="step-number">1</span><div>Download Urban Tales on iOS or Android.</div></div>
-          <div class="step"><span class="step-number">2</span><div>Create your account.</div></div>
-          <div class="step"><span class="step-number">3</span><div>Enter promo code <strong id="step-code">ANJOS26</strong>.</div></div>
-          <div class="step"><span class="step-number">4</span><div>Enjoy your bonus coins and start exploring.</div></div>
-        </div>
-      </section>
-
-      <section class="qr-card">
-        <div class="qr-label">Share this invite</div>
-        <div id="qr-code"></div>
-        <p class="qr-hint">Scan or send this page to share the invitation with someone else.</p>
-      </section>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container invite-footer-links">
-      <a href="index.html">Home</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="icon.png" alt="Urban Tales logo" class="brand-logo">
+      <span class="brand-copy">
+        <span class="name">Urban Tales</span>
+        <span class="tag">Self-guided audio tours</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#cities">Cities</a>
       <a href="contact.html">Contact</a>
       <a href="privacy.html">Privacy Policy</a>
-    </div>
-  </footer>
+    </nav>
+  </div>
+</header>
 
-  <script>
+<div class="container page invite-page">
+    <header>
+        <div class="logo">
+            <img src="icon.png" alt="Urban Tales logo">
+            <h1>Urban Tales</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="invite-hero">
+            <h2>You've Been Invited!</h2>
+            <p class="invite-subtitle">A friend wants you to explore cities with AI-powered audio guides</p>
+        </div>
+
+        <div class="promo-section">
+            <p class="promo-label">Your Exclusive Promo Code</p>
+            <div class="promo-code-box">
+                <span id="promo-code">ANJOS26</span>
+                <button class="copy-btn" onclick="copyPromoCode()" id="copy-btn">Copy</button>
+            </div>
+            <p class="promo-hint">Enter this code when you sign up to get bonus coins!</p>
+        </div>
+
+        <div class="download-section">
+            <div class="download-badges">
+              <a href="#" target="_blank" aria-label="Download on the App Store">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="download-btn" target="_blank" id="download-btn" aria-label="Get it on Google Play">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+              </a>
+            </div>
+            <p class="download-hint">Tap to download from iPhone or Android</p>
+        </div>
+
+        <div class="steps-section">
+            <h3>How to Claim Your Bonus</h3>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <span class="step-text">Download Urban Tales</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <span class="step-text">Create an account</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <span class="step-text">Enter promo code <strong id="step-code">ANJOS26</strong></span>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <span class="step-text">Enjoy your bonus coins! 🎉</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="qr-section">
+            <p class="qr-label">Share this invite</p>
+            <div id="qr-code"></div>
+            <p class="qr-hint">Scan to share with friends</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-row">
+            <nav class="footer-links">
+                <a href="index.html">Home</a>
+                <span class="divider">•</span>
+                <a href="privacy.html">Privacy Policy</a>
+                <span class="divider">•</span>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <p class="copyright">© 2026 Urban Tales. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+<script>
     const urlParams = new URLSearchParams(window.location.search);
     const promoCode = urlParams.get('code') || 'ANJOS26';
 
     document.getElementById('promo-code').textContent = promoCode;
     document.getElementById('step-code').textContent = promoCode;
 
-    const currentUrl = window.location.origin + '/invite.html?code=' + encodeURIComponent(promoCode);
+    const currentUrl = window.location.origin + '/invite?code=' + promoCode;
     new QRCode(document.getElementById('qr-code'), {
-      text: currentUrl,
-      width: 150,
-      height: 150,
-      colorDark: '#FF9D4D',
-      colorLight: '#1A1A1A',
-      correctLevel: QRCode.CorrectLevel.H
+        text: currentUrl,
+        width: 150,
+        height: 150,
+        colorDark: '#FF6B35',
+        colorLight: '#1A1A1A',
+        correctLevel: QRCode.CorrectLevel.H
     });
 
     function copyPromoCode() {
-      const code = document.getElementById('promo-code').textContent;
-      navigator.clipboard.writeText(code).then(() => {
-        const btn = document.getElementById('copy-btn');
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.textContent = 'Copy code';
-          btn.classList.remove('copied');
-        }, 2000);
-      });
+        const code = document.getElementById('promo-code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
     }
-  </script>
+</script>
 </body>
 </html>

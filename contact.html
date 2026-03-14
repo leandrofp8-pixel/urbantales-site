@@ -1,23 +1,161 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Contact – Urban Tales</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Urban Tales</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
-<header>
-<div class="container nav">
-<a class="brand" href="index.html"><img src="icon.png"><span class="name">Urban Tales</span></a>
-</div>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="icon.png" alt="Urban Tales logo" class="brand-logo">
+      <span class="brand-copy">
+        <span class="name">Urban Tales</span>
+        <span class="tag">Self-guided audio tours</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#cities">Cities</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
 </header>
 
-<div class="container">
-<h1>Contact</h1>
-<p>If you need help with Urban Tales or have feedback, contact us:</p>
-<p><strong>Email:</strong> support@urbantales.net</p>
+<div class="container page">
+    <header>
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <div class="logo">
+            <img src="icon.png" alt="Urban Tales logo">
+            <h1>Urban Tales</h1>
+        </div>
+    </header>
+
+    <main class="content content-card">
+        <h2>📧 Get in Contact</h2>
+        <p class="subtitle">We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
+
+        <form id="contactForm" class="contact-form">
+            <div class="form-group">
+                <label for="email">Your Email *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">What can we help you with? *</label>
+                <select id="subject" name="subject" required onchange="toggleDeleteWarning()">
+                    <option value="">Select an option...</option>
+                    <option value="Report an issue">🐛 Report an issue</option>
+                    <option value="Help us improve">💡 Help us improve</option>
+                    <option value="Delete my account">🗑️ Delete my account</option>
+                    <option value="Other">📝 Other</option>
+                </select>
+                <div id="deleteWarning" class="delete-warning" style="display: none;">
+                    <span class="warning-icon">⚠️</span>
+                    <p>Please inform below the reason of deletion and tap Send Message. In 30 days, we will completely delete your user data, including personal information, preferences, cities and landmarks visited.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Tell us more *</label>
+                <textarea id="message" name="message" required placeholder="Please describe your request in detail..." rows="6"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span class="btn-text">Send Message</span>
+                <span class="btn-loading" style="display: none;">Sending...</span>
+            </button>
+        </form>
+
+        <div id="successMessage" class="success-message" style="display: none;">
+            <span class="success-icon">✅</span>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. We'll get back to you at your email address soon.</p>
+            <a href="index.html" class="back-link back-home-btn">Back to Home</a>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;">
+            <span class="error-icon">❌</span>
+            <h3>Something went wrong</h3>
+            <p>Please try again or email us directly at <strong>support@urbantales.net</strong></p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-row">
+            <nav class="footer-links">
+                <a href="index.html">Home</a>
+                <span class="divider">•</span>
+                <a href="privacy.html">Privacy Policy</a>
+            </nav>
+            <p class="copyright">© 2025 Urban Tales. All rights reserved.</p>
+        </div>
+    </footer>
 </div>
 
+<script>
+    function toggleDeleteWarning() {
+        const subject = document.getElementById('subject').value;
+        const warning = document.getElementById('deleteWarning');
+        if (subject === 'Delete my account') {
+            warning.style.display = 'flex';
+        } else {
+            warning.style.display = 'none';
+        }
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+        submitBtn.disabled = true;
+        errorMessage.style.display = 'none';
+
+        const formData = {
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+
+        try {
+            const response = await fetch('https://formspree.io/f/xreaqape', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    subject: `[Urban Tales] ${formData.subject}`,
+                    message: `From: ${formData.email}\n\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`
+                })
+            });
+
+            if (response.ok) {
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+            } else {
+                throw new Error('Failed to send');
+            }
+        } catch (error) {
+            errorMessage.style.display = 'block';
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    });
+</script>
 </body>
 </html>
