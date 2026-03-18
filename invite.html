@@ -12,6 +12,54 @@
     <meta property="og:image" content="https://urbantales.net/banner.png">
     <meta property="og:url" content="https://urbantales.net/invite">
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+      /* Invite-page-only fixes so the icon never takes over the page */
+      .invite-page { padding-top: 2.25rem; padding-bottom: 3rem; }
+      .invite-page main { display: block; max-width: 760px; margin: 0 auto; }
+      .invite-hero,
+      .promo-section,
+      .download-section,
+      .steps-section,
+      .qr-section {
+        background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+        border: 1px solid rgba(255,255,255,.10);
+        border-radius: 22px;
+        box-shadow: 0 18px 44px rgba(0,0,0,.28);
+        padding: 1.4rem;
+        margin-top: 1rem;
+      }
+      .promo-code-box { display: flex; gap: .9rem; align-items: center; flex-wrap: wrap; }
+      #promo-code {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 190px;
+        padding: .9rem 1rem;
+        border-radius: 16px;
+        background: rgba(255,255,255,.03);
+        border: 1px solid rgba(255,255,255,.10);
+        font-size: 1.85rem;
+        font-weight: 900;
+        letter-spacing: .04em;
+      }
+      .download-badges { display: flex; gap: 1rem; flex-wrap: wrap; }
+      .download-badges img { height: 56px; width: auto; max-width: none; }
+      .steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+      .step {
+        display: flex;
+        gap: .8rem;
+        align-items: flex-start;
+        padding: 1rem;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,.10);
+        background: rgba(255,255,255,.03);
+      }
+      #qr-code { margin-top: .75rem; }
+      #qr-code img { margin: 0 auto; }
+      @media (max-width: 760px) {
+        .steps { grid-template-columns: 1fr; }
+      }
+    </style>
 </head>
 <body>
 <header class="site-header">
@@ -32,18 +80,11 @@
   </div>
 </header>
 
-<div class="container page invite-page">
-    <header>
-        <div class="logo">
-            <img src="icon.png" alt="Urban Tales logo">
-            <h1>Urban Tales</h1>
-        </div>
-    </header>
-
+<div class="container invite-page">
     <main>
         <div class="invite-hero">
-            <h2>You've Been Invited!</h2>
-            <p class="invite-subtitle">A friend wants you to explore cities with AI-powered audio guides</p>
+            <h1>You've Been Invited!</h1>
+            <p class="invite-subtitle">A friend wants you to explore cities with AI-powered audio guides.</p>
         </div>
 
         <div class="promo-section">
@@ -52,7 +93,7 @@
                 <span id="promo-code">ANJOS26</span>
                 <button class="copy-btn" onclick="copyPromoCode()" id="copy-btn">Copy</button>
             </div>
-            <p class="promo-hint">Enter this code when you sign up to get bonus coins!</p>
+            <p class="promo-hint">Enter this code when you sign up to get bonus coins.</p>
         </div>
 
         <div class="download-section">
@@ -64,7 +105,7 @@
                   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
               </a>
             </div>
-            <p class="download-hint">Tap to download from iPhone or Android</p>
+            <p class="download-hint">Tap to download from iPhone or Android.</p>
         </div>
 
         <div class="steps-section">
@@ -92,7 +133,7 @@
         <div class="qr-section">
             <p class="qr-label">Share this invite</p>
             <div id="qr-code"></div>
-            <p class="qr-hint">Scan to share with friends</p>
+            <p class="qr-hint">Scan to share with friends.</p>
         </div>
     </main>
 
@@ -117,7 +158,12 @@
     document.getElementById('promo-code').textContent = promoCode;
     document.getElementById('step-code').textContent = promoCode;
 
-    const currentUrl = window.location.origin + '/invite?code=' + promoCode;
+    // Preserve the actual route serving the page:
+    // - https://urbantales.net/invite?code=...
+    // - https://urbantales.net/invite.html?code=...
+    const invitePath = window.location.pathname || '/invite';
+    const currentUrl = `${window.location.origin}${invitePath}?code=${encodeURIComponent(promoCode)}`;
+
     new QRCode(document.getElementById('qr-code'), {
         text: currentUrl,
         width: 150,
