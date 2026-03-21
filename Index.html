@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Urban Tales – Self Guided Audio Tours for Cities</title>
+  <meta name="description" content="Explore cities with Urban Tales, a self-guided audio tour app. Walk through Rome, Paris and more while listening to stories.">
+  <meta name="keywords" content="audio guide, walking tour, travel app, self-guided tours">
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Urban Tales",
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "Travel",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": "https://urbantales.app",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "2300"
+      }
+    }
+  </script>
+  <style>
+    /* Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; font-family: 'Inter', system-ui, sans-serif; background: #15120f linear-gradient(130deg, #15120f 60%, #ad7854 100%); color: #fff; }
+    body { background-attachment: fixed; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; border-radius: 18px; }
+    /* Glass, Card & Button Utilities */
+    .glass { background: rgba(34, 27, 20, 0.77); backdrop-filter: blur(18px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.11); }
+    .card { background: rgba(34,28,22,0.87); border-radius: 22px; box-shadow: 0 8px 32px rgba(0,0,0,0.14); padding: 32px; }
+    .btn { display: inline-flex; align-items: center; padding: 14px 28px; border-radius: 22px; font-weight: 600; font-size: 16px; border: none; background: linear-gradient(90deg,#ff9900 6%,#ecc67a 94%); color:#222; transition: box-shadow .25s,transform .25s; box-shadow: 0 2px 8px rgba(255,153,0,0.15); cursor:pointer; margin-right: 16px;}
+    .btn:hover { box-shadow: 0 6px 20px 0 rgba(255,153,0,0.19); transform: translateY(-2px);}
+    .btn-secondary { background: transparent; color:#fff; border:1px solid #ecc67a; }
+    /* Layout Containers */
+    .container { width:90%; max-width:1180px; margin:auto;}
+    .grid { display: grid; gap: 32px; }
+    /* Typography */
+    h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 18px; letter-spacing:-0.02em;}
+    h2 { font-size: 1.5rem; font-weight:600; margin-top:42px;}
+    h3 { font-size:1.2rem; font-weight:600;}
+    p { line-height:1.7; margin-bottom:16px;}
+    small { opacity:0.7;}
+    /* Hero */
+    .hero { display:flex; align-items:center; min-height: 96vh; justify-content:space-between; gap:48px; background: linear-gradient(120deg,#291a19 70%, #ad7854 100%);}
+    .hero-left { max-width:500px;}
+    .hero-title { font-size:2.5rem; font-weight:700; margin-bottom:22px;}
+    .hero-subtitle { font-size:1.17rem; margin-bottom:32px; color:#f3e7d2;}
+    .hero-cta-row { margin-bottom:48px;}
+    .hero-right { position:relative; display:flex; align-items:center; justify-content:center; }
+    .hero-app-mock { position:relative; width:340px; height:660px; display:flex; align-items:center; justify-content:center;}
+    .hero-glow { position:absolute; width:340px; height:660px; border-radius:38px; background: radial-gradient(circle at 50% 60%, #ff9900 0%, transparent 70%); filter: blur(48px); z-index:0; opacity:.35;}
+    .hero-app-video { width:330px; height:650px; border-radius:34px; box-shadow:0 8px 42px #ad7854a8; background:#222; z-index:1;}
+    /* Social proof */
+    .social-proof { margin:40px 0; display:flex; align-items:center; flex-direction:column;}
+    .social-title { font-size:1.11rem; font-weight:600; color:#ecc67a;}
+    .social-rating { margin-top:10px;}
+    .stars { font-size:22px; color:#ffd700;}
+    /* How It Works */
+    .how-section { margin:60px 0;}
+    .how-grid { grid-template-columns: repeat(3,1fr); }
+    .how-card { text-align:center; padding:24px; border-radius:22px; background:rgba(34, 28, 22, 0.87); box-shadow: 0 4px 24px rgba(0,0,0,0.13);}
+    .how-icon { margin-bottom:18px; font-size:42px; color:#ecc67a; opacity:.92;}
+    /* Video Section */
+    .video-section { width:100vw; margin:62px 0; background:rgba(29,17,14,.82); border-radius:28px 28px 0 0; overflow:hidden;}
+    .video-holder { width:100%; max-width:900px; margin:auto; padding:48px 0; display:grid; justify-items:center;}
+    .video-caption { color:#ecc67a; margin-top:22px; font-size:1.17rem;}
+    /* City SEO Section */
+    .city-section { margin:54px 0;}
+    .city-grid { grid-template-columns: repeat(3,1fr);}
+    .city-card { background:rgba(26,20,16,.94); border-radius:20px; overflow:hidden; box-shadow:0 2px 16px #ad785488;}
+    .city-img { height:180px; object-fit:cover;}
+    .city-text { padding:22px; font-size:1rem;}
+    .city-link { color:#ecc67a; font-weight:600;}
+    /* Features */
+    .features-section { margin:62px 0;}
+    .features-grid { grid-template-columns:repeat(2,1fr);}
+    .feature-left img { border-radius:18px; box-shadow:0 4px 16px #ad785444;}
+    .feature-item { padding:16px;}
+    .feature-title { font-size:1.07rem; color:#ecc67a; margin-bottom:7px;}
+    .feature-desc { font-size:.98rem; margin-bottom:22px;}
+    /* FAQ */
+    .faq-section { margin:60px 0;}
+    .faq-list { width:100%; max-width:710px; margin:auto;}
+    .faq-item { border-bottom:1px solid #32251b; padding:22px 0;}
+    .faq-q { font-weight:600; font-size:1rem; color:#ecc67a;}
+    .faq-a { color:#fae9c5; margin-top:6px; font-size:.96rem;}
+    /* Final CTA */
+    .final-cta { margin:72px auto 48px auto; text-align:center;}
+    .final-title { font-size:2rem; font-weight:700; margin-bottom:34px; color:#ecc67a;}
+    /* Footer */
+    footer { padding:44px 0 22px 0; text-align:center; background:rgba(26,21,14,.77);}
+    .footer-links a { color:#ecc67a; margin:0 18px; }
+    /* Responsive */
+    @media (max-width:1024px) {
+      .hero { flex-direction:column; gap:34px; min-height:unset; padding:78px 0;}
+      .hero-right { margin-top:32px;}
+      .how-grid, .city-grid, .features-grid { grid-template-columns: repeat(2,1fr);}
+    }
+    @media (max-width:680px) {
+      .container { width:97%; }
+      .hero-title { font-size:1.3rem;}
+      .hero-app-mock { width:220px; height:430px;}
+      .hero-glow, .hero-app-video { width:220px; height:430px;}
+      .video-holder { padding:24px 0;}
+      .how-grid, .city-grid, .features-grid { grid-template-columns:1fr;}
+      .card { padding:18px;}
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero container" aria-label="App Hero">
+      <div class="hero-left">
+        <h1 class="hero-title">Turn city walks into stories worth hearing</h1>
+        <p class="hero-subtitle">Explore cities like Rome, Paris and Mexico City with self-guided audio stories that play as you walk.</p>
+        <div class="hero-cta-row">
+          <a href="#" class="btn" aria-label="Download on App Store">Download on App Store</a>
+          <a href="#" class="btn btn-secondary" aria-label="Get it on Google Play">Get it on Google Play</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-app-mock">
+          <div class="hero-glow"></div>
+          <video class="hero-app-video" src="hero-video.mp4" autoplay loop muted playsinline poster="app-screen-1.png"></video>
+        </div>
+      </div>
+    </section>
+    <!-- SOCIAL PROOF -->
+    <section class="social-proof container">
+      <div class="social-title">Loved by travelers exploring 20+ cities</div>
+      <div class="social-rating">
+        <span class="stars">★★★★★</span>
+        <small>4.8/5 - 2,300 ratings</small>
+      </div>
+    </section>
+    <!-- HOW IT WORKS -->
+    <section class="how-section container">
+      <h2>How Urban Tales works</h2>
+      <div class="how-grid grid">
+        <div class="how-card">
+          <div class="how-icon">🚶‍♂️</div>
+          <h3>Walk through the city</h3>
+          <p>Move at your own pace—no guides or crowds.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">📍</div>
+          <h3>Discover nearby landmarks</h3>
+          <p>See what's around you instantly as you walk.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">🔊</div>
+          <h3>Listen automatically</h3>
+          <p>Stories trigger as you approach each point.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">🎙️</div>
+          <h3>Choose narration style</h3>
+          <p>Pick historical, cinematic, fun facts, or legends.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">🗺️</div>
+          <h3>Generate smart tours</h3>
+          <p>Full/half-day, "7 wonders", or custom routes.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">⏱️</div>
+          <h3>Explore at your own pace</h3>
+          <p>Pause, resume, revisit anytime—no schedule.</p>
+        </div>
+      </div>
+    </section>
+    <!-- VIDEO / EXPERIENCE SECTION -->
+    <section class="video-section">
+      <div class="video-holder">
+        <video src="hero-video.mp4" controls poster="app-screen-1.png" style="max-width:620px; border-radius:24px; background:#222;"></video>
+        <div class="video-caption">No groups. No schedules. Just walk.</div>
+      </div>
+    </section>
+    <!-- CITY SEO SECTION -->
+    <section class="city-section container">
+      <h2>Explore with Urban Tales</h2>
+      <div class="city-grid grid">
+        <div class="city-card">
+          <a href="/explore/rome" class="city-link">
+            <img src="rome.jpg" alt="Explore Rome" class="city-img">
+            <div class="city-text">Explore Rome with a self-guided audio tour. Discover landmarks like the Colosseum and Pantheon while walking at your own pace.</div>
+          </a>
+        </div>
+        <div class="city-card">
+          <a href="/explore/paris" class="city-link">
+            <img src="paris.jpg" alt="Explore Paris" class="city-img">
+            <div class="city-text">Paris audio guide app: Hear stories at Notre-Dame, Montmartre, or the Louvre, on immersive walking tours you control.</div>
+          </a>
+        </div>
+        <div class="city-card">
+          <a href="/explore/mexico-city" class="city-link">
+            <img src="mexico.jpg" alt="Explore Mexico City" class="city-img">
+            <div class="city-text">Things to do in Mexico City? Walk and listen to legends, history, and fun facts—available in Spanish and English.</div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- FEATURES SECTION -->
+    <section class="features-section container">
+      <h2>The features that make Urban Tales unique</h2>
+      <div class="features-grid grid">
+        <div class="feature-left">
+          <img src="app-screen-1.png" alt="App Screenshot" style="width:98%;">
+        </div>
+        <div>
+          <div class="feature-item">
+            <div class="feature-title">Audio stories that play automatically</div>
+            <div class="feature-desc">Landmark audio stories start as you arrive, so you never miss a turn or a tale.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-title">Multiple storytelling styles</div>
+            <div class="feature-desc">Choose from historical, cinematic, fun facts, or legends for every tour.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-title">Smart tour generation</div>
+            <div class="feature-desc">Try ‘7 Wonders’, half-day, full-day, or custom tours tailored for you.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-title">Gamified exploration</div>
+            <div class="feature-desc">Earn XP, coins and track your urban progress as you explore.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ SECTION -->
+    <section class="faq-section container">
+      <h2>Urban Tales FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">In which cities does Urban Tales work?</div>
+          <div class="faq-a">Urban Tales works worldwide—major cities, tourist spots, and hidden gems. Our walking tour app covers Rome, Paris, Mexico City and more.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How much does it cost?</div>
+          <div class="faq-a">Urban Tales is free to try, with premium unlocks for exclusive audio guide content and custom tours.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is it better than a traditional tour guide?</div>
+          <div class="faq-a">Our self-guided tours let you walk at your own pace, choose your audio stories, and avoid rigid schedules or crowded groups.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I use Urban Tales offline?</div>
+          <div class="faq-a">Offline mode is available for most guided tours and city maps.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What languages are supported?</div>
+          <div class="faq-a">We support English, Spanish (LATAM), Portuguese, French, and German for most walking tour cities.</div>
+        </div>
+      </div>
+    </section>
+    <!-- FINAL CTA -->
+    <section class="final-cta container">
+      <div class="final-title">Start exploring your next city</div>
+      <a href="#" class="btn" aria-label="Download on App Store">App Store</a>
+      <a href="#" class="btn btn-secondary" aria-label="Get it on Google Play">Google Play</a>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="/contact">Contact</a>
+      |
+      <a href="/privacy-policy">Privacy Policy</a>
+    </div>
+    <small style="display:block; margin-top:12px; color:#ecc67a; opacity:.7;">© 2026 Urban Tales. All rights reserved.</small>
+  </footer>
+</body>
+</html>
