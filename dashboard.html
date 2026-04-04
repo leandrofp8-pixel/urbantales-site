@@ -66,6 +66,12 @@
       padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; cursor: pointer;
     }
     .btn-logout:hover { border-color: var(--danger); color: var(--danger); }
+    .btn-refresh {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+      padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; cursor: pointer; transition: color .15s, border-color .15s;
+    }
+    .btn-refresh:hover { border-color: var(--green); color: var(--green); }
+    .btn-refresh:disabled { opacity: .5; cursor: not-allowed; }
 
     /* ── TABS ── */
     nav.tabs {
@@ -172,6 +178,7 @@
         <option value="60">Last 60 days</option>
         <option value="90">Last 90 days</option>
       </select>
+      <button class="btn-refresh" id="refreshBtn" onclick="runAggregation()">↻ Refresh Data</button>
       <button class="btn-logout" onclick="logout()">Sign out</button>
     </div>
   </header>
@@ -732,6 +739,31 @@ function renderFreeUsers(freeUsers) {
     ],
     [C.green, C.primary, C.blue, '#333']
   );
+}
+
+// ══════════════════════════════════════════════
+// REFRESH DATA AGGREGATION
+// ══════════════════════════════════════════════
+async function runAggregation() {
+  const btn = document.getElementById('refreshBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Running…';
+  try {
+    const res = await fetch(`${API}/analytics/kpi/run-aggregation`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${getToken()}` }
+    });
+    if (!res.ok) throw new Error();
+    btn.textContent = '✓ Done! Reloading…';
+    setTimeout(() => {
+      loadAllData();
+      btn.disabled = false;
+      btn.textContent = '↻ Refresh Data';
+    }, 1200);
+  } catch(e) {
+    btn.textContent = '✗ Failed';
+    setTimeout(() => { btn.disabled = false; btn.textContent = '↻ Refresh Data'; }, 2000);
+  }
 }
 
 // ══════════════════════════════════════════════
