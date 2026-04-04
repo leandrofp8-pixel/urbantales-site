@@ -357,12 +357,18 @@ function getToken() { return localStorage.getItem('ut_token'); }
 function setToken(t) { localStorage.setItem('ut_token', t); }
 function clearToken() { localStorage.removeItem('ut_token'); }
 
+let _loggingIn = false;
 async function login() {
+  if (_loggingIn) return;
   const email = document.getElementById('loginEmail').value.trim();
   const pass  = document.getElementById('loginPassword').value;
   const errEl = document.getElementById('loginError');
+  const btn   = document.querySelector('.btn-primary');
   errEl.textContent = '';
   if (!email || !pass) { errEl.textContent = 'Enter email and password.'; return; }
+  _loggingIn = true;
+  btn.disabled = true;
+  btn.textContent = 'Signing in…';
   try {
     const res = await fetch(`${API}/auth/login`, {
       method: 'POST',
@@ -375,6 +381,10 @@ async function login() {
     showDashboard();
   } catch(e) {
     errEl.textContent = 'Connection error. Check your network.';
+  } finally {
+    _loggingIn = false;
+    btn.disabled = false;
+    btn.textContent = 'Sign In';
   }
 }
 
