@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban Tales — Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0f0f0f;
+      --card:     #1a1a1a;
+      --border:   #2a2a2a;
+      --primary:  #FF6B35;
+      --blue:     #60a5fa;
+      --purple:   #a78bfa;
+      --green:    #34d399;
+      --yellow:   #fbbf24;
+      --text:     #f1f1f1;
+      --muted:    #888;
+      --danger:   #f87171;
+    }
+
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; min-height: 100vh; }
+
+    /* ── LOGIN ── */
+    #loginScreen {
+      display: flex; align-items: center; justify-content: center; min-height: 100vh;
+    }
+    .login-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 40px; width: 360px; text-align: center;
+    }
+    .login-card h1 { font-size: 1.5rem; margin-bottom: 6px; }
+    .login-card p  { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
+    .login-card input {
+      width: 100%; padding: 12px 14px; background: #111; border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); font-size: 0.9rem; margin-bottom: 12px; outline: none;
+    }
+    .login-card input:focus { border-color: var(--primary); }
+    .btn-primary {
+      width: 100%; padding: 12px; background: var(--primary); color: #fff;
+      border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .85; }
+    #loginError { color: var(--danger); font-size: 0.82rem; margin-top: 10px; min-height: 18px; }
+
+    /* ── DASHBOARD LAYOUT ── */
+    #dashboard { display: none; }
+
+    header {
+      background: var(--card); border-bottom: 1px solid var(--border);
+      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; }
+    .logo-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+    .header-right { display: flex; align-items: center; gap: 16px; }
+    .period-select {
+      background: #111; border: 1px solid var(--border); color: var(--text);
+      padding: 6px 12px; border-radius: 8px; font-size: 0.82rem; cursor: pointer; outline: none;
+    }
+    .btn-logout {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+      padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; cursor: pointer;
+    }
+    .btn-logout:hover { border-color: var(--danger); color: var(--danger); }
+
+    /* ── TABS ── */
+    nav.tabs {
+      background: var(--card); border-bottom: 1px solid var(--border);
+      display: flex; padding: 0 24px; gap: 0; overflow-x: auto;
+    }
+    .tab-btn {
+      background: none; border: none; color: var(--muted); font-size: 0.85rem;
+      padding: 14px 18px; cursor: pointer; border-bottom: 2px solid transparent;
+      white-space: nowrap; transition: color .15s;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    /* ── CONTENT ── */
+    main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── CARDS ── */
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+    @media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px) { .grid-4,.grid-3,.grid-2 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+    }
+    .card h3 { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+    .kpi-value { font-size: 2rem; font-weight: 700; line-height: 1; }
+    .kpi-sub { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+    .kpi-badge {
+      display: inline-block; font-size: 0.75rem; padding: 2px 8px; border-radius: 20px;
+      margin-top: 6px; font-weight: 600;
+    }
+    .badge-green  { background: rgba(52,211,153,.15); color: var(--green); }
+    .badge-orange { background: rgba(255,107,53,.15);  color: var(--primary); }
+    .badge-blue   { background: rgba(96,165,250,.15);  color: var(--blue); }
+    .badge-yellow { background: rgba(251,191,36,.15);  color: var(--yellow); }
+    .badge-red    { background: rgba(248,113,113,.15); color: var(--danger); }
+
+    .card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
+    .chart-wrap { position: relative; height: 220px; }
+    .chart-wrap-lg { position: relative; height: 280px; }
+
+    /* ── FUNNEL ── */
+    .funnel-wrap { display: flex; flex-direction: column; gap: 0; }
+    .funnel-step {
+      display: flex; align-items: center; gap: 16px; padding: 14px 20px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px;
+    }
+    .funnel-bar-outer { flex: 1; height: 8px; background: #222; border-radius: 4px; overflow: hidden; }
+    .funnel-bar-inner { height: 100%; border-radius: 4px; transition: width .6s ease; }
+    .funnel-label { min-width: 160px; font-size: 0.85rem; }
+    .funnel-count { min-width: 60px; font-weight: 700; font-size: 1.1rem; text-align: right; }
+    .funnel-pct   { min-width: 50px; font-size: 0.8rem; color: var(--muted); text-align: right; }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    th { text-align: left; color: var(--muted); font-weight: 500; padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 0.75rem; text-transform: uppercase; letter-spacing: .06em; }
+    td { padding: 10px 12px; border-bottom: 1px solid #1f1f1f; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,.02); }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
+
+    /* ── LOADING ── */
+    .loading { color: var(--muted); font-size: 0.85rem; text-align: center; padding: 40px; }
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .section-header h2 { font-size: 0.95rem; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     LOGIN
+═══════════════════════════════════════════════════════ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <h1>🏛️ Urban Tales</h1>
+    <p>Admin Dashboard — sign in to continue</p>
+    <input type="email" id="loginEmail" placeholder="Email" autocomplete="email" />
+    <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" />
+    <button class="btn-primary" onclick="login()">Sign In</button>
+    <div id="loginError"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     DASHBOARD
+═══════════════════════════════════════════════════════ -->
+<div id="dashboard">
+  <header>
+    <div class="logo">
+      <div class="logo-dot"></div>
+      Urban Tales Dashboard
+    </div>
+    <div class="header-right">
+      <select class="period-select" id="periodSelect" onchange="onPeriodChange()">
+        <option value="7">Last 7 days</option>
+        <option value="14">Last 14 days</option>
+        <option value="30" selected>Last 30 days</option>
+        <option value="60">Last 60 days</option>
+        <option value="90">Last 90 days</option>
+      </select>
+      <button class="btn-logout" onclick="logout()">Sign out</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
+    <button class="tab-btn" onclick="showTab('funnel')">Funnel</button>
+    <button class="tab-btn" onclick="showTab('content')">Content</button>
+    <button class="tab-btn" onclick="showTab('costs')">API Costs</button>
+    <button class="tab-btn" onclick="showTab('users')">Free Users</button>
+  </nav>
+
+  <main>
+
+    <!-- ── OVERVIEW ── -->
+    <div class="tab-panel active" id="panel-overview">
+      <div class="grid-4" id="kpiCards">
+        <div class="card"><div class="loading">Loading…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Daily Activity</div>
+          <div class="chart-wrap"><canvas id="chartActivity"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Feature Usage (sessions)</div>
+          <div class="chart-wrap"><canvas id="chartFeatures"></canvas></div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Free vs Paid Active Users</div>
+          <div class="chart-wrap"><canvas id="chartFreePaid"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Paywall Pressure</div>
+          <div class="chart-wrap"><canvas id="chartPaywall"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FUNNEL ── -->
+    <div class="tab-panel" id="panel-funnel">
+      <div class="grid-2" style="margin-bottom:24px">
+        <div class="card">
+          <div class="card-title">Conversion Funnel — Period Total</div>
+          <div class="funnel-wrap" id="funnelViz">
+            <div class="loading">Loading…</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Daily Signups vs Conversions</div>
+          <div class="chart-wrap-lg"><canvas id="chartFunnelDaily"></canvas></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-header">
+          <h2>🔥 Hot Leads — Free users likely to convert</h2>
+          <span id="hotLeadsCount" style="font-size:0.8rem;color:var(--muted)"></span>
+        </div>
+        <div class="table-wrap">
+          <table id="hotLeadsTable">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Narrations</th>
+                <th>Shop Views</th>
+                <th>Paywall Hits</th>
+                <th>Last Active</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="hotLeadsBody">
+              <tr><td colspan="6" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CONTENT ── -->
+    <div class="tab-panel" id="panel-content">
+      <div class="grid-2" style="margin-bottom:24px">
+        <div class="card">
+          <div class="card-title">Daily Narrations</div>
+          <div class="chart-wrap-lg"><canvas id="chartNarrations"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Daily Purchases</div>
+          <div class="chart-wrap-lg"><canvas id="chartPurchases"></canvas></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-header"><h2>🏛️ Top Landmarks</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Landmark</th>
+                <th>Total Plays</th>
+                <th>Cache Hits</th>
+                <th>Cache Miss</th>
+                <th>Cache Rate</th>
+              </tr>
+            </thead>
+            <tbody id="landmarksBody">
+              <tr><td colspan="6" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COSTS ── -->
+    <div class="tab-panel" id="panel-costs">
+      <div class="grid-4" id="costKpis">
+        <div class="card"><div class="loading">Loading…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Daily API Cost ($)</div>
+          <div class="chart-wrap-lg"><canvas id="chartCostDaily"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">TTS vs Other breakdown</div>
+          <div class="chart-wrap-lg"><canvas id="chartCostBreakdown"></canvas></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-header"><h2>Top Users by API Cost</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>User</th><th>Total Cost</th><th>API Calls</th><th>Cost/Call</th></tr>
+            </thead>
+            <tbody id="topUsersBody">
+              <tr><td colspan="4" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FREE USERS ── -->
+    <div class="tab-panel" id="panel-users">
+      <div class="grid-4" id="freeUserKpis">
+        <div class="card"><div class="loading">Loading…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Free User Engagement Breakdown</div>
+          <div class="chart-wrap"><canvas id="chartFreeEngagement"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Free Users — Funnel Stages</div>
+          <div class="chart-wrap"><canvas id="chartFreeFunnel"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const API = 'https://friendly-fulfillment-production.up.railway.app/api';
+const CHARTS = {};
+let days = 30;
+
+// ══════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════
+function getToken() { return localStorage.getItem('ut_token'); }
+function setToken(t) { localStorage.setItem('ut_token', t); }
+function clearToken() { localStorage.removeItem('ut_token'); }
+
+async function login() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass  = document.getElementById('loginPassword').value;
+  const errEl = document.getElementById('loginError');
+  errEl.textContent = '';
+  if (!email || !pass) { errEl.textContent = 'Enter email and password.'; return; }
+  try {
+    const res = await fetch(`${API}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pass })
+    });
+    if (!res.ok) { errEl.textContent = 'Invalid credentials or not an admin account.'; return; }
+    const data = await res.json();
+    setToken(data.access_token);
+    showDashboard();
+  } catch(e) {
+    errEl.textContent = 'Connection error. Check your network.';
+  }
+}
+
+function logout() {
+  clearToken();
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+}
+
+document.getElementById('loginPassword').addEventListener('keydown', e => {
+  if (e.key === 'Enter') login();
+});
+
+// ══════════════════════════════════════════════
+// API HELPERS
+// ══════════════════════════════════════════════
+async function api(path) {
+  const res = await fetch(`${API}${path}`, {
+    headers: { 'Authorization': `Bearer ${getToken()}` }
+  });
+  if (res.status === 401) { logout(); throw new Error('Unauthorized'); }
+  if (!res.ok) throw new Error(`API error ${res.status}`);
+  return res.json();
+}
+
+// ══════════════════════════════════════════════
+// CHART HELPERS
+// ══════════════════════════════════════════════
+const C = {
+  primary: '#FF6B35', blue: '#60a5fa', purple: '#a78bfa',
+  green: '#34d399', yellow: '#fbbf24', muted: '#555'
+};
+
+function destroyChart(id) {
+  if (CHARTS[id]) { CHARTS[id].destroy(); delete CHARTS[id]; }
+}
+
+function lineChart(id, labels, datasets, opts = {}) {
+  destroyChart(id);
+  const ctx = document.getElementById(id).getContext('2d');
+  CHARTS[id] = new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets: datasets.map(d => ({
+      tension: 0.35, pointRadius: 3, borderWidth: 2, fill: true,
+      backgroundColor: d.color + '18', borderColor: d.color,
+      pointBackgroundColor: d.color, ...d
+    }))},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+      scales: {
+        x: { ticks: { color: '#555', font: { size: 10 }, maxTicksLimit: 10 }, grid: { color: '#1f1f1f' } },
+        y: { ticks: { color: '#555', font: { size: 10 } }, grid: { color: '#1f1f1f' }, beginAtZero: true, ...opts.y }
+      }
+    }
+  });
+}
+
+function barChart(id, labels, datasets, opts = {}) {
+  destroyChart(id);
+  const ctx = document.getElementById(id).getContext('2d');
+  CHARTS[id] = new Chart(ctx, {
+    type: 'bar',
+    data: { labels, datasets: datasets.map(d => ({
+      backgroundColor: d.color + 'cc', borderColor: d.color, borderWidth: 1, borderRadius: 4, ...d
+    }))},
+    options: {
+      responsive: true, maintainAspectRatio: false, indexAxis: opts.horizontal ? 'y' : 'x',
+      plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+      scales: {
+        x: { ticks: { color: '#555', font: { size: 10 }, maxTicksLimit: 10 }, grid: { color: '#1f1f1f' }, stacked: !!opts.stacked },
+        y: { ticks: { color: '#555', font: { size: 10 } }, grid: { color: '#1f1f1f' }, beginAtZero: true, stacked: !!opts.stacked }
+      }
+    }
+  });
+}
+
+function doughnutChart(id, labels, data, colors) {
+  destroyChart(id);
+  const ctx = document.getElementById(id).getContext('2d');
+  CHARTS[id] = new Chart(ctx, {
+    type: 'doughnut',
+    data: { labels, datasets: [{ data, backgroundColor: colors, borderColor: '#1a1a1a', borderWidth: 2 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '65%',
+      plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 11 }, padding: 10 } } }
+    }
+  });
+}
+
+// ══════════════════════════════════════════════
+// TAB NAVIGATION
+// ══════════════════════════════════════════════
+function showTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`panel-${name}`).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+function onPeriodChange() {
+  days = parseInt(document.getElementById('periodSelect').value);
+  loadAllData();
+}
+
+// ══════════════════════════════════════════════
+// RENDER HELPERS
+// ══════════════════════════════════════════════
+function kpiCard(title, value, sub, badgeText, badgeClass) {
+  return `<div class="card">
+    <h3>${title}</h3>
+    <div class="kpi-value">${value}</div>
+    ${sub ? `<div class="kpi-sub">${sub}</div>` : ''}
+    ${badgeText ? `<div class="kpi-badge badge-${badgeClass}">${badgeText}</div>` : ''}
+  </div>`;
+}
+
+function fmt(n) {
+  if (n === undefined || n === null) return '—';
+  return Number(n).toLocaleString();
+}
+function fmtPct(n) { return (n || 0).toFixed(1) + '%'; }
+function fmtCost(n) { return '$' + (n || 0).toFixed(4); }
+function fmtDate(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+function shortDate(str) {
+  const d = new Date(str + 'T00:00:00Z');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+// ══════════════════════════════════════════════
+// OVERVIEW
+// ══════════════════════════════════════════════
+function renderOverview(funnel, freeUsers) {
+  const t = funnel.totals;
+  const r = funnel.rates;
+  const totalPaid = (t.total_active_users || 0) - (freeUsers.summary?.total_free_users || 0);
+
+  document.getElementById('kpiCards').innerHTML =
+    kpiCard('Active Users (period)', fmt(t.total_active_users), `${fmt(t.new_signups)} new signups`, null, null) +
+    kpiCard('Total Narrations', fmt(t.total_narrations), `≈${(t.total_narrations/Math.max(t.total_active_users,1)).toFixed(1)} per user`, null, null) +
+    kpiCard('Activation Rate', fmtPct(r.activation_rate), 'Signup → first narration',
+      r.activation_rate > 60 ? '↑ Healthy' : r.activation_rate > 30 ? '→ Average' : '↓ Needs work',
+      r.activation_rate > 60 ? 'green' : r.activation_rate > 30 ? 'yellow' : 'red') +
+    kpiCard('Conversion Rate', fmtPct(r.conversion_rate), 'Free → paid',
+      r.conversion_rate > 5 ? '↑ Strong' : r.conversion_rate > 2 ? '→ Average' : '↓ Low',
+      r.conversion_rate > 5 ? 'green' : r.conversion_rate > 2 ? 'yellow' : 'orange');
+
+  const daily = [...(funnel.daily_data || [])].reverse();
+  const labels = daily.map(d => shortDate(d.date));
+
+  lineChart('chartActivity', labels, [
+    { label: 'Active Users', data: daily.map(d => d.total_active_users || 0), color: C.primary },
+    { label: 'New Signups',  data: daily.map(d => d.new_signups || 0),        color: C.blue },
+    { label: 'Converted',    data: daily.map(d => d.free_users_converted || 0), color: C.green },
+  ]);
+
+  barChart('chartFeatures', labels, [
+    { label: 'Walk',    data: daily.map(d => d.walk_sessions    || 0), color: C.primary },
+    { label: 'Explore', data: daily.map(d => d.explore_sessions || 0), color: C.blue },
+    { label: 'Tours',   data: daily.map(d => d.tours_sessions   || 0), color: C.purple },
+  ], { stacked: true });
+
+  lineChart('chartFreePaid', labels, [
+    { label: 'Free Users',  data: daily.map(d => d.active_free_users || 0), color: C.blue },
+    { label: 'Paid Users',  data: daily.map(d => d.active_paid_users || 0), color: C.green },
+  ]);
+
+  lineChart('chartPaywall', labels, [
+    { label: 'Out-of-coins events', data: daily.map(d => d.out_of_coins_events   || 0), color: C.yellow },
+    { label: 'Shop Views (no buy)', data: daily.map(d => d.shop_views_no_purchase || 0), color: C.primary },
+  ]);
+}
+
+// ══════════════════════════════════════════════
+// FUNNEL
+// ══════════════════════════════════════════════
+function renderFunnel(funnel, freeUsers) {
+  const t = funnel.totals;
+  const base = t.new_signups || 1;
+
+  const steps = [
+    { label: 'New Signups',              count: t.new_signups,           pct: 100,                                          color: C.blue },
+    { label: 'Activated (1st narration)',count: t.new_users_activated,   pct: t.new_users_activated/base*100,               color: C.primary },
+    { label: 'Viewed Shop',             count: freeUsers.summary?.viewed_shop, pct: freeUsers.summary?.viewed_shop_pct,    color: C.purple },
+    { label: 'Converted to Paid',       count: t.free_users_converted,   pct: t.free_users_converted/base*100,             color: C.green },
+  ];
+
+  document.getElementById('funnelViz').innerHTML = steps.map(s => `
+    <div class="funnel-step">
+      <div class="funnel-label">${s.label}</div>
+      <div class="funnel-bar-outer">
+        <div class="funnel-bar-inner" style="width:${Math.min(s.pct||0,100)}%;background:${s.color}"></div>
+      </div>
+      <div class="funnel-count">${fmt(s.count)}</div>
+      <div class="funnel-pct">${(s.pct||0).toFixed(1)}%</div>
+    </div>
+  `).join('');
+
+  const daily = [...(funnel.daily_data || [])].reverse();
+  const labels = daily.map(d => shortDate(d.date));
+
+  lineChart('chartFunnelDaily', labels, [
+    { label: 'New Signups',   data: daily.map(d => d.new_signups            || 0), color: C.blue },
+    { label: 'Activated',     data: daily.map(d => d.new_users_activated    || 0), color: C.primary },
+    { label: 'Converted',     data: daily.map(d => d.free_users_converted   || 0), color: C.green },
+    { label: 'Recovered',     data: daily.map(d => d.recovered_users        || 0), color: C.yellow },
+  ]);
+
+  // Hot leads table
+  const leads = freeUsers.hot_leads || [];
+  document.getElementById('hotLeadsCount').textContent = `${leads.length} leads`;
+  document.getElementById('hotLeadsBody').innerHTML = leads.length === 0
+    ? `<tr><td colspan="6" class="loading">No hot leads found.</td></tr>`
+    : leads.slice(0, 30).map(l => {
+        const score = (l.narrations || 0) + (l.shop_views || 0) * 3 + (l.paywall_hits || 0) * 5;
+        const scoreClass = score > 30 ? 'green' : score > 15 ? 'yellow' : 'orange';
+        return `<tr>
+          <td>${maskEmail(l.email)}</td>
+          <td>${l.narrations || 0}</td>
+          <td>${l.shop_views || 0}</td>
+          <td>${l.paywall_hits || 0}</td>
+          <td>${fmtDate(l.last_active)}</td>
+          <td><span class="pill badge-${scoreClass}">${score}</span></td>
+        </tr>`;
+      }).join('');
+}
+
+function maskEmail(email) {
+  if (!email) return '—';
+  const [user, domain] = email.split('@');
+  return user.slice(0, 3) + '***@' + domain;
+}
+
+// ══════════════════════════════════════════════
+// CONTENT
+// ══════════════════════════════════════════════
+function renderContent(daily, funnel) {
+  const funnelDaily = [...(funnel.daily_data || [])].reverse();
+  const labels = funnelDaily.map(d => shortDate(d.date));
+
+  lineChart('chartNarrations', labels, [
+    { label: 'Narrations', data: funnelDaily.map(d => d.total_narrations || 0), color: C.primary }
+  ]);
+
+  lineChart('chartPurchases', labels, [
+    { label: 'Purchases', data: funnelDaily.map(d => d.total_purchases || 0), color: C.green }
+  ]);
+
+  const landmarks = (daily.top_landmarks || []).slice(0, 20);
+  document.getElementById('landmarksBody').innerHTML = landmarks.length === 0
+    ? `<tr><td colspan="6" class="loading">No landmark data yet.</td></tr>`
+    : landmarks.map((l, i) => {
+        const total = l.total_plays || 0;
+        const hits  = l.cache_hits  || 0;
+        const miss  = l.cache_misses || 0;
+        const rate  = total > 0 ? (hits / total * 100).toFixed(1) : '—';
+        return `<tr>
+          <td style="color:var(--muted)">${i+1}</td>
+          <td>${l.landmark_name || l.landmark_id || '—'}</td>
+          <td><strong>${fmt(total)}</strong></td>
+          <td>${fmt(hits)}</td>
+          <td>${fmt(miss)}</td>
+          <td><span class="pill badge-${parseFloat(rate)>70?'green':parseFloat(rate)>40?'yellow':'orange'}">${rate}%</span></td>
+        </tr>`;
+      }).join('');
+}
+
+// ══════════════════════════════════════════════
+// COSTS
+// ══════════════════════════════════════════════
+function renderCosts(costs) {
+  const s = costs.summary;
+  document.getElementById('costKpis').innerHTML =
+    kpiCard('Total Cost (period)', '$' + (s.total_cost||0).toFixed(2), `${fmt(s.total_calls)} total calls`, null, null) +
+    kpiCard('Cache Hit Rate', s.cache_hit_rate || '—', 'Saved vs live API calls',
+      parseFloat(s.cache_hit_rate) > 70 ? '↑ Efficient' : '↓ Low', parseFloat(s.cache_hit_rate) > 70 ? 'green' : 'yellow') +
+    kpiCard('Active Users (period)', fmt(s.unique_users), 'Made at least 1 API call', null, null) +
+    kpiCard('Avg Cost / User', '$' + (s.avg_cost_per_user||0).toFixed(4), 'For the period', null, null);
+
+  const breakdown = costs.daily_breakdown || {};
+  const sortedDates = Object.keys(breakdown).sort();
+  const labels = sortedDates.map(d => shortDate(d));
+
+  lineChart('chartCostDaily', labels, [
+    { label: 'Daily Cost ($)', data: sortedDates.map(d => +(breakdown[d]?.total_cost||0).toFixed(4)), color: C.primary }
+  ]);
+
+  // Aggregate API types across all days
+  const apiTotals = {};
+  sortedDates.forEach(d => {
+    const b = breakdown[d]?.breakdown || {};
+    Object.entries(b).forEach(([api, v]) => {
+      apiTotals[api] = (apiTotals[api] || 0) + (v.cost || 0);
+    });
+  });
+  const apiNames  = Object.keys(apiTotals);
+  const apiColors = [C.primary, C.blue, C.purple, C.green, C.yellow];
+  doughnutChart('chartCostBreakdown', apiNames, apiNames.map(k => +apiTotals[k].toFixed(4)), apiColors);
+
+  const users = costs.top_users_by_cost || [];
+  document.getElementById('topUsersBody').innerHTML = users.length === 0
+    ? `<tr><td colspan="4" class="loading">No data.</td></tr>`
+    : users.map(u => `<tr>
+        <td>${u.email}</td>
+        <td>${fmtCost(u.total_cost)}</td>
+        <td>${fmt(u.total_calls)}</td>
+        <td>${fmtCost(u.total_cost / Math.max(u.total_calls, 1))}</td>
+      </tr>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// FREE USERS
+// ══════════════════════════════════════════════
+function renderFreeUsers(freeUsers) {
+  const s = freeUsers.summary || {};
+  document.getElementById('freeUserKpis').innerHTML =
+    kpiCard('Total Free Users', fmt(s.total_free_users), 'Never purchased', null, null) +
+    kpiCard('Viewed Shop', fmt(s.viewed_shop), fmtPct(s.viewed_shop_pct) + ' of free users',
+      s.viewed_shop_pct > 30 ? '↑ Good awareness' : '↓ Low awareness', s.viewed_shop_pct > 30 ? 'green' : 'yellow') +
+    kpiCard('Hit Paywall', fmt(s.hit_paywall), fmtPct(s.hit_paywall_pct) + ' of free users',
+      '💰 Purchase intent', 'orange') +
+    kpiCard('Highly Engaged', fmt(s.high_engagement), '5+ narrations listened', '→ Convert them', 'blue');
+
+  doughnutChart('chartFreeEngagement',
+    ['Viewed Shop', 'Hit Paywall', 'Highly Engaged', 'Passive'],
+    [
+      s.viewed_shop || 0,
+      s.hit_paywall || 0,
+      s.high_engagement || 0,
+      Math.max((s.total_free_users||0) - (s.high_engagement||0), 0)
+    ],
+    [C.purple, C.yellow, C.blue, '#333']
+  );
+
+  doughnutChart('chartFreeFunnel',
+    ['Converted (Paid)', 'Hot Leads', 'Active Free', 'Passive'],
+    [
+      freeUsers.hot_leads?.length ? 0 : 0,
+      Math.min(freeUsers.hot_leads_count || 0, s.recently_active || 0),
+      Math.max((s.recently_active || 0) - (freeUsers.hot_leads_count || 0), 0),
+      Math.max((s.total_free_users||0) - (s.recently_active||0), 0)
+    ],
+    [C.green, C.primary, C.blue, '#333']
+  );
+}
+
+// ══════════════════════════════════════════════
+// LOAD ALL DATA
+// ══════════════════════════════════════════════
+async function loadAllData() {
+  try {
+    const [funnel, freeUsers, daily, costs] = await Promise.all([
+      api(`/analytics/kpi/funnel?days=${days}`),
+      api(`/analytics/kpi/free-users`),
+      api(`/analytics/daily?days=${days}`),
+      api(`/admin/cost-report?days=${days}`),
+    ]);
+
+    renderOverview(funnel, freeUsers);
+    renderFunnel(funnel, freeUsers);
+    renderContent(daily, funnel);
+    renderCosts(costs);
+    renderFreeUsers(freeUsers);
+  } catch (e) {
+    console.error('Dashboard load error:', e);
+  }
+}
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+function showDashboard() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  loadAllData();
+}
+
+if (getToken()) {
+  showDashboard();
+}
+</script>
+</body>
+</html>
