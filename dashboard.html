@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Urban Tales — Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -34,18 +35,8 @@
     }
     .login-card h1 { font-size: 1.5rem; margin-bottom: 6px; }
     .login-card p  { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
-    .login-card input {
-      width: 100%; padding: 12px 14px; background: #111; border: 1px solid var(--border);
-      border-radius: 8px; color: var(--text); font-size: 0.9rem; margin-bottom: 12px; outline: none;
-    }
-    .login-card input:focus { border-color: var(--primary); }
-    .btn-primary {
-      width: 100%; padding: 12px; background: var(--primary); color: #fff;
-      border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600;
-      cursor: pointer; transition: opacity .2s;
-    }
-    .btn-primary:hover { opacity: .85; }
-    #loginError { color: var(--danger); font-size: 0.82rem; margin-top: 10px; min-height: 18px; }
+    .google-btn-wrap { display: flex; justify-content: center; margin-top: 8px; }
+    #loginError { color: var(--danger); font-size: 0.82rem; margin-top: 14px; min-height: 18px; }
 
     /* ── DASHBOARD LAYOUT ── */
     #dashboard { display: none; }
@@ -147,10 +138,22 @@
 <div id="loginScreen">
   <div class="login-card">
     <h1>🏛️ Urban Tales</h1>
-    <p>Admin Dashboard — sign in to continue</p>
-    <input type="email" id="loginEmail" placeholder="Email" autocomplete="email" />
-    <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" />
-    <button class="btn-primary" onclick="login()">Sign In</button>
+    <p>Admin Dashboard — sign in with your Google account</p>
+    <div class="google-btn-wrap">
+      <div id="g_id_onload"
+        data-client_id="776042272900-gdaph1md7vkufb4phjbnciv64mjn195q.apps.googleusercontent.com"
+        data-callback="handleGoogleLogin"
+        data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="filled_black"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+      </div>
+    </div>
     <div id="loginError"></div>
   </div>
 </div>
@@ -357,20 +360,32 @@ function getToken() { return localStorage.getItem('ut_token'); }
 function setToken(t) { localStorage.setItem('ut_token', t); }
 function clearToken() { localStorage.removeItem('ut_token'); }
 
-async function login() {
-  const email = document.getElementById('loginEmail').value.trim();
-  const pass  = document.getElementById('loginPassword').value;
+async function handleGoogleLogin(response) {
   const errEl = document.getElementById('loginError');
   errEl.textContent = '';
-  if (!email || !pass) { errEl.textContent = 'Enter email and password.'; return; }
   try {
-    const res = await fetch(`${API}/auth/login`, {
+    // Decode the JWT credential from Google to get user info
+    const payload = JSON.parse(atob(response.credential.split('.')[1]));
+    const res = await fetch(`${API}/auth/google`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: pass })
+      body: JSON.stringify({
+        google_id: payload.sub,
+        email: payload.email,
+        display_name: payload.name || payload.email,
+        photo_url: payload.picture || null,
+        signup_platform: 'web'
+      })
     });
-    if (!res.ok) { errEl.textContent = 'Invalid credentials or not an admin account.'; return; }
+    if (!res.ok) { errEl.textContent = 'Access denied. Admin account required.'; return; }
     const data = await res.json();
+    // Verify this is an admin account by checking the email in the token
+    const tokenPayload = JSON.parse(atob(data.access_token.split('.')[1]));
+    const adminEmails = ['leandrofp8@gmail.com', 'admin@urbantales.app'];
+    if (!adminEmails.includes(tokenPayload.sub)) {
+      errEl.textContent = 'Access denied. This account is not an admin.';
+      return;
+    }
     setToken(data.access_token);
     showDashboard();
   } catch(e) {
@@ -383,10 +398,6 @@ function logout() {
   document.getElementById('dashboard').style.display = 'none';
   document.getElementById('loginScreen').style.display = 'flex';
 }
-
-document.getElementById('loginPassword').addEventListener('keydown', e => {
-  if (e.key === 'Enter') login();
-});
 
 // ══════════════════════════════════════════════
 // API HELPERS
