@@ -1,174 +1,578 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Urban Tales – Self-Guided Audio Tours for Cities</title>
-  <meta name="description" content="Explore cities with Urban Tales, a self-guided audio tour app that reveals the stories behind landmarks. Discover Rome, Paris, Mexico City and more while walking.">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://urbantales.net/">
-  <link rel="stylesheet" href="styles.css">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Urban Tales – Self-Guided Audio Tours for Cities">
-  <meta property="og:description" content="Walk through cities and hear the stories behind every landmark.">
-  <meta property="og:url" content="https://urbantales.net/">
-  <meta property="og:image" content="https://urbantales.net/banner.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Urban Tales – Self-Guided Audio Tours for Cities">
-  <meta name="twitter:description" content="Walk through cities and hear the stories behind every landmark.">
-  <meta name="twitter:image" content="https://urbantales.net/banner.png">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban Tales – Self-Guided GPS Audio Tours for Cities Worldwide</title>
+  <meta name="description" content="Urban Tales is a free GPS audio guide app that narrates hidden stories, legends and history as you walk through cities. No tour group. No fixed schedule. Available for iOS and Android." />
+  <meta name="keywords" content="GPS audio guide app, self-guided city tour, walking tour app, audio guide cities, travel app, hidden history cities, Urban Tales, city explorer app" />
+  <link rel="canonical" href="https://urbantales.net/" />
+  <meta property="og:title" content="Urban Tales – Self-Guided GPS Audio Tours for Cities Worldwide" />
+  <meta property="og:description" content="Walk through cities and hear the hidden stories behind every landmark. GPS-triggered audio that plays automatically as you explore — at your own pace." />
+  <meta property="og:url" content="https://urbantales.net/" />
+  <meta property="og:type" content="website" />
+  <link rel="sitemap" type="application/xml" href="https://urbantales.net/sitemap.xml" />
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "Urban Tales",
-    "applicationCategory": "TravelApplication",
-    "operatingSystem": "iOS, Android",
-    "description": "Urban Tales is a self-guided city exploration app with location-based audio narrations for landmarks and monuments.",
-    "url": "https://urbantales.net/",
-    "inLanguage": ["en", "es-419", "pt-BR", "fr", "de"]
+    "@graph": [
+      {
+        "@type": "MobileApplication",
+        "name": "Urban Tales",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "TravelApplication",
+        "description": "GPS-triggered audio guide app. Discover hidden stories, legends and history behind landmarks as you walk through cities worldwide — at your own pace, with no tour group.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "url": "https://urbantales.net",
+        "downloadUrl": [
+          "https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598",
+          "https://play.google.com/store/apps/details?id=com.urbantales.app"
+        ],
+        "availableOnDevice": ["iPhone", "iPad", "Android"]
+      },
+      {
+        "@type": "WebSite",
+        "name": "Urban Tales",
+        "url": "https://urbantales.net"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "In which cities does Urban Tales work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Urban Tales works in any city worldwide. The app detects nearby landmarks wherever you are. Featured city guides with curated stories are available for Rome, Paris and Mexico City, with more cities being added regularly." }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does Urban Tales cost?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Urban Tales is free to download and includes 6 free landmarks per day. A 24-hour day pass unlocks unlimited landmarks in all cities. You can also permanently unlock individual cities for ongoing access." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Urban Tales work without a guide or pre-booked tour?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Urban Tales is completely self-guided. The app uses GPS to detect your location and plays audio automatically when you approach a landmark. No booking, no groups, no fixed schedule." }
+          },
+          {
+            "@type": "Question",
+            "name": "What languages does Urban Tales support?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Urban Tales supports English, Spanish (LATAM), Brazilian Portuguese, French and German." }
+          },
+          {
+            "@type": "Question",
+            "name": "What kinds of stories does Urban Tales tell?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Urban Tales offers four storytelling styles: Historical (context and facts), Legends (myths and local folklore), Fun Facts (the surprising and absurd), and Cinematic (films and scenes set at each location). You can switch between styles at any time." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I plan a route in advance with Urban Tales?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. The tour generator lets you create 7 Wonders, Full-Day, Half-Day or fully Custom routes based on your city and available time. You can also explore freely without a route — the app plays stories automatically as you discover landmarks on your own." }
+          }
+        ]
+      }
+    ]
   }
   </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #111110;
+      --dark2: #1a1918;
+      --cream: #f2ede6;
+      --cream2: #e8e0d4;
+      --orange: #d4541a;
+      --text-dark: #1c1b19;
+      --text-mid: #6b5e52;
+      --text-light: #9a8878;
+      --border-dark: #2a2825;
+      --border-light: #d4cbc0;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; background: var(--dark); color: var(--cream); }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(17,17,16,0.95); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 0 6vw; height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--cream); }
+    .nav-logo img { width: 26px; height: 26px; border-radius: 6px; }
+    .nav-brand { font-size: 14px; font-weight: 500; }
+    .nav-brand span { display: block; font-size: 9px; font-weight: 300; color: var(--text-light); letter-spacing: 0.14em; text-transform: uppercase; }
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav a { color: var(--text-light); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    nav a:hover { color: var(--cream); }
+
+    /* HERO */
+    .hero {
+      background: var(--dark); padding: 96px 6vw 88px;
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 70% at 80% 50%, rgba(212,84,26,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .eyebrow {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--orange); display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+    }
+    .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--orange); }
+    h1 {
+      font-family: var(--font-serif); font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 900; line-height: 1.06; letter-spacing: -0.025em; color: var(--cream); margin-bottom: 24px;
+    }
+    h1 em { font-style: italic; color: var(--orange); }
+    .hero-sub { font-size: 18px; line-height: 1.7; color: var(--text-light); font-weight: 300; margin-bottom: 40px; max-width: 460px; }
+
+    /* STORE BADGES */
+    .store-badges { display: flex; gap: 14px; flex-wrap: wrap; }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; color: #000; text-decoration: none;
+      padding: 10px 20px; border-radius: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .store-badge svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .badge-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .badge-text small { font-size: 9px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.65; }
+    .badge-text strong { font-size: 15px; font-weight: 700; }
+
+    /* HERO SCREENS */
+    .hero-screens {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;
+    }
+    .hero-screen {
+      border-radius: 22px; overflow: hidden;
+      border: 1px solid var(--border-dark); background: #090908;
+    }
+    .hero-screen img { width: 100%; display: block; }
+    .hero-screen.offset { margin-top: 40px; }
+
+    /* DIVIDERS & SECTION */
+    hr { border: none; height: 1px; background: var(--border-dark); }
+    hr.light { background: var(--border-light); }
+    section { padding: 80px 6vw; }
+    section.on-cream { background: var(--cream); color: var(--text-dark); }
+    section.on-dark2 { background: var(--dark2); }
+
+    .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    h2 {
+      font-family: var(--font-serif); font-size: clamp(28px, 3.8vw, 46px);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 18px;
+    }
+    h2 em { font-style: italic; color: var(--orange); }
+    section.on-cream h2 { color: var(--text-dark); }
+    section.on-cream h2 em { color: var(--orange); }
+    h3 { font-family: var(--font-serif); font-size: 20px; font-weight: 700; line-height: 1.3; color: var(--cream); margin-bottom: 8px; }
+    section.on-cream h3 { color: var(--text-dark); }
+    p { color: var(--text-light); font-weight: 300; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    section.on-cream p { color: var(--text-mid); }
+
+    /* HOW IT WORKS */
+    .how-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center; margin-top: 0;
+    }
+    .how-steps { display: flex; flex-direction: column; gap: 0; }
+    .how-step {
+      display: grid; grid-template-columns: 48px 1fr;
+      gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--border-dark);
+      transition: background 0.2s;
+    }
+    .how-step:first-child { border-top: 1px solid var(--border-dark); }
+    .step-n {
+      font-family: var(--font-serif); font-size: 32px; font-weight: 900;
+      color: var(--border-dark); line-height: 1; letter-spacing: -0.03em;
+      padding-top: 4px;
+    }
+    .how-step h3 { font-size: 17px; margin-bottom: 6px; }
+    .how-step p { font-size: 14px; line-height: 1.65; margin: 0; }
+
+    .how-screens {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start;
+    }
+    .how-screen {
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border-dark); background: #090908;
+    }
+    .how-screen img { width: 100%; display: block; }
+    .how-screen.offset { margin-top: 36px; }
+
+    /* FEATURES */
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-light); border: 1px solid var(--border-light); margin-top: 52px; }
+    .feature-card { background: var(--cream); padding: 32px 26px; transition: background 0.2s; }
+    .feature-card:hover { background: var(--cream2); }
+    .feature-name { font-family: var(--font-serif); font-size: 19px; font-weight: 700; color: var(--orange); margin-bottom: 10px; }
+    .feature-card p { font-size: 14px; line-height: 1.65; }
+
+    /* CITIES */
+    .cities-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); margin-top: 52px;
+    }
+    .city-tile {
+      background: var(--dark2); padding: 36px 30px; text-decoration: none;
+      display: flex; flex-direction: column; transition: background 0.2s;
+    }
+    .city-tile:hover { background: #201e1c; }
+    .city-region { font-size: 10px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .city-name { font-family: var(--font-serif); font-size: 26px; font-weight: 900; color: var(--cream); margin-bottom: 10px; letter-spacing: -0.02em; }
+    .city-tile p { font-size: 14px; line-height: 1.65; flex: 1; }
+    .city-arrow { font-size: 13px; font-weight: 500; color: var(--orange); margin-top: 20px; transition: letter-spacing 0.2s; }
+    .city-tile:hover .city-arrow { letter-spacing: 0.05em; }
+
+    .cities-cta { margin-top: 24px; }
+    .cities-cta a {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border-dark); color: var(--text-light);
+      font-family: var(--font-sans); font-size: 13px; font-weight: 400;
+      text-decoration: none; padding: 12px 22px; border-radius: 4px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .cities-cta a:hover { border-color: var(--text-light); color: var(--cream); }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); margin-top: 52px; }
+    .pricing-card { background: var(--dark2); padding: 36px 30px; }
+    .pricing-card.featured { background: var(--dark); border: 1px solid var(--orange); margin: -1px; }
+    .pricing-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .pricing-card h3 { font-size: 22px; margin-bottom: 8px; }
+    .pricing-card .price { font-family: var(--font-serif); font-size: 42px; font-weight: 900; color: var(--cream); line-height: 1; margin-bottom: 6px; letter-spacing: -0.03em; }
+    .pricing-card .price-note { font-size: 13px; color: var(--text-light); margin-bottom: 24px; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .pricing-features li { font-size: 14px; color: var(--text-light); display: flex; align-items: flex-start; gap: 10px; font-weight: 300; }
+    .pricing-features li::before { content: '✓'; color: var(--orange); font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+
+    /* FAQ */
+    .faq-list { max-width: 720px; margin-top: 48px; }
+    .faq-item { border-bottom: 1px solid var(--border-light); padding: 26px 0; }
+    .faq-item:first-child { border-top: 1px solid var(--border-light); }
+    .faq-q { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .faq-a { font-size: 15px; line-height: 1.75; }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--dark); border-top: 1px solid var(--border-dark);
+      padding: 80px 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .cta-band h2 { font-family: var(--font-serif); font-size: clamp(24px, 3vw, 38px); font-weight: 700; line-height: 1.2; color: var(--cream); margin-bottom: 10px; }
+    .cta-band h2 em { font-style: italic; color: var(--orange); }
+    .cta-band p { font-size: 15px; color: var(--text-light); margin: 0; font-weight: 300; }
+    .cta-right { display: flex; flex-direction: column; gap: 12px; }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 36px 6vw; border-top: 1px solid var(--border-dark); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer p { font-size: 12px; color: var(--text-light); margin: 0; font-weight: 300; }
+    footer nav ul { display: flex; gap: 20px; list-style: none; }
+    footer nav a { color: var(--text-light); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+    footer nav a:hover { color: var(--cream); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-screens { max-width: 480px; }
+      .how-grid { grid-template-columns: 1fr; }
+      .how-screens { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .cities-grid { grid-template-columns: 1fr; }
+      .cta-band { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 560px) {
+      nav ul { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-screens { grid-template-columns: 1fr; max-width: 320px; }
+      .hero-screen.offset { margin-top: 0; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="icon.png" alt="Urban Tales logo" class="brand-logo">
-      <span class="brand-copy">
-        <span class="name">Urban Tales</span>
-        <span class="tag">Self-guided audio tours</span>
-      </span>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html#how">How it works</a>
-      <a href="index.html#cities">Cities</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
-    </nav>
+<!-- NAV -->
+<nav>
+  <a href="https://urbantales.net/" class="nav-logo">
+    <img src="https://urbantales.net/icon.png" alt="Urban Tales" />
+    <div class="nav-brand">Urban Tales <span>Self-guided audio tours</span></div>
+  </a>
+  <ul>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="https://urbantales.net/cities.html">Cities</a></li>
+    <li><a href="https://urbantales.net/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">GPS Audio Guide App</p>
+    <h1>Walk through cities.<br><em>Hear the stories</em><br>as you go.</h1>
+    <p class="hero-sub">Urban Tales detects your location and plays hidden history, legends and secrets automatically as you approach each landmark. Free to download. No tour group. No fixed schedule.</p>
+    <div class="store-badges">
+      <a href="https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598?l=en-GB" class="store-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="badge-text"><small>Download on the</small><strong>App Store</strong></div>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="store-badge">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76c.3.16.64.2.98.1l11.53-11.53L12 8.64 3.18 23.76z" fill="#EA4335"/><path d="M20.58 10.42l-2.8-1.6-3.27 3.27 3.27 3.27 2.82-1.61a1.6 1.6 0 000-2.8l-.02-.03z" fill="#FBBC04"/><path d="M3.18 23.76L12 8.64l-8.82-5.12A1.6 1.6 0 001.6 5v14a1.6 1.6 0 001.58 1.76z" fill="#34A853"/><path d="M3.18.24A1.6 1.6 0 001.6 2v.24L12 8.64l2.78-2.78L3.18.24z" fill="#4285F4"/></svg>
+        <div class="badge-text"><small>Get it on</small><strong>Google Play</strong></div>
+      </a>
+    </div>
+  </div>
+  <div class="hero-screens">
+    <div class="hero-screen">
+      <img src="screen-cdmx-zocalo-map.png" alt="Urban Tales GPS map showing nearby landmarks and audio playing automatically" />
+    </div>
+    <div class="hero-screen offset">
+      <img src="screen-colosseum-story.png" alt="Urban Tales story panel showing narration and landmark photo for the Colosseum" />
+    </div>
   </div>
 </header>
 
-<main>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-card">
-        <span class="kicker">Explore on foot. Listen as you go.</span>
-        <h1>Turn city walks into stories worth hearing.</h1>
-        <p class="lead">Urban Tales is a location-based audio guide app for travelers who want more than a map. Discover the history, legends, fun facts and atmosphere behind landmarks as you explore cities like Rome, Paris and Mexico City at your own pace.</p>
-        <div class="store-row" id="download">
-          <a class="store-btn store-btn-primary" href="https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598?l=en-GB">Download on the App Store</a>
-          <a class="store-btn store-btn-secondary" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Get it on Google Play</a>
+<hr />
+
+<!-- HOW IT WORKS -->
+<section id="how" class="on-dark2">
+  <p class="section-label">How it works</p>
+  <h2>No preparation needed.<br><em>Just open and walk.</em></h2>
+
+  <div class="how-grid" style="margin-top:52px;">
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-n">01</div>
+        <div>
+          <h3>Download and open the map</h3>
+          <p>The app shows landmarks around your current location instantly. Works in any city, anywhere in the world — from the Colosseum to a backstreet you discovered by accident.</p>
         </div>
       </div>
-      <div class="hero-visual-card">
-        <img src="icon.png" alt="Urban Tales app icon" class="hero-logo">
+      <div class="how-step">
+        <div class="step-n">02</div>
+        <div>
+          <h3>Walk — audio starts automatically</h3>
+          <p>As you approach a landmark, Urban Tales detects your GPS position and plays the story. No tapping, no searching. Put your phone in your pocket and just walk and listen.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-n">03</div>
+        <div>
+          <h3>Choose your storytelling style</h3>
+          <p>Switch between Historical, Legends, Fun Facts and Cinematic at any time. The same landmark sounds completely different in each mode — all four are worth hearing.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-n">04</div>
+        <div>
+          <h3>Generate a tour or explore freely</h3>
+          <p>Use the tour generator to create a 7 Wonders, Full-Day, Half-Day or Custom route for your city. Or ignore it entirely and wander — the app keeps up either way.</p>
+        </div>
       </div>
     </div>
-  </section>
-
-  <section class="section" id="how">
-    <div class="container">
-      <h2>How it works</h2>
-      <div class="step-grid">
-        <article class="step-card">
-          <div class="step-number">1</div>
-          <h3>Open the map</h3>
-          <p>Find landmarks, monuments, churches, squares and hidden corners around you while walking through the city.</p>
-        </article>
-        <article class="step-card">
-          <div class="step-number">2</div>
-          <h3>Discover stories</h3>
-          <p>Each landmark comes with rich audio narrations about history, context and memorable details.</p>
-        </article>
-        <article class="step-card">
-          <div class="step-number">3</div>
-          <h3>Listen while exploring</h3>
-          <p>Transform a normal walk into an audio-guided experience at your own pace.</p>
-        </article>
-        <article class="step-card">
-          <div class="step-number">4</div>
-          <h3>Choose a storytelling style</h3>
-          <p>Pick Historical, Fun Facts, Cinematic or Legends depending on how you want to experience the place.</p>
-        </article>
-        <article class="step-card">
-          <div class="step-number">5</div>
-          <h3>Generate tours</h3>
-          <p>Create experiences like 7 wonders, whole-day, half-day and custom routes based on your interests.</p>
-        </article>
-        <article class="step-card">
-          <div class="step-number">6</div>
-          <h3>Explore freely</h3>
-          <p>No rigid groups, no fixed schedule and no need to follow a predefined route.</p>
-        </article>
+    <div class="how-screens">
+      <div class="how-screen">
+        <img src="screen-home-nearby.png" alt="Urban Tales app showing a nearby landmark card with distance and listen button" loading="lazy" />
       </div>
-    </div>
-  </section>
-
-  <section class="section" id="cities">
-    <div class="container">
-      <h2>Cities</h2>
-      <p class="lead">Urban Tales works everywhere, but these pages show how the experience can fit iconic cities.</p>
-      <div class="city-list">
-        <a class="city-card" href="rome.html">
-          <h3>Rome</h3>
-          <p>Explore ancient monuments, churches, fountains and streets layered with history.</p>
-        </a>
-        <a class="city-card" href="paris.html">
-          <h3>Paris</h3>
-          <p>Walk through monuments, avenues and neighborhoods with stories that add context to the city.</p>
-        </a>
-        <a class="city-card" href="mexico-city.html">
-          <h3>Mexico City</h3>
-          <p>Discover plazas, monuments and districts where pre-Hispanic, colonial and modern stories meet.</p>
-        </a>
+      <div class="how-screen offset">
+        <img src="screen-home-tours.png" alt="Urban Tales tour generator showing 7 Wonders, Full-Day, Half-Day and Custom tour options" loading="lazy" />
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2>Frequently asked questions</h2>
-      <div class="faq-grid">
-        <article class="faq-item">
-          <h3>In which cities does it work?</h3>
-          <p>Urban Tales works everywhere. The app is designed to help you explore landmarks around you wherever you travel.</p>
-        </article>
-        <article class="faq-item">
-          <h3>How much does the app cost?</h3>
-          <p>You can already start using Urban Tales for free, but to have a fuller experience you can unlock cities or day passes.</p>
-        </article>
-        <article class="faq-item">
-          <h3>What languages are available?</h3>
-          <p>Urban Tales supports English, Spanish (LATAM), Brazilian Portuguese, French and German.</p>
-        </article>
-        <article class="faq-item">
-          <h3>Is Urban Tales self-guided?</h3>
-          <p>Yes. You can walk at your own pace, stop where you want and build your own route.</p>
-        </article>
-        <article class="faq-item">
-          <h3>What kinds of narrations are available?</h3>
-          <p>You can choose between Historical, Fun Facts, Cinematic and Legends depending on the type of story you want to hear.</p>
-        </article>
-        <article class="faq-item">
-          <h3>Can I use it for half-day or full-day sightseeing?</h3>
-          <p>Yes. Urban Tales supports quick stops, half-day explorations, full-day routes and custom tours.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-row">
-    <div>© Urban Tales. Built for travelers who want more than a photo.</div>
-    <div class="footer-links">
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
     </div>
   </div>
+</section>
+
+<hr />
+
+<!-- STORYTELLING STYLES -->
+<section class="on-cream">
+  <p class="section-label">Storytelling styles</p>
+  <h2>Four ways to hear<br><em>the same city.</em></h2>
+  <p style="max-width:520px;">Every landmark in Urban Tales comes with four different narrations. Switch between them anytime — the Colosseum as gladiatorial celebrity culture, or the Colosseum as a place of legend and myth. Your choice.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-name">Historical</div>
+      <p>Context, dates, politics, empires. What actually happened here and why it mattered. For travelers who want to leave genuinely knowing things.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-name">Legends</div>
+      <p>Myths, curses, ghosts and superstitions. The stories people told each other long before history books were written.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-name">Fun Facts</div>
+      <p>The absurd, the surprising and the genuinely weird. Perfect for long walks, curious kids or anyone who learns best through unexpected details.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-name">Cinematic</div>
+      <p>Films shot here, scenes set here, directors who fell in love with this city. Every landmark has a second life in cinema.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="light" />
+
+<!-- CITIES -->
+<section class="on-cream">
+  <p class="section-label">Available cities</p>
+  <h2>Start with these cities.<br><em>More being added.</em></h2>
+  <p style="max-width:520px;">Each city has a dedicated guide with curated stories, neighborhoods and landmark coverage. Urban Tales also works in any other city — these are just the deepest experiences.</p>
+
+  <div class="cities-grid">
+    <a href="https://urbantales.net/rome.html" class="city-tile">
+      <div class="city-region">Europe · Italy</div>
+      <div class="city-name">Rome</div>
+      <p>2,700 years of history, myth and legend. The Colosseum, the Pantheon, the Trevi Fountain — and hundreds of corners no guidebook mentions.</p>
+      <span class="city-arrow">Explore Rome →</span>
+    </a>
+    <a href="https://urbantales.net/paris.html" class="city-tile">
+      <div class="city-region">Europe · France</div>
+      <div class="city-name">Paris</div>
+      <p>Alchemists, catacombs, wartime secrets and the real stories behind the Eiffel Tower, the Louvre and Notre-Dame.</p>
+      <span class="city-arrow">Explore Paris →</span>
+    </a>
+    <a href="https://urbantales.net/mexico-city.html" class="city-tile">
+      <div class="city-region">Latin America · Mexico</div>
+      <div class="city-name">Mexico City</div>
+      <p>A Spanish colonial city built on an Aztec empire, slowly sinking into an ancient lake. Three civilizations layered beneath your feet.</p>
+      <span class="city-arrow">Explore Mexico City →</span>
+    </a>
+  </div>
+
+  <div class="cities-cta">
+    <a href="https://urbantales.net/cities.html">See all cities and coming soon destinations →</a>
+  </div>
+</section>
+
+<hr class="light" />
+
+<!-- PRICING -->
+<section>
+  <p class="section-label">Pricing</p>
+  <h2>Start free.<br><em>Unlock when you're ready.</em></h2>
+  <p style="max-width:500px;">Urban Tales is free to try everywhere. Unlock more when a city earns it.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-label">Always free</div>
+      <h3>Free</h3>
+      <div class="price">$0</div>
+      <div class="price-note">No credit card required</div>
+      <ul class="pricing-features">
+        <li>6 free landmarks per day</li>
+        <li>Works in any city worldwide</li>
+        <li>All 4 storytelling styles</li>
+        <li>GPS auto-trigger</li>
+        <li>Available in 5 languages</li>
+      </ul>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-label">Most popular</div>
+      <h3>Day Pass</h3>
+      <div class="price">$2.99</div>
+      <div class="price-note">or 500 coins · valid 24 hours</div>
+      <ul class="pricing-features">
+        <li>Unlimited landmarks for 24 hours</li>
+        <li>All cities included</li>
+        <li>All 4 storytelling styles</li>
+        <li>Tour generator included</li>
+        <li>Perfect for a travel day</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-label">Permanent access</div>
+      <h3>City Unlock</h3>
+      <div class="price">$5.99</div>
+      <div class="price-note">or 1,000 coins · one city forever</div>
+      <ul class="pricing-features">
+        <li>Unlimited landmarks forever</li>
+        <li>One city of your choice</li>
+        <li>All 4 storytelling styles</li>
+        <li>Tour generator included</li>
+        <li>Ideal for locals and repeat visitors</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- FAQ -->
+<section class="on-cream">
+  <p class="section-label">FAQ</p>
+  <h2>Everything you need<br>to know <em>before you walk.</em></h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <p class="faq-q">In which cities does Urban Tales work?</p>
+      <p class="faq-a">Urban Tales works in any city worldwide — the app detects nearby landmarks wherever you are. Featured city guides with curated, deep-dive stories are currently available for Rome, Paris and Mexico City. More cities are being added regularly. You can see the full list and coming soon destinations at our <a href="https://urbantales.net/cities.html" style="color:var(--orange);">cities page</a>.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">How much does Urban Tales cost?</p>
+      <p class="faq-a">The app is free to download and includes 6 free landmarks per day — enough to get a real feel for any city. A 24-hour Day Pass unlocks unlimited landmarks in all cities. You can also permanently unlock individual cities for ongoing access. No subscriptions required.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Do I need to book in advance or join a tour group?</p>
+      <p class="faq-a">No. Urban Tales is completely self-guided. Download the app, open the map and start walking. GPS handles the rest — no booking, no groups, no guides, no fixed schedule.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">What languages does Urban Tales support?</p>
+      <p class="faq-a">English, Spanish (LATAM), Brazilian Portuguese, French and German. Select your language when you first open the app — it applies to all city content.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Can I plan a route before I travel?</p>
+      <p class="faq-a">Yes. The tour generator lets you build a 7 Wonders, Full-Day, Half-Day or Custom route for your destination. You can set it up before you leave and follow it on arrival. You can also explore completely freely without a route — the app plays stories automatically as you discover landmarks on your own.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Does the app work without Wi-Fi or mobile data?</p>
+      <p class="faq-a">Urban Tales requires an active internet connection to load stories and map data during your walk. We recommend using a local SIM or travel data plan for the best experience abroad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div>
+    <h2>Your next city is waiting.<br><em>The stories start when you do.</em></h2>
+    <p>Free to download. No tour group. No fixed schedule.</p>
+  </div>
+  <div class="cta-right">
+    <a href="https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598?l=en-GB" class="store-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <div class="badge-text"><small>Download on the</small><strong>App Store</strong></div>
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="store-badge">
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3.18 23.76c.3.16.64.2.98.1l11.53-11.53L12 8.64 3.18 23.76z" fill="#EA4335"/><path d="M20.58 10.42l-2.8-1.6-3.27 3.27 3.27 3.27 2.82-1.61a1.6 1.6 0 000-2.8l-.02-.03z" fill="#FBBC04"/><path d="M3.18 23.76L12 8.64l-8.82-5.12A1.6 1.6 0 001.6 5v14a1.6 1.6 0 001.58 1.76z" fill="#34A853"/><path d="M3.18.24A1.6 1.6 0 001.6 2v.24L12 8.64l2.78-2.78L3.18.24z" fill="#4285F4"/></svg>
+      <div class="badge-text"><small>Get it on</small><strong>Google Play</strong></div>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Urban Tales · Built for travelers who want more than a photo.</p>
+  <nav>
+    <ul>
+      <li><a href="https://urbantales.net/cities.html">Cities</a></li>
+      <li><a href="https://urbantales.net/contact.html">Contact</a></li>
+      <li><a href="https://urbantales.net/privacy.html">Privacy Policy</a></li>
+    </ul>
+  </nav>
 </footer>
+
 </body>
 </html>
