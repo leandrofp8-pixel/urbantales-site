@@ -158,16 +158,18 @@
     .screens-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 24px;
       align-items: start;
+      max-width: 720px;
     }
-    .screen-col { display: flex; flex-direction: column; gap: 20px; }
+    .screen-col { display: flex; flex-direction: column; gap: 24px; }
     .screen-col.offset { padding-top: 52px; }
 
     .screen-card {
       border-radius: 22px; overflow: hidden;
       border: 1px solid var(--border-dark);
       background: #090908;
+      max-width: 320px;
     }
     .screen-card img { width: 100%; display: block; }
     .screen-label {
@@ -535,21 +537,10 @@
 <section>
   <p class="section-label">Explore more</p>
   <h2>Urban Tales works<br><em>everywhere you travel.</em></h2>
-
-  <div class="cities-grid">
-    <a href="https://urbantales.net/paris.html" class="city-tile">
-      <div>
-        <div class="city-tile-name">Paris</div>
-        <div class="city-tile-desc">Monuments, avenues and neighborhood stories</div>
-      </div>
-      <span class="city-arrow">→</span>
-    </a>
-    <a href="https://urbantales.net/mexico-city.html" class="city-tile">
-      <div>
-        <div class="city-tile-name">Mexico City</div>
-        <div class="city-tile-desc">Pre-Hispanic, colonial and modern layers</div>
-      </div>
-      <span class="city-arrow">→</span>
+  <p style="max-width:500px;">Rome, Paris, Mexico City and more cities being added regularly. See the full list and find your next destination.</p>
+  <div style="margin-top:32px;">
+    <a href="https://urbantales.net/cities.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;font-family:var(--font-sans);font-size:14px;font-weight:500;letter-spacing:0.03em;text-decoration:none;padding:14px 28px;border-radius:4px;transition:background 0.2s;" onmouseover="this.style.background='#b84415'" onmouseout="this.style.background='var(--orange)'">
+      View all cities →
     </a>
   </div>
 </section>
