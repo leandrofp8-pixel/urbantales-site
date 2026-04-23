@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vienna Audio Guide App – Hidden Stories & Self-Guided Walking Tours | Urban Tales</title>
+  <meta name="description" content="Explore Vienna like never before. Urban Tales is a GPS audio guide app that narrates the hidden stories behind Vienna's most iconic landmarks as you walk. No tour group. No fixed schedule." />
+  <meta name="keywords" content="Vienna audio guide app, self-guided walking tour Vienna, hidden gems Vienna, Vienna GPS tour, best audio guide Vienna, Vienna travel app" />
+  <link rel="canonical" href="https://urbantales.net/vienna.html" />
+  <meta property="og:title" content="Vienna Audio Guide – Hidden Stories as You Walk | Urban Tales" />
+  <meta property="og:description" content="Discover the real Vienna. GPS-triggered audio stories about Schönbrunn Palace, the Hofburg, the Ringstrasse and Vienna's lesser-known secrets — at your own pace." />
+  <meta property="og:url" content="https://urbantales.net/vienna.html" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MobileApplication",
+        "name": "Urban Tales",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "TravelApplication",
+        "description": "GPS-triggered audio guide app for self-guided city exploration.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "url": "https://urbantales.net",
+        "downloadUrl": [
+          "https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598",
+          "https://play.google.com/store/apps/details?id=com.urbantales.app"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Does Urban Tales work in Vienna?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Urban Tales works throughout Vienna, covering its main landmarks and hidden corners alike." } },
+          { "@type": "Question", "name": "What stories does Urban Tales tell in Vienna?", "acceptedAnswer": { "@type": "Answer", "text": "Historical facts, local legends, cinematic stories and fun facts for Vienna's landmarks — triggered automatically as you walk." } },
+          { "@type": "Question", "name": "Do I need a guide or pre-booked tour?", "acceptedAnswer": { "@type": "Answer", "text": "No. Urban Tales is completely self-guided. Walk at your own pace and the app plays audio automatically as you approach each landmark." } }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://urbantales.net/" },
+          { "@type": "ListItem", "position": 2, "name": "Cities", "item": "https://urbantales.net/#cities" },
+          { "@type": "ListItem", "position": 3, "name": "Vienna", "item": "https://urbantales.net/vienna.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #111110;
+      --dark2: #1a1918;
+      --cream: #f2ede6;
+      --cream2: #e8e0d4;
+      --orange: #d4541a;
+      --text-dark: #1c1b19;
+      --text-mid: #6b5e52;
+      --text-light: #9a8878;
+      --border-dark: #2a2825;
+      --border-light: #d4cbc0;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; background: var(--dark); color: var(--cream); }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(17,17,16,0.95); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 0 6vw; height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--cream); }
+    .nav-logo img { width: 26px; height: 26px; border-radius: 6px; }
+    .nav-brand { font-size: 14px; font-weight: 500; }
+    .nav-brand span { display: block; font-size: 9px; font-weight: 300; color: var(--text-light); letter-spacing: 0.14em; text-transform: uppercase; }
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav a { color: var(--text-light); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    nav a:hover { color: var(--cream); }
+
+    /* HERO */
+    .hero { background: var(--dark); padding: 96px 6vw 88px; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 65% 75% at 80% 45%, rgba(212,84,26,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 640px; }
+    .eyebrow {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--orange); display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+    }
+    .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--orange); }
+
+    h1 {
+      font-family: var(--font-serif); font-size: clamp(44px, 6.5vw, 80px);
+      font-weight: 900; line-height: 1.05; letter-spacing: -0.025em; color: var(--cream); margin-bottom: 28px;
+    }
+    h1 em { font-style: italic; color: var(--orange); }
+    .hero-sub { font-size: 18px; line-height: 1.7; color: var(--text-light); max-width: 500px; font-weight: 300; margin-bottom: 48px; }
+
+    /* STORE BADGES */
+    .store-badges { display: flex; gap: 14px; flex-wrap: wrap; }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; color: #000; text-decoration: none;
+      padding: 10px 20px; border-radius: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .store-badge svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .badge-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .badge-text small { font-size: 9px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.65; }
+    .badge-text strong { font-size: 15px; font-weight: 700; }
+
+    /* DIVIDERS */
+    hr { border: none; height: 1px; background: var(--border-dark); }
+    hr.light { background: var(--border-light); }
+
+    /* SECTIONS */
+    section { padding: 88px 6vw; }
+    section.on-cream { background: var(--cream); color: var(--text-dark); }
+    section.on-dark2 { background: var(--dark2); }
+
+    .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+
+    h2 {
+      font-family: var(--font-serif); font-size: clamp(28px, 3.8vw, 46px);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 18px;
+    }
+    h2 em { font-style: italic; color: var(--orange); }
+    section.on-cream h2 { color: var(--text-dark); }
+    section.on-cream h2 em { color: var(--orange); }
+
+    h3 { font-family: var(--font-serif); font-size: 20px; font-weight: 700; line-height: 1.3; color: var(--cream); margin-bottom: 8px; }
+    section.on-cream h3 { color: var(--text-dark); }
+
+    p { color: var(--text-light); font-weight: 300; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    section.on-cream p { color: var(--text-mid); }
+
+    /* SCREENSHOTS */
+    .screens-intro { max-width: 560px; margin-bottom: 60px; }
+    .screens-intro p { font-size: 17px; color: var(--text-light); }
+
+    .screens-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+      max-width: 720px;
+    }
+    .screen-col { display: flex; flex-direction: column; gap: 24px; }
+    .screen-col.offset { padding-top: 52px; }
+
+    .screen-card {
+      border-radius: 22px; overflow: hidden;
+      border: 1px solid var(--border-dark);
+      background: #090908;
+      max-width: 320px;
+    }
+    .screen-card img { width: 100%; display: block; }
+    .screen-label {
+      padding: 14px 18px;
+      border-top: 1px solid var(--border-dark);
+    }
+    .screen-label p { font-size: 13px; color: var(--text-light); margin: 0; font-weight: 400; }
+    .screen-label strong { color: var(--cream); font-weight: 500; }
+
+    /* STEPS */
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 52px; }
+    .step-num { font-family: var(--font-serif); font-size: 64px; font-weight: 900; line-height: 1; margin-bottom: 18px; letter-spacing: -0.04em; color: var(--border-light); }
+    .step h3 { font-size: 18px; margin-bottom: 8px; }
+    .step p { font-size: 15px; }
+
+    /* STORIES */
+    .story-list { display: flex; flex-direction: column; border: 1px solid var(--border-dark); margin-top: 52px; }
+    .story-item { display: grid; grid-template-columns: 86px 1fr; border-bottom: 1px solid var(--border-dark); transition: background 0.2s; }
+    .story-item:last-child { border-bottom: none; }
+    .story-item:hover { background: rgba(212,84,26,0.04); }
+    .story-badge { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-dark); padding: 24px 10px; }
+    .badge { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 9px; border-radius: 2px; writing-mode: vertical-rl; }
+    .badge.legend { color: #a89fcc; border: 1px solid #3a3260; }
+    .badge.history { color: var(--orange); border: 1px solid #5a2a10; }
+    .badge.fun { color: #7dbfa0; border: 1px solid #284838; }
+    .badge.cinematic { color: #c8906a; border: 1px solid #583520; }
+    .story-body { padding: 28px 30px; }
+    .story-place { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; font-weight: 400; }
+    .story-body h3 { font-size: 18px; margin-bottom: 10px; }
+    .story-body p { font-size: 15px; line-height: 1.7; }
+
+    /* NEIGHBORHOODS */
+    .neighborhoods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-light); border: 1px solid var(--border-light); margin-top: 52px; }
+    .nbhd-card { background: var(--cream); padding: 30px 26px; transition: background 0.2s; }
+    .nbhd-card:hover { background: var(--cream2); }
+    .nbhd-name { font-family: var(--font-serif); font-size: 19px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .nbhd-card p { font-size: 14px; line-height: 1.65; }
+
+    /* STYLES */
+    .styles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); margin-top: 52px; }
+    .style-card { background: var(--dark2); padding: 30px 24px; transition: background 0.2s; }
+    .style-card:hover { background: #201e1c; }
+    .style-name { font-family: var(--font-serif); font-size: 19px; font-weight: 700; color: var(--orange); margin-bottom: 10px; }
+    .style-card p { font-size: 14px; line-height: 1.65; }
+
+    /* FAQ */
+    .faq-list { max-width: 700px; margin-top: 48px; }
+    .faq-item { border-bottom: 1px solid var(--border-light); padding: 26px 0; }
+    .faq-item:first-child { border-top: 1px solid var(--border-light); }
+    .faq-q { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .faq-a { font-size: 15px; line-height: 1.75; }
+
+    /* CTA BAND */
+    .cta-band { background: var(--dark); border-top: 1px solid var(--border-dark); padding: 80px 6vw; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .cta-band h2 { font-family: var(--font-serif); font-size: clamp(24px, 3vw, 38px); font-weight: 700; line-height: 1.2; color: var(--cream); margin-bottom: 10px; }
+    .cta-band h2 em { font-style: italic; color: var(--orange); }
+    .cta-band p { font-size: 15px; color: var(--text-light); margin: 0; font-weight: 300; }
+    .cta-right { display: flex; flex-direction: column; gap: 12px; }
+
+    /* CITIES */
+    .cities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); margin-top: 40px; }
+    .city-tile { background: var(--dark2); padding: 36px 32px; text-decoration: none; display: flex; align-items: center; justify-content: space-between; transition: background 0.2s; }
+    .city-tile:hover { background: #201e1c; }
+    .city-tile-name { font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--cream); }
+    .city-tile-desc { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+    .city-arrow { font-size: 22px; color: var(--orange); transition: transform 0.2s; }
+    .city-tile:hover .city-arrow { transform: translateX(5px); }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 36px 6vw; border-top: 1px solid var(--border-dark); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer p { font-size: 12px; color: var(--text-light); margin: 0; font-weight: 300; }
+    footer nav ul { display: flex; gap: 20px; list-style: none; }
+    footer nav a { color: var(--text-light); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+    footer nav a:hover { color: var(--cream); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .screens-grid { grid-template-columns: 1fr; }
+      .screen-col.offset { padding-top: 0; }
+      .steps-grid { grid-template-columns: 1fr; gap: 36px; }
+      .neighborhoods-grid { grid-template-columns: 1fr 1fr; }
+      .styles-grid { grid-template-columns: 1fr 1fr; }
+      .cities-grid { grid-template-columns: 1fr; }
+      .cta-band { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 560px) {
+      nav ul { display: none; }
+      .neighborhoods-grid { grid-template-columns: 1fr; }
+      .styles-grid { grid-template-columns: 1fr; }
+      .story-item { grid-template-columns: 1fr; }
+      .story-badge { border-right: none; border-bottom: 1px solid var(--border-dark); padding: 14px 20px; justify-content: flex-start; }
+      .badge { writing-mode: horizontal-tb; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://urbantales.net/index.html" class="nav-logo">
+    <img src="https://urbantales.net/icon.png" alt="Urban Tales" />
+    <div class="nav-brand">Urban Tales <span>Self-guided audio tours</span></div>
+  </a>
+  <ul>
+    <li><a href="https://urbantales.net/index.html#how">How it works</a></li>
+    <li><a href="https://urbantales.net/index.html#cities">Cities</a></li>
+    <li><a href="https://urbantales.net/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Vienna, Austria</p>
+    <h1>Mozart composed here.<br>Freud analysed here.<br><em>The empire ended here.</em></h1>
+    <p class="hero-sub">Urban Tales is a GPS audio guide app that narrates Vienna's hidden history, legends and secrets automatically as you walk — at your own pace, with no tour group to follow.</p>
+    <div class="store-badges">
+      <a href="https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598?l=en-GB" class="store-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="badge-text"><small>Download on the</small><strong>App Store</strong></div>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="store-badge">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76c.3.16.64.2.98.1l11.53-11.53L12 8.64 3.18 23.76z" fill="#EA4335"/><path d="M20.58 10.42l-2.8-1.6-3.27 3.27 3.27 3.27 2.82-1.61a1.6 1.6 0 000-2.8l-.02-.03z" fill="#FBBC04"/><path d="M3.18 23.76L12 8.64l-8.82-5.12A1.6 1.6 0 001.6 5v14a1.6 1.6 0 001.58 1.76z" fill="#34A853"/><path d="M3.18.24A1.6 1.6 0 001.6 2v.24L12 8.64l2.78-2.78L3.18.24z" fill="#4285F4"/></svg>
+        <div class="badge-text"><small>Get it on</small><strong>Google Play</strong></div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<hr />
+
+<!-- APP IN ACTION -->
+<section class="on-dark2">
+  <div class="screens-intro">
+    <p class="section-label">The app in action</p>
+    <h2>Walk up to a landmark.<br><em>The story starts.</em></h2>
+    <p>No tapping. No searching. Urban Tales detects your GPS position and plays audio automatically the moment you're close enough. Put your phone in your pocket — just walk and listen.</p>
+  </div>
+
+  <div class="screens-grid">
+    <div class="screen-col">
+      <div class="screen-card">
+        <img src="screen-vienna-schonbrunn-map.png" alt="Urban Tales GPS map in Vienna with audio story automatically triggered" loading="lazy" />
+        <div class="screen-label"><p><strong>GPS triggered.</strong> Audio starts the moment you arrive at a landmark.</p></div>
+      </div>
+      <div class="screen-card">
+        <img src="screen-vienna-hofburg-map.png" alt="Urban Tales GPS map in Vienna with story automatically triggered" loading="lazy" />
+        <div class="screen-label"><p><strong>Walk freely.</strong> Every landmark around you has a story ready.</p></div>
+      </div>
+    </div>
+    <div class="screen-col offset">
+      <div class="screen-card">
+        <img src="screen-vienna-schonbrunn-story.png" alt="Urban Tales story panel in Vienna with photo and narration" loading="lazy" />
+        <div class="screen-label"><p><strong>Rich stories.</strong> History, legends and context for every landmark.</p></div>
+      </div>
+      <div class="screen-card">
+        <img src="screen-vienna-hofburg-story.png" alt="Urban Tales story panel in Vienna with photo and narration" loading="lazy" />
+        <div class="screen-label"><p><strong>4 storytelling styles.</strong> Historical, Legends, Fun Facts and Cinematic.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- HOW IT WORKS -->
+<section class="on-cream">
+  <p class="section-label">How it works</p>
+  <h2>Open the app.<br><em>Start walking.</em></h2>
+  <p style="max-width:500px; font-size:17px;">No preparation, no pre-booked route, no group to keep up with. Urban Tales works the moment you step outside.</p>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Download and open the map</h3>
+      <p>The app shows landmarks around you the moment you open it. Works anywhere in Vienna — the app covers the full city.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Walk toward anything that catches your eye</h3>
+      <p>As you get close to a landmark, the audio starts automatically. Put your phone in your pocket and just walk and listen.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Build a route or explore freely</h3>
+      <p>Create a half-day route, a full-day itinerary, a 7-wonders tour or a custom path. Or ignore all of that and wander — the app keeps up.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="light" />
+
+<!-- STORIES -->
+<section>
+  <p class="section-label">What you'll hear</p>
+  <h2>The Vienna most visitors<br>never <em>actually learn.</em></h2>
+  <p style="max-width:520px;">These are the kinds of stories Urban Tales narrates as you walk. Each one triggers automatically when you're standing in the right place.</p>
+
+  <div class="story-list">
+    <div class="story-item">
+      <div class="story-badge"><span class="badge history">History</span></div>
+      <div class="story-body">
+        <p class="story-place">Schönbrunn Palace · Hietzing</p>
+        <h3>A six-year-old Mozart performed here for Empress Maria Theresa — and proposed marriage to her daughter</h3>
+        <p>In 1762, Wolfgang Amadeus Mozart, aged six, performed for Empress Maria Theresa at Schönbrunn Palace. After the performance, he reportedly slipped on the polished floor and was helped up by the young Archduchess Marie Antoinette — then proposed marriage to her on the spot. Maria Theresa thought it charming. Marie Antoinette eventually married the French King Louis XVI instead, and was guillotined during the Revolution in 1793. Mozart died in poverty in Vienna in 1791, aged 35, and was buried in an unmarked grave.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge history">History</span></div>
+      <div class="story-body">
+        <p class="story-place">Hofburg Palace · Innere Stadt</p>
+        <h3>The Habsburg Empire ruled from this palace for 600 years — and its last emperor simply walked out one morning and never came back</h3>
+        <p>The Hofburg was the centre of Habsburg power for over six centuries, housing successive emperors as the empire grew from a small duchy to the largest political entity in Europe. When the empire collapsed in November 1918 at the end of World War I, Emperor Karl I walked out of the palace and signed a declaration relinquishing all participation in state affairs — specifically avoiding the word "abdication". He was exiled, returned twice in failed attempts to reclaim power, and died in Madeira in 1922. Nobody collected his personal effects from the Hofburg for years.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge fun">Fun fact</span></div>
+      <div class="story-body">
+        <p class="story-place">Ringstrasse · Innere Stadt</p>
+        <h3>Vienna's famous boulevard was Emperor Franz Joseph's attempt to destroy the old city walls — and he hated what was built on it</h3>
+        <p>The Ringstrasse was built between 1857 and 1865 when Emperor Franz Joseph ordered Vienna's medieval city walls demolished to create a grand boulevard lined with cultural institutions. The Opera House, Natural History Museum, Parliament and City Hall were all built in different historical styles — Gothic, Renaissance, Greek. When the Opera House was finished, Franz Joseph publicly criticised it. The architect committed suicide. The second architect died of a stroke days later. Franz Joseph said nothing critical about any building in Vienna for the rest of his reign.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge cinematic">Cinematic</span></div>
+      <div class="story-body">
+        <p class="story-place">Vienna Sewers · City Centre</p>
+        <h3>The Third Man was filmed in these sewers — and it turned postwar Vienna's ruin into one of the most beautiful films ever made</h3>
+        <p>The 1949 film noir The Third Man, directed by Carol Reed and written by Graham Greene, was shot in Vienna's real sewers during the Allied occupation of the city. The sewers, built in the late 19th century, are massive — cathedral-like tunnels beneath the streets. The film, set among the rubble of a divided city, captured postwar Vienna so precisely that it became the city's defining cinematic portrait. Harry Lime's speech about the cuckoo clock remains one of the most quoted lines in film history. The sewer tours still run.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge history">History</span></div>
+      <div class="story-body">
+        <p class="story-place">Berggasse 19 · Alsergrund</p>
+        <h3>Freud invented psychoanalysis in this apartment — and fled it aged 82 when the Nazis arrived</h3>
+        <p>Sigmund Freud lived and worked at Berggasse 19 for 47 years, developing psychoanalysis in his consulting room on the first floor. When the Nazis annexed Austria in 1938, the Gestapo raided his apartment. Freud, aged 82 and terminally ill with jaw cancer, was permitted to leave for London after his daughter Anna was detained and interrogated. Before leaving, the Gestapo asked him to sign a document stating he had been treated with respect. He signed it, then added: "I can heartily recommend the Gestapo to anyone." He died in London the following year.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge legend">Legend</span></div>
+      <div class="story-body">
+        <p class="story-place">Zentralfriedhof (Central Cemetery)</p>
+        <h3>The largest cemetery in Austria has more residents than the city itself — including Beethoven, Brahms and Schubert</h3>
+        <p>Vienna's Central Cemetery contains approximately 3.3 million graves — more "residents" than the city's living population. Beethoven, Brahms, Schubert and Johann Strauss are all buried here. Mozart, who died in poverty, is not — his exact burial place in St. Marx Cemetery was unknown for years and was never definitively identified. Viennese have a particular relationship with death — the term Schöne Leich (beautiful corpse) described the city's tradition of elaborate funerals as a final act of civic performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- NEIGHBORHOODS -->
+<section class="on-cream">
+  <p class="section-label">Where to walk</p>
+  <h2>Vienna's neighborhoods,<br><em>explained through stories.</em></h2>
+  <p style="max-width:500px;">Urban Tales covers the full city. Here are the areas where the stories are thickest.</p>
+
+  <div class="neighborhoods-grid">
+    <div class="nbhd-card">
+      <div class="nbhd-name">Innere Stadt (First District)</div>
+      <p>The historic core enclosed by the Ringstrasse — the Hofburg, St. Stephen's Cathedral, the Opera House and the streets where Habsburg power was exercised for six centuries.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">Ringstrasse</div>
+      <p>The grand boulevard built on Emperor Franz Joseph's orders — a 5-kilometre ring of neoclassical cultural institutions built so quickly that one architect killed himself over a critical review.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">Schönbrunn & Hietzing</div>
+      <p>The summer palace that rivalled Versailles, surrounded by formal gardens where Mozart played as a child and Marie Antoinette grew up before her fateful marriage to the French king.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">Alsergrund & Spittelberg</div>
+      <p>The 9th district where Freud developed psychoanalysis and Beethoven lived in over 60 different apartments. Vienna's most intellectually dense neighborhood — and the one that produced the most difficult personalities.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">Naschmarkt & Mariahilf</div>
+      <p>Vienna's main open-air market, running for nearly a kilometre, where the city's Balkan, Turkish, Asian and Central European communities cook and sell alongside traditional Austrian stalls.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">Prater & Leopoldstadt</div>
+      <p>The enormous park that was the Habsburg imperial hunting ground, opened to the public by Emperor Joseph II in 1766. The Prater Ferris wheel — the Riesenrad — was built in 1897 and features in The Third Man.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="light" />
+
+<!-- STORYTELLING STYLES -->
+<section>
+  <p class="section-label">Storytelling styles</p>
+  <h2>Choose how Vienna<br><em>speaks to you.</em></h2>
+  <p style="max-width:500px;">The same landmark sounds completely different in each mode. Switch styles anytime during your walk.</p>
+
+  <div class="styles-grid">
+    <div class="style-card">
+      <div class="style-name">Historical</div>
+      <p>Context, dates, politics, empires. What actually happened here and why it mattered. For travelers who want to leave Vienna genuinely knowing things.</p>
+    </div>
+    <div class="style-card">
+      <div class="style-name">Legends</div>
+      <p>Myths, curses, ghosts and ancient superstitions. The stories locals told each other before the history books were written.</p>
+    </div>
+    <div class="style-card">
+      <div class="style-name">Fun Facts</div>
+      <p>The absurd, the surprising and the genuinely weird. Perfect for keeping energy up on a long walk or exploring with kids.</p>
+    </div>
+    <div class="style-card">
+      <div class="style-name">Cinematic</div>
+      <p>The Third Man was shot in its sewers, Amadeus in its concert halls. Vienna through the lens of cinema and music.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- FAQ -->
+<section class="on-cream">
+  <p class="section-label">FAQ</p>
+  <h2>Common questions about<br>Urban Tales <em>in Vienna.</em></h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <p class="faq-q">Does Urban Tales cover Schönbrunn Palace and the Hofburg?</p>
+      <p class="faq-a">Yes. Urban Tales covers both Schönbrunn and the Hofburg, with stories triggered as you walk through the palace grounds. Entry to the palace interiors requires separate tickets — Urban Tales begins telling stories from the moment you arrive in the grounds.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Is Urban Tales worth it if I have already been to Vienna?</p>
+      <p class="faq-a">Especially then. Vienna's surface is magnificent — but the stories underneath it are extraordinary. Freud's footnote to the Gestapo, the two architects who died after Franz Joseph's review, the last emperor walking out of the Hofburg. These are the things that make Vienna unforgettable.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">How does the pricing work for Vienna?</p>
+      <p class="faq-a">You can start exploring for free. A day pass unlocks the full Vienna experience for a single day, or you can unlock the city permanently. No subscriptions required.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">What languages is the Vienna audio guide available in?</p>
+      <p class="faq-a">Urban Tales supports English, Spanish (LATAM), Brazilian Portuguese, French and German. The German narration for Vienna is particularly rich — a Habsburg city heard in the language of the empire.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Can I use Urban Tales for a half-day or full-day visit to Vienna?</p>
+      <p class="faq-a">Yes. Vienna's historic centre is walkable and the Ringstrasse route makes for a natural half-day loop. A full day allows you to reach Schönbrunn, the Prater and the neighborhoods beyond the tourist circuit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div>
+    <h2>Vienna is waiting.<br><em>The stories start the moment you land.</em></h2>
+    <p>Free to download. No tour group. No fixed schedule.</p>
+  </div>
+  <div class="cta-right">
+    <a href="https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598?l=en-GB" class="store-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <div class="badge-text"><small>Download on the</small><strong>App Store</strong></div>
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="store-badge">
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3.18 23.76c.3.16.64.2.98.1l11.53-11.53L12 8.64 3.18 23.76z" fill="#EA4335"/><path d="M20.58 10.42l-2.8-1.6-3.27 3.27 3.27 3.27 2.82-1.61a1.6 1.6 0 000-2.8l-.02-.03z" fill="#FBBC04"/><path d="M3.18 23.76L12 8.64l-8.82-5.12A1.6 1.6 0 001.6 5v14a1.6 1.6 0 001.58 1.76z" fill="#34A853"/><path d="M3.18.24A1.6 1.6 0 001.6 2v.24L12 8.64l2.78-2.78L3.18.24z" fill="#4285F4"/></svg>
+      <div class="badge-text"><small>Get it on</small><strong>Google Play</strong></div>
+    </a>
+  </div>
+</div>
+
+<!-- OTHER CITIES -->
+<section>
+  <p class="section-label">Explore more</p>
+  <h2>Urban Tales works<br><em>everywhere you travel.</em></h2>
+  <p style="max-width:500px;">Explore our full collection of cities at urbantales.net/cities.html See the full list and find your next destination.</p>
+  <div style="margin-top:32px;">
+    <a href="https://urbantales.net/cities.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;font-family:var(--font-sans);font-size:14px;font-weight:500;letter-spacing:0.03em;text-decoration:none;padding:14px 28px;border-radius:4px;transition:background 0.2s;" onmouseover="this.style.background='#b84415'" onmouseout="this.style.background='var(--orange)'">
+      View all cities →
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Urban Tales · Built for travelers who want more than a photo.</p>
+  <nav>
+    <ul>
+      <li><a href="https://urbantales.net/contact.html">Contact</a></li>
+      <li><a href="https://urbantales.net/privacy.html">Privacy Policy</a></li>
+    </ul>
+  </nav>
+</footer>
+
+</body>
+</html>
