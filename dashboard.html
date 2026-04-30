@@ -213,7 +213,7 @@
       </div>
       <div class="grid-2">
         <div class="card">
-          <div class="card-title">Free vs Paid Active Users</div>
+          <div class="card-title">Active Users — Lifetime Paid vs Never Paid</div>
           <div class="chart-wrap"><canvas id="chartFreePaid"></canvas></div>
         </div>
         <div class="card">
@@ -533,8 +533,14 @@ function renderOverview(funnel, freeUsers) {
   const totalPaid = (t.total_active_users || 0) - (freeUsers.summary?.total_free_users || 0);
 
   document.getElementById('kpiCards').innerHTML =
-    kpiCard('Active Users (period)', fmt(t.total_active_users), `${fmt(t.new_signups)} new signups`, null, null) +
-    kpiCard('Total Narrations', fmt(t.total_narrations), `≈${(t.total_narrations/Math.max(t.total_active_users,1)).toFixed(1)} per user`, null, null) +
+    kpiCard('Unique Active Users',
+            fmt(t.unique_active_users),
+            `${fmt(t.total_active_users)} user-days · ${fmt(t.new_signups)} new signups`,
+            null, null) +
+    kpiCard('Total Narrations',
+            fmt(t.total_narrations),
+            `≈${(t.total_narrations/Math.max(t.unique_active_users||t.total_active_users,1)).toFixed(1)} per user`,
+            null, null) +
     kpiCard('Activation Rate', fmtPct(r.activation_rate), 'Signup → first narration',
       r.activation_rate > 60 ? '↑ Healthy' : r.activation_rate > 30 ? '→ Average' : '↓ Needs work',
       r.activation_rate > 60 ? 'green' : r.activation_rate > 30 ? 'yellow' : 'red') +
@@ -558,8 +564,8 @@ function renderOverview(funnel, freeUsers) {
   ], { stacked: true });
 
   lineChart('chartFreePaid', labels, [
-    { label: 'Free Users',  data: daily.map(d => d.active_free_users || 0), color: C.blue },
-    { label: 'Paid Users',  data: daily.map(d => d.active_paid_users || 0), color: C.green },
+    { label: 'Never Paid (Free)',  data: daily.map(d => d.active_free_users || 0), color: C.blue },
+    { label: 'Lifetime Paid',  data: daily.map(d => d.active_paid_users || 0), color: C.green },
   ]);
 
   lineChart('chartPaywall', labels, [
@@ -801,5 +807,6 @@ if (getToken()) {
   showDashboard();
 }
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"7f7b0fd8732c4326aae4b9d58d5c514a","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
