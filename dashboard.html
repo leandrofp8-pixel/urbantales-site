@@ -294,17 +294,62 @@
 
     <!-- ── CONTENT ── -->
     <div class="tab-panel" id="panel-content">
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Daily Narrations</div>
+        <div class="chart-wrap-lg"><canvas id="chartNarrations"></canvas></div>
+      </div>
+
       <div class="grid-2" style="margin-bottom:24px">
         <div class="card">
-          <div class="card-title">Daily Narrations</div>
-          <div class="chart-wrap-lg"><canvas id="chartNarrations"></canvas></div>
+          <div class="card-title">Storytelling Styles</div>
+          <div class="chart-wrap"><canvas id="chartStyles"></canvas></div>
         </div>
         <div class="card">
-          <div class="card-title">Daily Purchases</div>
-          <div class="chart-wrap-lg"><canvas id="chartPurchases"></canvas></div>
+          <div class="card-title">Languages</div>
+          <div class="chart-wrap"><canvas id="chartLanguages"></canvas></div>
         </div>
       </div>
-      <div class="card">
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>🗺️ Tour Activity</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">Tours created in the period</span>
+        </div>
+        <div class="grid-4" id="tourKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:24px">
+        <div class="card">
+          <div class="card-title">Tour Types Created</div>
+          <div class="chart-wrap"><canvas id="chartTourTypes"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Top Tour Cities</div>
+          <div class="table-wrap" style="max-height:300px;overflow-y:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>City</th>
+                  <th>Created</th>
+                  <th>Completed</th>
+                  <th>Rate</th>
+                  <th>Avg LMs</th>
+                </tr>
+              </thead>
+              <tbody id="topTourCitiesBody">
+                <tr><td colspan="5" class="loading">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
         <div class="section-header"><h2>🏛️ Top Landmarks</h2></div>
         <div class="table-wrap">
           <table>
@@ -312,6 +357,7 @@
               <tr>
                 <th>#</th>
                 <th>Landmark</th>
+                <th>City</th>
                 <th>Total Plays</th>
                 <th>Cache Hits</th>
                 <th>Cache Miss</th>
@@ -319,7 +365,29 @@
               </tr>
             </thead>
             <tbody id="landmarksBody">
-              <tr><td colspan="6" class="loading">Loading…</td></tr>
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-header"><h2>🌆 Top Cities</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>City</th>
+                <th>Landmarks</th>
+                <th>Total Plays</th>
+                <th>Cache Hits</th>
+                <th>Cache Miss</th>
+                <th>Cache Rate</th>
+              </tr>
+            </thead>
+            <tbody id="citiesBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
             </tbody>
           </table>
         </div>
@@ -707,33 +775,133 @@ function maskEmail(email) {
 // ══════════════════════════════════════════════
 // CONTENT
 // ══════════════════════════════════════════════
-function renderContent(daily, funnel) {
+const TOUR_TYPE_LABELS = {
+  '7_wonders': '7 Wonders',
+  'full_day':  'Full Day',
+  'half_day':  'Half Day',
+  'custom':    'Custom',
+};
+const LANG_LABELS = {
+  en: 'English', es: 'Spanish', pt: 'Portuguese', fr: 'French', de: 'German'
+};
+const STYLE_LABELS = {
+  historical: 'Historical', legends: 'Legends', funfacts: 'Fun Facts',
+  fun_facts: 'Fun Facts',  cinematic: 'Cinematic'
+};
+
+function renderContent(content, funnel) {
+  // ── Daily Narrations chart (still pulls from funnel.daily_data) ──
   const funnelDaily = [...(funnel.daily_data || [])].reverse();
   const labels = funnelDaily.map(d => shortDate(d.date));
-
   lineChart('chartNarrations', labels, [
     { label: 'Narrations', data: funnelDaily.map(d => d.total_narrations || 0), color: C.primary }
   ]);
 
-  lineChart('chartPurchases', labels, [
-    { label: 'Purchases', data: funnelDaily.map(d => d.total_purchases || 0), color: C.green }
-  ]);
+  // ── Storytelling Styles doughnut ──
+  const styles = content.style_breakdown || {};
+  const styleKeys = Object.keys(styles).filter(k => styles[k] > 0);
+  if (styleKeys.length > 0) {
+    doughnutChart('chartStyles',
+      styleKeys.map(k => STYLE_LABELS[k] || k),
+      styleKeys.map(k => styles[k]),
+      [C.primary, C.blue, C.purple, C.green, C.yellow]
+    );
+  } else {
+    destroyChart('chartStyles');
+  }
 
-  const landmarks = (daily.top_landmarks || []).slice(0, 20);
+  // ── Languages doughnut ──
+  const langs = content.language_breakdown || {};
+  const langKeys = Object.keys(langs).filter(k => langs[k] > 0);
+  if (langKeys.length > 0) {
+    doughnutChart('chartLanguages',
+      langKeys.map(k => LANG_LABELS[k] || k.toUpperCase()),
+      langKeys.map(k => langs[k]),
+      [C.blue, C.primary, C.green, C.purple, C.yellow]
+    );
+  } else {
+    destroyChart('chartLanguages');
+  }
+
+  // ── Top Landmarks (with City column) ──
+  const landmarks = (content.top_landmarks || []).slice(0, 20);
   document.getElementById('landmarksBody').innerHTML = landmarks.length === 0
-    ? `<tr><td colspan="6" class="loading">No landmark data yet.</td></tr>`
+    ? `<tr><td colspan="7" class="loading">No landmark data yet.</td></tr>`
     : landmarks.map((l, i) => {
         const total = l.total_plays || 0;
         const hits  = l.cache_hits  || 0;
         const miss  = l.cache_misses || 0;
         const rate  = total > 0 ? (hits / total * 100).toFixed(1) : '—';
+        const rateClass = total > 0 && parseFloat(rate) > 70 ? 'green' : parseFloat(rate) > 40 ? 'yellow' : 'orange';
         return `<tr>
           <td style="color:var(--muted)">${i+1}</td>
           <td>${l.landmark_name || l.landmark_id || '—'}</td>
+          <td>${l.city || '—'}</td>
           <td><strong>${fmt(total)}</strong></td>
           <td>${fmt(hits)}</td>
           <td>${fmt(miss)}</td>
-          <td><span class="pill badge-${parseFloat(rate)>70?'green':parseFloat(rate)>40?'yellow':'orange'}">${rate}%</span></td>
+          <td><span class="pill badge-${rateClass}">${rate}${total > 0 ? '%' : ''}</span></td>
+        </tr>`;
+      }).join('');
+
+  // ── Top Cities ──
+  const cities = (content.top_cities || []).slice(0, 15);
+  document.getElementById('citiesBody').innerHTML = cities.length === 0
+    ? `<tr><td colspan="7" class="loading">No city data yet.</td></tr>`
+    : cities.map((c, i) => {
+        const rate = (c.cache_hit_rate || 0).toFixed(1);
+        const rateClass = parseFloat(rate) > 70 ? 'green' : parseFloat(rate) > 40 ? 'yellow' : 'orange';
+        return `<tr>
+          <td style="color:var(--muted)">${i+1}</td>
+          <td><strong>${c.city || '—'}</strong></td>
+          <td>${fmt(c.landmark_count)}</td>
+          <td><strong>${fmt(c.total_plays)}</strong></td>
+          <td>${fmt(c.cache_hits)}</td>
+          <td>${fmt(c.cache_misses)}</td>
+          <td><span class="pill badge-${rateClass}">${rate}%</span></td>
+        </tr>`;
+      }).join('');
+}
+
+// ══════════════════════════════════════════════
+// TOUR ACTIVITY
+// ══════════════════════════════════════════════
+function renderTours(tours) {
+  const s = tours.summary || {};
+  const completionClass = s.completion_rate >= 50 ? 'green' : s.completion_rate >= 25 ? 'yellow' : 'orange';
+
+  document.getElementById('tourKpis').innerHTML =
+    kpiCard('Tours Created', fmt(s.tours_created), 'In the period', null, null) +
+    kpiCard('Tours Completed', fmt(s.tours_completed), 'All landmarks done', null, null) +
+    kpiCard('Completion Rate', fmtPct(s.completion_rate), 'Completed / Created',
+      s.completion_rate >= 50 ? '↑ Good' : s.completion_rate >= 25 ? '→ Average' : '↓ Low',
+      completionClass) +
+    kpiCard('Avg Landmarks/Tour', (s.avg_landmarks_per_tour || 0).toFixed(1), 'Per tour created', null, null);
+
+  // Tour Types bar chart
+  const types = tours.tour_types || [];
+  if (types.length > 0) {
+    barChart('chartTourTypes',
+      types.map(t => TOUR_TYPE_LABELS[t.tour_type] || t.tour_type),
+      [{ label: 'Tours', data: types.map(t => t.count), color: C.primary }]
+    );
+  } else {
+    destroyChart('chartTourTypes');
+  }
+
+  // Top Tour Cities table
+  const cities = (tours.top_tour_cities || []).slice(0, 12);
+  document.getElementById('topTourCitiesBody').innerHTML = cities.length === 0
+    ? `<tr><td colspan="5" class="loading">No tour data yet.</td></tr>`
+    : cities.map(c => {
+        const rate = (c.completion_rate || 0).toFixed(1);
+        const rateClass = parseFloat(rate) >= 50 ? 'green' : parseFloat(rate) >= 25 ? 'yellow' : 'orange';
+        return `<tr>
+          <td><strong>${c.city || '—'}</strong></td>
+          <td>${fmt(c.tours_created)}</td>
+          <td>${fmt(c.tours_completed)}</td>
+          <td><span class="pill badge-${rateClass}">${rate}%</span></td>
+          <td>${(c.avg_landmarks || 0).toFixed(1)}</td>
         </tr>`;
       }).join('');
 }
@@ -847,19 +1015,22 @@ async function runAggregation() {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours] = await Promise.all([
       api(`/analytics/kpi/funnel?days=${days}`),
       api(`/analytics/kpi/funnel-cohort?days=${days}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
       api(`/analytics/kpi/free-users`),
       api(`/analytics/daily?days=${days}`),
       api(`/admin/cost-report?days=${days}`),
+      api(`/analytics/content?days=${days}`),
+      api(`/analytics/tours?days=${days}`),
     ]);
 
     renderOverview(funnel, freeUsers);
     renderFunnel(cohortFunnel, funnel, freeUsers);
     renderCohorts(cohortsMonthly);
-    renderContent(daily, funnel);
+    renderContent(content, funnel);
+    renderTours(tours);
     renderCosts(costs);
     renderFreeUsers(freeUsers);
   } catch (e) {
