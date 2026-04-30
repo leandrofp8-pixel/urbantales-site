@@ -412,7 +412,21 @@
           <div class="chart-wrap-lg"><canvas id="chartCostBreakdown"></canvas></div>
         </div>
       </div>
-      <div class="card">
+      <div class="grid-2" style="margin-top:24px">
+        <div class="card">
+          <div class="card-title">Daily Purchases
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Revenue events</span>
+          </div>
+          <div class="chart-wrap-lg"><canvas id="chartPurchases"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Cache Efficiency Trend
+            <span title="% of API requests served from cache instead of hitting paid APIs. Higher = lower cost." style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+          </div>
+          <div class="chart-wrap-lg"><canvas id="chartCacheTrend"></canvas></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:24px">
         <div class="section-header"><h2>Top Users by API Cost</h2></div>
         <div class="table-wrap">
           <table>
@@ -909,7 +923,7 @@ function renderTours(tours) {
 // ══════════════════════════════════════════════
 // COSTS
 // ══════════════════════════════════════════════
-function renderCosts(costs) {
+function renderCosts(costs, funnel) {
   const s = costs.summary;
   document.getElementById('costKpis').innerHTML =
     kpiCard('Total Cost (period)', '$' + (s.total_cost||0).toFixed(2), `${fmt(s.total_calls)} total calls`, null, null) +
@@ -937,6 +951,24 @@ function renderCosts(costs) {
   const apiNames  = Object.keys(apiTotals);
   const apiColors = [C.primary, C.blue, C.purple, C.green, C.yellow];
   doughnutChart('chartCostBreakdown', apiNames, apiNames.map(k => +apiTotals[k].toFixed(4)), apiColors);
+
+  // ── Daily Purchases (revenue events) — pulled from funnel.daily_data ──
+  const funnelDaily = [...((funnel && funnel.daily_data) || [])].reverse();
+  const purchaseLabels = funnelDaily.map(d => shortDate(d.date));
+  lineChart('chartPurchases', purchaseLabels, [
+    { label: 'Purchases', data: funnelDaily.map(d => d.total_purchases || 0), color: C.green }
+  ]);
+
+  // ── Cache Efficiency Trend — % of calls served from cache, per day ──
+  const cacheLabels = sortedDates.map(d => shortDate(d));
+  const cacheRates = sortedDates.map(d => {
+    const total = breakdown[d]?.total_calls || 0;
+    const hits  = breakdown[d]?.cache_hits  || 0;
+    return total > 0 ? +(hits / total * 100).toFixed(1) : 0;
+  });
+  lineChart('chartCacheTrend', cacheLabels, [
+    { label: 'Cache Hit %', data: cacheRates, color: C.green }
+  ]);
 
   const users = costs.top_users_by_cost || [];
   document.getElementById('topUsersBody').innerHTML = users.length === 0
@@ -1031,7 +1063,7 @@ async function loadAllData() {
     renderCohorts(cohortsMonthly);
     renderContent(content, funnel);
     renderTours(tours);
-    renderCosts(costs);
+    renderCosts(costs, funnel);
     renderFreeUsers(freeUsers);
   } catch (e) {
     console.error('Dashboard load error:', e);
