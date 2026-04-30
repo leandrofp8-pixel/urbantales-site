@@ -227,16 +227,46 @@
     <div class="tab-panel" id="panel-funnel">
       <div class="grid-2" style="margin-bottom:24px">
         <div class="card">
-          <div class="card-title">Conversion Funnel — Period Total</div>
+          <div class="card-title">Conversion Funnel — Period Cohort
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">(users who signed up in the period)</span>
+          </div>
           <div class="funnel-wrap" id="funnelViz">
             <div class="loading">Loading…</div>
           </div>
         </div>
         <div class="card">
-          <div class="card-title">Daily Signups vs Conversions</div>
+          <div class="card-title">Daily Acquisition &amp; Re-engagement
+            <span title="Recovered = users returning after 60+ days of inactivity" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+          </div>
           <div class="chart-wrap-lg"><canvas id="chartFunnelDaily"></canvas></div>
         </div>
       </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>📊 Monthly Cohort Retention — Last 6 Months</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">Compare how each month's signups progress through the funnel</span>
+        </div>
+        <div class="table-wrap">
+          <table id="cohortsTable">
+            <thead>
+              <tr>
+                <th>Cohort</th>
+                <th>Signups</th>
+                <th>Activated</th>
+                <th>Hit Paywall</th>
+                <th>Viewed Shop</th>
+                <th>Converted</th>
+                <th>Conv. Rate</th>
+              </tr>
+            </thead>
+            <tbody id="cohortsBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="card">
         <div class="section-header">
           <h2>🔥 Hot Leads — Free users likely to convert</h2>
@@ -575,30 +605,35 @@ function renderOverview(funnel, freeUsers) {
 }
 
 // ══════════════════════════════════════════════
-// FUNNEL
+// FUNNEL (true cohort: users who signed up in the period)
 // ══════════════════════════════════════════════
-function renderFunnel(funnel, freeUsers) {
-  const t = funnel.totals;
-  const base = t.new_signups || 1;
+function renderFunnel(cohortFunnel, funnel, freeUsers) {
+  const steps = cohortFunnel.steps || [];
+  const colorMap = {
+    signup:      C.blue,
+    activated:   C.primary,
+    hit_paywall: C.yellow,
+    viewed_shop: C.purple,
+    converted:   C.green,
+  };
 
-  const steps = [
-    { label: 'New Signups',              count: t.new_signups,           pct: 100,                                          color: C.blue },
-    { label: 'Activated (1st narration)',count: t.new_users_activated,   pct: t.new_users_activated/base*100,               color: C.primary },
-    { label: 'Viewed Shop',             count: freeUsers.summary?.viewed_shop, pct: freeUsers.summary?.viewed_shop_pct,    color: C.purple },
-    { label: 'Converted to Paid',       count: t.free_users_converted,   pct: t.free_users_converted/base*100,             color: C.green },
-  ];
-
-  document.getElementById('funnelViz').innerHTML = steps.map(s => `
-    <div class="funnel-step">
-      <div class="funnel-label">${s.label}</div>
-      <div class="funnel-bar-outer">
-        <div class="funnel-bar-inner" style="width:${Math.min(s.pct||0,100)}%;background:${s.color}"></div>
+  if (steps.length === 0 || (cohortFunnel.cohort_size || 0) === 0) {
+    document.getElementById('funnelViz').innerHTML =
+      `<div class="loading">No signups in this period.</div>`;
+  } else {
+    document.getElementById('funnelViz').innerHTML = steps.map(s => `
+      <div class="funnel-step">
+        <div class="funnel-label">${s.label}</div>
+        <div class="funnel-bar-outer">
+          <div class="funnel-bar-inner" style="width:${Math.min(s.pct||0,100)}%;background:${colorMap[s.key]||C.primary}"></div>
+        </div>
+        <div class="funnel-count">${fmt(s.count)}</div>
+        <div class="funnel-pct">${(s.pct||0).toFixed(1)}%</div>
       </div>
-      <div class="funnel-count">${fmt(s.count)}</div>
-      <div class="funnel-pct">${(s.pct||0).toFixed(1)}%</div>
-    </div>
-  `).join('');
+    `).join('');
+  }
 
+  // Daily chart still uses the existing daily_funnel_summary data
   const daily = [...(funnel.daily_data || [])].reverse();
   const labels = daily.map(d => shortDate(d.date));
 
@@ -606,7 +641,7 @@ function renderFunnel(funnel, freeUsers) {
     { label: 'New Signups',   data: daily.map(d => d.new_signups            || 0), color: C.blue },
     { label: 'Activated',     data: daily.map(d => d.new_users_activated    || 0), color: C.primary },
     { label: 'Converted',     data: daily.map(d => d.free_users_converted   || 0), color: C.green },
-    { label: 'Recovered',     data: daily.map(d => d.recovered_users        || 0), color: C.yellow },
+    { label: 'Recovered (60d+)', data: daily.map(d => d.recovered_users     || 0), color: C.yellow },
   ]);
 
   // Hot leads table
@@ -626,6 +661,41 @@ function renderFunnel(funnel, freeUsers) {
           <td><span class="pill badge-${scoreClass}">${score}</span></td>
         </tr>`;
       }).join('');
+}
+
+// ══════════════════════════════════════════════
+// MONTHLY COHORTS TABLE
+// ══════════════════════════════════════════════
+function renderCohorts(cohortsData) {
+  const rows = cohortsData.cohorts || [];
+  if (rows.length === 0) {
+    document.getElementById('cohortsBody').innerHTML =
+      `<tr><td colspan="7" class="loading">No cohort data.</td></tr>`;
+    return;
+  }
+
+  document.getElementById('cohortsBody').innerHTML = rows.map(c => {
+    const stepByKey = {};
+    (c.steps || []).forEach(s => { stepByKey[s.key] = s; });
+    const signup      = stepByKey.signup       || {count: c.cohort_size || 0, pct: 0};
+    const activated   = stepByKey.activated    || {count: 0, pct: 0};
+    const hitPaywall  = stepByKey.hit_paywall  || {count: 0, pct: 0};
+    const viewedShop  = stepByKey.viewed_shop  || {count: 0, pct: 0};
+    const converted   = stepByKey.converted    || {count: 0, pct: 0};
+    const convClass   = converted.pct > 5 ? 'green' : converted.pct > 2 ? 'yellow' : 'orange';
+
+    const cell = (s) => `${fmt(s.count)} <span style="color:var(--muted);font-size:0.8rem">(${(s.pct||0).toFixed(1)}%)</span>`;
+
+    return `<tr>
+      <td><strong>${c.cohort_label}</strong></td>
+      <td>${fmt(signup.count)}</td>
+      <td>${cell(activated)}</td>
+      <td>${cell(hitPaywall)}</td>
+      <td>${cell(viewedShop)}</td>
+      <td>${cell(converted)}</td>
+      <td><span class="pill badge-${convClass}">${(converted.pct||0).toFixed(1)}%</span></td>
+    </tr>`;
+  }).join('');
 }
 
 function maskEmail(email) {
@@ -777,15 +847,18 @@ async function runAggregation() {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, freeUsers, daily, costs] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs] = await Promise.all([
       api(`/analytics/kpi/funnel?days=${days}`),
+      api(`/analytics/kpi/funnel-cohort?days=${days}`),
+      api(`/analytics/kpi/cohorts-monthly?months=6`),
       api(`/analytics/kpi/free-users`),
       api(`/analytics/daily?days=${days}`),
       api(`/admin/cost-report?days=${days}`),
     ]);
 
     renderOverview(funnel, freeUsers);
-    renderFunnel(funnel, freeUsers);
+    renderFunnel(cohortFunnel, funnel, freeUsers);
+    renderCohorts(cohortsMonthly);
     renderContent(daily, funnel);
     renderCosts(costs);
     renderFreeUsers(freeUsers);
