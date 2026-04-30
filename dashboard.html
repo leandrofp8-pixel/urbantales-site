@@ -489,10 +489,25 @@
           <div class="chart-wrap"><canvas id="chartAcqStatus"></canvas></div>
         </div>
         <div class="card">
+          <div class="card-title">User Base — Paid Acquisition vs Organic
+            <span title="Paid = user signed up with a promoter code (MGM or Influencer). Organic = signed up without any referral." style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+          </div>
+          <div class="chart-wrap"><canvas id="chartAcqSource"></canvas></div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:24px">
+        <div class="card">
           <div class="card-title">Channel Split
             <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Influencer vs MGM (by # referrals)</span>
           </div>
           <div class="chart-wrap"><canvas id="chartAcqChannel"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Revenue by Channel
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Lifetime $ from referred users</span>
+          </div>
+          <div class="chart-wrap"><canvas id="chartAcqRevenue"></canvas></div>
         </div>
       </div>
 
@@ -566,9 +581,33 @@
       <div class="card" style="margin-top:24px">
         <div class="section-header">
           <h2>💰 Acquisition Economics</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">Lifetime — 1 coin = $0.00598 (500-pack @ $2.99)</span>
+          <span style="font-size:0.8rem;color:var(--muted)">Lifetime — 1 coin = $0.00598 (500-pack @ $2.99) · Influencers earn 25% of invitee revenue</span>
         </div>
-        <div class="grid-4" id="acqEconomics">
+
+        <div style="font-weight:600;font-size:0.85rem;color:var(--muted);margin:12px 0 8px 4px">
+          TOTAL
+        </div>
+        <div class="grid-4" id="acqEconomicsTotal">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+
+        <div style="font-weight:600;font-size:0.85rem;color:var(--muted);margin:20px 0 8px 4px">
+          🔥 MGM CHANNEL
+        </div>
+        <div class="grid-4" id="acqEconomicsMgm">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+
+        <div style="font-weight:600;font-size:0.85rem;color:var(--muted);margin:20px 0 8px 4px">
+          🏆 INFLUENCER CHANNEL
+        </div>
+        <div class="grid-4" id="acqEconomicsInfluencer">
           <div class="card"><div class="loading">Loading…</div></div>
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
@@ -1200,9 +1239,11 @@ function renderFreeUsers(freeUsers, cohortsMonthly) {
 // ══════════════════════════════════════════════
 // ACQUISITION — MGM + Influencers (stock / lifetime)
 // ══════════════════════════════════════════════
-function renderAcquisition(acq) {
+function renderAcquisition(acq, freeUsers) {
   const s = acq.summary || {};
   const e = acq.economics || {};
+  const mgm = e.mgm || {};
+  const inf = e.influencer || {};
 
   // ── Top KPIs (4) ──
   const promotersSubtitle = `${fmt(s.total_influencers)} influencers · ${fmt(s.total_mgm_promoters)} MGM users`;
@@ -1217,15 +1258,25 @@ function renderAcquisition(acq) {
       `${fmt(s.total_purchased)} of ${fmt(s.total_referrals)} referrals purchased`,
       s.conversion_rate > 15 ? '↑ Strong' : s.conversion_rate > 7 ? '→ Average' : '↓ Low',
       convClass) +
-    kpiCard('Coins Paid Out', fmt(e.coins_paid_out),
-      `≈ $${(e.cost_usd || 0).toFixed(2)} cost`,
-      '500 signup + 250 purchase', 'yellow');
+    kpiCard('Total Acquisition Cost', `$${(e.cost_usd || 0).toFixed(2)}`,
+      `${fmt(e.coins_paid_out)} coins + $${(e.influencer_payout_usd || 0).toFixed(2)} cash`,
+      null, 'yellow');
 
   // ── Referral Status doughnut ──
   doughnutChart('chartAcqStatus',
     ['Installed (no purchase yet)', 'Purchased'],
     [s.installed_only || 0, s.total_purchased || 0],
     [C.blue, C.green]
+  );
+
+  // ── Paid Acquisition vs Organic doughnut (needs freeUsers.summary.total_users) ──
+  const totalUsers = (freeUsers && freeUsers.summary && freeUsers.summary.total_users) || 0;
+  const paidAcq = s.total_referrals || 0;
+  const organic = Math.max(totalUsers - paidAcq, 0);
+  doughnutChart('chartAcqSource',
+    ['Organic signup', 'Paid acquisition (referred)'],
+    [organic, paidAcq],
+    ['#475569', C.primary]
   );
 
   // ── Channel Split doughnut ──
@@ -1235,11 +1286,18 @@ function renderAcquisition(acq) {
     [C.purple, C.primary]
   );
 
+  // ── Revenue by Channel doughnut ──
+  doughnutChart('chartAcqRevenue',
+    ['Influencer revenue', 'MGM revenue'],
+    [inf.revenue_usd || 0, mgm.revenue_usd || 0],
+    [C.purple, C.primary]
+  );
+
   // ── Top Influencers leaderboard ──
-  const inf = acq.top_influencers || [];
-  document.getElementById('topInfluencersBody').innerHTML = inf.length === 0
+  const topInf = acq.top_influencers || [];
+  document.getElementById('topInfluencersBody').innerHTML = topInf.length === 0
     ? `<tr><td colspan="6" class="loading">No influencer activity yet.</td></tr>`
-    : inf.map(r => {
+    : topInf.map(r => {
         const cls = r.conversion_rate > 15 ? 'green' : r.conversion_rate > 7 ? 'yellow' : 'orange';
         return `<tr>
           <td><strong>${r.influencer_name || '—'}</strong></td>
@@ -1252,10 +1310,10 @@ function renderAcquisition(acq) {
       }).join('');
 
   // ── Top MGM Users leaderboard ──
-  const mgm = acq.top_mgm_users || [];
-  document.getElementById('topMgmBody').innerHTML = mgm.length === 0
+  const topMgm = acq.top_mgm_users || [];
+  document.getElementById('topMgmBody').innerHTML = topMgm.length === 0
     ? `<tr><td colspan="6" class="loading">No MGM activity yet.</td></tr>`
-    : mgm.map(r => {
+    : topMgm.map(r => {
         const cls = r.conversion_rate > 15 ? 'green' : r.conversion_rate > 7 ? 'yellow' : 'orange';
         return `<tr>
           <td><strong>${r.influencer_name || '—'}</strong></td>
@@ -1284,19 +1342,60 @@ function renderAcquisition(acq) {
         </tr>`;
       }).join('');
 
-  // ── Acquisition Economics (bottom row, 4 cards) ──
-  const roiCls = e.roi_pct >= 100 ? 'green' : e.roi_pct >= 0 ? 'yellow' : 'orange';
-  document.getElementById('acqEconomics').innerHTML =
-    kpiCard('Coins Paid', fmt(e.coins_paid_out),
-      `≈ $${(e.cost_usd||0).toFixed(2)}`, null, null) +
-    kpiCard('Cost (USD)', `$${(e.cost_usd||0).toFixed(2)}`,
-      `Coins × $${(e.coin_value_usd||0).toFixed(5)}`, null, null) +
+  // ══════════════════════════════════════════════
+  // ECONOMICS — 3 rows: Total / MGM / Influencer
+  // ══════════════════════════════════════════════
+  const roiClass = pct => pct >= 100 ? 'green' : pct >= 0 ? 'yellow' : 'orange';
+  const roiBadge = pct => pct >= 100 ? '↑ Profitable' : pct >= 0 ? '→ Break-even' : '↓ Losing';
+
+  // ── TOTAL ──
+  document.getElementById('acqEconomicsTotal').innerHTML =
+    kpiCard('Coins Paid Out', fmt(e.coins_paid_out),
+      `≈ $${((e.coins_paid_out||0) * (e.coin_value_usd||0)).toFixed(2)} in coin value`, null, null) +
+    kpiCard('Total Cost', `$${(e.cost_usd||0).toFixed(2)}`,
+      'Coins + influencer cash', null, null) +
     kpiCard('Revenue (A)', `$${(e.revenue_usd||0).toFixed(2)}`,
-      'Lifetime from referred users', '💰 MGM inflow', 'green') +
+      'Lifetime from referred users', '💰', 'green') +
     kpiCard('ROI (B)', fmtPct(e.roi_pct),
-      '(Revenue − Cost) ÷ Cost',
-      e.roi_pct >= 100 ? '↑ Profitable' : e.roi_pct >= 0 ? '→ Break-even' : '↓ Losing',
-      roiCls);
+      '(Revenue − Cost) ÷ Cost', roiBadge(e.roi_pct), roiClass(e.roi_pct));
+
+  // ── MGM ──
+  document.getElementById('acqEconomicsMgm').innerHTML =
+    kpiCard('Coins Paid',
+      fmt(mgm.total_coins),
+      `${fmt(mgm.invitee_bonus_coins)} signup + ${fmt(mgm.inviter_reward_coins)} reward`,
+      null, null) +
+    kpiCard('MGM Cost',
+      `$${(mgm.cost_usd||0).toFixed(2)}`,
+      'Coins × $0.00598',
+      null, null) +
+    kpiCard('MGM Revenue',
+      `$${(mgm.revenue_usd||0).toFixed(2)}`,
+      `${fmt(s.purchased_by_mgm)} of ${fmt(s.referrals_by_mgm)} paid`,
+      null, 'green') +
+    kpiCard('MGM ROI',
+      fmtPct(mgm.roi_pct),
+      '(Rev − Cost) ÷ Cost',
+      roiBadge(mgm.roi_pct), roiClass(mgm.roi_pct));
+
+  // ── INFLUENCER ──
+  document.getElementById('acqEconomicsInfluencer').innerHTML =
+    kpiCard('Coins Paid',
+      fmt(inf.total_coins),
+      `${fmt(inf.invitee_bonus_coins)} invitee signup bonus`,
+      null, null) +
+    kpiCard('Cash Payout (25%)',
+      `$${(inf.cash_payout_usd||0).toFixed(2)}`,
+      `25% of $${(inf.revenue_usd||0).toFixed(2)} revenue`,
+      null, null) +
+    kpiCard('Influencer Cost',
+      `$${(inf.cost_usd||0).toFixed(2)}`,
+      'Coins value + cash rev share',
+      null, null) +
+    kpiCard('Influencer ROI',
+      fmtPct(inf.roi_pct),
+      '(Rev − Cost) ÷ Cost',
+      roiBadge(inf.roi_pct), roiClass(inf.roi_pct));
 }
 
 // ══════════════════════════════════════════════
@@ -1348,7 +1447,7 @@ async function loadAllData() {
     renderTours(tours);
     renderCosts(costs, funnel);
     renderFreeUsers(freeUsers, cohortsMonthly);
-    renderAcquisition(acquisition);
+    renderAcquisition(acquisition, freeUsers);
   } catch (e) {
     console.error('Dashboard load error:', e);
   }
