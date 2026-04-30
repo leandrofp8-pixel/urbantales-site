@@ -449,15 +449,25 @@
         <div class="card"><div class="loading">…</div></div>
         <div class="card"><div class="loading">…</div></div>
       </div>
-      <div class="grid-2">
+      <div class="grid-2" style="margin-top:24px">
         <div class="card">
-          <div class="card-title">Free User Engagement Breakdown</div>
+          <div class="card-title">Free User Engagement
+            <span title="Mutually exclusive: each user lands in their highest-intent bucket only" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+          </div>
           <div class="chart-wrap"><canvas id="chartFreeEngagement"></canvas></div>
         </div>
         <div class="card">
-          <div class="card-title">Free Users — Funnel Stages</div>
-          <div class="chart-wrap"><canvas id="chartFreeFunnel"></canvas></div>
+          <div class="card-title">Cohort Retention — Signups vs Conversions
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">% above each bar = cohort conversion rate</span>
+          </div>
+          <div class="chart-wrap"><canvas id="chartFreeCohorts"></canvas></div>
         </div>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">Time to Conversion
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Days between signup and first purchase (paid users)</span>
+        </div>
+        <div class="chart-wrap-lg"><canvas id="chartTimeToConversion"></canvas></div>
       </div>
     </div>
 
@@ -982,38 +992,100 @@ function renderCosts(costs, funnel) {
 }
 
 // ══════════════════════════════════════════════
-// FREE USERS
+// FREE USERS — stock / lifetime view
 // ══════════════════════════════════════════════
-function renderFreeUsers(freeUsers) {
+function renderFreeUsers(freeUsers, cohortsMonthly) {
   const s = freeUsers.summary || {};
+
+  // ── KPI cards (4) ──
+  const totalUsersSubtitle =
+    `${fmt(s.total_free_users)} free (${fmtPct(s.free_pct)}) · ${fmt(s.total_paid_users)} paid (${fmtPct(s.paid_pct)})`;
+  const convClass = s.lifetime_conversion_rate > 5 ? 'green'
+                  : s.lifetime_conversion_rate > 2 ? 'yellow' : 'orange';
+
   document.getElementById('freeUserKpis').innerHTML =
+    kpiCard('Total Users', fmt(s.total_users), totalUsersSubtitle, null, null) +
+    kpiCard('Lifetime Conversion', fmtPct(s.lifetime_conversion_rate), 'Paid ÷ Total users (all-time)',
+      s.lifetime_conversion_rate > 5 ? '↑ Strong' : s.lifetime_conversion_rate > 2 ? '→ Average' : '↓ Low',
+      convClass) +
     kpiCard('Total Free Users', fmt(s.total_free_users), 'Never purchased', null, null) +
-    kpiCard('Viewed Shop', fmt(s.viewed_shop), fmtPct(s.viewed_shop_pct) + ' of free users',
-      s.viewed_shop_pct > 30 ? '↑ Good awareness' : '↓ Low awareness', s.viewed_shop_pct > 30 ? 'green' : 'yellow') +
-    kpiCard('Hit Paywall', fmt(s.hit_paywall), fmtPct(s.hit_paywall_pct) + ' of free users',
-      '💰 Purchase intent', 'orange') +
     kpiCard('Highly Engaged', fmt(s.high_engagement), '5+ narrations listened', '→ Convert them', 'blue');
 
+  // ── Engagement breakdown (mutually exclusive buckets) ──
+  const eb = freeUsers.engagement_buckets || {};
   doughnutChart('chartFreeEngagement',
-    ['Viewed Shop', 'Hit Paywall', 'Highly Engaged', 'Passive'],
-    [
-      s.viewed_shop || 0,
-      s.hit_paywall || 0,
-      s.high_engagement || 0,
-      Math.max((s.total_free_users||0) - (s.high_engagement||0), 0)
-    ],
-    [C.purple, C.yellow, C.blue, '#333']
+    ['Hit Paywall', 'Viewed Shop only', 'Active Listener', 'Inactive'],
+    [eb.hit_paywall || 0, eb.viewed_shop_only || 0, eb.active_listener || 0, eb.inactive || 0],
+    [C.yellow, C.purple, C.blue, '#333']
   );
 
-  doughnutChart('chartFreeFunnel',
-    ['Converted (Paid)', 'Hot Leads', 'Active Free', 'Passive'],
-    [
-      freeUsers.hot_leads?.length ? 0 : 0,
-      Math.min(freeUsers.hot_leads_count || 0, s.recently_active || 0),
-      Math.max((s.recently_active || 0) - (freeUsers.hot_leads_count || 0), 0),
-      Math.max((s.total_free_users||0) - (s.recently_active||0), 0)
-    ],
-    [C.green, C.primary, C.blue, '#333']
+  // ── Cohort retention chart: stacked bar (Still Free / Converted), with % above ──
+  const cohorts = (cohortsMonthly && cohortsMonthly.cohorts) || [];
+  const cohortLabels = cohorts.map(c => c.cohort_label);
+  const stillFreeData = cohorts.map(c => {
+    const stepByKey = {};
+    (c.steps || []).forEach(st => stepByKey[st.key] = st);
+    const signups   = stepByKey.signup?.count    || c.cohort_size || 0;
+    const converted = stepByKey.converted?.count || 0;
+    return Math.max(signups - converted, 0);
+  });
+  const convertedData = cohorts.map(c => {
+    const stepByKey = {};
+    (c.steps || []).forEach(st => stepByKey[st.key] = st);
+    return stepByKey.converted?.count || 0;
+  });
+  const conversionPcts = cohorts.map(c => {
+    const stepByKey = {};
+    (c.steps || []).forEach(st => stepByKey[st.key] = st);
+    return stepByKey.converted?.pct || 0;
+  });
+
+  // Custom plugin to draw % above each stacked bar
+  const cohortPctPlugin = {
+    id: 'cohortPctLabels',
+    afterDatasetsDraw(chart) {
+      const { ctx, scales: { x, y } } = chart;
+      ctx.save();
+      ctx.font = 'bold 11px sans-serif';
+      ctx.fillStyle = '#cbd5e1';
+      ctx.textAlign = 'center';
+      conversionPcts.forEach((pct, i) => {
+        const total = stillFreeData[i] + convertedData[i];
+        const xpos = x.getPixelForValue(i);
+        const ypos = y.getPixelForValue(total) - 6;
+        ctx.fillText((pct || 0).toFixed(1) + '%', xpos, ypos);
+      });
+      ctx.restore();
+    }
+  };
+
+  destroyChart('chartFreeCohorts');
+  const ctxC = document.getElementById('chartFreeCohorts').getContext('2d');
+  CHARTS['chartFreeCohorts'] = new Chart(ctxC, {
+    type: 'bar',
+    data: {
+      labels: cohortLabels,
+      datasets: [
+        { label: 'Still Free', data: stillFreeData, backgroundColor: C.blue,  stack: 'cohort' },
+        { label: 'Converted', data: convertedData, backgroundColor: C.green, stack: 'cohort' },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        x: { stacked: true, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.08)' } },
+        y: { stacked: true, beginAtZero: true, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.08)' } }
+      },
+      plugins: { legend: { labels: { color: '#cbd5e1' } } }
+    },
+    plugins: [cohortPctPlugin]
+  });
+
+  // ── Time-to-conversion histogram ──
+  const ttc = freeUsers.time_to_conversion || [];
+  barChart('chartTimeToConversion',
+    ttc.map(t => t.bucket),
+    [{ label: 'Paid users', data: ttc.map(t => t.count || 0), color: C.green }]
   );
 }
 
@@ -1064,7 +1136,7 @@ async function loadAllData() {
     renderContent(content, funnel);
     renderTours(tours);
     renderCosts(costs, funnel);
-    renderFreeUsers(freeUsers);
+    renderFreeUsers(freeUsers, cohortsMonthly);
   } catch (e) {
     console.error('Dashboard load error:', e);
   }
