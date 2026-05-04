@@ -143,6 +143,79 @@
     .loading { color: var(--muted); font-size: 0.85rem; text-align: center; padding: 40px; }
     .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
     .section-header h2 { font-size: 0.95rem; font-weight: 600; }
+
+    /* ── NOTIFICATIONS TAB ── */
+    .notif-form { display: flex; flex-direction: column; gap: 20px; }
+    .notif-row { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+    .notif-field { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 160px; }
+    .notif-field label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .notif-input, .notif-select, .notif-textarea {
+      background: #111; border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text); font-size: 0.9rem; padding: 10px 12px; outline: none;
+      font-family: inherit;
+    }
+    .notif-input:focus, .notif-select:focus, .notif-textarea:focus { border-color: var(--primary); }
+    .notif-textarea { resize: vertical; min-height: 80px; }
+    .notif-select { cursor: pointer; }
+    .audience-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,107,53,.12); color: var(--primary);
+      border: 1px solid rgba(255,107,53,.3); border-radius: 20px;
+      padding: 6px 14px; font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+    }
+    .lang-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .lang-tab-btn {
+      background: none; border: none; color: var(--muted); font-size: 0.82rem;
+      padding: 8px 14px; cursor: pointer; border-bottom: 2px solid transparent; transition: color .15s;
+    }
+    .lang-tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .lang-panel { display: none; }
+    .lang-panel.active { display: flex; flex-direction: column; gap: 12px; }
+    .btn-translate {
+      background: rgba(96,165,250,.12); color: var(--blue); border: 1px solid rgba(96,165,250,.3);
+      border-radius: 8px; padding: 10px 18px; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s; white-space: nowrap;
+    }
+    .btn-translate:hover { opacity: .8; }
+    .btn-translate:disabled { opacity: .4; cursor: not-allowed; }
+    .btn-send {
+      background: var(--primary); color: #fff; border: none;
+      border-radius: 8px; padding: 12px 28px; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .btn-send:hover { opacity: .85; }
+    .btn-send:disabled { opacity: .4; cursor: not-allowed; }
+    .notif-modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.7);
+      z-index: 1000; align-items: center; justify-content: center;
+    }
+    .notif-modal-overlay.open { display: flex; }
+    .notif-modal {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 32px; width: 480px; max-width: 95vw;
+    }
+    .notif-modal h2 { font-size: 1.1rem; margin-bottom: 8px; }
+    .notif-modal p  { color: var(--muted); font-size: 0.85rem; margin-bottom: 20px; }
+    .notif-preview-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .notif-preview-item {
+      background: #111; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px;
+    }
+    .notif-preview-item .lang-tag {
+      font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px;
+    }
+    .notif-preview-item .preview-title { font-weight: 600; font-size: 0.88rem; margin-bottom: 2px; }
+    .notif-preview-item .preview-body  { font-size: 0.82rem; color: var(--muted); }
+    .modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+    .btn-cancel {
+      background: none; border: 1px solid var(--border); color: var(--text);
+      border-radius: 8px; padding: 10px 20px; font-size: 0.9rem; cursor: pointer;
+    }
+    .notif-result {
+      border-radius: 10px; padding: 16px 20px; margin-top: 16px; display: none;
+      font-size: 0.88rem; font-weight: 500;
+    }
+    .notif-result.success { background: rgba(52,211,153,.1); color: var(--green); border: 1px solid rgba(52,211,153,.3); }
+    .notif-result.error   { background: rgba(248,113,113,.1); color: var(--danger); border: 1px solid rgba(248,113,113,.3); }
   </style>
 </head>
 <body>
@@ -190,6 +263,7 @@
     <button class="tab-btn" onclick="showTab('costs')">API Costs</button>
     <button class="tab-btn" onclick="showTab('users')">Free Users</button>
     <button class="tab-btn" onclick="showTab('acquisition')">Acquisition</button>
+    <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
   </nav>
 
   <main>
@@ -616,7 +690,115 @@
       </div>
     </div>
 
+    <!-- ── NOTIFICATIONS ── -->
+    <div class="tab-panel" id="panel-notifications">
+      <div class="notif-form">
+
+        <!-- SEGMENT -->
+        <div class="card">
+          <div class="card-title">1 — Audience Segment</div>
+          <div class="notif-row">
+            <div class="notif-field">
+              <label>Filter</label>
+              <select class="notif-select" id="nFilterType" onchange="onFilterTypeChange()">
+                <option value="all">All users with push tokens</option>
+                <option value="language">By language</option>
+                <option value="free">Free users</option>
+                <option value="premium">Premium users</option>
+                <option value="inactive">Inactive (no activity in N days)</option>
+                <option value="shop_visitors">Shop visitors (last N days)</option>
+                <option value="tour_completers">Tour completers (≥ N tours)</option>
+                <option value="recent_joiners">Recent joiners (≤ N days since signup)</option>
+                <option value="user_ids">Specific users (emails / IDs)</option>
+              </select>
+            </div>
+            <div class="notif-field" id="nFilterValueWrap" style="display:none">
+              <label id="nFilterValueLabel">Value</label>
+              <input class="notif-input" id="nFilterValue" type="text" placeholder="e.g. 14" />
+            </div>
+            <button class="btn-translate" onclick="checkAudience()" style="flex:0">Check Audience</button>
+            <div class="audience-badge" id="audienceBadge" style="display:none">— users</div>
+          </div>
+        </div>
+
+        <!-- TEMPLATE -->
+        <div class="card">
+          <div class="card-title">2 — Template <span style="font-size:0.75rem;color:var(--muted);font-weight:400">(optional — pre-fills content)</span></div>
+          <div class="notif-row">
+            <div class="notif-field">
+              <label>Template</label>
+              <select class="notif-select" id="nTemplate" onchange="applyTemplate()">
+                <option value="">— select a template —</option>
+              </select>
+            </div>
+            <div class="notif-field" style="flex:2">
+              <label>Description</label>
+              <div id="nTemplateDesc" style="font-size:0.82rem;color:var(--muted);padding:10px 0">Select a template to see its description.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card">
+          <div class="card-title">3 — Content</div>
+          <div class="notif-row" style="margin-bottom:16px">
+            <button class="btn-translate" id="btnTranslate" onclick="autoTranslate()">🌐 Auto-translate to all 5 languages</button>
+            <span style="font-size:0.8rem;color:var(--muted);align-self:center">Write in any language, then click to generate the rest.</span>
+          </div>
+
+          <div class="lang-tabs">
+            <button class="lang-tab-btn active" onclick="showLangTab('en',this)">EN</button>
+            <button class="lang-tab-btn" onclick="showLangTab('pt-BR',this)">PT-BR</button>
+            <button class="lang-tab-btn" onclick="showLangTab('es',this)">ES</button>
+            <button class="lang-tab-btn" onclick="showLangTab('fr',this)">FR</button>
+            <button class="lang-tab-btn" onclick="showLangTab('de',this)">DE</button>
+          </div>
+
+          <div id="lang-en" class="lang-panel active">
+            <div class="notif-field"><label>Title</label><input class="notif-input" id="title-en" placeholder="Notification title…" /></div>
+            <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-en" placeholder="Notification body…"></textarea></div>
+          </div>
+          <div id="lang-pt-BR" class="lang-panel">
+            <div class="notif-field"><label>Title</label><input class="notif-input" id="title-pt-BR" placeholder="Título…" /></div>
+            <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-pt-BR" placeholder="Mensagem…"></textarea></div>
+          </div>
+          <div id="lang-es" class="lang-panel">
+            <div class="notif-field"><label>Title</label><input class="notif-input" id="title-es" placeholder="Título…" /></div>
+            <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-es" placeholder="Mensaje…"></textarea></div>
+          </div>
+          <div id="lang-fr" class="lang-panel">
+            <div class="notif-field"><label>Title</label><input class="notif-input" id="title-fr" placeholder="Titre…" /></div>
+            <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-fr" placeholder="Message…"></textarea></div>
+          </div>
+          <div id="lang-de" class="lang-panel">
+            <div class="notif-field"><label>Title</label><input class="notif-input" id="title-de" placeholder="Titel…" /></div>
+            <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-de" placeholder="Nachricht…"></textarea></div>
+          </div>
+        </div>
+
+        <!-- SEND -->
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+          <button class="btn-send" onclick="openSendModal()">Send Notification →</button>
+          <div class="notif-result" id="notifResult"></div>
+        </div>
+
+      </div>
+    </div>
+
   </main>
+</div>
+
+<!-- SEND CONFIRMATION MODAL -->
+<div class="notif-modal-overlay" id="sendModal">
+  <div class="notif-modal">
+    <h2>Confirm Send</h2>
+    <p id="modalDesc">You're about to send notifications to <strong id="modalCount">?</strong> users in their preferred language.</p>
+    <div class="notif-preview-list" id="modalPreview"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeSendModal()">Cancel</button>
+      <button class="btn-send" id="btnConfirmSend" onclick="confirmSend()">Send Now</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1399,6 +1581,193 @@ function renderAcquisition(acq, freeUsers) {
 }
 
 // ══════════════════════════════════════════════
+// NOTIFICATIONS TAB
+// ══════════════════════════════════════════════
+const LANGS = ['en', 'pt-BR', 'es', 'fr', 'de'];
+let notifTemplates = [];
+let currentAudienceCount = null;
+
+async function loadNotifTemplates() {
+  try {
+    notifTemplates = await api('/admin/notification-templates');
+    const sel = document.getElementById('nTemplate');
+    notifTemplates.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t.id;
+      opt.textContent = t.name;
+      sel.appendChild(opt);
+    });
+  } catch(e) { console.warn('Could not load templates', e); }
+}
+
+function onFilterTypeChange() {
+  const type = document.getElementById('nFilterType').value;
+  const wrap  = document.getElementById('nFilterValueWrap');
+  const label = document.getElementById('nFilterValueLabel');
+  const needsValue = ['language','inactive','shop_visitors','tour_completers','recent_joiners','user_ids'].includes(type);
+  wrap.style.display = needsValue ? '' : 'none';
+  const hints = {
+    language: 'Code (en, pt-BR, es, fr, de)',
+    inactive: 'Days inactive (e.g. 14)',
+    shop_visitors: 'Last N days (e.g. 3)',
+    tour_completers: 'Min tours (e.g. 1)',
+    recent_joiners: 'Joined in last N days (e.g. 7)',
+    user_ids: 'Emails or IDs, comma-separated'
+  };
+  label.textContent = hints[type] || 'Value';
+  document.getElementById('nFilterValue').placeholder = hints[type] || '';
+  document.getElementById('audienceBadge').style.display = 'none';
+  currentAudienceCount = null;
+}
+
+async function checkAudience() {
+  const type  = document.getElementById('nFilterType').value;
+  const value = document.getElementById('nFilterValue').value.trim();
+  const badge = document.getElementById('audienceBadge');
+  badge.textContent = '…';
+  badge.style.display = '';
+  try {
+    const params = new URLSearchParams({ filter_type: type });
+    if (value) params.set('filter_value', value);
+    const res = await api(`/admin/notification-stats?${params}`);
+    currentAudienceCount = res.count;
+    badge.textContent = `~${fmt(res.count)} users`;
+  } catch(e) { badge.textContent = 'Error'; }
+}
+
+function applyTemplate() {
+  const id = document.getElementById('nTemplate').value;
+  const t  = notifTemplates.find(x => x.id === id);
+  document.getElementById('nTemplateDesc').textContent = t ? t.description : 'Select a template to see its description.';
+  if (!t) return;
+  document.getElementById('title-en').value = t.title || '';
+  document.getElementById('body-en').value  = t.body  || '';
+  LANGS.filter(l => l !== 'en').forEach(l => {
+    document.getElementById(`title-${l}`).value = '';
+    document.getElementById(`body-${l}`).value  = '';
+  });
+  if (t.suggested_filter) {
+    document.getElementById('nFilterType').value = t.suggested_filter;
+    onFilterTypeChange();
+    if (t.suggested_filter_value) document.getElementById('nFilterValue').value = t.suggested_filter_value;
+  }
+}
+
+function showLangTab(lang, btn) {
+  document.querySelectorAll('.lang-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.lang-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`lang-${lang}`).classList.add('active');
+  btn.classList.add('active');
+}
+
+async function autoTranslate() {
+  const btn = document.getElementById('btnTranslate');
+  const title = document.getElementById('title-en').value.trim();
+  const body  = document.getElementById('body-en').value.trim();
+  if (!title && !body) { alert('Write a title and body in the EN tab first.'); return; }
+  btn.disabled = true;
+  btn.textContent = '⏳ Translating…';
+  try {
+    const res = await fetch(`${API}/admin/translate-notification`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify({ title, body, source_lang: 'en' })
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    LANGS.forEach(lang => {
+      const t = data.translations[lang];
+      if (t) {
+        document.getElementById(`title-${lang}`).value = t.title || '';
+        document.getElementById(`body-${lang}`).value  = t.body  || '';
+      }
+    });
+    btn.textContent = '✓ Translated!';
+    setTimeout(() => { btn.disabled = false; btn.textContent = '🌐 Auto-translate to all 5 languages'; }, 2000);
+  } catch(e) {
+    btn.textContent = '✗ Failed';
+    setTimeout(() => { btn.disabled = false; btn.textContent = '🌐 Auto-translate to all 5 languages'; }, 2000);
+  }
+}
+
+function buildTranslations() {
+  const out = {};
+  LANGS.forEach(lang => {
+    const title = document.getElementById(`title-${lang}`).value.trim();
+    const body  = document.getElementById(`body-${lang}`).value.trim();
+    if (title || body) out[lang] = { title, body };
+  });
+  return out;
+}
+
+function openSendModal() {
+  const translations = buildTranslations();
+  if (!translations['en']?.title && !translations['en']?.body) {
+    alert('Fill in at least the EN title and body.'); return;
+  }
+  document.getElementById('modalCount').textContent =
+    currentAudienceCount !== null ? `~${fmt(currentAudienceCount)}` : '?';
+  const langLabels = { en:'English', 'pt-BR':'Portuguese', es:'Spanish', fr:'French', de:'German' };
+  const preview = document.getElementById('modalPreview');
+  preview.innerHTML = LANGS.map(lang => {
+    const t = translations[lang];
+    if (!t || (!t.title && !t.body)) return '';
+    return `<div class="notif-preview-item">
+      <div class="lang-tag">${langLabels[lang] || lang}</div>
+      <div class="preview-title">${t.title || '—'}</div>
+      <div class="preview-body">${t.body || '—'}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('sendModal').classList.add('open');
+}
+
+function closeSendModal() {
+  document.getElementById('sendModal').classList.remove('open');
+}
+
+async function confirmSend() {
+  const btn = document.getElementById('btnConfirmSend');
+  btn.disabled = true;
+  btn.textContent = '⏳ Sending…';
+  const filterType  = document.getElementById('nFilterType').value;
+  const filterValue = document.getElementById('nFilterValue').value.trim();
+  const translations = buildTranslations();
+  const enT = translations['en'] || {};
+  try {
+    const res = await fetch(`${API}/admin/send-notification`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify({
+        title: enT.title || '', body: enT.body || '',
+        filter_type: filterType, filter_value: filterValue || null,
+        translations
+      })
+    });
+    const data = await res.json();
+    closeSendModal();
+    const resultEl = document.getElementById('notifResult');
+    if (res.ok && data.success) {
+      resultEl.className = 'notif-result success';
+      resultEl.textContent = `✓ Sent to ${fmt(data.sent_count)} users${data.failed_count ? ` (${data.failed_count} failed)` : ''}.`;
+    } else {
+      resultEl.className = 'notif-result error';
+      resultEl.textContent = `✗ Error: ${data.detail || 'Unknown error'}`;
+    }
+    resultEl.style.display = '';
+    setTimeout(() => { resultEl.style.display = 'none'; }, 8000);
+  } catch(e) {
+    closeSendModal();
+    const resultEl = document.getElementById('notifResult');
+    resultEl.className = 'notif-result error';
+    resultEl.textContent = `✗ ${e.message}`;
+    resultEl.style.display = '';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send Now';
+  }
+}
+
+// ══════════════════════════════════════════════
 // REFRESH DATA AGGREGATION
 // ══════════════════════════════════════════════
 async function runAggregation() {
@@ -1460,6 +1829,7 @@ function showDashboard() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('dashboard').style.display = 'block';
   loadAllData();
+  loadNotifTemplates();
 }
 
 if (getToken()) {
