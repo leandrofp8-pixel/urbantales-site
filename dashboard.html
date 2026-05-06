@@ -776,6 +776,26 @@
           </div>
         </div>
 
+        <!-- DEEP LINK TARGET -->
+        <div class="card">
+          <div class="card-title">4 — Deep Link Target <span style="font-size:0.75rem;color:var(--muted);font-weight:400">(optional — where users land on tap)</span></div>
+          <div class="notif-row">
+            <div class="notif-field">
+              <label>Open screen</label>
+              <select class="notif-select" id="nScreen">
+                <option value="">Home (default)</option>
+                <option value="Walk">Walk &amp; Listen tab</option>
+                <option value="Explore">Explore tab</option>
+                <option value="Tours">Tours tab</option>
+                <option value="Shop">Shop</option>
+                <option value="MGM">Referral Hub</option>
+                <option value="Rewards">Rewards</option>
+                <option value="Profile">Profile tab</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <!-- SEND -->
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
           <button class="btn-send" onclick="openSendModal()">Send Notification →</button>
@@ -1705,8 +1725,13 @@ function openSendModal() {
   if (!translations['en']?.title && !translations['en']?.body) {
     alert('Fill in at least the EN title and body.'); return;
   }
+  const screen = document.getElementById('nScreen').value;
+  const screenNames = { Walk:'Walk & Listen', Explore:'Explore', Tours:'Tours', Shop:'Shop', MGM:'Referral Hub', Rewards:'Rewards', Profile:'Profile' };
   document.getElementById('modalCount').textContent =
     currentAudienceCount !== null ? `~${fmt(currentAudienceCount)}` : '?';
+  document.getElementById('modalDesc').innerHTML =
+    `You're about to send notifications to <strong id="modalCount2">${currentAudienceCount !== null ? `~${fmt(currentAudienceCount)}` : '?'}</strong> users in their preferred language.` +
+    (screen ? ` <span style="color:var(--primary)">→ Opens: ${screenNames[screen] || screen}</span>` : '');
   const langLabels = { en:'English', 'pt-BR':'Portuguese', es:'Spanish', fr:'French', de:'German' };
   const preview = document.getElementById('modalPreview');
   preview.innerHTML = LANGS.map(lang => {
@@ -1731,6 +1756,7 @@ async function confirmSend() {
   btn.textContent = '⏳ Sending…';
   const filterType  = document.getElementById('nFilterType').value;
   const filterValue = document.getElementById('nFilterValue').value.trim();
+  const screen      = document.getElementById('nScreen').value;
   const translations = buildTranslations();
   const enT = translations['en'] || {};
   try {
@@ -1740,7 +1766,8 @@ async function confirmSend() {
       body: JSON.stringify({
         title: enT.title || '', body: enT.body || '',
         filter_type: filterType, filter_value: filterValue || null,
-        translations
+        translations,
+        data: screen ? { screen } : null,
       })
     });
     const data = await res.json();
