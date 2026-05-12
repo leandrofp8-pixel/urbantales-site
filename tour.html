@@ -473,12 +473,26 @@ const PAGE_STRINGS = {
   },
 };
 
+function detectLang(tourLang) {
+  const params = new URLSearchParams(window.location.search);
+  const paramLang = params.get('lang');
+  if (paramLang && PAGE_STRINGS[paramLang]) return paramLang;
+  if (tourLang && PAGE_STRINGS[tourLang]) return tourLang;
+  const nav = (navigator.language || 'en');
+  const exact = Object.keys(PAGE_STRINGS).find(k => k.toLowerCase() === nav.toLowerCase());
+  if (exact) return exact;
+  const prefix = nav.split('-')[0].toLowerCase();
+  const prefixMatch = Object.keys(PAGE_STRINGS).find(k => k.toLowerCase().startsWith(prefix));
+  if (prefixMatch) return prefixMatch;
+  return 'en';
+}
+
 function buildPage(tour) {
   const lms = tour.landmarks_preview || [];
   const deepLink = `urbantales://tour?id=${tour._id}`;
   const pageUrl  = window.location.href;
   const hasAudio = !!tour.preview_audio_b64;
-  const lang = tour.preview_language || 'en';
+  const lang = detectLang(tour.preview_language);
   const s = PAGE_STRINGS[lang] || PAGE_STRINGS.en;
   const previewLandmark = tour.preview_landmark || lms[0]?.name || tour.city;
 
@@ -619,7 +633,7 @@ function buildBundlePage(bundle) {
   if (!days.length) { renderError('not_found'); return; }
 
   const firstDay = days[0];
-  const lang = firstDay.preview_language || 'en';
+  const lang = detectLang(firstDay.preview_language);
   const s = PAGE_STRINGS[lang] || PAGE_STRINGS.en;
   const city = firstDay.city || '';
   const totalDays = days.length;
