@@ -377,13 +377,17 @@ function getBundleId() {
 }
 
 async function loadTour(id) {
-  const res = await fetch(`${API_BASE}/api/tours/${id}/public`);
+  const langParam = new URLSearchParams(window.location.search).get('lang');
+  const url = langParam ? `${API_BASE}/api/tours/${id}/public?lang=${encodeURIComponent(langParam)}` : `${API_BASE}/api/tours/${id}/public`;
+  const res = await fetch(url);
   if (!res.ok) throw new Error(res.status === 404 ? 'not_found' : 'error');
   return res.json();
 }
 
 async function loadBundle(bundleId) {
-  const res = await fetch(`${API_BASE}/api/tours/bundle/${bundleId}/public`);
+  const langParam = new URLSearchParams(window.location.search).get('lang');
+  const url = langParam ? `${API_BASE}/api/tours/bundle/${bundleId}/public?lang=${encodeURIComponent(langParam)}` : `${API_BASE}/api/tours/bundle/${bundleId}/public`;
+  const res = await fetch(url);
   if (!res.ok) throw new Error(res.status === 404 ? 'not_found' : 'error');
   return res.json();
 }

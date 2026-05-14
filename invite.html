@@ -83,57 +83,57 @@
 <div class="container invite-page">
     <main>
         <div class="invite-hero">
-            <h1>You've Been Invited!</h1>
-            <p class="invite-subtitle">A friend wants you to explore cities with AI-powered audio guides.</p>
+            <h1 id="txt-title">You've Been Invited!</h1>
+            <p class="invite-subtitle" id="txt-subtitle">A friend wants you to explore cities with AI-powered audio guides.</p>
         </div>
 
         <div class="promo-section">
-            <p class="promo-label">Your Exclusive Promo Code</p>
+            <p class="promo-label" id="txt-promo-label">Your Exclusive Promo Code</p>
             <div class="promo-code-box">
                 <span id="promo-code">ANJOS26</span>
                 <button class="copy-btn" onclick="copyPromoCode()" id="copy-btn">Copy</button>
             </div>
-            <p class="promo-hint">Enter this code when you sign up to get bonus coins.</p>
+            <p class="promo-hint" id="txt-promo-hint">Enter this code when you sign up to get bonus coins.</p>
         </div>
 
         <div class="download-section">
             <div class="download-badges">
-              <a href="https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598?l=en-GB" class="download-btn" target="_blank" id="download-btn" aria-label="Download on the App Store">
-                  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"">
+              <a href="https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598?l=en-GB" class="download-btn" target="_blank" aria-label="Download on the App Store">
+                  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
               </a>
-              <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="download-btn" target="_blank" id="download-btn" aria-label="Get it on Google Play">
+              <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="download-btn" target="_blank" aria-label="Get it on Google Play">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
               </a>
             </div>
-            <p class="download-hint">Tap to download from iPhone or Android.</p>
+            <p class="download-hint" id="txt-download-hint">Tap to download from iPhone or Android.</p>
         </div>
 
         <div class="steps-section">
-            <h3>How to Claim Your Bonus</h3>
+            <h3 id="txt-steps-title">How to Claim Your Bonus</h3>
             <div class="steps">
                 <div class="step">
                     <span class="step-number">1</span>
-                    <span class="step-text">Download Urban Tales</span>
+                    <span class="step-text" id="txt-step1">Download Urban Tales</span>
                 </div>
                 <div class="step">
                     <span class="step-number">2</span>
-                    <span class="step-text">Create an account</span>
+                    <span class="step-text" id="txt-step2">Create an account</span>
                 </div>
                 <div class="step">
                     <span class="step-number">3</span>
-                    <span class="step-text">Enter promo code <strong id="step-code">ANJOS26</strong></span>
+                    <span class="step-text" id="txt-step3">Enter promo code <strong id="step-code">ANJOS26</strong></span>
                 </div>
                 <div class="step">
                     <span class="step-number">4</span>
-                    <span class="step-text">Enjoy your bonus coins! 🎉</span>
+                    <span class="step-text" id="txt-step4">Enjoy your bonus coins! 🎉</span>
                 </div>
             </div>
         </div>
 
         <div class="qr-section">
-            <p class="qr-label">Share this invite</p>
+            <p class="qr-label" id="txt-qr-label">Share this invite</p>
             <div id="qr-code"></div>
-            <p class="qr-hint">Scan to share with friends.</p>
+            <p class="qr-hint" id="txt-qr-hint">Scan to share with friends.</p>
         </div>
     </main>
 
@@ -152,15 +152,124 @@
 </div>
 
 <script>
+    const INVITE_STRINGS = {
+      en: {
+        title: "You've Been Invited!",
+        subtitle: "A friend wants you to explore cities with AI-powered audio guides.",
+        promoLabel: "Your Exclusive Promo Code",
+        promoHint: "Enter this code when you sign up to get bonus coins.",
+        downloadHint: "Tap to download from iPhone or Android.",
+        stepsTitle: "How to Claim Your Bonus",
+        step1: "Download Urban Tales",
+        step2: "Create an account",
+        step3: "Enter promo code",
+        step4: "Enjoy your bonus coins! 🎉",
+        qrLabel: "Share this invite",
+        qrHint: "Scan to share with friends.",
+        copy: "Copy",
+        copied: "Copied!",
+      },
+      "pt-BR": {
+        title: "Você Foi Convidado!",
+        subtitle: "Um amigo quer que você explore cidades com guias de áudio com IA.",
+        promoLabel: "Seu Código Promocional Exclusivo",
+        promoHint: "Digite este código ao se cadastrar para ganhar moedas bônus.",
+        downloadHint: "Toque para baixar no iPhone ou Android.",
+        stepsTitle: "Como Resgatar Seu Bônus",
+        step1: "Baixe o Urban Tales",
+        step2: "Crie uma conta",
+        step3: "Digite o código promocional",
+        step4: "Aproveite suas moedas bônus! 🎉",
+        qrLabel: "Compartilhe este convite",
+        qrHint: "Escaneie para compartilhar com amigos.",
+        copy: "Copiar",
+        copied: "Copiado!",
+      },
+      es: {
+        title: "¡Has Sido Invitado!",
+        subtitle: "Un amigo quiere que explores ciudades con guías de audio con IA.",
+        promoLabel: "Tu Código Promocional Exclusivo",
+        promoHint: "Ingresa este código al registrarte para obtener monedas de bonificación.",
+        downloadHint: "Toca para descargar en iPhone o Android.",
+        stepsTitle: "Cómo Reclamar Tu Bonificación",
+        step1: "Descarga Urban Tales",
+        step2: "Crea una cuenta",
+        step3: "Introduce el código promocional",
+        step4: "¡Disfruta tus monedas bônus! 🎉",
+        qrLabel: "Comparte esta invitación",
+        qrHint: "Escanea para compartir con amigos.",
+        copy: "Copiar",
+        copied: "¡Copiado!",
+      },
+      fr: {
+        title: "Vous Avez Été Invité !",
+        subtitle: "Un ami veut que vous exploriez des villes avec des guides audio IA.",
+        promoLabel: "Votre Code Promo Exclusif",
+        promoHint: "Entrez ce code lors de votre inscription pour recevoir des pièces bonus.",
+        downloadHint: "Appuyez pour télécharger sur iPhone ou Android.",
+        stepsTitle: "Comment Réclamer Votre Bonus",
+        step1: "Téléchargez Urban Tales",
+        step2: "Créez un compte",
+        step3: "Entrez le code promo",
+        step4: "Profitez de vos pièces bonus ! 🎉",
+        qrLabel: "Partagez cette invitation",
+        qrHint: "Scannez pour partager avec des amis.",
+        copy: "Copier",
+        copied: "Copié !",
+      },
+      de: {
+        title: "Du Wurdest Eingeladen!",
+        subtitle: "Ein Freund möchte, dass du Städte mit KI-Audioführern erkundest.",
+        promoLabel: "Dein Exklusiver Promo-Code",
+        promoHint: "Gib diesen Code bei der Registrierung ein, um Bonus-Münzen zu erhalten.",
+        downloadHint: "Tippe zum Herunterladen auf iPhone oder Android.",
+        stepsTitle: "So Beanspruchst Du Deinen Bonus",
+        step1: "Urban Tales herunterladen",
+        step2: "Konto erstellen",
+        step3: "Promo-Code eingeben",
+        step4: "Genieße deine Bonus-Münzen! 🎉",
+        qrLabel: "Diese Einladung teilen",
+        qrHint: "Scannen, um mit Freunden zu teilen.",
+        copy: "Kopieren",
+        copied: "Kopiert!",
+      },
+    };
+
+    function detectLang() {
+      const params = new URLSearchParams(window.location.search);
+      const paramLang = params.get('lang');
+      if (paramLang && INVITE_STRINGS[paramLang]) return paramLang;
+      const nav = navigator.language || 'en';
+      const exact = Object.keys(INVITE_STRINGS).find(k => k.toLowerCase() === nav.toLowerCase());
+      if (exact) return exact;
+      const prefix = nav.split('-')[0].toLowerCase();
+      const prefixMatch = Object.keys(INVITE_STRINGS).find(k => k.toLowerCase().startsWith(prefix));
+      return prefixMatch || 'en';
+    }
+
+    const lang = detectLang();
+    const s = INVITE_STRINGS[lang];
+
     const urlParams = new URLSearchParams(window.location.search);
     const promoCode = urlParams.get('code') || 'ANJOS26';
 
     document.getElementById('promo-code').textContent = promoCode;
     document.getElementById('step-code').textContent = promoCode;
 
-    // Preserve the actual route serving the page:
-    // - https://urbantales.net/invite?code=...
-    // - https://urbantales.net/invite.html?code=...
+    document.getElementById('txt-title').textContent = s.title;
+    document.getElementById('txt-subtitle').textContent = s.subtitle;
+    document.getElementById('txt-promo-label').textContent = s.promoLabel;
+    document.getElementById('txt-promo-hint').textContent = s.promoHint;
+    document.getElementById('txt-download-hint').textContent = s.downloadHint;
+    document.getElementById('txt-steps-title').textContent = s.stepsTitle;
+    document.getElementById('txt-step1').textContent = s.step1;
+    document.getElementById('txt-step2').textContent = s.step2;
+    document.getElementById('txt-step3').innerHTML = s.step3 + ' <strong id="step-code-inner">' + promoCode + '</strong>';
+    document.getElementById('txt-step4').textContent = s.step4;
+    document.getElementById('txt-qr-label').textContent = s.qrLabel;
+    document.getElementById('txt-qr-hint').textContent = s.qrHint;
+    document.getElementById('copy-btn').textContent = s.copy;
+
     const invitePath = window.location.pathname || '/invite';
     const currentUrl = `${window.location.origin}${invitePath}?code=${encodeURIComponent(promoCode)}`;
 
@@ -177,10 +286,10 @@
         const code = document.getElementById('promo-code').textContent;
         navigator.clipboard.writeText(code).then(() => {
             const btn = document.getElementById('copy-btn');
-            btn.textContent = 'Copied!';
+            btn.textContent = s.copied;
             btn.classList.add('copied');
             setTimeout(() => {
-                btn.textContent = 'Copy';
+                btn.textContent = s.copy;
                 btn.classList.remove('copied');
             }, 2000);
         });
