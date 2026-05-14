@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Urban Tales — Tour Preview</title>
-  <meta name="description" content="Explore this guided tour on Urban Tales — AI-powered audio stories for every landmark.">
+  <meta name="description" content="Explore this guided tour on Urban Tales — audio stories for every landmark.">
 
   <!-- Open Graph (filled dynamically) -->
   <meta property="og:type" content="website">
@@ -346,10 +346,10 @@
 
 <!-- Top Navigation -->
 <div class="topbar">
-  <span class="topbar-logo">🏛️</span>
+  <img src="icon.png" style="width:32px;height:32px;border-radius:8px;flex-shrink:0;" alt="Urban Tales">
   <div>
     <div class="topbar-brand">URBAN TALES</div>
-    <div class="topbar-sub">AI AUDIO GUIDE</div>
+    <div class="topbar-sub">AUDIO GUIDE</div>
   </div>
 </div>
 
@@ -404,10 +404,10 @@ const PAGE_STRINGS = {
     audioLabel:   '🎧 Audio Preview',
     previewNotice: '<b>This is a preview.</b> The full story for every landmark is waiting in the app — download Urban Tales to hear them all.',
     audioAlt:     '🎧 Audio Stories',
-    audioAltDesc: 'Every landmark has an AI-generated audio story — available in the app.',
+    audioAltDesc: 'Every landmark has a narrated audio story — available in the app.',
     landmarks:    'Landmarks on this tour',
     ctaTitle:     'Hear every story for free',
-    ctaDesc:      'Download Urban Tales and follow this tour instantly. AI-narrated stories play as you walk.',
+    ctaDesc:      'Download Urban Tales and follow this tour instantly. Stories play as you walk.',
     openBtn:      'Open in Urban Tales App',
     by:           'By',
     following:    'following',
@@ -419,10 +419,10 @@ const PAGE_STRINGS = {
     audioLabel:   '🎧 Aperçu Audio',
     previewNotice: '<b>C\'est un aperçu.</b> L\'histoire complète de chaque lieu vous attend dans l\'app — téléchargez Urban Tales pour tout entendre.',
     audioAlt:     '🎧 Histoires Audio',
-    audioAltDesc: 'Chaque lieu a une histoire générée par IA — disponible dans l\'app.',
+    audioAltDesc: 'Chaque lieu a une histoire audio narrée — disponible dans l\'app.',
     landmarks:    'Lieux de ce parcours',
     ctaTitle:     'Écoutez chaque histoire gratuitement',
-    ctaDesc:      'Téléchargez Urban Tales et suivez ce parcours instantanément. Des histoires IA jouent pendant votre promenade.',
+    ctaDesc:      'Téléchargez Urban Tales et suivez ce parcours instantanément. Les histoires jouent pendant votre promenade.',
     openBtn:      'Ouvrir dans Urban Tales',
     by:           'Par',
     following:    'abonnés',
@@ -434,10 +434,10 @@ const PAGE_STRINGS = {
     audioLabel:   '🎧 Vista Previa de Audio',
     previewNotice: '<b>Esta es una vista previa.</b> La historia completa de cada lugar te espera en la app — descarga Urban Tales para escucharlas todas.',
     audioAlt:     '🎧 Historias de Audio',
-    audioAltDesc: 'Cada lugar tiene una historia generada por IA — disponible en la app.',
+    audioAltDesc: 'Cada lugar tiene una historia narrada en audio — disponible en la app.',
     landmarks:    'Lugares de este recorrido',
     ctaTitle:     'Escucha cada historia gratis',
-    ctaDesc:      'Descarga Urban Tales y sigue este recorrido al instante. Historias narradas por IA mientras caminas.',
+    ctaDesc:      'Descarga Urban Tales y sigue este recorrido al instante. Las historias suenan mientras caminas.',
     openBtn:      'Abrir en Urban Tales',
     by:           'Por',
     following:    'seguidores',
@@ -449,10 +449,10 @@ const PAGE_STRINGS = {
     audioLabel:   '🎧 Audiovorschau',
     previewNotice: '<b>Dies ist eine Vorschau.</b> Die vollständige Geschichte für jedes Wahrzeichen wartet in der App — lade Urban Tales herunter.',
     audioAlt:     '🎧 Audio-Geschichten',
-    audioAltDesc: 'Jedes Wahrzeichen hat eine KI-generierte Audiogeschichte — verfügbar in der App.',
+    audioAltDesc: 'Jedes Wahrzeichen hat eine erzählte Audiogeschichte — verfügbar in der App.',
     landmarks:    'Sehenswürdigkeiten dieser Tour',
     ctaTitle:     'Jede Geschichte kostenlos hören',
-    ctaDesc:      'Lade Urban Tales herunter und folge dieser Tour sofort. KI-Geschichten spielen während des Spazierens.',
+    ctaDesc:      'Lade Urban Tales herunter und folge dieser Tour sofort. Geschichten spielen während des Spazierens.',
     openBtn:      'In Urban Tales öffnen',
     by:           'Von',
     following:    'Folgende',
@@ -464,10 +464,10 @@ const PAGE_STRINGS = {
     audioLabel:   '🎧 Prévia de Áudio',
     previewNotice: '<b>Esta é uma prévia.</b> A história completa de cada ponto turístico está esperando no app — baixe o Urban Tales para ouvir tudo.',
     audioAlt:     '🎧 Histórias em Áudio',
-    audioAltDesc: 'Cada ponto turístico tem uma história gerada por IA — disponível no app.',
+    audioAltDesc: 'Cada ponto turístico tem uma história narrada em áudio — disponível no app.',
     landmarks:    'Pontos turísticos deste passeio',
     ctaTitle:     'Ouça cada história de graça',
-    ctaDesc:      'Baixe o Urban Tales e siga este passeio instantaneamente. Histórias narradas por IA enquanto você caminha.',
+    ctaDesc:      'Baixe o Urban Tales e siga este passeio instantaneamente. As histórias tocam enquanto você caminha.',
     openBtn:      'Abrir no Urban Tales',
     by:           'Por',
     following:    'seguidores',
@@ -506,7 +506,7 @@ function buildPage(tour) {
   // Update OG tags
   document.title = `${tour.name} — Urban Tales`;
   document.querySelector('[property="og:title"]')?.setAttribute('content', `${tour.name} in ${tour.city} — Urban Tales`);
-  document.querySelector('[property="og:description"]')?.setAttribute('content', `Explore ${lms.length} landmarks in ${tour.city} with AI-powered audio stories.`);
+  document.querySelector('[property="og:description"]')?.setAttribute('content', `Explore ${lms.length} landmarks in ${tour.city} with narrated audio stories.`);
   document.querySelector('[property="og:url"]')?.setAttribute('content', pageUrl);
 
   // Landmark rows
@@ -567,7 +567,6 @@ function buildPage(tour) {
       </div>
 
       <div class="cta-section">
-        <div class="cta-icon">📱</div>
         <div class="cta-title">${s.ctaTitle}</div>
         <div class="cta-desc">${s.ctaDesc}</div>
         <a href="${deepLink}" class="open-in-app-btn">
@@ -586,7 +585,7 @@ function buildPage(tour) {
       </div>
 
       <div class="page-footer">
-        <p>© 2025 Urban Tales &nbsp;·&nbsp; <a href="https://urbantales.net">urbantales.net</a> &nbsp;·&nbsp; <a href="https://urbantales.net/privacy">Privacy</a></p>
+        <p>© 2026 Urban Tales &nbsp;·&nbsp; <a href="https://urbantales.net">urbantales.net</a> &nbsp;·&nbsp; <a href="https://urbantales.net/privacy">Privacy</a></p>
       </div>
     </div>
   `;
@@ -646,7 +645,7 @@ function buildBundlePage(bundle) {
   document.documentElement.lang = lang;
   document.title = `${city} ${totalDays}${s.dayTripLabel} — Urban Tales`;
   document.querySelector('[property="og:title"]')?.setAttribute('content', `${city} ${totalDays}${s.dayTripLabel} — Urban Tales`);
-  document.querySelector('[property="og:description"]')?.setAttribute('content', `Explore ${totalLandmarks} landmarks across ${totalDays} days in ${city} with AI-powered audio stories.`);
+  document.querySelector('[property="og:description"]')?.setAttribute('content', `Explore ${totalLandmarks} landmarks across ${totalDays} days in ${city} with narrated audio stories.`);
 
   const tabsHtml = days.map((d, i) => `
     <button class="day-tab ${i === 0 ? 'active' : ''}" onclick="switchBundleDay(${i})" id="tab-${i}">
@@ -679,14 +678,13 @@ function buildBundlePage(bundle) {
       <div class="day-tabs">${tabsHtml}</div>
       <div id="day-content"></div>
       <div class="cta-section">
-        <div class="cta-icon">📱</div>
         <div class="cta-title">${s.ctaTitle}</div>
         <div class="cta-desc">${s.ctaDesc}</div>
         <a href="urbantales://tour?id=${days[0]._id}" class="open-in-app-btn">${s.openBtn}</a>
         <div class="store-badges">${storeButtons}</div>
       </div>
       <div class="page-footer">
-        <p>© 2025 Urban Tales &nbsp;·&nbsp; <a href="https://urbantales.net">urbantales.net</a> &nbsp;·&nbsp; <a href="https://urbantales.net/privacy">Privacy</a></p>
+        <p>© 2026 Urban Tales &nbsp;·&nbsp; <a href="https://urbantales.net">urbantales.net</a> &nbsp;·&nbsp; <a href="https://urbantales.net/privacy">Privacy</a></p>
       </div>
     </div>
   `;

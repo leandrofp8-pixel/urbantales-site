@@ -22,7 +22,7 @@
       text-align: center;
       box-shadow: 0 24px 60px rgba(0,0,0,.4);
     }
-    .avatar { font-size: 64px; margin-bottom: 16px; }
+    .logo { width: 56px; height: 56px; border-radius: 14px; margin-bottom: 24px; }
     .title { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
     .subtitle { font-size: 15px; color: #aaa; margin: 0 0 32px; line-height: 1.5; }
     .open-btn {
@@ -34,48 +34,95 @@
     .open-btn:hover { background: #e55a25; }
     .store-row { display: flex; gap: 10px; margin-top: 4px; }
     .store-btn {
-      flex: 1; padding: 12px 8px;
+      flex: 1; padding: 10px 8px;
       background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
       border-radius: 12px; color: #ccc; font-size: 13px; font-weight: 600;
       text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px;
     }
     .store-btn:hover { background: rgba(255,255,255,.10); }
+    .store-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
     .divider { font-size: 12px; color: #555; margin: 16px 0 12px; }
-    .logo { width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px; }
   </style>
 </head>
 <body>
   <div class="page">
     <div class="card">
       <img src="icon.png" class="logo" alt="Urban Tales" />
-      <div class="avatar">👋</div>
       <h1 class="title" id="invite-title">Someone wants to be your friend!</h1>
       <p class="subtitle" id="invite-sub">Open Urban Tales to accept the friend request and compare your city explorations on the leaderboard.</p>
 
-      <a class="open-btn" id="open-app-btn" href="#">Open in Urban Tales</a>
+      <a class="open-btn" id="open-app-btn" href="#" id="txt-open-btn">Open in Urban Tales</a>
 
-      <div class="divider">Don't have the app yet?</div>
+      <div class="divider" id="txt-divider">Don't have the app yet?</div>
       <div class="store-row">
         <a class="store-btn" href="https://apps.apple.com/us/app/urban-tales-city-explorer/id6760130598" target="_blank">
-          🍎 App Store
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
         </a>
         <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.urbantales.app" target="_blank">
-          ▶ Google Play
+          <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.28.15.6.15.88.02l11.65-6.64-2.55-2.55L3.18 23.76zm-1.14-20.2C1.73 3.93 1.5 4.35 1.5 4.89v14.22c0 .54.23.96.54 1.32l.06.06 7.97-7.97v-.19L2.04 3.56zm16.84 8.73l-2.25-1.28-2.84 2.84 2.84 2.84 2.26-1.29c.64-.37.64-.97 0-1.34l-.01.03zM4.07.25l12.89 7.34-2.55 2.55L4.07.25z"/></svg>
+          Google Play
         </a>
       </div>
     </div>
   </div>
 
   <script>
+    const STRINGS = {
+      en: {
+        title: (name) => name ? `${name} wants to be your friend!` : 'Someone wants to be your friend!',
+        sub:   (name) => name ? `Open Urban Tales to accept ${name}'s friend request and compete on the leaderboard.` : 'Open Urban Tales to accept the friend request and compare your city explorations on the leaderboard.',
+        openBtn: 'Open in Urban Tales',
+        divider: "Don't have the app yet?",
+      },
+      'pt-BR': {
+        title: (name) => name ? `${name} quer ser seu amigo!` : 'Alguém quer ser seu amigo!',
+        sub:   (name) => name ? `Abra o Urban Tales para aceitar o pedido de amizade de ${name} e competir no ranking.` : 'Abra o Urban Tales para aceitar o pedido de amizade e comparar suas explorações.',
+        openBtn: 'Abrir no Urban Tales',
+        divider: 'Não tem o app ainda?',
+      },
+      es: {
+        title: (name) => name ? `¡${name} quiere ser tu amigo!` : '¡Alguien quiere ser tu amigo!',
+        sub:   (name) => name ? `Abre Urban Tales para aceptar la solicitud de ${name} y competir en el ranking.` : 'Abre Urban Tales para aceptar la solicitud de amistad y comparar tus exploraciones.',
+        openBtn: 'Abrir en Urban Tales',
+        divider: '¿No tienes la app todavía?',
+      },
+      fr: {
+        title: (name) => name ? `${name} veut être votre ami !` : 'Quelqu\'un veut être votre ami !',
+        sub:   (name) => name ? `Ouvrez Urban Tales pour accepter la demande de ${name} et concourir sur le classement.` : 'Ouvrez Urban Tales pour accepter la demande d\'amitié et comparer vos explorations.',
+        openBtn: 'Ouvrir dans Urban Tales',
+        divider: "Vous n'avez pas encore l'app ?",
+      },
+      de: {
+        title: (name) => name ? `${name} möchte dein Freund sein!` : 'Jemand möchte dein Freund sein!',
+        sub:   (name) => name ? `Öffne Urban Tales, um die Freundschaftsanfrage von ${name} anzunehmen und im Ranking zu konkurrieren.` : 'Öffne Urban Tales, um die Freundschaftsanfrage anzunehmen und deine Erkundungen zu vergleichen.',
+        openBtn: 'In Urban Tales öffnen',
+        divider: 'Noch keine App?',
+      },
+    };
+
+    function detectLang() {
+      const params = new URLSearchParams(window.location.search);
+      const p = params.get('lang');
+      if (p && STRINGS[p]) return p;
+      const nav = navigator.language || 'en';
+      const exact = Object.keys(STRINGS).find(k => k.toLowerCase() === nav.toLowerCase());
+      if (exact) return exact;
+      const prefix = nav.split('-')[0].toLowerCase();
+      const match = Object.keys(STRINGS).find(k => k.toLowerCase().startsWith(prefix));
+      return match || 'en';
+    }
+
     const params = new URLSearchParams(window.location.search);
     const userId = params.get('userId');
     const name   = params.get('name');
+    const lang   = detectLang();
+    const s      = STRINGS[lang];
 
-    if (name) {
-      document.getElementById('invite-title').textContent = name + ' wants to be your friend!';
-      document.getElementById('invite-sub').textContent =
-        'Open Urban Tales to accept ' + name + '\'s friend request and compete on the leaderboard.';
-    }
+    document.getElementById('invite-title').textContent = s.title(name);
+    document.getElementById('invite-sub').textContent   = s.sub(name);
+    document.getElementById('open-app-btn').textContent = s.openBtn;
+    document.getElementById('txt-divider').textContent  = s.divider;
 
     const deepLink = userId ? 'urbantales://add-friend?userId=' + encodeURIComponent(userId) : 'urbantales://';
     const btn = document.getElementById('open-app-btn');
@@ -84,14 +131,12 @@
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       window.location.href = deepLink;
-      // After 2s, if still here, user doesn't have app — show store links
       setTimeout(function() {
         document.querySelector('.divider').style.display = 'block';
         document.querySelector('.store-row').style.display = 'flex';
       }, 2000);
     });
 
-    // Auto-attempt open on page load (mobile only)
     if (/iPhone|iPad|Android/i.test(navigator.userAgent) && userId) {
       setTimeout(function() { window.location.href = deepLink; }, 300);
     }
