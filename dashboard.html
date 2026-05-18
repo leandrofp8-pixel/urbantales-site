@@ -162,7 +162,18 @@
       background: rgba(255,107,53,.12); color: var(--primary);
       border: 1px solid rgba(255,107,53,.3); border-radius: 20px;
       padding: 6px 14px; font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+      cursor: pointer; transition: background .15s;
     }
+    .audience-badge:hover { background: rgba(255,107,53,.22); }
+    .audience-list-modal { width: 560px; max-width: 95vw; max-height: 80vh; display: flex; flex-direction: column; }
+    .audience-list-modal h2 { font-size: 1.1rem; margin-bottom: 4px; }
+    .audience-list-modal .modal-sub { color: var(--muted); font-size: 0.82rem; margin-bottom: 16px; }
+    .audience-table-wrap { overflow-y: auto; flex: 1; border: 1px solid var(--border); border-radius: 8px; }
+    .audience-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .audience-table th { background: #111; color: var(--muted); text-align: left; padding: 8px 12px; position: sticky; top: 0; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--border); }
+    .audience-table td { padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .audience-table tr:last-child td { border-bottom: none; }
+    .audience-table tr:hover td { background: rgba(255,255,255,.03); }
     .lang-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
     .lang-tab-btn {
       background: none; border: none; color: var(--muted); font-size: 0.82rem;
@@ -725,7 +736,7 @@
               <input class="notif-input" id="nFilterValue" type="text" placeholder="e.g. 14" />
             </div>
             <button class="btn-translate" onclick="checkAudience()" style="flex:0">Check Audience</button>
-            <div class="audience-badge" id="audienceBadge" style="display:none">— users</div>
+            <div class="audience-badge" id="audienceBadge" style="display:none" onclick="showAudienceModal()">— users</div>
           </div>
         </div>
 
@@ -856,6 +867,22 @@
 </div>
 
 <!-- SEND CONFIRMATION MODAL -->
+<div class="notif-modal-overlay" id="audienceModal" onclick="if(event.target===this)closeAudienceModal()">
+  <div class="notif-modal audience-list-modal">
+    <h2>Audience — <span id="audienceModalSegment"></span></h2>
+    <div class="modal-sub" id="audienceModalCount"></div>
+    <div class="audience-table-wrap" id="audienceTableWrap">
+      <table class="audience-table">
+        <thead><tr><th>#</th><th>Name</th><th>Email</th></tr></thead>
+        <tbody id="audienceTableBody"></tbody>
+      </table>
+    </div>
+    <div class="modal-actions" style="margin-top:16px">
+      <button class="btn-cancel" onclick="closeAudienceModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 <div class="notif-modal-overlay" id="sendModal">
   <div class="notif-modal">
     <h2>Confirm Send</h2>
@@ -1781,6 +1808,32 @@ async function checkAudience() {
     currentAudienceCount = res.count;
     badge.textContent = `~${fmt(res.count)} users`;
   } catch(e) { badge.textContent = 'Error'; }
+}
+
+async function showAudienceModal() {
+  const type  = document.getElementById('nFilterType').value;
+  const value = document.getElementById('nFilterValue').value.trim();
+  const segmentLabel = document.getElementById('nFilterType').options[document.getElementById('nFilterType').selectedIndex].text;
+  document.getElementById('audienceModalSegment').textContent = segmentLabel;
+  document.getElementById('audienceModalCount').textContent = 'Loading…';
+  document.getElementById('audienceTableBody').innerHTML = '';
+  document.getElementById('audienceModal').classList.add('open');
+  try {
+    const params = new URLSearchParams({ filter_type: type });
+    if (value) params.set('filter_value', value);
+    const res = await api(`/admin/notification-audience?${params}`);
+    const users = res.users || [];
+    document.getElementById('audienceModalCount').textContent = `${users.length} user${users.length !== 1 ? 's' : ''}`;
+    document.getElementById('audienceTableBody').innerHTML = users.length
+      ? users.map((u, i) => `<tr><td style="color:var(--muted)">${i+1}</td><td>${u.name || '—'}</td><td style="color:var(--muted)">${u.email}</td></tr>`).join('')
+      : '<tr><td colspan="3" style="text-align:center;color:var(--muted);padding:24px">No users found</td></tr>';
+  } catch(e) {
+    document.getElementById('audienceModalCount').textContent = 'Failed to load';
+  }
+}
+
+function closeAudienceModal() {
+  document.getElementById('audienceModal').classList.remove('open');
 }
 
 function applyTemplate() {
