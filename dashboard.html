@@ -264,6 +264,7 @@
     <button class="tab-btn" onclick="showTab('users')">Free Users</button>
     <button class="tab-btn" onclick="showTab('acquisition')">Acquisition</button>
     <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
+    <button class="tab-btn" onclick="showTab('viator')">🎫 Viator</button>
   </nav>
 
   <main>
@@ -809,6 +810,45 @@
           <div class="notif-result" id="notifResult"></div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- ── VIATOR ── -->
+    <div class="tab-panel" id="panel-viator">
+      <div class="grid-4" id="viatorKpis">
+        <div class="card"><div class="loading">Loading…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+      </div>
+      <div class="grid-2" style="margin-top:24px;margin-bottom:24px">
+        <div class="card">
+          <div class="card-title">Daily Clicks</div>
+          <div class="chart-wrap-lg"><canvas id="chartViatorDaily"></canvas></div>
+        </div>
+        <div class="grid-1" style="display:flex;flex-direction:column;gap:16px">
+          <div class="card" style="flex:1">
+            <div class="card-title">By Link Type</div>
+            <div id="viatorByType"></div>
+          </div>
+          <div class="card" style="flex:1">
+            <div class="card-title">By Screen</div>
+            <div id="viatorBySource"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-header"><h2>🏛️ Top Landmarks by Clicks</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>#</th><th>Landmark</th><th>City</th><th>Clicks</th></tr>
+            </thead>
+            <tbody id="viatorLandmarksBody">
+              <tr><td colspan="4" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -1626,6 +1666,69 @@ function renderAcquisition(acq, freeUsers) {
 }
 
 // ══════════════════════════════════════════════
+// VIATOR TAB
+// ══════════════════════════════════════════════
+function renderViator(v) {
+  if (!v) {
+    document.getElementById('viatorKpis').innerHTML =
+      `<div class="card" style="grid-column:1/-1"><div class="kpi-sub" style="padding:16px">No data yet — tracking starts once the new app version is live.</div></div>`;
+    document.getElementById('viatorLandmarksBody').innerHTML = `<tr><td colspan="4" class="loading">No data yet.</td></tr>`;
+    return;
+  }
+
+  const TYPE_LABELS = { experience: '🎟️ Experience card', search: '🔍 See all on Viator', gyg: '🗺️ GetYourGuide' };
+  const SOURCE_LABELS = { walk: '🚶 Walk & Listen', explore: '🔎 Explore', tour: '🗺️ Tours' };
+
+  const totalClicks = v.total_clicks || 0;
+  const uniqueUsers = v.unique_users || 0;
+  const topType = (v.by_type || [])[0];
+  const topSource = (v.by_source || [])[0];
+
+  document.getElementById('viatorKpis').innerHTML =
+    kpiCard('Total Clicks', fmt(totalClicks), 'Viator + GYG combined', null, null) +
+    kpiCard('Unique Users', fmt(uniqueUsers), 'Clicked at least once', null, null) +
+    kpiCard('Top Link Type', topType ? (TYPE_LABELS[topType._id] || topType._id) : '—', topType ? fmt(topType.count) + ' clicks' : 'No data', null, null) +
+    kpiCard('Top Screen', topSource ? (SOURCE_LABELS[topSource._id] || topSource._id) : '—', topSource ? fmt(topSource.count) + ' clicks' : 'No data', null, null);
+
+  // Daily trend
+  const dailyData = (v.daily || []);
+  lineChart('chartViatorDaily', dailyData.map(d => shortDate(d._id)), [
+    { label: 'Clicks', data: dailyData.map(d => d.count), color: C.primary }
+  ]);
+
+  // By type breakdown
+  const byType = v.by_type || [];
+  document.getElementById('viatorByType').innerHTML = byType.length === 0
+    ? `<div class="kpi-sub" style="padding:12px">No data yet.</div>`
+    : byType.map(t => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)">
+          <span style="font-size:0.9rem">${TYPE_LABELS[t._id] || t._id}</span>
+          <strong>${fmt(t.count)}</strong>
+        </div>`).join('');
+
+  // By source breakdown
+  const bySource = v.by_source || [];
+  document.getElementById('viatorBySource').innerHTML = bySource.length === 0
+    ? `<div class="kpi-sub" style="padding:12px">No data yet.</div>`
+    : bySource.map(s => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)">
+          <span style="font-size:0.9rem">${SOURCE_LABELS[s._id] || s._id}</span>
+          <strong>${fmt(s.count)}</strong>
+        </div>`).join('');
+
+  // Top landmarks table
+  const landmarks = v.top_landmarks || [];
+  document.getElementById('viatorLandmarksBody').innerHTML = landmarks.length === 0
+    ? `<tr><td colspan="4" class="loading">No data yet.</td></tr>`
+    : landmarks.map((l, i) => `<tr>
+        <td style="color:var(--muted)">${i+1}</td>
+        <td><strong>${l._id || '—'}</strong></td>
+        <td>${l.city || '—'}</td>
+        <td><strong>${fmt(l.clicks)}</strong></td>
+      </tr>`).join('');
+}
+
+// ══════════════════════════════════════════════
 // NOTIFICATIONS TAB
 // ══════════════════════════════════════════════
 const LANGS = ['en', 'pt-BR', 'es', 'fr', 'de'];
@@ -1849,7 +1952,7 @@ async function runAggregation() {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator] = await Promise.all([
       api(`/analytics/kpi/funnel?days=${days}`),
       api(`/analytics/kpi/funnel-cohort?days=${days}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -1860,6 +1963,7 @@ async function loadAllData() {
       api(`/analytics/tours?days=${days}`),
       api(`/analytics/kpi/acquisition`),
       api(`/admin/analytics/listen-completion`).catch(() => null),
+      api(`/admin/analytics/viator-clicks?days=${days}`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers);
@@ -1870,6 +1974,7 @@ async function loadAllData() {
     renderCosts(costs, funnel);
     renderFreeUsers(freeUsers, cohortsMonthly);
     renderAcquisition(acquisition, freeUsers);
+    renderViator(viator);
   } catch (e) {
     console.error('Dashboard load error:', e);
   }
