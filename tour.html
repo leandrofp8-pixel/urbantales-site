@@ -680,7 +680,7 @@ function buildBundlePage(bundle) {
       <div class="cta-section">
         <div class="cta-title">${s.ctaTitle}</div>
         <div class="cta-desc">${s.ctaDesc}</div>
-        <a href="urbantales://tour?id=${days[0]._id}" class="open-in-app-btn" id="openInAppBtn">${s.openBtn}</a>
+        <a href="urbantales://bundle?id=${getBundleId()}" class="open-in-app-btn" id="openInAppBtn">${s.openBtn}</a>
         <div class="store-badges">${storeButtons}</div>
       </div>
       <div class="page-footer">
@@ -750,9 +750,6 @@ window.switchBundleDay = function(index) {
     if (tab) tab.classList.toggle('active', i === index);
   });
   renderBundleDay(index);
-  const day = (window._bundleDays || [])[index];
-  const btn = document.getElementById('openInAppBtn');
-  if (btn && day) btn.href = `urbantales://tour?id=${day._id}`;
 };
 
 function renderError(type) {
