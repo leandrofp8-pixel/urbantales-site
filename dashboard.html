@@ -425,6 +425,13 @@
       </div>
 
       <div class="card" style="margin-bottom:24px">
+        <div class="section-header"><h2>🎧 Audio Completion by Landmark Tier</h2></div>
+        <div class="grid-4" id="listenCompletionCards">
+          <div class="card"><div class="loading">Loading…</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
         <div class="section-header"><h2>🏛️ Top Landmarks</h2></div>
         <div class="table-wrap">
           <table>
@@ -1160,7 +1167,7 @@ const STYLE_LABELS = {
   fun_facts: 'Fun Facts',  cinematic: 'Cinematic'
 };
 
-function renderContent(content, funnel) {
+function renderContent(content, funnel, listenCompletion) {
   // ── Daily Narrations chart (still pulls from funnel.daily_data) ──
   const funnelDaily = [...(funnel.daily_data || [])].reverse();
   const labels = funnelDaily.map(d => shortDate(d.date));
@@ -1231,6 +1238,24 @@ function renderContent(content, funnel) {
           <td>${fmt(c.cache_misses)}</td>
           <td><span class="pill badge-${rateClass}">${rate}%</span></td>
         </tr>`;
+      }).join('');
+
+  // Audio completion by tier
+  const TIER_LABELS = { MAJOR: '🏛️ Major', NOTABLE: '⭐ Notable', LOCAL: '📍 Local' };
+  const tiers = listenCompletion?.by_tier || [];
+  const sinceDate = listenCompletion?.tracking_since ? new Date(listenCompletion.tracking_since).toLocaleDateString() : null;
+  document.getElementById('listenCompletionCards').innerHTML = tiers.length === 0
+    ? `<div style="grid-column:1/-1;padding:16px;color:var(--muted);font-size:0.85rem">No data yet — tracking starts once the new app version ships.</div>`
+    : tiers.map(t => {
+        const pct = Math.round(t.avg_pct || 0);
+        const badge = pct >= 75 ? 'green' : pct >= 50 ? 'yellow' : 'orange';
+        return kpiCard(
+          TIER_LABELS[t._id] || t._id,
+          pct + '%',
+          `avg completion · ${fmt(t.count)} events${sinceDate ? ' · since ' + sinceDate : ''}`,
+          pct >= 75 ? '✓ Good' : pct < 40 ? '↓ Too long?' : null,
+          badge
+        );
       }).join('');
 }
 
@@ -1824,7 +1849,7 @@ async function runAggregation() {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion] = await Promise.all([
       api(`/analytics/kpi/funnel?days=${days}`),
       api(`/analytics/kpi/funnel-cohort?days=${days}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -1834,12 +1859,13 @@ async function loadAllData() {
       api(`/analytics/content?days=${days}`),
       api(`/analytics/tours?days=${days}`),
       api(`/analytics/kpi/acquisition`),
+      api(`/admin/analytics/listen-completion`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers);
     renderFunnel(cohortFunnel, funnel, freeUsers);
     renderCohorts(cohortsMonthly);
-    renderContent(content, funnel);
+    renderContent(content, funnel, listenCompletion);
     renderTours(tours);
     renderCosts(costs, funnel);
     renderFreeUsers(freeUsers, cohortsMonthly);
