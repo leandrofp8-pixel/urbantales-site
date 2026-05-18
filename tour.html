@@ -752,7 +752,7 @@ window.switchBundleDay = function(index) {
   renderBundleDay(index);
   const day = (window._bundleDays || [])[index];
   const btn = document.getElementById('openInAppBtn');
-  if (btn && day) btn.href = `urbantales://tour?id=${day._id}`;
+  if (btn && day) btn.setAttribute('href', `urbantales://tour?id=${day._id}`);
 };
 
 function renderError(type) {
