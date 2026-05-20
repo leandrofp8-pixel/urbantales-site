@@ -2210,7 +2210,7 @@ function renderInfluencerAccounts(data) {
           <td style="color:var(--muted);font-size:.82rem">${a.email}</td>
           <td style="font-size:.82rem;color:var(--muted)">${socials || '—'}</td>
           <td style="font-size:.82rem;color:var(--muted)">${fmtDate(a.created_at)}</td>
-          <td><input type="number" id="payout_${a._id}" value="15" min="1" max="100" step="1"
+          <td><input type="number" id="payout_${a._id}" value="15" min="0" max="100" step="1"
             style="width:60px;background:#111;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:4px 8px;font-size:.82rem"> %</td>
           <td>
             <button onclick="approveInfluencer('${a._id}','${a.name}')"
@@ -2227,14 +2227,14 @@ function renderInfluencerAccounts(data) {
         <td><strong>${a.name || '—'}</strong></td>
         <td style="color:var(--muted);font-size:.82rem">${a.email}</td>
         <td style="font-family:monospace;color:var(--primary)">${a.promo_code || '—'}</td>
-        <td>${((a.payout_rate || 0.15) * 100).toFixed(0)}%</td>
+        <td>${((a.payout_rate != null ? a.payout_rate : 0.15) * 100).toFixed(0)}%</td>
         <td style="font-size:.82rem;color:var(--muted)">${fmtDate(a.approved_at)}</td>
       </tr>`).join('');
 }
 
 async function approveInfluencer(id, name) {
   const payoutInput = document.getElementById(`payout_${id}`);
-  const payout_rate = parseFloat(payoutInput?.value || 15) / 100;
+  const payout_rate = parseFloat(payoutInput?.value ?? 15) / 100;
   if (!confirm(`Approve ${name} with ${Math.round(payout_rate * 100)}% payout rate?`)) return;
 
   payoutInput.closest('tr').querySelector('button').textContent = '⏳…';
