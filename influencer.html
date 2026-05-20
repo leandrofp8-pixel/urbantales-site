@@ -83,6 +83,8 @@
     .code-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .09em; font-weight: 700; margin-bottom: .3rem; }
     .code-value { font-size: 2.4rem; font-weight: 900; letter-spacing: 5px; color: var(--accent); line-height: 1; }
     .code-pct { font-size: .9rem; color: var(--muted); margin-top: .3rem; }
+    .code-all { font-size: .78rem; color: var(--muted); margin-top: .5rem; }
+    .code-all span { color: var(--text); font-weight: 600; }
     .code-actions { display: flex; flex-direction: column; gap: .6rem; }
     .btn-copy {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -208,9 +210,10 @@
     <!-- Promo code + invite link -->
     <div class="code-box" id="codeBox">
       <div class="code-info">
-        <div class="code-label">Your Promo Code</div>
+        <div class="code-label">Primary Promo Code</div>
         <div class="code-value" id="promoCodeDisplay">—</div>
         <div class="code-pct" id="payoutPctDisplay"></div>
+        <div class="code-all" id="allCodesDisplay" style="display:none">Tracking: <span id="allCodesList"></span></div>
       </div>
       <div class="code-actions">
         <button class="btn-copy" id="btnCopyCode" onclick="copyCode()">📋 Copy Code</button>
@@ -254,10 +257,10 @@
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Name</th><th>Status</th><th>Date</th></tr>
+            <tr><th>Name</th><th>Code</th><th>Status</th><th>Date</th></tr>
           </thead>
           <tbody id="referralsBody">
-            <tr><td colspan="3" class="empty-table">Loading…</td></tr>
+            <tr><td colspan="4" class="empty-table">Loading…</td></tr>
           </tbody>
         </table>
       </div>
@@ -435,6 +438,10 @@ function renderStats(d) {
   document.getElementById('promoCodeDisplay').textContent = d.promo_code;
   document.getElementById('payoutPctDisplay').textContent = `${d.payout_rate_pct}% commission rate`;
   _inviteUrl = d.invite_url;
+  if (d.all_codes && d.all_codes.length > 1) {
+    document.getElementById('allCodesList').textContent = d.all_codes.join(' · ');
+    document.getElementById('allCodesDisplay').style.display = '';
+  }
 
   // Monthly KPIs
   const convClass = d.conversion_rate_this_month >= 15 ? '#34d399'
@@ -472,11 +479,12 @@ function renderStats(d) {
   const refs = d.referrals || [];
   document.getElementById('referralsCount').textContent = `${refs.length} referral${refs.length !== 1 ? 's' : ''}`;
   document.getElementById('referralsBody').innerHTML = refs.length === 0
-    ? `<tr><td colspan="3" class="empty-table">No referrals this month yet.</td></tr>`
+    ? `<tr><td colspan="4" class="empty-table">No referrals this month yet.</td></tr>`
     : refs.map(r => {
         const cls = r.status === 'purchased' ? 'pill-green' : 'pill-blue';
         return `<tr>
           <td>${r.name || 'Explorer'}</td>
+          <td style="color:var(--muted);font-size:.78rem;font-weight:700;letter-spacing:.04em">${r.code || ''}</td>
           <td><span class="pill ${cls}">${r.status}</span></td>
           <td style="color:var(--muted)">${fmtDate(r.date)}</td>
         </tr>`;
