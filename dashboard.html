@@ -621,6 +621,22 @@
 
     <!-- ── ACQUISITION (MGM + Influencers) ── -->
     <div class="tab-panel" id="panel-acquisition">
+
+      <!-- ── Acquisition Channels (Organic / Own Campaigns / MGM / Influencer) ── -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Acquisition Channels
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">All-time user breakdown by source · monthly cohort chart</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px" id="acqChannelKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+        <div class="chart-wrap" style="height:260px"><canvas id="chartAcqChannels"></canvas></div>
+      </div>
+
       <div class="grid-4" id="acqKpis">
         <div class="card"><div class="loading">Loading…</div></div>
         <div class="card"><div class="loading">…</div></div>
@@ -1712,6 +1728,35 @@ function renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth) {
 // ══════════════════════════════════════════════
 // REFRESH DATA AGGREGATION
 // ══════════════════════════════════════════════
+
+// ── Acquisition Channels: 4-source breakdown + monthly bar chart ──
+function renderAcquisitionChannels(ac) {
+  if (!ac) return;
+  const t = ac.totals || {};
+  const total = ac.total || 1;
+  const pct = n => ((n || 0) / total * 100).toFixed(1) + '%';
+
+  document.getElementById('acqChannelKpis').innerHTML =
+    kpiCard('Total Users', fmt(total), 'All non-admin accounts', null, 'blue') +
+    kpiCard('Organic', fmt(t.organic || 0), pct(t.organic) + ' of total', null, null) +
+    kpiCard('Own Campaigns', fmt(t.own_campaigns || 0), pct(t.own_campaigns) + ' of total', null, 'purple') +
+    kpiCard('MGM (Referral)', fmt(t.mgm || 0), pct(t.mgm) + ' of total', null, null) +
+    kpiCard('Influencer', fmt(t.influencer || 0), pct(t.influencer) + ' of total', null, 'yellow');
+
+  const series = ac.monthly_series || [];
+  const labels = series.map(s => {
+    const [y, m] = s.month.split('-');
+    return new Date(+y, +m - 1).toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+  });
+
+  barChart('chartAcqChannels', labels, [
+    { label: 'Organic',       data: series.map(s => s.organic      || 0), color: '#475569' },
+    { label: 'Own Campaigns', data: series.map(s => s.own_campaigns || 0), color: C.purple  },
+    { label: 'MGM',           data: series.map(s => s.mgm           || 0), color: C.primary },
+    { label: 'Influencer',    data: series.map(s => s.influencer    || 0), color: C.yellow  },
+  ], { stacked: true });
+}
+
 // ACQUISITION — MGM + Influencers (stock / lifetime)
 // ══════════════════════════════════════════════
 function renderAcquisition(acq, freeUsers) {
@@ -2260,7 +2305,7 @@ async function approveInfluencer(id, name) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels] = await Promise.all([
       api(`/analytics/kpi/funnel?days=${days}`),
       api(`/analytics/kpi/funnel-cohort?days=${days}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -2276,6 +2321,7 @@ async function loadAllData() {
       api(`/admin/analytics/coin-economy`).catch(() => null),
       api(`/admin/analytics/streak-health`).catch(() => null),
       api(`/admin/influencer-accounts`).catch(() => null),
+      api(`/admin/analytics/acquisition-channels`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue);
@@ -2285,6 +2331,7 @@ async function loadAllData() {
     renderTours(tours);
     renderCosts(costs, funnel);
     renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth);
+    renderAcquisitionChannels(acqChannels);
     renderAcquisition(acquisition, freeUsers);
     renderViator(viator);
     renderInfluencerAccounts(influencerAccounts);
