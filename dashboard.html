@@ -1293,15 +1293,15 @@ function renderOverview(funnel, freeUsers, revenue) {
       r.conversion_rate > 5 ? '↑ Strong' : r.conversion_rate > 2 ? '→ Average' : '↓ Low',
       r.conversion_rate > 5 ? 'green' : r.conversion_rate > 2 ? 'yellow' : 'orange');
 
-  // Build a complete date range (start → today) so days with no events still show as 0
+  // Build date range from (today - days) to today in UTC, filling missing days with zeros
   const rawDaily = [...(funnel.daily_data || [])].reverse();
   const byDate = {};
   rawDaily.forEach(d => { byDate[d.date] = d; });
-  const rangeStart = funnel.start_date;
-  const rangeEnd   = funnel.end_date || new Date().toISOString().slice(0, 10);
   const daily = [];
-  for (let d = new Date(rangeStart + 'T00:00:00Z'); d <= new Date(rangeEnd + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + 1)) {
-    const key = d.toISOString().slice(0, 10);
+  const _end = new Date(); // today UTC
+  const _start = new Date(_end); _start.setUTCDate(_end.getUTCDate() - days);
+  for (let cur = new Date(_start); cur <= _end; cur.setUTCDate(cur.getUTCDate() + 1)) {
+    const key = cur.toISOString().slice(0, 10);
     daily.push(byDate[key] || { date: key });
   }
   const labels = daily.map(d => shortDate(d.date));
@@ -1389,14 +1389,15 @@ function renderFunnel(cohortFunnel, funnel, freeUsers) {
     `).join('');
   }
 
-  // Daily chart — backfill missing dates so today always appears
+  // Daily chart — same client-side date range as Overview
   const rawFunnelDaily = [...(funnel.daily_data || [])].reverse();
   const funnelByDate = {};
   rawFunnelDaily.forEach(d => { funnelByDate[d.date] = d; });
-  const funnelRangeEnd = funnel.end_date || new Date().toISOString().slice(0, 10);
   const funnelDaily = [];
-  for (let d = new Date((funnel.start_date || funnelRangeEnd) + 'T00:00:00Z'); d <= new Date(funnelRangeEnd + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + 1)) {
-    const key = d.toISOString().slice(0, 10);
+  const _fEnd = new Date();
+  const _fStart = new Date(_fEnd); _fStart.setUTCDate(_fEnd.getUTCDate() - days);
+  for (let cur = new Date(_fStart); cur <= _fEnd; cur.setUTCDate(cur.getUTCDate() + 1)) {
+    const key = cur.toISOString().slice(0, 10);
     funnelDaily.push(funnelByDate[key] || { date: key });
   }
   const labels = funnelDaily.map(d => shortDate(d.date));
