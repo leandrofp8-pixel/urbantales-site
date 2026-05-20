@@ -2422,14 +2422,29 @@ function renderSettings(data) {
     </div>`;
 
   document.getElementById('settingsForm').innerHTML =
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border)">Paywall &amp; Access</div>` +
     field('daily_free_landmark_limit', 'Free Landmarks / Day', 'number', s.daily_free_landmark_limit ?? 3, 'min="0" max="100"') +
-    field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '') +
+    field('day_pass_price_points', 'Day Pass Price (coins)', 'number', s.day_pass_price_points ?? 500, 'min="0"') +
+    field('city_unlock_price_points', 'City Unlock Price (coins)', 'number', s.city_unlock_price_points ?? 1000, 'min="0"') +
+    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('tours_creation_free', 'Tours Creation Free', s.tours_creation_free ?? true)}</div>` +
+
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Content Quality (Landmarks)</div>` +
+    field('min_reviews_to_show', 'Min Reviews to Show Landmark', 'number', s.min_reviews_to_show ?? 10, 'min="0"') +
+    field('must_see_min_rating', 'Must-See Min Rating', 'number', s.must_see_min_rating ?? 4.3, 'min="0" max="5" step="0.1"') +
+    field('must_see_min_reviews', 'Must-See Min Review Count', 'number', s.must_see_min_reviews ?? 70, 'min="0"') +
+
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Narration Quality</div>` +
     field('narration_min_votes', 'Min Votes Before Auto-Delete', 'number', s.narration_min_votes ?? 5, 'min="1"') +
     field('narration_downvote_ratio', 'Downvote Ratio to Trigger Delete (0–1)', 'number', s.narration_downvote_ratio ?? 0.7, 'min="0" max="1" step="0.05"') +
+
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Referrals &amp; Payouts</div>` +
+    field('referral_cooldown_days', 'MGM Push Notification Cooldown (days)', 'number', s.referral_cooldown_days ?? 15, 'min="0"') +
     field('mgm_invitee_bonus_coins', 'MGM Invitee Signup Bonus (coins)', 'number', s.mgm_invitee_bonus_coins ?? 500, 'min="0"') +
     field('mgm_inviter_reward_coins', 'MGM Inviter Purchase Reward (coins)', 'number', s.mgm_inviter_reward_coins ?? 250, 'min="0"') +
     field('influencer_revenue_share_pct', 'Influencer Revenue Share (%)', 'number', s.influencer_revenue_share_pct ?? 25, 'min="0" max="100"') +
-    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('tours_creation_free', 'Tours Creation Free', s.tours_creation_free ?? true)}</div>`;
+
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App</div>` +
+    field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '');
 }
 
 async function saveSettings() {
@@ -2441,13 +2456,19 @@ async function saveSettings() {
 
   const body = {
     daily_free_landmark_limit: parseInt(document.getElementById('s_daily_free_landmark_limit').value),
-    minimum_app_version: document.getElementById('s_minimum_app_version').value.trim(),
+    day_pass_price_points: parseInt(document.getElementById('s_day_pass_price_points').value),
+    city_unlock_price_points: parseInt(document.getElementById('s_city_unlock_price_points').value),
+    tours_creation_free: document.getElementById('s_tours_creation_free').checked,
+    min_reviews_to_show: parseInt(document.getElementById('s_min_reviews_to_show').value),
+    must_see_min_rating: parseFloat(document.getElementById('s_must_see_min_rating').value),
+    must_see_min_reviews: parseInt(document.getElementById('s_must_see_min_reviews').value),
     narration_min_votes: parseInt(document.getElementById('s_narration_min_votes').value),
     narration_downvote_ratio: parseFloat(document.getElementById('s_narration_downvote_ratio').value),
+    referral_cooldown_days: parseInt(document.getElementById('s_referral_cooldown_days').value),
     mgm_invitee_bonus_coins: parseInt(document.getElementById('s_mgm_invitee_bonus_coins').value),
     mgm_inviter_reward_coins: parseInt(document.getElementById('s_mgm_inviter_reward_coins').value),
     influencer_revenue_share_pct: parseInt(document.getElementById('s_influencer_revenue_share_pct').value),
-    tours_creation_free: document.getElementById('s_tours_creation_free').checked,
+    minimum_app_version: document.getElementById('s_minimum_app_version').value.trim(),
   };
 
   try {
