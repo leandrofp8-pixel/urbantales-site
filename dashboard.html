@@ -1853,7 +1853,7 @@ function renderAcquisitionChannels(ac) {
 
 // ACQUISITION — MGM + Influencers (stock / lifetime)
 // ══════════════════════════════════════════════
-function renderAcquisition(acq, freeUsers) {
+function renderAcquisition(acq, freeUsers, acqChannels) {
   const s = acq.summary || {};
   const e = acq.economics || {};
   const mgm = e.mgm || {};
@@ -2648,7 +2648,7 @@ async function loadAllData() {
     renderCosts(costs, funnel);
     renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth);
     renderAcquisitionChannels(acqChannels);
-    renderAcquisition(acquisition, freeUsers);
+    renderAcquisition(acquisition, freeUsers, acqChannels);
     renderViator(viator);
     renderInfluencerAccounts(influencerAccounts);
     renderSettings(settings);
