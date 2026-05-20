@@ -236,7 +236,7 @@
 ═══════════════════════════════════════════════════════ -->
 <div id="loginScreen">
   <div class="login-card">
-    <h1>🏛️ Urban Tales</h1>
+    <h1><img src="icon.png" alt="" style="width:28px;height:28px;vertical-align:middle;margin-right:8px;object-fit:contain"> Urban Tales</h1>
     <p>Admin Dashboard — sign in to continue</p>
     <input type="email" id="loginEmail" placeholder="Email" autocomplete="email" />
     <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" />
@@ -349,7 +349,7 @@
 
       <div class="card" style="margin-bottom:24px">
         <div class="section-header">
-          <h2>📊 Monthly Cohort Retention — Last 6 Months</h2>
+          <h2>Monthly Cohort Retention — Last 6 Months</h2>
           <span style="font-size:0.8rem;color:var(--muted)">Compare how each month's signups progress through the funnel</span>
         </div>
         <div class="table-wrap">
@@ -374,7 +374,7 @@
 
       <div class="card">
         <div class="section-header">
-          <h2>🔥 Hot Leads — Free users likely to convert</h2>
+          <h2>Hot Leads — Free users likely to convert</h2>
           <span id="hotLeadsCount" style="font-size:0.8rem;color:var(--muted)"></span>
         </div>
         <div class="table-wrap">
@@ -430,7 +430,7 @@
 
       <div class="card" style="margin-bottom:24px">
         <div class="section-header">
-          <h2>🔗 Tour Sharing Funnel</h2>
+          <h2>Tour Sharing Funnel</h2>
           <span style="font-size:0.8rem;color:var(--muted)">Sharing engagement in the period</span>
         </div>
         <div class="funnel-wrap" id="tourSharingFunnel">
@@ -472,7 +472,7 @@
       </div>
 
       <div class="card" style="margin-bottom:24px">
-        <div class="section-header"><h2>🏛️ Top Landmarks</h2></div>
+        <div class="section-header"><h2>Top Landmarks</h2></div>
         <div class="table-wrap">
           <table>
             <thead>
@@ -607,7 +607,7 @@
 
       <div class="card" style="margin-top:24px">
         <div class="section-header">
-          <h2>🔥 Streak Health</h2>
+          <h2>Streak Health</h2>
           <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
         </div>
         <div class="grid-4" id="streakHealthKpis">
@@ -680,7 +680,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="section-header"><h2>🔥 Top MGM Users</h2></div>
+          <div class="section-header"><h2>Top MGM Users</h2></div>
           <div class="table-wrap" style="max-height:340px;overflow-y:auto">
             <table>
               <thead>
@@ -727,7 +727,7 @@
 
       <div class="card" style="margin-top:24px">
         <div class="section-header">
-          <h2>💰 Acquisition Economics</h2>
+          <h2>Acquisition Economics</h2>
           <span style="font-size:0.8rem;color:var(--muted)">Lifetime — 1 coin = $0.00598 (500-pack @ $2.99) · Influencers earn 25% of invitee revenue</span>
         </div>
 
@@ -742,7 +742,7 @@
         </div>
 
         <div style="font-weight:600;font-size:0.85rem;color:var(--muted);margin:20px 0 8px 4px">
-          🔥 MGM CHANNEL
+          MGM CHANNEL
         </div>
         <div class="grid-4" id="acqEconomicsMgm">
           <div class="card"><div class="loading">Loading…</div></div>
@@ -786,7 +786,7 @@
 
       <div class="card" style="margin-top:24px">
         <div class="section-header">
-          <h2>✅ Approved Affiliates</h2>
+          <h2>Approved Affiliates</h2>
           <span style="font-size:0.8rem;color:var(--muted)" id="approvedCount"></span>
         </div>
         <div class="table-wrap">
@@ -942,7 +942,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="section-header"><h2>🏛️ Top Landmarks by Clicks</h2></div>
+        <div class="section-header"><h2>Top Landmarks by Clicks</h2></div>
         <div class="table-wrap">
           <table>
             <thead>
@@ -1431,7 +1431,7 @@ function renderContent(content, funnel, listenCompletion) {
       }).join('');
 
   // Audio completion by tier
-  const TIER_LABELS = { MAJOR: '🏛️ Major', NOTABLE: '⭐ Notable', LOCAL: '📍 Local' };
+  const TIER_LABELS = { MAJOR: 'Major', NOTABLE: 'Notable', LOCAL: 'Local' };
   const tiers = listenCompletion?.by_tier || [];
   const sinceDate = listenCompletion?.tracking_since ? new Date(listenCompletion.tracking_since).toLocaleDateString() : null;
   document.getElementById('listenCompletionCards').innerHTML = tiers.length === 0
@@ -1830,7 +1830,7 @@ function renderAcquisition(acq, freeUsers) {
     kpiCard('Total Cost', `$${(e.cost_usd||0).toFixed(2)}`,
       'Coins + influencer cash', null, null) +
     kpiCard('Revenue (A)', `$${(e.revenue_usd||0).toFixed(2)}`,
-      'Lifetime from referred users', '💰', 'green') +
+      'Lifetime from referred users', '$', 'green') +
     kpiCard('ROI (B)', fmtPct(e.roi_pct),
       '(Revenue − Cost) ÷ Cost', roiBadge(e.roi_pct), roiClass(e.roi_pct));
 
