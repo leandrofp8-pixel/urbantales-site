@@ -276,7 +276,7 @@
         });
         const data = await res.json();
         if (res.ok && data.success) {
-          showMsg('🎉 Application received! We'll review it and email you within 1–2 business days.', 'success');
+          showMsg('🎉 Application received! We’ll review it and email you within 1–2 business days.', 'success');
           btn.textContent = '✓ Submitted';
         } else {
           showMsg(data.detail || 'Something went wrong. Please try again.', 'error');
