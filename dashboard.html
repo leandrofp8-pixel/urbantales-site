@@ -1893,14 +1893,15 @@ function renderAcquisition(acq, freeUsers) {
     ['#475569', C.primary]
   );
 
-  // ── Channel Split doughnut ──
+  // ── Channel Split doughnut (all 4 channels from acqChannels) ──
+  const acTotals = (acqChannels && acqChannels.totals) || {};
   doughnutChart('chartAcqChannel',
-    ['Influencer-driven', 'MGM user-driven'],
-    [s.referrals_by_influencer || 0, s.referrals_by_mgm || 0],
-    [C.purple, C.primary]
+    ['Organic', 'Own Campaigns', 'MGM user-driven', 'Influencer-driven'],
+    [acTotals.organic || 0, acTotals.own_campaigns || 0, acTotals.mgm || 0, acTotals.influencer || 0],
+    ['#475569', C.blue, C.primary, C.purple]
   );
 
-  // ── Revenue by Channel doughnut ──
+  // ── Revenue by Channel doughnut (only referral channels have tracked revenue) ──
   doughnutChart('chartAcqRevenue',
     ['Influencer revenue', 'MGM revenue'],
     [inf.revenue_usd || 0, mgm.revenue_usd || 0],
@@ -2411,6 +2412,14 @@ function renderSettings(data) {
         style="width:100%;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:8px 10px;font-size:0.88rem;box-sizing:border-box">
     </div>`;
 
+  const lockedField = (id, label, type, value) =>
+    `<div>
+      <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${label}</label>
+      <input id="s_${id}" type="${type}" value="${value}" disabled
+        style="width:100%;background:#111;border:1px solid var(--border);color:#555;border-radius:6px;padding:8px 10px;font-size:0.88rem;box-sizing:border-box;cursor:not-allowed">
+      <div style="font-size:0.72rem;color:#f59e0b;margin-top:3px">⚠ Hardcoded in app — requires new build to change</div>
+    </div>`;
+
   const toggle = (id, label, checked) =>
     `<div style="display:flex;align-items:center;gap:10px;padding:8px 0">
       <label class="toggle-switch">
@@ -2424,8 +2433,8 @@ function renderSettings(data) {
   document.getElementById('settingsForm').innerHTML =
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border)">Paywall &amp; Access</div>` +
     field('daily_free_landmark_limit', 'Free Landmarks / Day', 'number', s.daily_free_landmark_limit ?? 3, 'min="0" max="100"') +
-    field('day_pass_price_points', 'Day Pass Price (coins)', 'number', s.day_pass_price_points ?? 500, 'min="0"') +
-    field('city_unlock_price_points', 'City Unlock Price (coins)', 'number', s.city_unlock_price_points ?? 1000, 'min="0"') +
+    lockedField('day_pass_price_points', 'Day Pass Price (coins)', 'number', s.day_pass_price_points ?? 500) +
+    lockedField('city_unlock_price_points', 'City Unlock Price (coins)', 'number', s.city_unlock_price_points ?? 1000) +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('tours_creation_free', 'Tours Creation Free', s.tours_creation_free ?? true)}</div>` +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Content Quality (Landmarks)</div>` +
@@ -2439,8 +2448,8 @@ function renderSettings(data) {
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Referrals &amp; Payouts</div>` +
     field('referral_cooldown_days', 'MGM Push Notification Cooldown (days)', 'number', s.referral_cooldown_days ?? 15, 'min="0"') +
-    field('mgm_invitee_bonus_coins', 'MGM Invitee Signup Bonus (coins)', 'number', s.mgm_invitee_bonus_coins ?? 500, 'min="0"') +
-    field('mgm_inviter_reward_coins', 'MGM Inviter Purchase Reward (coins)', 'number', s.mgm_inviter_reward_coins ?? 250, 'min="0"') +
+    lockedField('mgm_invitee_bonus_coins', 'MGM Invitee Signup Bonus (coins)', 'number', s.mgm_invitee_bonus_coins ?? 500) +
+    lockedField('mgm_inviter_reward_coins', 'MGM Inviter Purchase Reward (coins)', 'number', s.mgm_inviter_reward_coins ?? 250) +
     field('influencer_revenue_share_pct', 'Influencer Revenue Share (%)', 'number', s.influencer_revenue_share_pct ?? 25, 'min="0" max="100"') +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App</div>` +
@@ -2456,8 +2465,7 @@ async function saveSettings() {
 
   const body = {
     daily_free_landmark_limit: parseInt(document.getElementById('s_daily_free_landmark_limit').value),
-    day_pass_price_points: parseInt(document.getElementById('s_day_pass_price_points').value),
-    city_unlock_price_points: parseInt(document.getElementById('s_city_unlock_price_points').value),
+    // day_pass_price_points and city_unlock_price_points are locked (hardcoded in app)
     tours_creation_free: document.getElementById('s_tours_creation_free').checked,
     min_reviews_to_show: parseInt(document.getElementById('s_min_reviews_to_show').value),
     must_see_min_rating: parseFloat(document.getElementById('s_must_see_min_rating').value),
@@ -2465,8 +2473,7 @@ async function saveSettings() {
     narration_min_votes: parseInt(document.getElementById('s_narration_min_votes').value),
     narration_downvote_ratio: parseFloat(document.getElementById('s_narration_downvote_ratio').value),
     referral_cooldown_days: parseInt(document.getElementById('s_referral_cooldown_days').value),
-    mgm_invitee_bonus_coins: parseInt(document.getElementById('s_mgm_invitee_bonus_coins').value),
-    mgm_inviter_reward_coins: parseInt(document.getElementById('s_mgm_inviter_reward_coins').value),
+    // mgm_invitee_bonus_coins and mgm_inviter_reward_coins are locked (hardcoded in app)
     influencer_revenue_share_pct: parseInt(document.getElementById('s_influencer_revenue_share_pct').value),
     minimum_app_version: document.getElementById('s_minimum_app_version').value.trim(),
   };
