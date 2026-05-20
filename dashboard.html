@@ -308,6 +308,24 @@
           <div class="chart-wrap"><canvas id="chartPaywall"></canvas></div>
         </div>
       </div>
+      <div class="grid-2" style="margin-top:24px">
+        <div class="card">
+          <div class="card-title">Revenue — Coin Pack Sales
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">via RevenueCat</span>
+          </div>
+          <div class="grid-2" id="revenueKpis" style="margin-bottom:16px;gap:12px">
+            <div class="card"><div class="loading">Loading…</div></div>
+            <div class="card"><div class="loading">…</div></div>
+          </div>
+          <div class="chart-wrap"><canvas id="chartRevenue"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Paywall Hit Rate
+            <span title="Out-of-coins events ÷ daily active users × 100" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ % of DAU hitting coin wall</span>
+          </div>
+          <div class="chart-wrap"><canvas id="chartPaywallRate"></canvas></div>
+        </div>
+      </div>
     </div>
 
     <!-- ── FUNNEL ── -->
@@ -407,6 +425,16 @@
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>🔗 Tour Sharing Funnel</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">Sharing engagement in the period</span>
+        </div>
+        <div class="funnel-wrap" id="tourSharingFunnel">
+          <div class="loading">Loading…</div>
         </div>
       </div>
 
@@ -562,6 +590,32 @@
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Days between signup and first purchase (paid users)</span>
         </div>
         <div class="chart-wrap-lg"><canvas id="chartTimeToConversion"></canvas></div>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <div class="section-header">
+          <h2>🪙 Coin Economy Health</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
+        </div>
+        <div class="grid-4" id="coinEconomyKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <div class="section-header">
+          <h2>🔥 Streak Health</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
+        </div>
+        <div class="grid-4" id="streakHealthKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
       </div>
     </div>
 
@@ -1070,10 +1124,9 @@ function shortDate(str) {
 // ══════════════════════════════════════════════
 // OVERVIEW
 // ══════════════════════════════════════════════
-function renderOverview(funnel, freeUsers) {
+function renderOverview(funnel, freeUsers, revenue) {
   const t = funnel.totals;
   const r = funnel.rates;
-  const totalPaid = (t.total_active_users || 0) - (freeUsers.summary?.total_free_users || 0);
 
   document.getElementById('kpiCards').innerHTML =
     kpiCard('Unique Active Users',
@@ -1115,6 +1168,37 @@ function renderOverview(funnel, freeUsers) {
     { label: 'Out-of-coins events', data: daily.map(d => d.out_of_coins_events   || 0), color: C.yellow },
     { label: 'Shop Views (no buy)', data: daily.map(d => d.shop_views_no_purchase || 0), color: C.primary },
   ]);
+
+  // ── Paywall Hit Rate as % of DAU ──
+  lineChart('chartPaywallRate', labels, [
+    {
+      label: 'Paywall hits % of DAU',
+      data: daily.map(d => {
+        const dau = d.total_active_users || 0;
+        return dau > 0 ? +((d.out_of_coins_events || 0) / dau * 100).toFixed(1) : 0;
+      }),
+      color: C.yellow,
+    },
+  ], { y: { ticks: { callback: v => v + '%' } } });
+
+  // ── Revenue KPIs + chart ──
+  if (revenue) {
+    const revClass = (revenue.period_revenue || 0) > 0 ? 'green' : 'muted';
+    document.getElementById('revenueKpis').innerHTML =
+      kpiCard('Period Revenue', '$' + (revenue.period_revenue || 0).toFixed(2),
+        `${fmt(revenue.period_purchases)} purchases`, null, null) +
+      kpiCard('All-time Revenue', '$' + (revenue.all_time_revenue || 0).toFixed(2),
+        'Since first sale', null, 'green');
+
+    const revDaily = (revenue.daily || []);
+    lineChart('chartRevenue', revDaily.map(d => shortDate(d.date)), [
+      { label: 'Daily Revenue ($)', data: revDaily.map(d => d.revenue || 0), color: C.green },
+    ]);
+  } else {
+    document.getElementById('revenueKpis').innerHTML =
+      `<div style="color:var(--muted);font-size:0.85rem;padding:8px">No revenue data yet.</div>`;
+    destroyChart('chartRevenue');
+  }
 }
 
 // ══════════════════════════════════════════════
@@ -1341,6 +1425,26 @@ function renderTours(tours) {
       completionClass) +
     kpiCard('Avg Landmarks/Tour', (s.avg_landmarks_per_tour || 0).toFixed(1), 'Per tour created', null, null);
 
+  // ── Tour Sharing Funnel ──
+  const created  = s.tours_created  || 0;
+  const shared   = s.tours_shared   || 0;
+  const followed = s.tours_followed || 0;
+  const sharingSteps = [
+    { label: 'Tours Created',  count: created,  pct: 100, color: C.primary },
+    { label: 'Tours Shared',   count: shared,   pct: created > 0 ? +(shared / created * 100).toFixed(1) : 0, color: C.blue },
+    { label: 'Tours Followed', count: followed, pct: created > 0 ? +(followed / created * 100).toFixed(1) : 0, color: C.purple },
+  ];
+  document.getElementById('tourSharingFunnel').innerHTML = sharingSteps.map(step => `
+    <div class="funnel-step">
+      <div class="funnel-label">${step.label}</div>
+      <div class="funnel-bar-outer">
+        <div class="funnel-bar-inner" style="width:${Math.min(step.pct, 100)}%;background:${step.color}"></div>
+      </div>
+      <div class="funnel-count">${fmt(step.count)}</div>
+      <div class="funnel-pct">${step.pct}%</div>
+    </div>
+  `).join('');
+
   // Tour Types bar chart
   const types = tours.tour_types || [];
   if (types.length > 0) {
@@ -1433,7 +1537,7 @@ function renderCosts(costs, funnel) {
 // ══════════════════════════════════════════════
 // FREE USERS — stock / lifetime view
 // ══════════════════════════════════════════════
-function renderFreeUsers(freeUsers, cohortsMonthly) {
+function renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth) {
   const s = freeUsers.summary || {};
 
   // ── KPI cards (4) ──
@@ -1526,6 +1630,44 @@ function renderFreeUsers(freeUsers, cohortsMonthly) {
     ttc.map(t => t.bucket),
     [{ label: 'Paid users', data: ttc.map(t => t.count || 0), color: C.green }]
   );
+
+  // ── Coin Economy ──
+  if (coinEconomy) {
+    const ce = coinEconomy;
+    const total = ce.total_users || 1;
+    document.getElementById('coinEconomyKpis').innerHTML =
+      kpiCard('Coins in Circulation', fmt(ce.total_coins_in_circulation),
+        `≈ $${((ce.total_coins_in_circulation || 0) * (2.99 / 500)).toFixed(0)} face value`, null, null) +
+      kpiCard('Avg Coin Balance', fmt(ce.avg_balance), 'Per user (all users)', null, null) +
+      kpiCard('Users ≥ 500 Coins', fmt(ce.users_with_500_plus),
+        `${((ce.users_with_500_plus || 0) / total * 100).toFixed(1)}% · can buy Day Pass`,
+        null, 'green') +
+      kpiCard('Users at Zero', fmt(ce.users_with_zero),
+        `${((ce.users_with_zero || 0) / total * 100).toFixed(1)}% · empty wallets`,
+        null, 'orange');
+  } else {
+    document.getElementById('coinEconomyKpis').innerHTML =
+      `<div style="grid-column:1/-1;color:var(--muted);font-size:0.85rem;padding:8px">No data available.</div>`;
+  }
+
+  // ── Streak Health ──
+  if (streakHealth) {
+    const sh = streakHealth;
+    const activeClass = sh.active_streak_today_pct >= 20 ? 'green' : sh.active_streak_today_pct >= 10 ? 'yellow' : 'orange';
+    document.getElementById('streakHealthKpis').innerHTML =
+      kpiCard('Active Streak Today', fmtPct(sh.active_streak_today_pct),
+        `${fmt(sh.active_streak_today)} users tracked a day today`,
+        sh.active_streak_today_pct >= 20 ? '↑ Engaged' : '→ Growing',
+        activeClass) +
+      kpiCard('Avg Streak Length', sh.avg_streak.toFixed(1) + ' days', 'Across all users', null, null) +
+      kpiCard('7-Day Streaks', fmt(sh.streak_7_plus),
+        `${((sh.streak_7_plus || 0) / (sh.total_users || 1) * 100).toFixed(1)}% of users`, null, 'blue') +
+      kpiCard('Freeze Holders', fmt(sh.streak_freeze_holders),
+        `${sh.streak_freeze_holders_pct}% have ≥1 freeze remaining`, null, null);
+  } else {
+    document.getElementById('streakHealthKpis').innerHTML =
+      `<div style="grid-column:1/-1;color:var(--muted);font-size:0.85rem;padding:8px">No data available.</div>`;
+  }
 }
 
 // ══════════════════════════════════════════════
@@ -2005,7 +2147,7 @@ async function runAggregation() {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth] = await Promise.all([
       api(`/analytics/kpi/funnel?days=${days}`),
       api(`/analytics/kpi/funnel-cohort?days=${days}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -2017,15 +2159,18 @@ async function loadAllData() {
       api(`/analytics/kpi/acquisition`),
       api(`/admin/analytics/listen-completion`).catch(() => null),
       api(`/admin/analytics/viator-clicks?days=${days}`).catch(() => null),
+      api(`/admin/analytics/revenue?days=${days}`).catch(() => null),
+      api(`/admin/analytics/coin-economy`).catch(() => null),
+      api(`/admin/analytics/streak-health`).catch(() => null),
     ]);
 
-    renderOverview(funnel, freeUsers);
+    renderOverview(funnel, freeUsers, revenue);
     renderFunnel(cohortFunnel, funnel, freeUsers);
     renderCohorts(cohortsMonthly);
     renderContent(content, funnel, listenCompletion);
     renderTours(tours);
     renderCosts(costs, funnel);
-    renderFreeUsers(freeUsers, cohortsMonthly);
+    renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth);
     renderAcquisition(acquisition, freeUsers);
     renderViator(viator);
   } catch (e) {
