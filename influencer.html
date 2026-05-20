@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Affiliate Portal — Urban Tales</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    /* ── AUTH SCREENS ── */
+    .auth-wrap {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .auth-card {
+      background: linear-gradient(180deg, var(--card-strong), var(--card));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 2.2rem; width: 100%; max-width: 420px;
+    }
+    .auth-logo { text-align: center; margin-bottom: 1.6rem; }
+    .auth-logo span { font-size: 2.4rem; display: block; margin-bottom: .4rem; }
+    .auth-logo p { color: var(--muted); font-size: .88rem; margin: 0; }
+    .auth-card h2 { font-size: 1.3rem; margin-bottom: 1.4rem; text-align: center; }
+
+    .field { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+    .field label { font-size: .76rem; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; font-weight: 600; }
+    .field input {
+      background: rgba(0,0,0,.35); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-size: .95rem;
+      padding: 12px 14px; outline: none; font-family: inherit; transition: border-color .15s;
+    }
+    .field input:focus { border-color: var(--accent); }
+
+    .btn-primary {
+      width: 100%; padding: 13px; border: 0; border-radius: 999px; cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #2a1708; font-weight: 800; font-size: .98rem;
+      transition: opacity .18s, transform .18s; margin-top: .3rem;
+    }
+    .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    .auth-footer { text-align: center; margin-top: 1.2rem; font-size: .85rem; color: var(--muted); }
+    .auth-footer a { color: var(--accent); font-weight: 600; cursor: pointer; }
+
+    .msg {
+      display: none; border-radius: 10px; padding: 12px 14px;
+      font-size: .87rem; font-weight: 500; margin-top: 12px; text-align: center;
+    }
+    .msg.success { background: rgba(52,211,153,.1); color: #34d399; border: 1px solid rgba(52,211,153,.3); }
+    .msg.error   { background: rgba(248,113,113,.1); color: #f87171; border: 1px solid rgba(248,113,113,.3); }
+    .msg.warning { background: rgba(251,191,36,.1);  color: #fbbf24; border: 1px solid rgba(251,191,36,.3); }
+
+    /* ── PORTAL LAYOUT ── */
+    #portal { display: none; }
+    .portal-header {
+      background: rgba(18,14,15,.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 58px;
+      position: sticky; top: 0; z-index: 20;
+    }
+    .portal-brand { display: flex; align-items: center; gap: .7rem; font-weight: 800; font-size: .95rem; }
+    .portal-brand span { color: var(--accent); font-size: 1.3rem; }
+    .portal-right { display: flex; align-items: center; gap: 1rem; }
+    .portal-name { color: var(--muted); font-size: .85rem; }
+    .btn-logout {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+      padding: 6px 14px; border-radius: 8px; font-size: .82rem; cursor: pointer;
+      transition: border-color .15s, color .15s;
+    }
+    .btn-logout:hover { border-color: #f87171; color: #f87171; }
+
+    .portal-main { padding: 2rem 1.5rem; max-width: 1000px; margin: 0 auto; }
+
+    /* ── CODE BOX ── */
+    .code-box {
+      background: linear-gradient(180deg, var(--card-strong), var(--card));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.6rem; margin-bottom: 1.5rem; display: flex;
+      align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .code-info { flex: 1; min-width: 200px; }
+    .code-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .09em; font-weight: 700; margin-bottom: .3rem; }
+    .code-value { font-size: 2.4rem; font-weight: 900; letter-spacing: 5px; color: var(--accent); line-height: 1; }
+    .code-pct { font-size: .9rem; color: var(--muted); margin-top: .3rem; }
+    .code-actions { display: flex; flex-direction: column; gap: .6rem; }
+    .btn-copy {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.06); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); padding: 9px 16px;
+      font-size: .88rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+      transition: background .15s;
+    }
+    .btn-copy:hover { background: rgba(255,255,255,.1); }
+    .btn-copy.copied { color: #34d399; border-color: rgba(52,211,153,.4); }
+
+    /* ── MONTH PICKER ── */
+    .month-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .month-row h2 { font-size: 1rem; font-weight: 700; margin: 0; }
+    .month-select {
+      background: rgba(0,0,0,.3); border: 1px solid var(--border); color: var(--text);
+      padding: 7px 12px; border-radius: 10px; font-size: .88rem; cursor: pointer; outline: none;
+    }
+    .month-select:focus { border-color: var(--accent); }
+
+    /* ── KPI GRID ── */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    @media (max-width: 700px) { .kpi-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 380px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .kpi-card {
+      background: linear-gradient(180deg, var(--card-strong), var(--card));
+      border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem;
+    }
+    .kpi-card .klabel { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin-bottom: .4rem; }
+    .kpi-card .kvalue { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+    .kpi-card .ksub   { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+    .kpi-card.highlight .kvalue { color: var(--accent); }
+
+    /* ── ALL-TIME ROW ── */
+    .alltime-row {
+      background: linear-gradient(180deg, var(--card-strong), var(--card));
+      border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.2rem 1.4rem; display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .alltime-item .klabel { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin-bottom: .3rem; }
+    .alltime-item .kvalue { font-size: 1.3rem; font-weight: 800; }
+
+    /* ── REFERRALS TABLE ── */
+    .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: .9rem; }
+    .section-head h3 { font-size: .95rem; font-weight: 700; margin: 0; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+    th { text-align: left; color: var(--muted); font-weight: 600; padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: .73rem; text-transform: uppercase; letter-spacing: .06em; }
+    td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.04); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,.02); }
+    .pill { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: .73rem; font-weight: 700; }
+    .pill-green  { background: rgba(52,211,153,.12); color: #34d399; }
+    .pill-blue   { background: rgba(96,165,250,.12);  color: #60a5fa; }
+
+    .empty-table { text-align: center; color: var(--muted); padding: 2.5rem; font-size: .88rem; }
+
+    .loading-portal { text-align: center; color: var(--muted); padding: 3rem; font-size: .9rem; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     AUTH SCREENS
+══════════════════════════════════════════ -->
+<div id="authWrap" class="auth-wrap">
+
+  <!-- LOGIN -->
+  <div class="auth-card" id="loginCard">
+    <div class="auth-logo">
+      <span>🏛️</span>
+      <p>Urban Tales · Affiliate Portal</p>
+    </div>
+    <h2>Sign in</h2>
+    <div class="field"><label>Email</label><input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" /></div>
+    <div class="field"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" /></div>
+    <button class="btn-primary" id="loginBtn" onclick="doLogin()">Sign In</button>
+    <div class="msg" id="loginMsg"></div>
+    <div class="auth-footer">
+      <a onclick="showScreen('forgot')">Forgot password?</a>
+      &nbsp;·&nbsp;
+      <a href="/affiliate.html">Apply to become an affiliate →</a>
+    </div>
+  </div>
+
+  <!-- FORGOT PASSWORD -->
+  <div class="auth-card" id="forgotCard" style="display:none">
+    <div class="auth-logo"><span>🔑</span><p>Reset your password</p></div>
+    <h2>Forgot password</h2>
+    <div class="field"><label>Email</label><input type="email" id="forgotEmail" placeholder="you@example.com" /></div>
+    <button class="btn-primary" id="forgotBtn" onclick="doForgot()">Send Reset Link</button>
+    <div class="msg" id="forgotMsg"></div>
+    <div class="auth-footer"><a onclick="showScreen('login')">← Back to sign in</a></div>
+  </div>
+
+  <!-- RESET PASSWORD -->
+  <div class="auth-card" id="resetCard" style="display:none">
+    <div class="auth-logo"><span>🔒</span><p>Set a new password</p></div>
+    <h2>New password</h2>
+    <div class="field"><label>New Password</label><input type="password" id="resetPw" placeholder="Min. 8 characters" /></div>
+    <div class="field"><label>Confirm</label><input type="password" id="resetPw2" placeholder="Repeat password" /></div>
+    <button class="btn-primary" id="resetBtn" onclick="doReset()">Set Password</button>
+    <div class="msg" id="resetMsg"></div>
+    <div class="auth-footer"><a onclick="showScreen('login')">← Back to sign in</a></div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     PORTAL DASHBOARD
+══════════════════════════════════════════ -->
+<div id="portal">
+  <header class="portal-header">
+    <div class="portal-brand"><span>🏛️</span> Urban Tales Affiliates</div>
+    <div class="portal-right">
+      <span class="portal-name" id="portalName"></span>
+      <button class="btn-logout" onclick="doLogout()">Sign out</button>
+    </div>
+  </header>
+
+  <div class="portal-main">
+
+    <!-- Promo code + invite link -->
+    <div class="code-box" id="codeBox">
+      <div class="code-info">
+        <div class="code-label">Your Promo Code</div>
+        <div class="code-value" id="promoCodeDisplay">—</div>
+        <div class="code-pct" id="payoutPctDisplay"></div>
+      </div>
+      <div class="code-actions">
+        <button class="btn-copy" id="btnCopyCode" onclick="copyCode()">📋 Copy Code</button>
+        <button class="btn-copy" id="btnCopyLink" onclick="copyLink()">🔗 Copy Invite Link</button>
+      </div>
+    </div>
+
+    <!-- Month selector -->
+    <div class="month-row">
+      <h2>Monthly Stats</h2>
+      <select class="month-select" id="monthSelect" onchange="loadStats()"></select>
+    </div>
+
+    <!-- Monthly KPIs -->
+    <div class="kpi-grid" id="monthlyKpis">
+      <div class="loading-portal" style="grid-column:1/-1">Loading…</div>
+    </div>
+
+    <!-- All-time -->
+    <div class="alltime-row" id="alltimeRow" style="display:none">
+      <div class="alltime-item">
+        <div class="klabel">All-time Signups</div>
+        <div class="kvalue" id="atSignups">—</div>
+      </div>
+      <div class="alltime-item">
+        <div class="klabel">All-time Revenue</div>
+        <div class="kvalue" id="atRevenue">—</div>
+      </div>
+      <div class="alltime-item">
+        <div class="klabel">All-time Payout</div>
+        <div class="kvalue" id="atPayout" style="color:var(--accent)">—</div>
+      </div>
+    </div>
+
+    <!-- Referrals table -->
+    <div>
+      <div class="section-head">
+        <h3 id="referralsTitle">Referrals this month</h3>
+        <span style="font-size:.82rem;color:var(--muted)" id="referralsCount"></span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Status</th><th>Date</th></tr>
+          </thead>
+          <tbody id="referralsBody">
+            <tr><td colspan="3" class="empty-table">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const API = 'https://friendly-fulfillment-production.up.railway.app/api';
+let _token = null;
+let _stats  = null;
+let _inviteUrl = '';
+
+function getToken()      { return localStorage.getItem('inf_token'); }
+function setToken(t)     { localStorage.setItem('inf_token', t); _token = t; }
+function clearToken()    { localStorage.removeItem('inf_token'); _token = null; }
+
+async function apiFetch(path, opts = {}) {
+  const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
+  if (_token) headers['Authorization'] = `Bearer ${_token}`;
+  const res = await fetch(`${API}${path}`, { ...opts, headers });
+  return { res, data: await res.json() };
+}
+
+// ── SCREEN MANAGEMENT ──
+function showScreen(name) {
+  ['loginCard','forgotCard','resetCard'].forEach(id => {
+    document.getElementById(id).style.display = id === name + 'Card' ? '' : 'none';
+  });
+}
+
+function showPortal(name) {
+  document.getElementById('authWrap').style.display = 'none';
+  document.getElementById('portal').style.display   = '';
+  document.getElementById('portalName').textContent = name;
+}
+
+function doLogout() {
+  clearToken();
+  location.reload();
+}
+
+// ── LOGIN ──
+async function doLogin() {
+  const email    = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const btn = document.getElementById('loginBtn');
+  const msg = document.getElementById('loginMsg');
+  msg.style.display = 'none';
+  if (!email || !password) { showMsg(msg, 'Enter your email and password.', 'error'); return; }
+  btn.disabled = true; btn.textContent = 'Signing in…';
+  try {
+    const { res, data } = await apiFetch('/influencer/login', {
+      method: 'POST', body: JSON.stringify({ email, password })
+    });
+    if (res.ok) {
+      setToken(data.access_token);
+      buildMonthOptions();
+      showPortal(data.name);
+      loadStats();
+    } else if (res.status === 403 && data.detail === 'pending') {
+      showMsg(msg, '⏳ Your application is still pending approval. We'll email you when you're approved.', 'warning');
+    } else {
+      showMsg(msg, data.detail || 'Invalid email or password.', 'error');
+    }
+  } catch(e) {
+    showMsg(msg, 'Connection error. Try again.', 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Sign In';
+  }
+}
+
+// ── FORGOT PASSWORD ──
+async function doForgot() {
+  const email = document.getElementById('forgotEmail').value.trim();
+  const btn   = document.getElementById('forgotBtn');
+  const msg   = document.getElementById('forgotMsg');
+  msg.style.display = 'none';
+  if (!email) { showMsg(msg, 'Enter your email address.', 'error'); return; }
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    await apiFetch('/influencer/forgot-password', { method: 'POST', body: JSON.stringify({ email }) });
+    showMsg(msg, '✓ If that email is registered, you'll receive a reset link shortly.', 'success');
+  } catch(e) {
+    showMsg(msg, 'Connection error. Try again.', 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Send Reset Link';
+  }
+}
+
+// ── RESET PASSWORD ──
+async function doReset() {
+  const token = new URLSearchParams(window.location.search).get('reset_token');
+  const pw    = document.getElementById('resetPw').value;
+  const pw2   = document.getElementById('resetPw2').value;
+  const btn   = document.getElementById('resetBtn');
+  const msg   = document.getElementById('resetMsg');
+  msg.style.display = 'none';
+  if (!pw || pw.length < 8) { showMsg(msg, 'Password must be at least 8 characters.', 'error'); return; }
+  if (pw !== pw2)            { showMsg(msg, "Passwords don't match.", 'error'); return; }
+  btn.disabled = true; btn.textContent = 'Saving…';
+  try {
+    const { res, data } = await apiFetch('/influencer/reset-password', {
+      method: 'POST', body: JSON.stringify({ token, new_password: pw })
+    });
+    if (res.ok) {
+      showMsg(msg, '✓ Password updated! You can now sign in.', 'success');
+      setTimeout(() => { history.replaceState({}, '', '/influencer.html'); showScreen('login'); }, 1800);
+    } else {
+      showMsg(msg, data.detail || 'Invalid or expired link.', 'error');
+    }
+  } catch(e) {
+    showMsg(msg, 'Connection error. Try again.', 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Set Password';
+  }
+}
+
+// ── HELPERS ──
+function showMsg(el, text, type) {
+  el.textContent = text;
+  el.className = `msg ${type}`;
+  el.style.display = '';
+}
+
+function fmt(n) {
+  if (n === undefined || n === null) return '—';
+  return Number(n).toLocaleString();
+}
+function fmtUsd(n) { return '$' + (n || 0).toFixed(2); }
+function fmtPct(n) { return (n || 0).toFixed(1) + '%'; }
+function fmtDate(s) {
+  if (!s) return '—';
+  return new Date(s + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+// ── MONTH OPTIONS ──
+function buildMonthOptions() {
+  const sel = document.getElementById('monthSelect');
+  sel.innerHTML = '';
+  const now = new Date();
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    const val = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const label = d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    const opt = document.createElement('option');
+    opt.value = val; opt.textContent = label;
+    sel.appendChild(opt);
+  }
+}
+
+// ── LOAD STATS ──
+async function loadStats() {
+  const month = document.getElementById('monthSelect').value;
+  document.getElementById('monthlyKpis').innerHTML =
+    `<div class="loading-portal" style="grid-column:1/-1">Loading…</div>`;
+  document.getElementById('referralsBody').innerHTML =
+    `<tr><td colspan="3" class="empty-table">Loading…</td></tr>`;
+
+  try {
+    const { res, data } = await apiFetch(`/influencer/my-stats?month=${month}`);
+    if (res.status === 401) { doLogout(); return; }
+    if (!res.ok) { throw new Error(data.detail || 'Error'); }
+    _stats = data;
+    renderStats(data);
+  } catch(e) {
+    document.getElementById('monthlyKpis').innerHTML =
+      `<div class="loading-portal" style="grid-column:1/-1;color:#f87171">${e.message}</div>`;
+  }
+}
+
+function renderStats(d) {
+  // Promo code
+  document.getElementById('promoCodeDisplay').textContent = d.promo_code;
+  document.getElementById('payoutPctDisplay').textContent = `${d.payout_rate_pct}% commission rate`;
+  _inviteUrl = d.invite_url;
+
+  // Monthly KPIs
+  const convClass = d.conversion_rate_this_month >= 15 ? '#34d399'
+                  : d.conversion_rate_this_month >= 7  ? '#fbbf24' : '#f87171';
+  document.getElementById('monthlyKpis').innerHTML = `
+    <div class="kpi-card">
+      <div class="klabel">Signups</div>
+      <div class="kvalue">${fmt(d.signups_this_month)}</div>
+      <div class="ksub">New users with your code</div>
+    </div>
+    <div class="kpi-card">
+      <div class="klabel">Purchases</div>
+      <div class="kvalue">${fmt(d.purchases_this_month)}</div>
+      <div class="ksub">Made a coin pack purchase</div>
+    </div>
+    <div class="kpi-card">
+      <div class="klabel">Conversion</div>
+      <div class="kvalue" style="color:${convClass}">${fmtPct(d.conversion_rate_this_month)}</div>
+      <div class="ksub">Signups → purchases</div>
+    </div>
+    <div class="kpi-card highlight">
+      <div class="klabel">Your Payout</div>
+      <div class="kvalue">${fmtUsd(d.payout_this_month)}</div>
+      <div class="ksub">${fmtUsd(d.revenue_this_month)} revenue × ${d.payout_rate_pct}%</div>
+    </div>
+  `;
+
+  // All-time
+  document.getElementById('atSignups').textContent = fmt(d.total_signups_all_time);
+  document.getElementById('atRevenue').textContent = fmtUsd(d.all_time_revenue);
+  document.getElementById('atPayout').textContent  = fmtUsd(d.all_time_payout);
+  document.getElementById('alltimeRow').style.display = '';
+
+  // Referrals
+  const refs = d.referrals || [];
+  document.getElementById('referralsCount').textContent = `${refs.length} referral${refs.length !== 1 ? 's' : ''}`;
+  document.getElementById('referralsBody').innerHTML = refs.length === 0
+    ? `<tr><td colspan="3" class="empty-table">No referrals this month yet.</td></tr>`
+    : refs.map(r => {
+        const cls = r.status === 'purchased' ? 'pill-green' : 'pill-blue';
+        return `<tr>
+          <td>${r.name || 'Explorer'}</td>
+          <td><span class="pill ${cls}">${r.status}</span></td>
+          <td style="color:var(--muted)">${fmtDate(r.date)}</td>
+        </tr>`;
+      }).join('');
+}
+
+// ── COPY BUTTONS ──
+function copyCode() {
+  const code = document.getElementById('promoCodeDisplay').textContent;
+  navigator.clipboard.writeText(code).then(() => flashCopy('btnCopyCode', '✓ Copied!'));
+}
+function copyLink() {
+  navigator.clipboard.writeText(_inviteUrl).then(() => flashCopy('btnCopyLink', '✓ Link copied!'));
+}
+function flashCopy(id, text) {
+  const btn = document.getElementById(id);
+  const orig = btn.textContent;
+  btn.textContent = text;
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+}
+
+// ── KEYBOARD ──
+document.getElementById('loginPassword').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+document.getElementById('forgotEmail').addEventListener('keydown',   e => { if (e.key === 'Enter') doForgot(); });
+document.getElementById('resetPw2').addEventListener('keydown',      e => { if (e.key === 'Enter') doReset(); });
+
+// ── INIT ──
+const params = new URLSearchParams(window.location.search);
+if (params.get('reset_token')) {
+  showScreen('reset');
+} else if (getToken()) {
+  _token = getToken();
+  buildMonthOptions();
+  // Validate token by calling my-stats; if 401 fall back to login
+  apiFetch(`/influencer/my-stats?month=${document.getElementById('monthSelect')?.value || ''}`)
+    .then(({ res, data }) => {
+      if (res.status === 401) { clearToken(); return; }
+      document.getElementById('portalName').textContent = '';
+      showPortal('');
+      _stats = data;
+      renderStats(data);
+    })
+    .catch(() => {});
+}
+</script>
+</body>
+</html>

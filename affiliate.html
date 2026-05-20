@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Become an Affiliate — Urban Tales</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="description" content="Partner with Urban Tales and earn commission sharing your love for travel and city exploration." />
+  <style>
+    .aff-hero { padding: 4rem 0 2.5rem; text-align: center; }
+    .aff-hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: .6rem; }
+    .aff-hero p { font-size: 1.1rem; max-width: 58ch; margin: 0 auto 2rem; }
+
+    .perks-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin-bottom: 3rem; }
+    @media (max-width: 700px) { .perks-grid { grid-template-columns: 1fr; } }
+    .perk-card {
+      background: linear-gradient(180deg, var(--card-strong), var(--card));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.4rem; text-align: center;
+    }
+    .perk-icon { font-size: 2rem; margin-bottom: .7rem; }
+    .perk-card h3 { font-size: 1rem; margin-bottom: .4rem; color: var(--text); }
+    .perk-card p  { font-size: .88rem; margin: 0; color: var(--muted); }
+
+    .form-card {
+      background: linear-gradient(180deg, var(--card-strong), var(--card));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 2rem; max-width: 640px; margin: 0 auto 3rem;
+    }
+    .form-card h2 { font-size: 1.4rem; margin-bottom: .4rem; }
+    .form-card .sub { color: var(--muted); font-size: .9rem; margin-bottom: 1.6rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+    .field { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+    .field label { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; font-weight: 600; }
+    .field input, .field textarea {
+      background: rgba(0,0,0,.3); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-size: .95rem;
+      padding: 11px 14px; outline: none; font-family: inherit; transition: border-color .15s;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--accent); }
+    .field textarea { resize: vertical; min-height: 80px; }
+    .field .hint { font-size: .78rem; color: var(--muted); margin: 0; }
+    .field input.error, .field textarea.error { border-color: #f87171; }
+
+    .socials-label {
+      font-size: .78rem; color: var(--muted); text-transform: uppercase;
+      letter-spacing: .07em; font-weight: 600; margin-bottom: .6rem;
+    }
+    .social-row { display: flex; align-items: center; gap: .7rem; margin-bottom: .7rem; }
+    .social-icon { font-size: 1.2rem; width: 28px; text-align: center; flex-shrink: 0; }
+    .social-row input {
+      flex: 1; background: rgba(0,0,0,.3); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-size: .9rem;
+      padding: 9px 12px; outline: none; font-family: inherit; transition: border-color .15s;
+    }
+    .social-row input:focus { border-color: var(--accent); }
+
+    .submit-btn {
+      width: 100%; margin-top: .5rem; cursor: pointer; font-size: 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #2a1708; border: 0; font-weight: 800; border-radius: 999px;
+      padding: 14px; transition: opacity .2s, transform .18s;
+    }
+    .submit-btn:hover { opacity: .88; transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    .msg {
+      display: none; border-radius: 12px; padding: 14px 16px;
+      font-size: .9rem; font-weight: 500; margin-top: 14px; text-align: center;
+    }
+    .msg.success { background: rgba(52,211,153,.1); color: #34d399; border: 1px solid rgba(52,211,153,.3); }
+    .msg.error   { background: rgba(248,113,113,.1); color: #f87171; border: 1px solid rgba(248,113,113,.3); }
+
+    .divider-row { display: flex; align-items: center; gap: 1rem; margin: 2rem 0 1.4rem; }
+    .divider-row hr { flex: 1; border: none; border-top: 1px solid var(--border); }
+    .divider-row span { color: var(--muted); font-size: .82rem; white-space: nowrap; }
+
+    .login-link { text-align: center; font-size: .9rem; color: var(--muted); margin-top: 1.2rem; }
+    .login-link a { color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="/" class="brand">
+          <img src="icon.png" alt="Urban Tales" class="brand-logo" />
+          <div class="brand-copy">
+            <span class="name">Urban Tales</span>
+            <span class="tag">City Explorer</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/cities.html">Cities</a>
+          <a href="/influencer.html">Affiliate Login</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="aff-hero">
+      <div class="container">
+        <div class="kicker">Partner Program</div>
+        <h1>Earn by sharing<br>the world's best cities</h1>
+        <p>Join the Urban Tales affiliate program and earn commission every time someone you refer makes a purchase. Real-time dashboard, monthly payouts, zero setup fees.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="perks-grid">
+          <div class="perk-card">
+            <div class="perk-icon">💰</div>
+            <h3>15% Commission</h3>
+            <p>Earn 15% of every coin pack purchase made by users you refer. Rate can increase for top performers.</p>
+          </div>
+          <div class="perk-card">
+            <div class="perk-icon">📊</div>
+            <h3>Real-time Dashboard</h3>
+            <p>Track your signups, conversions, revenue, and payout in your personal portal — filtered by month.</p>
+          </div>
+          <div class="perk-card">
+            <div class="perk-icon">📅</div>
+            <h3>Monthly Payouts</h3>
+            <p>Payouts processed once a month. We'll reach out to your preferred payment method.</p>
+          </div>
+          <div class="perk-card">
+            <div class="perk-icon">🎁</div>
+            <h3>Bonus for Your Audience</h3>
+            <p>Everyone who signs up with your code gets 500 bonus coins — a great incentive for your followers.</p>
+          </div>
+          <div class="perk-card">
+            <div class="perk-icon">🌍</div>
+            <h3>Global Reach</h3>
+            <p>Urban Tales covers 30+ cities worldwide. Your audience can use it anywhere they travel.</p>
+          </div>
+          <div class="perk-card">
+            <div class="perk-icon">🏛️</div>
+            <h3>Premium Product</h3>
+            <p>AI-powered audio guides, walking tours, gamification. Easy to recommend to any traveler.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="apply">
+      <div class="container">
+        <div class="form-card">
+          <h2>Apply to become an affiliate</h2>
+          <p class="sub">Fill in your details below. We review every application and reply within 1–2 business days.</p>
+
+          <div class="form-row">
+            <div class="field">
+              <label>Full Name *</label>
+              <input type="text" id="name" placeholder="Jane Smith" />
+            </div>
+            <div class="field">
+              <label>Email *</label>
+              <input type="email" id="email" placeholder="jane@example.com" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label>Password *</label>
+              <input type="password" id="password" placeholder="Min. 8 characters" />
+              <p class="hint">You'll use this to access your affiliate portal once approved.</p>
+            </div>
+            <div class="field">
+              <label>Confirm Password *</label>
+              <input type="password" id="password2" placeholder="Repeat password" />
+            </div>
+          </div>
+
+          <div class="divider-row">
+            <hr /><span>Your Social Media</span><hr />
+          </div>
+
+          <p class="socials-label">Add at least one channel</p>
+          <div class="social-row">
+            <span class="social-icon">📷</span>
+            <input type="text" id="instagram" placeholder="Instagram handle (without @)" />
+          </div>
+          <div class="social-row">
+            <span class="social-icon">🎵</span>
+            <input type="text" id="tiktok" placeholder="TikTok handle (without @)" />
+          </div>
+          <div class="social-row">
+            <span class="social-icon">▶️</span>
+            <input type="text" id="youtube" placeholder="YouTube channel URL or handle" />
+          </div>
+
+          <div class="field" style="margin-top:1.2rem">
+            <label>Tell us about your audience <span style="color:var(--muted);font-weight:400;text-transform:none">(optional)</span></label>
+            <textarea id="audience" placeholder="e.g. Travel lifestyle content, mainly 25–40 year olds, 50k Instagram followers…"></textarea>
+          </div>
+
+          <button class="submit-btn" id="submitBtn" onclick="submitApplication()">Apply Now →</button>
+          <div class="msg" id="resultMsg"></div>
+
+          <div class="login-link">Already approved? <a href="/influencer.html">Sign in to your dashboard →</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" style="border-top:1px solid var(--border);text-align:center">
+    <div class="container">
+      <div class="footer-links" style="justify-content:center;margin-bottom:.8rem">
+        <a href="/" style="color:var(--muted);font-size:.85rem">Home</a>
+        <span style="color:var(--border)">·</span>
+        <a href="/privacy.html" style="color:var(--muted);font-size:.85rem">Privacy Policy</a>
+        <span style="color:var(--border)">·</span>
+        <a href="/contact.html" style="color:var(--muted);font-size:.85rem">Contact</a>
+      </div>
+      <p style="color:#555;font-size:.78rem;margin:0">© 2026 Urban Tales. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const API = 'https://friendly-fulfillment-production.up.railway.app/api';
+
+    async function submitApplication() {
+      const btn = document.getElementById('submitBtn');
+      const msg = document.getElementById('resultMsg');
+
+      const name      = document.getElementById('name').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const password  = document.getElementById('password').value;
+      const password2 = document.getElementById('password2').value;
+      const instagram = document.getElementById('instagram').value.trim();
+      const tiktok    = document.getElementById('tiktok').value.trim();
+      const youtube   = document.getElementById('youtube').value.trim();
+      const audience  = document.getElementById('audience').value.trim();
+
+      msg.style.display = 'none';
+
+      if (!name || !email || !password) {
+        showMsg('Please fill in your name, email, and password.', 'error'); return;
+      }
+      if (password.length < 8) {
+        showMsg('Password must be at least 8 characters.', 'error'); return;
+      }
+      if (password !== password2) {
+        showMsg("Passwords don't match.", 'error'); return;
+      }
+      if (!instagram && !tiktok && !youtube) {
+        showMsg('Please add at least one social media channel.', 'error'); return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      try {
+        const res = await fetch(`${API}/influencer/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password, instagram, tiktok, youtube, audience_description: audience })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          showMsg('🎉 Application received! We'll review it and email you within 1–2 business days.', 'success');
+          btn.textContent = '✓ Submitted';
+        } else {
+          showMsg(data.detail || 'Something went wrong. Please try again.', 'error');
+          btn.disabled = false;
+          btn.textContent = 'Apply Now →';
+        }
+      } catch (e) {
+        showMsg('Connection error. Check your network and try again.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Apply Now →';
+      }
+    }
+
+    function showMsg(text, type) {
+      const el = document.getElementById('resultMsg');
+      el.textContent = text;
+      el.className = `msg ${type}`;
+      el.style.display = '';
+    }
+
+    document.getElementById('password2').addEventListener('keydown', e => {
+      if (e.key === 'Enter') submitApplication();
+    });
+  </script>
+</body>
+</html>

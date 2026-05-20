@@ -763,6 +763,45 @@
       </div>
     </div>
 
+      <!-- ── INFLUENCER ACCOUNTS ── -->
+      <div class="card" style="margin-top:24px">
+        <div class="section-header">
+          <h2>⏳ Pending Affiliate Applications</h2>
+          <span style="font-size:0.8rem;color:var(--muted)" id="pendingCount"></span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th><th>Email</th><th>Socials</th><th>Applied</th>
+                <th>Payout %</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="pendingInfluencersBody">
+              <tr><td colspan="6" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <div class="section-header">
+          <h2>✅ Approved Affiliates</h2>
+          <span style="font-size:0.8rem;color:var(--muted)" id="approvedCount"></span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Email</th><th>Code</th><th>Payout %</th><th>Approved</th></tr>
+            </thead>
+            <tbody id="approvedInfluencersBody">
+              <tr><td colspan="5" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <!-- ── NOTIFICATIONS ── -->
     <div class="tab-panel" id="panel-notifications">
       <div class="notif-form">
@@ -2143,11 +2182,85 @@ async function runAggregation() {
 }
 
 // ══════════════════════════════════════════════
+// INFLUENCER ACCOUNTS
+// ══════════════════════════════════════════════
+function renderInfluencerAccounts(data) {
+  if (!data) {
+    document.getElementById('pendingInfluencersBody').innerHTML = `<tr><td colspan="6" class="loading">No data.</td></tr>`;
+    document.getElementById('approvedInfluencersBody').innerHTML = `<tr><td colspan="5" class="loading">No data.</td></tr>`;
+    return;
+  }
+  const accounts = data.accounts || [];
+  const pending  = accounts.filter(a => !a.approved);
+  const approved = accounts.filter(a => a.approved);
+
+  document.getElementById('pendingCount').textContent  = `${pending.length} pending`;
+  document.getElementById('approvedCount').textContent = `${approved.length} active`;
+
+  document.getElementById('pendingInfluencersBody').innerHTML = pending.length === 0
+    ? `<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">No pending applications.</td></tr>`
+    : pending.map(a => {
+        const socials = [
+          a.instagram ? `📷 @${a.instagram}` : '',
+          a.tiktok    ? `🎵 @${a.tiktok}`    : '',
+          a.youtube   ? `▶️ ${a.youtube}`    : '',
+        ].filter(Boolean).join(' ');
+        return `<tr>
+          <td><strong>${a.name || '—'}</strong>${a.audience_description ? `<br><span style="font-size:.75rem;color:var(--muted)">${a.audience_description.slice(0,60)}…</span>` : ''}</td>
+          <td style="color:var(--muted);font-size:.82rem">${a.email}</td>
+          <td style="font-size:.82rem;color:var(--muted)">${socials || '—'}</td>
+          <td style="font-size:.82rem;color:var(--muted)">${fmtDate(a.created_at)}</td>
+          <td><input type="number" id="payout_${a._id}" value="15" min="1" max="100" step="1"
+            style="width:60px;background:#111;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:4px 8px;font-size:.82rem"> %</td>
+          <td>
+            <button onclick="approveInfluencer('${a._id}','${a.name}')"
+              style="background:var(--green);color:#0a0a0a;border:none;border-radius:8px;padding:6px 14px;font-size:.82rem;font-weight:700;cursor:pointer">
+              Approve
+            </button>
+          </td>
+        </tr>`;
+      }).join('');
+
+  document.getElementById('approvedInfluencersBody').innerHTML = approved.length === 0
+    ? `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">No approved affiliates yet.</td></tr>`
+    : approved.map(a => `<tr>
+        <td><strong>${a.name || '—'}</strong></td>
+        <td style="color:var(--muted);font-size:.82rem">${a.email}</td>
+        <td style="font-family:monospace;color:var(--primary)">${a.promo_code || '—'}</td>
+        <td>${((a.payout_rate || 0.15) * 100).toFixed(0)}%</td>
+        <td style="font-size:.82rem;color:var(--muted)">${fmtDate(a.approved_at)}</td>
+      </tr>`).join('');
+}
+
+async function approveInfluencer(id, name) {
+  const payoutInput = document.getElementById(`payout_${id}`);
+  const payout_rate = parseFloat(payoutInput?.value || 15) / 100;
+  if (!confirm(`Approve ${name} with ${Math.round(payout_rate * 100)}% payout rate?`)) return;
+
+  payoutInput.closest('tr').querySelector('button').textContent = '⏳…';
+  try {
+    const res = await fetch(`${API}/admin/influencer-accounts/${id}/approve`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify({ payout_rate })
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      loadAllData();
+    } else {
+      alert(data.detail || 'Error approving account');
+    }
+  } catch(e) {
+    alert('Connection error');
+  }
+}
+
+// ══════════════════════════════════════════════
 // LOAD ALL DATA
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts] = await Promise.all([
       api(`/analytics/kpi/funnel?days=${days}`),
       api(`/analytics/kpi/funnel-cohort?days=${days}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -2162,6 +2275,7 @@ async function loadAllData() {
       api(`/admin/analytics/revenue?days=${days}`).catch(() => null),
       api(`/admin/analytics/coin-economy`).catch(() => null),
       api(`/admin/analytics/streak-health`).catch(() => null),
+      api(`/admin/influencer-accounts`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue);
@@ -2173,6 +2287,7 @@ async function loadAllData() {
     renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth);
     renderAcquisition(acquisition, freeUsers);
     renderViator(viator);
+    renderInfluencerAccounts(influencerAccounts);
   } catch (e) {
     console.error('Dashboard load error:', e);
   }
