@@ -138,6 +138,12 @@
     tr:last-child td { border-bottom: none; }
     tr:hover td { background: rgba(255,255,255,.02); }
     .pill { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
+    .toggle-switch { position:relative; display:inline-block; width:42px; height:24px; flex-shrink:0; }
+    .toggle-switch input { opacity:0; width:0; height:0; }
+    .toggle-slider { position:absolute; cursor:pointer; inset:0; background:#333; border-radius:24px; transition:.2s; }
+    .toggle-slider:before { content:""; position:absolute; width:18px; height:18px; left:3px; bottom:3px; background:#fff; border-radius:50%; transition:.2s; }
+    .toggle-switch input:checked + .toggle-slider { background:var(--primary); }
+    .toggle-switch input:checked + .toggle-slider:before { transform:translateX(18px); }
 
     /* ── LOADING ── */
     .loading { color: var(--muted); font-size: 0.85rem; text-align: center; padding: 40px; }
@@ -276,6 +282,7 @@
     <button class="tab-btn" onclick="showTab('acquisition')">Acquisition</button>
     <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
     <button class="tab-btn" onclick="showTab('viator')">🎫 Viator</button>
+    <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
   </nav>
 
   <main>
@@ -970,6 +977,94 @@
         </div>
       </div>
     </div>
+
+    <!-- ── SETTINGS ── -->
+    <div class="tab-panel" id="panel-settings">
+
+      <!-- Operational Settings -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Operational Settings</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">Changes take effect immediately — no redeploy needed</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px" id="settingsForm">
+          <div class="loading" style="grid-column:1/-1">Loading…</div>
+        </div>
+        <div style="margin-top:20px">
+          <button id="saveSettingsBtn" onclick="saveSettings()"
+            style="background:var(--primary);color:#fff;border:none;border-radius:8px;padding:10px 28px;font-size:0.9rem;font-weight:700;cursor:pointer">
+            Save Settings
+          </button>
+          <span id="settingsSaveMsg" style="margin-left:12px;font-size:0.85rem;color:var(--muted)"></span>
+        </div>
+      </div>
+
+      <!-- Promo Codes -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Promo Codes</h2>
+          <button onclick="showAddPromoForm()"
+            style="background:var(--primary);color:#fff;border:none;border-radius:8px;padding:6px 18px;font-size:0.82rem;font-weight:700;cursor:pointer">
+            + New Code
+          </button>
+        </div>
+
+        <!-- Add/edit form (hidden by default) -->
+        <div id="promoForm" style="display:none;background:#111;border:1px solid var(--border);border-radius:10px;padding:16px;margin:12px 0 16px">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr) auto;gap:12px;align-items:end">
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Code</label>
+              <input id="pf_code" type="text" placeholder="SUMMER25"
+                style="width:100%;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:7px 10px;font-size:0.85rem;box-sizing:border-box;text-transform:uppercase">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Bonus Coins</label>
+              <input id="pf_coins" type="number" value="500" min="0"
+                style="width:100%;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:7px 10px;font-size:0.85rem;box-sizing:border-box">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Type</label>
+              <select id="pf_type"
+                style="width:100%;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:7px 10px;font-size:0.85rem;box-sizing:border-box">
+                <option value="own_campaigns">Own Campaign</option>
+                <option value="influencer">Influencer</option>
+                <option value="mgm">MGM</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button id="pf_saveBtn" onclick="submitPromoForm()"
+                style="background:var(--green);color:#0a0a0a;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;white-space:nowrap">
+                Save
+              </button>
+              <button onclick="hidePromoForm()"
+                style="background:#333;color:var(--text);border:none;border-radius:8px;padding:8px 12px;font-size:0.82rem;cursor:pointer">
+                ✕
+              </button>
+            </div>
+          </div>
+          <div style="margin-top:8px">
+            <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Linked Influencer Email (optional)</label>
+            <input id="pf_email" type="email" placeholder="influencer@example.com"
+              style="width:340px;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:7px 10px;font-size:0.85rem;box-sizing:border-box">
+          </div>
+          <div id="pf_error" style="color:#f87171;font-size:0.82rem;margin-top:8px;display:none"></div>
+        </div>
+
+        <div class="table-wrap" style="max-height:440px;overflow-y:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Code</th><th>Type</th><th>Coins</th><th>Uses</th><th>Linked Email</th><th>Active</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="promoCodesBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /panel-settings -->
 
   </main>
 </div>
@@ -2300,11 +2395,203 @@ async function approveInfluencer(id, name) {
 }
 
 // ══════════════════════════════════════════════
+// SETTINGS TAB
+// ══════════════════════════════════════════════
+let _currentSettings = {};
+
+function renderSettings(data) {
+  if (!data) return;
+  _currentSettings = data.settings || {};
+  const s = _currentSettings;
+
+  const field = (id, label, type, value, extra = '') =>
+    `<div>
+      <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${label}</label>
+      <input id="s_${id}" type="${type}" value="${value}" ${extra}
+        style="width:100%;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:8px 10px;font-size:0.88rem;box-sizing:border-box">
+    </div>`;
+
+  const toggle = (id, label, checked) =>
+    `<div style="display:flex;align-items:center;gap:10px;padding:8px 0">
+      <label class="toggle-switch">
+        <input type="checkbox" id="s_${id}" ${checked ? 'checked' : ''} onchange="this.closest('.toggle-switch').nextElementSibling.textContent=this.checked?'ON':'OFF'">
+        <span class="toggle-slider"></span>
+      </label>
+      <span style="font-size:0.88rem">${label}</span>
+      <span style="font-size:0.78rem;color:var(--muted)">${checked ? 'ON' : 'OFF'}</span>
+    </div>`;
+
+  document.getElementById('settingsForm').innerHTML =
+    field('daily_free_landmark_limit', 'Free Landmarks / Day', 'number', s.daily_free_landmark_limit ?? 3, 'min="0" max="100"') +
+    field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '') +
+    field('narration_min_votes', 'Min Votes Before Auto-Delete', 'number', s.narration_min_votes ?? 5, 'min="1"') +
+    field('narration_downvote_ratio', 'Downvote Ratio to Trigger Delete (0–1)', 'number', s.narration_downvote_ratio ?? 0.7, 'min="0" max="1" step="0.05"') +
+    field('mgm_invitee_bonus_coins', 'MGM Invitee Signup Bonus (coins)', 'number', s.mgm_invitee_bonus_coins ?? 500, 'min="0"') +
+    field('mgm_inviter_reward_coins', 'MGM Inviter Purchase Reward (coins)', 'number', s.mgm_inviter_reward_coins ?? 250, 'min="0"') +
+    field('influencer_revenue_share_pct', 'Influencer Revenue Share (%)', 'number', s.influencer_revenue_share_pct ?? 25, 'min="0" max="100"') +
+    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('tours_creation_free', 'Tours Creation Free', s.tours_creation_free ?? true)}</div>`;
+}
+
+async function saveSettings() {
+  const btn = document.getElementById('saveSettingsBtn');
+  const msg = document.getElementById('settingsSaveMsg');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+  msg.textContent = '';
+
+  const body = {
+    daily_free_landmark_limit: parseInt(document.getElementById('s_daily_free_landmark_limit').value),
+    minimum_app_version: document.getElementById('s_minimum_app_version').value.trim(),
+    narration_min_votes: parseInt(document.getElementById('s_narration_min_votes').value),
+    narration_downvote_ratio: parseFloat(document.getElementById('s_narration_downvote_ratio').value),
+    mgm_invitee_bonus_coins: parseInt(document.getElementById('s_mgm_invitee_bonus_coins').value),
+    mgm_inviter_reward_coins: parseInt(document.getElementById('s_mgm_inviter_reward_coins').value),
+    influencer_revenue_share_pct: parseInt(document.getElementById('s_influencer_revenue_share_pct').value),
+    tours_creation_free: document.getElementById('s_tours_creation_free').checked,
+  };
+
+  try {
+    await fetch(`${API}/admin/settings`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify(body),
+    }).then(r => { if (!r.ok) throw new Error('Save failed'); return r.json(); });
+    msg.style.color = 'var(--green)';
+    msg.textContent = 'Saved successfully';
+  } catch (e) {
+    msg.style.color = '#f87171';
+    msg.textContent = 'Save failed — check console';
+  }
+  btn.disabled = false;
+  btn.textContent = 'Save Settings';
+  setTimeout(() => msg.textContent = '', 4000);
+}
+
+// ── Promo Codes ──
+let _promoEditingCode = null;
+
+function renderPromoCodes(data) {
+  if (!data) return;
+  const codes = data.promo_codes || [];
+  const typeColor = { influencer: 'purple', own_campaigns: 'blue', mgm: 'primary' };
+
+  document.getElementById('promoCodesBody').innerHTML = codes.length === 0
+    ? `<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:20px">No promo codes yet.</td></tr>`
+    : codes.map(c => `<tr>
+        <td style="font-family:monospace;font-weight:700;color:var(--primary)">${c.code}</td>
+        <td><span class="pill badge-${typeColor[c.type] || 'blue'}">${c.type || '—'}</span></td>
+        <td>${fmt(c.bonus_coins)}</td>
+        <td>${fmt(c.uses_count || 0)}</td>
+        <td style="font-size:0.78rem;color:var(--muted)">${c.influencer_email || '—'}</td>
+        <td><span class="pill badge-${c.is_active ? 'green' : 'orange'}">${c.is_active ? 'Active' : 'Inactive'}</span></td>
+        <td style="white-space:nowrap">
+          <button onclick='editPromoCode(${JSON.stringify(c)})'
+            style="background:#333;color:var(--text);border:none;border-radius:6px;padding:4px 10px;font-size:0.78rem;cursor:pointer;margin-right:4px">Edit</button>
+          <button onclick="togglePromoActive('${c.code}', ${!c.is_active})"
+            style="background:#333;color:${c.is_active ? '#f87171' : 'var(--green)'};border:none;border-radius:6px;padding:4px 10px;font-size:0.78rem;cursor:pointer;margin-right:4px">
+            ${c.is_active ? 'Deactivate' : 'Activate'}
+          </button>
+          <button onclick="deletePromoCode('${c.code}')"
+            style="background:#3d1a1a;color:#f87171;border:none;border-radius:6px;padding:4px 10px;font-size:0.78rem;cursor:pointer">Delete</button>
+        </td>
+      </tr>`).join('');
+}
+
+function showAddPromoForm() {
+  _promoEditingCode = null;
+  document.getElementById('pf_code').value = '';
+  document.getElementById('pf_code').disabled = false;
+  document.getElementById('pf_coins').value = '500';
+  document.getElementById('pf_type').value = 'own_campaigns';
+  document.getElementById('pf_email').value = '';
+  document.getElementById('pf_error').style.display = 'none';
+  document.getElementById('pf_saveBtn').textContent = 'Create';
+  document.getElementById('promoForm').style.display = 'block';
+}
+
+function editPromoCode(c) {
+  _promoEditingCode = c.code;
+  document.getElementById('pf_code').value = c.code;
+  document.getElementById('pf_code').disabled = true;
+  document.getElementById('pf_coins').value = c.bonus_coins ?? 500;
+  document.getElementById('pf_type').value = c.type || 'own_campaigns';
+  document.getElementById('pf_email').value = c.influencer_email || '';
+  document.getElementById('pf_error').style.display = 'none';
+  document.getElementById('pf_saveBtn').textContent = 'Update';
+  document.getElementById('promoForm').style.display = 'block';
+}
+
+function hidePromoForm() {
+  document.getElementById('promoForm').style.display = 'none';
+  _promoEditingCode = null;
+}
+
+async function submitPromoForm() {
+  const errEl = document.getElementById('pf_error');
+  errEl.style.display = 'none';
+  const code = document.getElementById('pf_code').value.trim().toUpperCase();
+  const bonus_coins = parseInt(document.getElementById('pf_coins').value);
+  const type = document.getElementById('pf_type').value;
+  const influencer_email = document.getElementById('pf_email').value.trim() || null;
+
+  if (!_promoEditingCode && !code) { errEl.textContent = 'Code is required'; errEl.style.display = 'block'; return; }
+
+  try {
+    if (_promoEditingCode) {
+      const body = { bonus_coins, type };
+      if (influencer_email !== null) body.influencer_email = influencer_email;
+      const r = await fetch(`${API}/admin/promo-codes/${_promoEditingCode}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+        body: JSON.stringify(body),
+      });
+      if (!r.ok) throw new Error((await r.json()).detail || 'Update failed');
+    } else {
+      const body = { code, bonus_coins, type, is_active: true };
+      if (influencer_email) body.influencer_email = influencer_email;
+      const r = await fetch(`${API}/admin/promo-codes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+        body: JSON.stringify(body),
+      });
+      if (!r.ok) throw new Error((await r.json()).detail || 'Create failed');
+    }
+    hidePromoForm();
+    const fresh = await api('/admin/promo-codes');
+    renderPromoCodes(fresh);
+  } catch (e) {
+    errEl.textContent = e.message;
+    errEl.style.display = 'block';
+  }
+}
+
+async function togglePromoActive(code, newActive) {
+  await fetch(`${API}/admin/promo-codes/${code}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+    body: JSON.stringify({ is_active: newActive }),
+  });
+  const fresh = await api('/admin/promo-codes');
+  renderPromoCodes(fresh);
+}
+
+async function deletePromoCode(code) {
+  if (!confirm(`Delete promo code ${code}? This cannot be undone.`)) return;
+  const r = await fetch(`${API}/admin/promo-codes/${code}`, {
+    method: 'DELETE',
+    headers: { 'Authorization': `Bearer ${getToken()}` },
+  });
+  if (!r.ok) { alert('Delete failed'); return; }
+  const fresh = await api('/admin/promo-codes');
+  renderPromoCodes(fresh);
+}
+
+// ══════════════════════════════════════════════
 // LOAD ALL DATA
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes] = await Promise.all([
       api(`/analytics/kpi/funnel?days=${days}`),
       api(`/analytics/kpi/funnel-cohort?days=${days}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -2321,6 +2608,8 @@ async function loadAllData() {
       api(`/admin/analytics/streak-health`).catch(() => null),
       api(`/admin/influencer-accounts`).catch(() => null),
       api(`/admin/analytics/acquisition-channels`).catch(() => null),
+      api(`/admin/settings`).catch(() => null),
+      api(`/admin/promo-codes`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue);
@@ -2334,6 +2623,8 @@ async function loadAllData() {
     renderAcquisition(acquisition, freeUsers);
     renderViator(viator);
     renderInfluencerAccounts(influencerAccounts);
+    renderSettings(settings);
+    renderPromoCodes(promoCodes);
   } catch (e) {
     console.error('Dashboard load error:', e);
   }
