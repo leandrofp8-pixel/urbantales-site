@@ -1293,7 +1293,17 @@ function renderOverview(funnel, freeUsers, revenue) {
       r.conversion_rate > 5 ? '↑ Strong' : r.conversion_rate > 2 ? '→ Average' : '↓ Low',
       r.conversion_rate > 5 ? 'green' : r.conversion_rate > 2 ? 'yellow' : 'orange');
 
-  const daily = [...(funnel.daily_data || [])].reverse();
+  // Build a complete date range (start → today) so days with no events still show as 0
+  const rawDaily = [...(funnel.daily_data || [])].reverse();
+  const byDate = {};
+  rawDaily.forEach(d => { byDate[d.date] = d; });
+  const rangeStart = funnel.start_date;
+  const rangeEnd   = funnel.end_date || new Date().toISOString().slice(0, 10);
+  const daily = [];
+  for (let d = new Date(rangeStart + 'T00:00:00Z'); d <= new Date(rangeEnd + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + 1)) {
+    const key = d.toISOString().slice(0, 10);
+    daily.push(byDate[key] || { date: key });
+  }
   const labels = daily.map(d => shortDate(d.date));
 
   lineChart('chartActivity', labels, [
@@ -1379,15 +1389,23 @@ function renderFunnel(cohortFunnel, funnel, freeUsers) {
     `).join('');
   }
 
-  // Daily chart still uses the existing daily_funnel_summary data
-  const daily = [...(funnel.daily_data || [])].reverse();
-  const labels = daily.map(d => shortDate(d.date));
+  // Daily chart — backfill missing dates so today always appears
+  const rawFunnelDaily = [...(funnel.daily_data || [])].reverse();
+  const funnelByDate = {};
+  rawFunnelDaily.forEach(d => { funnelByDate[d.date] = d; });
+  const funnelRangeEnd = funnel.end_date || new Date().toISOString().slice(0, 10);
+  const funnelDaily = [];
+  for (let d = new Date((funnel.start_date || funnelRangeEnd) + 'T00:00:00Z'); d <= new Date(funnelRangeEnd + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + 1)) {
+    const key = d.toISOString().slice(0, 10);
+    funnelDaily.push(funnelByDate[key] || { date: key });
+  }
+  const labels = funnelDaily.map(d => shortDate(d.date));
 
   lineChart('chartFunnelDaily', labels, [
-    { label: 'New Signups',   data: daily.map(d => d.new_signups            || 0), color: C.blue },
-    { label: 'Activated',     data: daily.map(d => d.new_users_activated    || 0), color: C.primary },
-    { label: 'Converted',     data: daily.map(d => d.free_users_converted   || 0), color: C.green },
-    { label: 'Recovered (60d+)', data: daily.map(d => d.recovered_users     || 0), color: C.yellow },
+    { label: 'New Signups',   data: funnelDaily.map(d => d.new_signups            || 0), color: C.blue },
+    { label: 'Activated',     data: funnelDaily.map(d => d.new_users_activated    || 0), color: C.primary },
+    { label: 'Converted',     data: funnelDaily.map(d => d.free_users_converted   || 0), color: C.green },
+    { label: 'Recovered (60d+)', data: funnelDaily.map(d => d.recovered_users     || 0), color: C.yellow },
   ]);
 
   // Hot leads table
