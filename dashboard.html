@@ -1496,22 +1496,22 @@ function renderMAU(mau) {
   destroyChart('chartMAUCumulative');
   const ctxC = document.getElementById('chartMAUCumulative').getContext('2d');
   CHARTS['chartMAUCumulative'] = new Chart(ctxC, {
-    type: 'line',
+    type: 'bar',
     data: {
       labels,
       datasets: [
-        { label: 'New',      data: daily.map(d => d.new),      borderColor: C.green,   backgroundColor: C.green  + '22', fill: true,  tension: 0.35, pointRadius: 2, borderWidth: 2 },
-        { label: 'Engaged',  data: daily.map(d => d.engaged),  borderColor: C.blue,    backgroundColor: C.blue   + '22', fill: true,  tension: 0.35, pointRadius: 2, borderWidth: 2 },
-        { label: 'Recovered',data: daily.map(d => d.recovered),borderColor: C.yellow,  backgroundColor: C.yellow + '22', fill: true,  tension: 0.35, pointRadius: 2, borderWidth: 2 },
-        { label: fmtMonth(mau.prev_month) + ' total', data: prevTotals, borderColor: '#555', backgroundColor: 'transparent', fill: false, tension: 0.35, pointRadius: 0, borderWidth: 1.5, borderDash: [4,4] },
+        { label: 'New',       type: 'bar',  data: daily.map(d => d.new),      backgroundColor: C.green  + 'cc', borderColor: C.green,  borderWidth: 0, stack: 'mau' },
+        { label: 'Engaged',   type: 'bar',  data: daily.map(d => d.engaged),  backgroundColor: C.blue   + 'cc', borderColor: C.blue,   borderWidth: 0, stack: 'mau' },
+        { label: 'Recovered', type: 'bar',  data: daily.map(d => d.recovered),backgroundColor: C.yellow + 'cc', borderColor: C.yellow, borderWidth: 0, stack: 'mau' },
+        { label: fmtMonth(mau.prev_month) + ' total', type: 'line', data: prevTotals, borderColor: '#888', backgroundColor: 'transparent', fill: false, tension: 0.35, pointRadius: 0, borderWidth: 2, borderDash: [5, 4] },
       ]
     },
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
       scales: {
-        x: { ticks: { color: '#555', font: { size: 10 }, maxTicksLimit: 15 }, grid: { color: '#1f1f1f' } },
-        y: { ticks: { color: '#555', font: { size: 10 } }, grid: { color: '#1f1f1f' }, beginAtZero: true }
+        x: { ticks: { color: '#555', font: { size: 10 }, maxTicksLimit: 15 }, grid: { color: '#1f1f1f' }, stacked: true },
+        y: { ticks: { color: '#555', font: { size: 10 } }, grid: { color: '#1f1f1f' }, beginAtZero: true, stacked: true }
       }
     }
   });
