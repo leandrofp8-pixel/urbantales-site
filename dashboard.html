@@ -348,9 +348,34 @@
         </div>
         <div class="card">
           <div class="card-title">Daily Acquisition &amp; Re-engagement
-            <span title="Recovered = users returning after 60+ days of inactivity" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+            <span title="Recovered = users returning after 30+ days of inactivity" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
           </div>
           <div class="chart-wrap-lg"><canvas id="chartFunnelDaily"></canvas></div>
+        </div>
+      </div>
+
+      <!-- ── MAU ── -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Monthly Active Users (MAU)</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">A MAU is a user who heard at least one narration · New = first-ever activation · Engaged = also MAU last month · Recovered = returning after ≥1 month gap</span>
+        </div>
+        <div id="mauKpis" style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+          <div class="loading">Loading…</div>
+        </div>
+        <div class="grid-2" style="margin-bottom:20px">
+          <div>
+            <div style="font-size:0.8rem;color:var(--muted);margin-bottom:8px">Current month — cumulative daily MAUs</div>
+            <div class="chart-wrap-lg"><canvas id="chartMAUCumulative"></canvas></div>
+          </div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--muted);margin-bottom:8px">Monthly MAU breakdown</div>
+            <div class="chart-wrap-lg"><canvas id="chartMAUMonthly"></canvas></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.8rem;color:var(--muted);margin-bottom:8px">Monthly churn rate — % of previous month's MAUs who did not activate this month</div>
+          <div class="chart-wrap" style="height:180px"><canvas id="chartMAUChurn"></canvas></div>
         </div>
       </div>
 
@@ -1406,7 +1431,7 @@ function renderFunnel(cohortFunnel, funnel, freeUsers) {
     { label: 'New Signups',   data: funnelDaily.map(d => d.new_signups            || 0), color: C.blue },
     { label: 'Activated',     data: funnelDaily.map(d => d.new_users_activated    || 0), color: C.primary },
     { label: 'Converted',     data: funnelDaily.map(d => d.free_users_converted   || 0), color: C.green },
-    { label: 'Recovered (60d+)', data: funnelDaily.map(d => d.recovered_users     || 0), color: C.yellow },
+    { label: 'Recovered (30d+)', data: funnelDaily.map(d => d.recovered_users     || 0), color: C.yellow },
   ]);
 
   // Hot leads table
@@ -1426,6 +1451,85 @@ function renderFunnel(cohortFunnel, funnel, freeUsers) {
           <td><span class="pill badge-${scoreClass}">${score}</span></td>
         </tr>`;
       }).join('');
+}
+
+// ══════════════════════════════════════════════
+// MAU
+// ══════════════════════════════════════════════
+function renderMAU(mau) {
+  if (!mau) {
+    document.getElementById('mauKpis').innerHTML = '<span style="color:var(--muted);font-size:0.85rem">No MAU data available.</span>';
+    return;
+  }
+
+  const monthly = mau.monthly || [];
+  const cur = monthly[monthly.length - 1] || {};
+  const prev = monthly[monthly.length - 2] || {};
+  const deltaTotal = prev.total > 0 ? Math.round((cur.total - prev.total) / prev.total * 100) : null;
+  const deltaCls = deltaTotal === null ? '' : (deltaTotal >= 0 ? 'badge-green' : 'badge-red');
+  const deltaStr = deltaTotal === null ? '' : `${deltaTotal >= 0 ? '+' : ''}${deltaTotal}% vs prev month`;
+
+  const fmtMonth = m => {
+    if (!m) return '';
+    const [y, mo] = m.split('-');
+    return new Date(+y, +mo - 1, 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  };
+
+  document.getElementById('mauKpis').innerHTML = `
+    ${kpiCard('Total MAUs — ' + fmtMonth(mau.current_month), fmt(cur.total || 0), deltaStr, deltaStr ? deltaStr : null, deltaCls)}
+    ${kpiCard('New', fmt(cur.new || 0), 'first-ever activation this month', null, '')}
+    ${kpiCard('Engaged', fmt(cur.engaged || 0), 'also MAU last month', null, '')}
+    ${kpiCard('Recovered', fmt(cur.recovered || 0), 'returning after ≥1 month gap', null, '')}
+    ${kpiCard('Churn rate', cur.churn_rate != null ? cur.churn_rate + '%' : '—', 'prev-month MAUs lost this month', null, '')}
+  `;
+
+  // Daily cumulative chart — current month + prev month comparison line
+  const daily = mau.daily_cumulative || [];
+  const prevDaily = mau.prev_daily_cumulative || [];
+
+  // Align prev month by day-of-month index so the x-axis matches day 1, 2, 3...
+  const labels = daily.map(d => d.date.slice(8));  // "01", "02", ...
+
+  // Prev month same-length array (padded/trimmed to match current month days shown)
+  const prevTotals = labels.map((_, i) => (prevDaily[i] ? prevDaily[i].total : null));
+
+  destroyChart('chartMAUCumulative');
+  const ctxC = document.getElementById('chartMAUCumulative').getContext('2d');
+  CHARTS['chartMAUCumulative'] = new Chart(ctxC, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'New',      data: daily.map(d => d.new),      borderColor: C.green,   backgroundColor: C.green  + '22', fill: true,  tension: 0.35, pointRadius: 2, borderWidth: 2 },
+        { label: 'Engaged',  data: daily.map(d => d.engaged),  borderColor: C.blue,    backgroundColor: C.blue   + '22', fill: true,  tension: 0.35, pointRadius: 2, borderWidth: 2 },
+        { label: 'Recovered',data: daily.map(d => d.recovered),borderColor: C.yellow,  backgroundColor: C.yellow + '22', fill: true,  tension: 0.35, pointRadius: 2, borderWidth: 2 },
+        { label: fmtMonth(mau.prev_month) + ' total', data: prevTotals, borderColor: '#555', backgroundColor: 'transparent', fill: false, tension: 0.35, pointRadius: 0, borderWidth: 1.5, borderDash: [4,4] },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+      scales: {
+        x: { ticks: { color: '#555', font: { size: 10 }, maxTicksLimit: 15 }, grid: { color: '#1f1f1f' } },
+        y: { ticks: { color: '#555', font: { size: 10 } }, grid: { color: '#1f1f1f' }, beginAtZero: true }
+      }
+    }
+  });
+
+  // Monthly stacked bar chart
+  const mLabels = monthly.map(m => fmtMonth(m.month));
+  barChart('chartMAUMonthly', mLabels, [
+    { label: 'New',       data: monthly.map(m => m.new),       color: C.green,  stack: 'mau', backgroundColor: C.green  + 'cc' },
+    { label: 'Engaged',   data: monthly.map(m => m.engaged),   color: C.blue,   stack: 'mau', backgroundColor: C.blue   + 'cc' },
+    { label: 'Recovered', data: monthly.map(m => m.recovered), color: C.yellow, stack: 'mau', backgroundColor: C.yellow + 'cc' },
+  ], { stacked: true });
+
+  // Churn rate line chart
+  const churnLabels = monthly.map(m => fmtMonth(m.month));
+  const churnData = monthly.map(m => m.churn_rate);
+  lineChart('chartMAUChurn', churnLabels, [
+    { label: 'Churn %', data: churnData, color: '#ef4444' }
+  ], { y: { ticks: { callback: v => v + '%' } } });
 }
 
 // ══════════════════════════════════════════════
@@ -2638,10 +2742,11 @@ async function deletePromoCode(code) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes] = await Promise.all([
       api(`/analytics/kpi/funnel?days=${days}`),
       api(`/analytics/kpi/funnel-cohort?days=${days}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
+      api(`/analytics/kpi/mau?months=12`).catch(() => null),
       api(`/analytics/kpi/free-users`),
       api(`/analytics/daily?days=${days}`),
       api(`/admin/cost-report?days=${days}`),
@@ -2662,6 +2767,7 @@ async function loadAllData() {
     renderOverview(funnel, freeUsers, revenue);
     renderFunnel(cohortFunnel, funnel, freeUsers);
     renderCohorts(cohortsMonthly);
+    renderMAU(mau);
     renderContent(content, funnel, listenCompletion);
     renderTours(tours);
     renderCosts(costs, funnel);
