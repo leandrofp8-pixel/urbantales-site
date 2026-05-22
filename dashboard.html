@@ -2565,6 +2565,13 @@ function renderSettings(data) {
     field('must_see_min_rating', 'Must-See Min Rating', 'number', s.must_see_min_rating ?? 4.3, 'min="0" max="5" step="0.1"') +
     field('must_see_min_reviews', 'Must-See Min Review Count', 'number', s.must_see_min_reviews ?? 70, 'min="0"') +
 
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Viator Experience Filtering</div>` +
+    field('viator_min_rating', 'Min Rating to Show', 'number', s.viator_min_rating ?? 3.5, 'min="0" max="5" step="0.1"') +
+    field('viator_min_reviews', 'Min Review Count to Show', 'number', s.viator_min_reviews ?? 30, 'min="0"') +
+    `<div style="grid-column:1/-1;display:flex;align-items:center;gap:10px">` +
+    `<button onclick="flushViatorCache()" style="padding:6px 14px;background:var(--orange,#f97316);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:0.82rem">Flush Viator Cache</button>` +
+    `<span id="viatorCacheMsg" style="font-size:0.8rem;color:var(--muted)"></span></div>` +
+
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Narration Quality</div>` +
     field('narration_min_votes', 'Min Votes Before Auto-Delete', 'number', s.narration_min_votes ?? 5, 'min="1"') +
     field('narration_downvote_ratio', 'Downvote Ratio to Trigger Delete (0–1)', 'number', s.narration_downvote_ratio ?? 0.7, 'min="0" max="1" step="0.05"') +
@@ -2599,6 +2606,8 @@ async function saveSettings() {
     // mgm_invitee_bonus_coins and mgm_inviter_reward_coins are locked (hardcoded in app)
     influencer_revenue_share_pct: parseInt(document.getElementById('s_influencer_revenue_share_pct').value),
     minimum_app_version: document.getElementById('s_minimum_app_version').value.trim(),
+    viator_min_rating: parseFloat(document.getElementById('s_viator_min_rating').value),
+    viator_min_reviews: parseInt(document.getElementById('s_viator_min_reviews').value),
   };
 
   try {
@@ -2616,6 +2625,24 @@ async function saveSettings() {
   btn.disabled = false;
   btn.textContent = 'Save Settings';
   setTimeout(() => msg.textContent = '', 4000);
+}
+
+async function flushViatorCache() {
+  const msg = document.getElementById('viatorCacheMsg');
+  msg.textContent = 'Flushing…';
+  try {
+    const r = await fetch(`${API}/admin/viator-cache`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${getToken()}` },
+    });
+    const d = await r.json();
+    msg.style.color = 'var(--green)';
+    msg.textContent = `Done — ${d.deleted} entries cleared`;
+  } catch {
+    msg.style.color = '#f87171';
+    msg.textContent = 'Failed';
+  }
+  setTimeout(() => msg.textContent = '', 5000);
 }
 
 // ── Promo Codes ──
