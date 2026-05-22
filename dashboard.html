@@ -484,7 +484,7 @@
                   <th>City</th>
                   <th>Created</th>
                   <th>Completed</th>
-                  <th>Rate</th>
+                  <th>Completion %</th>
                   <th>Avg LMs</th>
                 </tr>
               </thead>
@@ -1721,7 +1721,7 @@ function renderTours(tours) {
   const types = tours.tour_types || [];
   if (types.length > 0) {
     barChart('chartTourTypes',
-      types.map(t => TOUR_TYPE_LABELS[t.tour_type] || t.tour_type),
+      types.map(t => t.label || t.tour_type || 'Unknown'),
       [{ label: 'Tours', data: types.map(t => t.count), color: C.primary }]
     );
   } else {
