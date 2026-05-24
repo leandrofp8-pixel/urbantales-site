@@ -72,6 +72,12 @@
     }
     .btn-refresh:hover { border-color: var(--green); color: var(--green); }
     .btn-refresh:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-danger {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+      padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; cursor: pointer; transition: color .15s, border-color .15s;
+    }
+    .btn-danger:hover { border-color: var(--danger); color: var(--danger); }
+    .btn-danger:disabled { opacity: .5; cursor: not-allowed; }
 
     /* ── TABS ── */
     nav.tabs {
@@ -269,6 +275,7 @@
         <option value="90">Last 90 days</option>
       </select>
       <button class="btn-refresh" id="refreshBtn" onclick="runAggregation()">↻ Refresh Data</button>
+      <button class="btn-danger" id="clearCacheBtn" onclick="clearPlacesCache()">🗑 Clear Places Cache</button>
       <button class="btn-logout" onclick="logout()">Sign out</button>
     </div>
   </header>
@@ -2420,6 +2427,30 @@ async function confirmSend() {
 }
 
 // ══════════════════════════════════════════════
+// CLEAR PLACES CACHE
+// ══════════════════════════════════════════════
+async function clearPlacesCache() {
+  if (!confirm('Clear ALL places & city landmarks cache?\n\nThis forces a fresh Google Places fetch on next use. Confirm?')) return;
+  const btn = document.getElementById('clearCacheBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Clearing…';
+  try {
+    const res = await fetch(`${API}/admin/clear-places-cache`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${getToken()}` }
+    });
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    const total = (data.deleted?.places_cache || 0) + (data.deleted?.city_landmarks_cache || 0);
+    btn.textContent = `✓ Cleared (${total} entries)`;
+    setTimeout(() => { btn.disabled = false; btn.textContent = '🗑 Clear Places Cache'; }, 3000);
+  } catch(e) {
+    btn.textContent = '✗ Failed';
+    setTimeout(() => { btn.disabled = false; btn.textContent = '🗑 Clear Places Cache'; }, 2000);
+  }
+}
+
+// ══════════════════════════════════════════════
 // REFRESH DATA AGGREGATION
 // ══════════════════════════════════════════════
 async function runAggregation() {
@@ -2556,8 +2587,8 @@ function renderSettings(data) {
   document.getElementById('settingsForm').innerHTML =
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border)">Paywall &amp; Access</div>` +
     field('daily_free_landmark_limit', 'Free Landmarks / Day', 'number', s.daily_free_landmark_limit ?? 3, 'min="0" max="100"') +
-    lockedField('day_pass_price_points', 'Day Pass Price (coins)', 'number', s.day_pass_price_points ?? 500) +
-    lockedField('city_unlock_price_points', 'City Unlock Price (coins)', 'number', s.city_unlock_price_points ?? 1000) +
+    field('day_pass_price_points', 'Day Pass Price (coins)', 'number', s.day_pass_price_points ?? 500, 'min="0"') +
+    field('city_unlock_price_points', 'City Unlock Price (coins)', 'number', s.city_unlock_price_points ?? 1000, 'min="0"') +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('tours_creation_free', 'Tours Creation Free', s.tours_creation_free ?? true)}</div>` +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Content Quality (Landmarks)</div>` +
@@ -2578,8 +2609,8 @@ function renderSettings(data) {
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Referrals &amp; Payouts</div>` +
     field('referral_cooldown_days', 'MGM Push Notification Cooldown (days)', 'number', s.referral_cooldown_days ?? 15, 'min="0"') +
-    lockedField('mgm_invitee_bonus_coins', 'MGM Invitee Signup Bonus (coins)', 'number', s.mgm_invitee_bonus_coins ?? 500) +
-    lockedField('mgm_inviter_reward_coins', 'MGM Inviter Purchase Reward (coins)', 'number', s.mgm_inviter_reward_coins ?? 250) +
+    field('mgm_invitee_bonus_coins', 'MGM Invitee Signup Bonus (coins)', 'number', s.mgm_invitee_bonus_coins ?? 500, 'min="0"') +
+    field('mgm_inviter_reward_coins', 'MGM Inviter Purchase Reward (coins)', 'number', s.mgm_inviter_reward_coins ?? 250, 'min="0"') +
     field('influencer_revenue_share_pct', 'Influencer Revenue Share (%)', 'number', s.influencer_revenue_share_pct ?? 25, 'min="0" max="100"') +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App</div>` +
@@ -2595,7 +2626,8 @@ async function saveSettings() {
 
   const body = {
     daily_free_landmark_limit: parseInt(document.getElementById('s_daily_free_landmark_limit').value),
-    // day_pass_price_points and city_unlock_price_points are locked (hardcoded in app)
+    day_pass_price_points: parseInt(document.getElementById('s_day_pass_price_points').value),
+    city_unlock_price_points: parseInt(document.getElementById('s_city_unlock_price_points').value),
     tours_creation_free: document.getElementById('s_tours_creation_free').checked,
     min_reviews_to_show: parseInt(document.getElementById('s_min_reviews_to_show').value),
     must_see_min_rating: parseFloat(document.getElementById('s_must_see_min_rating').value),
@@ -2603,7 +2635,8 @@ async function saveSettings() {
     narration_min_votes: parseInt(document.getElementById('s_narration_min_votes').value),
     narration_downvote_ratio: parseFloat(document.getElementById('s_narration_downvote_ratio').value),
     referral_cooldown_days: parseInt(document.getElementById('s_referral_cooldown_days').value),
-    // mgm_invitee_bonus_coins and mgm_inviter_reward_coins are locked (hardcoded in app)
+    mgm_invitee_bonus_coins: parseInt(document.getElementById('s_mgm_invitee_bonus_coins').value),
+    mgm_inviter_reward_coins: parseInt(document.getElementById('s_mgm_inviter_reward_coins').value),
     influencer_revenue_share_pct: parseInt(document.getElementById('s_influencer_revenue_share_pct').value),
     minimum_app_version: document.getElementById('s_minimum_app_version').value.trim(),
     viator_min_rating: parseFloat(document.getElementById('s_viator_min_rating').value),
