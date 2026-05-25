@@ -2616,6 +2616,7 @@ function renderSettings(data) {
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">API Cost Controls (Google Places Cache)</div>` +
     field('places_cache_ttl_days', 'Nearby Places Cache TTL (days)', 'number', s.places_cache_ttl_days ?? 10, 'min="1" max="30"') +
     field('city_landmarks_cache_ttl_days', 'City Landmarks Cache TTL (days)', 'number', s.city_landmarks_cache_ttl_days ?? 7, 'min="1" max="30"') +
+    field('places_grid_size_meters', 'Location Grid Size (meters)', 'number', s.places_grid_size_meters ?? 500, 'min="100" max="2000" step="50"') +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App</div>` +
     field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '');
@@ -2647,6 +2648,7 @@ async function saveSettings() {
     viator_min_reviews: parseInt(document.getElementById('s_viator_min_reviews').value),
     places_cache_ttl_days: parseInt(document.getElementById('s_places_cache_ttl_days').value),
     city_landmarks_cache_ttl_days: parseInt(document.getElementById('s_city_landmarks_cache_ttl_days').value),
+    places_grid_size_meters: parseInt(document.getElementById('s_places_grid_size_meters').value),
   };
 
   try {
