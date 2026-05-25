@@ -2613,6 +2613,10 @@ function renderSettings(data) {
     field('mgm_inviter_reward_coins', 'MGM Inviter Purchase Reward (coins)', 'number', s.mgm_inviter_reward_coins ?? 250, 'min="0"') +
     field('influencer_revenue_share_pct', 'Influencer Revenue Share (%)', 'number', s.influencer_revenue_share_pct ?? 25, 'min="0" max="100"') +
 
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">API Cost Controls (Google Places Cache)</div>` +
+    field('places_cache_ttl_days', 'Nearby Places Cache TTL (days)', 'number', s.places_cache_ttl_days ?? 10, 'min="1" max="30"') +
+    field('city_landmarks_cache_ttl_days', 'City Landmarks Cache TTL (days)', 'number', s.city_landmarks_cache_ttl_days ?? 7, 'min="1" max="30"') +
+
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App</div>` +
     field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '');
 }
@@ -2641,6 +2645,8 @@ async function saveSettings() {
     minimum_app_version: document.getElementById('s_minimum_app_version').value.trim(),
     viator_min_rating: parseFloat(document.getElementById('s_viator_min_rating').value),
     viator_min_reviews: parseInt(document.getElementById('s_viator_min_reviews').value),
+    places_cache_ttl_days: parseInt(document.getElementById('s_places_cache_ttl_days').value),
+    city_landmarks_cache_ttl_days: parseInt(document.getElementById('s_city_landmarks_cache_ttl_days').value),
   };
 
   try {
