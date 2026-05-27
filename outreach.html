@@ -229,9 +229,9 @@
           <label>Website / Blog (optional)</label>
           <input type="url" id="inputUrl" placeholder="https://theirblog.com" />
         </div>
-        <div class="field">
-          <label>Followers (optional)</label>
-          <input type="text" id="inputFollowers" placeholder="e.g. 240k" style="width:110px" />
+        <div class="field" style="flex:1;min-width:220px">
+          <label>Notes (what do they post?)</label>
+          <input type="text" id="inputNotes" placeholder="e.g. 240k, São Paulo/Rio, cultural storytelling" />
         </div>
         <div class="field field-market">
           <label>Message Language</label>
@@ -368,33 +368,25 @@ async function apiGet(path) {
 }
 
 // ── QUEUE MANAGEMENT ──────────────────────────────────────────────────────────
-function parseFollowers(raw) {
-  if (!raw) return 0;
-  const s = raw.trim().toLowerCase().replace(/,/g, '');
-  if (s.endsWith('m')) return Math.round(parseFloat(s) * 1000000);
-  if (s.endsWith('k')) return Math.round(parseFloat(s) * 1000);
-  return parseInt(s) || 0;
-}
-
-function addToQueue(handle, url, market, followersRaw) {
+function addToQueue(handle, url, market, notes) {
   handle = (handle || document.getElementById('inputHandle').value).trim().replace(/^@/, '');
   url    = url    || document.getElementById('inputUrl').value.trim();
   market = market || document.getElementById('inputMarket').value;
-  const followers = parseFollowers(followersRaw || document.getElementById('inputFollowers').value);
+  notes  = notes  || document.getElementById('inputNotes').value.trim();
   if (!handle) return;
 
   if (queue.find(q => q.handle === handle)) {
     document.getElementById('inputHandle').value = '';
     document.getElementById('inputUrl').value = '';
-    document.getElementById('inputFollowers').value = '';
+    document.getElementById('inputNotes').value = '';
     return;
   }
 
   const id = `q_${Date.now()}_${Math.random().toString(36).slice(2,6)}`;
-  queue.push({ id, handle, url, market, followers });
+  queue.push({ id, handle, url, market, notes });
   document.getElementById('inputHandle').value = '';
   document.getElementById('inputUrl').value = '';
-  document.getElementById('inputFollowers').value = '';
+  document.getElementById('inputNotes').value = '';
   renderQueue();
 }
 
@@ -436,8 +428,8 @@ function renderQueue() {
       <div class="queue-header">
         ${a ? fitBadgeHtml(a.fit_score) : '<div style="width:32px"></div>'}
         <span class="q-handle">@${escHtml(item.handle)}</span>
-        ${item.followers ? `<span class="q-url">${fmtNum(item.followers)} followers</span>` : ''}
-        ${item.url ? `<span class="q-url">${escHtml(item.url)}</span>` : (!item.followers ? '<span class="q-url" style="color:#444">no data</span>' : '')}
+        ${item.notes ? `<span class="q-url">${escHtml(item.notes)}</span>` : (item.url ? '' : '<span class="q-url" style="color:#444">no notes</span>')}
+        ${item.url ? `<span class="q-url" style="color:#555">${escHtml(item.url)}</span>` : ''}
         <span class="q-market">${marketLabel}</span>
         <div class="q-actions">
           ${!a
@@ -496,7 +488,7 @@ async function analyzeOne(id) {
 
   try {
     const payload = {
-      influencers: [{ handle: item.handle, name: item.handle, followers: item.followers || 0, avg_engagement: 0 }],
+      influencers: [{ handle: item.handle, name: item.handle, followers: 0, avg_engagement: 0, notes: item.notes || '' }],
       country: item.market,
       website_urls: item.url ? { [item.handle]: item.url } : null,
     };
