@@ -25,154 +25,113 @@
 
     /* LOGIN */
     #loginScreen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-    .login-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-      padding: 40px; width: 360px; text-align: center;
-    }
+    .login-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px; width: 360px; text-align: center; }
     .login-card h1 { font-size: 1.5rem; margin-bottom: 6px; }
     .login-card p  { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
-    .login-card input {
-      width: 100%; padding: 12px 14px; background: #111; border: 1px solid var(--border);
-      border-radius: 8px; color: var(--text); font-size: 0.9rem; margin-bottom: 12px; outline: none;
-    }
+    .login-card input { width: 100%; padding: 12px 14px; background: #111; border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 0.9rem; margin-bottom: 12px; outline: none; }
     .login-card input:focus { border-color: var(--primary); }
-    .btn-primary {
-      width: 100%; padding: 12px; background: var(--primary); color: #fff;
-      border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600;
-      cursor: pointer; transition: opacity .2s;
-    }
+    .btn-primary { width: 100%; padding: 12px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: opacity .2s; }
     .btn-primary:hover { opacity: .85; }
     .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
     #loginError { color: var(--danger); font-size: 0.82rem; margin-top: 10px; min-height: 18px; }
 
     /* HEADER */
     #app { display: none; }
-    header {
-      background: var(--card); border-bottom: 1px solid var(--border);
-      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px;
-    }
+    header { background: var(--card); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
     .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; }
     .logo-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
     .header-nav { display: flex; align-items: center; gap: 12px; }
-    .nav-link {
-      color: var(--muted); font-size: 0.82rem; text-decoration: none;
-      padding: 6px 12px; border-radius: 8px; transition: color .15s;
-    }
+    .nav-link { color: var(--muted); font-size: 0.82rem; text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: color .15s; }
     .nav-link:hover { color: var(--text); }
-    .btn-logout {
-      background: none; border: 1px solid var(--border); color: var(--muted);
-      padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; cursor: pointer;
-    }
+    .btn-logout { background: none; border: 1px solid var(--border); color: var(--muted); padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; cursor: pointer; }
     .btn-logout:hover { border-color: var(--danger); color: var(--danger); }
 
     /* MAIN */
-    main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+    main { padding: 24px; max-width: 1100px; margin: 0 auto; }
 
-    /* CONTROLS */
-    .controls-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-      padding: 20px; margin-bottom: 24px;
-    }
-    .controls-card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; }
-    .controls-row { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
-    .control-group { display: flex; flex-direction: column; gap: 6px; }
-    .control-group label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-    .control-group select, .control-group input[type="number"] {
+    /* ADD FORM */
+    .add-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+    .add-card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; }
+    .add-row { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .field input, .field select {
       background: #111; border: 1px solid var(--border); color: var(--text);
-      padding: 8px 12px; border-radius: 8px; font-size: 0.88rem; outline: none; cursor: pointer;
+      padding: 9px 12px; border-radius: 8px; font-size: 0.88rem; outline: none;
     }
-    .control-group select:focus, .control-group input:focus { border-color: var(--primary); }
-    .control-group input[type="number"] { width: 110px; }
+    .field input:focus, .field select:focus { border-color: var(--primary); }
+    .field-handle input { width: 180px; }
+    .field-url input   { width: 260px; }
+    .field-market select { width: 160px; cursor: pointer; }
 
-    .btn-fetch {
+    .btn-add {
       padding: 9px 20px; background: var(--primary); color: #fff;
       border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
       cursor: pointer; transition: opacity .2s; white-space: nowrap;
     }
-    .btn-fetch:hover { opacity: .85; }
-    .btn-fetch:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-add:hover { opacity: .85; }
+    .add-hint { font-size: 0.78rem; color: var(--muted); margin-top: 10px; }
 
-    .btn-analyze {
-      padding: 9px 20px; background: var(--purple); color: #fff;
-      border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+    /* QUEUE */
+    #queue { margin-bottom: 24px; display: flex; flex-direction: column; gap: 12px; }
+
+    .queue-item {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    }
+    .queue-header {
+      display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+    }
+    .q-handle { color: var(--blue); font-weight: 600; font-size: 0.95rem; min-width: 160px; }
+    .q-url    { color: var(--muted); font-size: 0.8rem; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .q-market { font-size: 0.75rem; color: var(--muted); padding: 3px 8px; border: 1px solid var(--border); border-radius: 20px; white-space: nowrap; }
+    .q-actions { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+
+    .btn-analyze-one {
+      padding: 6px 14px; background: var(--purple); color: #fff;
+      border: none; border-radius: 6px; font-size: 0.8rem; font-weight: 600;
       cursor: pointer; transition: opacity .2s; white-space: nowrap;
     }
-    .btn-analyze:hover { opacity: .85; }
-    .btn-analyze:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-analyze-one:hover { opacity: .85; }
+    .btn-analyze-one:disabled { opacity: .5; cursor: not-allowed; }
 
-    .btn-sm {
-      padding: 5px 12px; background: none; border: 1px solid var(--border); color: var(--muted);
-      border-radius: 6px; font-size: 0.78rem; cursor: pointer; transition: color .15s, border-color .15s;
+    .btn-remove {
+      padding: 5px 10px; background: none; border: 1px solid var(--border); color: var(--muted);
+      border-radius: 6px; font-size: 0.78rem; cursor: pointer; transition: all .15s;
     }
-    .btn-sm:hover { border-color: var(--primary); color: var(--primary); }
-
-    /* STATUS BAR */
-    #statusBar {
-      display: none; background: var(--card); border: 1px solid var(--border);
-      border-radius: 8px; padding: 10px 16px; margin-bottom: 16px;
-      font-size: 0.85rem; color: var(--muted);
-    }
-
-    /* RESULTS SUMMARY */
-    .summary-row { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
-    .summary-chip {
-      background: var(--card); border: 1px solid var(--border); border-radius: 8px;
-      padding: 8px 16px; font-size: 0.82rem; color: var(--muted);
-    }
-    .summary-chip span { color: var(--text); font-weight: 600; margin-right: 4px; }
-
-    /* TABLE */
-    .table-wrap { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-    th {
-      text-align: left; padding: 10px 12px; background: var(--card);
-      border-bottom: 1px solid var(--border); color: var(--muted);
-      font-size: 0.75rem; text-transform: uppercase; letter-spacing: .06em;
-      position: sticky; top: 0; z-index: 1;
-    }
-    td { padding: 10px 12px; border-bottom: 1px solid #1f1f1f; vertical-align: top; }
-    tr:hover > td { background: rgba(255,255,255,.02); }
-    tr.selected > td { background: rgba(255,107,53,.04); }
-
-    .handle { color: var(--blue); font-weight: 500; }
-    .followers { font-weight: 600; }
-    .eng-rate { color: var(--green); }
-    .eng-low  { color: var(--yellow); }
-    .eng-poor { color: var(--danger); }
+    .btn-remove:hover { border-color: var(--danger); color: var(--danger); }
 
     /* FIT SCORE BADGE */
     .fit-badge {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 32px; height: 32px; border-radius: 50%; font-weight: 700; font-size: 0.9rem;
+      width: 32px; height: 32px; border-radius: 50%; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
     }
     .fit-great  { background: rgba(52,211,153,.2);  color: var(--green);  }
     .fit-good   { background: rgba(96,165,250,.2);  color: var(--blue);   }
     .fit-ok     { background: rgba(251,191,36,.2);  color: var(--yellow); }
     .fit-poor   { background: rgba(248,113,113,.2); color: var(--danger); }
 
-    /* ANALYSIS EXPAND ROW */
-    .analysis-row td { padding: 0; background: #141414; }
-    .analysis-body {
-      padding: 16px 20px; border-top: 1px solid var(--border);
+    /* ANALYSIS PANEL */
+    .analysis-panel {
+      border-top: 1px solid var(--border);
       display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      padding: 16px 20px; background: #141414;
     }
-    @media (max-width: 700px) { .analysis-body { grid-template-columns: 1fr; } }
-    .analysis-section h4 {
+    @media (max-width: 700px) { .analysis-panel { grid-template-columns: 1fr; } }
+
+    .a-section h4 {
       font-size: 0.72rem; text-transform: uppercase; letter-spacing: .08em;
       color: var(--muted); margin-bottom: 8px;
     }
-    .analysis-section p { font-size: 0.85rem; line-height: 1.5; color: var(--text); }
+    .a-section p { font-size: 0.85rem; line-height: 1.55; }
     .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag {
-      padding: 3px 10px; border-radius: 20px; font-size: 0.75rem;
-    }
+    .tag { padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; }
     .tag-green  { background: rgba(52,211,153,.12);  color: var(--green);  border: 1px solid rgba(52,211,153,.25); }
     .tag-yellow { background: rgba(251,191,36,.12);  color: var(--yellow); border: 1px solid rgba(251,191,36,.25); }
 
     .message-box {
       background: #111; border: 1px solid var(--border); border-radius: 8px;
-      padding: 14px; font-size: 0.84rem; line-height: 1.6; white-space: pre-wrap;
-      color: var(--text); font-family: inherit; max-height: 280px; overflow-y: auto;
+      padding: 14px; font-size: 0.84rem; line-height: 1.65; white-space: pre-wrap;
+      color: var(--text); font-family: inherit; max-height: 300px; overflow-y: auto;
     }
     .copy-row { display: flex; justify-content: flex-end; margin-top: 8px; }
     .btn-copy {
@@ -182,24 +141,54 @@
     .btn-copy:hover { border-color: var(--green); color: var(--green); }
     .btn-copy.copied { border-color: var(--green); color: var(--green); }
 
-    .spinner {
-      display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.3);
-      border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite;
-      vertical-align: middle; margin-right: 6px;
+    /* ANALYZE ALL BAR */
+    .analyze-bar {
+      display: none; background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 18px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
+    .analyze-bar span { font-size: 0.85rem; color: var(--muted); }
+    .btn-analyze-all {
+      padding: 9px 22px; background: var(--purple); color: #fff;
+      border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s; white-space: nowrap;
+    }
+    .btn-analyze-all:hover { opacity: .85; }
+    .btn-analyze-all:disabled { opacity: .5; cursor: not-allowed; }
+
+    .spinner { display: inline-block; width: 13px; height: 13px; border: 2px solid rgba(255,255,255,.3); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; vertical-align: middle; margin-right: 5px; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .empty-state {
-      text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.9rem;
-    }
+    .empty-state { text-align: center; padding: 50px 20px; color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+    .empty-state strong { color: var(--text); }
 
-    /* WEBSITE URL INPUT inside table */
-    .url-input {
-      width: 180px; padding: 5px 8px; background: #111; border: 1px solid var(--border);
-      border-radius: 6px; color: var(--text); font-size: 0.78rem; outline: none;
+    /* HYPEAUDITOR IMPORT (collapsible) */
+    .import-section { margin-top: 32px; }
+    .import-toggle {
+      background: none; border: none; color: var(--muted); font-size: 0.82rem;
+      cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 0;
     }
-    .url-input:focus { border-color: var(--blue); }
-    .url-input::placeholder { color: #555; }
+    .import-toggle:hover { color: var(--text); }
+    .import-body { display: none; margin-top: 14px; }
+    .import-body.open { display: block; }
+    .import-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .import-row { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+    .btn-fetch { padding: 9px 18px; background: none; border: 1px solid var(--primary); color: var(--primary); border-radius: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all .2s; white-space: nowrap; }
+    .btn-fetch:hover { background: var(--primary); color: #fff; }
+    .btn-fetch:disabled { opacity: .5; cursor: not-allowed; }
+    .import-status { font-size: 0.8rem; color: var(--muted); margin-top: 10px; min-height: 18px; }
+
+    .import-results { margin-top: 14px; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    th { text-align: left; padding: 8px 10px; background: var(--card); border-bottom: 1px solid var(--border); color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: .06em; }
+    td { padding: 8px 10px; border-bottom: 1px solid #1f1f1f; }
+    .import-handle { color: var(--blue); }
+    .eng-green { color: var(--green); }
+    .eng-yellow { color: var(--yellow); }
+    .eng-red    { color: var(--danger); }
+    .btn-import-add { padding: 4px 10px; background: none; border: 1px solid var(--border); color: var(--muted); border-radius: 5px; font-size: 0.75rem; cursor: pointer; transition: all .15s; }
+    .btn-import-add:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-import-add.added { border-color: var(--green); color: var(--green); cursor: default; }
   </style>
 </head>
 <body>
@@ -219,10 +208,7 @@
 <!-- APP -->
 <div id="app">
   <header>
-    <div class="logo">
-      <div class="logo-dot"></div>
-      Urban Tales
-    </div>
+    <div class="logo"><div class="logo-dot"></div>Urban Tales</div>
     <div class="header-nav">
       <a href="dashboard.html" class="nav-link">Dashboard</a>
       <button class="btn-logout" onclick="doLogout()">Logout</button>
@@ -230,55 +216,84 @@
   </header>
 
   <main>
-    <!-- CONTROLS -->
-    <div class="controls-card">
-      <h2>Influencer Research</h2>
-      <div class="controls-row">
-        <div class="control-group">
-          <label>Market</label>
-          <select id="countrySelect">
-            <option value="brazil">Brazil (PT-BR)</option>
-            <option value="usa">United States (EN)</option>
-            <option value="spain">Spain / LATAM (ES)</option>
+
+    <!-- ADD FORM -->
+    <div class="add-card">
+      <h2>Influencer Outreach</h2>
+      <div class="add-row">
+        <div class="field field-handle">
+          <label>Instagram Handle</label>
+          <input type="text" id="inputHandle" placeholder="@username" />
+        </div>
+        <div class="field field-url">
+          <label>Website / Blog (optional)</label>
+          <input type="url" id="inputUrl" placeholder="https://theirblog.com" />
+        </div>
+        <div class="field field-market">
+          <label>Message Language</label>
+          <select id="inputMarket">
+            <option value="brazil">Portuguese (PT-BR)</option>
+            <option value="usa">English</option>
+            <option value="spain">Spanish</option>
           </select>
         </div>
-        <div class="control-group">
-          <label>Min Followers</label>
-          <input type="number" id="minFollowers" value="0" step="1000" />
-        </div>
-        <div class="control-group">
-          <label>Max Followers</label>
-          <input type="number" id="maxFollowers" value="999000000" step="100000" />
-        </div>
-        <div class="control-group">
-          <label>Min Eng. Rate %</label>
-          <input type="number" id="minEngRate" value="0" step="0.1" min="0" />
-        </div>
-        <button class="btn-fetch" id="fetchBtn" onclick="fetchList()">Fetch List</button>
+        <button class="btn-add" onclick="addToQueue()">Add</button>
+      </div>
+      <p class="add-hint">Add one or more profiles, then click <strong>Analyze</strong> to get a fit score and ready-to-send message.</p>
+    </div>
+
+    <!-- ANALYZE ALL BAR -->
+    <div class="analyze-bar" id="analyzeBar">
+      <span id="analyzeBarLabel">0 profiles in queue</span>
+      <button class="btn-analyze-all" id="analyzeAllBtn" onclick="analyzeAll()">Analyze All</button>
+    </div>
+
+    <!-- QUEUE -->
+    <div id="queue">
+      <div class="empty-state" id="emptyState">
+        Add an Instagram handle above to get started.<br/>
+        <strong>No follower data needed</strong> — Claude researches the profile from their website and public presence.
       </div>
     </div>
 
-    <!-- STATUS -->
-    <div id="statusBar"></div>
-
-    <!-- RESULTS -->
-    <div id="resultsContainer">
-      <div class="empty-state">Choose a market and click <strong>Fetch List</strong> to pull influencers from HypeAuditor.</div>
+    <!-- HYPEAUDITOR IMPORT -->
+    <div class="import-section">
+      <button class="import-toggle" onclick="toggleImport()">
+        <span id="importArrow">▶</span> Import from HypeAuditor ranking
+      </button>
+      <div class="import-body" id="importBody">
+        <div class="import-card">
+          <div class="import-row">
+            <div class="field">
+              <label>Market</label>
+              <select id="importCountry" style="width:160px;background:#111;border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-size:0.88rem;outline:none;cursor:pointer;">
+                <option value="brazil">Brazil (PT-BR)</option>
+                <option value="usa">United States (EN)</option>
+                <option value="spain">Spain / LATAM (ES)</option>
+              </select>
+            </div>
+            <button class="btn-fetch" id="fetchBtn" onclick="fetchHypeAuditor()">Fetch Top 50</button>
+          </div>
+          <div class="import-status" id="importStatus"></div>
+          <div class="import-results" id="importResults"></div>
+        </div>
+      </div>
     </div>
+
   </main>
 </div>
 
 <script>
 const API = 'https://friendly-fulfillment-production.up.railway.app/api';
 let token = localStorage.getItem('ut_token') || '';
-let influencers = [];
-let analyses = {};   // handle -> analysis object
-let selectedHandles = new Set();
+
+// queue: array of { id, handle, url, market }
+let queue = [];
+// analyses: id -> result object
+let analyses = {};
 
 // ── AUTH ─────────────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-  if (token) showApp();
-});
+window.addEventListener('DOMContentLoaded', () => { if (token) showApp(); });
 
 async function doLogin() {
   const email = document.getElementById('loginEmail').value.trim();
@@ -290,7 +305,7 @@ async function doLogin() {
   btn.innerHTML = '<span class="spinner"></span>Signing in…';
   try {
     const r = await fetch(`${API}/auth/login`, {
-      method: 'POST', headers: {'Content-Type': 'application/json'},
+      method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({ email, password: pass }),
     });
     const d = await r.json();
@@ -318,14 +333,6 @@ function showApp() {
   document.getElementById('app').style.display = 'block';
 }
 
-async function apiGet(path) {
-  const r = await fetch(`${API}${path}`, { headers: { Authorization: `Bearer ${token}` } });
-  if (r.status === 401) { doLogout(); throw new Error('Session expired'); }
-  const d = await r.json();
-  if (!r.ok) throw new Error(d.detail || 'Request failed');
-  return d;
-}
-
 async function apiPost(path, body) {
   const r = await fetch(`${API}${path}`, {
     method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
@@ -337,240 +344,239 @@ async function apiPost(path, body) {
   return d;
 }
 
-// ── FETCH LIST ────────────────────────────────────────────────────────────────
-async function fetchList() {
-  const country    = document.getElementById('countrySelect').value;
-  const minFollows = parseInt(document.getElementById('minFollowers').value) || 0;
-  const maxFollows = parseInt(document.getElementById('maxFollowers').value) || Infinity;
-  const minEng     = parseFloat(document.getElementById('minEngRate').value) || 0;
-  const btn        = document.getElementById('fetchBtn');
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>Fetching…';
-  setStatus(`Fetching top travel influencers for <strong>${countryLabel(country)}</strong> from HypeAuditor…`);
-
-  try {
-    const data = await apiGet(`/admin/outreach/fetch-list?country=${country}`);
-    influencers = (data.influencers || []).filter(inf => {
-      const engRate = inf.followers > 0 ? (inf.avg_engagement / inf.followers * 100) : 0;
-      return inf.followers >= minFollows
-          && inf.followers <= maxFollows
-          && engRate >= minEng;
-    });
-    analyses = {};
-    selectedHandles = new Set();
-    renderTable(country);
-    setStatus(`Found <strong>${influencers.length}</strong> influencers after filtering. Select profiles and click <strong>Analyze Selected</strong>.`);
-  } catch(e) {
-    setStatus(`Error: ${e.message}`, true);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Fetch List';
-  }
+async function apiGet(path) {
+  const r = await fetch(`${API}${path}`, { headers: { Authorization: `Bearer ${token}` } });
+  if (r.status === 401) { doLogout(); throw new Error('Session expired'); }
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.detail || 'Request failed');
+  return d;
 }
 
-function countryLabel(c) {
-  return { brazil: 'Brazil (PT-BR)', usa: 'United States', spain: 'Spain / LATAM' }[c] || c;
-}
+// ── QUEUE MANAGEMENT ──────────────────────────────────────────────────────────
+function addToQueue(handle, url, market) {
+  handle = (handle || document.getElementById('inputHandle').value).trim().replace(/^@/, '');
+  url    = url    || document.getElementById('inputUrl').value.trim();
+  market = market || document.getElementById('inputMarket').value;
+  if (!handle) return;
 
-function setStatus(html, isError = false) {
-  const bar = document.getElementById('statusBar');
-  bar.style.display = 'block';
-  bar.style.color = isError ? 'var(--danger)' : 'var(--muted)';
-  bar.innerHTML = html;
-}
-
-// ── RENDER TABLE ──────────────────────────────────────────────────────────────
-function renderTable(country) {
-  const container = document.getElementById('resultsContainer');
-  if (!influencers.length) {
-    container.innerHTML = '<div class="empty-state">No influencers matched your filters.</div>';
+  // Prevent duplicates
+  if (queue.find(q => q.handle === handle)) {
+    document.getElementById('inputHandle').value = '';
+    document.getElementById('inputUrl').value = '';
     return;
   }
 
-  let html = `
-  <div class="summary-row">
-    <div class="summary-chip"><span>${influencers.length}</span> influencers</div>
-    <div class="summary-chip"><span id="selectedCount">0</span> selected</div>
-  </div>
-  <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center;">
-    <button class="btn-sm" onclick="selectAll()">Select All</button>
-    <button class="btn-sm" onclick="clearSelection()">Clear</button>
-    <button class="btn-analyze" id="analyzeBtn" onclick="analyzeSelected('${country}')" disabled>
-      Analyze Selected
-    </button>
-  </div>
-  <div class="table-wrap">
-  <table>
-    <thead>
-      <tr>
-        <th style="width:36px"></th>
-        <th>#</th>
-        <th>Handle</th>
-        <th>Name</th>
-        <th>Followers</th>
-        <th>Avg Eng.</th>
-        <th>Eng. Rate</th>
-        <th>Fit</th>
-        <th>Website (optional)</th>
-      </tr>
-    </thead>
-    <tbody id="influencerBody">
-    </tbody>
-  </table>
-  </div>`;
-
-  container.innerHTML = html;
-  renderRows();
+  const id = `q_${Date.now()}_${Math.random().toString(36).slice(2,6)}`;
+  queue.push({ id, handle, url, market });
+  document.getElementById('inputHandle').value = '';
+  document.getElementById('inputUrl').value = '';
+  renderQueue();
 }
 
-function renderRows() {
-  const tbody = document.getElementById('influencerBody');
-  if (!tbody) return;
-  let rows = '';
-  for (const inf of influencers) {
-    const h         = inf.handle;
-    const engRate   = inf.followers > 0 ? (inf.avg_engagement / inf.followers * 100) : 0;
-    const engClass  = engRate >= 3 ? 'eng-rate' : engRate >= 1 ? 'eng-low' : 'eng-poor';
-    const isChecked = selectedHandles.has(h);
-    const analysis  = analyses[h];
-    const fitHtml   = analysis ? fitBadgeHtml(analysis.fit_score) : '<span style="color:var(--muted);font-size:0.75rem">—</span>';
-    const rowClass  = isChecked ? 'selected' : '';
+function removeFromQueue(id) {
+  queue = queue.filter(q => q.id !== id);
+  delete analyses[id];
+  renderQueue();
+}
 
-    rows += `<tr id="row-${h}" class="${rowClass}">
-      <td><input type="checkbox" onchange="toggleSelect('${h}', this.checked)" ${isChecked ? 'checked' : ''} /></td>
-      <td style="color:var(--muted)">${inf.rank}</td>
-      <td class="handle">@${h}</td>
-      <td>${escHtml(inf.name)}</td>
-      <td class="followers">${fmtNum(inf.followers)}</td>
-      <td>${fmtNum(inf.avg_engagement)}</td>
-      <td class="${engClass}">${engRate.toFixed(1)}%</td>
-      <td>${fitHtml}</td>
-      <td><input class="url-input" type="url" placeholder="https://…" id="url-${h}" /></td>
-    </tr>`;
+function renderQueue() {
+  const container = document.getElementById('queue');
+  const emptyState = document.getElementById('emptyState');
+  const bar = document.getElementById('analyzeBar');
 
-    if (analysis) {
-      rows += analysisRowHtml(h, analysis);
-    }
+  if (!queue.length) {
+    container.innerHTML = '';
+    container.appendChild(emptyState);
+    emptyState.style.display = 'block';
+    bar.style.display = 'none';
+    return;
   }
-  tbody.innerHTML = rows;
+
+  emptyState.style.display = 'none';
+  bar.style.display = 'flex';
+  document.getElementById('analyzeBarLabel').textContent =
+    `${queue.length} profile${queue.length > 1 ? 's' : ''} in queue`;
+
+  const pending = queue.filter(q => !analyses[q.id]);
+  const allBtn = document.getElementById('analyzeAllBtn');
+  allBtn.textContent = pending.length
+    ? `Analyze ${pending.length > 1 ? `All ${pending.length}` : '1'}`
+    : 'All analyzed';
+  allBtn.disabled = pending.length === 0;
+
+  container.innerHTML = queue.map(item => {
+    const a = analyses[item.id];
+    const marketLabel = { brazil: 'PT-BR', usa: 'EN', spain: 'ES' }[item.market] || item.market;
+    return `
+    <div class="queue-item" id="item-${item.id}">
+      <div class="queue-header">
+        ${a ? fitBadgeHtml(a.fit_score) : '<div style="width:32px"></div>'}
+        <span class="q-handle">@${escHtml(item.handle)}</span>
+        ${item.url ? `<span class="q-url">${escHtml(item.url)}</span>` : '<span class="q-url" style="color:#444">no website</span>'}
+        <span class="q-market">${marketLabel}</span>
+        <div class="q-actions">
+          ${!a
+            ? `<button class="btn-analyze-one" id="btn-${item.id}" onclick="analyzeOne('${item.id}')">Analyze</button>`
+            : `<button class="btn-analyze-one" id="btn-${item.id}" onclick="analyzeOne('${item.id}')" style="background:var(--border);color:var(--muted)">Re-analyze</button>`
+          }
+          <button class="btn-remove" onclick="removeFromQueue('${item.id}')">✕</button>
+        </div>
+      </div>
+      ${a ? analysisHtml(item.id, a) : ''}
+    </div>`;
+  }).join('');
 }
 
 function fitBadgeHtml(score) {
   const cls = score >= 8 ? 'fit-great' : score >= 6 ? 'fit-good' : score >= 4 ? 'fit-ok' : 'fit-poor';
-  return `<span class="fit-badge ${cls}">${score}</span>`;
+  return `<div class="fit-badge ${cls}">${score}</div>`;
 }
 
-function analysisRowHtml(handle, a) {
-  const strengths = (a.strengths || []).map(s => `<span class="tag tag-green">${escHtml(s)}</span>`).join('');
+function analysisHtml(id, a) {
+  const strengths  = (a.strengths  || []).map(s => `<span class="tag tag-green">${escHtml(s)}</span>`).join('');
   const weaknesses = (a.weaknesses || []).map(w => `<span class="tag tag-yellow">${escHtml(w)}</span>`).join('');
-  const msgId = `msg-${handle}`;
-  return `<tr class="analysis-row" id="analysis-row-${handle}">
-    <td colspan="9">
-      <div class="analysis-body">
-        <div>
-          <div class="analysis-section" style="margin-bottom:14px">
-            <h4>Fit Assessment</h4>
-            <p>${escHtml(a.fit_rationale || '')}</p>
-          </div>
-          ${strengths ? `<div class="analysis-section" style="margin-bottom:10px">
-            <h4>Strengths</h4>
-            <div class="tag-list">${strengths}</div>
-          </div>` : ''}
-          ${weaknesses ? `<div class="analysis-section">
-            <h4>Watch-outs</h4>
-            <div class="tag-list">${weaknesses}</div>
-          </div>` : ''}
-        </div>
-        <div class="analysis-section">
-          <h4>Cold Message</h4>
-          <div class="message-box" id="${msgId}">${escHtml(a.cold_message || '')}</div>
-          <div class="copy-row">
-            <button class="btn-copy" onclick="copyMessage('${msgId}', this)">Copy message</button>
-          </div>
-        </div>
+  return `
+  <div class="analysis-panel">
+    <div>
+      <div class="a-section" style="margin-bottom:16px">
+        <h4>Fit Assessment</h4>
+        <p>${escHtml(a.fit_rationale || '')}</p>
       </div>
-    </td>
-  </tr>`;
-}
-
-// ── SELECTION ─────────────────────────────────────────────────────────────────
-function toggleSelect(handle, checked) {
-  if (checked) selectedHandles.add(handle);
-  else selectedHandles.delete(handle);
-  const row = document.getElementById(`row-${handle}`);
-  if (row) row.className = checked ? 'selected' : '';
-  updateSelectionUI();
-}
-
-function selectAll() {
-  influencers.forEach(inf => {
-    selectedHandles.add(inf.handle);
-    const row = document.getElementById(`row-${inf.handle}`);
-    if (row) { row.className = 'selected'; row.querySelector('input[type=checkbox]').checked = true; }
-  });
-  updateSelectionUI();
-}
-
-function clearSelection() {
-  selectedHandles.forEach(h => {
-    const row = document.getElementById(`row-${h}`);
-    if (row) { row.className = ''; const cb = row.querySelector('input[type=checkbox]'); if (cb) cb.checked = false; }
-  });
-  selectedHandles.clear();
-  updateSelectionUI();
-}
-
-function updateSelectionUI() {
-  const count = selectedHandles.size;
-  const el = document.getElementById('selectedCount');
-  if (el) el.textContent = count;
-  const btn = document.getElementById('analyzeBtn');
-  if (btn) {
-    btn.disabled = count === 0;
-    btn.textContent = count > 0 ? `Analyze Selected (${count})` : 'Analyze Selected';
-  }
+      ${strengths ? `<div class="a-section" style="margin-bottom:12px">
+        <h4>Strengths</h4>
+        <div class="tag-list">${strengths}</div>
+      </div>` : ''}
+      ${weaknesses ? `<div class="a-section">
+        <h4>Watch-outs</h4>
+        <div class="tag-list">${weaknesses}</div>
+      </div>` : ''}
+    </div>
+    <div class="a-section">
+      <h4>Cold Message</h4>
+      <div class="message-box" id="msg-${id}">${escHtml(a.cold_message || '')}</div>
+      <div class="copy-row">
+        <button class="btn-copy" onclick="copyMsg('msg-${id}', this)">Copy message</button>
+      </div>
+    </div>
+  </div>`;
 }
 
 // ── ANALYZE ───────────────────────────────────────────────────────────────────
-async function analyzeSelected(country) {
-  const toAnalyze = influencers.filter(inf => selectedHandles.has(inf.handle));
-  if (!toAnalyze.length) return;
+async function analyzeOne(id) {
+  const item = queue.find(q => q.id === id);
+  if (!item) return;
 
-  const btn = document.getElementById('analyzeBtn');
-  btn.disabled = true;
-  btn.innerHTML = `<span class="spinner"></span>Analyzing ${toAnalyze.length} profile${toAnalyze.length > 1 ? 's' : ''}…`;
-  setStatus(`Running Claude analysis on ${toAnalyze.length} influencer${toAnalyze.length > 1 ? 's' : ''}… this takes ~10–30 seconds.`);
-
-  // Collect website URLs from inputs
-  const websiteUrls = {};
-  for (const inf of toAnalyze) {
-    const val = (document.getElementById(`url-${inf.handle}`) || {}).value || '';
-    if (val.trim()) websiteUrls[inf.handle] = val.trim();
-  }
+  const btn = document.getElementById(`btn-${id}`);
+  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Analyzing…'; }
 
   try {
-    const data = await apiPost('/admin/outreach/analyze', {
-      influencers: toAnalyze,
-      country: country,
-      website_urls: Object.keys(websiteUrls).length ? websiteUrls : null,
-    });
-    for (const result of (data.results || [])) {
-      analyses[result.handle] = result;
+    const payload = {
+      influencers: [{ handle: item.handle, name: item.handle, followers: 0, avg_engagement: 0 }],
+      country: item.market,
+      website_urls: item.url ? { [item.handle]: item.url } : null,
+    };
+    const data = await apiPost('/admin/outreach/analyze', payload);
+    if (data.results && data.results[0]) {
+      analyses[id] = data.results[0];
     }
-    renderRows();
-    setStatus(`Analysis complete for <strong>${data.results.length}</strong> influencer${data.results.length > 1 ? 's' : ''}. Fit scores and messages are shown below each row.`);
   } catch(e) {
-    setStatus(`Analysis error: ${e.message}`, true);
-  } finally {
-    const count = selectedHandles.size;
-    btn.disabled = count === 0;
-    btn.textContent = count > 0 ? `Analyze Selected (${count})` : 'Analyze Selected';
+    analyses[id] = {
+      fit_score: 0, fit_rationale: `Error: ${e.message}`,
+      strengths: [], weaknesses: [], cold_message: '',
+    };
+  }
+  renderQueue();
+}
+
+async function analyzeAll() {
+  const pending = queue.filter(q => !analyses[q.id]);
+  if (!pending.length) return;
+
+  const allBtn = document.getElementById('analyzeAllBtn');
+  allBtn.disabled = true;
+  allBtn.innerHTML = `<span class="spinner"></span>Analyzing ${pending.length}…`;
+
+  // Run sequentially to avoid hammering the API
+  for (const item of pending) {
+    const btn = document.getElementById(`btn-${item.id}`);
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Analyzing…'; }
+    try {
+      const payload = {
+        influencers: [{ handle: item.handle, name: item.handle, followers: 0, avg_engagement: 0 }],
+        country: item.market,
+        website_urls: item.url ? { [item.handle]: item.url } : null,
+      };
+      const data = await apiPost('/admin/outreach/analyze', payload);
+      if (data.results && data.results[0]) analyses[item.id] = data.results[0];
+    } catch(e) {
+      analyses[item.id] = { fit_score: 0, fit_rationale: `Error: ${e.message}`, strengths: [], weaknesses: [], cold_message: '' };
+    }
+    renderQueue();
   }
 }
 
-// ── COPY ──────────────────────────────────────────────────────────────────────
-function copyMessage(boxId, btn) {
+// ── HYPEAUDITOR IMPORT ────────────────────────────────────────────────────────
+function toggleImport() {
+  const body  = document.getElementById('importBody');
+  const arrow = document.getElementById('importArrow');
+  const open  = body.classList.toggle('open');
+  arrow.textContent = open ? '▼' : '▶';
+}
+
+async function fetchHypeAuditor() {
+  const country = document.getElementById('importCountry').value;
+  const btn     = document.getElementById('fetchBtn');
+  const status  = document.getElementById('importStatus');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Fetching…';
+  status.textContent = 'Fetching from HypeAuditor…';
+
+  try {
+    const data = await apiGet(`/admin/outreach/fetch-list?country=${country}`);
+    const list = data.influencers || [];
+    renderImportTable(list, country);
+    status.textContent = `${list.length} influencers found. Click + to add to your queue.`;
+  } catch(e) {
+    status.style.color = 'var(--danger)';
+    status.textContent = `Error: ${e.message}`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Fetch Top 50';
+  }
+}
+
+function renderImportTable(list, country) {
+  const container = document.getElementById('importResults');
+  if (!list.length) { container.innerHTML = ''; return; }
+  const marketLabel = { brazil: 'PT-BR', usa: 'EN', spain: 'ES' }[country] || 'EN';
+  let html = `<table><thead><tr><th>#</th><th>Handle</th><th>Name</th><th>Followers</th><th>Eng. Rate</th><th></th></tr></thead><tbody>`;
+  for (const inf of list) {
+    const engRate = inf.followers > 0 ? (inf.avg_engagement / inf.followers * 100) : 0;
+    const engCls  = engRate >= 3 ? 'eng-green' : engRate >= 1 ? 'eng-yellow' : 'eng-red';
+    const already = queue.find(q => q.handle === inf.handle);
+    html += `<tr>
+      <td style="color:var(--muted)">${inf.rank}</td>
+      <td class="import-handle">@${escHtml(inf.handle)}</td>
+      <td>${escHtml(inf.name)}</td>
+      <td>${fmtNum(inf.followers)}</td>
+      <td class="${engCls}">${engRate.toFixed(1)}%</td>
+      <td><button id="iadd-${inf.handle}" class="btn-import-add ${already ? 'added' : ''}"
+        onclick="importAdd('${escHtml(inf.handle)}','${country}')"
+        ${already ? 'disabled' : ''}>${already ? 'Added' : '+ Add'}</button></td>
+    </tr>`;
+  }
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+function importAdd(handle, country) {
+  addToQueue(handle, '', country);
+  const btn = document.getElementById(`iadd-${handle}`);
+  if (btn) { btn.textContent = 'Added'; btn.classList.add('added'); btn.disabled = true; }
+}
+
+// ── UTILS ─────────────────────────────────────────────────────────────────────
+function copyMsg(boxId, btn) {
   const text = document.getElementById(boxId)?.textContent || '';
   navigator.clipboard.writeText(text).then(() => {
     btn.textContent = 'Copied!';
@@ -579,21 +585,19 @@ function copyMessage(boxId, btn) {
   });
 }
 
-// ── UTILS ─────────────────────────────────────────────────────────────────────
 function fmtNum(n) {
   if (!n && n !== 0) return '—';
-  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-  if (n >= 1000)    return (n / 1000).toFixed(1) + 'K';
-  return n.toString();
+  if (n >= 1000000) return (n/1000000).toFixed(1) + 'M';
+  if (n >= 1000)    return (n/1000).toFixed(1) + 'K';
+  return String(n);
 }
 
 function escHtml(str) {
-  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-document.getElementById('loginPassword').addEventListener('keydown', e => {
-  if (e.key === 'Enter') doLogin();
-});
+document.getElementById('loginPassword').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
+document.getElementById('inputHandle')  .addEventListener('keydown', e => { if (e.key==='Enter') addToQueue(); });
 </script>
 </body>
 </html>
