@@ -392,18 +392,17 @@ function removeFromQueue(id) {
 
 function renderQueue() {
   const container = document.getElementById('queue');
-  const emptyState = document.getElementById('emptyState');
   const bar = document.getElementById('analyzeBar');
 
   if (!queue.length) {
-    container.innerHTML = '';
-    container.appendChild(emptyState);
-    emptyState.style.display = 'block';
+    container.innerHTML = `<div class="empty-state" id="emptyState">
+      Add an Instagram handle above to get started.<br/>
+      <strong>No follower data needed</strong> — Claude researches the profile from their website and public presence.
+    </div>`;
     bar.style.display = 'none';
     return;
   }
 
-  emptyState.style.display = 'none';
   bar.style.display = 'flex';
   document.getElementById('analyzeBarLabel').textContent =
     `${queue.length} profile${queue.length > 1 ? 's' : ''} in queue`;
