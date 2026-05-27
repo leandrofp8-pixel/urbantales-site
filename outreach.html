@@ -334,14 +334,25 @@ function showApp() {
 }
 
 async function apiPost(path, body) {
-  const r = await fetch(`${API}${path}`, {
-    method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  });
-  if (r.status === 401) { doLogout(); throw new Error('Session expired'); }
-  const d = await r.json();
-  if (!r.ok) throw new Error(d.detail || 'Request failed');
-  return d;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 100000); // 100s timeout
+  try {
+    const r = await fetch(`${API}${path}`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+    clearTimeout(timer);
+    if (r.status === 401) { doLogout(); throw new Error('Session expired'); }
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || 'Request failed');
+    return d;
+  } catch(e) {
+    clearTimeout(timer);
+    if (e.name === 'AbortError') throw new Error('Request timed out after 100s');
+    throw e;
+  }
 }
 
 async function apiGet(path) {
@@ -481,8 +492,9 @@ async function analyzeOne(id) {
     }
   } catch(e) {
     analyses[id] = {
-      fit_score: 0, fit_rationale: `Error: ${e.message}`,
-      strengths: [], weaknesses: [], cold_message: '',
+      fit_score: 0, fit_rationale: `Analysis failed: ${e.message}`,
+      strengths: [], weaknesses: ['Check Railway logs for details'],
+      cold_message: '',
     };
   }
   renderQueue();
