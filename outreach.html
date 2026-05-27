@@ -486,14 +486,21 @@ async function analyzeOne(id) {
       country: item.market,
       website_urls: item.url ? { [item.handle]: item.url } : null,
     };
+    console.log('[analyze] sending request for', item.handle);
     const data = await apiPost('/admin/outreach/analyze', payload);
+    console.log('[analyze] response received:', data);
     if (data.results && data.results[0]) {
       analyses[id] = data.results[0];
+      console.log('[analyze] stored result, calling renderQueue');
+    } else {
+      console.warn('[analyze] unexpected response shape:', data);
+      throw new Error('No results in response');
     }
   } catch(e) {
+    console.error('[analyze] error:', e);
     analyses[id] = {
       fit_score: 0, fit_rationale: `Analysis failed: ${e.message}`,
-      strengths: [], weaknesses: ['Check Railway logs for details'],
+      strengths: [], weaknesses: ['Check browser console (Cmd+Option+I) for details'],
       cold_message: '',
     };
   }
