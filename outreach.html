@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban Tales — Influencer Outreach</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0f0f0f;
+      --card:    #1a1a1a;
+      --border:  #2a2a2a;
+      --primary: #FF6B35;
+      --blue:    #60a5fa;
+      --purple:  #a78bfa;
+      --green:   #34d399;
+      --yellow:  #fbbf24;
+      --text:    #f1f1f1;
+      --muted:   #888;
+      --danger:  #f87171;
+    }
+
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; min-height: 100vh; }
+
+    /* LOGIN */
+    #loginScreen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .login-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 40px; width: 360px; text-align: center;
+    }
+    .login-card h1 { font-size: 1.5rem; margin-bottom: 6px; }
+    .login-card p  { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
+    .login-card input {
+      width: 100%; padding: 12px 14px; background: #111; border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); font-size: 0.9rem; margin-bottom: 12px; outline: none;
+    }
+    .login-card input:focus { border-color: var(--primary); }
+    .btn-primary {
+      width: 100%; padding: 12px; background: var(--primary); color: #fff;
+      border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+    #loginError { color: var(--danger); font-size: 0.82rem; margin-top: 10px; min-height: 18px; }
+
+    /* HEADER */
+    #app { display: none; }
+    header {
+      background: var(--card); border-bottom: 1px solid var(--border);
+      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; }
+    .logo-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+    .header-nav { display: flex; align-items: center; gap: 12px; }
+    .nav-link {
+      color: var(--muted); font-size: 0.82rem; text-decoration: none;
+      padding: 6px 12px; border-radius: 8px; transition: color .15s;
+    }
+    .nav-link:hover { color: var(--text); }
+    .btn-logout {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+      padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; cursor: pointer;
+    }
+    .btn-logout:hover { border-color: var(--danger); color: var(--danger); }
+
+    /* MAIN */
+    main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+
+    /* CONTROLS */
+    .controls-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px; margin-bottom: 24px;
+    }
+    .controls-card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; }
+    .controls-row { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+    .control-group { display: flex; flex-direction: column; gap: 6px; }
+    .control-group label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .control-group select, .control-group input[type="number"] {
+      background: #111; border: 1px solid var(--border); color: var(--text);
+      padding: 8px 12px; border-radius: 8px; font-size: 0.88rem; outline: none; cursor: pointer;
+    }
+    .control-group select:focus, .control-group input:focus { border-color: var(--primary); }
+    .control-group input[type="number"] { width: 110px; }
+
+    .btn-fetch {
+      padding: 9px 20px; background: var(--primary); color: #fff;
+      border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s; white-space: nowrap;
+    }
+    .btn-fetch:hover { opacity: .85; }
+    .btn-fetch:disabled { opacity: .5; cursor: not-allowed; }
+
+    .btn-analyze {
+      padding: 9px 20px; background: var(--purple); color: #fff;
+      border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s; white-space: nowrap;
+    }
+    .btn-analyze:hover { opacity: .85; }
+    .btn-analyze:disabled { opacity: .5; cursor: not-allowed; }
+
+    .btn-sm {
+      padding: 5px 12px; background: none; border: 1px solid var(--border); color: var(--muted);
+      border-radius: 6px; font-size: 0.78rem; cursor: pointer; transition: color .15s, border-color .15s;
+    }
+    .btn-sm:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* STATUS BAR */
+    #statusBar {
+      display: none; background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 16px; margin-bottom: 16px;
+      font-size: 0.85rem; color: var(--muted);
+    }
+
+    /* RESULTS SUMMARY */
+    .summary-row { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .summary-chip {
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 8px 16px; font-size: 0.82rem; color: var(--muted);
+    }
+    .summary-chip span { color: var(--text); font-weight: 600; margin-right: 4px; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th {
+      text-align: left; padding: 10px 12px; background: var(--card);
+      border-bottom: 1px solid var(--border); color: var(--muted);
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: .06em;
+      position: sticky; top: 0; z-index: 1;
+    }
+    td { padding: 10px 12px; border-bottom: 1px solid #1f1f1f; vertical-align: top; }
+    tr:hover > td { background: rgba(255,255,255,.02); }
+    tr.selected > td { background: rgba(255,107,53,.04); }
+
+    .handle { color: var(--blue); font-weight: 500; }
+    .followers { font-weight: 600; }
+    .eng-rate { color: var(--green); }
+    .eng-low  { color: var(--yellow); }
+    .eng-poor { color: var(--danger); }
+
+    /* FIT SCORE BADGE */
+    .fit-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 50%; font-weight: 700; font-size: 0.9rem;
+    }
+    .fit-great  { background: rgba(52,211,153,.2);  color: var(--green);  }
+    .fit-good   { background: rgba(96,165,250,.2);  color: var(--blue);   }
+    .fit-ok     { background: rgba(251,191,36,.2);  color: var(--yellow); }
+    .fit-poor   { background: rgba(248,113,113,.2); color: var(--danger); }
+
+    /* ANALYSIS EXPAND ROW */
+    .analysis-row td { padding: 0; background: #141414; }
+    .analysis-body {
+      padding: 16px 20px; border-top: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    @media (max-width: 700px) { .analysis-body { grid-template-columns: 1fr; } }
+    .analysis-section h4 {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: .08em;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .analysis-section p { font-size: 0.85rem; line-height: 1.5; color: var(--text); }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      padding: 3px 10px; border-radius: 20px; font-size: 0.75rem;
+    }
+    .tag-green  { background: rgba(52,211,153,.12);  color: var(--green);  border: 1px solid rgba(52,211,153,.25); }
+    .tag-yellow { background: rgba(251,191,36,.12);  color: var(--yellow); border: 1px solid rgba(251,191,36,.25); }
+
+    .message-box {
+      background: #111; border: 1px solid var(--border); border-radius: 8px;
+      padding: 14px; font-size: 0.84rem; line-height: 1.6; white-space: pre-wrap;
+      color: var(--text); font-family: inherit; max-height: 280px; overflow-y: auto;
+    }
+    .copy-row { display: flex; justify-content: flex-end; margin-top: 8px; }
+    .btn-copy {
+      padding: 5px 14px; background: none; border: 1px solid var(--border); color: var(--muted);
+      border-radius: 6px; font-size: 0.78rem; cursor: pointer; transition: all .15s;
+    }
+    .btn-copy:hover { border-color: var(--green); color: var(--green); }
+    .btn-copy.copied { border-color: var(--green); color: var(--green); }
+
+    .spinner {
+      display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.3);
+      border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite;
+      vertical-align: middle; margin-right: 6px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .empty-state {
+      text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.9rem;
+    }
+
+    /* WEBSITE URL INPUT inside table */
+    .url-input {
+      width: 180px; padding: 5px 8px; background: #111; border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); font-size: 0.78rem; outline: none;
+    }
+    .url-input:focus { border-color: var(--blue); }
+    .url-input::placeholder { color: #555; }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-card">
+    <h1>Urban Tales</h1>
+    <p>Influencer Outreach Tool</p>
+    <input type="email" id="loginEmail" placeholder="Email" autocomplete="email" />
+    <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" />
+    <button class="btn-primary" id="loginBtn" onclick="doLogin()">Sign In</button>
+    <div id="loginError"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <header>
+    <div class="logo">
+      <div class="logo-dot"></div>
+      Urban Tales
+    </div>
+    <div class="header-nav">
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <button class="btn-logout" onclick="doLogout()">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- CONTROLS -->
+    <div class="controls-card">
+      <h2>Influencer Research</h2>
+      <div class="controls-row">
+        <div class="control-group">
+          <label>Market</label>
+          <select id="countrySelect">
+            <option value="brazil">Brazil (PT-BR)</option>
+            <option value="usa">United States (EN)</option>
+            <option value="spain">Spain / LATAM (ES)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>Min Followers</label>
+          <input type="number" id="minFollowers" value="10000" step="1000" />
+        </div>
+        <div class="control-group">
+          <label>Max Followers</label>
+          <input type="number" id="maxFollowers" value="500000" step="10000" />
+        </div>
+        <div class="control-group">
+          <label>Min Eng. Rate %</label>
+          <input type="number" id="minEngRate" value="1" step="0.5" min="0" />
+        </div>
+        <button class="btn-fetch" id="fetchBtn" onclick="fetchList()">Fetch List</button>
+      </div>
+    </div>
+
+    <!-- STATUS -->
+    <div id="statusBar"></div>
+
+    <!-- RESULTS -->
+    <div id="resultsContainer">
+      <div class="empty-state">Choose a market and click <strong>Fetch List</strong> to pull influencers from HypeAuditor.</div>
+    </div>
+  </main>
+</div>
+
+<script>
+const API = 'https://friendly-fulfillment-production.up.railway.app/api';
+let token = localStorage.getItem('ut_token') || '';
+let influencers = [];
+let analyses = {};   // handle -> analysis object
+let selectedHandles = new Set();
+
+// ── AUTH ─────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  if (token) showApp();
+});
+
+async function doLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass  = document.getElementById('loginPassword').value;
+  const btn   = document.getElementById('loginBtn');
+  const err   = document.getElementById('loginError');
+  err.textContent = '';
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Signing in…';
+  try {
+    const r = await fetch(`${API}/auth/login`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ email, password: pass }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || 'Login failed');
+    token = d.access_token;
+    localStorage.setItem('ut_token', token);
+    showApp();
+  } catch(e) {
+    err.textContent = e.message;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Sign In';
+  }
+}
+
+function doLogout() {
+  localStorage.removeItem('ut_token');
+  token = '';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+}
+
+function showApp() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+async function apiGet(path) {
+  const r = await fetch(`${API}${path}`, { headers: { Authorization: `Bearer ${token}` } });
+  if (r.status === 401) { doLogout(); throw new Error('Session expired'); }
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.detail || 'Request failed');
+  return d;
+}
+
+async function apiPost(path, body) {
+  const r = await fetch(`${API}${path}`, {
+    method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (r.status === 401) { doLogout(); throw new Error('Session expired'); }
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.detail || 'Request failed');
+  return d;
+}
+
+// ── FETCH LIST ────────────────────────────────────────────────────────────────
+async function fetchList() {
+  const country    = document.getElementById('countrySelect').value;
+  const minFollows = parseInt(document.getElementById('minFollowers').value) || 0;
+  const maxFollows = parseInt(document.getElementById('maxFollowers').value) || Infinity;
+  const minEng     = parseFloat(document.getElementById('minEngRate').value) || 0;
+  const btn        = document.getElementById('fetchBtn');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Fetching…';
+  setStatus(`Fetching top travel influencers for <strong>${countryLabel(country)}</strong> from HypeAuditor…`);
+
+  try {
+    const data = await apiGet(`/admin/outreach/fetch-list?country=${country}`);
+    influencers = (data.influencers || []).filter(inf => {
+      const engRate = inf.followers > 0 ? (inf.avg_engagement / inf.followers * 100) : 0;
+      return inf.followers >= minFollows
+          && inf.followers <= maxFollows
+          && engRate >= minEng;
+    });
+    analyses = {};
+    selectedHandles = new Set();
+    renderTable(country);
+    setStatus(`Found <strong>${influencers.length}</strong> influencers after filtering. Select profiles and click <strong>Analyze Selected</strong>.`);
+  } catch(e) {
+    setStatus(`Error: ${e.message}`, true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Fetch List';
+  }
+}
+
+function countryLabel(c) {
+  return { brazil: 'Brazil (PT-BR)', usa: 'United States', spain: 'Spain / LATAM' }[c] || c;
+}
+
+function setStatus(html, isError = false) {
+  const bar = document.getElementById('statusBar');
+  bar.style.display = 'block';
+  bar.style.color = isError ? 'var(--danger)' : 'var(--muted)';
+  bar.innerHTML = html;
+}
+
+// ── RENDER TABLE ──────────────────────────────────────────────────────────────
+function renderTable(country) {
+  const container = document.getElementById('resultsContainer');
+  if (!influencers.length) {
+    container.innerHTML = '<div class="empty-state">No influencers matched your filters.</div>';
+    return;
+  }
+
+  let html = `
+  <div class="summary-row">
+    <div class="summary-chip"><span>${influencers.length}</span> influencers</div>
+    <div class="summary-chip"><span id="selectedCount">0</span> selected</div>
+  </div>
+  <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center;">
+    <button class="btn-sm" onclick="selectAll()">Select All</button>
+    <button class="btn-sm" onclick="clearSelection()">Clear</button>
+    <button class="btn-analyze" id="analyzeBtn" onclick="analyzeSelected('${country}')" disabled>
+      Analyze Selected
+    </button>
+  </div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:36px"></th>
+        <th>#</th>
+        <th>Handle</th>
+        <th>Name</th>
+        <th>Followers</th>
+        <th>Avg Eng.</th>
+        <th>Eng. Rate</th>
+        <th>Fit</th>
+        <th>Website (optional)</th>
+      </tr>
+    </thead>
+    <tbody id="influencerBody">
+    </tbody>
+  </table>
+  </div>`;
+
+  container.innerHTML = html;
+  renderRows();
+}
+
+function renderRows() {
+  const tbody = document.getElementById('influencerBody');
+  if (!tbody) return;
+  let rows = '';
+  for (const inf of influencers) {
+    const h         = inf.handle;
+    const engRate   = inf.followers > 0 ? (inf.avg_engagement / inf.followers * 100) : 0;
+    const engClass  = engRate >= 3 ? 'eng-rate' : engRate >= 1 ? 'eng-low' : 'eng-poor';
+    const isChecked = selectedHandles.has(h);
+    const analysis  = analyses[h];
+    const fitHtml   = analysis ? fitBadgeHtml(analysis.fit_score) : '<span style="color:var(--muted);font-size:0.75rem">—</span>';
+    const rowClass  = isChecked ? 'selected' : '';
+
+    rows += `<tr id="row-${h}" class="${rowClass}">
+      <td><input type="checkbox" onchange="toggleSelect('${h}', this.checked)" ${isChecked ? 'checked' : ''} /></td>
+      <td style="color:var(--muted)">${inf.rank}</td>
+      <td class="handle">@${h}</td>
+      <td>${escHtml(inf.name)}</td>
+      <td class="followers">${fmtNum(inf.followers)}</td>
+      <td>${fmtNum(inf.avg_engagement)}</td>
+      <td class="${engClass}">${engRate.toFixed(1)}%</td>
+      <td>${fitHtml}</td>
+      <td><input class="url-input" type="url" placeholder="https://…" id="url-${h}" /></td>
+    </tr>`;
+
+    if (analysis) {
+      rows += analysisRowHtml(h, analysis);
+    }
+  }
+  tbody.innerHTML = rows;
+}
+
+function fitBadgeHtml(score) {
+  const cls = score >= 8 ? 'fit-great' : score >= 6 ? 'fit-good' : score >= 4 ? 'fit-ok' : 'fit-poor';
+  return `<span class="fit-badge ${cls}">${score}</span>`;
+}
+
+function analysisRowHtml(handle, a) {
+  const strengths = (a.strengths || []).map(s => `<span class="tag tag-green">${escHtml(s)}</span>`).join('');
+  const weaknesses = (a.weaknesses || []).map(w => `<span class="tag tag-yellow">${escHtml(w)}</span>`).join('');
+  const msgId = `msg-${handle}`;
+  return `<tr class="analysis-row" id="analysis-row-${handle}">
+    <td colspan="9">
+      <div class="analysis-body">
+        <div>
+          <div class="analysis-section" style="margin-bottom:14px">
+            <h4>Fit Assessment</h4>
+            <p>${escHtml(a.fit_rationale || '')}</p>
+          </div>
+          ${strengths ? `<div class="analysis-section" style="margin-bottom:10px">
+            <h4>Strengths</h4>
+            <div class="tag-list">${strengths}</div>
+          </div>` : ''}
+          ${weaknesses ? `<div class="analysis-section">
+            <h4>Watch-outs</h4>
+            <div class="tag-list">${weaknesses}</div>
+          </div>` : ''}
+        </div>
+        <div class="analysis-section">
+          <h4>Cold Message</h4>
+          <div class="message-box" id="${msgId}">${escHtml(a.cold_message || '')}</div>
+          <div class="copy-row">
+            <button class="btn-copy" onclick="copyMessage('${msgId}', this)">Copy message</button>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>`;
+}
+
+// ── SELECTION ─────────────────────────────────────────────────────────────────
+function toggleSelect(handle, checked) {
+  if (checked) selectedHandles.add(handle);
+  else selectedHandles.delete(handle);
+  const row = document.getElementById(`row-${handle}`);
+  if (row) row.className = checked ? 'selected' : '';
+  updateSelectionUI();
+}
+
+function selectAll() {
+  influencers.forEach(inf => {
+    selectedHandles.add(inf.handle);
+    const row = document.getElementById(`row-${inf.handle}`);
+    if (row) { row.className = 'selected'; row.querySelector('input[type=checkbox]').checked = true; }
+  });
+  updateSelectionUI();
+}
+
+function clearSelection() {
+  selectedHandles.forEach(h => {
+    const row = document.getElementById(`row-${h}`);
+    if (row) { row.className = ''; const cb = row.querySelector('input[type=checkbox]'); if (cb) cb.checked = false; }
+  });
+  selectedHandles.clear();
+  updateSelectionUI();
+}
+
+function updateSelectionUI() {
+  const count = selectedHandles.size;
+  const el = document.getElementById('selectedCount');
+  if (el) el.textContent = count;
+  const btn = document.getElementById('analyzeBtn');
+  if (btn) {
+    btn.disabled = count === 0;
+    btn.textContent = count > 0 ? `Analyze Selected (${count})` : 'Analyze Selected';
+  }
+}
+
+// ── ANALYZE ───────────────────────────────────────────────────────────────────
+async function analyzeSelected(country) {
+  const toAnalyze = influencers.filter(inf => selectedHandles.has(inf.handle));
+  if (!toAnalyze.length) return;
+
+  const btn = document.getElementById('analyzeBtn');
+  btn.disabled = true;
+  btn.innerHTML = `<span class="spinner"></span>Analyzing ${toAnalyze.length} profile${toAnalyze.length > 1 ? 's' : ''}…`;
+  setStatus(`Running Claude analysis on ${toAnalyze.length} influencer${toAnalyze.length > 1 ? 's' : ''}… this takes ~10–30 seconds.`);
+
+  // Collect website URLs from inputs
+  const websiteUrls = {};
+  for (const inf of toAnalyze) {
+    const val = (document.getElementById(`url-${inf.handle}`) || {}).value || '';
+    if (val.trim()) websiteUrls[inf.handle] = val.trim();
+  }
+
+  try {
+    const data = await apiPost('/admin/outreach/analyze', {
+      influencers: toAnalyze,
+      country: country,
+      website_urls: Object.keys(websiteUrls).length ? websiteUrls : null,
+    });
+    for (const result of (data.results || [])) {
+      analyses[result.handle] = result;
+    }
+    renderRows();
+    setStatus(`Analysis complete for <strong>${data.results.length}</strong> influencer${data.results.length > 1 ? 's' : ''}. Fit scores and messages are shown below each row.`);
+  } catch(e) {
+    setStatus(`Analysis error: ${e.message}`, true);
+  } finally {
+    const count = selectedHandles.size;
+    btn.disabled = count === 0;
+    btn.textContent = count > 0 ? `Analyze Selected (${count})` : 'Analyze Selected';
+  }
+}
+
+// ── COPY ──────────────────────────────────────────────────────────────────────
+function copyMessage(boxId, btn) {
+  const text = document.getElementById(boxId)?.textContent || '';
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy message'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ── UTILS ─────────────────────────────────────────────────────────────────────
+function fmtNum(n) {
+  if (!n && n !== 0) return '—';
+  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000)    return (n / 1000).toFixed(1) + 'K';
+  return n.toString();
+}
+
+function escHtml(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+document.getElementById('loginPassword').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+</script>
+</body>
+</html>
