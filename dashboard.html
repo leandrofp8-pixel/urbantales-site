@@ -239,6 +239,77 @@
     }
     .notif-result.success { background: rgba(52,211,153,.1); color: var(--green); border: 1px solid rgba(52,211,153,.3); }
     .notif-result.error   { background: rgba(248,113,113,.1); color: var(--danger); border: 1px solid rgba(248,113,113,.3); }
+
+    /* ── PROFILES TAB ── */
+    .profiles-layout { display: flex; gap: 20px; align-items: flex-start; }
+    .profiles-sidebar { width: 320px; flex-shrink: 0; }
+    .profiles-main { flex: 1; min-width: 0; }
+    .profiles-search {
+      width: 100%; padding: 10px 14px; background: #111; border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); font-size: 0.9rem; outline: none; margin-bottom: 12px;
+    }
+    .profiles-search:focus { border-color: var(--primary); }
+    .user-list { display: flex; flex-direction: column; gap: 4px; }
+    .user-list-item {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 12px; cursor: pointer; transition: border-color .15s;
+    }
+    .user-list-item:hover { border-color: rgba(255,107,53,.4); }
+    .user-list-item.selected { border-color: var(--primary); background: rgba(255,107,53,.06); }
+    .user-list-item.active-profile { border-color: var(--blue); background: rgba(96,165,250,.06); }
+    .user-list-item input[type=checkbox] { accent-color: var(--primary); width: 15px; height: 15px; flex-shrink: 0; cursor: pointer; }
+    .user-list-meta { flex: 1; min-width: 0; }
+    .user-list-email { font-size: 0.82rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .user-list-sub { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
+    .user-list-badge { font-size: 0.68rem; padding: 2px 6px; border-radius: 10px; flex-shrink: 0; }
+    .bulk-bar {
+      display: none; align-items: center; justify-content: space-between;
+      background: rgba(255,107,53,.1); border: 1px solid rgba(255,107,53,.3);
+      border-radius: 8px; padding: 10px 16px; margin-bottom: 12px;
+    }
+    .bulk-bar.visible { display: flex; }
+    .bulk-bar-label { font-size: 0.85rem; color: var(--primary); font-weight: 600; }
+    .btn-bulk-action {
+      background: var(--primary); color: #fff; border: none;
+      border-radius: 8px; padding: 8px 18px; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .btn-bulk-action:hover { opacity: .85; }
+    .btn-bulk-action:disabled { opacity: .4; cursor: not-allowed; }
+    .profile-empty {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 80px 40px; color: var(--muted); font-size: 0.88rem; text-align: center;
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    }
+    .profile-empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: .4; }
+    .profile-hdr {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 20px;
+    }
+    .profile-avatar {
+      width: 52px; height: 52px; border-radius: 50%; background: rgba(255,107,53,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; font-weight: 700; color: var(--primary); flex-shrink: 0;
+    }
+    .profile-hdr-info { flex: 1; min-width: 0; }
+    .profile-hdr-name { font-size: 1.05rem; font-weight: 700; }
+    .profile-hdr-email { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+    .profile-hdr-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .timeline-list { display: flex; flex-direction: column; gap: 2px; }
+    .timeline-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 8px 0; border-bottom: 1px solid #1c1c1c;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
+    .timeline-body { flex: 1; }
+    .timeline-label { font-size: 0.83rem; }
+    .timeline-time  { font-size: 0.73rem; color: var(--muted); margin-top: 1px; }
+    @media (max-width: 860px) {
+      .profiles-layout { flex-direction: column; }
+      .profiles-sidebar { width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -291,6 +362,7 @@
     <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
     <button class="tab-btn" onclick="showTab('viator')">🎫 Viator</button>
     <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
+    <button class="tab-btn" onclick="showTab('profiles')">👤 Profiles</button>
   </nav>
 
   <main>
@@ -1099,6 +1171,36 @@
 
     </div><!-- /panel-settings -->
 
+    <!-- ── PROFILES ── -->
+    <div class="tab-panel" id="panel-profiles">
+      <div class="profiles-layout">
+
+        <!-- Left: search + user list -->
+        <div class="profiles-sidebar">
+          <input class="profiles-search" id="profilesSearch" type="search"
+            placeholder="Search by email or name…" oninput="onProfilesSearch(this.value)" />
+          <div class="bulk-bar" id="bulkBar">
+            <span class="bulk-bar-label" id="bulkBarLabel">0 selected</span>
+            <button class="btn-bulk-action" id="bulkDayPassBtn" onclick="giveSelectedDayPass()">
+              🗓 Give Day Pass
+            </button>
+          </div>
+          <div class="user-list" id="userList">
+            <div class="loading">Type to search or leave blank to load recent users…</div>
+          </div>
+        </div>
+
+        <!-- Right: profile detail -->
+        <div class="profiles-main" id="profilesMain">
+          <div class="profile-empty">
+            <div class="profile-empty-icon">👤</div>
+            Select a user to view their profile
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /panel-profiles -->
+
   </main>
 </div>
 
@@ -1269,6 +1371,10 @@ function showTab(name) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(`panel-${name}`).classList.add('active');
   event.currentTarget.classList.add('active');
+  if (name === 'profiles' && !_profilesTabLoaded) {
+    _profilesTabLoaded = true;
+    loadUserList('');
+  }
 }
 
 function onPeriodChange() {
@@ -2805,6 +2911,282 @@ async function deletePromoCode(code) {
   const fresh = await api('/admin/promo-codes');
   renderPromoCodes(fresh);
 }
+
+// ══════════════════════════════════════════════
+// PROFILES TAB
+// ══════════════════════════════════════════════
+let _profilesSearchTimer = null;
+let _selectedProfiles = new Set();
+let _activeProfileEmail = null;
+let _profileNarChart = null;
+
+function onProfilesSearch(q) {
+  clearTimeout(_profilesSearchTimer);
+  _profilesSearchTimer = setTimeout(() => loadUserList(q.trim()), 300);
+}
+
+async function loadUserList(q = '') {
+  const list = document.getElementById('userList');
+  list.innerHTML = '<div class="loading">Loading…</div>';
+  try {
+    const data = await api(`/admin/users/search?q=${encodeURIComponent(q)}`);
+    renderUserList(data.users || []);
+  } catch (e) {
+    list.innerHTML = '<div class="loading" style="color:var(--danger)">Failed to load users</div>';
+  }
+}
+
+function renderUserList(users) {
+  const list = document.getElementById('userList');
+  if (!users.length) {
+    list.innerHTML = '<div class="loading">No users found</div>';
+    return;
+  }
+  list.innerHTML = users.map(u => {
+    const isPaid = !!u.first_purchase_at;
+    const name   = u.display_name || '';
+    const label  = name ? `${name}` : '';
+    const sub    = `${u.total_narrations_listened || 0} narrations · ${u.coins ?? 0} coins`;
+    const badge  = isPaid
+      ? `<span class="user-list-badge pill badge-green">paid</span>`
+      : `<span class="user-list-badge pill badge-orange">free</span>`;
+    const sel    = _selectedProfiles.has(u.email) ? 'selected' : '';
+    const act    = _activeProfileEmail === u.email ? 'active-profile' : '';
+    return `<div class="user-list-item ${sel} ${act}" data-email="${u.email}">
+      <input type="checkbox" onclick="toggleUserSelect('${u.email}', event)"
+        ${_selectedProfiles.has(u.email) ? 'checked' : ''} />
+      <div class="user-list-meta" onclick="openUserProfile('${u.email}')">
+        <div class="user-list-email">${u.email}</div>
+        ${label ? `<div class="user-list-sub">${label}</div>` : ''}
+        <div class="user-list-sub">${sub}</div>
+      </div>
+      ${badge}
+    </div>`;
+  }).join('');
+}
+
+function toggleUserSelect(email, evt) {
+  evt.stopPropagation();
+  if (_selectedProfiles.has(email)) {
+    _selectedProfiles.delete(email);
+  } else {
+    _selectedProfiles.add(email);
+  }
+  updateBulkBar();
+  // Reflect selection state on item
+  document.querySelectorAll(`[data-email="${email}"]`).forEach(el => {
+    el.classList.toggle('selected', _selectedProfiles.has(email));
+  });
+}
+
+function updateBulkBar() {
+  const bar = document.getElementById('bulkBar');
+  const label = document.getElementById('bulkBarLabel');
+  const n = _selectedProfiles.size;
+  if (n > 0) {
+    bar.classList.add('visible');
+    label.textContent = `${n} user${n > 1 ? 's' : ''} selected`;
+  } else {
+    bar.classList.remove('visible');
+  }
+}
+
+async function giveSelectedDayPass() {
+  if (!_selectedProfiles.size) return;
+  const btn = document.getElementById('bulkDayPassBtn');
+  btn.disabled = true;
+  btn.textContent = 'Working…';
+  try {
+    const res = await fetch(`${API}/admin/users/bulk-day-pass`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${getToken()}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ emails: [..._selectedProfiles] }),
+    });
+    const data = await res.json();
+    const ok = (data.success || []).length;
+    const fail = (data.failed || []).length;
+    alert(`Day pass granted to ${ok} user${ok !== 1 ? 's' : ''}${fail ? `. ${fail} failed.` : '.'}`);
+    _selectedProfiles.clear();
+    updateBulkBar();
+    loadUserList(document.getElementById('profilesSearch').value.trim());
+    if (_activeProfileEmail) openUserProfile(_activeProfileEmail);
+  } catch (e) {
+    alert('Request failed: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '🗓 Give Day Pass';
+  }
+}
+
+async function openUserProfile(email) {
+  _activeProfileEmail = email;
+  document.querySelectorAll('.user-list-item').forEach(el => {
+    el.classList.toggle('active-profile', el.dataset.email === email);
+  });
+  const main = document.getElementById('profilesMain');
+  main.innerHTML = '<div class="loading" style="padding:60px;text-align:center">Loading profile…</div>';
+  try {
+    const data = await api(`/admin/users/profile?email=${encodeURIComponent(email)}`);
+    renderUserProfile(data);
+  } catch (e) {
+    main.innerHTML = `<div class="loading" style="color:var(--danger);padding:60px;text-align:center">Failed to load profile</div>`;
+  }
+}
+
+function _profileDate(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+function _profileTime(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' +
+    d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+}
+
+const _eventMeta = {
+  narration_complete: { icon: '🎧', color: 'rgba(52,211,153,.15)', label: 'Listened to narration' },
+  app_open:          { icon: '📱', color: 'rgba(96,165,250,.15)',  label: 'Opened app' },
+  shop_view:         { icon: '🛍',  color: 'rgba(251,191,36,.15)', label: 'Viewed shop' },
+  purchase:          { icon: '💳', color: 'rgba(167,139,250,.15)', label: 'Made a purchase' },
+  out_of_coins:      { icon: '🪙',  color: 'rgba(248,113,113,.15)',label: 'Ran out of coins' },
+  feature_use:       { icon: '🗺',  color: 'rgba(255,107,53,.15)', label: 'Used feature' },
+};
+
+function renderUserProfile({ user, events, listens, narrations_per_day, purchases }) {
+  const isPaid = !!user.first_purchase_at;
+  const hasDayPass = user.day_pass_expires_at && new Date(user.day_pass_expires_at) > new Date();
+  const initial = (user.display_name || user.email || '?')[0].toUpperCase();
+
+  const badges = [
+    isPaid ? `<span class="pill badge-green">paid</span>` : `<span class="pill badge-orange">free</span>`,
+    hasDayPass ? `<span class="pill badge-blue">day pass active</span>` : '',
+    user.signup_platform ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${user.signup_platform}</span>` : '',
+  ].filter(Boolean).join('');
+
+  // Header
+  const header = `<div class="profile-hdr">
+    <div class="profile-avatar">${initial}</div>
+    <div class="profile-hdr-info">
+      <div class="profile-hdr-name">${user.display_name || '(no name)'}</div>
+      <div class="profile-hdr-email">${user.email}</div>
+      <div class="profile-hdr-badges">${badges}</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <div style="font-size:0.73rem;color:var(--muted)">Joined</div>
+      <div style="font-size:0.85rem">${_profileDate(user.created_at)}</div>
+      <div style="font-size:0.73rem;color:var(--muted);margin-top:4px">Last active</div>
+      <div style="font-size:0.85rem">${_profileDate(user.last_active_at)}</div>
+    </div>
+  </div>`;
+
+  // Key metrics
+  const cities = Array.isArray(user.cities_unlocked) ? user.cities_unlocked.length : (user.cities_unlocked || 0);
+  const metrics = `<div class="grid-4" style="margin-bottom:16px">
+    ${kpiCard('Narrations', fmt(user.total_narrations_listened), 'lifetime total', null, null)}
+    ${kpiCard('Coins', fmt(user.coins), 'current balance', null, null)}
+    ${kpiCard('Cities Unlocked', fmt(cities), null, null, null)}
+    ${kpiCard('Sessions', fmt(user.total_sessions), 'app opens', null, null)}
+  </div>`;
+
+  // Activity timeline
+  const timelineRows = (events || []).map(e => {
+    const m = _eventMeta[e.event_type] || { icon: '•', color: 'rgba(255,255,255,.06)', label: e.event_type };
+    const detail = e.event_data && Object.keys(e.event_data).length
+      ? ` <span style="color:var(--muted);font-size:0.75rem">${JSON.stringify(e.event_data)}</span>`
+      : '';
+    return `<div class="timeline-item">
+      <div class="timeline-icon" style="background:${m.color}">${m.icon}</div>
+      <div class="timeline-body">
+        <div class="timeline-label">${m.label}${detail}</div>
+        <div class="timeline-time">${_profileTime(e.timestamp)}</div>
+      </div>
+    </div>`;
+  }).join('') || '<div style="color:var(--muted);font-size:0.83rem;padding:8px 0">No events recorded yet</div>';
+
+  const timeline = `<div class="card" style="margin-bottom:16px">
+    <div class="card-title">Activity Timeline <span style="font-size:0.75rem;color:var(--muted);font-weight:400">last 20 events</span></div>
+    <div class="timeline-list">${timelineRows}</div>
+  </div>`;
+
+  // Narration history table
+  const listenRows = (listens || []).map(l => {
+    const pctColor = l.listen_pct >= 90 ? 'var(--green)' : l.listen_pct >= 50 ? 'var(--yellow)' : 'var(--muted)';
+    const dur = l.duration_seconds ? `${Math.round(l.duration_seconds)}s` : '—';
+    return `<tr>
+      <td>${_profileTime(l.timestamp)}</td>
+      <td><span class="pill badge-blue">${l.tier || '—'}</span></td>
+      <td style="color:${pctColor};font-weight:600">${(l.listen_pct || 0).toFixed(0)}%</td>
+      <td>${dur}</td>
+      <td style="color:var(--muted)">${l.source || '—'}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:16px">No listen events</td></tr>';
+
+  const history = `<div class="card" style="margin-bottom:16px">
+    <div class="card-title">Narration History <span style="font-size:0.75rem;color:var(--muted);font-weight:400">last 20</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Time</th><th>Tier</th><th>Listened</th><th>Duration</th><th>Source</th></tr></thead>
+        <tbody>${listenRows}</tbody>
+      </table>
+    </div>
+  </div>`;
+
+  // Narrations/day chart
+  const chartSection = `<div class="card" style="margin-bottom:16px">
+    <div class="card-title">Narrations / Day <span style="font-size:0.75rem;color:var(--muted);font-weight:400">last 30 days</span></div>
+    <div class="chart-wrap"><canvas id="profileNarChart"></canvas></div>
+  </div>`;
+
+  // Purchase history
+  const purchaseRows = (purchases || []).map(p => {
+    const d = p.event_data || {};
+    return `<tr>
+      <td>${_profileTime(p.timestamp)}</td>
+      <td>${d.product_id || '—'}</td>
+      <td style="color:var(--green);font-weight:600">+${d.coins_amount || '—'} coins</td>
+      <td style="color:var(--muted)">${d.source || '—'}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:16px">No purchases</td></tr>';
+
+  const purchaseSection = `<div class="card">
+    <div class="card-title">Purchase History</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Time</th><th>Product</th><th>Coins</th><th>Source</th></tr></thead>
+        <tbody>${purchaseRows}</tbody>
+      </table>
+    </div>
+  </div>`;
+
+  document.getElementById('profilesMain').innerHTML =
+    header + metrics + timeline + history + chartSection + purchaseSection;
+
+  // Render narrations/day chart
+  if (_profileNarChart) { _profileNarChart.destroy(); _profileNarChart = null; }
+  const ctx = document.getElementById('profileNarChart');
+  if (ctx && narrations_per_day && narrations_per_day.length) {
+    _profileNarChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: narrations_per_day.map(d => shortDate(d.date)),
+        datasets: [{ label: 'Narrations', data: narrations_per_day.map(d => d.count),
+          backgroundColor: 'rgba(96,165,250,.5)', borderColor: 'rgba(96,165,250,1)',
+          borderWidth: 1, borderRadius: 3 }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: '#222' }, ticks: { color: '#888', maxRotation: 45 } },
+          y: { grid: { color: '#222' }, ticks: { color: '#888', stepSize: 1 }, beginAtZero: true },
+        },
+      },
+    });
+  }
+}
+
+let _profilesTabLoaded = false;
 
 // ══════════════════════════════════════════════
 // LOAD ALL DATA
