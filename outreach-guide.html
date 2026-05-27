@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban Tales — Influencer Outreach Guide</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0f0f0f;
+      --card:    #1a1a1a;
+      --card2:   #202020;
+      --border:  #2a2a2a;
+      --primary: #FF6B35;
+      --green:   #34d399;
+      --yellow:  #fbbf24;
+      --blue:    #60a5fa;
+      --purple:  #a78bfa;
+      --red:     #f87171;
+      --text:    #f1f1f1;
+      --muted:   #888;
+    }
+
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px; line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--card); border-bottom: 1px solid var(--border);
+      padding: 20px 32px; display: flex; align-items: center; gap: 12px;
+    }
+    .dot { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; flex-shrink: 0; }
+    header h1 { font-size: 1.1rem; font-weight: 700; }
+    header p  { font-size: 0.82rem; color: var(--muted); margin-left: auto; }
+
+    /* LAYOUT */
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: .12em;
+      color: var(--primary); font-weight: 700; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
+    h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+
+    p { color: #ccc; margin-bottom: 12px; }
+
+    /* CARDS */
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px; margin-bottom: 16px;
+    }
+
+    /* TAGS / CHIPS */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .chip {
+      padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 500;
+      border: 1px solid; white-space: nowrap;
+    }
+    .chip-green  { background: rgba(52,211,153,.1);  color: var(--green);  border-color: rgba(52,211,153,.3); }
+    .chip-yellow { background: rgba(251,191,36,.1);  color: var(--yellow); border-color: rgba(251,191,36,.3); }
+    .chip-blue   { background: rgba(96,165,250,.1);  color: var(--blue);   border-color: rgba(96,165,250,.3); }
+    .chip-purple { background: rgba(167,139,250,.1); color: var(--purple); border-color: rgba(167,139,250,.3); }
+    .chip-red    { background: rgba(248,113,113,.1); color: var(--red);    border-color: rgba(248,113,113,.3); }
+    .chip-orange { background: rgba(255,107,53,.1);  color: var(--primary);border-color: rgba(255,107,53,.3); }
+
+    /* LIST */
+    ul, ol { padding-left: 20px; color: #ccc; }
+    ul li, ol li { margin-bottom: 6px; }
+    ul li strong, ol li strong { color: var(--text); }
+
+    /* DO / DONT GRID */
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .do-dont { grid-template-columns: 1fr; } }
+    .do-card   { border-color: rgba(52,211,153,.3);  }
+    .dont-card { border-color: rgba(248,113,113,.3); }
+    .do-card   h3 { color: var(--green); }
+    .dont-card h3 { color: var(--red);   }
+
+    /* MESSAGE TEMPLATES */
+    .type-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; margin-bottom: 20px;
+    }
+    .type-header {
+      padding: 14px 20px; background: var(--card2);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .type-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .type-header h3 { margin: 0; font-size: 1rem; }
+    .type-header p  { margin: 0; font-size: 0.8rem; color: var(--muted); }
+
+    .lang-tabs { display: flex; border-bottom: 1px solid var(--border); }
+    .lang-tab {
+      padding: 10px 18px; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+      border-bottom: 2px solid transparent; color: var(--muted); background: none; border-top: none; border-left: none; border-right: none;
+      transition: color .15s;
+    }
+    .lang-tab:hover { color: var(--text); }
+    .lang-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    .lang-panel { display: none; padding: 16px 20px; }
+    .lang-panel.active { display: block; }
+
+    .msg-box {
+      background: #111; border: 1px solid var(--border); border-radius: 8px;
+      padding: 16px; font-size: 0.88rem; line-height: 1.7; white-space: pre-wrap;
+      color: var(--text); font-family: inherit; position: relative;
+    }
+    .msg-box .placeholder { color: var(--primary); font-weight: 600; }
+    .copy-btn {
+      position: absolute; top: 10px; right: 10px;
+      padding: 4px 12px; background: none; border: 1px solid var(--border);
+      color: var(--muted); border-radius: 6px; font-size: 0.75rem; cursor: pointer;
+      transition: all .15s;
+    }
+    .copy-btn:hover { border-color: var(--green); color: var(--green); }
+    .copy-btn.copied { border-color: var(--green); color: var(--green); }
+
+    .signal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    @media (max-width: 600px) { .signal-row { grid-template-columns: 1fr; } }
+    .signal-box { background: #111; border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+    .signal-box h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 8px; }
+
+    /* PROFILE METRICS */
+    .metrics { display: flex; gap: 24px; flex-wrap: wrap; margin: 12px 0; }
+    .metric { }
+    .metric .val { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+    .metric .lbl { font-size: 0.75rem; color: var(--muted); }
+
+    /* DIVIDER */
+    hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+    /* HIGHLIGHT */
+    .highlight {
+      background: rgba(255,107,53,.08); border: 1px solid rgba(255,107,53,.2);
+      border-radius: 10px; padding: 16px 20px; margin-bottom: 20px;
+    }
+    .highlight p { margin: 0; color: #ddd; }
+    .highlight strong { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="dot"></div>
+  <div>
+    <h1>Urban Tales — Influencer Outreach Guide</h1>
+  </div>
+  <p>Internal use only</p>
+</header>
+
+<div class="container">
+
+  <!-- WHAT IS URBAN TALES -->
+  <div class="section">
+    <div class="section-title">The pitch in one sentence</div>
+    <div class="highlight">
+      <p><strong>Put your phone in your pocket, start walking through any city, and stories play automatically as you approach interesting places</strong> — history, legends, hidden facts, in multiple languages. No route. No tour group. The city talks to you. Works anywhere in the world.</p>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="val">Free</div><div class="lbl">to try (6 landmarks/day)</div></div>
+      <div class="metric"><div class="val">$2.99</div><div class="lbl">day pass</div></div>
+      <div class="metric"><div class="val">5</div><div class="lbl">languages</div></div>
+      <div class="metric"><div class="val">Any city</div><div class="lbl">in the world</div></div>
+    </div>
+    <p style="font-size:0.85rem;color:var(--muted)">Promo link to always include: <strong style="color:var(--blue)">https://urbantales.net/invite?code=UTEARLY</strong></p>
+  </div>
+
+  <!-- WHO TO LOOK FOR -->
+  <div class="section">
+    <div class="section-title">Who to look for</div>
+
+    <div class="card">
+      <h3>Sweet spot profile</h3>
+      <div class="metrics">
+        <div class="metric"><div class="val">10k–500k</div><div class="lbl">followers</div></div>
+        <div class="metric"><div class="val">&gt; 1%</div><div class="lbl">engagement rate</div></div>
+        <div class="metric"><div class="val">Cities</div><div class="lbl">not resorts</div></div>
+      </div>
+      <p>Micro and mid-tier influencers respond more, collaborate more genuinely, and convert better. Mega-influencers (1M+) rarely respond and rarely convert.</p>
+    </div>
+
+    <div class="card">
+      <h3>Search terms that work</h3>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:10px">Use these on Instagram search, TikTok, or Google:</p>
+
+      <div style="margin-bottom:14px">
+        <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Portuguese</div>
+        <div class="chips">
+          <span class="chip chip-blue">#viagensolo</span>
+          <span class="chip chip-blue">#turistaemcasa</span>
+          <span class="chip chip-blue">#explorandocidades</span>
+          <span class="chip chip-blue">#historiasdacidade</span>
+          <span class="chip chip-blue">#descobrindocidades</span>
+          <span class="chip chip-blue">#curioridadesbrasil</span>
+          <span class="chip chip-blue">viagem + história</span>
+          <span class="chip chip-blue">explorar + cidade</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px">
+        <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">English</div>
+        <div class="chips">
+          <span class="chip chip-green">#citywalk</span>
+          <span class="chip chip-green">#urbanexploration</span>
+          <span class="chip chip-green">#hiddencity</span>
+          <span class="chip chip-green">#travelstories</span>
+          <span class="chip chip-green">#walkingtour</span>
+          <span class="chip chip-green">#solotravel</span>
+          <span class="chip chip-green">exploring + history</span>
+          <span class="chip chip-green">slow travel + city</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Spanish</div>
+        <div class="chips">
+          <span class="chip chip-purple">#viajesolox</span>
+          <span class="chip chip-purple">#callejeando</span>
+          <span class="chip chip-purple">#ciudadesescondidas</span>
+          <span class="chip chip-purple">#historiaurbana</span>
+          <span class="chip chip-purple">#explorando</span>
+          <span class="chip chip-purple">#viajeroindependiente</span>
+          <span class="chip chip-purple">turismo + historia</span>
+          <span class="chip chip-purple">caminar + ciudad</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Green flags — good signs on a profile</h3>
+      <ul>
+        <li><strong>Posts about walking through cities</strong> — neighborhoods, streets, landmarks</li>
+        <li><strong>Shares curiosities or history</strong> in captions, not just aesthetics</li>
+        <li><strong>Explores independently</strong> (not packaged group tours)</li>
+        <li><strong>Comments are questions or reactions</strong> — engaged, curious audience</li>
+        <li><strong>Covers multiple cities</strong> — shows they travel regularly</li>
+        <li><strong>Storytelling tone</strong> — writes about what a place means, not just looks</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Red flags — skip these</h3>
+      <ul>
+        <li><strong>Mostly beach, resort, or luxury hotel content</strong> — not our audience</li>
+        <li><strong>Follower count huge but comments are just emojis</strong> — fake or ghost followers</li>
+        <li><strong>Every post is sponsored</strong> — they only work for pay, not fit</li>
+        <li><strong>Covers only one city or region</strong> — audience isn't travel-minded</li>
+        <li><strong>Gear/packing/flight deals content</strong> — logistics focus, not experience</li>
+        <li><strong>"DM for collabs" in bio</strong> — agency managed, expect paid-only replies</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MESSAGE TEMPLATES -->
+  <div class="section">
+    <div class="section-title">Message templates by influencer type</div>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:24px">Replace <strong style="color:var(--primary)">[NAME]</strong> and the highlighted observation with something specific you noticed on their profile. Never send a message without personalizing it.</p>
+
+    <!-- TYPE 1: SOLO EXPLORER -->
+    <div class="type-card">
+      <div class="type-header">
+        <div class="type-icon" style="background:rgba(96,165,250,.15)">🚶</div>
+        <div>
+          <h3>Solo explorer / independent traveler</h3>
+          <p>Travels alone, posts about cities, curious tone, documents hidden places</p>
+        </div>
+      </div>
+      <div class="lang-tabs" id="tabs-1">
+        <button class="lang-tab active" onclick="switchLang('1','pt')">PT-BR</button>
+        <button class="lang-tab" onclick="switchLang('1','en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('1','es')">ES</button>
+      </div>
+      <div id="panel-1-pt" class="lang-panel active">
+        <div class="msg-box" id="msg-1-pt">Oi <span class="placeholder">[NOME]</span>, tudo bem?
+
+Encontrei seu perfil e fiquei vendo seus vídeos — adorei especialmente <span class="placeholder">[algo específico que viu, ex: "quando você explorou aquele bairro antigo em Lisboa"]</span>. Exatamente o tipo de exploração que eu tinha em mente quando construí o Urban Tales.
+
+Sou o Leo, fundador. A ideia: coloca o celular no bolso, sai caminhando, e as histórias tocam automaticamente conforme você se aproxima dos pontos ao redor — história, lendas, curiosidades, em vários idiomas. A cidade te conta o que aconteceu ali. Funciona em qualquer cidade do mundo.
+
+Adoraria que você experimentasse. Se gostar e fizer sentido contar pra sua audiência, a gente conversa — mas zero pressão.
+
+Link com código promocional:
+https://urbantales.net/invite?code=UTEARLY
+
+Abraço, Leo</div>
+        <button class="copy-btn" onclick="copyMsg('msg-1-pt', this)">Copiar</button>
+      </div>
+      <div id="panel-1-en" class="lang-panel">
+        <div class="msg-box" id="msg-1-en">Hey <span class="placeholder">[NAME]</span>, nice to meet you!
+
+I came across your profile and loved the way you explore cities — especially <span class="placeholder">[something specific, e.g. "that video walking through the old quarter in Lisbon"]</span>. That slow, curious approach is exactly who I built Urban Tales for.
+
+I'm Leo, the founder. The idea: put your phone in your pocket, start walking, and stories play automatically as you get close to interesting places — history, legends, hidden facts, in multiple languages. No route, no tour group. The city talks to you, anywhere in the world.
+
+Would love for you to try it. If you like it and it feels right to share, we can talk — but no pressure at all.
+
+Here's a promo link:
+https://urbantales.net/invite?code=UTEARLY
+
+Have a great week!
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-1-en', this)">Copy</button>
+      </div>
+      <div id="panel-1-es" class="lang-panel">
+        <div class="msg-box" id="msg-1-es">Hola <span class="placeholder">[NOMBRE]</span>, ¡mucho gusto!
+
+Vi tu perfil y me encantó la forma en que explorás las ciudades — especialmente <span class="placeholder">[algo específico, ej: "ese video recorriendo el centro histórico de Buenos Aires"]</span>. Eso es exactamente para quien construí Urban Tales.
+
+Soy Leo, el fundador. La idea: metés el teléfono en el bolsillo, salís a caminar, y las historias se reproducen solas cuando te acercás a lugares interesantes — historia, leyendas, datos ocultos, en varios idiomas. Sin ruta, sin grupo de turistas. La ciudad te habla, en cualquier ciudad del mundo.
+
+Me encantaría que lo pruebes. Si te gusta y tiene sentido compartirlo, hablamos — sin ningún compromiso.
+
+Link con código promocional:
+https://urbantales.net/invite?code=UTEARLY
+
+¡Saludos!
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-1-es', this)">Copiar</button>
+      </div>
+    </div>
+
+    <!-- TYPE 2: CULTURE & HISTORY -->
+    <div class="type-card">
+      <div class="type-header">
+        <div class="type-icon" style="background:rgba(167,139,250,.15)">🏛️</div>
+        <div>
+          <h3>Culture & history lover</h3>
+          <p>Posts about architecture, local history, city secrets, curious facts</p>
+        </div>
+      </div>
+      <div class="lang-tabs" id="tabs-2">
+        <button class="lang-tab active" onclick="switchLang('2','pt')">PT-BR</button>
+        <button class="lang-tab" onclick="switchLang('2','en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('2','es')">ES</button>
+      </div>
+      <div id="panel-2-pt" class="lang-panel active">
+        <div class="msg-box" id="msg-2-pt">Oi <span class="placeholder">[NOME]</span>!
+
+Tava vendo seu perfil e me identifiquei muito — <span class="placeholder">[algo específico, ex: "essa forma de pegar a história por trás de cada monumento é exatamente o que falta nos guias turísticos"]</span>.
+
+Sou o Leo, fundador do Urban Tales. Construí esse app pra fazer exatamente o que você já faz: contar as histórias que a maioria das pessoas passa reto sem perceber.
+
+A proposta: caminha pela cidade normalmente, e o app detecta os pontos ao redor e toca as histórias automaticamente — arquitetura, lendas, curiosidades, em vários estilos e idiomas. A cidade te conta o que aconteceu ali.
+
+Se quiser experimentar: https://urbantales.net/invite?code=UTEARLY
+
+Abraço, Leo</div>
+        <button class="copy-btn" onclick="copyMsg('msg-2-pt', this)">Copiar</button>
+      </div>
+      <div id="panel-2-en" class="lang-panel">
+        <div class="msg-box" id="msg-2-en">Hey <span class="placeholder">[NAME]</span>!
+
+I've been going through your profile and really enjoyed it — <span class="placeholder">[something specific, e.g. "the way you uncover the story behind everyday buildings most people walk past"]</span> is exactly the kind of curiosity Urban Tales is built for.
+
+I'm Leo, the founder. The app does what you already do: it surfaces the hidden stories behind the places around you — automatically, as you walk. History, legends, architecture, in multiple languages and styles. No searching, no tour group.
+
+If you'd like to try it: https://urbantales.net/invite?code=UTEARLY
+
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-2-en', this)">Copy</button>
+      </div>
+      <div id="panel-2-es" class="lang-panel">
+        <div class="msg-box" id="msg-2-es">Hola <span class="placeholder">[NOMBRE]</span>!
+
+Estuve viendo tu perfil y me enganchó mucho — <span class="placeholder">[algo específico, ej: "esa forma de contar la historia detrás de lugares que la gente pasa sin mirar"]</span> es exactamente para quien creé Urban Tales.
+
+Soy Leo, el fundador. La app hace lo que vos ya hacés: saca a la luz las historias ocultas de los lugares, automáticamente, mientras caminás. Historia, leyendas, arquitectura — en varios idiomas y estilos.
+
+Si querés probarlo: https://urbantales.net/invite?code=UTEARLY
+
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-2-es', this)">Copiar</button>
+      </div>
+    </div>
+
+    <!-- TYPE 3: TRAVEL COUPLE -->
+    <div class="type-card">
+      <div class="type-header">
+        <div class="type-icon" style="background:rgba(251,191,36,.15)">👫</div>
+        <div>
+          <h3>Travel couple</h3>
+          <p>Explores cities together, documents their experience, family-friendly or couple content</p>
+        </div>
+      </div>
+      <div class="lang-tabs" id="tabs-3">
+        <button class="lang-tab active" onclick="switchLang('3','pt')">PT-BR</button>
+        <button class="lang-tab" onclick="switchLang('3','en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('3','es')">ES</button>
+      </div>
+      <div id="panel-3-pt" class="lang-panel active">
+        <div class="msg-box" id="msg-3-pt">Oi <span class="placeholder">[NOME(S)]</span>, tudo bem?
+
+Encontrei o perfil de vocês e adorei — <span class="placeholder">[algo específico, ex: "aquela série explorando os bairros menos turísticos de Roma foi incrível"]</span>. Exatamente o estilo de viagem que a gente quer incentivar.
+
+Sou o Leo, fundador do Urban Tales. A ideia é simples: vocês colocam o celular no bolso e saem caminhando. Conforme chegam perto de pontos interessantes, histórias tocam automaticamente — história, lendas, curiosidades, no idioma e estilo que preferirem. A cidade conta o que aconteceu ali. Funciona em qualquer cidade do mundo!
+
+Adoraria que vocês experimentassem numa próxima viagem. Se gostar e fizer sentido compartilhar com a audiência de vocês, a gente conversa.
+
+https://urbantales.net/invite?code=UTEARLY
+
+Abraço, Leo</div>
+        <button class="copy-btn" onclick="copyMsg('msg-3-pt', this)">Copiar</button>
+      </div>
+      <div id="panel-3-en" class="lang-panel">
+        <div class="msg-box" id="msg-3-en">Hey <span class="placeholder">[NAMES]</span>!
+
+Found your profile and really enjoyed it — <span class="placeholder">[something specific, e.g. "that series exploring the less touristy side of Rome was great"]</span>. That's exactly the kind of travel experience Urban Tales is made for.
+
+I'm Leo, the founder. The idea: put your phone in your pocket, walk around the city, and stories play automatically as you get close to interesting spots — history, legends, curiosities, in your language and style. No searching. The city tells you what happened there.
+
+Would love for you to try it on your next trip. If it feels right to share, we can talk.
+
+https://urbantales.net/invite?code=UTEARLY
+
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-3-en', this)">Copy</button>
+      </div>
+      <div id="panel-3-es" class="lang-panel">
+        <div class="msg-box" id="msg-3-es">Hola <span class="placeholder">[NOMBRES]</span>!
+
+Vi el perfil de ustedes y me encantó — <span class="placeholder">[algo específico, ej: "esa serie explorando los barrios menos turísticos de Roma fue genial"]</span>. Ese es exactamente el estilo de viaje para el que creé Urban Tales.
+
+Soy Leo, el fundador. La idea: meten el teléfono en el bolsillo, salen a caminar, y las historias se reproducen solas cuando se acercan a lugares interesantes — historia, leyendas, curiosidades, en su idioma y estilo. Sin buscar nada. La ciudad les cuenta lo que pasó ahí.
+
+Me encantaría que lo prueben en el próximo viaje. Si les gusta y quieren compartirlo, hablamos.
+
+https://urbantales.net/invite?code=UTEARLY
+
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-3-es', this)">Copiar</button>
+      </div>
+    </div>
+
+    <!-- TYPE 4: LIFESTYLE + TRAVEL -->
+    <div class="type-card">
+      <div class="type-header">
+        <div class="type-icon" style="background:rgba(52,211,153,.15)">✨</div>
+        <div>
+          <h3>Lifestyle + travel creator</h3>
+          <p>Mix of travel and lifestyle, city-based content, aesthetic focus but with substance</p>
+        </div>
+      </div>
+      <div class="lang-tabs" id="tabs-4">
+        <button class="lang-tab active" onclick="switchLang('4','pt')">PT-BR</button>
+        <button class="lang-tab" onclick="switchLang('4','en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('4','es')">ES</button>
+      </div>
+      <div id="panel-4-pt" class="lang-panel active">
+        <div class="msg-box" id="msg-4-pt">Oi <span class="placeholder">[NOME]</span>!
+
+Vi seu perfil — <span class="placeholder">[algo específico, ex: "você tem um jeito de mostrar as cidades que vai além das fotos bonitas, dá pra sentir a atmosfera do lugar"]</span>. Isso é raro.
+
+Sou o Leo, fundador do Urban Tales. É um app que transforma a caminhada em experiência: você anda pela cidade e as histórias dos pontos ao redor tocam automaticamente — sem precisar buscar nada, no seu próprio ritmo.
+
+Se quiser experimentar: https://urbantales.net/invite?code=UTEARLY — e se gostar, a gente pode pensar em algo juntos.
+
+Abraço, Leo</div>
+        <button class="copy-btn" onclick="copyMsg('msg-4-pt', this)">Copiar</button>
+      </div>
+      <div id="panel-4-en" class="lang-panel">
+        <div class="msg-box" id="msg-4-en">Hey <span class="placeholder">[NAME]</span>!
+
+Came across your profile — <span class="placeholder">[something specific, e.g. "you have a way of showing cities that goes beyond pretty shots — you actually make people feel the place"]</span>. That's rare.
+
+I'm Leo, founder of Urban Tales. It's an app that turns a walk into an experience: you move through a city and the stories of nearby places play automatically — no searching, at your own pace, in your language.
+
+If you want to try it: https://urbantales.net/invite?code=UTEARLY — and if you like it, we can think about something together.
+
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-4-en', this)">Copy</button>
+      </div>
+      <div id="panel-4-es" class="lang-panel">
+        <div class="msg-box" id="msg-4-es">Hola <span class="placeholder">[NOMBRE]</span>!
+
+Vi tu perfil — <span class="placeholder">[algo específico, ej: "tenés una forma de mostrar las ciudades que va más allá de las fotos lindas, realmente transmitís la atmósfera del lugar"]</span>. Eso es poco común.
+
+Soy Leo, fundador de Urban Tales. Es una app que convierte una caminata en experiencia: caminás por la ciudad y las historias de los lugares cercanos se reproducen solas — sin buscar nada, a tu ritmo, en tu idioma.
+
+Si querés probarlo: https://urbantales.net/invite?code=UTEARLY — y si te gusta, podemos pensar en algo juntos.
+
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-4-es', this)">Copiar</button>
+      </div>
+    </div>
+
+    <!-- FOLLOW-UP -->
+    <div class="type-card">
+      <div class="type-header">
+        <div class="type-icon" style="background:rgba(255,107,53,.15)">🔁</div>
+        <div>
+          <h3>Follow-up (no reply after 2–3 weeks)</h3>
+          <p>Send once only. If still no reply, move on.</p>
+        </div>
+      </div>
+      <div class="lang-tabs" id="tabs-5">
+        <button class="lang-tab active" onclick="switchLang('5','pt')">PT-BR</button>
+        <button class="lang-tab" onclick="switchLang('5','en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('5','es')">ES</button>
+      </div>
+      <div id="panel-5-pt" class="lang-panel active">
+        <div class="msg-box" id="msg-5-pt">Oi <span class="placeholder">[NOME]</span>! Mandei uma mensagem semanas atrás sobre o Urban Tales — imagino que sua caixa de entrada deve estar sempre cheia, então sem pressão.
+
+Só queria dizer que o app evoluiu bastante desde então, e ainda acho que combina muito com o tipo de conteúdo que você faz.
+
+Se um dia tiver curiosidade: https://urbantales.net/invite?code=UTEARLY
+
+Abraço, Leo</div>
+        <button class="copy-btn" onclick="copyMsg('msg-5-pt', this)">Copiar</button>
+      </div>
+      <div id="panel-5-en" class="lang-panel">
+        <div class="msg-box" id="msg-5-en">Hey <span class="placeholder">[NAME]</span>! I sent a message a few weeks ago about Urban Tales — I imagine your inbox stays pretty full, so no pressure at all.
+
+Just wanted to say the app has grown a lot since then, and I still think it's a natural fit for the kind of content you make.
+
+If you're ever curious: https://urbantales.net/invite?code=UTEARLY
+
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-5-en', this)">Copy</button>
+      </div>
+      <div id="panel-5-es" class="lang-panel">
+        <div class="msg-box" id="msg-5-es">Hola <span class="placeholder">[NOMBRE]</span>! Te mandé un mensaje hace unas semanas sobre Urban Tales — imagino que tu bandeja de entrada siempre está llena, así que sin presión.
+
+Solo quería contarte que la app creció bastante desde entonces, y sigo pensando que encaja muy bien con el contenido que hacés.
+
+Si algún día tenés curiosidad: https://urbantales.net/invite?code=UTEARLY
+
+Leo, Urban Tales</div>
+        <button class="copy-btn" onclick="copyMsg('msg-5-es', this)">Copiar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DO'S AND DON'TS -->
+  <div class="section">
+    <div class="section-title">Do's &amp; Don'ts</div>
+    <div class="do-dont">
+      <div class="card do-card">
+        <h3>✓ Do</h3>
+        <ul>
+          <li><strong>Personalize every message.</strong> Mention one specific thing you saw on their profile — a video, a city they covered, their style. Generic messages get ignored.</li>
+          <li><strong>Match the language.</strong> If they post in Portuguese, write in Portuguese. Always.</li>
+          <li><strong>Lead with the invite, not the deal.</strong> Ask them to try the app first. Mention collaboration only as a secondary option.</li>
+          <li><strong>Keep it short.</strong> 4–5 short paragraphs max. People don't read long DMs from strangers.</li>
+          <li><strong>Follow up once</strong> after 2–3 weeks of silence. Use the follow-up template. Then move on.</li>
+          <li><strong>Sign as Leo.</strong> First person from the founder feels warmer than a brand message.</li>
+        </ul>
+      </div>
+      <div class="card dont-card">
+        <h3>✗ Don't</h3>
+        <ul>
+          <li><strong>Don't open with "partnership" or "collaboration".</strong> It immediately reads as a paid pitch and gets ignored or declined.</li>
+          <li><strong>Don't mention payment or commission rates in the first message.</strong> That comes only if they show interest.</li>
+          <li><strong>Don't send the same message to everyone.</strong> Even a small detail makes a huge difference in response rate.</li>
+          <li><strong>Don't follow up more than once.</strong> Two messages total. Anything more is spam.</li>
+          <li><strong>Don't target mega-influencers (1M+).</strong> Almost zero response rate and poor conversion even if they do post.</li>
+          <li><strong>Don't pitch influencers whose content doesn't fit.</strong> If they only post beaches and resorts, skip them.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRACKING TIP -->
+  <div class="section">
+    <div class="section-title">Keeping track</div>
+    <div class="card">
+      <p>Keep a simple spreadsheet with these columns:</p>
+      <div class="chips" style="margin-top:8px">
+        <span class="chip chip-blue">Handle</span>
+        <span class="chip chip-blue">Platform</span>
+        <span class="chip chip-blue">Followers</span>
+        <span class="chip chip-blue">Type</span>
+        <span class="chip chip-blue">Language</span>
+        <span class="chip chip-blue">Date contacted</span>
+        <span class="chip chip-blue">Status</span>
+        <span class="chip chip-blue">Notes</span>
+      </div>
+      <p style="margin-top:12px">Status options: <strong>Sent</strong> → <strong>Follow-up sent</strong> → <strong>Replied</strong> → <strong>Using app</strong> → <strong>Active affiliate</strong> → <strong>No response</strong></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function switchLang(typeId, lang) {
+  ['pt','en','es'].forEach(l => {
+    document.getElementById(`panel-${typeId}-${l}`).classList.remove('active');
+  });
+  document.querySelectorAll(`#tabs-${typeId} .lang-tab`).forEach(b => b.classList.remove('active'));
+  document.getElementById(`panel-${typeId}-${lang}`).classList.add('active');
+  const tabs = document.querySelectorAll(`#tabs-${typeId} .lang-tab`);
+  const idx = ['pt','en','es'].indexOf(lang);
+  if (tabs[idx]) tabs[idx].classList.add('active');
+}
+
+function copyMsg(boxId, btn) {
+  const box = document.getElementById(boxId);
+  // Get text content, replacing placeholder spans with their text
+  const text = box.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = btn.textContent.includes('Copiar') || btn.dataset.lang === 'pt' ? 'Copiar' : 'Copy';
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
