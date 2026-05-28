@@ -744,6 +744,14 @@
           <div class="card"><div class="loading">…</div></div>
         </div>
       </div>
+
+      <!-- A/B test: default tab -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">A/B Test — Default Tab
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Activation rate by first-tab assignment</span>
+        </div>
+        <div id="abTestPanel"><div class="loading">Loading…</div></div>
+      </div>
     </div>
 
     <!-- ── ACQUISITION (MGM + Influencers) ── -->
@@ -3234,7 +3242,7 @@ let _profilesTabLoaded = false;
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -3254,6 +3262,7 @@ async function loadAllData() {
       api(`/admin/analytics/acquisition-channels`).catch(() => null),
       api(`/admin/settings`).catch(() => null),
       api(`/admin/promo-codes`).catch(() => null),
+      api(`/admin/analytics/ab-test`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue);
@@ -3270,9 +3279,44 @@ async function loadAllData() {
     renderInfluencerAccounts(influencerAccounts);
     renderSettings(settings);
     renderPromoCodes(promoCodes);
+    renderAbTest(abTest);
   } catch (e) {
     console.error('Dashboard load error:', e);
   }
+}
+
+function renderAbTest(data) {
+  const el = document.getElementById('abTestPanel');
+  if (!el) return;
+  if (!data || !data.groups) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No data yet — experiment starts with new signups.</p>';
+    return;
+  }
+  const groups = ['walk', 'explore'];
+  const rows = groups.map(g => {
+    const d = data.groups[g] || { signups: 0, activated: 0, activation_rate: 0 };
+    const winner = data.groups['explore']?.activation_rate > data.groups['walk']?.activation_rate;
+    const isWinner = (g === 'explore' && winner) || (g === 'walk' && !winner && data.groups['walk']);
+    const badge = isWinner && data.groups['explore'] && data.groups['walk']
+      ? '<span style="background:var(--green);color:#000;font-size:0.7rem;padding:2px 6px;border-radius:4px;margin-left:8px">winning</span>' : '';
+    return `<tr>
+      <td><strong>${g === 'walk' ? '🎧 Walk &amp; Listen' : '🧭 Explore'}</strong>${badge}</td>
+      <td style="text-align:right">${fmt(d.signups)}</td>
+      <td style="text-align:right">${fmt(d.activated)}</td>
+      <td style="text-align:right;font-weight:700;color:${d.activation_rate >= 30 ? 'var(--green)' : 'var(--muted)'}">${d.activation_rate}%</td>
+    </tr>`;
+  }).join('');
+  el.innerHTML = `
+    <table style="width:100%;border-collapse:collapse">
+      <thead><tr style="color:var(--muted);font-size:0.75rem">
+        <th style="text-align:left;padding:6px 0">Group</th>
+        <th style="text-align:right">Signups</th>
+        <th style="text-align:right">Activated</th>
+        <th style="text-align:right">Activation %</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <p style="color:var(--muted);font-size:0.75rem;margin-top:12px">${fmt(data.unassigned_users)} users signed up before the experiment.</p>`;
 }
 
 // ══════════════════════════════════════════════
