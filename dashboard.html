@@ -2776,7 +2776,11 @@ function renderSettings(data) {
     field('places_grid_size_meters', 'Location Grid Size (meters)', 'number', s.places_grid_size_meters ?? 500, 'min="100" max="2000" step="50"') +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App</div>` +
-    field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '');
+    field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '') +
+
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">A/B Testing — Default Tab</div>` +
+    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('ab_default_tab_enabled', 'Experiment Active', s.ab_default_tab_enabled ?? true)}</div>` +
+    field('ab_default_tab_explore_pct', 'Explore Group % (0 = all Walk, 100 = all Explore)', 'number', s.ab_default_tab_explore_pct ?? 50, 'min="0" max="100"');
 }
 
 async function saveSettings() {
@@ -2801,6 +2805,8 @@ async function saveSettings() {
     mgm_inviter_reward_coins: parseInt(document.getElementById('s_mgm_inviter_reward_coins').value),
     influencer_revenue_share_pct: parseInt(document.getElementById('s_influencer_revenue_share_pct').value),
     minimum_app_version: document.getElementById('s_minimum_app_version').value.trim(),
+    ab_default_tab_enabled: document.getElementById('s_ab_default_tab_enabled').checked,
+    ab_default_tab_explore_pct: parseInt(document.getElementById('s_ab_default_tab_explore_pct').value),
     viator_min_rating: parseFloat(document.getElementById('s_viator_min_rating').value),
     viator_min_reviews: parseInt(document.getElementById('s_viator_min_reviews').value),
     places_cache_ttl_days: parseInt(document.getElementById('s_places_cache_ttl_days').value),
