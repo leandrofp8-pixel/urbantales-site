@@ -61,6 +61,15 @@
       background: #111; border: 1px solid var(--border); color: var(--text);
       padding: 6px 12px; border-radius: 8px; font-size: 0.82rem; cursor: pointer; outline: none;
     }
+    .date-range-inputs {
+      display: none; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--muted);
+    }
+    .date-range-inputs.visible { display: flex; }
+    .date-range-inputs input[type="date"] {
+      background: #111; border: 1px solid var(--border); color: var(--text);
+      padding: 5px 10px; border-radius: 8px; font-size: 0.8rem; outline: none; cursor: pointer;
+      color-scheme: dark;
+    }
     .btn-logout {
       background: none; border: 1px solid var(--border); color: var(--muted);
       padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; cursor: pointer;
@@ -345,7 +354,13 @@
         <option value="60">Last 60 days</option>
         <option value="90">Last 90 days</option>
         <option value="3650">All time</option>
+        <option value="custom">Custom range…</option>
       </select>
+      <div class="date-range-inputs" id="dateRangeInputs">
+        <input type="date" id="dateFrom" onchange="onCustomDateChange()">
+        <span>→</span>
+        <input type="date" id="dateTo" onchange="onCustomDateChange()">
+      </div>
       <button class="btn-refresh" id="refreshBtn" onclick="runAggregation()">↻ Refresh Data</button>
       <button class="btn-danger" id="clearCacheBtn" onclick="clearPlacesCache()">🗑 Clear Places Cache</button>
       <button class="btn-logout" onclick="logout()">Sign out</button>
@@ -1378,8 +1393,35 @@ function showTab(name) {
 }
 
 function onPeriodChange() {
-  days = parseInt(document.getElementById('periodSelect').value);
-  loadAllData();
+  const val = document.getElementById('periodSelect').value;
+  const rangeInputs = document.getElementById('dateRangeInputs');
+  if (val === 'custom') {
+    rangeInputs.classList.add('visible');
+    const today = new Date().toISOString().slice(0, 10);
+    const thirtyAgo = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
+    if (!document.getElementById('dateFrom').value) document.getElementById('dateFrom').value = thirtyAgo;
+    if (!document.getElementById('dateTo').value) document.getElementById('dateTo').value = today;
+    onCustomDateChange();
+  } else {
+    rangeInputs.classList.remove('visible');
+    days = parseInt(val);
+    loadAllData();
+  }
+}
+
+function onCustomDateChange() {
+  const from = document.getElementById('dateFrom').value;
+  const to = document.getElementById('dateTo').value;
+  if (from && to && from <= to) loadAllData();
+}
+
+function _dateParams() {
+  if (document.getElementById('periodSelect').value === 'custom') {
+    const from = document.getElementById('dateFrom').value;
+    const to = document.getElementById('dateTo').value;
+    if (from && to) return `start_date=${from}&end_date=${to}`;
+  }
+  return `days=${days}`;
 }
 
 // ══════════════════════════════════════════════
@@ -3111,22 +3153,21 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
 
   // Narration history table
   const listenRows = (listens || []).map(l => {
-    const pctColor = l.listen_pct >= 90 ? 'var(--green)' : l.listen_pct >= 50 ? 'var(--yellow)' : 'var(--muted)';
-    const dur = l.duration_seconds ? `${Math.round(l.duration_seconds)}s` : '—';
+    const d = l.event_data || {};
+    const cache = d.from_cache ? '<span style="color:var(--muted);font-size:0.75rem">cached</span>' : '<span style="color:var(--green);font-size:0.75rem">live</span>';
     return `<tr>
       <td>${_profileTime(l.timestamp)}</td>
-      <td><span class="pill badge-blue">${l.tier || '—'}</span></td>
-      <td style="color:${pctColor};font-weight:600">${(l.listen_pct || 0).toFixed(0)}%</td>
-      <td>${dur}</td>
-      <td style="color:var(--muted)">${l.source || '—'}</td>
+      <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.landmark_name || '—'}</td>
+      <td style="color:var(--muted)">${d.city || '—'}</td>
+      <td>${cache}</td>
     </tr>`;
-  }).join('') || '<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:16px">No listen events</td></tr>';
+  }).join('') || '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:16px">No narrations yet</td></tr>';
 
   const history = `<div class="card" style="margin-bottom:16px">
     <div class="card-title">Narration History <span style="font-size:0.75rem;color:var(--muted);font-weight:400">last 20</span></div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Time</th><th>Tier</th><th>Listened</th><th>Duration</th><th>Source</th></tr></thead>
+        <thead><tr><th>Time</th><th>Landmark</th><th>City</th><th>Source</th></tr></thead>
         <tbody>${listenRows}</tbody>
       </table>
     </div>
@@ -3194,19 +3235,19 @@ let _profilesTabLoaded = false;
 async function loadAllData() {
   try {
     const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes] = await Promise.all([
-      api(`/analytics/kpi/funnel?days=${days}`),
-      api(`/analytics/kpi/funnel-cohort?days=${days}`),
+      api(`/analytics/kpi/funnel?${_dateParams()}`),
+      api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
       api(`/analytics/kpi/mau?months=12`).catch(() => null),
       api(`/analytics/kpi/free-users`),
-      api(`/analytics/daily?days=${days}`),
-      api(`/admin/cost-report?days=${days}`),
-      api(`/analytics/content?days=${days}`),
+      api(`/analytics/daily?${_dateParams()}`),
+      api(`/admin/cost-report?${_dateParams()}`),
+      api(`/analytics/content?${_dateParams()}`),
       api(`/analytics/tours?days=${days}`),
       api(`/analytics/kpi/acquisition`),
       api(`/admin/analytics/listen-completion`).catch(() => null),
-      api(`/admin/analytics/viator-clicks?days=${days}`).catch(() => null),
-      api(`/admin/analytics/revenue?days=${days}`).catch(() => null),
+      api(`/admin/analytics/viator-clicks?${_dateParams()}`).catch(() => null),
+      api(`/admin/analytics/revenue?${_dateParams()}`).catch(() => null),
       api(`/admin/analytics/coin-economy`).catch(() => null),
       api(`/admin/analytics/streak-health`).catch(() => null),
       api(`/admin/influencer-accounts`).catch(() => null),
