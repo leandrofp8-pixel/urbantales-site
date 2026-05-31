@@ -493,17 +493,18 @@ function renderPL() {
     html += `<tr class="${cls}"><td>${row.label}</td>`;
     cols.forEach(m => {
       const mo = months.find(x => x.month === m);
+      const future = isFutureMonth(m);
       const a = getPath(mo?.actual, row.akey) || 0;
       const f = row.fkey ? (getPath(mo?.forecast, row.fkey) || 0) : null;
-      const v = f != null ? round2(a - f) : null;
+      const v = (!future && f != null) ? round2(a - f) : null;
       const disp_a = row.negate ? -a : a;
       const disp_f = (f != null && row.negate) ? -f : f;
       const vclass = v != null ? (v >= 0 ? 'var-pos' : 'var-neg') : '';
-      html += `<td class="col-actual ${colorClass(disp_a)}">${fmt(disp_a)}</td>`;
+      html += `<td class="col-actual ${future ? '' : colorClass(disp_a)}" style="${future ? 'color:var(--border)' : ''}">${future ? '—' : fmt(disp_a)}</td>`;
       html += `<td class="col-forecast">${disp_f != null ? fmt(disp_f) : '—'}</td>`;
       html += `<td class="col-var ${vclass}">${v != null ? fmtSign(v) : '—'}</td>`;
     });
-    const ytd_a = ytdActual(row.akey);
+    const ytd_a = months.filter(m => !isFutureMonth(m.month)).reduce((s,m) => s + (getPath(m.actual,row.akey)||0), 0);
     const ytd_f = row.fkey ? ytdFc(row.fkey) : null;
     const disp_ytd_a = row.negate ? -ytd_a : ytd_a;
     const disp_ytd_f = (ytd_f != null && row.negate) ? -ytd_f : ytd_f;
@@ -857,6 +858,11 @@ function exportOpEx() {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
+function isFutureMonth(m) {
+  const now = new Date();
+  const [y, mo] = m.split('-').map(Number);
+  return y > now.getFullYear() || (y === now.getFullYear() && mo > now.getMonth() + 1);
+}
 function kpi(label, val, sub, cls) {
   return `<div class="kpi"><div class="kpi-label">${label}</div><div class="kpi-val ${cls}">${val}</div>${sub?`<div class="kpi-sub">${sub}</div>`:''}</div>`;
 }
