@@ -1043,7 +1043,7 @@ async function loadForecast() {
 function renderForecast() {
   const now = new Date();
   const year = now.getFullYear();
-  const allMonths = Array.from({length:12}, (_,i) => `${year}-${String(i+1).padStart(2,'0')}`);
+  const allMonths = Array.from({length:24}, (_,i) => `${year + Math.floor(i/12)}-${String((i%12)+1).padStart(2,'0')}`);
 
   const params = [
     {section: 'Revenue'},
