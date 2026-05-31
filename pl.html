@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Tales — P&L</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:      #0f0f0f;
+    --surface: #1a1a1a;
+    --card:    #222;
+    --border:  #333;
+    --text:    #e8e8e8;
+    --muted:   #888;
+    --orange:  #FF6B35;
+    --green:   #34d399;
+    --red:     #f87171;
+    --yellow:  #fbbf24;
+    --blue:    #60a5fa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; }
+
+  /* ── Login ── */
+  #loginScreen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .login-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 40px; width: 360px; }
+  .login-card h1 { font-size: 1.4rem; margin-bottom: 6px; }
+  .login-card p  { color: var(--muted); font-size: 0.85rem; margin-bottom: 24px; }
+  input { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 9px 12px; font-size: 14px; margin-bottom: 12px; }
+  input:focus { outline: 2px solid var(--orange); border-color: transparent; }
+  .btn { padding: 9px 18px; border-radius: 6px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; transition: opacity .15s; }
+  .btn:disabled { opacity: .5; cursor: default; }
+  .btn-primary { background: var(--orange); color: #fff; width: 100%; }
+  .btn-primary:hover:not(:disabled) { opacity: .88; }
+  .btn-sm { padding: 5px 12px; font-size: 12px; }
+  .btn-danger { background: #3a1a1a; color: var(--red); border: 1px solid #5a2a2a; }
+  .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+  #loginError { color: var(--red); font-size: 0.82rem; margin-top: 8px; min-height: 18px; }
+
+  /* ── App shell ── */
+  #app { display: none; }
+  header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; gap: 24px; height: 52px; position: sticky; top: 0; z-index: 100; }
+  header h1 { font-size: 1rem; font-weight: 700; color: var(--orange); white-space: nowrap; }
+  nav { display: flex; gap: 4px; }
+  .nav-tab { padding: 6px 14px; border-radius: 6px; background: none; border: none; color: var(--muted); cursor: pointer; font-size: 13px; font-weight: 500; transition: color .15s, background .15s; }
+  .nav-tab:hover { color: var(--text); background: var(--border); }
+  .nav-tab.active { color: var(--orange); background: rgba(255,107,53,.12); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .btn-seed { font-size: 11px; padding: 4px 10px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); border-radius: 5px; cursor: pointer; }
+  .btn-seed:hover { color: var(--text); }
+
+  main { padding: 24px; max-width: 1400px; margin: 0 auto; }
+
+  /* ── Panels ── */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ── Cards ── */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+  .card-title { font-size: 0.82rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
+
+  /* ── KPI row ── */
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .kpi-label { font-size: 0.75rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+  .kpi-val { font-size: 1.5rem; font-weight: 700; }
+  .kpi-sub { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+  .pos { color: var(--green); }
+  .neg { color: var(--red); }
+
+  /* ── P&L Table ── */
+  .pl-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th { background: var(--surface); color: var(--muted); font-weight: 600; padding: 8px 12px; text-align: right; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+  th:first-child { text-align: left; }
+  td { padding: 7px 12px; text-align: right; border-bottom: 1px solid rgba(255,255,255,.04); white-space: nowrap; }
+  td:first-child { text-align: left; }
+  tr:hover td { background: rgba(255,255,255,.02); }
+  .row-section td { font-weight: 700; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; background: rgba(255,255,255,.02); padding: 10px 12px 4px; }
+  .row-subtotal td { font-weight: 600; color: var(--yellow); }
+  .row-total td { font-weight: 700; font-size: 13px; border-top: 1px solid var(--border); padding-top: 10px; }
+  .row-indent td:first-child { padding-left: 28px; color: var(--muted); }
+  .var-pos { color: var(--green); }
+  .var-neg { color: var(--red); }
+  .col-actual { color: var(--text); }
+  .col-forecast { color: var(--blue); opacity: .75; }
+  .col-var { font-weight: 600; }
+  .col-ytd { font-weight: 700; color: var(--orange); }
+  .month-header { color: var(--orange); }
+
+  /* ── Chart ── */
+  .chart-wrap { position: relative; height: 260px; }
+
+  /* ── Form grid ── */
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; align-items: end; }
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+  .field input, .field select, .field textarea { background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 8px 10px; font-size: 13px; }
+  .field input:focus, .field select:focus { outline: 2px solid var(--orange); border-color: transparent; }
+  select option { background: #1a1a1a; }
+
+  /* ── Entry tables ── */
+  .tbl-wrap { overflow-x: auto; margin-top: 16px; }
+  .entry-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .entry-tbl th { background: var(--surface); color: var(--muted); font-weight: 600; padding: 8px 12px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  .entry-tbl td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,.04); }
+  .entry-tbl tr:hover td { background: rgba(255,255,255,.025); }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .badge-dev  { background: rgba(96,165,250,.15); color: var(--blue); }
+  .badge-host { background: rgba(52,211,153,.15); color: var(--green); }
+  .badge-mkt  { background: rgba(251,191,36,.15); color: var(--yellow); }
+  .badge-plat { background: rgba(255,107,53,.15); color: var(--orange); }
+  .badge-charge { background: rgba(248,113,113,.12); color: var(--red); }
+  .badge-credit { background: rgba(52,211,153,.12); color: var(--green); }
+
+  /* ── Config settings ── */
+  .settings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .setting-item { display: flex; flex-direction: column; gap: 5px; }
+  .setting-item label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+  .setting-item input { background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 8px 10px; font-size: 13px; }
+  .setting-section { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; padding-bottom: 4px; border-bottom: 1px solid var(--border); margin: 16px 0 12px; grid-column: 1 / -1; }
+  .save-row { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+  .save-msg { font-size: 13px; }
+
+  /* ── Monthly totals ── */
+  .month-totals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+  .month-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; font-size: 12px; }
+  .month-chip span { color: var(--muted); }
+
+  .loading { color: var(--muted); padding: 20px 0; text-align: center; }
+  .empty   { color: var(--muted); padding: 32px 0; text-align: center; font-size: 13px; }
+  .export-btn { font-size: 12px; padding: 5px 12px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); border-radius: 5px; cursor: pointer; float: right; }
+  .export-btn:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div id="loginScreen">
+  <div class="login-card">
+    <h1>Urban Tales P&L</h1>
+    <p>Admin access only</p>
+    <input type="email" id="loginEmail" placeholder="Email" autocomplete="email">
+    <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')login()">
+    <button class="btn btn-primary" onclick="login()">Sign In</button>
+    <div id="loginError"></div>
+  </div>
+</div>
+
+<!-- App -->
+<div id="app">
+  <header>
+    <h1>Urban Tales — P&L</h1>
+    <nav>
+      <button class="nav-tab active" onclick="showTab('pl',this)">P&L</button>
+      <button class="nav-tab" onclick="showTab('revenue',this)">Revenue</button>
+      <button class="nav-tab" onclick="showTab('sga',this)">SG&A</button>
+      <button class="nav-tab" onclick="showTab('opex',this)">OpEx</button>
+      <button class="nav-tab" onclick="showTab('config',this)">Config</button>
+    </nav>
+    <div class="header-right">
+      <button class="btn-seed" onclick="seedData()" title="Seed historical data (runs once)">Seed historical data</button>
+      <button class="btn btn-ghost btn-sm" onclick="logout()">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── P&L Panel ── -->
+    <div id="panel-pl" class="panel active">
+      <div id="plKpis" class="kpi-row"></div>
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-title">Monthly P&L — Actual vs Forecast
+          <button class="export-btn" onclick="exportPL()">Export CSV</button>
+        </div>
+        <div class="chart-wrap"><canvas id="chartPL"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">P&L Detail</div>
+        <div class="pl-scroll" id="plTable"><div class="loading">Loading…</div></div>
+      </div>
+    </div>
+
+    <!-- ── Revenue Panel ── -->
+    <div id="panel-revenue" class="panel">
+      <div id="revKpis" class="kpi-row"></div>
+      <div class="card">
+        <div class="card-title">Revenue by Month
+          <button class="export-btn" onclick="exportRevenue()">Export CSV</button>
+        </div>
+        <div class="tbl-wrap" id="revTable"><div class="loading">Loading…</div></div>
+      </div>
+    </div>
+
+    <!-- ── SG&A Panel ── -->
+    <div id="panel-sga" class="panel">
+      <div class="card">
+        <div class="card-title">Add SG&A Entry</div>
+        <div class="form-grid">
+          <div class="field"><label>Date</label><input type="date" id="sgaDate"></div>
+          <div class="field"><label>Category</label>
+            <select id="sgaCat">
+              <option value="Development">Development</option>
+              <option value="Hosting">Hosting</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Platform">Platform</option>
+            </select>
+          </div>
+          <div class="field"><label>Provider</label><input type="text" id="sgaProvider" placeholder="e.g. Emergent"></div>
+          <div class="field"><label>Amount</label><input type="number" id="sgaAmount" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="field"><label>Currency</label>
+            <select id="sgaCurrency">
+              <option value="USD">USD</option>
+              <option value="MXN">MXN</option>
+              <option value="BRL">BRL</option>
+            </select>
+          </div>
+          <div class="field"><label>Notes (optional)</label><input type="text" id="sgaNotes" placeholder=""></div>
+          <div class="field"><label>&nbsp;</label><button class="btn btn-primary" onclick="addSga()">Add Entry</button></div>
+        </div>
+        <div id="sgaAddMsg" style="margin-top:10px;font-size:13px;"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">SG&A Entries
+          <button class="export-btn" onclick="exportSGA()">Export CSV</button>
+        </div>
+        <div style="margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;">
+          <select id="sgaFilterCat" onchange="renderSgaTable()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:6px 10px;font-size:12px;">
+            <option value="">All categories</option>
+            <option value="Development">Development</option>
+            <option value="Hosting">Hosting</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Platform">Platform</option>
+          </select>
+          <input type="month" id="sgaFilterMonth" onchange="renderSgaTable()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:6px 10px;font-size:12px;">
+        </div>
+        <div class="tbl-wrap" id="sgaTable"><div class="loading">Loading…</div></div>
+        <div id="sgaMonthTotals" class="month-totals" style="margin-top:16px;"></div>
+      </div>
+    </div>
+
+    <!-- ── OpEx Panel ── -->
+    <div id="panel-opex" class="panel">
+      <div class="card">
+        <div class="card-title">Add OpEx Entry</div>
+        <div class="form-grid">
+          <div class="field"><label>Date</label><input type="date" id="opexDate"></div>
+          <div class="field"><label>Provider</label>
+            <select id="opexProvider">
+              <option value="Google APIs">Google APIs</option>
+              <option value="OpenAI APIs">OpenAI APIs</option>
+              <option value="Resend">Resend</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field"><label>Description</label><input type="text" id="opexDesc" placeholder="e.g. API usage Jan"></div>
+          <div class="field"><label>Amount (USD)</label><input type="number" id="opexAmount" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="field"><label>Type</label>
+            <select id="opexType">
+              <option value="charge">Charge</option>
+              <option value="credit">Credit / Refund</option>
+            </select>
+          </div>
+          <div class="field"><label>&nbsp;</label><button class="btn btn-primary" onclick="addOpex()">Add Entry</button></div>
+        </div>
+        <div id="opexAddMsg" style="margin-top:10px;font-size:13px;"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">OpEx Entries
+          <button class="export-btn" onclick="exportOpEx()">Export CSV</button>
+        </div>
+        <div class="tbl-wrap" id="opexTable"><div class="loading">Loading…</div></div>
+        <div id="opexMonthTotals" class="month-totals" style="margin-top:16px;"></div>
+      </div>
+    </div>
+
+    <!-- ── Config Panel ── -->
+    <div id="panel-config" class="panel">
+      <div class="card">
+        <div class="card-title">P&L Configuration</div>
+        <div class="settings-grid" id="configForm">
+          <div class="loading">Loading…</div>
+        </div>
+        <div class="save-row">
+          <button class="btn btn-primary btn-sm" onclick="saveConfig()" id="configSaveBtn">Save Config</button>
+          <span id="configSaveMsg" class="save-msg"></span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const API = 'https://friendly-fulfillment-production.up.railway.app/api';
+let _plData = null, _revData = null, _sgaData = [], _opexData = [], _configData = null;
+let _chartPL = null;
+
+// ── Auth ──────────────────────────────────────────────────────────────────────
+function getToken() { return localStorage.getItem('ut_token'); }
+function setToken(t) { localStorage.setItem('ut_token', t); }
+function logout() { localStorage.removeItem('ut_token'); location.reload(); }
+
+let _loggingIn = false;
+async function login() {
+  if (_loggingIn) return;
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass  = document.getElementById('loginPassword').value;
+  const errEl = document.getElementById('loginError');
+  errEl.textContent = '';
+  if (!email || !pass) { errEl.textContent = 'Enter email and password.'; return; }
+  _loggingIn = true;
+  document.querySelector('.btn-primary').disabled = true;
+  document.querySelector('.btn-primary').textContent = 'Signing in…';
+  try {
+    const res = await fetch(`${API}/auth/login`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({email, password: pass}),
+    });
+    if (!res.ok) { errEl.textContent = 'Invalid credentials or not an admin account.'; return; }
+    const data = await res.json();
+    setToken(data.access_token);
+    showApp();
+  } catch(e) {
+    errEl.textContent = 'Connection error.';
+  } finally {
+    _loggingIn = false;
+    document.querySelector('.btn-primary').disabled = false;
+    document.querySelector('.btn-primary').textContent = 'Sign In';
+  }
+}
+
+async function apiFetch(path, opts = {}) {
+  const res = await fetch(`${API}${path}`, {
+    ...opts,
+    headers: { 'Authorization': `Bearer ${getToken()}`, 'Content-Type': 'application/json', ...(opts.headers || {}) },
+  });
+  if (!res.ok) throw new Error(`${res.status} ${await res.text()}`);
+  return res.json();
+}
+
+// ── App init ──────────────────────────────────────────────────────────────────
+function showApp() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  loadAll();
+}
+
+async function loadAll() {
+  await Promise.all([loadPL(), loadRevenue(), loadSGA(), loadOpEx(), loadConfig()]);
+}
+
+function showTab(name, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(`panel-${name}`).classList.add('active');
+  el.classList.add('active');
+}
+
+// ── Formatting ────────────────────────────────────────────────────────────────
+const fmt = (v) => v == null ? '—' : (v < 0 ? '-$' + Math.abs(v).toFixed(2) : '$' + v.toFixed(2));
+const fmtSign = (v) => {
+  if (v == null) return '—';
+  const s = v >= 0 ? `+$${v.toFixed(2)}` : `-$${Math.abs(v).toFixed(2)}`;
+  return s;
+};
+const colorClass = (v) => v == null ? '' : (v >= 0 ? 'pos' : 'neg');
+const varClass = (v) => v == null ? '' : (v >= 0 ? 'var-pos' : 'var-neg');
+const badgeCat = (c) => {
+  const m = {Development:'badge-dev',Hosting:'badge-host',Marketing:'badge-mkt',Platform:'badge-plat'};
+  return `<span class="badge ${m[c]||''}">${c}</span>`;
+};
+const monthLabel = (m) => {
+  const [y,mo] = m.split('-');
+  return new Date(+y, +mo-1, 1).toLocaleString('en', {month:'short',year:'2-digit'});
+};
+
+// ── Seed ──────────────────────────────────────────────────────────────────────
+async function seedData() {
+  if (!confirm('Seed historical SG&A and OpEx data? This is safe to run — it only inserts if no seeded data exists yet.')) return;
+  try {
+    const r = await apiFetch('/admin/pl/seed', {method:'POST'});
+    alert(`Seeded: ${r.sga_inserted} SG&A entries, ${r.opex_inserted} OpEx entries.`);
+    await Promise.all([loadSGA(), loadOpEx(), loadPL()]);
+  } catch(e) { alert('Seed failed: ' + e.message); }
+}
+
+// ── P&L ───────────────────────────────────────────────────────────────────────
+async function loadPL() {
+  try {
+    _plData = await apiFetch('/admin/pl/summary');
+    renderPL();
+  } catch(e) {
+    document.getElementById('plTable').innerHTML = `<div class="empty">Failed to load: ${e.message}</div>`;
+  }
+}
+
+function renderPL() {
+  if (!_plData) return;
+  const months = _plData.months;
+  if (!months.length) {
+    document.getElementById('plTable').innerHTML = '<div class="empty">No data yet. Add SG&A / OpEx entries or wait for purchases.</div>';
+    document.getElementById('plKpis').innerHTML = '';
+    return;
+  }
+
+  // KPIs (YTD actuals)
+  const ytd_rev = months.reduce((s,m) => s + (m.actual.gross_revenue||0), 0);
+  const ytd_exp = months.reduce((s,m) => s + (m.actual.opex||0) + (m.actual.sga?.total||0), 0);
+  const ytd_profit = months.reduce((s,m) => s + (m.actual.pre_tax_profit||0), 0);
+  const last_month = months[months.length-1];
+  const burn = (last_month?.actual.opex||0) + (last_month?.actual.sga?.total||0);
+
+  document.getElementById('plKpis').innerHTML = [
+    kpi('Revenue YTD', fmt(ytd_rev), '', ''),
+    kpi('Expenses YTD', fmt(ytd_exp), '', 'neg'),
+    kpi('Net Profit YTD', fmt(ytd_profit), '', colorClass(ytd_profit)),
+    kpi('Burn (last mo.)', fmt(burn), '', 'neg'),
+  ].join('');
+
+  // Chart
+  const labels = months.map(m => monthLabel(m.month));
+  const actRev = months.map(m => m.actual.gross_revenue||0);
+  const actExp = months.map(m => (m.actual.opex||0)+(m.actual.sga?.total||0));
+  const actProfit = months.map(m => m.actual.pre_tax_profit||0);
+  const fcRev = months.map(m => m.forecast?.gross_revenue||0);
+  if (_chartPL) _chartPL.destroy();
+  _chartPL = new Chart(document.getElementById('chartPL'), {
+    data: {
+      labels,
+      datasets: [
+        {type:'bar', label:'Gross Revenue', data: actRev, backgroundColor:'rgba(255,107,53,.6)', order:2},
+        {type:'bar', label:'Total Expenses', data: actExp, backgroundColor:'rgba(248,113,113,.5)', order:2},
+        {type:'line', label:'Net Profit', data: actProfit, borderColor:'#34d399', backgroundColor:'rgba(52,211,153,.1)', tension:.3, fill:true, order:1, pointRadius:3},
+        {type:'line', label:'Forecast Revenue', data: fcRev, borderColor:'rgba(96,165,250,.6)', borderDash:[4,4], tension:.3, pointRadius:2, order:1},
+      ],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {legend:{labels:{color:'#888',font:{size:11}}}, tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`}}},
+      scales: {
+        x: {ticks:{color:'#666',font:{size:10}}, grid:{color:'rgba(255,255,255,.04)'}},
+        y: {ticks:{color:'#666',font:{size:10},callback:v=>`$${v}`}, grid:{color:'rgba(255,255,255,.06)'}},
+      },
+    },
+  });
+
+  // Table
+  const cols = months.map(m => m.month);
+  const ytdActual = (key) => months.reduce((s,m) => s + (getPath(m.actual,key)||0), 0);
+  const ytdFc = (key) => months.reduce((s,m) => s + (getPath(m.forecast,key)||0), 0);
+
+  const rows = [
+    {type:'section', label:'Revenue'},
+    {type:'data', label:'Gross Revenue', akey:'gross_revenue', fkey:'gross_revenue'},
+    {type:'data', label:'  Provider Fees', akey:'provider_fees', fkey:'provider_fees', indent:true, negate:true},
+    {type:'data', label:'  Channel Fees', akey:'channel_fees', fkey:null, indent:true, negate:true},
+    {type:'subtotal', label:'Net Revenue', akey:'net_revenue', fkey:'net_revenue'},
+    {type:'data', label:'  Revenue Tax', akey:'revenue_tax', fkey:'revenue_tax', indent:true, negate:true},
+    {type:'subtotal', label:'Post-Tax Revenue', akey:'post_tax_revenue', fkey:'post_tax_revenue'},
+    {type:'section', label:'Operating Expenses'},
+    {type:'data', label:'Total OpEx', akey:'opex', fkey:'opex', negate:true},
+    {type:'subtotal', label:'Operating Profit', akey:'operating_profit', fkey:'operating_profit'},
+    {type:'section', label:'SG&A'},
+    {type:'data', label:'  Development', akey:'sga.development', fkey:null, indent:true, negate:true},
+    {type:'data', label:'  Hosting', akey:'sga.hosting', fkey:null, indent:true, negate:true},
+    {type:'data', label:'  Marketing', akey:'sga.marketing', fkey:null, indent:true, negate:true},
+    {type:'data', label:'  Platform', akey:'sga.platform', fkey:null, indent:true, negate:true},
+    {type:'data', label:'Total SG&A', akey:'sga.total', fkey:'sga', negate:true},
+    {type:'total', label:'Pre-Tax Profit', akey:'pre_tax_profit', fkey:'pre_tax_profit'},
+  ];
+
+  let html = `<table><thead><tr><th>Line Item</th>`;
+  cols.forEach(m => {
+    html += `<th colspan="3" class="month-header">${monthLabel(m)}</th>`;
+  });
+  html += `<th colspan="2" class="col-ytd">YTD</th></tr>`;
+  html += `<tr><th></th>`;
+  cols.forEach(() => {
+    html += `<th class="col-actual">Act</th><th class="col-forecast">Fct</th><th class="col-var">Var</th>`;
+  });
+  html += `<th class="col-ytd">Act</th><th class="col-ytd">Fct</th></tr></thead><tbody>`;
+
+  rows.forEach(row => {
+    if (row.type === 'section') {
+      html += `<tr class="row-section"><td>${row.label}</td>${cols.map(()=>'<td></td><td></td><td></td>').join('')}<td></td><td></td></tr>`;
+      return;
+    }
+    const cls = row.type === 'total' ? 'row-total' : row.type === 'subtotal' ? 'row-subtotal' : row.indent ? 'row-indent' : '';
+    html += `<tr class="${cls}"><td>${row.label}</td>`;
+    cols.forEach(m => {
+      const mo = months.find(x => x.month === m);
+      const a = getPath(mo?.actual, row.akey) || 0;
+      const f = row.fkey ? (getPath(mo?.forecast, row.fkey) || 0) : null;
+      const v = f != null ? round2(a - f) : null;
+      const disp_a = row.negate ? -a : a;
+      const disp_f = (f != null && row.negate) ? -f : f;
+      const vclass = v != null ? (v >= 0 ? 'var-pos' : 'var-neg') : '';
+      html += `<td class="col-actual ${colorClass(disp_a)}">${fmt(disp_a)}</td>`;
+      html += `<td class="col-forecast">${disp_f != null ? fmt(disp_f) : '—'}</td>`;
+      html += `<td class="col-var ${vclass}">${v != null ? fmtSign(v) : '—'}</td>`;
+    });
+    const ytd_a = ytdActual(row.akey);
+    const ytd_f = row.fkey ? ytdFc(row.fkey) : null;
+    const disp_ytd_a = row.negate ? -ytd_a : ytd_a;
+    const disp_ytd_f = (ytd_f != null && row.negate) ? -ytd_f : ytd_f;
+    html += `<td class="col-ytd ${colorClass(disp_ytd_a)}">${fmt(disp_ytd_a)}</td>`;
+    html += `<td class="col-ytd">${disp_ytd_f != null ? fmt(disp_ytd_f) : '—'}</td>`;
+    html += '</tr>';
+  });
+
+  html += '</tbody></table>';
+  document.getElementById('plTable').innerHTML = html;
+}
+
+// ── Revenue ───────────────────────────────────────────────────────────────────
+async function loadRevenue() {
+  try {
+    _revData = await apiFetch('/admin/pl/revenue');
+    renderRevenue();
+  } catch(e) {
+    document.getElementById('revTable').innerHTML = `<div class="empty">Failed: ${e.message}</div>`;
+  }
+}
+
+function renderRevenue() {
+  if (!_revData) return;
+  const months = _revData.months;
+  const totals = _revData.totals || {};
+
+  document.getElementById('revKpis').innerHTML = [
+    kpi('Gross Revenue', fmt(totals.gross_revenue), '', ''),
+    kpi('Provider Fees', fmt(-(totals.provider_fees||0)), '', 'neg'),
+    kpi('Channel Fees', fmt(-(totals.channel_fees||0)), '', 'neg'),
+    kpi('Post-Tax Revenue', fmt(totals.post_tax_revenue), '', colorClass(totals.post_tax_revenue)),
+    kpi('Purchases', totals.purchases||0, '', ''),
+  ].join('');
+
+  if (!months.length) {
+    document.getElementById('revTable').innerHTML = '<div class="empty">No transactions yet.</div>';
+    return;
+  }
+
+  let html = `<table class="entry-tbl">
+    <thead><tr>
+      <th>Month</th><th>Purchases</th>
+      <th>Gross Rev</th><th>iOS Rev</th><th>Android Rev</th>
+      <th>Provider Fees</th><th>Channel Fees</th>
+      <th>Net Revenue</th><th>Tax (20%)</th><th>Post-Tax Rev</th>
+    </tr></thead><tbody>`;
+  months.forEach(m => {
+    html += `<tr>
+      <td><strong>${monthLabel(m.month)}</strong></td>
+      <td>${m.purchases}</td>
+      <td>${fmt(m.gross_revenue)}</td>
+      <td>${fmt(m.ios_revenue)}</td>
+      <td>${fmt(m.android_revenue)}</td>
+      <td class="neg">${fmt(-m.provider_fees)}</td>
+      <td class="neg">${fmt(-m.channel_fees)}</td>
+      <td>${fmt(m.net_revenue)}</td>
+      <td class="neg">${fmt(-m.revenue_tax)}</td>
+      <td class="${colorClass(m.post_tax_revenue)}">${fmt(m.post_tax_revenue)}</td>
+    </tr>`;
+  });
+  // totals row
+  html += `<tr style="font-weight:700;border-top:1px solid var(--border)">
+    <td>Total</td>
+    <td>${totals.purchases||0}</td>
+    <td>${fmt(totals.gross_revenue)}</td>
+    <td>${fmt(totals.ios_revenue)}</td>
+    <td>${fmt(totals.android_revenue)}</td>
+    <td class="neg">${fmt(-(totals.provider_fees||0))}</td>
+    <td class="neg">${fmt(-(totals.channel_fees||0))}</td>
+    <td>${fmt(totals.net_revenue)}</td>
+    <td class="neg">${fmt(-(totals.revenue_tax||0))}</td>
+    <td class="${colorClass(totals.post_tax_revenue)}">${fmt(totals.post_tax_revenue)}</td>
+  </tr>`;
+  html += '</tbody></table>';
+  document.getElementById('revTable').innerHTML = html;
+}
+
+// ── SG&A ──────────────────────────────────────────────────────────────────────
+async function loadSGA() {
+  try {
+    const r = await apiFetch('/admin/pl/sga');
+    _sgaData = r.entries;
+    renderSgaTable();
+  } catch(e) {
+    document.getElementById('sgaTable').innerHTML = `<div class="empty">Failed: ${e.message}</div>`;
+  }
+}
+
+function renderSgaTable() {
+  const filterCat = document.getElementById('sgaFilterCat')?.value || '';
+  const filterMon = document.getElementById('sgaFilterMonth')?.value || '';
+  let entries = _sgaData.filter(e => {
+    if (filterCat && e.category !== filterCat) return false;
+    if (filterMon && !e.date.startsWith(filterMon)) return false;
+    return true;
+  });
+
+  if (!entries.length) {
+    document.getElementById('sgaTable').innerHTML = '<div class="empty">No entries. Use the form above or click "Seed historical data".</div>';
+    document.getElementById('sgaMonthTotals').innerHTML = '';
+    return;
+  }
+
+  // Monthly totals
+  const byMonth = {};
+  entries.forEach(e => {
+    const m = e.date.slice(0,7);
+    byMonth[m] = (byMonth[m] || 0) + (e.amount_usd || 0);
+  });
+  document.getElementById('sgaMonthTotals').innerHTML =
+    Object.entries(byMonth).sort((a,b)=>a[0].localeCompare(b[0]))
+      .map(([m,v]) => `<div class="month-chip"><span>${monthLabel(m)}</span> ${fmt(v)}</div>`).join('');
+
+  let html = `<table class="entry-tbl">
+    <thead><tr><th>Date</th><th>Category</th><th>Provider</th><th>Amount (USD)</th><th>Currency</th><th>Notes</th><th></th></tr></thead><tbody>`;
+  entries.forEach(e => {
+    html += `<tr>
+      <td>${e.date}</td>
+      <td>${badgeCat(e.category)}</td>
+      <td>${e.provider}</td>
+      <td><strong>${fmt(e.amount_usd)}</strong></td>
+      <td>${e.currency || 'USD'}</td>
+      <td style="color:var(--muted);font-size:12px">${e.notes||''}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="deleteSGA('${e.id}')">Delete</button></td>
+    </tr>`;
+  });
+  const total = entries.reduce((s,e) => s + (e.amount_usd||0), 0);
+  html += `<tr style="font-weight:700;border-top:1px solid var(--border)">
+    <td colspan="3">Total</td><td>${fmt(total)}</td><td colspan="3"></td>
+  </tr>`;
+  html += '</tbody></table>';
+  document.getElementById('sgaTable').innerHTML = html;
+}
+
+async function addSga() {
+  const date = document.getElementById('sgaDate').value;
+  const cat  = document.getElementById('sgaCat').value;
+  const prov = document.getElementById('sgaProvider').value.trim();
+  const amt  = parseFloat(document.getElementById('sgaAmount').value);
+  const cur  = document.getElementById('sgaCurrency').value;
+  const notes= document.getElementById('sgaNotes').value.trim();
+  const msg  = document.getElementById('sgaAddMsg');
+  if (!date || !prov || isNaN(amt) || amt <= 0) { msg.style.color='var(--red)'; msg.textContent='Fill in date, provider and amount.'; return; }
+
+  const cfg = _configData;
+  const rate = cfg?.exchange_rates?.[cur] || 1;
+  const amount_usd = round2(amt / rate);
+  const original_amount = cur !== 'USD' ? amt : null;
+
+  try {
+    const entry = await apiFetch('/admin/pl/sga', {
+      method: 'POST',
+      body: JSON.stringify({date, category: cat, provider: prov, amount_usd, currency: cur, original_amount, notes: notes||null}),
+    });
+    _sgaData.unshift(entry);
+    renderSgaTable();
+    document.getElementById('sgaAmount').value = '';
+    document.getElementById('sgaProvider').value = '';
+    document.getElementById('sgaNotes').value = '';
+    msg.style.color = 'var(--green)'; msg.textContent = 'Entry added.';
+    loadPL();
+    setTimeout(() => { msg.textContent = ''; }, 2500);
+  } catch(e) { msg.style.color = 'var(--red)'; msg.textContent = 'Error: ' + e.message; }
+}
+
+async function deleteSGA(id) {
+  if (!confirm('Delete this entry?')) return;
+  try {
+    await apiFetch(`/admin/pl/sga/${id}`, {method:'DELETE'});
+    _sgaData = _sgaData.filter(e => e.id !== id);
+    renderSgaTable();
+    loadPL();
+  } catch(e) { alert('Delete failed: ' + e.message); }
+}
+
+// ── OpEx ──────────────────────────────────────────────────────────────────────
+async function loadOpEx() {
+  try {
+    const r = await apiFetch('/admin/pl/opex');
+    _opexData = r.entries;
+    renderOpexTable();
+  } catch(e) {
+    document.getElementById('opexTable').innerHTML = `<div class="empty">Failed: ${e.message}</div>`;
+  }
+}
+
+function renderOpexTable() {
+  if (!_opexData.length) {
+    document.getElementById('opexTable').innerHTML = '<div class="empty">No entries. Use the form above or click "Seed historical data".</div>';
+    document.getElementById('opexMonthTotals').innerHTML = '';
+    return;
+  }
+
+  const byMonth = {};
+  _opexData.forEach(e => {
+    const m = e.date.slice(0,7);
+    const amt = (e.type==='credit'||e.type==='refund') ? -Math.abs(e.amount_usd||0) : (e.amount_usd||0);
+    byMonth[m] = (byMonth[m] || 0) + amt;
+  });
+  document.getElementById('opexMonthTotals').innerHTML =
+    Object.entries(byMonth).sort((a,b)=>a[0].localeCompare(b[0]))
+      .map(([m,v]) => `<div class="month-chip"><span>${monthLabel(m)}</span> ${fmt(v)}</div>`).join('');
+
+  let html = `<table class="entry-tbl">
+    <thead><tr><th>Date</th><th>Provider</th><th>Description</th><th>Amount (USD)</th><th>Type</th><th>Notes</th><th></th></tr></thead><tbody>`;
+  _opexData.forEach(e => {
+    const isCredit = e.type === 'credit' || e.type === 'refund';
+    html += `<tr>
+      <td>${e.date}</td>
+      <td>${e.provider}</td>
+      <td style="color:var(--muted)">${e.description||''}</td>
+      <td class="${isCredit?'pos':'neg'}"><strong>${isCredit ? fmt(e.amount_usd) : fmt(-e.amount_usd)}</strong></td>
+      <td><span class="badge ${isCredit?'badge-credit':'badge-charge'}">${e.type}</span></td>
+      <td style="color:var(--muted);font-size:12px">${e.notes||''}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="deleteOpEx('${e.id}')">Delete</button></td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('opexTable').innerHTML = html;
+}
+
+async function addOpex() {
+  const date = document.getElementById('opexDate').value;
+  const prov = document.getElementById('opexProvider').value;
+  const desc = document.getElementById('opexDesc').value.trim();
+  const amt  = parseFloat(document.getElementById('opexAmount').value);
+  const type = document.getElementById('opexType').value;
+  const msg  = document.getElementById('opexAddMsg');
+  if (!date || isNaN(amt) || amt <= 0) { msg.style.color='var(--red)'; msg.textContent='Fill in date and amount.'; return; }
+  try {
+    const entry = await apiFetch('/admin/pl/opex', {
+      method: 'POST',
+      body: JSON.stringify({date, provider: prov, description: desc, amount_usd: amt, type}),
+    });
+    _opexData.unshift(entry);
+    renderOpexTable();
+    document.getElementById('opexAmount').value = '';
+    document.getElementById('opexDesc').value = '';
+    msg.style.color = 'var(--green)'; msg.textContent = 'Entry added.';
+    loadPL();
+    setTimeout(() => { msg.textContent = ''; }, 2500);
+  } catch(e) { msg.style.color = 'var(--red)'; msg.textContent = 'Error: ' + e.message; }
+}
+
+async function deleteOpEx(id) {
+  if (!confirm('Delete this entry?')) return;
+  try {
+    await apiFetch(`/admin/pl/opex/${id}`, {method:'DELETE'});
+    _opexData = _opexData.filter(e => e.id !== id);
+    renderOpexTable();
+    loadPL();
+  } catch(e) { alert('Delete failed: ' + e.message); }
+}
+
+// ── Config ────────────────────────────────────────────────────────────────────
+async function loadConfig() {
+  try {
+    _configData = await apiFetch('/admin/pl/config');
+    renderConfig();
+  } catch(e) {
+    document.getElementById('configForm').innerHTML = `<div class="empty">Failed: ${e.message}</div>`;
+  }
+}
+
+function renderConfig() {
+  const c = _configData || {};
+  const er = c.exchange_rates || {};
+  const pf = c.platform_fees || {};
+  const html = `
+    <div class="setting-section">Exchange Rates (to USD)</div>
+    <div class="setting-item"><label>MXN → USD</label><input type="number" id="cfg_er_MXN" step="0.01" value="${er.MXN ?? 17.5}"></div>
+    <div class="setting-item"><label>BRL → USD</label><input type="number" id="cfg_er_BRL" step="0.01" value="${er.BRL ?? 5.0}"></div>
+    <div class="setting-section">Platform Fees</div>
+    <div class="setting-item"><label>iOS / Apple (%)</label><input type="number" id="cfg_pf_ios" step="0.1" min="0" max="100" value="${round2((pf.ios??0.15)*100)}"></div>
+    <div class="setting-item"><label>Android / Google (%)</label><input type="number" id="cfg_pf_android" step="0.1" min="0" max="100" value="${round2((pf.android??0.15)*100)}"></div>
+    <div class="setting-item"><label>RevenueCat (%)</label><input type="number" id="cfg_pf_rc" step="0.1" min="0" max="100" value="${round2((pf.revenuecat??0.01)*100)}"></div>
+    <div class="setting-section">Revenue Tax</div>
+    <div class="setting-item"><label>Revenue Tax Rate (%)</label><input type="number" id="cfg_tax" step="0.1" min="0" max="100" value="${round2((c.revenue_tax_rate??0.20)*100)}"></div>
+  `;
+  document.getElementById('configForm').innerHTML = html;
+}
+
+async function saveConfig() {
+  const btn = document.getElementById('configSaveBtn');
+  const msg = document.getElementById('configSaveMsg');
+  btn.disabled = true; msg.textContent = '';
+  const body = {
+    exchange_rates: {
+      USD: 1.0,
+      MXN: parseFloat(document.getElementById('cfg_er_MXN').value),
+      BRL: parseFloat(document.getElementById('cfg_er_BRL').value),
+    },
+    platform_fees: {
+      ios:        parseFloat(document.getElementById('cfg_pf_ios').value) / 100,
+      android:    parseFloat(document.getElementById('cfg_pf_android').value) / 100,
+      revenuecat: parseFloat(document.getElementById('cfg_pf_rc').value) / 100,
+    },
+    revenue_tax_rate: parseFloat(document.getElementById('cfg_tax').value) / 100,
+  };
+  try {
+    _configData = await apiFetch('/admin/pl/config', {method:'PUT', body: JSON.stringify(body)});
+    msg.style.color = 'var(--green)'; msg.textContent = 'Saved.';
+    loadRevenue(); loadPL();
+  } catch(e) { msg.style.color = 'var(--red)'; msg.textContent = 'Error: ' + e.message; }
+  finally { btn.disabled = false; }
+}
+
+// ── Export CSV ────────────────────────────────────────────────────────────────
+function downloadCSV(filename, rows) {
+  const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = filename;
+  a.click();
+}
+
+function exportPL() {
+  if (!_plData?.months?.length) return;
+  const hdrs = ['Month','Gross Revenue','Provider Fees','Channel Fees','Net Revenue','Revenue Tax','Post-Tax Revenue','OpEx','Operating Profit','SG&A Total','Pre-Tax Profit','FC Gross Revenue','FC Pre-Tax Profit'];
+  const rows = [hdrs, ..._plData.months.map(m => [
+    m.month,
+    m.actual.gross_revenue, m.actual.provider_fees, m.actual.channel_fees,
+    m.actual.net_revenue, m.actual.revenue_tax, m.actual.post_tax_revenue,
+    m.actual.opex, m.actual.operating_profit, m.actual.sga?.total,
+    m.actual.pre_tax_profit, m.forecast?.gross_revenue, m.forecast?.pre_tax_profit,
+  ])];
+  downloadCSV('pl_summary.csv', rows);
+}
+
+function exportRevenue() {
+  if (!_revData?.months?.length) return;
+  const hdrs = ['Month','Purchases','Gross Revenue','iOS Revenue','Android Revenue','Provider Fees','Channel Fees','Net Revenue','Tax','Post-Tax Revenue'];
+  const rows = [hdrs, ..._revData.months.map(m => [
+    m.month, m.purchases, m.gross_revenue, m.ios_revenue, m.android_revenue,
+    m.provider_fees, m.channel_fees, m.net_revenue, m.revenue_tax, m.post_tax_revenue,
+  ])];
+  downloadCSV('revenue_detail.csv', rows);
+}
+
+function exportSGA() {
+  const hdrs = ['Date','Category','Provider','Amount USD','Currency','Notes'];
+  const rows = [hdrs, ..._sgaData.map(e => [e.date, e.category, e.provider, e.amount_usd, e.currency||'USD', e.notes||''])];
+  downloadCSV('sga_entries.csv', rows);
+}
+
+function exportOpEx() {
+  const hdrs = ['Date','Provider','Description','Amount USD','Type','Notes'];
+  const rows = [hdrs, ..._opexData.map(e => [e.date, e.provider, e.description||'', e.amount_usd, e.type, e.notes||''])];
+  downloadCSV('opex_entries.csv', rows);
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function kpi(label, val, sub, cls) {
+  return `<div class="kpi"><div class="kpi-label">${label}</div><div class="kpi-val ${cls}">${val}</div>${sub?`<div class="kpi-sub">${sub}</div>`:''}</div>`;
+}
+function round2(n) { return Math.round(n * 100) / 100; }
+function getPath(obj, path) {
+  if (!obj || !path) return null;
+  return path.split('.').reduce((o, k) => (o == null ? null : o[k]), obj);
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+if (getToken()) showApp();
+</script>
+</body>
+</html>
