@@ -500,7 +500,7 @@ function renderPL() {
   const ytd_rev = months.reduce((s,m) => s + (m.actual.gross_revenue||0), 0);
   const ytd_exp = months.reduce((s,m) => s + (m.actual.opex||0) + (m.actual.sga?.total||0), 0);
   const ytd_profit = months.reduce((s,m) => s + (m.actual.pre_tax_profit||0), 0);
-  const last_month = months[months.length-1];
+  const last_month = [...months].reverse().find(m => !isFutureMonth(m.month));
   const burn = (last_month?.actual.opex||0) + (last_month?.actual.sga?.total||0);
 
   document.getElementById('plKpis').innerHTML = [
