@@ -132,6 +132,17 @@
   .empty   { color: var(--muted); padding: 32px 0; text-align: center; font-size: 13px; }
   .export-btn { font-size: 12px; padding: 5px 12px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); border-radius: 5px; cursor: pointer; float: right; }
   .export-btn:hover { color: var(--text); }
+  .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .dash-grid .card { margin-bottom: 0; }
+  .dash-full { margin-bottom: 20px; }
+  .chart-wrap-md { position: relative; height: 220px; }
+  .chart-wrap-sm { position: relative; height: 180px; }
+  .runway-input { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .runway-input label { font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .runway-input input { width: 140px; margin-bottom: 0; padding: 6px 10px; font-size: 13px; }
+  .runway-badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+  .roi-positive { color: var(--green); }
+  .roi-negative { color: var(--red); }
   .fc-input { width: 90px; background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 4px 6px; font-size: 12px; text-align: right; }
   .fc-input:focus { outline: 1px solid var(--orange); border-color: var(--orange); }
   .fc-future td { opacity: 1; }
@@ -164,6 +175,7 @@
       <button class="nav-tab" onclick="showTab('revenue',this)">Revenue</button>
       <button class="nav-tab" onclick="showTab('sga',this)">SG&A</button>
       <button class="nav-tab" onclick="showTab('opex',this)">OpEx</button>
+      <button class="nav-tab" onclick="showTab('dashboards',this)">Dashboards</button>
       <button class="nav-tab" onclick="showTab('forecast',this)">Forecast</button>
       <button class="nav-tab" onclick="showTab('config',this)">Config</button>
     </nav>
@@ -285,6 +297,53 @@
       </div>
     </div>
 
+    <!-- ── Dashboards Panel ── -->
+    <div id="panel-dashboards" class="panel">
+
+      <!-- Burn Rate & Runway -->
+      <div class="dash-full card">
+        <div class="card-title">Burn Rate & Runway</div>
+        <div class="runway-input">
+          <label>Current cash balance (USD)</label>
+          <input type="number" id="cashBalance" placeholder="e.g. 10000" min="0" step="100" oninput="updateRunway()">
+          <span id="runwayBadge"></span>
+        </div>
+        <div class="chart-wrap"><canvas id="chartBurn"></canvas></div>
+      </div>
+
+      <!-- Break-even Tracker -->
+      <div class="dash-full card">
+        <div class="card-title">Break-even Tracker</div>
+        <div class="chart-wrap"><canvas id="chartBreakeven"></canvas></div>
+      </div>
+
+      <!-- SG&A Breakdown -->
+      <div class="dash-grid">
+        <div class="card">
+          <div class="card-title">SG&A by Category (YTD)</div>
+          <div class="chart-wrap-md"><canvas id="chartSgaDonut"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">SG&A by Month</div>
+          <div class="chart-wrap-md"><canvas id="chartSgaStacked"></canvas></div>
+        </div>
+      </div>
+
+      <!-- ARPU & Marketing ROI -->
+      <div class="dash-grid">
+        <div class="card">
+          <div class="card-title">ARPU — Avg Revenue per Paying User</div>
+          <div class="chart-wrap-md"><canvas id="chartArpu"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Marketing ROI</div>
+          <div id="marketingRoiSummary" style="margin-bottom:10px;font-size:12px;color:var(--muted);"></div>
+          <div class="chart-wrap-sm"><canvas id="chartMarketingRoi"></canvas></div>
+        </div>
+      </div>
+
+    </div>
+
     <!-- ── Forecast Panel ── -->
     <div id="panel-forecast" class="panel">
       <div class="card">
@@ -326,7 +385,7 @@
 <script>
 const API = 'https://friendly-fulfillment-production.up.railway.app/api';
 let _plData = null, _revData = null, _sgaData = [], _opexData = [], _configData = null;
-let _chartPL = null;
+let _chartPL = null, _chartBurn = null, _chartBreakeven = null, _chartSgaDonut = null, _chartSgaStacked = null, _chartArpu = null, _chartMarketingRoi = null;
 
 // ── Auth ──────────────────────────────────────────────────────────────────────
 function getToken() { return localStorage.getItem('ut_token'); }
@@ -422,6 +481,7 @@ async function loadPL() {
   try {
     _plData = await apiFetch('/admin/pl/summary');
     renderPL();
+    renderDashboards();
   } catch(e) {
     document.getElementById('plTable').innerHTML = `<div class="empty">Failed to load: ${e.message}</div>`;
   }
@@ -551,6 +611,7 @@ async function loadRevenue() {
   try {
     _revData = await apiFetch('/admin/pl/revenue');
     renderRevenue();
+    renderDashboards();
   } catch(e) {
     document.getElementById('revTable').innerHTML = `<div class="empty">Failed: ${e.message}</div>`;
   }
@@ -787,6 +848,176 @@ async function deleteOpEx(id) {
     renderOpexTable();
     loadPL();
   } catch(e) { alert('Delete failed: ' + e.message); }
+}
+
+// ── Dashboards ────────────────────────────────────────────────────────────────
+function mkChart(id, ref, config) {
+  if (ref) ref.destroy();
+  return new Chart(document.getElementById(id), config);
+}
+
+function renderDashboards() {
+  if (!_plData?.months) return;
+  const pMonths = _plData.months.filter(m => !isFutureMonth(m.month));
+  const allPMonths = _plData.months; // include future for forecast lines
+  const labels = pMonths.map(m => monthLabel(m.month));
+  const allLabels = allPMonths.map(m => monthLabel(m.month));
+
+  const chartDefaults = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#888', font: { size: 11 }, boxWidth: 12 } } },
+    scales: {
+      x: { ticks: { color: '#666', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,.04)' } },
+      y: { ticks: { color: '#666', font: { size: 10 }, callback: v => `$${v}` }, grid: { color: 'rgba(255,255,255,.06)' } },
+    },
+  };
+
+  // ── 1. Burn Rate ────────────────────────────────────────────────────────────
+  const burn = pMonths.map(m => round2((m.actual.sga?.total || 0) + (m.actual.opex || 0)));
+  const burnRolling = burn.map((_, i) => {
+    const slice = burn.slice(Math.max(0, i - 2), i + 1);
+    return round2(slice.reduce((s, v) => s + v, 0) / slice.length);
+  });
+  _chartBurn = mkChart('chartBurn', _chartBurn, {
+    data: {
+      labels,
+      datasets: [
+        { type: 'bar', label: 'Monthly Burn', data: burn, backgroundColor: 'rgba(248,113,113,.55)', order: 2 },
+        { type: 'line', label: '3-mo Avg', data: burnRolling, borderColor: '#fbbf24', tension: .3, pointRadius: 3, order: 1 },
+      ],
+    },
+    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}` } } } },
+  });
+  updateRunway();
+
+  // ── 2. Break-even ───────────────────────────────────────────────────────────
+  const opProfit = pMonths.map(m => m.actual.pre_tax_profit || 0);
+  const fcProfit = allPMonths.map(m => m.forecast?.pre_tax_profit || null);
+  _chartBreakeven = mkChart('chartBreakeven', _chartBreakeven, {
+    data: {
+      labels: allLabels,
+      datasets: [
+        { type: 'line', label: 'Actual Profit', data: [...opProfit, ...Array(allPMonths.length - pMonths.length).fill(null)], borderColor: '#34d399', tension: .3, fill: true, backgroundColor: 'rgba(52,211,153,.08)', pointRadius: 3, order: 1 },
+        { type: 'line', label: 'Forecast Profit', data: fcProfit, borderColor: 'rgba(96,165,250,.7)', borderDash: [4, 4], tension: .3, pointRadius: 2, order: 2 },
+        { type: 'line', label: 'Break-even', data: Array(allPMonths.length).fill(0), borderColor: 'rgba(255,255,255,.2)', borderDash: [2, 4], pointRadius: 0, order: 3 },
+      ],
+    },
+    options: {
+      ...chartDefaults,
+      plugins: { ...chartDefaults.plugins, tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? '—'}` } } },
+      scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => `$${v}` } } },
+    },
+  });
+
+  // ── 3. SG&A Donut ───────────────────────────────────────────────────────────
+  const sgaCats = { Development: 0, Hosting: 0, Marketing: 0, Platform: 0 };
+  pMonths.forEach(m => {
+    sgaCats.Development += m.actual.sga?.development || 0;
+    sgaCats.Hosting     += m.actual.sga?.hosting     || 0;
+    sgaCats.Marketing   += m.actual.sga?.marketing   || 0;
+    sgaCats.Platform    += m.actual.sga?.platform    || 0;
+  });
+  _chartSgaDonut = mkChart('chartSgaDonut', _chartSgaDonut, {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(sgaCats),
+      datasets: [{ data: Object.values(sgaCats).map(v => round2(v)), backgroundColor: ['rgba(96,165,250,.7)', 'rgba(52,211,153,.7)', 'rgba(251,191,36,.7)', 'rgba(255,107,53,.7)'], borderWidth: 1, borderColor: '#1a1a1a' }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'right', labels: { color: '#888', font: { size: 11 }, boxWidth: 12 } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.label}: $${ctx.parsed.toFixed(2)} (${round2(ctx.parsed / ctx.dataset.data.reduce((a,b)=>a+b,0) * 100)}%)` } },
+      },
+    },
+  });
+
+  // ── 4. SG&A Stacked bar ─────────────────────────────────────────────────────
+  _chartSgaStacked = mkChart('chartSgaStacked', _chartSgaStacked, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Development', data: pMonths.map(m => round2(m.actual.sga?.development || 0)), backgroundColor: 'rgba(96,165,250,.7)' },
+        { label: 'Hosting',     data: pMonths.map(m => round2(m.actual.sga?.hosting     || 0)), backgroundColor: 'rgba(52,211,153,.7)' },
+        { label: 'Marketing',   data: pMonths.map(m => round2(m.actual.sga?.marketing   || 0)), backgroundColor: 'rgba(251,191,36,.7)' },
+        { label: 'Platform',    data: pMonths.map(m => round2(m.actual.sga?.platform    || 0)), backgroundColor: 'rgba(255,107,53,.7)' },
+      ],
+    },
+    options: { ...chartDefaults, scales: { ...chartDefaults.scales, x: { ...chartDefaults.scales.x, stacked: true }, y: { ...chartDefaults.scales.y, stacked: true } } },
+  });
+
+  // ── 5. ARPU ─────────────────────────────────────────────────────────────────
+  const revByMonth = {};
+  (_revData?.months || []).forEach(m => { revByMonth[m.month] = m; });
+  const arpuActual = pMonths.map(m => {
+    const r = revByMonth[m.month];
+    return (r?.purchases > 0) ? round2((r.post_tax_revenue || 0) / r.purchases) : null;
+  });
+  const arpuForecast = allPMonths.map(m => {
+    const fc = m.forecast;
+    if (!fc?.paying_users || fc.paying_users === 0) return null;
+    return round2((fc.post_tax_revenue || 0) / fc.paying_users);
+  });
+  _chartArpu = mkChart('chartArpu', _chartArpu, {
+    type: 'line',
+    data: {
+      labels: allLabels,
+      datasets: [
+        { label: 'Actual ARPU', data: [...arpuActual, ...Array(allPMonths.length - pMonths.length).fill(null)], borderColor: '#FF6B35', backgroundColor: 'rgba(255,107,53,.1)', fill: true, tension: .3, pointRadius: 4 },
+        { label: 'Forecast ARPU', data: arpuForecast, borderColor: 'rgba(96,165,250,.7)', borderDash: [4, 4], tension: .3, pointRadius: 2 },
+      ],
+    },
+    options: {
+      ...chartDefaults,
+      plugins: { ...chartDefaults.plugins, tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? '—'}` } } },
+      scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => `$${v}` } } },
+    },
+  });
+
+  // ── 6. Marketing ROI ────────────────────────────────────────────────────────
+  const mktSpend = pMonths.map(m => round2(m.actual.sga?.marketing || 0));
+  const mktRev   = pMonths.map(m => round2(m.actual.gross_revenue || 0));
+  const mktRoi   = mktSpend.map((s, i) => s > 0 ? round2(mktRev[i] / s) : null);
+  const totalMktSpend = mktSpend.reduce((a, b) => a + b, 0);
+  const totalRev      = mktRev.reduce((a, b) => a + b, 0);
+  const overallRoi    = totalMktSpend > 0 ? round2(totalRev / totalMktSpend) : null;
+  const roiColor = overallRoi == null ? '' : overallRoi >= 1 ? 'roi-positive' : 'roi-negative';
+  document.getElementById('marketingRoiSummary').innerHTML =
+    `YTD marketing spend: <strong>${fmt(totalMktSpend)}</strong> &nbsp;·&nbsp; Revenue: <strong>${fmt(totalRev)}</strong> &nbsp;·&nbsp; ROI: <strong class="${roiColor}">${overallRoi != null ? overallRoi.toFixed(2) + '×' : '—'}</strong>`;
+  _chartMarketingRoi = mkChart('chartMarketingRoi', _chartMarketingRoi, {
+    data: {
+      labels,
+      datasets: [
+        { type: 'bar', label: 'Marketing Spend', data: mktSpend, backgroundColor: 'rgba(251,191,36,.55)', order: 2 },
+        { type: 'bar', label: 'Revenue', data: mktRev, backgroundColor: 'rgba(52,211,153,.4)', order: 2 },
+        { type: 'line', label: 'ROI (×)', data: mktRoi, borderColor: '#FF6B35', tension: .3, pointRadius: 3, yAxisID: 'y2', order: 1 },
+      ],
+    },
+    options: {
+      ...chartDefaults,
+      scales: {
+        x: chartDefaults.scales.x,
+        y:  { ...chartDefaults.scales.y, position: 'left' },
+        y2: { position: 'right', ticks: { color: '#666', font: { size: 10 }, callback: v => `${v}×` }, grid: { display: false } },
+      },
+    },
+  });
+}
+
+function updateRunway() {
+  if (!_plData?.months) return;
+  const cash = parseFloat(document.getElementById('cashBalance')?.value) || 0;
+  if (!cash) { document.getElementById('runwayBadge').innerHTML = ''; return; }
+  const pMonths = _plData.months.filter(m => !isFutureMonth(m.month));
+  const avgBurn = pMonths.length
+    ? pMonths.reduce((s, m) => s + (m.actual.sga?.total || 0) + (m.actual.opex || 0), 0) / pMonths.length
+    : 0;
+  const runway = avgBurn > 0 ? Math.floor(cash / avgBurn) : null;
+  const color = runway == null ? '' : runway <= 3 ? 'var(--red)' : runway <= 6 ? 'var(--yellow)' : 'var(--green)';
+  document.getElementById('runwayBadge').innerHTML = runway != null
+    ? `<span class="runway-badge" style="background:rgba(0,0,0,.3);border:1px solid ${color};color:${color}">${runway} months runway</span><span style="font-size:11px;color:var(--muted);margin-left:8px">(avg burn ${fmt(avgBurn)}/mo)</span>`
+    : '';
 }
 
 // ── Forecast ──────────────────────────────────────────────────────────────────
