@@ -512,24 +512,30 @@ function renderPL() {
 
   // Chart
   const labels = months.map(m => monthLabel(m.month));
-  const actRev = months.map(m => m.actual.gross_revenue||0);
-  const actExp = months.map(m => (m.actual.opex||0)+(m.actual.sga?.total||0));
-  const actProfit = months.map(m => m.actual.pre_tax_profit||0);
-  const fcRev = months.map(m => m.forecast?.gross_revenue||0);
+  const actRev    = months.map(m => isFutureMonth(m.month) ? null : (m.actual.gross_revenue||0));
+  const actExp    = months.map(m => isFutureMonth(m.month) ? null : -((m.actual.opex||0)+(m.actual.sga?.total||0)));
+  const actProfit = months.map(m => isFutureMonth(m.month) ? null : (m.actual.pre_tax_profit||0));
+  // Forecast profit: show from next month onward (bridge from last actual point)
+  const lastActualIdx = months.reduce((last, m, i) => isFutureMonth(m.month) ? last : i, -1);
+  const fcProfit = months.map((m, i) => {
+    if (i < lastActualIdx) return null;
+    if (i === lastActualIdx) return m.actual.pre_tax_profit||0; // anchor to last actual
+    return m.forecast?.pre_tax_profit ?? null;
+  });
   if (_chartPL) _chartPL.destroy();
   _chartPL = new Chart(document.getElementById('chartPL'), {
     data: {
       labels,
       datasets: [
-        {type:'bar', label:'Gross Revenue', data: actRev, backgroundColor:'rgba(255,107,53,.6)', order:2},
-        {type:'bar', label:'Total Expenses', data: actExp, backgroundColor:'rgba(248,113,113,.5)', order:2},
-        {type:'line', label:'Net Profit', data: actProfit, borderColor:'#34d399', backgroundColor:'rgba(52,211,153,.1)', tension:.3, fill:true, order:1, pointRadius:3},
-        {type:'line', label:'Forecast Revenue', data: fcRev, borderColor:'rgba(96,165,250,.6)', borderDash:[4,4], tension:.3, pointRadius:2, order:1},
+        {type:'bar',  label:'Gross Revenue',    data: actRev,    backgroundColor:'rgba(255,107,53,.6)', order:2},
+        {type:'bar',  label:'Total Expenses',   data: actExp,    backgroundColor:'rgba(248,113,113,.5)', order:2},
+        {type:'line', label:'Net Profit',        data: actProfit, borderColor:'#34d399', backgroundColor:'rgba(52,211,153,.1)', tension:.3, fill:true, order:1, pointRadius:3},
+        {type:'line', label:'Forecast Profit',   data: fcProfit,  borderColor:'rgba(96,165,250,.75)', borderDash:[5,4], tension:.3, pointRadius:2, order:1},
       ],
     },
     options: {
       responsive: true, maintainAspectRatio: false,
-      plugins: {legend:{labels:{color:'#888',font:{size:11}}}, tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`}}},
+      plugins: {legend:{labels:{color:'#888',font:{size:11}}}, tooltip:{callbacks:{label:ctx=>ctx.parsed.y!=null?`${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`:null}}},
       scales: {
         x: {ticks:{color:'#666',font:{size:10}}, grid:{color:'rgba(255,255,255,.04)'}},
         y: {ticks:{color:'#666',font:{size:10},callback:v=>`$${v}`}, grid:{color:'rgba(255,255,255,.06)'}},
