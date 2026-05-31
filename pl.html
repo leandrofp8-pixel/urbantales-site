@@ -503,11 +503,22 @@ function renderPL() {
   const last_month = [...months].reverse().find(m => !isFutureMonth(m.month));
   const burn = (last_month?.actual.opex||0) + (last_month?.actual.sga?.total||0);
 
+  // NPV: actual profits at face value + future forecast profits discounted at 7% annual
+  const monthlyRate = Math.pow(1.07, 1/12) - 1;
+  const _now = new Date();
+  const npv = round2(months.reduce((s, m) => {
+    const [y, mo] = m.month.split('-').map(Number);
+    if (!isFutureMonth(m.month)) return s + (m.actual.pre_tax_profit || 0);
+    const t = (y - _now.getFullYear()) * 12 + (mo - (_now.getMonth() + 1));
+    return s + (m.forecast?.pre_tax_profit || 0) / Math.pow(1 + monthlyRate, t);
+  }, 0));
+
   document.getElementById('plKpis').innerHTML = [
     kpi('Revenue YTD', fmt(ytd_rev), '', ''),
     kpi('Expenses YTD', fmt(ytd_exp), '', 'neg'),
     kpi('Net Profit YTD', fmt(ytd_profit), '', colorClass(ytd_profit)),
     kpi('Burn (last mo.)', fmt(burn), '', 'neg'),
+    kpi('NPV', fmt(npv), 'actuals + forecast @ 7%', colorClass(npv)),
   ].join('');
 
   // Chart
