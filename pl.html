@@ -132,6 +132,13 @@
   .empty   { color: var(--muted); padding: 32px 0; text-align: center; font-size: 13px; }
   .export-btn { font-size: 12px; padding: 5px 12px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); border-radius: 5px; cursor: pointer; float: right; }
   .export-btn:hover { color: var(--text); }
+  .fc-input { width: 90px; background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 4px 6px; font-size: 12px; text-align: right; }
+  .fc-input:focus { outline: 1px solid var(--orange); border-color: var(--orange); }
+  .fc-future td { opacity: 1; }
+  .fc-past td:first-child { color: var(--muted); }
+  .row-fc-section td { font-weight: 700; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; background: rgba(255,255,255,.02); padding: 10px 12px 4px; }
+  .btn-save-row { font-size: 11px; padding: 3px 10px; background: rgba(255,107,53,.15); color: var(--orange); border: 1px solid rgba(255,107,53,.3); border-radius: 4px; cursor: pointer; white-space: nowrap; }
+  .btn-save-row:hover { background: rgba(255,107,53,.25); }
 </style>
 </head>
 <body>
@@ -157,6 +164,7 @@
       <button class="nav-tab" onclick="showTab('revenue',this)">Revenue</button>
       <button class="nav-tab" onclick="showTab('sga',this)">SG&A</button>
       <button class="nav-tab" onclick="showTab('opex',this)">OpEx</button>
+      <button class="nav-tab" onclick="showTab('forecast',this)">Forecast</button>
       <button class="nav-tab" onclick="showTab('config',this)">Config</button>
     </nav>
     <div class="header-right">
@@ -277,6 +285,27 @@
       </div>
     </div>
 
+    <!-- ── Forecast Panel ── -->
+    <div id="panel-forecast" class="panel">
+      <div class="card">
+        <div class="card-title">Monthly Forecast
+          <span style="color:var(--muted);font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;margin-left:8px">Edit cells inline — click Save Row to persist each month</span>
+        </div>
+        <div class="pl-scroll">
+          <table id="forecastTable" style="min-width:900px">
+            <thead>
+              <tr>
+                <th style="text-align:left;min-width:200px">Parameter</th>
+                <thead id="forecastMonthHeaders"></thead>
+              </tr>
+            </thead>
+            <tbody id="forecastBody"></tbody>
+          </table>
+        </div>
+        <div id="forecastSaveMsg" style="margin-top:12px;font-size:13px;min-height:18px;"></div>
+      </div>
+    </div>
+
     <!-- ── Config Panel ── -->
     <div id="panel-config" class="panel">
       <div class="card">
@@ -350,7 +379,7 @@ function showApp() {
 }
 
 async function loadAll() {
-  await Promise.all([loadPL(), loadRevenue(), loadSGA(), loadOpEx(), loadConfig()]);
+  await Promise.all([loadPL(), loadRevenue(), loadSGA(), loadOpEx(), loadForecast(), loadConfig()]);
 }
 
 function showTab(name, el) {
@@ -758,6 +787,100 @@ async function deleteOpEx(id) {
     renderOpexTable();
     loadPL();
   } catch(e) { alert('Delete failed: ' + e.message); }
+}
+
+// ── Forecast ──────────────────────────────────────────────────────────────────
+let _forecastData = {};
+
+async function loadForecast() {
+  try {
+    const r = await apiFetch('/admin/pl/forecast');
+    _forecastData = {};
+    (r.months || []).forEach(m => { _forecastData[m.month] = m; });
+    renderForecast();
+  } catch(e) {
+    document.getElementById('forecastBody').innerHTML = `<tr><td colspan="20"><div class="empty">Failed: ${e.message}</div></td></tr>`;
+  }
+}
+
+function renderForecast() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const allMonths = Array.from({length:12}, (_,i) => `${year}-${String(i+1).padStart(2,'0')}`);
+
+  const params = [
+    {section: 'Revenue'},
+    {key:'paying_users',      label:'Paying Users',          type:'int',   placeholder:'0'},
+    {key:'avg_revenue_per_user', label:'Avg Revenue / User (USD)', type:'float', placeholder:'5.00'},
+    {section: 'Operating Expenses'},
+    {key:'opex_google',  label:'Google APIs (USD)',  type:'float', placeholder:'0.00'},
+    {key:'opex_openai',  label:'OpenAI APIs (USD)',  type:'float', placeholder:'0.00'},
+    {key:'opex_other',   label:'Other OpEx (USD)',   type:'float', placeholder:'0.00'},
+    {section: 'SG&A'},
+    {key:'sga_development', label:'Development (USD)', type:'float', placeholder:'0.00'},
+    {key:'sga_hosting',     label:'Hosting (USD)',     type:'float', placeholder:'0.00'},
+    {key:'sga_marketing',   label:'Marketing (USD)',   type:'float', placeholder:'0.00'},
+    {key:'sga_platform',    label:'Platform (USD)',    type:'float', placeholder:'0.00'},
+  ];
+
+  // Header row
+  let headerHtml = `<tr><th style="text-align:left;min-width:200px">Parameter</th>`;
+  allMonths.forEach(m => {
+    const future = isFutureMonth(m);
+    headerHtml += `<th style="text-align:center;color:${future?'var(--orange)':'var(--muted)'};min-width:100px">${monthLabel(m)}</th>`;
+  });
+  headerHtml += `<th></th></tr>`;
+  document.getElementById('forecastMonthHeaders').outerHTML = headerHtml;
+
+  // Body rows
+  let bodyHtml = '';
+  params.forEach(p => {
+    if (p.section) {
+      bodyHtml += `<tr class="row-fc-section"><td colspan="${allMonths.length + 2}">${p.section}</td></tr>`;
+      return;
+    }
+    bodyHtml += `<tr class="${isFutureMonth(allMonths[0]) ? 'fc-future' : ''}">`;
+    bodyHtml += `<td style="color:var(--muted);font-size:12px;padding:6px 12px">${p.label}</td>`;
+    allMonths.forEach(m => {
+      const val = _forecastData[m]?.[p.key] ?? '';
+      bodyHtml += `<td style="padding:4px 6px;text-align:center">
+        <input class="fc-input" type="number" id="fc_${m}_${p.key}" value="${val !== '' ? val : ''}" placeholder="${p.placeholder}" step="${p.type==='int'?'1':'0.01'}" min="0">
+      </td>`;
+    });
+    bodyHtml += `<td></td></tr>`;
+  });
+
+  // Save row per month — show as a final row with save buttons per column
+  bodyHtml += `<tr><td style="padding:8px 12px;font-size:11px;color:var(--muted)">Save</td>`;
+  allMonths.forEach(m => {
+    bodyHtml += `<td style="padding:6px;text-align:center"><button class="btn-save-row" onclick="saveForecastMonth('${m}')">Save</button></td>`;
+  });
+  bodyHtml += `<td></td></tr>`;
+
+  document.getElementById('forecastBody').innerHTML = bodyHtml;
+}
+
+async function saveForecastMonth(month) {
+  const msg = document.getElementById('forecastSaveMsg');
+  const keys = ['paying_users','avg_revenue_per_user','opex_google','opex_openai','opex_other','sga_development','sga_hosting','sga_marketing','sga_platform'];
+  const intKeys = new Set(['paying_users']);
+  const body = { month };
+  keys.forEach(k => {
+    const el = document.getElementById(`fc_${month}_${k}`);
+    if (!el || el.value === '') return;
+    body[k] = intKeys.has(k) ? parseInt(el.value) : parseFloat(el.value);
+  });
+  try {
+    const saved = await apiFetch(`/admin/pl/forecast/${month}`, {method:'PUT', body: JSON.stringify(body)});
+    _forecastData[month] = saved;
+    msg.style.color = 'var(--green)';
+    msg.textContent = `${monthLabel(month)} forecast saved.`;
+    loadPL();
+    setTimeout(() => { msg.textContent = ''; }, 2500);
+  } catch(e) {
+    msg.style.color = 'var(--red)';
+    msg.textContent = `Error saving ${monthLabel(month)}: ${e.message}`;
+  }
 }
 
 // ── Config ────────────────────────────────────────────────────────────────────
