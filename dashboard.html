@@ -2780,7 +2780,9 @@ function renderSettings(data) {
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">A/B Testing — Default Tab</div>` +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('ab_default_tab_enabled', 'Experiment Active', s.ab_default_tab_enabled ?? true)}</div>` +
-    field('ab_default_tab_explore_pct', 'Explore Group % (0 = all Walk, 100 = all Explore)', 'number', s.ab_default_tab_explore_pct ?? 50, 'min="0" max="100"');
+    field('ab_default_tab_explore_pct', 'Explore Group % (0 = all Walk, 100 = all Explore)', 'number', s.ab_default_tab_explore_pct ?? 50, 'min="0" max="100"') +
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Vehicle Speed Protection</div>` +
+    field('max_walking_speed_kmh', 'Max Speed km/h (above this threshold API calls are skipped)', 'number', s.max_walking_speed_kmh ?? 25, 'min="5" max="120"');
 }
 
 async function saveSettings() {
@@ -2812,6 +2814,7 @@ async function saveSettings() {
     places_cache_ttl_days: parseInt(document.getElementById('s_places_cache_ttl_days').value),
     city_landmarks_cache_ttl_days: parseInt(document.getElementById('s_city_landmarks_cache_ttl_days').value),
     places_grid_size_meters: parseInt(document.getElementById('s_places_grid_size_meters').value),
+    max_walking_speed_kmh: parseInt(document.getElementById('s_max_walking_speed_kmh').value),
   };
 
   try {
