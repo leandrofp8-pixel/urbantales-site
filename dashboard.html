@@ -1236,22 +1236,22 @@
               <input id="nc_temperature" type="number" min="0" max="2" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Tokens — MAJOR
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Max tokens — MAJOR</b><br>MAJOR landmarks target 450–750 words (~600–1000 tokens). Current limit 1200 gives safe headroom.<br><br>Don't go below 1000 or long narrations will be cut off mid-sentence.</span></span>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — MAJOR
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — MAJOR</b><br>Famous landmarks (Eiffel Tower, Colosseum).<br><br>250 ≈ 1.5–1.7 min &nbsp;|&nbsp; 350 ≈ 2–2.5 min<br><br>This is the real length control — the prompt tells the model to write approximately this many words.</span></span>
               </label>
-              <input id="nc_max_tokens_major" type="number" min="200" max="4000" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+              <input id="nc_target_words_major" type="number" min="50" max="1500" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Tokens — NOTABLE
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Max tokens — NOTABLE</b><br>NOTABLE landmarks target 300–450 words (~400–600 tokens). Current limit 800 gives safe headroom.<br><br>Don't go below 600.</span></span>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — NOTABLE
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — NOTABLE</b><br>City landmarks with solid history.<br><br>175 ≈ 1–1.2 min &nbsp;|&nbsp; 250 ≈ 1.5–1.7 min<br><br>Should be shorter than MAJOR to reward landmark discovery.</span></span>
               </label>
-              <input id="nc_max_tokens_notable" type="number" min="200" max="4000" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+              <input id="nc_target_words_notable" type="number" min="50" max="1500" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Tokens — LOCAL
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Max tokens — LOCAL</b><br>LOCAL landmarks target 100–175 words (~133–233 tokens). Current limit 400 gives safe headroom.<br><br>Don't go below 250.</span></span>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — LOCAL
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — LOCAL</b><br>Minor local points of interest.<br><br>100 ≈ 40–50 sec &nbsp;|&nbsp; 150 ≈ ~1 min<br><br>Keep these short — over-narrating minor places feels fake and kills user trust.</span></span>
               </label>
-              <input id="nc_max_tokens_local" type="number" min="100" max="2000" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+              <input id="nc_target_words_local" type="number" min="30" max="1500" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
           </div>
         </div>
@@ -3402,7 +3402,7 @@ async function loadAllData() {
 // ══════════════════════════════════════════════
 const _NARRATION_DEFAULTS = {
   openai_model: 'gpt-4o-mini', temperature: 0.6,
-  max_tokens_major: 1200, max_tokens_notable: 800, max_tokens_local: 400,
+  target_words_major: 250, target_words_notable: 175, target_words_local: 100,
   speaking_rate: 1.0, pitch: 0.0,
 };
 
@@ -3412,9 +3412,9 @@ function renderNarrationConfig(cfg) {
   if (sel) sel.value = c.openai_model || 'gpt-4o-mini';
   const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
   set('nc_temperature', c.temperature ?? 0.6);
-  set('nc_max_tokens_major', c.max_tokens_major ?? 1200);
-  set('nc_max_tokens_notable', c.max_tokens_notable ?? 800);
-  set('nc_max_tokens_local', c.max_tokens_local ?? 400);
+  set('nc_target_words_major', c.target_words_major ?? 250);
+  set('nc_target_words_notable', c.target_words_notable ?? 175);
+  set('nc_target_words_local', c.target_words_local ?? 100);
   set('nc_speaking_rate', c.speaking_rate ?? 1.0);
   set('nc_pitch', c.pitch ?? 0.0);
   ['historical','fun_facts','cinematic','legends'].forEach(s => {
@@ -3435,9 +3435,9 @@ async function saveNarrationConfig() {
   const body = {
     openai_model: document.getElementById('nc_openai_model').value,
     temperature: parseFloat(document.getElementById('nc_temperature').value),
-    max_tokens_major: parseInt(document.getElementById('nc_max_tokens_major').value),
-    max_tokens_notable: parseInt(document.getElementById('nc_max_tokens_notable').value),
-    max_tokens_local: parseInt(document.getElementById('nc_max_tokens_local').value),
+    target_words_major: parseInt(document.getElementById('nc_target_words_major').value),
+    target_words_notable: parseInt(document.getElementById('nc_target_words_notable').value),
+    target_words_local: parseInt(document.getElementById('nc_target_words_local').value),
     speaking_rate: parseFloat(document.getElementById('nc_speaking_rate').value),
     pitch: parseFloat(document.getElementById('nc_pitch').value),
   };
