@@ -1217,11 +1217,21 @@
 
         <!-- Generation params -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px">
-          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">OpenAI Generation</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:12px">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">AI Generation</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;gap:12px">
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Model
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Model</b><br>gpt-4o-mini (current) ~$0.0004/narration<br>gpt-4o ~$0.007/narration (17× more)<br>gpt-4-turbo ~$0.023/narration (53× more)<br><br>Quality difference for structured prompts is smaller than you'd expect. Test before upgrading.</span></span>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Provider
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Provider</b><br>Controls which AI model generates narrations on cache miss.<br><br><b>OpenAI only</b> — current default<br><b>Gemini only</b> — Google's model, more conversational<br><b>50/50 Random</b> — alternates at generation time; different landmarks get different "voices", creating natural variety across the catalog.<br><br>Requires GOOGLE_GEMINI_API_KEY set on Railway.</span></span>
+              </label>
+              <select id="nc_narration_provider" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+                <option value="openai">OpenAI only</option>
+                <option value="gemini">Gemini only</option>
+                <option value="random">50/50 Random</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">OpenAI model
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>OpenAI model</b><br>Only used when provider is OpenAI or Random.<br><br>gpt-4o-mini (current) ~$0.0004/narration<br>gpt-4o ~$0.007/narration (17× more)<br>gpt-4-turbo ~$0.023/narration (53× more)</span></span>
               </label>
               <select id="nc_openai_model" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
                 <option value="gpt-4o-mini">gpt-4o-mini</option>
@@ -3401,13 +3411,15 @@ async function loadAllData() {
 // NARRATION CONFIG
 // ══════════════════════════════════════════════
 const _NARRATION_DEFAULTS = {
-  openai_model: 'gpt-4o-mini', temperature: 0.6,
+  narration_provider: 'openai', openai_model: 'gpt-4o-mini', temperature: 0.6,
   target_words_major: 250, target_words_notable: 175, target_words_local: 100,
   speaking_rate: 1.0, pitch: 0.0,
 };
 
 function renderNarrationConfig(cfg) {
   const c = cfg || _NARRATION_DEFAULTS;
+  const selProvider = document.getElementById('nc_narration_provider');
+  if (selProvider) selProvider.value = c.narration_provider || 'openai';
   const sel = document.getElementById('nc_openai_model');
   if (sel) sel.value = c.openai_model || 'gpt-4o-mini';
   const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
@@ -3433,6 +3445,7 @@ async function saveNarrationConfig() {
   const msg = document.getElementById('narrationSaveMsg');
   btn.disabled = true; btn.textContent = 'Saving…'; msg.textContent = '';
   const body = {
+    narration_provider: document.getElementById('nc_narration_provider').value,
     openai_model: document.getElementById('nc_openai_model').value,
     temperature: parseFloat(document.getElementById('nc_temperature').value),
     target_words_major: parseInt(document.getElementById('nc_target_words_major').value),
