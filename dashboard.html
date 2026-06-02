@@ -24,6 +24,14 @@
 
     body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; min-height: 100vh; }
 
+    /* ── TOOLTIP ── */
+    .tip { position:relative; display:inline-flex; align-items:center; gap:4px; cursor:default; }
+    .tip-icon { display:inline-flex; align-items:center; justify-content:center; width:14px; height:14px; border-radius:50%; background:#333; color:var(--muted); font-size:9px; font-weight:700; cursor:help; flex-shrink:0; }
+    .tip-icon:hover { background:#444; color:var(--text); }
+    .tip-box { visibility:hidden; opacity:0; position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%); background:#1e1e1e; border:1px solid #3a3a3a; border-radius:8px; padding:10px 12px; font-size:0.76rem; line-height:1.5; color:#ccc; width:260px; z-index:999; pointer-events:none; transition:opacity .15s; white-space:normal; }
+    .tip-box::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#3a3a3a; }
+    .tip-icon:hover + .tip-box, .tip:hover .tip-box { visibility:visible; opacity:1; }
+
     /* ── LOGIN ── */
     #loginScreen {
       display: flex; align-items: center; justify-content: center; min-height: 100vh;
@@ -1212,7 +1220,9 @@
           <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">OpenAI Generation</div>
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:12px">
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Model</label>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Model
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Model</b><br>gpt-4o-mini (current) ~$0.0004/narration<br>gpt-4o ~$0.007/narration (17× more)<br>gpt-4-turbo ~$0.023/narration (53× more)<br><br>Quality difference for structured prompts is smaller than you'd expect. Test before upgrading.</span></span>
+              </label>
               <select id="nc_openai_model" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
                 <option value="gpt-4o-mini">gpt-4o-mini</option>
                 <option value="gpt-4o">gpt-4o</option>
@@ -1220,19 +1230,27 @@
               </select>
             </div>
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Temperature (0–2)</label>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Temperature
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Temperature (0–2)</b><br>Controls output variety between runs.<br><br>0.5–0.65 → Historical / Fun Facts (consistent, factual)<br>0.65–0.85 → Cinematic / Legends (more personality)<br><br>Above 1.0 risks hallucinations and ignoring length rules.</span></span>
+              </label>
               <input id="nc_temperature" type="number" min="0" max="2" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Max tokens — MAJOR</label>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Tokens — MAJOR
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Max tokens — MAJOR</b><br>MAJOR landmarks target 450–750 words (~600–1000 tokens). Current limit 1200 gives safe headroom.<br><br>Don't go below 1000 or long narrations will be cut off mid-sentence.</span></span>
+              </label>
               <input id="nc_max_tokens_major" type="number" min="200" max="4000" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Max tokens — NOTABLE</label>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Tokens — NOTABLE
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Max tokens — NOTABLE</b><br>NOTABLE landmarks target 300–450 words (~400–600 tokens). Current limit 800 gives safe headroom.<br><br>Don't go below 600.</span></span>
+              </label>
               <input id="nc_max_tokens_notable" type="number" min="200" max="4000" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Max tokens — LOCAL</label>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Tokens — LOCAL
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Max tokens — LOCAL</b><br>LOCAL landmarks target 100–175 words (~133–233 tokens). Current limit 400 gives safe headroom.<br><br>Don't go below 250.</span></span>
+              </label>
               <input id="nc_max_tokens_local" type="number" min="100" max="2000" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
           </div>
@@ -1243,11 +1261,11 @@
           <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Google TTS</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:400px">
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Speaking rate (0.25–4.0)</label>
+              <span class="tip" style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Speaking rate (0.25–4.0)<span class="tip-icon">?</span><span class="tip-box">1.0 = normal speed.<br>0.85–0.95 = slower, contemplative feel.<br>1.05–1.15 = energetic, upbeat.<br><br>Practical sweet spot: <strong>0.85–1.15</strong>.<br>Beyond that starts sounding unnatural.</span></span>
               <input id="nc_speaking_rate" type="number" min="0.25" max="4.0" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
             <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Pitch (-20 to +20)</label>
+              <span class="tip" style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Pitch (-20 to +20)<span class="tip-icon">?</span><span class="tip-box">0 = natural voice.<br>-2 to -4 = deeper, more authoritative.<br>+2 to +4 = brighter, lighter feel.<br><br>Practical sweet spot: <strong>-3 to +3</strong>.<br>Beyond ±5 sounds robotic.</span></span>
               <input id="nc_pitch" type="number" min="-20" max="20" step="0.5" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
           </div>
