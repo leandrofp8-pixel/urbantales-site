@@ -377,6 +377,7 @@
     <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
     <button class="tab-btn" onclick="showTab('viator')">🎫 Viator</button>
     <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
+    <button class="tab-btn" onclick="showTab('narration')">🎙️ Narration</button>
     <button class="tab-btn" onclick="showTab('profiles')">👤 Profiles</button>
   </nav>
 
@@ -1193,6 +1194,88 @@
       </div>
 
     </div><!-- /panel-settings -->
+
+    <!-- ── NARRATION CONFIG ── -->
+    <div class="tab-panel" id="panel-narration">
+      <div style="max-width:900px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+          <h2 style="font-size:1.1rem;font-weight:700">🎙️ Narration Config</h2>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span id="narrationSaveMsg" style="font-size:0.82rem"></span>
+            <button id="saveNarrationBtn" onclick="saveNarrationConfig()" style="padding:8px 18px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:0.88rem;font-weight:600;cursor:pointer">Save</button>
+            <button onclick="resetNarrationDefaults()" style="padding:8px 14px;background:#333;color:#aaa;border:none;border-radius:8px;font-size:0.82rem;cursor:pointer">Reset to defaults</button>
+          </div>
+        </div>
+
+        <!-- Generation params -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">OpenAI Generation</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:12px">
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Model</label>
+              <select id="nc_openai_model" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+                <option value="gpt-4o-mini">gpt-4o-mini</option>
+                <option value="gpt-4o">gpt-4o</option>
+                <option value="gpt-4-turbo">gpt-4-turbo</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Temperature (0–2)</label>
+              <input id="nc_temperature" type="number" min="0" max="2" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Max tokens — MAJOR</label>
+              <input id="nc_max_tokens_major" type="number" min="200" max="4000" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Max tokens — NOTABLE</label>
+              <input id="nc_max_tokens_notable" type="number" min="200" max="4000" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Max tokens — LOCAL</label>
+              <input id="nc_max_tokens_local" type="number" min="100" max="2000" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+          </div>
+        </div>
+
+        <!-- TTS params -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Google TTS</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:400px">
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Speaking rate (0.25–4.0)</label>
+              <input id="nc_speaking_rate" type="number" min="0.25" max="4.0" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Pitch (-20 to +20)</label>
+              <input id="nc_pitch" type="number" min="-20" max="20" step="0.5" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+          </div>
+        </div>
+
+        <!-- Style prompts -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Style Prompts</div>
+          <div style="font-size:0.78rem;color:var(--yellow);margin-bottom:14px">⚠️ Keep all <code style="background:#222;padding:1px 4px;border-radius:3px">{landmark_name}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{city_name}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{country_str}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{neighborhood_str}</code> placeholders intact.</div>
+          <div style="margin-bottom:16px">
+            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Historical</label>
+            <textarea id="nc_prompt_historical" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Fun Facts</label>
+            <textarea id="nc_prompt_fun_facts" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Cinematic</label>
+            <textarea id="nc_prompt_cinematic" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+          </div>
+          <div>
+            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Legends</label>
+            <textarea id="nc_prompt_legends" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-narration -->
 
     <!-- ── PROFILES ── -->
     <div class="tab-panel" id="panel-profiles">
@@ -3251,7 +3334,7 @@ let _profilesTabLoaded = false;
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -3272,6 +3355,7 @@ async function loadAllData() {
       api(`/admin/settings`).catch(() => null),
       api(`/admin/promo-codes`).catch(() => null),
       api(`/admin/analytics/ab-test`).catch(() => null),
+      api(`/admin/narration-config`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue);
@@ -3289,9 +3373,71 @@ async function loadAllData() {
     renderSettings(settings);
     renderPromoCodes(promoCodes);
     renderAbTest(abTest);
+    renderNarrationConfig(narrationConfigResp?.config || null);
   } catch (e) {
     console.error('Dashboard load error:', e);
   }
+}
+
+// ══════════════════════════════════════════════
+// NARRATION CONFIG
+// ══════════════════════════════════════════════
+const _NARRATION_DEFAULTS = {
+  openai_model: 'gpt-4o-mini', temperature: 0.6,
+  max_tokens_major: 1200, max_tokens_notable: 800, max_tokens_local: 400,
+  speaking_rate: 1.0, pitch: 0.0,
+};
+
+function renderNarrationConfig(cfg) {
+  const c = cfg || _NARRATION_DEFAULTS;
+  const sel = document.getElementById('nc_openai_model');
+  if (sel) sel.value = c.openai_model || 'gpt-4o-mini';
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
+  set('nc_temperature', c.temperature ?? 0.6);
+  set('nc_max_tokens_major', c.max_tokens_major ?? 1200);
+  set('nc_max_tokens_notable', c.max_tokens_notable ?? 800);
+  set('nc_max_tokens_local', c.max_tokens_local ?? 400);
+  set('nc_speaking_rate', c.speaking_rate ?? 1.0);
+  set('nc_pitch', c.pitch ?? 0.0);
+  ['historical','fun_facts','cinematic','legends'].forEach(s => {
+    const el = document.getElementById(`nc_prompt_${s}`);
+    if (el) el.value = c[`prompt_${s}`] || '';
+  });
+}
+
+function resetNarrationDefaults() {
+  if (!confirm('Reset all narration config to production defaults? This will overwrite any custom prompts.')) return;
+  renderNarrationConfig(_NARRATION_DEFAULTS);
+}
+
+async function saveNarrationConfig() {
+  const btn = document.getElementById('saveNarrationBtn');
+  const msg = document.getElementById('narrationSaveMsg');
+  btn.disabled = true; btn.textContent = 'Saving…'; msg.textContent = '';
+  const body = {
+    openai_model: document.getElementById('nc_openai_model').value,
+    temperature: parseFloat(document.getElementById('nc_temperature').value),
+    max_tokens_major: parseInt(document.getElementById('nc_max_tokens_major').value),
+    max_tokens_notable: parseInt(document.getElementById('nc_max_tokens_notable').value),
+    max_tokens_local: parseInt(document.getElementById('nc_max_tokens_local').value),
+    speaking_rate: parseFloat(document.getElementById('nc_speaking_rate').value),
+    pitch: parseFloat(document.getElementById('nc_pitch').value),
+  };
+  ['historical','fun_facts','cinematic','legends'].forEach(s => {
+    const el = document.getElementById(`nc_prompt_${s}`);
+    if (el && el.value.trim()) body[`prompt_${s}`] = el.value;
+  });
+  try {
+    await fetch(`${API}/admin/narration-config`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify(body),
+    }).then(r => { if (!r.ok) throw new Error('Save failed'); return r.json(); });
+    msg.style.color = 'var(--green)'; msg.textContent = 'Saved — takes effect within 60s';
+  } catch (e) {
+    msg.style.color = '#f87171'; msg.textContent = 'Save failed — check console';
+  }
+  btn.disabled = false; btn.textContent = 'Save';
 }
 
 function renderAbTest(data) {
