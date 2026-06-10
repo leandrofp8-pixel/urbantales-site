@@ -739,6 +739,25 @@
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
         </div>
+        <div class="grid-2" style="margin-top:16px">
+          <div>
+            <div class="card-title" style="margin-bottom:8px">Coins Spent by Category</div>
+            <div class="chart-wrap"><canvas id="chartCoinSpendByType"></canvas></div>
+          </div>
+          <div>
+            <div class="card-title" style="margin-bottom:8px">Recent Spend Transactions</div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>User</th><th>Item</th><th>Coins</th><th>Date</th></tr>
+                </thead>
+                <tbody id="recentSpendsBody">
+                  <tr><td colspan="4" class="loading">Loading…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card" style="margin-top:24px">
@@ -2186,12 +2205,40 @@ function renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth) {
       kpiCard('Coins in Circulation', fmt(ce.total_coins_in_circulation),
         `≈ $${((ce.total_coins_in_circulation || 0) * (2.99 / 500)).toFixed(0)} face value`, null, null) +
       kpiCard('Avg Coin Balance', fmt(ce.avg_balance), 'Per user (all users)', null, null) +
-      kpiCard('Users ≥ 500 Coins', fmt(ce.users_with_500_plus),
-        `${((ce.users_with_500_plus || 0) / total * 100).toFixed(1)}% · can buy Day Pass`,
-        null, 'green') +
+      kpiCard('Total Coins Spent', fmt(ce.total_coins_spent || 0),
+        `${fmt(ce.users_who_spent || 0)} unique spenders`, null, 'orange') +
       kpiCard('Users at Zero', fmt(ce.users_with_zero),
         `${((ce.users_with_zero || 0) / total * 100).toFixed(1)}% · empty wallets`,
-        null, 'orange');
+        null, 'yellow');
+
+    // Spend by category bar chart
+    const byType = ce.spend_by_type || {};
+    barChart('chartCoinSpendByType',
+      ['Day Pass', 'City Unlock', 'Style Unlock'],
+      [{
+        label: 'Coins Spent',
+        data: [byType.day_pass || 0, byType.city_unlock || 0, byType.style_unlock || 0],
+        backgroundColor: [C.primary + 'cc', C.blue + 'cc', C.purple + 'cc'],
+        borderColor: [C.primary, C.blue, C.purple],
+        color: C.primary
+      }]
+    );
+
+    // Recent spends table
+    const ITEM_LABELS = { day_pass: '🎟 Day Pass', city_unlock: '🏙 City', style_unlock: '🎨 Style' };
+    const rows = (ce.recent_spends || []).slice(0, 30).map(tx => {
+      const label = ITEM_LABELS[tx.item_type] || tx.item_type;
+      const name = tx.item_name || tx.item_id || '—';
+      const when = tx.timestamp ? new Date(tx.timestamp).toLocaleDateString() : '—';
+      return `<tr>
+        <td>${tx.display_name || tx.email}</td>
+        <td>${label}: ${name}</td>
+        <td style="color:#FF6B35;font-weight:600">${tx.amount}</td>
+        <td style="color:#888">${when}</td>
+      </tr>`;
+    }).join('');
+    document.getElementById('recentSpendsBody').innerHTML =
+      rows || '<tr><td colspan="4" style="color:#888">No spend transactions recorded yet</td></tr>';
   } else {
     document.getElementById('coinEconomyKpis').innerHTML =
       `<div style="grid-column:1/-1;color:var(--muted);font-size:0.85rem;padding:8px">No data available.</div>`;
