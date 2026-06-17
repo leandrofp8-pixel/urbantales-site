@@ -1090,6 +1090,7 @@
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
           <button class="btn-send" onclick="openSendModal()">Send Notification →</button>
           <button class="btn-send" style="background:#1E1E1E;border:1px solid #FF6B35;color:#FF6B35;" onclick="sendReengagement()">🔁 Send 24h Re-engagement</button>
+          <button class="btn-send" style="background:#1E1E1E;border:1px solid #4CAF50;color:#4CAF50;" onclick="sendFirstListenPush()">🎧 Send First-Listen Nudge</button>
           <div class="notif-result" id="notifResult"></div>
         </div>
 
@@ -2740,6 +2741,31 @@ async function confirmSend() {
     btn.disabled = false;
     btn.textContent = 'Send Now';
   }
+}
+
+async function sendFirstListenPush() {
+  const resultEl = document.getElementById('notifResult');
+  resultEl.className = 'notif-result';
+  resultEl.textContent = '⏳ Triggering first-listen nudge…';
+  resultEl.style.display = '';
+  try {
+    const res = await fetch(`${API}/admin/send-first-listen-push`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      resultEl.className = 'notif-result success';
+      resultEl.textContent = `✓ First-listen nudge job completed.`;
+    } else {
+      resultEl.className = 'notif-result error';
+      resultEl.textContent = `✗ Error: ${data.detail || 'Unknown error'}`;
+    }
+  } catch(e) {
+    resultEl.className = 'notif-result error';
+    resultEl.textContent = `✗ ${e.message}`;
+  }
+  setTimeout(() => { resultEl.style.display = 'none'; }, 8000);
 }
 
 async function sendReengagement() {
