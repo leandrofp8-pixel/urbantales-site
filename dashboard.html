@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    /* Clickjacking defense: GitHub Pages can't send X-Frame-Options/CSP
+       frame-ancestors headers, so this admin page busts out of any iframe. */
+    if (window.top !== window.self) { window.top.location = window.self.location; }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Urban Tales — Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
