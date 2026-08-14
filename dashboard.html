@@ -10,6 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Urban Tales — Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- World choropleth for "Countries Reached" (Content tab) -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-geo@4.3.4/build/index.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -540,6 +543,29 @@
 
     <!-- ── CONTENT ── -->
     <div class="tab-panel" id="panel-content">
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header" style="margin-bottom:6px">
+          <h2>🌍 Countries Reached</h2>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span id="cmUpdated" style="font-size:0.74rem;color:var(--muted)"></span>
+            <button id="cmRefresh" onclick="renderCountriesMap()" style="font:inherit;font-size:0.82rem;font-weight:600;border-radius:9px;padding:8px 13px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--text)">↻ Refresh</button>
+            <button id="cmDownload" onclick="downloadCountriesMap()" style="font:inherit;font-size:0.82rem;font-weight:600;border-radius:9px;padding:8px 13px;cursor:pointer;border:1px solid var(--primary);background:var(--primary);color:#160b06">⬇ PNG</button>
+          </div>
+        </div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px">Everywhere an Urban Tales narration has been played · all&#8209;time</div>
+        <div class="grid-3" id="cmStats" style="margin-bottom:16px"></div>
+        <div style="position:relative;width:100%;aspect-ratio:2/1;background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+          <canvas id="chartCountries"></canvas>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:0.74rem;color:var(--muted)">
+          <span style="display:flex;align-items:center;gap:8px">Fewer
+            <span style="width:150px;height:9px;border-radius:5px;background:linear-gradient(90deg,#5c3117,#8f451a,#c25a1c,#f2701f,#ff9e5c)"></span>
+          More narrations</span>
+          <span style="display:inline-flex;align-items:center;gap:6px"><i style="width:11px;height:11px;border-radius:3px;display:inline-block;background:#23232a;border:1px solid #333"></i> Not yet reached</span>
+        </div>
+        <div id="cmTop" style="margin-top:16px"></div>
+      </div>
+
       <div class="card" style="margin-bottom:24px">
         <div class="card-title">Daily Narrations</div>
         <div class="chart-wrap-lg"><canvas id="chartNarrations"></canvas></div>
@@ -1534,6 +1560,10 @@ function showTab(name) {
   if (name === 'profiles' && !_profilesTabLoaded) {
     _profilesTabLoaded = true;
     loadUserList('');
+  }
+  if (name === 'content' && !_countriesMapLoaded) {
+    _countriesMapLoaded = true;
+    renderCountriesMap();
   }
 }
 
@@ -3460,6 +3490,135 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
 }
 
 let _profilesTabLoaded = false;
+
+// ══════════════════════════════════════════════
+// COUNTRIES REACHED — world choropleth (Content tab)
+// ══════════════════════════════════════════════
+let _countriesMapLoaded = false;
+let _countriesChart = null;
+let _countriesGeo = null; // cached GeoJSON features
+
+// Map backend country names (Google reverse-geocode) → world-atlas names.
+const COUNTRY_ALIASES = {
+  'United States': 'United States of America', 'USA': 'United States of America', 'US': 'United States of America',
+  'UK': 'United Kingdom', 'Great Britain': 'United Kingdom', 'England': 'United Kingdom', 'Scotland': 'United Kingdom', 'Wales': 'United Kingdom',
+  'Czech Republic': 'Czechia', 'Russian Federation': 'Russia', 'South Korea': 'South Korea', 'Republic of Korea': 'South Korea',
+  'UAE': 'United Arab Emirates', 'Ivory Coast': "Côte d'Ivoire", 'Republic of the Congo': 'Republic of the Congo',
+  'Democratic Republic of the Congo': 'Dem. Rep. Congo', 'Tanzania': 'Tanzania', 'Bosnia and Herzegovina': 'Bosnia and Herz.',
+  'Dominican Republic': 'Dominican Rep.', 'North Macedonia': 'North Macedonia', 'Myanmar (Burma)': 'Myanmar',
+};
+function _atlasName(c) { return COUNTRY_ALIASES[c] || c; }
+
+// Sequential single-hue ramp (dark surface: magnitude ascends by luminance).
+function _cmColor(v) {
+  if (!v) return '#23232a';
+  if (v < 25) return '#5c3117';
+  if (v < 100) return '#8f451a';
+  if (v < 300) return '#c25a1c';
+  if (v < 1000) return '#f2701f';
+  return '#ff9e5c';
+}
+
+async function renderCountriesMap() {
+  const btn = document.getElementById('cmRefresh');
+  const prev = btn ? btn.innerHTML : '';
+  if (btn) { btn.disabled = true; btn.innerHTML = 'Updating…'; }
+  try {
+    // Load world geometry once
+    if (!_countriesGeo) {
+      const world = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r => r.json());
+      _countriesGeo = topojson.feature(world, world.objects.countries).features;
+    }
+    const data = await api('/admin/analytics/countries-reached');
+
+    // Build lookup keyed by atlas names
+    const byName = {};
+    (data.countries || []).forEach(c => { byName[_atlasName(c.country)] = c.count; });
+
+    // Stats — reuse the dashboard's KPI card
+    document.getElementById('cmStats').innerHTML =
+      kpiCard('Countries', data.total_countries, 'reached all-time')
+      + kpiCard('Narrations played', (data.total_narrations || 0).toLocaleString(), 'across all countries')
+      + kpiCard('Countries with 100+', (data.countries || []).filter(c => c.count >= 100).length, 'strong presence');
+
+    // Top countries list
+    const top = (data.countries || []).slice(0, 8);
+    const maxV = top.length ? top[0].count : 1;
+    document.getElementById('cmTop').innerHTML = top.length ? `
+      <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:8px 0 12px">Top countries</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 28px">
+        ${top.map((c, i) => `<div style="display:flex;align-items:center;gap:10px;font-size:0.84rem">
+          <span style="color:var(--muted);width:16px;font-variant-numeric:tabular-nums">${i + 1}</span>
+          <span style="min-width:130px">${c.country}</span>
+          <span style="flex:1;height:6px;background:#141414;border-radius:4px;overflow:hidden"><span style="display:block;height:100%;width:${Math.round(c.count / maxV * 100)}%;background:var(--primary);border-radius:4px"></span></span>
+          <span style="color:var(--muted);font-variant-numeric:tabular-nums;width:52px;text-align:right">${c.count.toLocaleString()}</span>
+        </div>`).join('')}
+      </div>` : '';
+
+    // Choropleth
+    if (_countriesChart) _countriesChart.destroy();
+    if (window.ChartGeo) {
+      try { Chart.register(ChartGeo.ChoroplethController, ChartGeo.ProjectionScale, ChartGeo.ColorScale, ChartGeo.GeoFeature); } catch (e) {}
+    }
+    _countriesChart = new Chart(document.getElementById('chartCountries').getContext('2d'), {
+      type: 'choropleth',
+      data: {
+        labels: _countriesGeo.map(f => f.properties.name),
+        datasets: [{
+          label: 'Countries', outline: _countriesGeo,
+          data: _countriesGeo.map(f => ({ feature: f, value: byName[f.properties.name] || 0 })),
+          borderColor: '#0f0f0f', borderWidth: 0.4,
+          backgroundColor: c => _cmColor(c.raw ? c.raw.value : 0),
+          hoverBackgroundColor: c => (c.raw && c.raw.value) ? '#ffb98a' : '#33333d',
+        }],
+      },
+      options: {
+        maintainAspectRatio: false, showOutline: true, showGraticule: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#101014', borderColor: '#2a2a2a', borderWidth: 1, padding: 10,
+            titleColor: '#f1f1f1', bodyColor: '#bbb', displayColors: false,
+            callbacks: {
+              title: items => items[0].element.feature.properties.name,
+              label: item => item.raw.value ? item.raw.value.toLocaleString() + ' narrations played' : 'Not yet reached',
+            },
+          },
+        },
+        scales: { projection: { axis: 'x', projection: 'naturalEarth1' }, color: { display: false } },
+      },
+    });
+
+    const el = document.getElementById('cmUpdated');
+    if (el) el.textContent = 'Updated ' + new Date().toLocaleTimeString();
+  } catch (e) {
+    console.error('Countries map error:', e);
+    const el = document.getElementById('cmUpdated');
+    if (el) el.textContent = 'Failed to load — try Refresh';
+  } finally {
+    if (btn) { btn.disabled = false; btn.innerHTML = prev; }
+  }
+}
+
+// Export the map as PNG. Wide by default; Shift-click for a 1080² Instagram square.
+function downloadCountriesMap(square) {
+  if (!_countriesChart) return;
+  const src = _countriesChart.canvas;
+  let url;
+  if (square || (window.event && window.event.shiftKey)) {
+    const S = 1080, cv = document.createElement('canvas');
+    cv.width = S; cv.height = S;
+    const g = cv.getContext('2d');
+    g.fillStyle = '#0f0f0f'; g.fillRect(0, 0, S, S);
+    const scale = S / src.width, h = src.height * scale;
+    g.drawImage(src, 0, (S - h) / 2, S, h);
+    url = cv.toDataURL('image/png');
+  } else {
+    url = _countriesChart.toBase64Image('image/png', 1);
+  }
+  const a = document.createElement('a');
+  a.href = url; a.download = 'urban-tales-countries-reached.png'; a.click();
+}
 
 // ══════════════════════════════════════════════
 // LOAD ALL DATA
