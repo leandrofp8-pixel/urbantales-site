@@ -3627,23 +3627,29 @@ async function renderCountriesMap() {
 }
 
 // Export the map as PNG. Wide by default; Shift-click for a 1080² Instagram square.
+// Always composite onto the dark ground so the oceans aren't transparent/white.
 function downloadCountriesMap(square) {
   if (!_countriesChart) return;
   const src = _countriesChart.canvas;
-  let url;
-  if (square || (window.event && window.event.shiftKey)) {
-    const S = 1080, cv = document.createElement('canvas');
-    cv.width = S; cv.height = S;
-    const g = cv.getContext('2d');
-    g.fillStyle = '#0f0f0f'; g.fillRect(0, 0, S, S);
+  const isSquare = square || (window.event && window.event.shiftKey);
+  const out = document.createElement('canvas');
+  const g = out.getContext('2d');
+  g.fillStyle = '#0f0f0f';
+  if (isSquare) {
+    const S = 1080;
+    out.width = S; out.height = S;
+    g.fillRect(0, 0, S, S);
     const scale = S / src.width, h = src.height * scale;
     g.drawImage(src, 0, (S - h) / 2, S, h);
-    url = cv.toDataURL('image/png');
   } else {
-    url = _countriesChart.toBase64Image('image/png', 1);
+    out.width = src.width; out.height = src.height;
+    g.fillRect(0, 0, out.width, out.height);
+    g.drawImage(src, 0, 0);
   }
   const a = document.createElement('a');
-  a.href = url; a.download = 'urban-tales-countries-reached.png'; a.click();
+  a.href = out.toDataURL('image/png');
+  a.download = 'urban-tales-countries-reached.png';
+  a.click();
 }
 
 // ══════════════════════════════════════════════
