@@ -3564,7 +3564,7 @@ async function renderCountriesMap() {
     document.getElementById('cmStats').innerHTML =
       kpiCard('Countries', data.total_countries, 'reached all-time')
       + kpiCard('Narrations played', (data.total_narrations || 0).toLocaleString(), 'across all countries')
-      + kpiCard('Countries with 10+', (data.countries || []).filter(c => c.count >= 10).length, 'strong presence');
+      + kpiCard('Continents', data.total_continents || 0, (data.continents || []).join(' · ') || 'reached');
 
     // Top countries list
     const top = (data.countries || []).slice(0, 8);
