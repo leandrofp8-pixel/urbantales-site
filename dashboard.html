@@ -548,6 +548,7 @@
           <h2>🌍 Countries Reached</h2>
           <div style="display:flex;align-items:center;gap:10px">
             <span id="cmUpdated" style="font-size:0.74rem;color:var(--muted)"></span>
+            <button id="cmBackfill" onclick="backfillCountries()" title="Scan all past narrations and fill in their country. Run once to include history; safe to re-run." style="font:inherit;font-size:0.82rem;font-weight:600;border-radius:9px;padding:8px 13px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Sync history</button>
             <button id="cmRefresh" onclick="renderCountriesMap()" style="font:inherit;font-size:0.82rem;font-weight:600;border-radius:9px;padding:8px 13px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--text)">↻ Refresh</button>
             <button id="cmDownload" onclick="downloadCountriesMap()" style="font:inherit;font-size:0.82rem;font-weight:600;border-radius:9px;padding:8px 13px;cursor:pointer;border:1px solid var(--primary);background:var(--primary);color:#160b06">⬇ PNG</button>
           </div>
@@ -3517,6 +3518,30 @@ function _cmColor(v) {
   if (v < 300) return '#c25a1c';
   if (v < 1000) return '#f2701f';
   return '#ff9e5c';
+}
+
+// One-time (idempotent) backfill of country on historical narrations, then refresh.
+async function backfillCountries() {
+  const btn = document.getElementById('cmBackfill');
+  const prev = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = 'Syncing…';
+  try {
+    const res = await fetch(`${API}/admin/backfill-narration-countries`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+    });
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    const r = await res.json();
+    const el = document.getElementById('cmUpdated');
+    if (el) el.textContent = `Synced ${r.updated.toLocaleString()} narrations` + (r.unresolved ? ` · ${r.unresolved.toLocaleString()} unresolved` : '');
+    await renderCountriesMap();
+  } catch (e) {
+    console.error('Backfill error:', e);
+    const el = document.getElementById('cmUpdated');
+    if (el) el.textContent = 'Sync failed — try again';
+  } finally {
+    btn.disabled = false; btn.innerHTML = prev;
+  }
 }
 
 async function renderCountriesMap() {
