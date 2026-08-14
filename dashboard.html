@@ -3564,7 +3564,7 @@ async function renderCountriesMap() {
     document.getElementById('cmStats').innerHTML =
       kpiCard('Countries', data.total_countries, 'reached all-time')
       + kpiCard('Narrations played', (data.total_narrations || 0).toLocaleString(), 'across all countries')
-      + kpiCard('Countries with 100+', (data.countries || []).filter(c => c.count >= 100).length, 'strong presence');
+      + kpiCard('Countries with 10+', (data.countries || []).filter(c => c.count >= 10).length, 'strong presence');
 
     // Top countries list
     const top = (data.countries || []).slice(0, 8);
@@ -3581,24 +3581,25 @@ async function renderCountriesMap() {
       </div>` : '';
 
     // Choropleth
+    if (!window.ChartGeo) throw new Error('chartjs-chart-geo not loaded (CDN blocked?)');
+    try { Chart.register(ChartGeo.ChoroplethController, ChartGeo.ProjectionScale, ChartGeo.ColorScale, ChartGeo.GeoFeature); } catch (e) {}
     if (_countriesChart) _countriesChart.destroy();
-    if (window.ChartGeo) {
-      try { Chart.register(ChartGeo.ChoroplethController, ChartGeo.ProjectionScale, ChartGeo.ColorScale, ChartGeo.GeoFeature); } catch (e) {}
-    }
+
+    // Precompute per-country colors aligned to feature order (no scriptables).
+    const bg = _countriesGeo.map(f => _cmColor(byName[f.properties.name] || 0));
     _countriesChart = new Chart(document.getElementById('chartCountries').getContext('2d'), {
       type: 'choropleth',
       data: {
         labels: _countriesGeo.map(f => f.properties.name),
         datasets: [{
-          label: 'Countries', outline: _countriesGeo,
+          label: 'Countries',
           data: _countriesGeo.map(f => ({ feature: f, value: byName[f.properties.name] || 0 })),
+          backgroundColor: bg,
           borderColor: '#0f0f0f', borderWidth: 0.4,
-          backgroundColor: c => _cmColor(c.raw ? c.raw.value : 0),
-          hoverBackgroundColor: c => (c.raw && c.raw.value) ? '#ffb98a' : '#33333d',
         }],
       },
       options: {
-        maintainAspectRatio: false, showOutline: true, showGraticule: false,
+        maintainAspectRatio: false, showOutline: false, showGraticule: false,
         plugins: {
           legend: { display: false },
           tooltip: {
@@ -3610,7 +3611,7 @@ async function renderCountriesMap() {
             },
           },
         },
-        scales: { projection: { axis: 'x', projection: 'naturalEarth1' }, color: { display: false } },
+        scales: { projection: { axis: 'x', projection: 'naturalEarth1' }, color: { axis: 'x', display: false } },
       },
     });
 
@@ -3619,7 +3620,7 @@ async function renderCountriesMap() {
   } catch (e) {
     console.error('Countries map error:', e);
     const el = document.getElementById('cmUpdated');
-    if (el) el.textContent = 'Failed to load — try Refresh';
+    if (el) el.textContent = 'Map error: ' + (e && e.message ? e.message : e);
   } finally {
     if (btn) { btn.disabled = false; btn.innerHTML = prev; }
   }
