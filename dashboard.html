@@ -13,6 +13,9 @@
   <!-- World choropleth for "Countries Reached" (Content tab) -->
   <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-geo@4.3.4/build/index.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+  <!-- Leaflet for the per-user route map (Profiles tab) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -3463,8 +3466,23 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
     </div>
   </div>`;
 
+  // Route map — the path the user took on a given day (Leaflet)
+  const journeyCard = `<div class="card" style="margin-bottom:16px">
+    <div class="section-header" style="margin-bottom:12px">
+      <h2>🗺️ Route Map</h2>
+      <div style="display:flex;align-items:center;gap:8px">
+        <select id="journeyDate" onchange="renderUserJourney('${user.email}', this.value)"
+          style="font:inherit;font-size:0.82rem;background:#141414;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 10px"></select>
+        <span id="journeyMeta" style="font-size:0.74rem;color:var(--muted)"></span>
+      </div>
+    </div>
+    <div id="journeyMap" style="width:100%;height:440px;border:1px solid var(--border);border-radius:12px;background:var(--bg)"></div>
+  </div>`;
+
   document.getElementById('profilesMain').innerHTML =
-    header + metrics + timeline + history + chartSection + purchaseSection;
+    header + metrics + timeline + history + journeyCard + chartSection + purchaseSection;
+
+  initUserJourney(user.email);
 
   // Render narrations/day chart
   if (_profileNarChart) { _profileNarChart.destroy(); _profileNarChart = null; }
@@ -3487,6 +3505,62 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
         },
       },
     });
+  }
+}
+
+let _journeyMap = null;
+
+// Load the most recent day and populate the day picker.
+async function initUserJourney(email) {
+  await renderUserJourney(email, '');
+}
+
+// Render the user's route for a given day as a Leaflet map (dark tiles,
+// numbered orange stops connected in listen order).
+async function renderUserJourney(email, date) {
+  const mapEl = document.getElementById('journeyMap');
+  const meta = document.getElementById('journeyMeta');
+  if (!mapEl) return;
+  try {
+    const q = date ? `&date=${encodeURIComponent(date)}` : '';
+    const data = await api(`/admin/users/journey?email=${encodeURIComponent(email)}${q}`);
+
+    const sel = document.getElementById('journeyDate');
+    if (sel) {
+      sel.innerHTML = (data.available_dates || []).length
+        ? data.available_dates.map(d => `<option value="${d}"${d === data.date ? ' selected' : ''}>${d}</option>`).join('')
+        : '<option>No listening days</option>';
+    }
+
+    const pts = (data.points || []).filter(p => p.lat != null && p.lon != null);
+    if (meta) meta.textContent = data.total
+      ? `${data.total} stop${data.total !== 1 ? 's' : ''}` + (data.located < data.total ? ` · ${data.total - data.located} without coordinates` : '')
+      : 'No listens this day';
+
+    if (_journeyMap) { _journeyMap.remove(); _journeyMap = null; }
+    _journeyMap = L.map(mapEl);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap © CARTO', subdomains: 'abcd', maxZoom: 19,
+    }).addTo(_journeyMap);
+
+    if (!pts.length) { _journeyMap.setView([20, 0], 2); return; }
+
+    const latlngs = pts.map(p => [p.lat, p.lon]);
+    L.polyline(latlngs, { color: '#FF6B35', weight: 3, opacity: 0.85 }).addTo(_journeyMap);
+    pts.forEach(p => {
+      const icon = L.divIcon({
+        className: '',
+        html: `<div style="width:24px;height:24px;border-radius:50%;background:#FF6B35;color:#160b06;font:600 12px/24px -apple-system,sans-serif;text-align:center;border:2px solid #0f0f0f">${p.order}</div>`,
+        iconSize: [24, 24], iconAnchor: [12, 12],
+      });
+      L.marker([p.lat, p.lon], { icon }).addTo(_journeyMap)
+        .bindPopup(`<b>${p.order}. ${p.name || ''}</b><br>${p.city || ''}<br><span style="color:#888">${p.listened_at ? new Date(p.listened_at).toLocaleTimeString() : ''}</span>`);
+    });
+    _journeyMap.fitBounds(latlngs, { padding: [40, 40] });
+    setTimeout(() => _journeyMap && _journeyMap.invalidateSize(), 50);
+  } catch (e) {
+    console.error('Journey map error:', e);
+    if (meta) meta.textContent = 'Failed to load route';
   }
 }
 
