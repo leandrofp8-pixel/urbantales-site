@@ -1365,6 +1365,23 @@
     <!-- ── PROFILES ── -->
     <div class="tab-panel" id="panel-trippass">
       <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Agências</h2>
+          <button onclick="loadAgencies()" style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">↻ Atualizar</button>
+        </div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:14px">
+          Contas do portal <code>urbantales.net/agency.html</code>. Aprove para liberar a emissão pela própria agência.
+          Deixe a tarifa em branco para usar o padrão global.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Agência</th><th>Contato</th><th>Tarifa/dia</th><th>Status</th><th></th></tr></thead>
+            <tbody id="agencyBody"><tr><td colspan="5" class="loading">Carregando…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
         <div class="card-title">Emitir Trip Pass</div>
         <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px">
           Cada passe é um código único de uso único. Cobrado por passe emitido —
@@ -1622,6 +1639,7 @@ function showTab(name) {
   if (name === 'trippass' && !_tripPassTabLoaded) {
     _tripPassTabLoaded = true;
     loadTripPasses();
+    loadAgencies();
   }
 }
 
@@ -3573,6 +3591,64 @@ const TP_STATUS = {
   cancelled: { label: 'Cancelado', color: 'var(--muted)'  },
 };
 const _usd = c => '$' + ((c || 0) / 100).toFixed(2);
+
+async function loadAgencies() {
+  const body = document.getElementById('agencyBody');
+  try {
+    const d = await api('/admin/agency-accounts');
+    body.innerHTML = (d.accounts || []).map(a => {
+      const rate = a.rate_cents_per_day == null
+        ? `${_usd(a.effective_rate_cents_per_day)} <span style="color:var(--muted);font-size:0.75rem">(padrão)</span>`
+        : _usd(a.rate_cents_per_day);
+      return `<tr>
+        <td><div style="font-weight:600">${a.company || a.name || '—'}</div>
+            <div style="font-size:0.75rem;color:var(--muted)">${a.name || ''}</div></td>
+        <td style="color:var(--muted);font-size:0.8rem">${a.email}${a.phone ? '<br>' + a.phone : ''}</td>
+        <td class="num">${rate}</td>
+        <td><span style="color:${a.approved ? 'var(--green)' : 'var(--yellow)'};font-weight:600;font-size:0.8rem">${a.approved ? 'Aprovada' : 'Pendente'}</span></td>
+        <td style="white-space:nowrap">
+          ${a.approved ? '' : `<button class="row-btn" onclick="approveAgency('${a.email}')" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--primary);background:var(--primary);color:#160b06;cursor:pointer;margin-right:6px">Aprovar</button>`}
+          <button onclick="setAgencyRate('${a.email}', ${a.rate_cents_per_day ?? 'null'})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Tarifa</button>
+        </td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:16px">Nenhuma agência cadastrada</td></tr>';
+  } catch (e) {
+    body.innerHTML = `<tr><td colspan="5" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${e.message}</td></tr>`;
+  }
+}
+
+async function approveAgency(email) {
+  const raw = prompt(`Aprovar ${email}.\n\nTarifa negociada em US$ por viajante/dia (deixe vazio para usar o padrão):`, '');
+  if (raw === null) return;
+  const cents = raw.trim() === '' ? null : Math.round(parseFloat(raw) * 100);
+  if (cents !== null && (isNaN(cents) || cents < 0)) { alert('Tarifa inválida.'); return; }
+  try {
+    const res = await fetch(`${API}/admin/agency-accounts/${encodeURIComponent(email)}/approve`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify({ rate_cents_per_day: cents }),
+    });
+    if (!res.ok) throw new Error(`Erro ${res.status}`);
+    loadAgencies();
+  } catch (e) { alert('Falha ao aprovar: ' + e.message); }
+}
+
+async function setAgencyRate(email, current) {
+  const raw = prompt(`Tarifa em US$ por viajante/dia para ${email}.\nDeixe vazio para usar o padrão global.`,
+                     current == null ? '' : (current / 100).toFixed(2));
+  if (raw === null) return;
+  const cents = raw.trim() === '' ? null : Math.round(parseFloat(raw) * 100);
+  if (cents !== null && (isNaN(cents) || cents < 0)) { alert('Tarifa inválida.'); return; }
+  try {
+    const res = await fetch(`${API}/admin/agency-accounts/${encodeURIComponent(email)}/rate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify({ rate_cents_per_day: cents }),
+    });
+    if (!res.ok) throw new Error(`Erro ${res.status}`);
+    loadAgencies();
+  } catch (e) { alert('Falha ao salvar: ' + e.message); }
+}
 
 async function issueTripPasses() {
   const agency = document.getElementById('tpAgency').value.trim();
