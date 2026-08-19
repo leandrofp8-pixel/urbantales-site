@@ -1368,7 +1368,7 @@
         <div class="card-title">Emitir Trip Pass</div>
         <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px">
           Cada passe é um código único de uso único. Cobrado por passe emitido —
-          Cobrado por passe emitido — <b id="tpRateLabel">$1.00</b> por viajante/dia (editável abaixo). Cancelável até 1 dia antes da viagem, se não usado.
+          <b id="tpRateLabel">$1.00</b> por viajante/dia (editável abaixo). Cancelável até 1 dia antes da viagem, se não usado.
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end">
           <label style="font-size:0.75rem;color:var(--muted)">Agência
@@ -1405,7 +1405,7 @@
         <div class="grid-3" id="tpStats" style="margin-bottom:16px"></div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Código</th><th>Agência</th><th>Viajante</th><th>Viagem</th><th>Status</th><th>Valor</th><th></th></tr></thead>
+            <thead><tr><th>Código</th><th>Agência</th><th>Viajante</th><th>Resgatado por</th><th>Viagem</th><th>Status</th><th>Valor</th><th></th></tr></thead>
             <tbody id="tpTableBody"><tr><td colspan="7" class="loading">Carregando…</td></tr></tbody>
           </table>
         </div>
@@ -3638,18 +3638,33 @@ async function loadTripPasses() {
     body.innerHTML = (data.passes || []).map(p => {
       const st = TP_STATUS[p.status] || { label: p.status, color: 'var(--muted)' };
       const canCancel = p.status === 'issued';
+      // "Resgatado por" is the account that actually redeemed — which may legitimately
+      // differ from the traveller label, since redemption is never identity-checked
+      // (Apple sign-in hands back anonymised relay emails).
+      // Stored UTC; naive ISO strings need an explicit Z so they aren't read as local.
+      let when = null;
+      if (typeof p.redeemed_at === 'string' && p.redeemed_at) {
+        const iso = /[Zz]|[+-]\d{2}:?\d{2}$/.test(p.redeemed_at) ? p.redeemed_at : p.redeemed_at + 'Z';
+        const d = new Date(iso);
+        if (!isNaN(d)) when = d;
+      }
+      const redeemedCell = p.redeemed_by
+        ? `<div style="font-size:0.82rem;word-break:break-all">${p.redeemed_by}</div>` +
+          (when ? `<div style="font-size:0.72rem;color:var(--muted);margin-top:2px">${when.toLocaleDateString()} ${when.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>` : '')
+        : '<span style="color:var(--muted)">—</span>';
       return `<tr>
         <td><code style="color:var(--primary);letter-spacing:1px">${p.code}</code></td>
         <td style="color:var(--muted)">${p.agency_name || p.agency_id || '—'}</td>
         <td>${p.traveler_name || '—'}</td>
+        <td>${redeemedCell}</td>
         <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
         <td><span style="color:${st.color};font-weight:600;font-size:0.8rem">${st.label}</span></td>
         <td class="num">${_usd(p.net_cents)}</td>
         <td>${canCancel ? `<button onclick="cancelTripPass('${p.code}')" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Cancelar</button>` : ''}</td>
       </tr>`;
-    }).join('') || '<tr><td colspan="7" style="color:var(--muted);text-align:center;padding:16px">Nenhum passe emitido ainda</td></tr>';
+    }).join('') || '<tr><td colspan="8" style="color:var(--muted);text-align:center;padding:16px">Nenhum passe emitido ainda</td></tr>';
   } catch (e) {
-    body.innerHTML = `<tr><td colspan="7" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${e.message}</td></tr>`;
+    body.innerHTML = `<tr><td colspan="8" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${e.message}</td></tr>`;
   }
 }
 
