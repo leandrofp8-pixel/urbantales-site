@@ -398,6 +398,7 @@
     <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
     <button class="tab-btn" onclick="showTab('narration')">🎙️ Narration</button>
     <button class="tab-btn" onclick="showTab('profiles')">👤 Profiles</button>
+    <button class="tab-btn" onclick="showTab('trippass')">🎟️ Trip Pass</button>
   </nav>
 
   <main>
@@ -1362,6 +1363,52 @@
     </div><!-- /panel-narration -->
 
     <!-- ── PROFILES ── -->
+    <div class="tab-panel" id="panel-trippass">
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Emitir Trip Pass</div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px">
+          Cada passe é um código único de uso único. Cobrado por passe emitido —
+          R$ 5,00 por viajante/dia. Cancelável até 1 dia antes da viagem, se não usado.
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end">
+          <label style="font-size:0.75rem;color:var(--muted)">Agência
+            <input id="tpAgency" placeholder="ex: viagens-abc" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">Viajante <span style="opacity:.6">(opcional)</span>
+            <input id="tpTraveler" placeholder="Nome do viajante" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">Início da viagem
+            <input id="tpStart" type="date" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">Dias
+            <input id="tpDays" type="number" min="1" max="60" value="7" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">Quantidade
+            <input id="tpQty" type="number" min="1" max="200" value="1" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <button onclick="issueTripPasses()" style="font:inherit;font-size:0.85rem;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid var(--primary);background:var(--primary);color:#160b06;cursor:pointer">Emitir</button>
+        </div>
+        <div id="tpIssueResult" style="margin-top:16px"></div>
+      </div>
+
+      <div class="card">
+        <div class="section-header">
+          <h2>Passes emitidos</h2>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="tpFilterMonth" type="month" onchange="loadTripPasses()" style="font:inherit;font-size:0.82rem;background:#141414;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 10px">
+            <button onclick="loadTripPasses()" style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">↻ Atualizar</button>
+          </div>
+        </div>
+        <div class="grid-3" id="tpStats" style="margin-bottom:16px"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Código</th><th>Agência</th><th>Viajante</th><th>Viagem</th><th>Status</th><th>Valor</th><th></th></tr></thead>
+            <tbody id="tpTableBody"><tr><td colspan="7" class="loading">Carregando…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <div class="tab-panel" id="panel-profiles">
       <div class="profiles-layout">
 
@@ -1568,6 +1615,10 @@ function showTab(name) {
   if (name === 'content' && !_countriesMapLoaded) {
     _countriesMapLoaded = true;
     renderCountriesMap();
+  }
+  if (name === 'trippass' && !_tripPassTabLoaded) {
+    _tripPassTabLoaded = true;
+    loadTripPasses();
   }
 }
 
@@ -3507,6 +3558,102 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
     });
   }
 }
+
+// ══════════════════════════════════════════════
+// TRIP PASS (B2B) — issue / list / cancel
+// ══════════════════════════════════════════════
+const TP_STATUS = {
+  issued:    { label: 'Emitido',   color: 'var(--yellow)' },
+  redeemed:  { label: 'Resgatado', color: 'var(--green)'  },
+  cancelled: { label: 'Cancelado', color: 'var(--muted)'  },
+};
+const _brl = c => 'R$ ' + ((c || 0) / 100).toFixed(2).replace('.', ',');
+
+async function issueTripPasses() {
+  const agency = document.getElementById('tpAgency').value.trim();
+  const start = document.getElementById('tpStart').value;
+  const days = parseInt(document.getElementById('tpDays').value, 10);
+  const qty = parseInt(document.getElementById('tpQty').value, 10) || 1;
+  const traveler = document.getElementById('tpTraveler').value.trim();
+  const out = document.getElementById('tpIssueResult');
+
+  if (!agency || !start || !days) {
+    out.innerHTML = '<div style="color:var(--danger);font-size:0.85rem">Preencha agência, data de início e dias.</div>';
+    return;
+  }
+  out.innerHTML = '<div class="loading" style="font-size:0.85rem">Emitindo…</div>';
+  try {
+    const res = await fetch(`${API}/admin/trip-passes`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify({
+        agency_id: agency, agency_name: agency, start_date: start,
+        days, quantity: qty, traveler_name: traveler || null,
+      }),
+    });
+    if (!res.ok) throw new Error((await res.json()).detail || `Erro ${res.status}`);
+    const r = await res.json();
+    out.innerHTML = `
+      <div style="padding:14px 16px;background:#141414;border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 10px 10px 0">
+        <div style="font-size:0.85rem;font-weight:600;margin-bottom:8px">
+          ${r.issued} passe${r.issued !== 1 ? 's' : ''} emitido${r.issued !== 1 ? 's' : ''} · ${_brl(r.total_net_cents)}
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          ${r.passes.map(p => `<code style="font-size:1rem;letter-spacing:2px;background:#0d0d0d;border:1px solid var(--border);padding:7px 12px;border-radius:8px;color:var(--primary)">${p.code}</code>`).join('')}
+        </div>
+        <div style="font-size:0.74rem;color:var(--muted);margin-top:10px">Entregue no voucher como QR ou link: <code>urbantales.net/redeem?code=CÓDIGO</code></div>
+      </div>`;
+    loadTripPasses();
+  } catch (e) {
+    out.innerHTML = `<div style="color:var(--danger);font-size:0.85rem">Falha ao emitir: ${e.message}</div>`;
+  }
+}
+
+async function loadTripPasses() {
+  const body = document.getElementById('tpTableBody');
+  const month = document.getElementById('tpFilterMonth').value;
+  try {
+    const data = await api(`/admin/trip-passes${month ? `?month=${month}` : ''}`);
+    document.getElementById('tpStats').innerHTML =
+      kpiCard('Faturável', _brl(data.billable_net_cents), `${data.billable_count} passe(s) emitido(s)`)
+      + kpiCard('Resgatados', data.redeemed_count, 'já usados por viajantes')
+      + kpiCard('Cancelados', data.cancelled_count, 'não faturados');
+
+    body.innerHTML = (data.passes || []).map(p => {
+      const st = TP_STATUS[p.status] || { label: p.status, color: 'var(--muted)' };
+      const canCancel = p.status === 'issued';
+      return `<tr>
+        <td><code style="color:var(--primary);letter-spacing:1px">${p.code}</code></td>
+        <td style="color:var(--muted)">${p.agency_name || p.agency_id || '—'}</td>
+        <td>${p.traveler_name || '—'}</td>
+        <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
+        <td><span style="color:${st.color};font-weight:600;font-size:0.8rem">${st.label}</span></td>
+        <td class="num">${_brl(p.net_cents)}</td>
+        <td>${canCancel ? `<button onclick="cancelTripPass('${p.code}')" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Cancelar</button>` : ''}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="7" style="color:var(--muted);text-align:center;padding:16px">Nenhum passe emitido ainda</td></tr>';
+  } catch (e) {
+    body.innerHTML = `<tr><td colspan="7" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${e.message}</td></tr>`;
+  }
+}
+
+async function cancelTripPass(code) {
+  if (!confirm(`Cancelar o passe ${code}? Ele deixa de ser faturado.`)) return;
+  try {
+    const res = await fetch(`${API}/admin/trip-passes/${encodeURIComponent(code)}/cancel`, {
+      method: 'POST', headers: { 'Authorization': `Bearer ${getToken()}` },
+    });
+    if (!res.ok) {
+      const d = await res.json().catch(() => ({}));
+      const msg = (d.detail && (d.detail.message || d.detail)) || `Erro ${res.status}`;
+      alert(typeof msg === 'string' ? msg : 'Não foi possível cancelar.');
+      return;
+    }
+    loadTripPasses();
+  } catch (e) { alert('Falha ao cancelar: ' + e.message); }
+}
+
+let _tripPassTabLoaded = false;
 
 let _journeyMap = null;
 
