@@ -1368,7 +1368,7 @@
         <div class="card-title">Emitir Trip Pass</div>
         <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px">
           Cada passe é um código único de uso único. Cobrado por passe emitido —
-          R$ 5,00 por viajante/dia. Cancelável até 1 dia antes da viagem, se não usado.
+          Cobrado por passe emitido — <b id="tpRateLabel">$1.00</b> por viajante/dia (editável abaixo). Cancelável até 1 dia antes da viagem, se não usado.
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end">
           <label style="font-size:0.75rem;color:var(--muted)">Agência
@@ -1385,6 +1385,9 @@
           </label>
           <label style="font-size:0.75rem;color:var(--muted)">Quantidade
             <input id="tpQty" type="number" min="1" max="200" value="1" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">US$ / dia
+            <input id="tpRate" type="number" min="0" step="0.01" placeholder="1.00" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
           </label>
           <button onclick="issueTripPasses()" style="font:inherit;font-size:0.85rem;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid var(--primary);background:var(--primary);color:#160b06;cursor:pointer">Emitir</button>
         </div>
@@ -3046,6 +3049,7 @@ function renderSettings(data) {
     field('daily_free_landmark_limit', 'Free Landmarks / Day', 'number', s.daily_free_landmark_limit ?? 3, 'min="0" max="100"') +
     field('day_pass_price_points', 'Day Pass Price (coins)', 'number', s.day_pass_price_points ?? 500, 'min="0"') +
     field('city_unlock_price_points', 'City Unlock Price (coins)', 'number', s.city_unlock_price_points ?? 1000, 'min="0"') +
+    field('trip_pass_rate_cents_per_day', 'Trip Pass Rate (US cents / traveler-day)', 'number', s.trip_pass_rate_cents_per_day ?? 100, 'min="0"') +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('tours_creation_free', 'Tours Creation Free', s.tours_creation_free ?? true)}</div>` +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Content Quality (Landmarks)</div>` +
@@ -3096,6 +3100,7 @@ async function saveSettings() {
     daily_free_landmark_limit: parseInt(document.getElementById('s_daily_free_landmark_limit').value),
     day_pass_price_points: parseInt(document.getElementById('s_day_pass_price_points').value),
     city_unlock_price_points: parseInt(document.getElementById('s_city_unlock_price_points').value),
+    trip_pass_rate_cents_per_day: parseInt(document.getElementById('s_trip_pass_rate_cents_per_day').value),
     tours_creation_free: document.getElementById('s_tours_creation_free').checked,
     min_reviews_to_show: parseInt(document.getElementById('s_min_reviews_to_show').value),
     must_see_min_rating: parseFloat(document.getElementById('s_must_see_min_rating').value),
@@ -3567,7 +3572,7 @@ const TP_STATUS = {
   redeemed:  { label: 'Resgatado', color: 'var(--green)'  },
   cancelled: { label: 'Cancelado', color: 'var(--muted)'  },
 };
-const _brl = c => 'R$ ' + ((c || 0) / 100).toFixed(2).replace('.', ',');
+const _usd = c => '$' + ((c || 0) / 100).toFixed(2);
 
 async function issueTripPasses() {
   const agency = document.getElementById('tpAgency').value.trim();
@@ -3575,6 +3580,9 @@ async function issueTripPasses() {
   const days = parseInt(document.getElementById('tpDays').value, 10);
   const qty = parseInt(document.getElementById('tpQty').value, 10) || 1;
   const traveler = document.getElementById('tpTraveler').value.trim();
+  const rateRaw = document.getElementById('tpRate').value.trim();
+  // Blank = use the dashboard default rate; a value here overrides it for this batch only.
+  const rateOverride = rateRaw === '' ? null : Math.round(parseFloat(rateRaw) * 100);
   const out = document.getElementById('tpIssueResult');
 
   if (!agency || !start || !days) {
@@ -3589,6 +3597,7 @@ async function issueTripPasses() {
       body: JSON.stringify({
         agency_id: agency, agency_name: agency, start_date: start,
         days, quantity: qty, traveler_name: traveler || null,
+        rate_cents_per_day: rateOverride,
       }),
     });
     if (!res.ok) throw new Error((await res.json()).detail || `Erro ${res.status}`);
@@ -3596,7 +3605,7 @@ async function issueTripPasses() {
     out.innerHTML = `
       <div style="padding:14px 16px;background:#141414;border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 10px 10px 0">
         <div style="font-size:0.85rem;font-weight:600;margin-bottom:8px">
-          ${r.issued} passe${r.issued !== 1 ? 's' : ''} emitido${r.issued !== 1 ? 's' : ''} · ${_brl(r.total_net_cents)}
+          ${r.issued} passe${r.issued !== 1 ? 's' : ''} emitido${r.issued !== 1 ? 's' : ''} · ${_usd(r.total_net_cents)}
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:8px">
           ${r.passes.map(p => `<code style="font-size:1rem;letter-spacing:2px;background:#0d0d0d;border:1px solid var(--border);padding:7px 12px;border-radius:8px;color:var(--primary)">${p.code}</code>`).join('')}
@@ -3614,8 +3623,15 @@ async function loadTripPasses() {
   const month = document.getElementById('tpFilterMonth').value;
   try {
     const data = await api(`/admin/trip-passes${month ? `?month=${month}` : ''}`);
+    const rate = data.current_rate_cents_per_day;
+    if (rate != null) {
+      const lbl = document.getElementById('tpRateLabel');
+      if (lbl) lbl.textContent = _usd(rate);
+      const inp = document.getElementById('tpRate');
+      if (inp && !inp.value) inp.placeholder = (rate / 100).toFixed(2);
+    }
     document.getElementById('tpStats').innerHTML =
-      kpiCard('Faturável', _brl(data.billable_net_cents), `${data.billable_count} passe(s) emitido(s)`)
+      kpiCard('Faturável', _usd(data.billable_net_cents), `${data.billable_count} passe(s) emitido(s)`)
       + kpiCard('Resgatados', data.redeemed_count, 'já usados por viajantes')
       + kpiCard('Cancelados', data.cancelled_count, 'não faturados');
 
@@ -3628,7 +3644,7 @@ async function loadTripPasses() {
         <td>${p.traveler_name || '—'}</td>
         <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
         <td><span style="color:${st.color};font-weight:600;font-size:0.8rem">${st.label}</span></td>
-        <td class="num">${_brl(p.net_cents)}</td>
+        <td class="num">${_usd(p.net_cents)}</td>
         <td>${canCancel ? `<button onclick="cancelTripPass('${p.code}')" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Cancelar</button>` : ''}</td>
       </tr>`;
     }).join('') || '<tr><td colspan="7" style="color:var(--muted);text-align:center;padding:16px">Nenhum passe emitido ainda</td></tr>';
