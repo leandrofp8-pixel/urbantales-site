@@ -3068,6 +3068,8 @@ function renderSettings(data) {
     field('day_pass_price_points', 'Day Pass Price (coins)', 'number', s.day_pass_price_points ?? 500, 'min="0"') +
     field('city_unlock_price_points', 'City Unlock Price (coins)', 'number', s.city_unlock_price_points ?? 1000, 'min="0"') +
     field('trip_pass_rate_cents_per_day', 'Trip Pass Rate (US cents / traveler-day)', 'number', s.trip_pass_rate_cents_per_day ?? 100, 'min="0"') +
+    field('trip_pass_min_days', 'Trip Pass Min Days', 'number', s.trip_pass_min_days ?? 1, 'min="1"') +
+    field('trip_pass_max_days', 'Trip Pass Max Days', 'number', s.trip_pass_max_days ?? 60, 'min="1"') +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('tours_creation_free', 'Tours Creation Free', s.tours_creation_free ?? true)}</div>` +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Content Quality (Landmarks)</div>` +
@@ -3119,6 +3121,8 @@ async function saveSettings() {
     day_pass_price_points: parseInt(document.getElementById('s_day_pass_price_points').value),
     city_unlock_price_points: parseInt(document.getElementById('s_city_unlock_price_points').value),
     trip_pass_rate_cents_per_day: parseInt(document.getElementById('s_trip_pass_rate_cents_per_day').value),
+    trip_pass_min_days: parseInt(document.getElementById('s_trip_pass_min_days').value),
+    trip_pass_max_days: parseInt(document.getElementById('s_trip_pass_max_days').value),
     tours_creation_free: document.getElementById('s_tours_creation_free').checked,
     min_reviews_to_show: parseInt(document.getElementById('s_min_reviews_to_show').value),
     must_see_min_rating: parseFloat(document.getElementById('s_must_see_min_rating').value),
@@ -3709,10 +3713,13 @@ async function loadTripPasses() {
     document.getElementById('tpStats').innerHTML =
       kpiCard('Faturável', _usd(data.billable_net_cents), `${data.billable_count} passe(s) emitido(s)`)
       + kpiCard('Resgatados', data.redeemed_count, 'já usados por viajantes')
-      + kpiCard('Cancelados', data.cancelled_count, 'não faturados');
+      + kpiCard('Cancelados', data.cancelled_count,
+                (data.credited_count ? `${data.credited_count} por cortesia · ` : '') + 'não faturados');
 
     body.innerHTML = (data.passes || []).map(p => {
-      const st = TP_STATUS[p.status] || { label: p.status, color: 'var(--muted)' };
+      const st = p.credited
+        ? { label: 'Creditado', color: 'var(--blue)' }
+        : (TP_STATUS[p.status] || { label: p.status, color: 'var(--muted)' });
       const canCancel = p.status === 'issued';
       // "Resgatado por" is the account that actually redeemed — which may legitimately
       // differ from the traveller label, since redemption is never identity-checked
@@ -3744,18 +3751,30 @@ async function loadTripPasses() {
   }
 }
 
-async function cancelTripPass(code) {
-  if (!confirm(`Cancelar o passe ${code}? Ele deixa de ser faturado.`)) return;
+async function cancelTripPass(code, force, reason) {
+  if (!force && !confirm(`Cancelar o passe ${code}? Ele deixa de ser faturado.`)) return;
   try {
     const res = await fetch(`${API}/admin/trip-passes/${encodeURIComponent(code)}/cancel`, {
-      method: 'POST', headers: { 'Authorization': `Bearer ${getToken()}` },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify({ force: !!force, reason: reason || null }),
     });
     if (!res.ok) {
       const d = await res.json().catch(() => ({}));
-      const msg = (d.detail && (d.detail.message || d.detail)) || `Erro ${res.status}`;
-      alert(typeof msg === 'string' ? msg : 'Não foi possível cancelar.');
+      const err = d.detail || {};
+      // Past the deadline: offer an explicit goodwill credit instead of a dead end.
+      if (err.error === 'cancel_window_closed') {
+        const why = prompt(
+          `O passe ${code} já passou do prazo de cancelamento (1 dia antes da viagem).\n\n` +
+          `Conceder um crédito de cortesia mesmo assim? Descreva o motivo (fica registrado):`, '');
+        if (why === null) return;
+        return cancelTripPass(code, true, why.trim() || 'sem motivo informado');
+      }
+      alert((err.message || err) || `Erro ${res.status}`);
       return;
     }
+    const d = await res.json();
+    if (d.credited) alert(`Crédito de cortesia concedido para ${code}. Não será faturado.`);
     loadTripPasses();
   } catch (e) { alert('Falha ao cancelar: ' + e.message); }
 }

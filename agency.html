@@ -11,6 +11,8 @@
   <title>Portal de Agências — Urban Tales</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  <!-- QR generation for voucher codes -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
   <style>
     .auth-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
     .auth-card {
@@ -90,6 +92,38 @@
     .row-btn { font-size: .75rem; padding: 5px 11px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-family: inherit; }
     .row-btn:hover { border-color: var(--accent); color: var(--text); }
     .empty { text-align: center; color: var(--muted); padding: 1.4rem; }
+
+    /* ── QR + VOUCHER ── */
+    .qr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .9rem; margin-top: .9rem; }
+    .voucher {
+      background: #fff; color: #111; border-radius: 14px; padding: 1rem; text-align: center;
+    }
+    .voucher img { width: 100%; max-width: 150px; height: auto; image-rendering: pixelated; display: block; margin: 0 auto .6rem; }
+    .voucher .vcode { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 1.05rem; font-weight: 700; letter-spacing: 2px; }
+    .voucher .vmeta { font-size: .72rem; color: #555; margin-top: .3rem; line-height: 1.4; }
+    .voucher .vbrand { font-size: .64rem; color: #888; margin-top: .5rem; text-transform: uppercase; letter-spacing: .08em; }
+
+    /* ── MODAL ── */
+    .modal-back {
+      position: fixed; inset: 0; background: rgba(0,0,0,.72); display: none;
+      align-items: center; justify-content: center; padding: 1.5rem; z-index: 100;
+    }
+    .modal-back.open { display: flex; }
+    .modal {
+      background: var(--bg-soft); border: 1px solid var(--border); border-radius: 18px;
+      padding: 1.6rem; width: 100%; max-width: 420px; box-shadow: var(--shadow);
+    }
+    .modal h4 { margin: 0 0 1.1rem; font-size: 1.05rem; }
+    .modal-actions { display: flex; gap: .6rem; margin-top: 1.2rem; }
+    .modal-actions button { flex: 1; }
+
+    @media print {
+      body * { visibility: hidden; }
+      #printArea, #printArea * { visibility: visible; }
+      #printArea { position: absolute; inset: 0; padding: 12mm; background: #fff; }
+      .qr-grid { grid-template-columns: repeat(3, 1fr); }
+      .voucher { border: 1px solid #ddd; break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
@@ -159,11 +193,16 @@
       </div>
       <div class="issue-grid">
         <div class="field"><label for="is_traveler">Viajante (opcional)</label><input id="is_traveler" placeholder="Nome do viajante" /></div>
+        <div class="field"><label for="is_email">E-mail do viajante (opcional)</label><input id="is_email" type="email" placeholder="para enviar o código" /></div>
         <div class="field"><label for="is_start">Início da viagem</label><input id="is_start" type="date" /></div>
         <div class="field"><label for="is_days">Dias</label><input id="is_days" type="number" min="1" max="60" value="7" /></div>
         <div class="field"><label for="is_qty">Quantidade</label><input id="is_qty" type="number" min="1" max="100" value="1" /></div>
         <button class="btn-primary" id="issueBtn" onclick="issuePasses()">Emitir</button>
       </div>
+      <label style="display:flex;align-items:center;gap:.5rem;margin-top:.9rem;font-size:.82rem;color:var(--muted);cursor:pointer">
+        <input type="checkbox" id="is_send" style="width:16px;height:16px;accent-color:var(--accent)" />
+        Enviar o código por e-mail ao viajante (apenas para 1 passe com e-mail informado)
+      </label>
       <div id="issueResult"></div>
     </div>
 
@@ -173,6 +212,8 @@
         <div style="display:flex;gap:.5rem;align-items:center">
           <input id="filterMonth" type="month" onchange="loadPasses()" style="background:rgba(0,0,0,.35);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:8px 11px;font-family:inherit;font-size:.85rem" />
           <button class="btn-ghost" onclick="loadPasses()">Atualizar</button>
+          <button class="btn-ghost" onclick="exportCsv()">Exportar CSV</button>
+          <button class="btn-ghost" onclick="printAllVouchers()">Imprimir vouchers</button>
         </div>
       </div>
       <div class="table-wrap">
@@ -313,16 +354,23 @@ async function issuePasses() {
   try {
     const r = await api('/agency/trip-passes', {
       method: 'POST',
-      body: JSON.stringify({ start_date: start, days, quantity: qty, traveler_name: traveler || null }),
+      body: JSON.stringify({
+        start_date: start, days, quantity: qty,
+        traveler_name: traveler || null,
+        traveler_email: document.getElementById('is_email').value.trim() || null,
+        send_email: document.getElementById('is_send').checked,
+      }),
     });
     out.innerHTML = `<div class="issued-box">
-      <div style="font-weight:700;margin-bottom:.5rem">${r.issued} passe${r.issued !== 1 ? 's' : ''} emitido${r.issued !== 1 ? 's' : ''} · ${usd(r.total_net_cents)}</div>
+      <div style="font-weight:700;margin-bottom:.5rem">${r.issued} passe${r.issued !== 1 ? 's' : ''} emitido${r.issued !== 1 ? 's' : ''} · ${usd(r.total_net_cents)}${r.emailed ? ' · e-mail enviado' : ''}</div>
       <div class="codes">${r.passes.map(p => `<span class="code-chip">${p.code}</span>`).join('')}</div>
+      <button class="btn-ghost" style="margin-top:.8rem" onclick="showQr(${JSON.stringify(r.passes.map(p => p.code)).replace(/"/g, '&quot;')},'Vouchers recém-emitidos')">Ver QR / imprimir</button>
       <div style="font-size:.76rem;color:var(--muted);margin-top:.7rem">
         Entregue no voucher como QR ou link: <code>urbantales.net/redeem?code=CÓDIGO</code>
       </div>
     </div>`;
     document.getElementById('is_traveler').value = '';
+    document.getElementById('is_email').value = '';
     loadPasses();
   } catch (e) {
     out.innerHTML = `<div class="msg err">${e.message}</div>`;
@@ -334,7 +382,12 @@ async function loadPasses() {
   const month = document.getElementById('filterMonth').value;
   try {
     const d = await api(`/agency/trip-passes${month ? `?month=${month}` : ''}`);
+    _lastPasses = d.passes || [];
     document.getElementById('rateLabel').textContent = usd(d.rate_cents_per_day);
+    // Honour server-side duration limits in the form too, so the agency sees them.
+    const daysInput = document.getElementById('is_days');
+    if (d.min_days) daysInput.min = d.min_days;
+    if (d.max_days) daysInput.max = d.max_days;
     document.getElementById('agencySub').textContent =
       `${usd(d.rate_cents_per_day)} por viajante/dia`;
     document.getElementById('statCards').innerHTML = `
@@ -352,14 +405,38 @@ async function loadPasses() {
         <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
         <td><span class="pill ${p.status}">${LBL[p.status] || p.status}</span></td>
         <td class="num">${usd(p.net_cents)}</td>
-        <td style="white-space:nowrap">${editable
-          ? `<button class="row-btn" onclick="editPass('${p.code}','${p.start_date}',${p.days})">Editar</button>
-             <button class="row-btn" onclick="cancelPass('${p.code}')">Cancelar</button>` : ''}</td>
+        <td style="white-space:nowrap">
+          <button class="row-btn" onclick="showQr(['${p.code}'],'Voucher ${p.code}')">QR</button>
+          ${p.status !== 'cancelled' ? `<button class="row-btn" onclick="sendPassEmail('${p.code}')">${p.emailed_at ? 'Reenviar' : 'Enviar'}</button>` : ''}
+          ${editable
+            ? `<button class="row-btn" onclick="openEdit('${p.code}')">Editar</button>
+               <button class="row-btn" onclick="cancelPass('${p.code}')">Cancelar</button>` : ''}</td>
       </tr>`;
     }).join('') || '<tr><td colspan="6" class="empty">Nenhum passe emitido ainda</td></tr>';
   } catch (e) {
     body.innerHTML = `<tr><td colspan="6" class="empty" style="color:#ff9d8a">${e.message}</td></tr>`;
   }
+}
+
+async function sendPassEmail(code) {
+  const p = _lastPasses.find(x => x.code === code) || {};
+  let email = p.traveler_email || '';
+  // Ask only when we don't already have an address on the pass.
+  if (!email) {
+    email = prompt(`E-mail do viajante para enviar o código ${code}:`, '');
+    if (email === null) return;
+    email = email.trim();
+    if (!email) return;
+  } else if (!confirm(`${p.emailed_at ? 'Reenviar' : 'Enviar'} o código ${code} para ${email}?`)) {
+    return;
+  }
+  try {
+    const r = await api(`/agency/trip-passes/${encodeURIComponent(code)}/send-email`, {
+      method: 'POST', body: JSON.stringify({ email: email || null }),
+    });
+    alert(`Código enviado para ${r.sent_to}.`);
+    loadPasses();
+  } catch (e) { alert(e.message); }
 }
 
 async function cancelPass(code) {
@@ -368,18 +445,108 @@ async function cancelPass(code) {
   catch (e) { alert(e.message); }
 }
 
-async function editPass(code, curStart, curDays) {
-  const start = prompt(`Nova data de início (AAAA-MM-DD) para ${code}:`, curStart);
-  if (start === null) return;
-  const days = prompt(`Nova duração em dias para ${code}:`, curDays);
-  if (days === null) return;
+// ── QR vouchers ────────────────────────────────────────────────
+const REDEEM_BASE = 'https://urbantales.net/redeem?code=';
+
+function qrDataUrl(text, cell = 5) {
+  // qrcode-generator: type 0 = auto-size, 'M' = medium error correction,
+  // which survives being printed small on a voucher.
+  const qr = qrcode(0, 'M');
+  qr.addData(text);
+  qr.make();
+  return qr.createDataURL(cell, 2);
+}
+
+function voucherHtml(p) {
+  const url = REDEEM_BASE + encodeURIComponent(p.code);
+  return `<div class="voucher">
+    <img src="${qrDataUrl(url)}" alt="QR ${p.code}" />
+    <div class="vcode">${p.code}</div>
+    <div class="vmeta">${p.traveler_name ? p.traveler_name + '<br>' : ''}${p.start_date} · ${p.days} dia${p.days !== 1 ? 's' : ''}</div>
+    <div class="vbrand">Urban Tales · Trip Pass</div>
+  </div>`;
+}
+
+let _lastPasses = [];
+
+function showQr(codes, title) {
+  const list = _lastPasses.filter(p => codes.includes(p.code));
+  if (!list.length) return;
+  document.getElementById('qr_title').textContent = title || `Vouchers (${list.length})`;
+  document.getElementById('qr_grid').innerHTML = list.map(voucherHtml).join('');
+  document.getElementById('qrModal').classList.add('open');
+}
+function closeQr() { document.getElementById('qrModal').classList.remove('open'); }
+
+function printVouchers() {
+  const area = document.getElementById('printArea');
+  area.innerHTML = `<div class="qr-grid">${document.getElementById('qr_grid').innerHTML}</div>`;
+  area.style.display = 'block';
+  window.print();
+  setTimeout(() => { area.style.display = 'none'; area.innerHTML = ''; }, 500);
+}
+
+function printAllVouchers() {
+  const open = _lastPasses.filter(p => p.status !== 'cancelled');
+  if (!open.length) { alert('Nenhum passe para imprimir.'); return; }
+  showQr(open.map(p => p.code), `Vouchers (${open.length})`);
+}
+
+// ── CSV export ─────────────────────────────────────────────────
+function exportCsv() {
+  if (!_lastPasses.length) { alert('Nada para exportar.'); return; }
+  const head = ['codigo', 'viajante', 'inicio', 'dias', 'status', 'valor_usd', 'link'];
+  const esc = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+  const rows = _lastPasses.map(p => [
+    p.code, p.traveler_name || '', p.start_date, p.days, p.status,
+    ((p.net_cents || 0) / 100).toFixed(2), REDEEM_BASE + p.code,
+  ].map(esc).join(','));
+  // BOM so Excel opens accented names correctly.
+  const blob = new Blob(['\ufeff' + [head.map(esc).join(','), ...rows].join('\r\n')],
+                        { type: 'text/csv;charset=utf-8;' });
+  const month = document.getElementById('filterMonth').value || 'todos';
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `trip-passes-${month}.csv`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+
+// ── Edit modal ─────────────────────────────────────────────────
+let _editing = null;
+
+function openEdit(code) {
+  const p = _lastPasses.find(x => x.code === code);
+  if (!p) return;
+  _editing = code;
+  document.getElementById('ed_code').textContent = code;
+  document.getElementById('ed_traveler').value = p.traveler_name || '';
+  document.getElementById('ed_start').value = p.start_date;
+  document.getElementById('ed_days').value = p.days;
+  document.getElementById('ed_msg').textContent = '';
+  document.getElementById('editModal').classList.add('open');
+}
+function closeEdit() { document.getElementById('editModal').classList.remove('open'); _editing = null; }
+
+async function saveEdit() {
+  if (!_editing) return;
+  const btn = document.getElementById('ed_save');
+  const msg = document.getElementById('ed_msg');
+  const start = document.getElementById('ed_start').value;
+  const days = parseInt(document.getElementById('ed_days').value, 10);
+  const traveler = document.getElementById('ed_traveler').value.trim();
+  if (!start || !days) { msg.className = 'msg err'; msg.textContent = 'Informe data e dias.'; return; }
+  btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Salvando…';
   try {
-    await api(`/agency/trip-passes/${encodeURIComponent(code)}`, {
+    await api(`/agency/trip-passes/${encodeURIComponent(_editing)}`, {
       method: 'PATCH',
-      body: JSON.stringify({ start_date: start.trim(), days: parseInt(days, 10) }),
+      body: JSON.stringify({ start_date: start, days, traveler_name: traveler }),
     });
+    closeEdit();
     loadPasses();
-  } catch (e) { alert(e.message); }
+  } catch (e) {
+    msg.className = 'msg err'; msg.textContent = e.message;
+  } finally { btn.disabled = false; }
 }
 
 // ── boot ──
@@ -389,5 +556,35 @@ async function editPass(code, curStart, curDays) {
   if (tok()) enterPortal();
 })();
 </script>
+
+  <!-- Edit an unredeemed pass -->
+  <div class="modal-back" id="editModal">
+    <div class="modal">
+      <h4>Editar passe <span id="ed_code" style="font-family:ui-monospace,Menlo,monospace;color:var(--accent)"></span></h4>
+      <div class="field"><label for="ed_traveler">Viajante</label><input id="ed_traveler" /></div>
+      <div class="field"><label for="ed_start">Início da viagem</label><input id="ed_start" type="date" /></div>
+      <div class="field"><label for="ed_days">Dias</label><input id="ed_days" type="number" min="1" max="60" /></div>
+      <div class="msg" id="ed_msg"></div>
+      <div class="modal-actions">
+        <button class="btn-ghost" onclick="closeEdit()">Cancelar</button>
+        <button class="btn-primary" id="ed_save" onclick="saveEdit()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR sheet for printing -->
+  <div class="modal-back" id="qrModal">
+    <div class="modal" style="max-width:640px;max-height:86vh;overflow:auto">
+      <h4 id="qr_title">Vouchers</h4>
+      <div class="qr-grid" id="qr_grid"></div>
+      <div class="modal-actions">
+        <button class="btn-ghost" onclick="closeQr()">Fechar</button>
+        <button class="btn-primary" onclick="printVouchers()">Imprimir</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="printArea" style="display:none"></div>
+
 </body>
 </html>
