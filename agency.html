@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    /* Clickjacking defense: GitHub Pages can't send frame-ancestors headers,
+       so this portal busts out of any iframe. */
+    if (window.top !== window.self) { window.top.location = window.self.location; }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Agências — Urban Tales</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    .auth-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .auth-card {
+      background: linear-gradient(180deg, var(--card-strong), var(--card));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 2.2rem; width: 100%; max-width: 430px;
+    }
+    .auth-logo { text-align: center; margin-bottom: 1.6rem; }
+    .auth-logo img.brand-icon { width: 52px; height: 52px; object-fit: contain; display: block; margin: 0 auto .5rem; border-radius: 12px; }
+    .auth-logo p { color: var(--muted); font-size: .88rem; margin: 0; }
+    .auth-card h2 { font-size: 1.3rem; margin-bottom: 1.4rem; text-align: center; }
+
+    .field { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+    .field label { font-size: .76rem; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; font-weight: 600; }
+    .field input, .field select {
+      background: rgba(0,0,0,.35); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-size: .95rem;
+      padding: 12px 14px; outline: none; font-family: inherit; transition: border-color .15s;
+    }
+    .field input:focus, .field select:focus { border-color: var(--accent); }
+
+    .btn-primary {
+      width: 100%; padding: 13px; border: 0; border-radius: 999px; cursor: pointer;
+      background: var(--accent); color: #241407; font-weight: 700; font-size: .95rem; font-family: inherit;
+    }
+    .btn-primary:hover { background: var(--accent-strong); }
+    .btn-primary[disabled] { opacity: .6; cursor: default; }
+    .btn-ghost {
+      background: transparent; border: 1px solid var(--border); color: var(--text);
+      border-radius: 999px; padding: 9px 16px; cursor: pointer; font-family: inherit; font-size: .85rem;
+    }
+    .btn-ghost:hover { border-color: var(--accent); }
+    .link-row { text-align: center; margin-top: 1rem; font-size: .85rem; }
+    .link-row a { color: var(--accent); cursor: pointer; text-decoration: none; }
+    .msg { font-size: .85rem; margin-top: .8rem; text-align: center; min-height: 1.1em; }
+    .msg.err { color: #ff9d8a; }
+    .msg.ok { color: #9be3b4; }
+
+    /* ── PORTAL ── */
+    .portal { display: none; max-width: var(--max); margin: 0 auto; padding: 1.5rem; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.6rem; }
+    .topbar h1 { font-size: 1.25rem; margin: 0; }
+    .topbar .sub { color: var(--muted); font-size: .85rem; margin-top: .2rem; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .9rem; margin-bottom: 1.6rem; }
+    .stat { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.1rem 1.2rem; }
+    .stat .n { font-size: 1.7rem; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .stat .n.accent { color: var(--accent); }
+    .stat .l { font-size: .74rem; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-top: .3rem; }
+
+    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1.4rem; margin-bottom: 1.4rem; }
+    .panel h3 { font-size: 1rem; margin: 0 0 .3rem; }
+    .panel .hint { color: var(--muted); font-size: .82rem; margin-bottom: 1.1rem; line-height: 1.6; }
+
+    .issue-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .8rem; align-items: end; }
+    .issue-grid .field { margin-bottom: 0; }
+    .issue-grid button { padding: 12px 18px; }
+
+    .codes { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+    .code-chip {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 1rem; letter-spacing: 2px;
+      background: rgba(0,0,0,.4); border: 1px solid var(--border); color: var(--accent);
+      padding: 8px 13px; border-radius: 10px;
+    }
+    .issued-box { margin-top: 1rem; padding: 1rem 1.1rem; background: rgba(0,0,0,.25); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .87rem; }
+    th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-size: .7rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 700; }
+    tr:last-child td { border-bottom: 0; }
+    .num { font-variant-numeric: tabular-nums; }
+    .pill { font-size: .72rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+    .pill.issued { background: rgba(226,165,107,.16); color: var(--accent); }
+    .pill.redeemed { background: rgba(155,227,180,.14); color: #9be3b4; }
+    .pill.cancelled { background: rgba(255,255,255,.07); color: var(--muted); }
+    .row-btn { font-size: .75rem; padding: 5px 11px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-family: inherit; }
+    .row-btn:hover { border-color: var(--accent); color: var(--text); }
+    .empty { text-align: center; color: var(--muted); padding: 1.4rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ── LOGIN ── -->
+  <div class="auth-wrap" id="loginScreen">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <img src="icon.png" class="brand-icon" alt="Urban Tales" />
+        <p>Portal de Agências</p>
+      </div>
+      <h2 id="authTitle">Entrar</h2>
+
+      <div id="loginForm">
+        <div class="field"><label for="li_email">E-mail</label><input id="li_email" type="email" autocomplete="username" /></div>
+        <div class="field"><label for="li_pass">Senha</label><input id="li_pass" type="password" autocomplete="current-password" /></div>
+        <button class="btn-primary" id="loginBtn" onclick="doLogin()">Entrar</button>
+        <div class="msg" id="loginMsg"></div>
+        <div class="link-row"><a onclick="showForgot()">Esqueci minha senha</a></div>
+        <div class="link-row">Ainda não tem conta? <a onclick="showRegister()">Cadastre sua agência</a></div>
+      </div>
+
+      <div id="registerForm" style="display:none">
+        <div class="field"><label for="rg_company">Agência</label><input id="rg_company" /></div>
+        <div class="field"><label for="rg_name">Seu nome</label><input id="rg_name" /></div>
+        <div class="field"><label for="rg_email">E-mail</label><input id="rg_email" type="email" /></div>
+        <div class="field"><label for="rg_phone">Telefone</label><input id="rg_phone" /></div>
+        <div class="field"><label for="rg_pass">Senha</label><input id="rg_pass" type="password" autocomplete="new-password" /></div>
+        <button class="btn-primary" id="regBtn" onclick="doRegister()">Enviar cadastro</button>
+        <div class="msg" id="regMsg"></div>
+        <div class="link-row"><a onclick="showLogin()">Voltar para o login</a></div>
+      </div>
+
+      <div id="forgotForm" style="display:none">
+        <div class="field"><label for="fg_email">E-mail</label><input id="fg_email" type="email" /></div>
+        <button class="btn-primary" onclick="doForgot()">Enviar link de redefinição</button>
+        <div class="msg" id="forgotMsg"></div>
+        <div class="link-row"><a onclick="showLogin()">Voltar para o login</a></div>
+      </div>
+
+      <div id="resetForm" style="display:none">
+        <div class="field"><label for="rs_pass">Nova senha</label><input id="rs_pass" type="password" autocomplete="new-password" /></div>
+        <button class="btn-primary" onclick="doReset()">Salvar nova senha</button>
+        <div class="msg" id="resetMsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PORTAL ── -->
+  <div class="portal" id="portal">
+    <div class="topbar">
+      <div>
+        <h1 id="agencyName">—</h1>
+        <div class="sub" id="agencySub">—</div>
+      </div>
+      <button class="btn-ghost" onclick="logout()">Sair</button>
+    </div>
+
+    <div class="cards" id="statCards"></div>
+
+    <div class="panel">
+      <h3>Emitir Trip Pass</h3>
+      <div class="hint">
+        Cada passe é um código único, de uso único, válido em qualquer cidade do mundo durante os dias da viagem.
+        Cobrado por passe emitido — <b id="rateLabel">—</b> por viajante/dia.
+        Passes não resgatados podem ser cancelados ou editados até 1 dia antes do início da viagem.
+      </div>
+      <div class="issue-grid">
+        <div class="field"><label for="is_traveler">Viajante (opcional)</label><input id="is_traveler" placeholder="Nome do viajante" /></div>
+        <div class="field"><label for="is_start">Início da viagem</label><input id="is_start" type="date" /></div>
+        <div class="field"><label for="is_days">Dias</label><input id="is_days" type="number" min="1" max="60" value="7" /></div>
+        <div class="field"><label for="is_qty">Quantidade</label><input id="is_qty" type="number" min="1" max="100" value="1" /></div>
+        <button class="btn-primary" id="issueBtn" onclick="issuePasses()">Emitir</button>
+      </div>
+      <div id="issueResult"></div>
+    </div>
+
+    <div class="panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+        <h3 style="margin:0">Passes emitidos</h3>
+        <div style="display:flex;gap:.5rem;align-items:center">
+          <input id="filterMonth" type="month" onchange="loadPasses()" style="background:rgba(0,0,0,.35);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:8px 11px;font-family:inherit;font-size:.85rem" />
+          <button class="btn-ghost" onclick="loadPasses()">Atualizar</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Código</th><th>Viajante</th><th>Viagem</th><th>Status</th><th>Valor</th><th></th></tr></thead>
+          <tbody id="passBody"><tr><td colspan="6" class="empty">Carregando…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<script>
+const API = 'https://friendly-fulfillment-production.up.railway.app/api';
+const tok = () => localStorage.getItem('ag_token');
+const usd = c => '$' + ((c || 0) / 100).toFixed(2);
+
+function show(id) {
+  ['loginForm', 'registerForm', 'forgotForm', 'resetForm'].forEach(f => {
+    document.getElementById(f).style.display = f === id ? 'block' : 'none';
+  });
+}
+const TITLES = { loginForm: 'Entrar', registerForm: 'Cadastre sua agência', forgotForm: 'Redefinir senha', resetForm: 'Nova senha' };
+function setTitle(id) { document.getElementById('authTitle').textContent = TITLES[id]; }
+function showLogin()    { show('loginForm');    setTitle('loginForm'); }
+function showRegister() { show('registerForm'); setTitle('registerForm'); }
+function showForgot()   { show('forgotForm');   setTitle('forgotForm'); }
+
+async function doLogin() {
+  const btn = document.getElementById('loginBtn'), msg = document.getElementById('loginMsg');
+  const email = document.getElementById('li_email').value.trim();
+  const password = document.getElementById('li_pass').value;
+  if (!email || !password) { msg.className = 'msg err'; msg.textContent = 'Informe e-mail e senha.'; return; }
+  btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Entrando…';
+  try {
+    const res = await fetch(`${API}/agency/login`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+    if (res.status === 403) { msg.className = 'msg err'; msg.textContent = 'Sua conta ainda está aguardando aprovação.'; return; }
+    if (!res.ok) { msg.className = 'msg err'; msg.textContent = 'E-mail ou senha inválidos.'; return; }
+    const d = await res.json();
+    localStorage.setItem('ag_token', d.access_token);
+    localStorage.setItem('ag_name', d.company || d.name || '');
+    enterPortal();
+  } catch (e) {
+    msg.className = 'msg err'; msg.textContent = 'Erro de conexão. Tente novamente.';
+  } finally { btn.disabled = false; }
+}
+
+async function doRegister() {
+  const btn = document.getElementById('regBtn'), msg = document.getElementById('regMsg');
+  const body = {
+    company: document.getElementById('rg_company').value.trim(),
+    name: document.getElementById('rg_name').value.trim(),
+    email: document.getElementById('rg_email').value.trim(),
+    phone: document.getElementById('rg_phone').value.trim(),
+    password: document.getElementById('rg_pass').value,
+  };
+  if (!body.name || !body.email || !body.password) { msg.className = 'msg err'; msg.textContent = 'Preencha nome, e-mail e senha.'; return; }
+  btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Enviando…';
+  try {
+    const res = await fetch(`${API}/agency/register`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const d = await res.json().catch(() => ({}));
+      msg.className = 'msg err'; msg.textContent = d.detail || 'Não foi possível enviar o cadastro.'; return;
+    }
+    msg.className = 'msg ok';
+    msg.textContent = 'Cadastro enviado! Avisaremos por e-mail assim que sua conta for aprovada.';
+  } catch (e) { msg.className = 'msg err'; msg.textContent = 'Erro de conexão.'; }
+  finally { btn.disabled = false; }
+}
+
+async function doForgot() {
+  const msg = document.getElementById('forgotMsg');
+  const email = document.getElementById('fg_email').value.trim();
+  if (!email) { msg.className = 'msg err'; msg.textContent = 'Informe seu e-mail.'; return; }
+  await fetch(`${API}/agency/forgot-password`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }),
+  }).catch(() => {});
+  // Always the same response, so the form can't be used to discover which emails exist.
+  msg.className = 'msg ok';
+  msg.textContent = 'Se existir uma conta com este e-mail, enviamos um link de redefinição.';
+}
+
+async function doReset() {
+  const msg = document.getElementById('resetMsg');
+  const token = new URLSearchParams(location.search).get('reset_token');
+  const pass = document.getElementById('rs_pass').value;
+  if (!pass || pass.length < 6) { msg.className = 'msg err'; msg.textContent = 'A senha precisa ter ao menos 6 caracteres.'; return; }
+  try {
+    const res = await fetch(`${API}/agency/reset-password`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token, new_password: pass }),
+    });
+    if (!res.ok) { msg.className = 'msg err'; msg.textContent = 'Link inválido ou expirado. Peça um novo.'; return; }
+    msg.className = 'msg ok'; msg.textContent = 'Senha alterada. Você já pode entrar.';
+    setTimeout(() => { location.href = 'agency.html'; }, 1600);
+  } catch (e) { msg.className = 'msg err'; msg.textContent = 'Erro de conexão.'; }
+}
+
+function logout() { localStorage.removeItem('ag_token'); location.reload(); }
+
+async function api(path, opts = {}) {
+  const res = await fetch(`${API}${path}`, {
+    ...opts,
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${tok()}`, ...(opts.headers || {}) },
+  });
+  if (res.status === 401 || res.status === 403) { logout(); throw new Error('unauthorized'); }
+  if (!res.ok) {
+    const d = await res.json().catch(() => ({}));
+    const det = d.detail;
+    throw new Error((det && (det.message || det)) || `Erro ${res.status}`);
+  }
+  return res.json();
+}
+
+function enterPortal() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('portal').style.display = 'block';
+  document.getElementById('agencyName').textContent = localStorage.getItem('ag_name') || 'Sua agência';
+  const today = new Date().toISOString().slice(0, 10);
+  document.getElementById('is_start').value = today;
+  document.getElementById('is_start').min = today;
+  loadPasses();
+}
+
+async function issuePasses() {
+  const btn = document.getElementById('issueBtn');
+  const out = document.getElementById('issueResult');
+  const start = document.getElementById('is_start').value;
+  const days = parseInt(document.getElementById('is_days').value, 10);
+  const qty = parseInt(document.getElementById('is_qty').value, 10) || 1;
+  const traveler = document.getElementById('is_traveler').value.trim();
+  if (!start || !days) { out.innerHTML = '<div class="msg err">Informe a data de início e a quantidade de dias.</div>'; return; }
+  btn.disabled = true; out.innerHTML = '<div class="msg">Emitindo…</div>';
+  try {
+    const r = await api('/agency/trip-passes', {
+      method: 'POST',
+      body: JSON.stringify({ start_date: start, days, quantity: qty, traveler_name: traveler || null }),
+    });
+    out.innerHTML = `<div class="issued-box">
+      <div style="font-weight:700;margin-bottom:.5rem">${r.issued} passe${r.issued !== 1 ? 's' : ''} emitido${r.issued !== 1 ? 's' : ''} · ${usd(r.total_net_cents)}</div>
+      <div class="codes">${r.passes.map(p => `<span class="code-chip">${p.code}</span>`).join('')}</div>
+      <div style="font-size:.76rem;color:var(--muted);margin-top:.7rem">
+        Entregue no voucher como QR ou link: <code>urbantales.net/redeem?code=CÓDIGO</code>
+      </div>
+    </div>`;
+    document.getElementById('is_traveler').value = '';
+    loadPasses();
+  } catch (e) {
+    out.innerHTML = `<div class="msg err">${e.message}</div>`;
+  } finally { btn.disabled = false; }
+}
+
+async function loadPasses() {
+  const body = document.getElementById('passBody');
+  const month = document.getElementById('filterMonth').value;
+  try {
+    const d = await api(`/agency/trip-passes${month ? `?month=${month}` : ''}`);
+    document.getElementById('rateLabel').textContent = usd(d.rate_cents_per_day);
+    document.getElementById('agencySub').textContent =
+      `${usd(d.rate_cents_per_day)} por viajante/dia`;
+    document.getElementById('statCards').innerHTML = `
+      <div class="stat"><div class="n accent">${usd(d.billable_net_cents)}</div><div class="l">A faturar</div></div>
+      <div class="stat"><div class="n">${d.billable_count}</div><div class="l">Passes emitidos</div></div>
+      <div class="stat"><div class="n">${d.redeemed_count}</div><div class="l">Resgatados</div></div>
+      <div class="stat"><div class="n">${d.cancelled_count}</div><div class="l">Cancelados</div></div>`;
+
+    const LBL = { issued: 'Emitido', redeemed: 'Resgatado', cancelled: 'Cancelado' };
+    body.innerHTML = (d.passes || []).map(p => {
+      const editable = p.status === 'issued';
+      return `<tr>
+        <td><code style="color:var(--accent);letter-spacing:1px">${p.code}</code></td>
+        <td>${p.traveler_name || '—'}</td>
+        <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
+        <td><span class="pill ${p.status}">${LBL[p.status] || p.status}</span></td>
+        <td class="num">${usd(p.net_cents)}</td>
+        <td style="white-space:nowrap">${editable
+          ? `<button class="row-btn" onclick="editPass('${p.code}','${p.start_date}',${p.days})">Editar</button>
+             <button class="row-btn" onclick="cancelPass('${p.code}')">Cancelar</button>` : ''}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="6" class="empty">Nenhum passe emitido ainda</td></tr>';
+  } catch (e) {
+    body.innerHTML = `<tr><td colspan="6" class="empty" style="color:#ff9d8a">${e.message}</td></tr>`;
+  }
+}
+
+async function cancelPass(code) {
+  if (!confirm(`Cancelar o passe ${code}? Ele deixa de ser faturado.`)) return;
+  try { await api(`/agency/trip-passes/${encodeURIComponent(code)}/cancel`, { method: 'POST' }); loadPasses(); }
+  catch (e) { alert(e.message); }
+}
+
+async function editPass(code, curStart, curDays) {
+  const start = prompt(`Nova data de início (AAAA-MM-DD) para ${code}:`, curStart);
+  if (start === null) return;
+  const days = prompt(`Nova duração em dias para ${code}:`, curDays);
+  if (days === null) return;
+  try {
+    await api(`/agency/trip-passes/${encodeURIComponent(code)}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ start_date: start.trim(), days: parseInt(days, 10) }),
+    });
+    loadPasses();
+  } catch (e) { alert(e.message); }
+}
+
+// ── boot ──
+(function () {
+  const resetToken = new URLSearchParams(location.search).get('reset_token');
+  if (resetToken) { show('resetForm'); setTitle('resetForm'); return; }
+  if (tok()) enterPortal();
+})();
+</script>
+</body>
+</html>
