@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ativar Trip Pass — Urban Tales</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta property="og:title" content="Seu Trip Pass do Urban Tales">
+  <meta property="og:description" content="Histórias de áudio ilimitadas durante toda a sua viagem.">
+  <meta property="og:image" content="https://urbantales.net/banner.png">
+  <style>
+    body { background: #0f0f1a; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px; padding: 40px 32px; max-width: 400px; width: 100%;
+      text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,.4);
+    }
+    .logo { width: 56px; height: 56px; border-radius: 14px; margin-bottom: 24px; }
+    .title { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { font-size: 15px; color: #aaa; margin: 0 0 24px; line-height: 1.5; }
+    .code-box {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 26px; letter-spacing: 5px; font-weight: 700; color: #FF6B35;
+      background: rgba(255,107,53,.08); border: 1px dashed rgba(255,107,53,.4);
+      border-radius: 14px; padding: 16px 12px; margin-bottom: 24px; word-break: break-all;
+    }
+    .open-btn {
+      display: block; width: 100%; padding: 16px;
+      background: #FF6B35; color: #fff; font-size: 17px; font-weight: 700;
+      border: none; border-radius: 14px; cursor: pointer; text-decoration: none;
+      margin-bottom: 12px; box-sizing: border-box;
+    }
+    .open-btn:hover { background: #e55a25; }
+    .store-row { display: flex; gap: 10px; margin-top: 4px; }
+    .store-btn {
+      flex: 1; padding: 10px 8px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px; color: #ccc; font-size: 13px; font-weight: 600;
+      text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .store-btn:hover { background: rgba(255,255,255,.10); }
+    .store-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+    .divider { font-size: 12px; color: #777; margin: 18px 0 12px; }
+    .hint { font-size: 12px; color: #666; margin-top: 18px; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <img src="icon.png" class="logo" alt="Urban Tales" />
+      <h1 class="title" id="t-title">Seu Trip Pass está pronto</h1>
+      <p class="subtitle" id="t-sub">Histórias de áudio ilimitadas em qualquer cidade, durante toda a sua viagem.</p>
+
+      <div class="code-box" id="code-box">—</div>
+
+      <a class="open-btn" id="open-app-btn" href="#">Ativar no app</a>
+
+      <div class="divider" id="t-divider">Ainda não tem o app?</div>
+      <div class="store-row">
+        <a class="store-btn" href="https://apps.apple.com/us/app/urban-tales-city-explorer/id6760130598" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.urbantales.app" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.28.15.6.15.88.02l11.65-6.64-2.55-2.55L3.18 23.76zm-1.14-20.2C1.73 3.93 1.5 4.35 1.5 4.89v14.22c0 .54.23.96.54 1.32l.06.06 7.97-7.97v-.19L2.04 3.56zm16.84 8.73l-2.25-1.28-2.84 2.84 2.84 2.84 2.26-1.29c.64-.37.64-.97 0-1.34l-.01.03zM4.07.25l12.89 7.34-2.55 2.55L4.07.25z"/></svg>
+          Google Play
+        </a>
+      </div>
+
+      <p class="hint" id="t-hint">Depois de instalar, volte a esta página e toque em “Ativar no app”. Guarde o código acima — ele também pode ser digitado no app.</p>
+    </div>
+  </div>
+
+  <script>
+    // Trip Pass redemption landing page. The QR on an agency voucher points here
+    // rather than straight at the deep link, so it also works for travellers who
+    // don't have the app yet: they install, come back, and tap Activate.
+    const STRINGS = {
+      en: { title: 'Your Trip Pass is ready', sub: 'Unlimited audio stories in any city, for your whole trip.',
+            open: 'Activate in the app', divider: "Don't have the app yet?",
+            hint: 'After installing, come back to this page and tap “Activate in the app”. Keep the code above — it can also be typed into the app.',
+            missing: 'Missing code', missingSub: 'This link has no Trip Pass code. Check the link on your voucher.' },
+      pt: { title: 'Seu Trip Pass está pronto', sub: 'Histórias de áudio ilimitadas em qualquer cidade, durante toda a sua viagem.',
+            open: 'Ativar no app', divider: 'Ainda não tem o app?',
+            hint: 'Depois de instalar, volte a esta página e toque em “Ativar no app”. Guarde o código acima — ele também pode ser digitado no app.',
+            missing: 'Código ausente', missingSub: 'Este link não contém um código Trip Pass. Verifique o link do seu voucher.' },
+      es: { title: 'Tu Trip Pass está listo', sub: 'Historias de audio ilimitadas en cualquier ciudad, durante todo tu viaje.',
+            open: 'Activar en la app', divider: '¿Aún no tienes la app?',
+            hint: 'Después de instalar, vuelve a esta página y toca “Activar en la app”. Guarda el código — también puede escribirse en la app.',
+            missing: 'Falta el código', missingSub: 'Este enlace no tiene un código Trip Pass. Revisa el enlace de tu voucher.' },
+      fr: { title: 'Votre Trip Pass est prêt', sub: 'Des histoires audio illimitées dans toutes les villes, pendant tout votre voyage.',
+            open: 'Activer dans l’app', divider: 'Vous n’avez pas encore l’app ?',
+            hint: 'Après l’installation, revenez sur cette page et appuyez sur « Activer dans l’app ». Conservez le code — il peut aussi être saisi dans l’app.',
+            missing: 'Code manquant', missingSub: 'Ce lien ne contient pas de code Trip Pass. Vérifiez le lien de votre voucher.' },
+      de: { title: 'Dein Trip Pass ist bereit', sub: 'Unbegrenzte Audiogeschichten in jeder Stadt, für deine ganze Reise.',
+            open: 'In der App aktivieren', divider: 'Noch keine App?',
+            hint: 'Komme nach der Installation auf diese Seite zurück und tippe auf „In der App aktivieren“. Bewahre den Code auf — er kann auch eingegeben werden.',
+            missing: 'Code fehlt', missingSub: 'Dieser Link enthält keinen Trip-Pass-Code. Prüfe den Link auf deinem Voucher.' },
+    };
+    function detectLang() {
+      const l = (navigator.language || 'en').slice(0, 2).toLowerCase();
+      return STRINGS[l] ? l : 'en';
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const code = (params.get('code') || '').trim().toUpperCase();
+    const s = STRINGS[detectLang()];
+
+    document.getElementById('t-title').textContent = code ? s.title : s.missing;
+    document.getElementById('t-sub').textContent = code ? s.sub : s.missingSub;
+    document.getElementById('open-app-btn').textContent = s.open;
+    document.getElementById('t-divider').textContent = s.divider;
+    document.getElementById('t-hint').textContent = s.hint;
+    document.getElementById('code-box').textContent = code || '—';
+    if (!code) {
+      document.getElementById('open-app-btn').style.display = 'none';
+      document.getElementById('code-box').style.display = 'none';
+    }
+
+    const deepLink = code ? 'urbantales://redeem?code=' + encodeURIComponent(code) : 'urbantales://';
+    const btn = document.getElementById('open-app-btn');
+    btn.href = deepLink;
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = deepLink;
+      // If the app didn't take over, surface the store links.
+      setTimeout(function () {
+        document.querySelector('.divider').style.display = 'block';
+        document.querySelector('.store-row').style.display = 'flex';
+      }, 2000);
+    });
+
+    // On mobile, try the app immediately — installed users never see this page.
+    if (/iPhone|iPad|Android/i.test(navigator.userAgent) && code) {
+      setTimeout(function () { window.location.href = deepLink; }, 300);
+    }
+  </script>
+</body>
+</html>
