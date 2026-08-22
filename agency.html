@@ -102,6 +102,11 @@
     .voucher .vcode { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 1.05rem; font-weight: 700; letter-spacing: 2px; }
     .voucher .vmeta { font-size: .72rem; color: #555; margin-top: .3rem; line-height: 1.4; }
     .voucher .vbrand { font-size: .64rem; color: #888; margin-top: .5rem; text-transform: uppercase; letter-spacing: .08em; }
+    .voucher .vlink { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .58rem; color: #999; margin-top: .4rem; word-break: break-all; }
+
+    .link-list { display: flex; flex-direction: column; gap: .5rem; margin-top: .4rem; }
+    .link-row-item { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .link-text { font-size: .78rem; color: var(--muted); word-break: break-all; }
 
     /* ── MODAL ── */
     .modal-back {
@@ -363,11 +368,14 @@ async function issuePasses() {
     });
     out.innerHTML = `<div class="issued-box">
       <div style="font-weight:700;margin-bottom:.5rem">${r.issued} passe${r.issued !== 1 ? 's' : ''} emitido${r.issued !== 1 ? 's' : ''} · ${usd(r.total_net_cents)}${r.emailed ? ' · e-mail enviado' : ''}</div>
-      <div class="codes">${r.passes.map(p => `<span class="code-chip">${p.code}</span>`).join('')}</div>
+      <div class="link-list">${r.passes.map(p => `
+        <div class="link-row-item">
+          <span class="code-chip">${p.code}</span>
+          <code class="link-text">${REDEEM_BASE}${p.code}</code>
+          <button class="row-btn" onclick="copyLink('${p.code}', this)">Copiar link</button>
+          <button class="row-btn" onclick="shareWhatsApp('${p.code}')">WhatsApp</button>
+        </div>`).join('')}</div>
       <button class="btn-ghost" style="margin-top:.8rem" onclick="showQr(${JSON.stringify(r.passes.map(p => p.code)).replace(/"/g, '&quot;')},'Vouchers recém-emitidos')">Ver QR / imprimir</button>
-      <div style="font-size:.76rem;color:var(--muted);margin-top:.7rem">
-        Entregue no voucher como QR ou link: <code>urbantales.net/redeem?code=CÓDIGO</code>
-      </div>
     </div>`;
     document.getElementById('is_traveler').value = '';
     document.getElementById('is_email').value = '';
@@ -406,6 +414,8 @@ async function loadPasses() {
         <td><span class="pill ${p.status}">${LBL[p.status] || p.status}</span></td>
         <td class="num">${usd(p.net_cents)}</td>
         <td style="white-space:nowrap">
+          <button class="row-btn" onclick="copyLink('${p.code}', this)">Link</button>
+          <button class="row-btn" onclick="shareWhatsApp('${p.code}')">WhatsApp</button>
           <button class="row-btn" onclick="showQr(['${p.code}'],'Voucher ${p.code}')">QR</button>
           ${p.status !== 'cancelled' ? `<button class="row-btn" onclick="sendPassEmail('${p.code}')">${p.emailed_at ? 'Reenviar' : 'Enviar'}</button>` : ''}
           ${editable
@@ -448,6 +458,34 @@ async function cancelPass(code) {
 // ── QR vouchers ────────────────────────────────────────────────
 const REDEEM_BASE = 'https://urbantales.net/redeem?code=';
 
+// Copy the redeem link — the fastest path for a traveller who already has a
+// phone in hand, no QR scan or app-store detour needed.
+async function copyLink(code, btn) {
+  const url = REDEEM_BASE + code;
+  try {
+    await navigator.clipboard.writeText(url);
+  } catch (e) {
+    // Clipboard API needs a secure context / permission; fall back to a manual copy.
+    prompt('Copie o link:', url);
+    return;
+  }
+  if (btn) {
+    const prev = btn.textContent;
+    btn.textContent = 'Copiado!';
+    setTimeout(() => { btn.textContent = prev; }, 1400);
+  }
+}
+
+// Opens WhatsApp (app on mobile, Web on desktop) with the message pre-filled —
+// the agency still picks the contact and hits send.
+function shareWhatsApp(code) {
+  const p = _lastPasses.find(x => x.code === code);
+  const url = REDEEM_BASE + code;
+  const trip = p ? ` para sua viagem de ${p.start_date} (${p.days} dia${p.days !== 1 ? 's' : ''})` : '';
+  const text = `Seu Trip Pass do Urban Tales${trip}: histórias de áudio ilimitadas em qualquer cidade. Ative aqui: ${url}`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+}
+
 function qrDataUrl(text, cell = 5) {
   // qrcode-generator: type 0 = auto-size, 'M' = medium error correction,
   // which survives being printed small on a voucher.
@@ -463,6 +501,7 @@ function voucherHtml(p) {
     <img src="${qrDataUrl(url)}" alt="QR ${p.code}" />
     <div class="vcode">${p.code}</div>
     <div class="vmeta">${p.traveler_name ? p.traveler_name + '<br>' : ''}${p.start_date} · ${p.days} dia${p.days !== 1 ? 's' : ''}</div>
+    <div class="vlink">${url}</div>
     <div class="vbrand">Urban Tales · Trip Pass</div>
   </div>`;
 }

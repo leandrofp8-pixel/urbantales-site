@@ -3687,10 +3687,17 @@ async function issueTripPasses() {
         <div style="font-size:0.85rem;font-weight:600;margin-bottom:8px">
           ${r.issued} passe${r.issued !== 1 ? 's' : ''} emitido${r.issued !== 1 ? 's' : ''} · ${_usd(r.total_net_cents)}
         </div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          ${r.passes.map(p => `<code style="font-size:1rem;letter-spacing:2px;background:#0d0d0d;border:1px solid var(--border);padding:7px 12px;border-radius:8px;color:var(--primary)">${p.code}</code>`).join('')}
+        <div style="display:flex;flex-direction:column;gap:8px">
+          ${r.passes.map(p => {
+            const link = `https://urbantales.net/redeem?code=${p.code}`;
+            return `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+              <code style="font-size:1rem;letter-spacing:2px;background:#0d0d0d;border:1px solid var(--border);padding:7px 12px;border-radius:8px;color:var(--primary)">${p.code}</code>
+              <code style="font-size:0.76rem;color:var(--muted)">${link}</code>
+              <button onclick="navigator.clipboard.writeText('${link}').then(()=>{this.textContent='Copiado!';setTimeout(()=>this.textContent='Copiar link',1400)})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">Copiar link</button>
+              <a href="https://wa.me/?text=${encodeURIComponent('Seu Trip Pass do Urban Tales para sua viagem de ' + p.start_date + ' (' + p.days + (p.days !== 1 ? ' dias' : ' dia') + '): histórias de áudio ilimitadas em qualquer cidade. Ative aqui: ' + link)}" target="_blank" style="font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--text);text-decoration:none">WhatsApp</a>
+            </div>`;
+          }).join('')}
         </div>
-        <div style="font-size:0.74rem;color:var(--muted);margin-top:10px">Entregue no voucher como QR ou link: <code>urbantales.net/redeem?code=CÓDIGO</code></div>
       </div>`;
     loadTripPasses();
   } catch (e) {
@@ -3743,7 +3750,9 @@ async function loadTripPasses() {
         <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
         <td><span style="color:${st.color};font-weight:600;font-size:0.8rem">${st.label}</span></td>
         <td class="num">${_usd(p.net_cents)}</td>
-        <td>${canCancel ? `<button onclick="cancelTripPass('${p.code}')" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Cancelar</button>` : ''}</td>
+        <td style="white-space:nowrap">
+          <button onclick="navigator.clipboard.writeText('https://urbantales.net/redeem?code=${p.code}').then(()=>{this.textContent='Copiado!';setTimeout(()=>this.textContent='Link',1400)})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Link</button>
+          ${canCancel ? `<button onclick="cancelTripPass('${p.code}')" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Cancelar</button>` : ''}</td>
       </tr>`;
     }).join('') || '<tr><td colspan="8" style="color:var(--muted);text-align:center;padding:16px">Nenhum passe emitido ainda</td></tr>';
   } catch (e) {
