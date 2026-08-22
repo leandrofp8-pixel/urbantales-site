@@ -571,11 +571,11 @@ function renderPL() {
     {type:'data', label:'Total OpEx', akey:'opex', fkey:'opex', negate:true},
     {type:'subtotal', label:'Operating Profit', akey:'operating_profit', fkey:'operating_profit'},
     {type:'section', label:'SG&A'},
-    {type:'data', label:'  Development', akey:'sga.development', fkey:null, indent:true, negate:true},
-    {type:'data', label:'  Hosting', akey:'sga.hosting', fkey:null, indent:true, negate:true},
-    {type:'data', label:'  Marketing', akey:'sga.marketing', fkey:null, indent:true, negate:true},
-    {type:'data', label:'  Platform', akey:'sga.platform', fkey:null, indent:true, negate:true},
-    {type:'data', label:'Total SG&A', akey:'sga.total', fkey:'sga', negate:true},
+    {type:'data', label:'  Development', akey:'sga.development', fkey:'sga.development', indent:true, negate:true},
+    {type:'data', label:'  Hosting', akey:'sga.hosting', fkey:'sga.hosting', indent:true, negate:true},
+    {type:'data', label:'  Marketing', akey:'sga.marketing', fkey:'sga.marketing', indent:true, negate:true},
+    {type:'data', label:'  Platform', akey:'sga.platform', fkey:'sga.platform', indent:true, negate:true},
+    {type:'data', label:'Total SG&A', akey:'sga.total', fkey:'sga.total', negate:true},
     {type:'total', label:'Pre-Tax Profit', akey:'pre_tax_profit', fkey:'pre_tax_profit'},
   ];
 
@@ -708,7 +708,7 @@ function renderSgaTable() {
     if (filterCat && e.category !== filterCat) return false;
     if (filterMon && !e.date.startsWith(filterMon)) return false;
     return true;
-  });
+  }).sort((a, b) => b.date.localeCompare(a.date));
 
   if (!entries.length) {
     document.getElementById('sgaTable').innerHTML = '<div class="empty">No entries. Use the form above or click "Seed historical data".</div>';
@@ -818,7 +818,7 @@ function renderOpexTable() {
 
   let html = `<table class="entry-tbl">
     <thead><tr><th>Date</th><th>Provider</th><th>Description</th><th>Amount (USD)</th><th>Type</th><th>Notes</th><th></th></tr></thead><tbody>`;
-  _opexData.forEach(e => {
+  [..._opexData].sort((a, b) => b.date.localeCompare(a.date)).forEach(e => {
     const isCredit = e.type === 'credit' || e.type === 'refund';
     html += `<tr>
       <td>${e.date}</td>
