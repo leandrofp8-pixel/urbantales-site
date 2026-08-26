@@ -895,7 +895,13 @@
           </div>
         </div>
         <div class="card">
-          <div class="section-header"><h2>Top MGM Users</h2></div>
+          <div class="section-header">
+            <h2>Top MGM Users</h2>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span id="mgmBackfillMsg" style="font-size:0.74rem;color:var(--muted)"></span>
+              <button onclick="runMgmInviterBackfill()" title="Pays any inviter whose reward was missed — fixes a bug where consumable-purchase events (NON_RENEWING_PURCHASE) weren't recognized. Safe to re-run; only pays each referral once." style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">Pay missed inviter rewards</button>
+            </div>
+          </div>
           <div class="table-wrap" style="max-height:340px;overflow-y:auto">
             <table>
               <thead>
@@ -3595,6 +3601,23 @@ const TP_STATUS = {
   cancelled: { label: 'Cancelado', color: 'var(--muted)'  },
 };
 const _usd = c => '$' + ((c || 0) / 100).toFixed(2);
+
+async function runMgmInviterBackfill() {
+  const msg = document.getElementById('mgmBackfillMsg');
+  if (!confirm('Pay every inviter whose reward was missed due to the NON_RENEWING_PURCHASE bug?\n\nThis credits real coins to real accounts and cannot be undone from here. Safe to run more than once — each referral is only ever paid once.')) return;
+  msg.textContent = 'Running…';
+  try {
+    const res = await fetch(`${API}/admin/mgm/backfill-inviter-rewards`, {
+      method: 'POST', headers: { 'Authorization': `Bearer ${getToken()}` },
+    });
+    if (!res.ok) throw new Error(`Erro ${res.status}`);
+    const r = await res.json();
+    msg.textContent = `Paid ${r.paid} inviter(s), ${r.total_coins_paid} coins total (scanned ${r.scanned}).`;
+    if (r.paid > 0) { console.log('MGM inviter backfill details:', r.details); loadAllData(); }
+  } catch (e) {
+    msg.textContent = 'Failed: ' + e.message;
+  }
+}
 
 async function loadAgencies() {
   const body = document.getElementById('agencyBody');
