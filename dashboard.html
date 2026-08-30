@@ -709,8 +709,10 @@
         </label>
         <span style="font-size:0.88rem">Net of Google Maps free quota (overall + per client)</span>
         <span id="quotaAwareState" style="font-size:0.78rem;color:var(--muted)">OFF — showing full list price · doesn't affect OpenAI/Gemini, which have no such quota</span>
-        <button id="geminiCostFixBtn" onclick="backfillGeminiCosts()" title="Gemini calls were recorded at $0 before gemini_flash_input/output had a rate — recompute their cost from the token counts already stored. Safe to re-run." style="margin-left:auto;flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Fix Gemini costs</button>
+        <button id="geocodeBackfillBtn" onclick="backfillNarrationGeocode()" title="Every cache-miss narration fired an untracked, uncached Geocoding call before af4243d — reconstructs one google_geocode record per historical narration. Idempotent, safe to re-run." style="margin-left:auto;flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Backfill geocode calls</button>
+        <button id="geminiCostFixBtn" onclick="backfillGeminiCosts()" title="Gemini calls were recorded at $0 before gemini_flash_input/output had a rate — recompute their cost from the token counts already stored. Safe to re-run." style="flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Fix Gemini costs</button>
       </div>
+      <div id="geocodeBackfillStatus" style="font-size:0.78rem;color:var(--muted);margin-bottom:4px"></div>
       <div id="geminiCostFixStatus" style="font-size:0.78rem;color:var(--muted);margin-bottom:10px"></div>
       <div class="grid-4" id="costKpis">
         <div class="card"><div class="loading">Loading…</div></div>
@@ -2300,6 +2302,29 @@ function renderGoogleMapsQuota(data) {
       <div style="font-size:0.75rem;margin-top:3px">${note}</div>
     </div>`;
   }).join('') + `<div style="font-size:0.72rem;color:var(--muted);margin-top:2px">Month-to-date: day ${data.days_elapsed} of ${data.days_in_month}</div>`;
+}
+
+async function backfillNarrationGeocode() {
+  const btn = document.getElementById('geocodeBackfillBtn');
+  const status = document.getElementById('geocodeBackfillStatus');
+  const prev = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = 'Backfilling…';
+  status.textContent = '';
+  try {
+    const res = await fetch(`${API}/admin/analytics/backfill-narration-geocode-calls`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+    });
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    const r = await res.json();
+    status.textContent = `Reconstructed ${fmt(r.inserted)} geocode calls from ${fmt(r.total_narrations_before_cutoff)} pre-fix narrations`
+      + (r.already_backfilled_skipped ? ` · ${fmt(r.already_backfilled_skipped)} already backfilled` : '');
+    await loadAllData();
+  } catch (e) {
+    status.textContent = 'Backfill failed — try again';
+  } finally {
+    btn.disabled = false; btn.innerHTML = prev;
+  }
 }
 
 async function backfillGeminiCosts() {
