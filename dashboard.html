@@ -708,6 +708,15 @@
         <div class="card"><div class="loading">…</div></div>
         <div class="card"><div class="loading">…</div></div>
       </div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Google Maps Platform — free quota this month</div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-bottom:12px">
+          The cost figures above are list price with no free tier applied — they don't say whether Google is actually billing you.
+          This does: non-cached calls this calendar month against each SKU's free monthly allotment (resets the 1st).
+        </div>
+        <div id="googleQuotaRows"><div class="loading">Loading…</div></div>
+      </div>
+
       <div class="grid-2">
         <div class="card">
           <div class="card-title">Daily API Cost ($)</div>
@@ -2250,6 +2259,37 @@ function renderTours(tours) {
 // ══════════════════════════════════════════════
 // COSTS
 // ══════════════════════════════════════════════
+const GOOGLE_SKU_LABELS = {
+  google_nearby_search: 'Nearby Search (New)',
+  google_text_search: 'Text Search (New)',
+  google_geocode: 'Geocoding API',
+  google_streetview: 'Street View Static',
+};
+
+function renderGoogleMapsQuota(data) {
+  const el = document.getElementById('googleQuotaRows');
+  if (!data || !data.skus) { el.innerHTML = '<div class="loading" style="color:var(--danger)">Failed to load</div>'; return; }
+  el.innerHTML = data.skus.map(s => {
+    const pct = s.pct_used;
+    const barColor = s.over_quota ? 'var(--danger)' : s.projected_over_quota ? C.yellow : C.green;
+    const note = s.over_quota
+      ? `<span style="color:var(--danger)">${fmt(s.billable_calls_so_far)} calls over quota — being billed</span>`
+      : s.projected_over_quota
+        ? `<span style="color:${C.yellow}">on pace for ~${fmt(s.projected_month_end)} by month end — would exceed the ${fmt(s.free_quota)} free quota</span>`
+        : `<span style="color:var(--muted)">on pace for ~${fmt(s.projected_month_end)} by month end — within free quota</span>`;
+    return `<div style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px">
+        <span>${GOOGLE_SKU_LABELS[s.api_type] || s.api_type}</span>
+        <span style="font-variant-numeric:tabular-nums">${fmt(s.calls_this_month)} / ${fmt(s.free_quota)} free calls (${pct}%)</span>
+      </div>
+      <div style="height:6px;border-radius:3px;background:#1f1f1f;overflow:hidden">
+        <div style="height:100%;width:${Math.min(pct,100)}%;background:${barColor};border-radius:3px"></div>
+      </div>
+      <div style="font-size:0.75rem;margin-top:3px">${note}</div>
+    </div>`;
+  }).join('') + `<div style="font-size:0.72rem;color:var(--muted);margin-top:2px">Month-to-date: day ${data.days_elapsed} of ${data.days_in_month}</div>`;
+}
+
 function renderCosts(costs, funnel) {
   const s = costs.summary;
   document.getElementById('costKpis').innerHTML =
@@ -4125,7 +4165,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -4147,6 +4187,7 @@ async function loadAllData() {
       api(`/admin/promo-codes`).catch(() => null),
       api(`/admin/analytics/ab-test`).catch(() => null),
       api(`/admin/narration-config`).catch(() => null),
+      api(`/admin/analytics/google-maps-quota`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue);
@@ -4156,6 +4197,7 @@ async function loadAllData() {
     renderContent(content, funnel, listenCompletion);
     renderTours(tours);
     renderCosts(costs, funnel);
+    renderGoogleMapsQuota(googleQuota);
     renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth);
     renderAcquisitionChannels(acqChannels);
     renderAcquisition(acquisition, freeUsers, acqChannels);
