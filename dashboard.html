@@ -721,10 +721,17 @@
         <div class="card"><div class="loading">…</div></div>
       </div>
       <div class="card" style="margin-bottom:24px">
-        <div class="card-title">Google Maps Platform — free quota this month</div>
-        <div style="font-size:0.78rem;color:var(--muted);margin-bottom:12px">
-          The cost figures above are list price with no free tier applied — they don't say whether Google is actually billing you.
-          This does: non-cached calls this calendar month against each SKU's free monthly allotment (resets the 1st).
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div class="card-title" style="margin-bottom:0">Google Maps Platform — free quota</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <button onclick="navigateQuotaMonth(-1)" title="Previous month" style="font:inherit;font-size:0.85rem;font-weight:600;border-radius:7px;width:28px;height:28px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">‹</button>
+            <span id="quotaMonthLabel" style="font-size:0.85rem;font-weight:600;min-width:110px;text-align:center">—</span>
+            <button id="quotaMonthNextBtn" onclick="navigateQuotaMonth(1)" title="Next month" style="font:inherit;font-size:0.85rem;font-weight:600;border-radius:7px;width:28px;height:28px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">›</button>
+          </div>
+        </div>
+        <div style="font-size:0.78rem;color:var(--muted);margin:8px 0 12px">
+          The cost figures above are list price with no free tier applied — they don't say whether Google actually billed you.
+          This does: non-cached calls in the selected calendar month against each SKU's free monthly allotment (resets the 1st, nothing carries over between months).
         </div>
         <div id="googleQuotaRows"><div class="loading">Loading…</div></div>
       </div>
@@ -2280,17 +2287,33 @@ const GOOGLE_SKU_LABELS = {
   google_streetview: 'Street View Static',
 };
 
+let _quotaMonth = null;      // 'YYYY-MM' currently displayed
+let _quotaCurrentMonth = null; // 'YYYY-MM' for real "now" — caps forward navigation
+
+function _monthLabel(yyyyMm) {
+  const [y, m] = yyyyMm.split('-').map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
+
 function renderGoogleMapsQuota(data) {
   const el = document.getElementById('googleQuotaRows');
   if (!data || !data.skus) { el.innerHTML = '<div class="loading" style="color:var(--danger)">Failed to load</div>'; return; }
+
+  _quotaMonth = data.month;
+  if (data.is_current_month) _quotaCurrentMonth = data.month;
+  document.getElementById('quotaMonthLabel').textContent = _monthLabel(data.month);
+  const nextBtn = document.getElementById('quotaMonthNextBtn');
+  if (nextBtn) nextBtn.disabled = !!data.is_current_month;
+
   el.innerHTML = data.skus.map(s => {
     const pct = s.pct_used;
     const barColor = s.over_quota ? 'var(--danger)' : s.projected_over_quota ? C.yellow : C.green;
+    const paceVerb = data.is_current_month ? 'on pace for' : 'ended the month with';
     const note = s.over_quota
-      ? `<span style="color:var(--danger)">${fmt(s.billable_calls_so_far)} calls over quota — being billed</span>`
+      ? `<span style="color:var(--danger)">${fmt(s.billable_calls_so_far)} calls over quota — ${data.is_current_month ? 'being billed' : 'was billed'}</span>`
       : s.projected_over_quota
-        ? `<span style="color:${C.yellow}">on pace for ~${fmt(s.projected_month_end)} by month end — would exceed the ${fmt(s.free_quota)} free quota</span>`
-        : `<span style="color:var(--muted)">on pace for ~${fmt(s.projected_month_end)} by month end — within free quota</span>`;
+        ? `<span style="color:${C.yellow}">${paceVerb} ~${fmt(s.projected_month_end)} — would exceed the ${fmt(s.free_quota)} free quota</span>`
+        : `<span style="color:var(--muted)">${paceVerb} ~${fmt(s.projected_month_end)} — within free quota</span>`;
     return `<div style="margin-bottom:14px">
       <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px">
         <span>${GOOGLE_SKU_LABELS[s.api_type] || s.api_type}</span>
@@ -2301,7 +2324,22 @@ function renderGoogleMapsQuota(data) {
       </div>
       <div style="font-size:0.75rem;margin-top:3px">${note}</div>
     </div>`;
-  }).join('') + `<div style="font-size:0.72rem;color:var(--muted);margin-top:2px">Month-to-date: day ${data.days_elapsed} of ${data.days_in_month}</div>`;
+  }).join('') + `<div style="font-size:0.72rem;color:var(--muted);margin-top:2px">${data.is_current_month ? `Month-to-date: day ${data.days_elapsed} of ${data.days_in_month}` : `Month complete (${data.days_in_month} days)`}</div>`;
+}
+
+async function navigateQuotaMonth(delta) {
+  if (!_quotaMonth) return;
+  const [y, m] = _quotaMonth.split('-').map(Number);
+  const d = new Date(y, m - 1 + delta, 1);
+  const target = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+  if (_quotaCurrentMonth && target > _quotaCurrentMonth) return; // no future months
+  document.getElementById('googleQuotaRows').innerHTML = '<div class="loading">Loading…</div>';
+  try {
+    const data = await api(`/admin/analytics/google-maps-quota?month=${target}`);
+    renderGoogleMapsQuota(data);
+  } catch (e) {
+    document.getElementById('googleQuotaRows').innerHTML = '<div class="loading" style="color:var(--danger)">Failed to load</div>';
+  }
 }
 
 async function backfillNarrationGeocode() {
