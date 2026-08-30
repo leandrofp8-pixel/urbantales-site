@@ -1723,6 +1723,19 @@ function _dateParams() {
   return `days=${days}`;
 }
 
+// Which calendar month the Google Maps quota panel should open on, so it
+// tracks the top period selector instead of always defaulting to the
+// current month. Custom range -> the month its end date falls in; rolling
+// day windows always end "today" -> let the backend default to the current
+// month (null here).
+function _quotaMonthForPeriod() {
+  if (document.getElementById('periodSelect').value === 'custom') {
+    const to = document.getElementById('dateTo').value; // 'YYYY-MM-DD'
+    if (to) return to.slice(0, 7);
+  }
+  return null;
+}
+
 // ══════════════════════════════════════════════
 // RENDER HELPERS
 // ══════════════════════════════════════════════
@@ -2287,12 +2300,20 @@ const GOOGLE_SKU_LABELS = {
   google_streetview: 'Street View Static',
 };
 
-let _quotaMonth = null;      // 'YYYY-MM' currently displayed
-let _quotaCurrentMonth = null; // 'YYYY-MM' for real "now" — caps forward navigation
+let _quotaMonth = null; // 'YYYY-MM' currently displayed
 
 function _monthLabel(yyyyMm) {
   const [y, m] = yyyyMm.split('-').map(Number);
   return new Date(y, m - 1, 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
+
+// Real current month by the client's clock — caps forward navigation.
+// Computed locally rather than only from a response's is_current_month, so
+// the cap is set even when the panel opens on a past month (e.g. because
+// the top period selector is on a custom range in an earlier month).
+function _todayMonthStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 }
 
 function renderGoogleMapsQuota(data) {
@@ -2300,7 +2321,6 @@ function renderGoogleMapsQuota(data) {
   if (!data || !data.skus) { el.innerHTML = '<div class="loading" style="color:var(--danger)">Failed to load</div>'; return; }
 
   _quotaMonth = data.month;
-  if (data.is_current_month) _quotaCurrentMonth = data.month;
   document.getElementById('quotaMonthLabel').textContent = _monthLabel(data.month);
   const nextBtn = document.getElementById('quotaMonthNextBtn');
   if (nextBtn) nextBtn.disabled = !!data.is_current_month;
@@ -2332,7 +2352,7 @@ async function navigateQuotaMonth(delta) {
   const [y, m] = _quotaMonth.split('-').map(Number);
   const d = new Date(y, m - 1 + delta, 1);
   const target = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-  if (_quotaCurrentMonth && target > _quotaCurrentMonth) return; // no future months
+  if (target > _todayMonthStr()) return; // no future months
   document.getElementById('googleQuotaRows').innerHTML = '<div class="loading">Loading…</div>';
   try {
     const data = await api(`/admin/analytics/google-maps-quota?month=${target}`);
@@ -4305,7 +4325,7 @@ async function loadAllData() {
       api(`/admin/promo-codes`).catch(() => null),
       api(`/admin/analytics/ab-test`).catch(() => null),
       api(`/admin/narration-config`).catch(() => null),
-      api(`/admin/analytics/google-maps-quota`).catch(() => null),
+      api(`/admin/analytics/google-maps-quota${_quotaMonthForPeriod() ? '?month=' + _quotaMonthForPeriod() : ''}`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue);
