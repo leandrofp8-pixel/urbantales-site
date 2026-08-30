@@ -1707,6 +1707,18 @@ function shortDate(str) {
   const d = new Date(str + 'T00:00:00Z');
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
+function timeAgo(iso) {
+  if (!iso) return 'never active';
+  const diffMs = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diffMs / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  if (days < 30) return `${days}d ago`;
+  return fmtDate(iso) + ' ago';
+}
 
 // ══════════════════════════════════════════════
 // OVERVIEW
@@ -3338,7 +3350,7 @@ function renderUserList(users) {
     const isPaid = !!u.first_purchase_at;
     const name   = u.display_name || '';
     const label  = name ? `${name}` : '';
-    const sub    = `${u.total_narrations_listened || 0} narrations · ${u.coins ?? 0} coins`;
+    const sub    = `${u.total_narrations_listened || 0} narrations · ${u.coins ?? 0} coins · ${timeAgo(u.last_active_at)}`;
     const badge  = isPaid
       ? `<span class="user-list-badge pill badge-green">paid</span>`
       : `<span class="user-list-badge pill badge-orange">free</span>`;
