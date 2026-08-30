@@ -641,6 +641,14 @@
         <div class="grid-4" id="listenCompletionCards">
           <div class="card"><div class="loading">Loading…</div></div>
         </div>
+        <div style="margin-top:20px">
+          <h3 style="font-size:0.85rem;color:var(--muted);margin-bottom:8px">Monthly trend — avg completion % by tier</h3>
+          <div class="chart-wrap-lg"><canvas id="chartListenCompletionMonthly"></canvas></div>
+        </div>
+        <div style="margin-top:20px">
+          <h3 style="font-size:0.85rem;color:var(--muted);margin-bottom:8px" id="listenCompletionProviderTitle">Monthly trend — avg completion % by narration writer (OpenAI vs Gemini)</h3>
+          <div class="chart-wrap-lg"><canvas id="chartListenCompletionProvider"></canvas></div>
+        </div>
       </div>
 
       <div class="card" style="margin-bottom:24px">
@@ -2105,6 +2113,48 @@ function renderContent(content, funnel, listenCompletion) {
           badge
         );
       }).join('');
+
+  renderListenCompletionMonthly(listenCompletion);
+}
+
+function renderListenCompletionMonthly(listenCompletion) {
+  const TIER_LABELS = { MAJOR: 'Major', NOTABLE: 'Notable', LOCAL: 'Local' };
+  const TIER_COLORS = { MAJOR: C.primary, NOTABLE: C.blue, LOCAL: C.green };
+
+  const byMonthTier = listenCompletion?.by_month_tier || [];
+  const months = [...new Set(byMonthTier.map(r => r.month))].sort();
+  const tierDatasets = Object.keys(TIER_LABELS).map(tier => ({
+    label: TIER_LABELS[tier],
+    color: TIER_COLORS[tier],
+    data: months.map(m => {
+      const row = byMonthTier.find(r => r.month === m && r.tier === tier);
+      return row ? Math.round(row.avg_pct) : null;
+    }),
+    spanGaps: true,
+  }));
+  lineChart('chartListenCompletionMonthly', months, tierDatasets, { y: { max: 100 } });
+
+  // Provider split (OpenAI vs Gemini) — only populated for listens on app versions that report it
+  const PROVIDER_LABELS = { openai: 'ChatGPT (OpenAI)', gemini: 'Gemini' };
+  const PROVIDER_COLORS = { openai: C.purple, gemini: C.yellow };
+  const byMonthProvider = listenCompletion?.by_month_provider || [];
+  const providerMonths = [...new Set(byMonthProvider.map(r => r.month))].sort();
+  const providerSince = listenCompletion?.provider_tracking_since
+    ? new Date(listenCompletion.provider_tracking_since).toLocaleDateString()
+    : null;
+  document.getElementById('listenCompletionProviderTitle').textContent = providerSince
+    ? `Monthly trend — avg completion % by narration writer (OpenAI vs Gemini) · tracking since ${providerSince}`
+    : 'Monthly trend — avg completion % by narration writer (OpenAI vs Gemini) · no data yet, ships in the next app build';
+  const providerDatasets = Object.keys(PROVIDER_LABELS).map(p => ({
+    label: PROVIDER_LABELS[p],
+    color: PROVIDER_COLORS[p],
+    data: providerMonths.map(m => {
+      const row = byMonthProvider.find(r => r.month === m && r.provider === p);
+      return row ? Math.round(row.avg_pct) : null;
+    }),
+    spanGaps: true,
+  }));
+  lineChart('chartListenCompletionProvider', providerMonths, providerDatasets, { y: { max: 100 } });
 }
 
 // ══════════════════════════════════════════════
