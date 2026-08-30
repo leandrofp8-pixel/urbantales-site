@@ -702,6 +702,16 @@
 
     <!-- ── COSTS ── -->
     <div class="tab-panel" id="panel-costs">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <label class="toggle-switch">
+          <input type="checkbox" id="quotaAwareToggle" onchange="onQuotaAwareToggle()">
+          <span class="toggle-slider"></span>
+        </label>
+        <span style="font-size:0.88rem">Net of Google Maps free quota (overall + per client)</span>
+        <span id="quotaAwareState" style="font-size:0.78rem;color:var(--muted)">OFF — showing full list price · doesn't affect OpenAI/Gemini, which have no such quota</span>
+        <button id="geminiCostFixBtn" onclick="backfillGeminiCosts()" title="Gemini calls were recorded at $0 before gemini_flash_input/output had a rate — recompute their cost from the token counts already stored. Safe to re-run." style="margin-left:auto;flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Fix Gemini costs</button>
+      </div>
+      <div id="geminiCostFixStatus" style="font-size:0.78rem;color:var(--muted);margin-bottom:10px"></div>
       <div class="grid-4" id="costKpis">
         <div class="card"><div class="loading">Loading…</div></div>
         <div class="card"><div class="loading">…</div></div>
@@ -1521,6 +1531,8 @@
 const API = 'https://friendly-fulfillment-production.up.railway.app/api';
 const CHARTS = {};
 let days = 30;
+let _quotaAware = false;
+let _lastFunnel = null;
 
 // ══════════════════════════════════════════════
 // AUTH
@@ -2288,6 +2300,47 @@ function renderGoogleMapsQuota(data) {
       <div style="font-size:0.75rem;margin-top:3px">${note}</div>
     </div>`;
   }).join('') + `<div style="font-size:0.72rem;color:var(--muted);margin-top:2px">Month-to-date: day ${data.days_elapsed} of ${data.days_in_month}</div>`;
+}
+
+async function backfillGeminiCosts() {
+  const btn = document.getElementById('geminiCostFixBtn');
+  const status = document.getElementById('geminiCostFixStatus');
+  const prev = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = 'Fixing…';
+  status.textContent = '';
+  try {
+    const res = await fetch(`${API}/admin/analytics/backfill-gemini-costs`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+    });
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    const r = await res.json();
+    const inCount = r.gemini_flash_input?.modified ?? 0;
+    const outCount = r.gemini_flash_output?.modified ?? 0;
+    status.textContent = `Recomputed cost on ${fmt(inCount + outCount)} Gemini call records`;
+    await loadAllData();
+  } catch (e) {
+    status.textContent = 'Fix failed — try again';
+  } finally {
+    btn.disabled = false; btn.innerHTML = prev;
+  }
+}
+
+async function onQuotaAwareToggle() {
+  _quotaAware = document.getElementById('quotaAwareToggle').checked;
+  const stateEl = document.getElementById('quotaAwareState');
+  stateEl.textContent = _quotaAware
+    ? 'ON — loading…'
+    : 'OFF — showing full list price · doesn\'t affect OpenAI/Gemini, which have no such quota';
+  try {
+    const costs = await api(`/admin/cost-report?${_dateParams()}&quota_aware=${_quotaAware}`);
+    renderCosts(costs, _lastFunnel || {});
+    stateEl.textContent = _quotaAware
+      ? 'ON — Maps costs within the free monthly allotment show as $0'
+      : 'OFF — showing full list price · doesn\'t affect OpenAI/Gemini, which have no such quota';
+  } catch (e) {
+    stateEl.textContent = 'Failed to reload — try again';
+  }
 }
 
 function renderCosts(costs, funnel) {
@@ -4172,7 +4225,7 @@ async function loadAllData() {
       api(`/analytics/kpi/mau?months=12`).catch(() => null),
       api(`/analytics/kpi/free-users`),
       api(`/analytics/daily?${_dateParams()}`),
-      api(`/admin/cost-report?${_dateParams()}`),
+      api(`/admin/cost-report?${_dateParams()}&quota_aware=${_quotaAware}`),
       api(`/analytics/content?${_dateParams()}`),
       api(`/analytics/tours?days=${days}`),
       api(`/analytics/kpi/acquisition`),
@@ -4196,6 +4249,7 @@ async function loadAllData() {
     renderMAU(mau);
     renderContent(content, funnel, listenCompletion);
     renderTours(tours);
+    _lastFunnel = funnel;
     renderCosts(costs, funnel);
     renderGoogleMapsQuota(googleQuota);
     renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth);
