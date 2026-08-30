@@ -646,7 +646,11 @@
           <div class="chart-wrap-lg"><canvas id="chartListenCompletionMonthly"></canvas></div>
         </div>
         <div style="margin-top:20px">
-          <h3 style="font-size:0.85rem;color:var(--muted);margin-bottom:8px" id="listenCompletionProviderTitle">Monthly trend — avg completion % by narration writer (OpenAI vs Gemini)</h3>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px">
+            <h3 style="font-size:0.85rem;color:var(--muted)" id="listenCompletionProviderTitle">Monthly trend — avg completion % by narration writer (OpenAI vs Gemini)</h3>
+            <button id="lcpBackfill" onclick="backfillListenProvider()" title="Best-effort match of past listen events to the narration they belonged to, to infer provider for history. Safe to re-run." style="flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Backfill history</button>
+          </div>
+          <div id="lcpBackfillStatus" style="font-size:0.78rem;color:var(--muted);margin-bottom:8px"></div>
           <div class="chart-wrap-lg"><canvas id="chartListenCompletionProvider"></canvas></div>
         </div>
       </div>
@@ -2155,6 +2159,29 @@ function renderListenCompletionMonthly(listenCompletion) {
     spanGaps: true,
   }));
   lineChart('chartListenCompletionProvider', providerMonths, providerDatasets, { y: { max: 100 } });
+}
+
+async function backfillListenProvider() {
+  const btn = document.getElementById('lcpBackfill');
+  const status = document.getElementById('lcpBackfillStatus');
+  const prev = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = 'Matching…';
+  status.textContent = '';
+  try {
+    const res = await fetch(`${API}/admin/analytics/backfill-listen-provider`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+    });
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    const r = await res.json();
+    status.textContent = `Matched ${fmt(r.matched)} of ${fmt(r.scanned)} past events`
+      + ` · ${fmt(r.ambiguous_skipped)} skipped (ambiguous) · ${fmt(r.no_match_in_window)} no narration nearby`;
+    await loadAllData();
+  } catch (e) {
+    status.textContent = 'Backfill failed — try again';
+  } finally {
+    btn.disabled = false; btn.innerHTML = prev;
+  }
 }
 
 // ══════════════════════════════════════════════
