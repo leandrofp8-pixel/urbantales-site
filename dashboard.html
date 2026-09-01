@@ -773,6 +773,37 @@
           </table>
         </div>
       </div>
+
+      <div class="card" style="margin-top:24px">
+        <div class="section-header" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <h2>RevenueCat Purchases</h2>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="purchasesSearch" type="search" placeholder="Search by email…"
+              oninput="onPurchasesSearch()" style="font:inherit;font-size:0.82rem;border-radius:8px;padding:7px 11px;border:1px solid var(--border);background:#141414;color:var(--text);min-width:200px">
+            <select id="purchasesEnvFilter" onchange="reloadPurchases()" style="font:inherit;font-size:0.82rem;border-radius:8px;padding:7px 11px;border:1px solid var(--border);background:#141414;color:var(--text)">
+              <option value="">All environments</option>
+              <option value="PRODUCTION">Production only</option>
+              <option value="SANDBOX">Sandbox only</option>
+            </select>
+          </div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:10px">
+          Environment/exact price are only known for purchases received after this table shipped — older rows show "unknown" environment and the product's configured list price.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Date</th><th>User</th><th>Product</th><th>Coins</th><th>Price</th><th>Store</th><th>Environment</th></tr>
+            </thead>
+            <tbody id="purchasesBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="display:flex;justify-content:center;margin-top:12px">
+          <button id="purchasesLoadMoreBtn" onclick="loadMorePurchases()" style="font:inherit;font-size:0.82rem;font-weight:600;border-radius:9px;padding:8px 16px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">Load more</button>
+        </div>
+      </div>
     </div>
 
     <!-- ── FREE USERS ── -->
@@ -2482,6 +2513,75 @@ function renderCosts(costs, funnel) {
         <td>${fmt(u.total_calls)}</td>
         <td>${fmtCost(u.total_cost / Math.max(u.total_calls, 1))}</td>
       </tr>`).join('');
+
+  if (!_purchasesLoaded) {
+    _purchasesLoaded = true;
+    loadPurchases(true);
+  }
+}
+
+// ══════════════════════════════════════════════
+// REVENUECAT PURCHASES
+// ══════════════════════════════════════════════
+let _purchasesLoaded = false;
+let _purchasesSkip = 0;
+let _purchasesTotal = 0;
+const PURCHASES_PAGE_SIZE = 50;
+let _purchasesSearchTimer = null;
+
+function onPurchasesSearch() {
+  clearTimeout(_purchasesSearchTimer);
+  _purchasesSearchTimer = setTimeout(reloadPurchases, 300);
+}
+
+function reloadPurchases() {
+  loadPurchases(true);
+}
+
+async function loadPurchases(reset) {
+  const body = document.getElementById('purchasesBody');
+  const loadMoreBtn = document.getElementById('purchasesLoadMoreBtn');
+  if (reset) {
+    _purchasesSkip = 0;
+    body.innerHTML = '<tr><td colspan="7" class="loading">Loading…</td></tr>';
+  }
+  const q = encodeURIComponent(document.getElementById('purchasesSearch').value.trim());
+  const env = document.getElementById('purchasesEnvFilter').value;
+  try {
+    const data = await api(`/admin/analytics/purchases?q=${q}&environment=${env}&limit=${PURCHASES_PAGE_SIZE}&skip=${_purchasesSkip}`);
+    _purchasesTotal = data.total || 0;
+    const rows = data.purchases || [];
+    const rowsHtml = rows.map(p => {
+      const when = p.timestamp ? new Date(p.timestamp) : null;
+      const envBadge = p.environment === 'SANDBOX'
+        ? `<span class="pill badge-yellow">sandbox</span>`
+        : p.environment === 'PRODUCTION'
+          ? `<span class="pill badge-green">production</span>`
+          : `<span class="pill" style="color:var(--muted);border-color:var(--border)">unknown</span>`;
+      return `<tr>
+        <td>${when ? when.toLocaleDateString() + ' ' + when.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) : '—'}</td>
+        <td>${p.user_email}</td>
+        <td>${p.product_id}</td>
+        <td>${fmt(p.coins)}</td>
+        <td>${p.price ? '$' + p.price.toFixed(2) + ' ' + p.currency : '—'}</td>
+        <td>${p.store || '—'}</td>
+        <td>${envBadge}</td>
+      </tr>`;
+    }).join('');
+    if (reset) {
+      body.innerHTML = rows.length === 0 ? `<tr><td colspan="7" class="loading">No purchases found.</td></tr>` : rowsHtml;
+    } else {
+      body.insertAdjacentHTML('beforeend', rowsHtml);
+    }
+    _purchasesSkip += rows.length;
+    loadMoreBtn.style.display = _purchasesSkip < _purchasesTotal ? '' : 'none';
+  } catch (e) {
+    if (reset) body.innerHTML = `<tr><td colspan="7" class="loading" style="color:var(--danger)">Failed to load</td></tr>`;
+  }
+}
+
+function loadMorePurchases() {
+  loadPurchases(false);
 }
 
 // ══════════════════════════════════════════════
