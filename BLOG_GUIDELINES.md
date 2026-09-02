@@ -127,6 +127,32 @@ Every post gets exactly three touchpoints with the app, no more:
 
 Never add a fourth CTA, a popup, a sticky bar, or a banner. Three is the ceiling.
 
+## Images (added 2026-09-02)
+
+Real photos, not CSS gradients. `blog-images.json` at the repo root maps a city slug (matching the
+`{city}.html` filename, e.g. `rome`, `mexico-city`, `paris`) to a pre-downloaded photo already
+committed to the repo (`blog-img-{slug}.jpg`) plus its Pexels credit info (`photographer`,
+`photographer_url`, `pexels_url`).
+
+- **There is no live Pexels API access from this environment — do not attempt to call the Pexels
+  API, and never write any API key into a file.** Only use the pre-downloaded pool in
+  `blog-images.json` / `blog-img-*.jpg`.
+- Look up the new post's city slug in `blog-images.json`. If it's there:
+  - Use it as the post's `article-hero` background: replace `<div class="article-hero">` with
+    `<div class="article-hero" style="background-image:url('blog-img-{slug}.jpg');background-size:cover;background-position:center;">`
+    (see any published post for the exact pattern).
+  - Use the same file for the post's card thumbnail in `blog.html`:
+    `<div class="post-thumb" style="background-image:url('blog-img-{slug}.jpg');background-size:cover;background-position:center;">`
+    (drop the old `thumb-*` gradient class from new cards — it's only a fallback now).
+  - Add a small credit line in the post's `article-footer`, immediately before `<div class="share-row">`:
+    `<p style="font-size:11.5px;color:var(--ink-faint);margin:0 0 4px;">Photo: <a href="{photographer_url}" target="_blank" rel="noopener" style="color:var(--ink-faint);">{photographer}</a> / <a href="{pexels_url}" target="_blank" rel="noopener" style="color:var(--ink-faint);">Pexels</a></p>`
+- If the city slug is **not** in `blog-images.json` (a genuinely new city not yet in the pool),
+  fall back to the old `thumb-*` gradient class pattern (reuse the closest-toned existing gradient
+  from `blog.html`'s CSS) and note in the PR description that this post is still on a gradient
+  placeholder and could use a real photo added to `blog-images.json` later.
+- One photo per city is enough — if a second post later covers the same city with a different
+  landmark, it's fine to reuse that city's existing photo rather than needing a new one per post.
+
 ## Building the post file — steps
 
 1. Read `blog-topics.md`. Pick the next topic from the **Queue** section, respecting the
@@ -137,9 +163,8 @@ Never add a fourth CTA, a popup, a sticky bar, or a banner. Three is the ceiling
    — that lets the CTA and internal links connect to an existing page.
 2. Copy `blog-trevi-fountain-secret-history.html` as your structural template. Keep every CSS class
    name and the overall structure (`app-tie`, `nav`, `article-hero`, `byline`, `ps-note`, `app-cta`,
-   `article-footer`, `footer.site-footer`) identical — only change content, the `thumb-*` gradient
-   class (reuse an existing one from `blog.html`'s CSS if the city matches, otherwise reuse the
-   closest-toned existing gradient rather than inventing new CSS), and the `post-tag` label.
+   `article-footer`, `footer.site-footer`) identical — only change content, and apply the Images
+   section above for the hero/thumbnail background and the `post-tag` label.
 3. Write the post following the Voice and SEO sections above.
 4. Save it as `blog-{slug}.html` in the repo root (flat, no subfolder — matches every other page here).
 5. Add a new card at the **top** of `.post-grid` in `blog.html` (newest first). Demote the previous

@@ -1,0 +1,128 @@
+{
+  "rome": {
+    "file": "blog-img-rome.jpg",
+    "query": "Trevi Fountain Rome",
+    "photographer": "Magda Ehlers",
+    "photographer_url": "https://www.pexels.com/@magda-ehlers-pexels",
+    "pexels_url": "https://www.pexels.com/photo/iconic-trevi-fountain-in-rome-at-daytime-36132782/"
+  },
+  "mexico-city": {
+    "file": "blog-img-mexico-city.jpg",
+    "query": "Zocalo Mexico City cathedral",
+    "photographer": "Jimmy Elizarraras",
+    "photographer_url": "https://www.pexels.com/@jimmyelizarraras",
+    "pexels_url": "https://www.pexels.com/photo/mexico-city-metropolitan-cathedral-at-the-crowded-constitution-square-20848568/"
+  },
+  "paris": {
+    "file": "blog-img-paris.jpg",
+    "query": "Eiffel Tower Paris",
+    "photographer": "Mehmet Turgut  Kirkgoz",
+    "photographer_url": "https://www.pexels.com/@tkirkgoz",
+    "pexels_url": "https://www.pexels.com/photo/low-angle-shot-of-the-eiffel-tower-against-blue-sky-16496484/"
+  },
+  "lisbon": {
+    "file": "blog-img-lisbon.jpg",
+    "query": "Belem Tower Lisbon",
+    "photographer": "Vanessa Riecke",
+    "photographer_url": "https://www.pexels.com/@vanessa-riecke-492151",
+    "pexels_url": "https://www.pexels.com/photo/tower-of-castle-in-a-harbor-in-lisbon-16207032/"
+  },
+  "barcelona": {
+    "file": "blog-img-barcelona.jpg",
+    "query": "Sagrada Familia Barcelona",
+    "photographer": "Mehmet Turgut  Kirkgoz",
+    "photographer_url": "https://www.pexels.com/@tkirkgoz",
+    "pexels_url": "https://www.pexels.com/photo/river-by-sagrada-familia-in-barcelona-spain-16984552/"
+  },
+  "prague": {
+    "file": "blog-img-prague.jpg",
+    "query": "Prague Astronomical Clock old town",
+    "photographer": "Efrem  Efre",
+    "photographer_url": "https://www.pexels.com/@efrem-efre-2786187",
+    "pexels_url": "https://www.pexels.com/photo/a-clock-on-a-building-14393558/"
+  },
+  "tokyo": {
+    "file": "blog-img-tokyo.jpg",
+    "query": "Senso-ji Temple Asakusa Tokyo",
+    "photographer": "Sabine Meier",
+    "photographer_url": "https://www.pexels.com/@sabine-meier-818963894",
+    "pexels_url": "https://www.pexels.com/photo/tokyo-skytree-view-from-senso-ji-temple-area-31270171/"
+  },
+  "new-york": {
+    "file": "blog-img-new-york.jpg",
+    "query": "Grand Central Terminal New York",
+    "photographer": "Charlotte May",
+    "photographer_url": "https://www.pexels.com/@charlotte-may",
+    "pexels_url": "https://www.pexels.com/photo/classic-watch-on-public-transport-station-5824845/"
+  },
+  "florence": {
+    "file": "blog-img-florence.jpg",
+    "query": "Florence Duomo cathedral",
+    "photographer": "Barkalı",
+    "photographer_url": "https://www.pexels.com/@barkali-340353352",
+    "pexels_url": "https://www.pexels.com/photo/stunning-view-of-florence-cathedral-s-dome-30789595/"
+  },
+  "vienna": {
+    "file": "blog-img-vienna.jpg",
+    "query": "Hofburg Palace Vienna",
+    "photographer": "Ekam Juneja",
+    "photographer_url": "https://www.pexels.com/@ekam-juneja-61080223",
+    "pexels_url": "https://www.pexels.com/photo/hofburg-palace-in-vienna-19343897/"
+  },
+  "buenos-aires": {
+    "file": "blog-img-buenos-aires.jpg",
+    "query": "Caminito La Boca Buenos Aires",
+    "photographer": "Miguel Cuenca",
+    "photographer_url": "https://www.pexels.com/@miguel-cuenca-67882473",
+    "pexels_url": "https://www.pexels.com/photo/colorful-facades-of-la-boca-buenos-aires-32910336/"
+  },
+  "berlin": {
+    "file": "blog-img-berlin.jpg",
+    "query": "Brandenburg Gate Berlin",
+    "photographer": "Claudia  Solano",
+    "photographer_url": "https://www.pexels.com/@imagenesclau",
+    "pexels_url": "https://www.pexels.com/photo/brandenburg-gate-in-berlin-iconic-landmark-37120347/"
+  },
+  "rio-de-janeiro": {
+    "file": "blog-img-rio-de-janeiro.jpg",
+    "query": "Christ the Redeemer Rio de Janeiro",
+    "photographer": "Jonathan Borba",
+    "photographer_url": "https://www.pexels.com/@jonathanborba",
+    "pexels_url": "https://www.pexels.com/photo/christ-the-redeemer-overlooking-rio-de-janeiro-skyline-36953264/"
+  },
+  "amsterdam": {
+    "file": "blog-img-amsterdam.jpg",
+    "query": "Amsterdam canal houses",
+    "photographer": "Adrien Olichon",
+    "photographer_url": "https://www.pexels.com/@adrien-olichon-1257089",
+    "pexels_url": "https://www.pexels.com/photo/old-amsterdam-city-houses-on-canal-4237160/"
+  },
+  "marrakech": {
+    "file": "blog-img-marrakech.jpg",
+    "query": "Jemaa el-Fna Marrakech",
+    "photographer": "Margo Evardson",
+    "photographer_url": "https://www.pexels.com/@margo-evardson-2158292018",
+    "pexels_url": "https://www.pexels.com/photo/bustling-market-scene-in-marrakesh-medina-37651105/"
+  },
+  "bangkok": {
+    "file": "blog-img-bangkok.jpg",
+    "query": "Wat Arun Bangkok",
+    "photographer": "Zaonar Saizainalin",
+    "photographer_url": "https://www.pexels.com/@zaonar-saizainalin-547935324",
+    "pexels_url": "https://www.pexels.com/photo/bangkok-cityscape-with-traditional-thai-architecture-30540817/"
+  },
+  "chicago": {
+    "file": "blog-img-chicago.jpg",
+    "query": "Cloud Gate Millennium Park Chicago",
+    "photographer": "Enrique Cortes",
+    "photographer_url": "https://www.pexels.com/@enrique-cortes-1101387",
+    "pexels_url": "https://www.pexels.com/photo/modern-cloud-gate-sculpture-in-a-chicago-17010678/"
+  },
+  "london": {
+    "file": "blog-img-london.jpg",
+    "query": "Tower of London",
+    "photographer": "Heinz Klier",
+    "photographer_url": "https://www.pexels.com/@heinz-klier-261981",
+    "pexels_url": "https://www.pexels.com/photo/stone-church-beside-buildings-1055234/"
+  }
+}
