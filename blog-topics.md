@@ -8,6 +8,7 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 | Date | Type | City | Post |
 |---|---|---|---|
 | 2026-09-02 | Hidden Story | Rome | [blog-trevi-fountain-secret-history.html](blog-trevi-fountain-secret-history.html) — The secret the Trevi Fountain guides don't tell you |
+| 2026-09-02 | City Guide | Mexico City | [blog-mexico-city-historic-center-walk.html](blog-mexico-city-historic-center-walk.html) — A self-guided day in Mexico City's historic center, hour by hour |
 
 ## Queue (next up first)
 
@@ -16,7 +17,6 @@ already in this repo, so the post's CTAs and internal links can point to it.
 
 | Type | City | Angle |
 |---|---|---|
-| City Guide | Mexico City | A self-guided day in the historic center (Zócalo, Templo Mayor, Palacio de Bellas Artes), hour by hour |
 | Hidden Story | Paris | What tour guides won't say about the Eiffel Tower — the demolition clause and the writer who sued to stop it |
 | City Guide | Lisbon | A Belém walking route that beats the Tram 28 queue |
 | Hidden Story | Mexico City | What's actually still buried under the Zócalo — the Templo Mayor's accidental 1978 discovery |
