@@ -46,18 +46,43 @@ Tales team." But the *voice inside the post* can and should be personal and anec
   Legends and disputed folklore are fine as long as they're framed as legend/disputed (see the barber
   story in the Trevi post for the pattern: "Historians dispute it. Romans tell it anyway.").
 
+## Keep historical/background info light (added 2026-09-02, after post #2 ran too dense)
+
+Every fact you include should earn its place by adding color to what someone will actually see or
+feel — not because it's true and citable. Concretely:
+
+- **One or two sentences of history per stop, max.** If you catch yourself writing a paragraph of
+  dates, founders, dynasties, or construction timelines, cut it down to the single most vivid detail
+  and move on. The reader is on a walk, not in a lecture.
+- **Pick the one fact that changes how a place feels to look at**, and skip the rest. "The cathedral
+  is visibly sinking because the whole city sits on a drained lake" is worth a sentence. The lake's
+  draining date, the engineers involved, and the exact subsidence rate are not — that's a Wikipedia
+  paragraph wearing a blog post as a costume.
+- Do not stack multiple practical details in one place — a price *and* an ID requirement *and* a wait
+  time *and* opening hours, all in the same paragraph. If a logistic detail is genuinely worth
+  including, it's because it would change what the reader actually does; include that one, drop the
+  rest. When in doubt, cut the number and keep the feeling.
+
 ## The two content types
 
 Alternate between these — don't publish two of the same type back to back.
 
 **Hidden Stories** — one landmark, one surprising true story behind it (a feud, a mistake, an
-origin story, a piece of trivia guides skip because there's a bus waiting). ~900-1300 words.
+origin story, a piece of trivia guides skip because there's a bus waiting). ~800-1100 words.
 
-**City Guides** — a practical, opinionated, self-guided route or comparison ("a self-guided day in
-X's historic center, hour by hour," "why we stopped booking $40 walking tours," "skip the queue: a
-route that beats [popular tourist thing]"). These should contain genuinely useful, specific logistics
-— an order to visit things in, a time-of-day tip, a way to avoid a queue — not generic travel advice.
-~900-1500 words.
+**City Guides** — this is a walk, not an itinerary spec sheet. Write it the way you'd tell a friend
+about a morning you spent somewhere good: loose chronological movement through a few stops, one
+engaging observation or small moment at each, historical color kept to the one-or-two-sentence rule
+above. It should read as a story about walking somewhere, that happens to leave the reader knowing
+where to go — not a checklist that happens to have some anecdotes in it.
+  - **Avoid hour-by-hour timestamp headers** ("7:45–8:15am: ...") and avoid turning every stop into
+    its own mini-guide with a price, a queue-length, and an ID requirement all listed out. One
+    concrete, specific, memorable detail per stop beats an exhaustive one.
+  - Use `<h2>`s to mark moments or places, not time blocks — "the cathedral that's sinking," not
+    "8:15am: the cathedral."
+  - It's fine to skip a stop's practical details entirely if they don't add anything a reader would
+    act on. This is meant to feel like reading about a nice walk, not planning a logistics operation.
+  - ~700-1000 words — shorter than a Hidden Story, since there's no single deep story to unfold.
 
 Do not write "App Update" or product-announcement posts on this blog — that content doesn't belong
 here (decided 2026-09-02).
