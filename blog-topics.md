@@ -9,6 +9,7 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 |---|---|---|---|
 | 2026-09-02 | Hidden Story | Rome | [blog-trevi-fountain-secret-history.html](blog-trevi-fountain-secret-history.html) — The secret the Trevi Fountain guides don't tell you |
 | 2026-09-02 | City Guide | Mexico City | [blog-mexico-city-historic-center-walk.html](blog-mexico-city-historic-center-walk.html) — A self-guided day in Mexico City's historic center, hour by hour |
+| 2026-09-02 | Hidden Story | Paris | [blog-eiffel-tower-demolition-clause.html](blog-eiffel-tower-demolition-clause.html) — The Eiffel Tower's original permit had a demolition clause built in |
 
 ## Queue (next up first)
 
@@ -17,7 +18,6 @@ already in this repo, so the post's CTAs and internal links can point to it.
 
 | Type | City | Angle |
 |---|---|---|
-| Hidden Story | Paris | What tour guides won't say about the Eiffel Tower — the demolition clause and the writer who sued to stop it |
 | City Guide | Lisbon | A Belém walking route that beats the Tram 28 queue |
 | Hidden Story | Mexico City | What's actually still buried under the Zócalo — the Templo Mayor's accidental 1978 discovery |
 | City Guide | Barcelona | A self-guided Gaudí day: what order to see Park Güell, Sagrada Família and Casa Batlló in |
