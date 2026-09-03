@@ -1,0 +1,51 @@
+{
+  "badge_num": 7,
+  "city": "PARIS",
+  "flag": "🇫🇷",
+  "cta_screenshot": "screen-paris-eiffel-map.png",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "The glass pyramid isn't cursed with 666 panes",
+      "body_html": "The Da Vinci Code made \"666 panes\" famous, but I.M. Pei's Louvre Pyramid actually has <b>673 glass panes</b> — 603 diamonds and 70 triangles, confirmed by the architect's own team.",
+      "candidates": []
+    },
+    {
+      "slot": "fact2",
+      "headline": "One chapel holds more stained glass than most cathedrals",
+      "body_html": "Sainte-Chapelle's 13th-century windows pack in <b>1,113 biblical scenes</b> across 618 square meters of glass — and most survived WWII only because they were pulled out pane by pane and hidden.",
+      "candidates": []
+    },
+    {
+      "slot": "fact3",
+      "headline": "The rooster on top of Notre-Dame is a reliquary",
+      "body_html": "Notre-Dame's gilded spire rooster secretly holds <b>fragments of the Crown of Thorns</b>. It survived the 2019 fire even as the spire collapsed beneath it.",
+      "candidates": []
+    },
+    {
+      "slot": "fact4",
+      "headline": "A pendulum here proved the Earth spins",
+      "body_html": "In 1851, Léon Foucault hung a <b>28kg bob from a 67-meter wire</b> under the Panthéon's dome — the first visual proof the planet rotates. You can still watch it swing today.",
+      "candidates": []
+    },
+    {
+      "slot": "fact5",
+      "headline": "The Paris Opera House is built over a hidden lake",
+      "body_html": "Beneath Palais Garnier sits a <b>25x50 meter underground reservoir</b> Charles Garnier built to fight groundwater — the real inspiration for Phantom of the Opera. Fire divers still train in it.",
+      "candidates": []
+    },
+    {
+      "slot": "fact6",
+      "headline": "6 million Parisians are stacked under the streets",
+      "body_html": "The Paris Catacombs hold the bones of roughly <b>6 million people</b> — more than double the city's living population — packed into tunnels it took 12 years to fill.",
+      "candidates": []
+    },
+    {
+      "slot": "fact7",
+      "headline": "This bookstore has hosted 30,000 free sleepovers",
+      "body_html": "Since 1951, over <b>30,000 traveling writers</b> have slept for free among the shelves at Shakespeare and Company — in exchange for reading one book a day.",
+      "candidates": []
+    }
+  ],
+  "cover_candidates": []
+}
