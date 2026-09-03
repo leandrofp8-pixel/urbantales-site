@@ -90,16 +90,18 @@ def main():
         fact_html = f"""
         <div style="width:1080px;height:1350px;background:#fae0cf;position:relative;">
           <div class="badge">Only with Urban Tales #{badge}</div>
-          <div style="position:absolute; top:140px; left:64px; right:64px;">
-            <div style="width:952px; height:480px; border-radius:26px; border:5px solid #d1531f; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.12);">
+          <div style="position:absolute; top:120px; left:64px; right:64px; bottom:70px; display:flex; flex-direction:column;">
+            <div style="width:952px; height:520px; flex-shrink:0; border-radius:26px; border:5px solid #d1531f; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.12);">
               <img src="{img}" style="width:100%; height:100%; object-fit:cover;">
             </div>
-            <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:56px; color:#1c1a17; line-height:1.18; margin-top:42px;">
-              {i}. {fact['headline']}
-            </div>
-            <div style="width:150px; height:6px; background:#d1531f; margin-top:24px; border-radius:3px;"></div>
-            <div style="font-family:'Baloo 2'; font-weight:500; font-size:40px; color:#231f1a; line-height:1.4; margin-top:30px;">
-              {fact['body_html']}
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:30px; margin-top:36px;">
+              <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:60px; color:#1c1a17; line-height:1.18;">
+                {i}. {fact['headline']}
+              </div>
+              <div style="width:150px; height:6px; background:#d1531f; border-radius:3px;"></div>
+              <div style="font-family:'Baloo 2'; font-weight:500; font-size:44px; color:#231f1a; line-height:1.42;">
+                {fact['body_html']}
+              </div>
             </div>
           </div>
         </div>
