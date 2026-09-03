@@ -90,15 +90,15 @@ def main():
         fact_html = f"""
         <div style="width:1080px;height:1350px;background:#fae0cf;position:relative;">
           <div class="badge">Only with Urban Tales #{badge}</div>
-          <div style="position:absolute; top:150px; left:64px; right:64px;">
-            <div style="width:952px; height:540px; border-radius:26px; border:5px solid #d1531f; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.12);">
+          <div style="position:absolute; top:140px; left:64px; right:64px;">
+            <div style="width:952px; height:480px; border-radius:26px; border:5px solid #d1531f; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.12);">
               <img src="{img}" style="width:100%; height:100%; object-fit:cover;">
             </div>
-            <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:54px; color:#1c1a17; line-height:1.2; margin-top:52px;">
+            <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:56px; color:#1c1a17; line-height:1.18; margin-top:42px;">
               {i}. {fact['headline']}
             </div>
-            <div style="width:150px; height:6px; background:#d1531f; margin-top:26px; border-radius:3px;"></div>
-            <div style="font-family:'Baloo 2'; font-weight:500; font-size:36px; color:#231f1a; line-height:1.42; margin-top:34px;">
+            <div style="width:150px; height:6px; background:#d1531f; margin-top:24px; border-radius:3px;"></div>
+            <div style="font-family:'Baloo 2'; font-weight:500; font-size:40px; color:#231f1a; line-height:1.4; margin-top:30px;">
               {fact['body_html']}
             </div>
           </div>
@@ -110,25 +110,28 @@ def main():
     # slide 9: CTA
     cta_screenshot = spec["cta_screenshot"]
     cta = f"""
-    <div style="width:1080px;height:1350px;background:#111110;position:relative;">
+    <div style="width:1080px;height:1350px;background:#111110;position:relative;overflow:hidden;">
+      <div style="position:absolute; top:50%; left:18%; width:900px; height:900px; transform:translate(-50%,-50%); background:radial-gradient(circle, rgba(209,83,31,0.32) 0%, rgba(209,83,31,0) 62%); pointer-events:none;"></div>
       <div class="badge">Only with Urban Tales #{badge}</div>
-      <div style="position:absolute; top:230px; left:70px; width:430px; height:900px; border-radius:52px; border:12px solid #f2ede6; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.5);">
+      <div style="position:absolute; top:230px; left:70px; width:430px; height:900px; border-radius:52px; border:12px solid #f2ede6; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.5); z-index:2;">
         <img src="{cta_screenshot}" style="width:100%; height:100%; object-fit:cover;">
       </div>
-      <div style="position:absolute; top:270px; left:560px; width:450px;">
-        <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:54px; color:#f2ede6; line-height:1.28;">
+      <div style="position:absolute; top:230px; left:560px; width:450px; height:900px; display:flex; flex-direction:column; justify-content:center; gap:40px; z-index:2;">
+        <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:56px; color:#f2ede6; line-height:1.26;">
           If you want to explore the cities, not just pass by
         </div>
-        <div style="margin-top:60px;">
-          <img src="icon.png" style="width:130px; height:130px; border-radius:32px; box-shadow:0 10px 24px rgba(0,0,0,0.4);">
+        <div style="display:flex; align-items:center; gap:22px;">
+          <img src="icon.png" style="width:104px; height:104px; border-radius:26px; box-shadow:0 10px 24px rgba(0,0,0,0.4); flex-shrink:0;">
+          <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:38px; color:#d1531f; line-height:1.22;">
+            Turn cities into stories
+          </div>
         </div>
-        <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:42px; color:#d1531f; line-height:1.25; margin-top:30px;">
-          Turn cities into stories
-        </div>
+        <a style="display:inline-flex; align-items:center; gap:12px; background:#d1531f; color:#fff8f0; font-family:'Baloo 2'; font-weight:700; font-size:32px; padding:22px 34px; border-radius:18px; box-shadow:0 10px 26px rgba(0,0,0,0.35); width:fit-content;">
+            urbantales.net <span style="font-size:28px;">&rarr;</span>
+        </a>
       </div>
-      <div style="position:absolute; bottom:90px; left:0; right:0; text-align:center;">
-        <div style="font-family:'Baloo 2'; font-weight:700; font-size:38px; color:#f2ede6;">Link in bio &rarr;</div>
-        <div style="font-family:'Baloo 2'; font-weight:700; font-size:38px; color:#f2ede6; margin-top:6px;">https://urbantales.net</div>
+      <div style="position:absolute; bottom:56px; left:0; right:0; text-align:center; z-index:2;">
+        <div style="font-family:'Baloo 2'; font-weight:600; font-size:26px; color:#9a8878; letter-spacing:0.04em; text-transform:uppercase;">Link in bio</div>
       </div>
     </div>
     """
