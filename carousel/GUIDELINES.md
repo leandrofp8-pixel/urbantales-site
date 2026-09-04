@@ -19,6 +19,31 @@ detail that makes someone want to see it in person ("the bridge still sells only
 Every fact must be a real, checkable claim (web search it). Legend/disputed folklore is fine if
 framed that way in the text itself, same rule as the blog.
 
+## Caption (added 2026-09-04)
+
+Every batch needs an Instagram caption too, not just the 9 slides. Write one and put it in
+`draft.json` as `"caption"`. Fixed shape, in this order, separated by blank lines:
+
+1. **Hook** — one sentence, the single most surprising fact from the set (usually the same one
+   that would make the best cover-slide teaser, but doesn't have to be fact #1). Must stand alone
+   in the ~125 characters Instagram shows before "more" truncates it — front-load the surprise,
+   don't wind up to it.
+2. **Tease, don't list** — 1-2 sentences naming 2-3 *other* facts from the set (in prose, not a
+   list) without giving away the punchline of each — the goal is "I need to swipe to see this,"
+   not a spoiler. Never restate all 7.
+3. **One organic app mention** — same P.S.-style rule as the blog and the mid-carousel slide: tie
+   it to something specific just mentioned ("hearing the pendulum story live under the dome"),
+   never a bare "download our app" line. One sentence, ending with "Free to start, link in bio."
+4. **CTA line** — "Swipe through 👉 [a genuine question tied to the content]", e.g. "which one did
+   you not know?" — never a generic "double tap if you agree."
+5. **Hashtag block** — a line of three dots on their own (`.`) repeated 3 times (standard IG
+   spacing convention to push hashtags below the fold), then ONE line of 6-8 hashtags: the city
+   (`#Paris`), a city+travel tag (`#ParisTravel`), 2-3 niche/interest tags (`#HiddenGems`,
+   `#TravelFacts`, `#SelfGuidedTravel`), one landmark-specific tag tied to the hook fact
+   (`#NotreDame`), and `#UrbanTales`. Never more than 8 — a wall of tags reads as spam, not reach.
+
+See `carousel/drafts/paris/caption.md` for a full worked example.
+
 ## What to produce for one batch
 
 1. **Pick the next city.** Read `topics.md`'s Published table, pick something not on it. Check the
@@ -49,13 +74,15 @@ framed that way in the text itself, same rule as the blog.
    `screen-{city}-*-map.png`) showing the "Now Playing" panel if possible — see how the Florence
    batch used `screen-florence-duomo-map.png`. If this city has no existing screenshot, note that
    in the PR and use the closest available city's screenshot as a placeholder.
-5. **Write `carousel/drafts/{slug}/draft.json`**:
+5. **Write the caption** per the Caption section above.
+6. **Write `carousel/drafts/{slug}/draft.json`**:
    ```json
    {
      "badge_num": 7,
      "city": "VIENNA",
      "flag": "🇦🇹",
      "cta_screenshot": "screen-vienna-hofburg-map.png",
+     "caption": "... the full caption text, formatted per the Caption section above ...",
      "facts": [
        {"slot": "fact1", "headline": "...", "body_html": "...",
         "candidates": [
@@ -70,7 +97,7 @@ framed that way in the text itself, same rule as the blog.
      ]
    }
    ```
-6. **Move the topic entry** in `topics.md` from "Next batch" into the Published table with the new
+7. **Move the topic entry** in `topics.md` from "Next batch" into the Published table with the new
    batch number and city, and set the following batch number as TBD.
 
 ## Publishing — same rule as the blog: PR, never push to main
@@ -88,5 +115,7 @@ embed each one as `https://raw.githubusercontent.com/leandrofp8-pixel/urbantales
 (a plain markdown image link works directly in a GitHub PR body). Group them by slot, in order
 (cover, fact1..fact7), with each fact's headline/body text directly above its candidates so the PR
 reads top-to-bottom like the finished carousel will. List your visual-match note under each
-candidate. End the PR body with: "Reply with your picks (e.g. \"cover: 2, fact1: 1, fact3: 3\") and
-the final render happens after." Never merge your own PR, never push to `main` directly.
+candidate. Include the full caption (from `draft.json`) in its own section near the top of the PR
+body, in a code block so line breaks/hashtags render exactly as they'll post. End the PR body with:
+"Reply with your picks (e.g. \"cover: 2, fact1: 1, fact3: 3\") and any caption edits, and the final
+render happens after." Never merge your own PR, never push to `main` directly.
