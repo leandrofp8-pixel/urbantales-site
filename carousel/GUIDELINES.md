@@ -19,30 +19,29 @@ detail that makes someone want to see it in person ("the bridge still sells only
 Every fact must be a real, checkable claim (web search it). Legend/disputed folklore is fine if
 framed that way in the text itself, same rule as the blog.
 
-## Caption (added 2026-09-04)
+## Caption (added 2026-09-04, revised same day — minimalist)
 
 Every batch needs an Instagram caption too, not just the 9 slides. Write one and put it in
-`draft.json` as `"caption"`. Fixed shape, in this order, separated by blank lines:
+`draft.json` as `"caption"`. **Minimalist and comment-bait — not informative, not a pitch.** The
+app CTA already lives on slide 9; the caption's only job is to make someone stop and comment.
+Two lines, then hashtags — nothing else:
 
-1. **Hook** — one sentence, the single most surprising fact from the set (usually the same one
-   that would make the best cover-slide teaser, but doesn't have to be fact #1). Must stand alone
-   in the ~125 characters Instagram shows before "more" truncates it — front-load the surprise,
-   don't wind up to it.
-2. **Tease, don't list** — 1-2 sentences naming 2-3 *other* facts from the set (in prose, not a
-   list) without giving away the punchline of each — the goal is "I need to swipe to see this,"
-   not a spoiler. Never restate all 7.
-3. **One organic app mention** — same P.S.-style rule as the blog and the mid-carousel slide: tie
-   it to something specific just mentioned ("hearing the pendulum story live under the dome"),
-   never a bare "download our app" line. One sentence, ending with "Free to start, link in bio."
-4. **CTA line** — "Swipe through 👉 [a genuine question tied to the content]", e.g. "which one did
-   you not know?" — never a generic "double tap if you agree."
-5. **Hashtag block** — a line of three dots on their own (`.`) repeated 3 times (standard IG
+1. **Hook** — one short, slightly provocative line built around the single most surprising fact
+   from the set (usually the same one that makes the best cover-slide teaser). Withhold the
+   answer — "hiding something 99% of visitors never notice," not "here's what's hiding." The
+   curiosity gap is the whole point; do not resolve it in the caption.
+2. **Comment bait** — one line, a direct prompt to comment, almost always a guess/reaction
+   question tied to the hook ("Comment which one shocked you most 👇", "Comment your guess before
+   you swipe ⬇️"). Never "double tap if you agree," never "link in bio" (that's the last slide's
+   job, not the caption's).
+3. **Hashtag block** — a line of three dots on their own (`.`) repeated 3 times (standard IG
    spacing convention to push hashtags below the fold), then ONE line of 6-8 hashtags: the city
    (`#Paris`), a city+travel tag (`#ParisTravel`), 2-3 niche/interest tags (`#HiddenGems`,
-   `#TravelFacts`, `#SelfGuidedTravel`), one landmark-specific tag tied to the hook fact
-   (`#NotreDame`), and `#UrbanTales`. Never more than 8 — a wall of tags reads as spam, not reach.
+   `#TravelFacts`), one landmark-specific tag tied to the hook fact (`#NotreDame`), and
+   `#UrbanTales`. Never more than 8 — a wall of tags reads as spam, not reach.
 
-See `carousel/drafts/paris/caption.md` for a full worked example.
+Total caption (excluding hashtags) should read in under 3 seconds. If it takes a beat to parse,
+cut it down. See `carousel/drafts/paris/caption.md` for a full worked example.
 
 ## What to produce for one batch
 
