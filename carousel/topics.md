@@ -13,9 +13,10 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 4 | New York |
 | 5 | Istanbul |
 | 6 | Florence |
+| 7 | Paris |
 
 ## Next batch
 
-**#7 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#8 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).

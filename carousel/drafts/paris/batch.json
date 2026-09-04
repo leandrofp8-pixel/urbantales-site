@@ -1,0 +1,46 @@
+{
+  "badge_num": 7,
+  "city": "PARIS",
+  "flag": "🇫🇷",
+  "cta_screenshot": "screen-paris-eiffel-map.png",
+  "facts": [
+    {
+      "headline": "The glass pyramid isn't cursed with 666 panes",
+      "body_html": "The Da Vinci Code made \"666 panes\" famous, but I.M. Pei's Louvre Pyramid actually has <b>673 glass panes</b> — 603 diamonds and 70 triangles, confirmed by the architect's own team."
+    },
+    {
+      "headline": "One chapel holds more stained glass than most cathedrals",
+      "body_html": "Sainte-Chapelle's 13th-century windows pack in <b>1,113 biblical scenes</b> across 618 square meters of glass — and most survived WWII only because they were pulled out pane by pane and hidden."
+    },
+    {
+      "headline": "The rooster on top of Notre-Dame is a reliquary",
+      "body_html": "Notre-Dame's gilded spire rooster secretly holds <b>fragments of the Crown of Thorns</b>. It survived the 2019 fire even as the spire collapsed beneath it."
+    },
+    {
+      "headline": "A pendulum here proved the Earth spins",
+      "body_html": "In 1851, Léon Foucault hung a <b>28kg bob from a 67-meter wire</b> under the Panthéon's dome — the first visual proof the planet rotates. You can still watch it swing today."
+    },
+    {
+      "headline": "The Paris Opera House is built over a hidden lake",
+      "body_html": "Beneath Palais Garnier sits a <b>25x50 meter underground reservoir</b> Charles Garnier built to fight groundwater — the real inspiration for Phantom of the Opera. Fire divers still train in it."
+    },
+    {
+      "headline": "6 million Parisians are stacked under the streets",
+      "body_html": "The Paris Catacombs hold the bones of roughly <b>6 million people</b> — more than double the city's living population — packed into tunnels it took 12 years to fill."
+    },
+    {
+      "headline": "This bookstore has hosted 30,000 free sleepovers",
+      "body_html": "Since 1951, over <b>30,000 traveling writers</b> have slept for free among the shelves at Shakespeare and Company — in exchange for reading one book a day."
+    }
+  ],
+  "photo_credits": {
+    "cover": {"title": "Tour eiffel at sunrise from the trocadero", "license": "CC BY-SA 3.0"},
+    "fact1": {"title": "Louvre Museum Wikimedia Commons", "license": "CC BY-SA 3.0"},
+    "fact2": {"title": "Sainte Chapelle Interior Stained Glass", "license": "CC BY-SA 4.0"},
+    "fact3": {"title": "04 2024 Rooster New Spire Notre Dame Paris", "license": "CC BY-SA 4.0"},
+    "fact4": {"title": "Paris, France, PANTHEON, (Pendulum of Foucault)", "license": "CC BY-SA 3.0"},
+    "fact5": {"title": "Paris Opera House, Palais Garnier", "license": "CC BY-SA 4.0"},
+    "fact6": {"title": "Catacumbas, Paris, Francia, 2022-11-01", "license": "CC BY-SA 4.0"},
+    "fact7": {"title": "Shakespeare and Company bookstore, Paris", "license": "CC BY 2.0"}
+  }
+}
