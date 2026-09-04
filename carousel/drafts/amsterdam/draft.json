@@ -1,0 +1,62 @@
+{
+  "badge_num": 8,
+  "city": "AMSTERDAM",
+  "flag": "🇳🇱",
+  "cta_screenshot": "screen-amsterdam-annefrank-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy blocks commons.wikimedia.org, upload.wikimedia.org, and api.pexels.com (confirmed via curl and WebFetch — both returned 403/EGRESS_BLOCKED; only github.com/api.github.com/raw.githubusercontent.com and a short package-registry allowlist are reachable). No candidate photos could be downloaded this run. 'candidates' arrays are empty; 'suggested_queries' lists the Commons search terms to run from an environment with open network access.",
+  "caption": "Amsterdam holds a Guinness World Record for pulling up to 15,000 bicycles out of its canals every single year.\n\nThere's also a hidden bookcase that once hid a family of eight, a 300-year-old accident that permanently changed a Rembrandt masterpiece, and a house so narrow it makes you wonder how anyone lives there.\n\nStanding at Westerkerk and learning that Rembrandt's exact grave has never been found — Urban Tales was telling us that story before we'd even looked up (that's the app that tells you what you're looking at, the moment you're looking at it. Free to start, link in bio).\n\nSwipe through 👉 which one did you not know?\n\n.\n.\n.\n#Amsterdam #AmsterdamTravel #HiddenGems #TravelFacts #SelfGuidedTravel #AmsterdamCanals #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "The bookcase that hid a family for two years still swings open",
+      "body_html": "In 1942, a helper built a <b>revolving bookcase</b> to conceal the entrance to the Secret Annex — the only way in or out for the eight people hiding behind it. It's still there, and you can still walk through it.",
+      "candidates": [],
+      "suggested_queries": ["Anne Frank House Amsterdam Prinsengracht exterior", "Anne Frank House bookcase"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "Rembrandt's masterpiece was trimmed to fit through a door",
+      "body_html": "In 1715, movers cut <b>strips off all four sides</b> of The Night Watch — including two figures on the left — just to squeeze it between two doors at the old Town Hall. The missing pieces were digitally restored 300 years later.",
+      "candidates": [],
+      "suggested_queries": ["Rembrandt Night Watch painting Rijksmuseum", "Rijksmuseum exterior Amsterdam"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "Amsterdam's palace stands on 13,659 wooden piles",
+      "body_html": "Built on marshland in the 1600s, the Royal Palace on Dam Square is held up by <b>13,659 wooden piles</b> driven deep into the soil — locals called it the \"Eighth Wonder of the World\" when it opened as a town hall.",
+      "candidates": [],
+      "suggested_queries": ["Royal Palace Amsterdam Dam Square", "Koninklijk Paleis Amsterdam facade"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "Rembrandt's grave has never been found",
+      "body_html": "He was buried inside Westerkerk in 1669, but as a pauper his remains were cleared after 20 years — <b>nobody knows exactly where he lies</b>. The tower above still wears a blue replica crown gifted by an emperor in 1489.",
+      "candidates": [],
+      "suggested_queries": ["Westerkerk Amsterdam tower crown", "Westerkerk Amsterdam interior"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "A 500-year-old wooden house hides behind these walls",
+      "body_html": "Step through the gate into the Begijnhof and find <b>Het Houten Huys</b>, built around 1528 — one of only two wooden-fronted houses left after the city banned wood facades to stop fires.",
+      "candidates": [],
+      "suggested_queries": ["Begijnhof Amsterdam Het Houten Huys wooden house", "Begijnhof Amsterdam courtyard"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "This house is barely wider than its own front door",
+      "body_html": "Singel 7's canal-facing wall is just <b>over a meter wide</b> — built that narrow because Amsterdammers were taxed on canal frontage. The house actually widens to 5 meters once you're inside.",
+      "candidates": [],
+      "suggested_queries": ["Singel 7 Amsterdam narrowest house", "Singel canal houses Amsterdam"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "Up to 15,000 bikes get pulled out of the canals every year",
+      "body_html": "Amsterdam holds the <b>Guinness World Record</b> for bicycles fished from a city's waterways — claw-armed barges haul thousands out annually, mostly stolen or dumped.",
+      "candidates": [],
+      "suggested_queries": ["Amsterdam canal bicycles bridge", "bicycles parked Amsterdam canal"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Amsterdam canals aerial skyline", "Amsterdam canal ring golden hour"]
+}
