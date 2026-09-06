@@ -889,6 +889,14 @@
         </div>
         <div id="abTestPanel"><div class="loading">Loading…</div></div>
       </div>
+
+      <!-- Growth experiment: first-purchase offer vs. referral CTA -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">First-Purchase Offer vs. Referral CTA
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">One or the other, assigned once per user at their first narration — never both</span>
+        </div>
+        <div id="growthExperimentPanel"><div class="loading">Loading…</div></div>
+      </div>
     </div>
 
     <!-- ── ACQUISITION (MGM + Influencers) ── -->
@@ -3479,6 +3487,13 @@ function renderSettings(data) {
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">A/B Testing — Default Tab</div>` +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('ab_default_tab_enabled', 'Experiment Active', s.ab_default_tab_enabled ?? true)}</div>` +
     field('ab_default_tab_explore_pct', 'Explore Group % (0 = all Walk, 100 = all Explore)', 'number', s.ab_default_tab_explore_pct ?? 50, 'min="0" max="100"') +
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Growth Experiment — First-Purchase Offer vs. Referral CTA</div>` +
+    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">One or the other, assigned once per user at their first narration. Reported in Acquisition tab.</div>` +
+    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('first_purchase_offer_enabled', 'Experiment Active', s.first_purchase_offer_enabled ?? true)}</div>` +
+    field('first_purchase_offer_test_pct', 'Offer Group % (rest keep the existing referral CTA)', 'number', s.first_purchase_offer_test_pct ?? 50, 'min="0" max="100"') +
+    field('first_purchase_offer_bonus_pct', 'Bonus Coins % on Qualifying Purchase', 'number', s.first_purchase_offer_bonus_pct ?? 50, 'min="0" max="200"') +
+    field('first_purchase_offer_window_hours', 'Offer Window (hours)', 'number', s.first_purchase_offer_window_hours ?? 24, 'min="1" max="168"') +
+    field('first_purchase_offer_min_pack_coins', 'Min Pack Size to Qualify (coins) — avoids bonus that doesn\'t cross a 500/1000-point redemption threshold', 'number', s.first_purchase_offer_min_pack_coins ?? 1000, 'min="0" step="100"') +
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Vehicle Speed Protection</div>` +
     field('max_walking_speed_kmh', 'Max Speed km/h (above this threshold API calls are skipped)', 'number', s.max_walking_speed_kmh ?? 25, 'min="5" max="120"');
 }
@@ -3517,6 +3532,11 @@ async function saveSettings() {
     geocode_cache_ttl_days: parseInt(document.getElementById('s_geocode_cache_ttl_days').value),
     places_grid_size_meters: parseInt(document.getElementById('s_places_grid_size_meters').value),
     max_walking_speed_kmh: parseInt(document.getElementById('s_max_walking_speed_kmh').value),
+    first_purchase_offer_enabled: document.getElementById('s_first_purchase_offer_enabled').checked,
+    first_purchase_offer_test_pct: parseInt(document.getElementById('s_first_purchase_offer_test_pct').value),
+    first_purchase_offer_bonus_pct: parseInt(document.getElementById('s_first_purchase_offer_bonus_pct').value),
+    first_purchase_offer_window_hours: parseInt(document.getElementById('s_first_purchase_offer_window_hours').value),
+    first_purchase_offer_min_pack_coins: parseInt(document.getElementById('s_first_purchase_offer_min_pack_coins').value),
   };
 
   try {
@@ -4405,7 +4425,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -4428,6 +4448,7 @@ async function loadAllData() {
       api(`/admin/analytics/ab-test`).catch(() => null),
       api(`/admin/narration-config`).catch(() => null),
       api(`/admin/analytics/google-maps-quota${_quotaMonthForPeriod() ? '?month=' + _quotaMonthForPeriod() : ''}`).catch(() => null),
+      api(`/admin/analytics/growth-experiment`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue);
@@ -4447,6 +4468,7 @@ async function loadAllData() {
     renderSettings(settings);
     renderPromoCodes(promoCodes);
     renderAbTest(abTest);
+    renderGrowthExperiment(growthExperiment);
     renderNarrationConfig(narrationConfigResp?.config || null);
   } catch (e) {
     console.error('Dashboard load error:', e);
@@ -4549,6 +4571,54 @@ function renderAbTest(data) {
       <tbody>${rows}</tbody>
     </table>
     <p style="color:var(--muted);font-size:0.75rem;margin-top:12px">${fmt(data.unassigned_users)} users signed up before the experiment.</p>`;
+}
+
+function renderGrowthExperiment(data) {
+  const el = document.getElementById('growthExperimentPanel');
+  if (!el) return;
+  if (!data || !data.groups) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No data yet — experiment starts with new signups.</p>';
+    return;
+  }
+  const po = data.groups.purchase_offer || {};
+  const rc = data.groups.referral_control || {};
+  const winner = po.overall_conversion_rate > rc.overall_conversion_rate;
+  const badge = (isPo) => (po.total_users && rc.total_users && ((isPo && winner) || (!isPo && !winner)))
+    ? '<span style="background:var(--green);color:#000;font-size:0.7rem;padding:2px 6px;border-radius:4px;margin-left:8px">winning</span>' : '';
+
+  el.innerHTML = `
+    <table style="width:100%;border-collapse:collapse">
+      <thead><tr style="color:var(--muted);font-size:0.75rem">
+        <th style="text-align:left;padding:6px 0">Arm</th>
+        <th style="text-align:right">Users</th>
+        <th style="text-align:right">Purchased (any)</th>
+        <th style="text-align:right">Overall conversion</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>🎁 Purchase Offer</strong>${badge(true)}</td>
+          <td style="text-align:right">${fmt(po.total_users)}</td>
+          <td style="text-align:right">${fmt(po.purchased)}</td>
+          <td style="text-align:right;font-weight:700;color:var(--green)">${po.overall_conversion_rate ?? 0}%</td>
+        </tr>
+        <tr>
+          <td><strong>🤝 Referral CTA (control)</strong>${badge(false)}</td>
+          <td style="text-align:right">${fmt(rc.total_users)}</td>
+          <td style="text-align:right">${fmt(rc.purchased)}</td>
+          <td style="text-align:right;font-weight:700;color:var(--green)">${rc.overall_conversion_rate ?? 0}%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="display:flex;gap:24px;margin-top:14px;flex-wrap:wrap;font-size:0.8rem;color:var(--muted)">
+      <span>Offer shown → converted: <strong style="color:var(--text)">${fmt(po.offer_converted)} / ${fmt((po.offer_pending||0)+(po.offer_converted||0)+(po.offer_expired_unused||0))}</strong> (${po.offer_conversion_rate ?? 0}%)</span>
+      <span>Offer expired unused: <strong style="color:var(--text)">${fmt(po.offer_expired_unused)}</strong></span>
+      <span>Referral prompts sent: <strong style="color:var(--text)">${fmt(rc.referral_prompts_sent)}</strong></span>
+    </div>
+    <p style="color:var(--muted);font-size:0.72rem;margin-top:10px">
+      "Overall conversion" is the number that matters for the shipping decision — total first-time payers in each arm, not just offer redemptions.
+      Settings: ${data.settings?.test_pct}% of new users in the offer arm · +${data.settings?.bonus_pct}% bonus · ${data.settings?.window_hours}h window · min pack ${fmt(data.settings?.min_pack_coins)} coins.
+      ${fmt(data.unassigned_users)} users signed up before this experiment.
+    </p>`;
 }
 
 // ══════════════════════════════════════════════
