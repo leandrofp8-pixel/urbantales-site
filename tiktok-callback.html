@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Auth Callback</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #111; color: #eee; padding: 40px 20px; max-width: 600px; margin: 0 auto; }
+    h1 { font-size: 20px; }
+    .box { background: #1c1c1c; border: 1px solid #333; border-radius: 8px; padding: 16px; margin: 16px 0; word-break: break-all; font-family: monospace; font-size: 14px; }
+    .label { color: #999; font-size: 12px; text-transform: uppercase; margin-bottom: 6px; }
+    button { background: #fe2c55; color: white; border: none; padding: 10px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; }
+    .err { color: #ff6b6b; }
+  </style>
+</head>
+<body>
+  <h1>TikTok authorization result</h1>
+  <div id="out">Reading URL…</div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+    const error = params.get('error');
+    const errorDesc = params.get('error_description');
+    const out = document.getElementById('out');
+
+    if (error) {
+      out.innerHTML = '<p class="err">Error: ' + error + '</p><p>' + (errorDesc || '') + '</p>';
+    } else if (code) {
+      out.innerHTML =
+        '<div class="label">Authorization code (copy this)</div>' +
+        '<div class="box" id="code">' + code + '</div>' +
+        '<button onclick="navigator.clipboard.writeText(document.getElementById(\'code\').textContent)">Copy code</button>' +
+        '<div class="label" style="margin-top:20px">State</div>' +
+        '<div class="box">' + (state || '(none)') + '</div>' +
+        '<p style="color:#999; font-size:13px; margin-top:20px">This code expires quickly — paste it into the exchange script right away.</p>';
+    } else {
+      out.innerHTML = '<p class="err">No code or error found in the URL.</p>';
+    }
+  </script>
+</body>
+</html>
