@@ -897,6 +897,14 @@
         </div>
         <div id="growthExperimentPanel"><div class="loading">Loading…</div></div>
       </div>
+
+      <!-- Quota experiment: daily vs. rolling 7-day free landmark limit -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">Daily vs. 7-Day Free Quota
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Assigned once at signup — needs 30+ days of data before drawing conclusions</span>
+        </div>
+        <div id="quotaExperimentPanel"><div class="loading">Loading…</div></div>
+      </div>
     </div>
 
     <!-- ── ACQUISITION (MGM + Influencers) ── -->
@@ -3494,6 +3502,11 @@ function renderSettings(data) {
     field('first_purchase_offer_bonus_pct', 'Bonus Coins % on Qualifying Purchase', 'number', s.first_purchase_offer_bonus_pct ?? 50, 'min="0" max="200"') +
     field('first_purchase_offer_window_hours', 'Offer Window (hours)', 'number', s.first_purchase_offer_window_hours ?? 24, 'min="1" max="168"') +
     field('first_purchase_offer_min_pack_coins', 'Min Pack Size to Qualify (coins) — avoids bonus that doesn\'t cross a 500/1000-point redemption threshold', 'number', s.first_purchase_offer_min_pack_coins ?? 1000, 'min="0" step="100"') +
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Growth Experiment — Daily vs. 7-Day Free Quota</div>` +
+    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Rolling 7-day window, not a Monday reset — can't be gamed at a boundary. Assigned once at signup. Reported in Acquisition tab.</div>` +
+    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('weekly_quota_experiment_enabled', 'Experiment Active', s.weekly_quota_experiment_enabled ?? true)}</div>` +
+    field('weekly_quota_experiment_pct', '7-Day-Quota Group % (rest keep the existing daily limit)', 'number', s.weekly_quota_experiment_pct ?? 30, 'min="0" max="100"') +
+    field('weekly_free_landmark_limit', 'Free Landmarks per Rolling 7 Days (test arm)', 'number', s.weekly_free_landmark_limit ?? 3, 'min="0"') +
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Vehicle Speed Protection</div>` +
     field('max_walking_speed_kmh', 'Max Speed km/h (above this threshold API calls are skipped)', 'number', s.max_walking_speed_kmh ?? 25, 'min="5" max="120"');
 }
@@ -3537,6 +3550,9 @@ async function saveSettings() {
     first_purchase_offer_bonus_pct: parseInt(document.getElementById('s_first_purchase_offer_bonus_pct').value),
     first_purchase_offer_window_hours: parseInt(document.getElementById('s_first_purchase_offer_window_hours').value),
     first_purchase_offer_min_pack_coins: parseInt(document.getElementById('s_first_purchase_offer_min_pack_coins').value),
+    weekly_quota_experiment_enabled: document.getElementById('s_weekly_quota_experiment_enabled').checked,
+    weekly_quota_experiment_pct: parseInt(document.getElementById('s_weekly_quota_experiment_pct').value),
+    weekly_free_landmark_limit: parseInt(document.getElementById('s_weekly_free_landmark_limit').value),
   };
 
   try {
@@ -4425,7 +4441,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -4449,6 +4465,7 @@ async function loadAllData() {
       api(`/admin/narration-config`).catch(() => null),
       api(`/admin/analytics/google-maps-quota${_quotaMonthForPeriod() ? '?month=' + _quotaMonthForPeriod() : ''}`).catch(() => null),
       api(`/admin/analytics/growth-experiment`).catch(() => null),
+      api(`/admin/analytics/quota-experiment`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue);
@@ -4469,6 +4486,7 @@ async function loadAllData() {
     renderPromoCodes(promoCodes);
     renderAbTest(abTest);
     renderGrowthExperiment(growthExperiment);
+    renderQuotaExperiment(quotaExperiment);
     renderNarrationConfig(narrationConfigResp?.config || null);
   } catch (e) {
     console.error('Dashboard load error:', e);
@@ -4617,6 +4635,56 @@ function renderGrowthExperiment(data) {
     <p style="color:var(--muted);font-size:0.72rem;margin-top:10px">
       "Overall conversion" is the number that matters for the shipping decision — total first-time payers in each arm, not just offer redemptions.
       Settings: ${data.settings?.test_pct}% of new users in the offer arm · +${data.settings?.bonus_pct}% bonus · ${data.settings?.window_hours}h window · min pack ${fmt(data.settings?.min_pack_coins)} coins.
+      ${fmt(data.unassigned_users)} users signed up before this experiment.
+    </p>`;
+}
+
+function renderQuotaExperiment(data) {
+  const el = document.getElementById('quotaExperimentPanel');
+  if (!el) return;
+  if (!data || !data.groups) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No data yet — experiment starts with new signups.</p>';
+    return;
+  }
+  const wt = data.groups.weekly_test || {};
+  const dc = data.groups.daily_control || {};
+  const convWinner = wt.overall_conversion_rate > dc.overall_conversion_rate;
+  const retentionDrop = (dc.d7_retention_rate || 0) - (wt.d7_retention_rate || 0);
+  const retentionWarning = wt.d7_eligible >= 20 && retentionDrop >= 5;
+
+  el.innerHTML = `
+    ${retentionWarning ? `<div style="background:rgba(248,113,113,0.12);border:1px solid var(--danger);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:0.82rem;color:var(--danger)">
+      ⚠ D7 retention in the 7-day-quota arm is ${retentionDrop.toFixed(1)} points lower than control — the pre-registered stop condition this test should be watched against.
+    </div>` : ''}
+    <table style="width:100%;border-collapse:collapse">
+      <thead><tr style="color:var(--muted);font-size:0.75rem">
+        <th style="text-align:left;padding:6px 0">Arm</th>
+        <th style="text-align:right">Users</th>
+        <th style="text-align:right">Conversion</th>
+        <th style="text-align:right">D7 retention</th>
+        <th style="text-align:right">Avg landmarks/user</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>📆 7-Day Quota</strong>${convWinner ? '<span style="background:var(--green);color:#000;font-size:0.7rem;padding:2px 6px;border-radius:4px;margin-left:8px">converts better</span>' : ''}</td>
+          <td style="text-align:right">${fmt(wt.total_users)}</td>
+          <td style="text-align:right;font-weight:700;color:var(--green)">${wt.overall_conversion_rate ?? 0}%</td>
+          <td style="text-align:right;font-weight:700;color:${retentionWarning ? 'var(--danger)' : 'var(--text)'}">${wt.d7_retention_rate ?? 0}% <span style="color:var(--muted);font-weight:400">(n=${fmt(wt.d7_eligible)})</span></td>
+          <td style="text-align:right">${wt.avg_landmarks_visited ?? 0}</td>
+        </tr>
+        <tr>
+          <td><strong>📅 Daily Quota (control)</strong>${!convWinner ? '<span style="background:var(--green);color:#000;font-size:0.7rem;padding:2px 6px;border-radius:4px;margin-left:8px">converts better</span>' : ''}</td>
+          <td style="text-align:right">${fmt(dc.total_users)}</td>
+          <td style="text-align:right;font-weight:700;color:var(--green)">${dc.overall_conversion_rate ?? 0}%</td>
+          <td style="text-align:right;font-weight:700">${dc.d7_retention_rate ?? 0}% <span style="color:var(--muted);font-weight:400">(n=${fmt(dc.d7_eligible)})</span></td>
+          <td style="text-align:right">${dc.avg_landmarks_visited ?? 0}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="color:var(--muted);font-size:0.72rem;margin-top:10px">
+      Conversion is the upside thesis; D7 retention and avg landmarks/user are the downside risk — a conversion win paired with a retention drop isn't a win.
+      "Avg landmarks/user" is lifetime, not time-normalized, so newer signups in either arm will read lower regardless of quota effect.
+      Settings: ${data.settings?.test_pct}% of new signups in the 7-day-quota arm · daily limit ${fmt(data.settings?.daily_limit)} · weekly limit ${fmt(data.settings?.weekly_limit)}.
       ${fmt(data.unassigned_users)} users signed up before this experiment.
     </p>`;
 }
