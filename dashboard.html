@@ -3487,6 +3487,7 @@ function renderSettings(data) {
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Referrals &amp; Payouts</div>` +
     field('referral_cooldown_days', 'MGM Push Notification Cooldown (days)', 'number', s.referral_cooldown_days ?? 15, 'min="0"') +
+    field('referral_prompt_min_landmarks', 'Landmarks Heard to Trigger Referral Prompt (proximity-independent)', 'number', s.referral_prompt_min_landmarks ?? 3, 'min="1"') +
     field('mgm_invitee_bonus_coins', 'MGM Invitee Signup Bonus (coins)', 'number', s.mgm_invitee_bonus_coins ?? 500, 'min="0"') +
     field('mgm_inviter_reward_coins', 'MGM Inviter Purchase Reward (coins)', 'number', s.mgm_inviter_reward_coins ?? 250, 'min="0"') +
     field('influencer_revenue_share_pct', 'Influencer Revenue Share (%)', 'number', s.influencer_revenue_share_pct ?? 25, 'min="0" max="100"') +
@@ -3544,6 +3545,7 @@ async function saveSettings() {
     narration_min_votes: parseInt(document.getElementById('s_narration_min_votes').value),
     narration_downvote_ratio: parseFloat(document.getElementById('s_narration_downvote_ratio').value),
     referral_cooldown_days: parseInt(document.getElementById('s_referral_cooldown_days').value),
+    referral_prompt_min_landmarks: parseInt(document.getElementById('s_referral_prompt_min_landmarks').value),
     mgm_invitee_bonus_coins: parseInt(document.getElementById('s_mgm_invitee_bonus_coins').value),
     mgm_inviter_reward_coins: parseInt(document.getElementById('s_mgm_inviter_reward_coins').value),
     influencer_revenue_share_pct: parseInt(document.getElementById('s_influencer_revenue_share_pct').value),
