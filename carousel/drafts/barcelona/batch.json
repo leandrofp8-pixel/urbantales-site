@@ -1,0 +1,37 @@
+{
+  "badge_num": 9,
+  "city": "BARCELONA",
+  "flag": "🇪🇸",
+  "cta_screenshot": "screen-barcelona-sagrada-map.png",
+  "caption": "Those bullet holes all over Barcelona's old town aren't from bullets — and officials spent 40 years lying about what they really are. 👀\n\nComment your guess before you swipe ⬇️\n\n.\n.\n.\n#Barcelona #BarcelonaTravel #HiddenGems #TravelFacts #GothicQuarter #SagradaFamilia #UrbanTales",
+  "facts": [
+    {
+      "headline": "Gaudí made sure his tower could never out-build God",
+      "body_html": "Sagrada Família's central tower finally topped out in <b>February 2026 at 172.5 meters</b> — 144 years after construction began. Gaudí deliberately designed it to stay shorter than Montjuïc hill nearby, so his creation would never surpass God's."
+    },
+    {
+      "headline": "The mosaic dragon guarding Park Güell is secretly plumbing",
+      "body_html": "Gaudí's famous trencadís salamander is built from <b>shattered tile and glass shards</b> — and doubles as the overflow spout for a giant cistern hidden right beneath the park's main terrace."
+    },
+    {
+      "headline": "This house's skull-shaped balconies tell a dragon-slaying legend",
+      "body_html": "Casa Batlló is a three-story tribute to Catalonia's patron saint: the scaled roof is the <b>dragon's back</b>, the bone-like columns and skull balconies are its victims, and the rooftop cross is <b>Saint George's sword</b> plunged into its spine."
+    },
+    {
+      "headline": "Those 'bullet holes' in this square are actually bomb scars",
+      "body_html": "For decades, Franco's regime claimed the pockmarked walls of Plaça de Sant Felip Neri came from firing-squad executions. They're really from a <b>1938 aerial bombing that killed 42 people</b>, many of them children sheltering inside the church."
+    },
+    {
+      "headline": "You can walk an actual Roman city under these streets",
+      "body_html": "Beneath the Gothic Quarter, Barcelona's history museum preserves real streets and workshops from <b>Barcino</b>, the Roman colony founded here 2,000 years ago — laundries and wine vats still sitting underground."
+    },
+    {
+      "headline": "Barcelona's most famous beach didn't exist 35 years ago",
+      "body_html": "Barceloneta beach is entirely man-made — planners trucked in sand and rebuilt the whole coastline for the <b>1992 Olympics</b>. Before that, this stretch was industrial shoreline, not sand."
+    },
+    {
+      "headline": "One concert hall in Europe runs almost entirely on sunlight",
+      "body_html": "Palau de la Música Catalana is lit by an inverted stained-glass skylight shaped like the sun — the only concert hall in Europe that performs by daylight alone. It's stunning, and it <b>quietly wrecks the room's acoustics</b>."
+    }
+  ]
+}
