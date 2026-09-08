@@ -337,6 +337,76 @@
     .timeline-body { flex: 1; }
     .timeline-label { font-size: 0.83rem; }
     .timeline-time  { font-size: 0.73rem; color: var(--muted); margin-top: 1px; }
+
+    /* ── PROFILES: filters & saved segments ── */
+    .badge-purple { background: rgba(167,139,250,.15); color: var(--purple); }
+    .filter-section { margin-bottom: 14px; }
+    .filter-label {
+      font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em;
+      margin-bottom: 7px;
+    }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      background: #111; border: 1px solid var(--border); color: var(--muted);
+      font-size: 0.74rem; padding: 5px 11px; border-radius: 20px; cursor: pointer;
+      transition: all .15s; user-select: none;
+    }
+    .chip:hover { border-color: #444; color: var(--text); }
+    .chip.on { background: rgba(255,107,53,.15); border-color: var(--primary); color: var(--primary); font-weight: 600; }
+    .chip.stage-churned.on   { background: rgba(248,113,113,.15); border-color: var(--danger); color: var(--danger); }
+    .chip.stage-paying.on    { background: rgba(52,211,153,.15); border-color: var(--green); color: var(--green); }
+    .chip.stage-engaged.on   { background: rgba(251,191,36,.15); border-color: var(--yellow); color: var(--yellow); }
+    .chip.stage-activated.on { background: rgba(96,165,250,.15); border-color: var(--blue); color: var(--blue); }
+    .range-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); }
+    .range-row input[type="number"] {
+      width: 60px; padding: 6px 8px; background: #111; border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); font-size: 0.78rem; outline: none;
+    }
+    .match-count {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 9px 12px; background: #111; border: 1px solid var(--border); border-radius: 8px;
+      margin: 12px 0; font-size: 0.8rem; color: var(--muted);
+    }
+    .match-count b { color: var(--primary); font-size: 0.95rem; }
+    .save-seg-row { display: flex; gap: 6px; margin-bottom: 12px; }
+    .save-seg-row input {
+      flex: 1; padding: 7px 10px; background: #111; border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); font-size: 0.78rem; outline: none; min-width: 0;
+    }
+    .btn-save-seg {
+      background: none; border: 1px solid var(--purple); color: var(--purple);
+      padding: 7px 11px; border-radius: 8px; font-size: 0.76rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+    }
+    .btn-save-seg:hover { background: rgba(167,139,250,.1); }
+    .btn-save-seg:disabled { opacity: .4; cursor: not-allowed; }
+    .saved-segs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .saved-seg-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(167,139,250,.1); border: 1px solid rgba(167,139,250,.35); color: var(--purple);
+      font-size: 0.72rem; padding: 5px 10px; border-radius: 20px; cursor: pointer;
+    }
+    .saved-seg-chip:hover { background: rgba(167,139,250,.18); }
+    .saved-seg-chip .del { opacity: .6; margin-left: 2px; }
+    .saved-seg-chip .del:hover { opacity: 1; color: var(--danger); }
+
+    /* ── NOTIFICATIONS: AI draft ── */
+    .ai-draft-box {
+      background: rgba(167,139,250,.06); border: 1px dashed rgba(167,139,250,.4); border-radius: 10px;
+      padding: 12px 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .btn-ai {
+      background: linear-gradient(135deg, var(--purple), #7c5cf0); border: none; color: #fff;
+      padding: 9px 15px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
+      white-space: nowrap; transition: opacity .15s;
+    }
+    .btn-ai:hover { opacity: .9; }
+    .btn-ai:disabled { opacity: .6; cursor: default; }
+    .ai-draft-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+    .ai-tag {
+      display: inline-flex; align-items: center; gap: 4px; font-size: 0.66rem; font-weight: 700;
+      color: var(--purple); background: rgba(167,139,250,.12); padding: 2px 7px; border-radius: 10px; margin-left: 6px;
+    }
+
     @media (max-width: 860px) {
       .profiles-layout { flex-direction: column; }
       .profiles-sidebar { width: 100%; }
@@ -1135,6 +1205,7 @@
             <div class="notif-field">
               <label>Filter</label>
               <select class="notif-select" id="nFilterType" onchange="onFilterTypeChange()">
+                <optgroup label="📁 Saved segments" id="nSegmentOptgroup"></optgroup>
                 <option value="all">All users with push tokens</option>
                 <option value="language">By language</option>
                 <option value="free">Free users</option>
@@ -1175,6 +1246,12 @@
         <!-- CONTENT -->
         <div class="card">
           <div class="card-title">3 — Content</div>
+
+          <div class="ai-draft-box">
+            <button class="btn-ai" id="btnAiDraft" onclick="runAiDraft()">✨ AI Draft for this audience</button>
+            <div class="ai-draft-desc" id="aiDraftDesc">Pick an audience above, then draft copy suited to how that group actually behaves.</div>
+          </div>
+
           <div class="notif-row" style="margin-bottom:16px">
             <button class="btn-translate" id="btnTranslate" onclick="autoTranslate()">🌐 Auto-translate to all 5 languages</button>
             <span style="font-size:0.8rem;color:var(--muted);align-self:center">Write in any language, then click to generate the rest.</span>
@@ -1189,8 +1266,8 @@
           </div>
 
           <div id="lang-en" class="lang-panel active">
-            <div class="notif-field"><label>Title</label><input class="notif-input" id="title-en" placeholder="Notification title…" /></div>
-            <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-en" placeholder="Notification body…"></textarea></div>
+            <div class="notif-field"><label>Title <span class="ai-tag" id="aiTagTitle" style="display:none">✨ AI drafted</span></label><input class="notif-input" id="title-en" placeholder="Notification title…" /></div>
+            <div class="notif-field"><label>Body <span class="ai-tag" id="aiTagBody" style="display:none">✨ AI drafted</span></label><textarea class="notif-textarea" id="body-en" placeholder="Notification body…"></textarea></div>
           </div>
           <div id="lang-pt-BR" class="lang-panel">
             <div class="notif-field"><label>Title</label><input class="notif-input" id="title-pt-BR" placeholder="Título…" /></div>
@@ -1544,14 +1621,68 @@
         <div class="profiles-sidebar">
           <input class="profiles-search" id="profilesSearch" type="search"
             placeholder="Search by email or name…" oninput="onProfilesSearch(this.value)" />
+
+          <div class="filter-section">
+            <div class="filter-label">Funnel stage</div>
+            <div class="chip-row" id="stageChips">
+              <div class="chip stage-signed_up" data-stage="signed_up" onclick="toggleStageChip(this)">Signed up</div>
+              <div class="chip stage-activated" data-stage="activated" onclick="toggleStageChip(this)">Activated</div>
+              <div class="chip stage-engaged" data-stage="engaged" onclick="toggleStageChip(this)">Engaged</div>
+              <div class="chip stage-paying" data-stage="paying" onclick="toggleStageChip(this)">Paying</div>
+              <div class="chip stage-churned" data-stage="churned" onclick="toggleStageChip(this)">Churned</div>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-label">Permissions</div>
+            <div class="chip-row">
+              <div class="chip" data-filter="notifications" data-value="granted" onclick="toggleFilterChip(this)">🔔 Notif. granted</div>
+              <div class="chip" data-filter="notifications" data-value="denied" onclick="toggleFilterChip(this)">🔕 Notif. denied</div>
+              <div class="chip" data-filter="location" data-value="denied" onclick="toggleFilterChip(this)">📍 Location denied</div>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="range-row">
+              <span>Min sessions</span>
+              <input type="number" id="filterMinSessions" min="0" placeholder="—" oninput="onFiltersChanged()" />
+              <span style="margin-left:auto">Shop views ≥</span>
+              <input type="number" id="filterShopViewsMin" min="0" placeholder="—" oninput="onFiltersChanged()" />
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="chip-row">
+              <div class="chip" id="noPurchaseChip" onclick="toggleNoPurchase(this)">🚫 Never purchased</div>
+            </div>
+          </div>
+
+          <div class="match-count">
+            <span>Matching this filter</span>
+            <span><b id="matchCount">—</b> users</span>
+          </div>
+
+          <div class="save-seg-row">
+            <input id="segmentNameInput" placeholder="Name this segment…" />
+            <button class="btn-save-seg" onclick="saveCurrentSegment()">💾 Save</button>
+          </div>
+
+          <div class="saved-segs" id="savedSegs"></div>
+
           <div class="bulk-bar" id="bulkBar">
             <span class="bulk-bar-label" id="bulkBarLabel">0 selected</span>
-            <button class="btn-bulk-action" id="bulkDayPassBtn" onclick="giveSelectedDayPass()">
-              🗓 Give Day Pass
-            </button>
+            <div style="display:flex;gap:8px">
+              <button class="btn-bulk-action" id="bulkDayPassBtn" onclick="giveSelectedDayPass()">
+                🗓 Give Day Pass
+              </button>
+              <button class="btn-bulk-action" style="background:#1E1E1E;border:1px solid var(--primary);color:var(--primary)" onclick="notifySelectedProfiles()">
+                📣 Notify Selected
+              </button>
+            </div>
           </div>
+
           <div class="user-list" id="userList">
-            <div class="loading">Type to search or leave blank to load recent users…</div>
+            <div class="loading">Type to search, set filters, or leave blank to load recent users…</div>
           </div>
         </div>
 
@@ -3084,9 +3215,17 @@ function onFilterTypeChange() {
   currentAudienceCount = null;
 }
 
+// Saved-segment options are encoded as "segment:<id>" in nFilterType's value
+// so the select can hold many distinct segments; split it back apart here
+// rather than in every call site that talks to the backend.
+function resolveFilterType() {
+  const raw = document.getElementById('nFilterType').value;
+  if (raw.startsWith('segment:')) return { type: 'segment', value: raw.slice('segment:'.length) };
+  return { type: raw, value: document.getElementById('nFilterValue').value.trim() };
+}
+
 async function checkAudience() {
-  const type  = document.getElementById('nFilterType').value;
-  const value = document.getElementById('nFilterValue').value.trim();
+  const { type, value } = resolveFilterType();
   const badge = document.getElementById('audienceBadge');
   badge.textContent = '…';
   badge.style.display = '';
@@ -3099,9 +3238,19 @@ async function checkAudience() {
   } catch(e) { badge.textContent = 'Error'; }
 }
 
+function populateNotifSegmentOptions() {
+  const group = document.getElementById('nSegmentOptgroup');
+  if (!group) return;
+  const currentValue = document.getElementById('nFilterType').value;
+  group.innerHTML = _savedSegments.length
+    ? _savedSegments.map(s => `<option value="segment:${s.id}">${s.name} — ${fmt(s.count)} users</option>`).join('')
+    : '';
+  // Keep whatever was selected if it still exists (segment list can refresh under the user)
+  document.getElementById('nFilterType').value = currentValue;
+}
+
 async function showAudienceModal() {
-  const type  = document.getElementById('nFilterType').value;
-  const value = document.getElementById('nFilterValue').value.trim();
+  const { type, value } = resolveFilterType();
   const segmentLabel = document.getElementById('nFilterType').options[document.getElementById('nFilterType').selectedIndex].text;
   document.getElementById('audienceModalSegment').textContent = segmentLabel;
   document.getElementById('audienceModalCount').textContent = 'Loading…';
@@ -3132,6 +3281,8 @@ function applyTemplate() {
   if (!t) return;
   document.getElementById('title-en').value = t.title || '';
   document.getElementById('body-en').value  = t.body  || '';
+  document.getElementById('aiTagTitle').style.display = 'none';
+  document.getElementById('aiTagBody').style.display = 'none';
   LANGS.filter(l => l !== 'en').forEach(l => {
     document.getElementById(`title-${l}`).value = '';
     document.getElementById(`body-${l}`).value  = '';
@@ -3180,6 +3331,39 @@ async function autoTranslate() {
   }
 }
 
+async function runAiDraft() {
+  const { type, value } = resolveFilterType();
+  const btn = document.getElementById('btnAiDraft');
+  const desc = document.getElementById('aiDraftDesc');
+  if (!type) { alert('Pick an audience segment first.'); return; }
+  const label = document.getElementById('nFilterType').options[document.getElementById('nFilterType').selectedIndex].text;
+  btn.disabled = true;
+  btn.textContent = '✨ Drafting…';
+  try {
+    const body = type === 'segment'
+      ? { segment_id: value, label }
+      : { filter_type: type, filter_value: value || null, label };
+    const res = await fetch(`${API}/admin/generate-notification-copy`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify(body)
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Draft generation failed');
+    document.getElementById('title-en').value = data.draft.title || '';
+    document.getElementById('body-en').value  = data.draft.body  || '';
+    document.getElementById('aiTagTitle').style.display = 'inline-flex';
+    document.getElementById('aiTagBody').style.display = 'inline-flex';
+    const p = data.audience_profile;
+    desc.textContent = `Drafted from ${fmt(p.count)} users — avg ${p.avg_sessions} sessions, ${p.pct_paid}% ever paid, ${p.avg_days_inactive ?? '?'} days since last active on average.`;
+  } catch(e) {
+    desc.textContent = 'Failed to draft: ' + e.message;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✨ AI Draft for this audience';
+  }
+}
+
 function buildTranslations() {
   const out = {};
   LANGS.forEach(lang => {
@@ -3224,8 +3408,7 @@ async function confirmSend() {
   const btn = document.getElementById('btnConfirmSend');
   btn.disabled = true;
   btn.textContent = '⏳ Sending…';
-  const filterType  = document.getElementById('nFilterType').value;
-  const filterValue = document.getElementById('nFilterValue').value.trim();
+  const { type: filterType, value: filterValue } = resolveFilterType();
   const screen      = document.getElementById('nScreen').value;
   const translations = buildTranslations();
   const enT = translations['en'] || {};
@@ -3746,6 +3929,58 @@ let _selectedProfiles = new Set();
 let _activeProfileEmail = null;
 let _profileNarChart = null;
 
+// ── Profiles filters / segments ──
+const _profileFilters = { stage: null, notifications: null, location: null, no_purchase: false };
+const _stageBadge = {
+  signed_up: '<span class="pill badge-muted" style="background:rgba(255,255,255,.06);color:var(--muted)">signed up</span>',
+  activated: '<span class="pill badge-blue">activated</span>',
+  engaged:   '<span class="pill badge-yellow">engaged</span>',
+  paying:    '<span class="pill badge-green">paying</span>',
+  churned:   '<span class="pill badge-red">churned</span>',
+};
+
+function toggleStageChip(el) {
+  const wasOn = el.classList.contains('on');
+  document.querySelectorAll('#stageChips .chip').forEach(c => c.classList.remove('on'));
+  if (!wasOn) { el.classList.add('on'); _profileFilters.stage = el.dataset.stage; }
+  else { _profileFilters.stage = null; }
+  onFiltersChanged();
+}
+
+function toggleFilterChip(el) {
+  const key = el.dataset.filter, val = el.dataset.value;
+  const wasOn = el.classList.contains('on');
+  document.querySelectorAll(`.chip[data-filter="${key}"]`).forEach(c => c.classList.remove('on'));
+  _profileFilters[key] = wasOn ? null : val;
+  if (!wasOn) el.classList.add('on');
+  onFiltersChanged();
+}
+
+function toggleNoPurchase(el) {
+  el.classList.toggle('on');
+  _profileFilters.no_purchase = el.classList.contains('on');
+  onFiltersChanged();
+}
+
+let _filtersDebounce;
+function onFiltersChanged() {
+  clearTimeout(_filtersDebounce);
+  _filtersDebounce = setTimeout(() => loadUserList(document.getElementById('profilesSearch').value.trim()), 250);
+}
+
+function currentFilterParams() {
+  const p = new URLSearchParams();
+  if (_profileFilters.stage) p.set('stage', _profileFilters.stage);
+  if (_profileFilters.notifications) p.set('notifications', _profileFilters.notifications);
+  if (_profileFilters.location) p.set('location', _profileFilters.location);
+  if (_profileFilters.no_purchase) p.set('no_purchase', 'true');
+  const minSessions = document.getElementById('filterMinSessions')?.value;
+  if (minSessions) p.set('min_sessions', minSessions);
+  const shopViews = document.getElementById('filterShopViewsMin')?.value;
+  if (shopViews) p.set('shop_views_min', shopViews);
+  return p;
+}
+
 function onProfilesSearch(q) {
   clearTimeout(_profilesSearchTimer);
   _profilesSearchTimer = setTimeout(() => loadUserList(q.trim()), 300);
@@ -3755,7 +3990,10 @@ async function loadUserList(q = '') {
   const list = document.getElementById('userList');
   list.innerHTML = '<div class="loading">Loading…</div>';
   try {
-    const data = await api(`/admin/users/search?q=${encodeURIComponent(q)}`);
+    const params = currentFilterParams();
+    if (q) params.set('q', q);
+    const data = await api(`/admin/users/search?${params}`);
+    document.getElementById('matchCount').textContent = fmt(data.total ?? (data.users || []).length);
     renderUserList(data.users || []);
   } catch (e) {
     list.innerHTML = '<div class="loading" style="color:var(--danger)">Failed to load users</div>';
@@ -3772,7 +4010,8 @@ function renderUserList(users) {
     const isPaid = !!u.first_purchase_at;
     const name   = u.display_name || '';
     const label  = name ? `${name}` : '';
-    const sub    = `${u.total_narrations_listened || 0} narrations · ${u.coins ?? 0} coins · ${timeAgo(u.last_active_at)}`;
+    const stage  = _stageBadge[u.funnel_stage] || '';
+    const sub    = `${stage} ${u.total_narrations_listened || 0} narrations · ${u.coins ?? 0} coins · ${timeAgo(u.last_active_at)}`;
     const badge  = isPaid
       ? `<span class="user-list-badge pill badge-green">paid</span>`
       : `<span class="user-list-badge pill badge-orange">free</span>`;
@@ -3789,6 +4028,88 @@ function renderUserList(users) {
       ${badge}
     </div>`;
   }).join('');
+}
+
+// ── Saved segments ──
+let _savedSegments = [];
+
+async function loadSavedSegments() {
+  try {
+    const data = await api('/admin/segments');
+    _savedSegments = data.segments || [];
+    renderSavedSegments();
+    populateNotifSegmentOptions();
+  } catch (e) { /* non-blocking */ }
+}
+
+function renderSavedSegments() {
+  const wrap = document.getElementById('savedSegs');
+  if (!wrap) return;
+  wrap.innerHTML = _savedSegments.map(s => `
+    <span class="saved-seg-chip" onclick="applySegmentFilters('${s.id}')">
+      📁 ${s.name} — ${fmt(s.count)}
+      <span class="del" onclick="deleteSegmentChip(event,'${s.id}')" title="Delete segment">✕</span>
+    </span>
+  `).join('');
+}
+
+function applySegmentFilters(id) {
+  const seg = _savedSegments.find(s => s.id === id);
+  if (!seg) return;
+  const f = seg.filters || {};
+  Object.assign(_profileFilters, { stage: f.stage || null, notifications: f.notifications || null, location: f.location || null, no_purchase: !!f.no_purchase });
+  document.querySelectorAll('#stageChips .chip').forEach(c => c.classList.toggle('on', c.dataset.stage === f.stage));
+  document.querySelectorAll('.chip[data-filter]').forEach(c => c.classList.toggle('on', _profileFilters[c.dataset.filter] === c.dataset.value));
+  document.getElementById('noPurchaseChip').classList.toggle('on', !!f.no_purchase);
+  document.getElementById('filterMinSessions').value = f.min_sessions ?? '';
+  document.getElementById('filterShopViewsMin').value = f.shop_views_min ?? '';
+  loadUserList(document.getElementById('profilesSearch').value.trim());
+}
+
+async function deleteSegmentChip(evt, id) {
+  evt.stopPropagation();
+  if (!confirm('Delete this saved segment?')) return;
+  try {
+    await fetch(`${API}/admin/segments/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${getToken()}` } });
+    loadSavedSegments();
+  } catch (e) { alert('Failed to delete: ' + e.message); }
+}
+
+async function saveCurrentSegment() {
+  const nameInput = document.getElementById('segmentNameInput');
+  const name = nameInput.value.trim();
+  if (!name) { alert('Name this segment first.'); return; }
+  const filters = {
+    stage: _profileFilters.stage, notifications: _profileFilters.notifications,
+    location: _profileFilters.location, no_purchase: _profileFilters.no_purchase,
+    min_sessions: document.getElementById('filterMinSessions').value ? Number(document.getElementById('filterMinSessions').value) : null,
+    shop_views_min: document.getElementById('filterShopViewsMin').value ? Number(document.getElementById('filterShopViewsMin').value) : null,
+  };
+  const btn = document.querySelector('.btn-save-seg');
+  btn.disabled = true;
+  try {
+    await fetch(`${API}/admin/segments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify({ name, filters }),
+    });
+    nameInput.value = '';
+    loadSavedSegments();
+  } catch (e) {
+    alert('Failed to save segment: ' + e.message);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function notifySelectedProfiles() {
+  if (!_selectedProfiles.size) return;
+  document.querySelector('[onclick="showTab(\'notifications\')"]').click();
+  const type = document.getElementById('nFilterType');
+  type.value = 'user_ids';
+  onFilterTypeChange();
+  document.getElementById('nFilterValue').value = [..._selectedProfiles].join(',');
+  checkAudience();
 }
 
 function toggleUserSelect(email, evt) {
@@ -3884,9 +4205,14 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
   const hasDayPass = user.day_pass_expires_at && new Date(user.day_pass_expires_at) > new Date();
   const initial = (user.display_name || user.email || '?')[0].toUpperCase();
 
+  const notifStatus = user.permissions?.notification?.status;
+  const locStatus = user.permissions?.location?.status;
   const badges = [
+    _stageBadge[user.funnel_stage] || '',
     isPaid ? `<span class="pill badge-green">paid</span>` : `<span class="pill badge-orange">free</span>`,
     hasDayPass ? `<span class="pill badge-blue">day pass active</span>` : '',
+    notifStatus ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${notifStatus === 'granted' ? '🔔' : '🔕'} notif. ${notifStatus}</span>` : '',
+    locStatus ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">📍 loc. ${locStatus}</span>` : '',
     user.signup_platform ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${user.signup_platform}</span>` : '',
   ].filter(Boolean).join('');
 
@@ -4791,6 +5117,7 @@ function showDashboard() {
   document.getElementById('dashboard').style.display = 'block';
   loadAllData();
   loadNotifTemplates();
+  loadSavedSegments();
 }
 
 if (getToken()) {
