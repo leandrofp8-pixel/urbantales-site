@@ -128,11 +128,12 @@
     .tab-panel.active { display: block; }
 
     /* ── CARDS ── */
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 24px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
-    @media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 600px) { .grid-4,.grid-3,.grid-2 { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .grid-4,.grid-5 { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px) { .grid-5,.grid-4,.grid-3,.grid-2 { grid-template-columns: 1fr; } }
 
     .card {
       background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px;
@@ -594,8 +595,9 @@
           <h2>🗺️ Tour Activity</h2>
           <span style="font-size:0.8rem;color:var(--muted)">Tours created in the period</span>
         </div>
-        <div class="grid-4" id="tourKpis">
+        <div class="grid-5" id="tourKpis">
           <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
@@ -627,11 +629,12 @@
                   <th>Created</th>
                   <th>Completed</th>
                   <th>Completion %</th>
+                  <th>Avg Completion %</th>
                   <th>Avg LMs</th>
                 </tr>
               </thead>
               <tbody id="topTourCitiesBody">
-                <tr><td colspan="5" class="loading">Loading…</td></tr>
+                <tr><td colspan="6" class="loading">Loading…</td></tr>
               </tbody>
             </table>
           </div>
@@ -2292,6 +2295,8 @@ async function backfillListenProvider() {
 function renderTours(tours) {
   const s = tours.summary || {};
   const completionClass = s.completion_rate >= 50 ? 'green' : s.completion_rate >= 25 ? 'yellow' : 'orange';
+  const avgPct = s.avg_landmark_completion_pct || 0;
+  const avgPctClass = avgPct >= 50 ? 'green' : avgPct >= 25 ? 'yellow' : 'orange';
 
   document.getElementById('tourKpis').innerHTML =
     kpiCard('Tours Created', fmt(s.tours_created), 'In the period', null, null) +
@@ -2299,6 +2304,9 @@ function renderTours(tours) {
     kpiCard('Completion Rate', fmtPct(s.completion_rate), 'Completed / Created',
       s.completion_rate >= 50 ? '↑ Good' : s.completion_rate >= 25 ? '→ Average' : '↓ Low',
       completionClass) +
+    kpiCard('Avg Landmark Completion', fmtPct(avgPct), 'Avg % of landmarks done, per tour',
+      avgPct >= 50 ? '↑ Good' : avgPct >= 25 ? '→ Average' : '↓ Low',
+      avgPctClass) +
     kpiCard('Avg Landmarks/Tour', (s.avg_landmarks_per_tour || 0).toFixed(1), 'Per tour created', null, null);
 
   // ── Tour Sharing Funnel ──
@@ -2335,15 +2343,18 @@ function renderTours(tours) {
   // Top Tour Cities table
   const cities = (tours.top_tour_cities || []).slice(0, 12);
   document.getElementById('topTourCitiesBody').innerHTML = cities.length === 0
-    ? `<tr><td colspan="5" class="loading">No tour data yet.</td></tr>`
+    ? `<tr><td colspan="6" class="loading">No tour data yet.</td></tr>`
     : cities.map(c => {
         const rate = (c.completion_rate || 0).toFixed(1);
         const rateClass = parseFloat(rate) >= 50 ? 'green' : parseFloat(rate) >= 25 ? 'yellow' : 'orange';
+        const avgPct = (c.avg_completion_pct || 0).toFixed(1);
+        const avgPctClass = parseFloat(avgPct) >= 50 ? 'green' : parseFloat(avgPct) >= 25 ? 'yellow' : 'orange';
         return `<tr>
           <td><strong>${c.city || '—'}</strong></td>
           <td>${fmt(c.tours_created)}</td>
           <td>${fmt(c.tours_completed)}</td>
           <td><span class="pill badge-${rateClass}">${rate}%</span></td>
+          <td><span class="pill badge-${avgPctClass}">${avgPct}%</span></td>
           <td>${(c.avg_landmarks || 0).toFixed(1)}</td>
         </tr>`;
       }).join('');
