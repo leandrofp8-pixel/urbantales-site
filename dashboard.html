@@ -1643,6 +1643,13 @@
           </div>
 
           <div class="filter-section">
+            <div class="filter-label">Acquisition</div>
+            <div class="chip-row">
+              <div class="chip" data-filter="asa_attributed" data-value="true" onclick="toggleFilterChip(this)">🍎 From Apple Search Ads</div>
+            </div>
+          </div>
+
+          <div class="filter-section">
             <div class="range-row">
               <span>Min sessions</span>
               <input type="number" id="filterMinSessions" min="0" placeholder="—" oninput="onFiltersChanged()" />
@@ -3930,7 +3937,7 @@ let _activeProfileEmail = null;
 let _profileNarChart = null;
 
 // ── Profiles filters / segments ──
-const _profileFilters = { stage: null, notifications: null, location: null, no_purchase: false };
+const _profileFilters = { stage: null, notifications: null, location: null, no_purchase: false, asa_attributed: null };
 const _stageBadge = {
   signed_up: '<span class="pill badge-muted" style="background:rgba(255,255,255,.06);color:var(--muted)">signed up</span>',
   activated: '<span class="pill badge-blue">activated</span>',
@@ -3974,6 +3981,7 @@ function currentFilterParams() {
   if (_profileFilters.notifications) p.set('notifications', _profileFilters.notifications);
   if (_profileFilters.location) p.set('location', _profileFilters.location);
   if (_profileFilters.no_purchase) p.set('no_purchase', 'true');
+  if (_profileFilters.asa_attributed) p.set('asa_attributed', _profileFilters.asa_attributed);
   const minSessions = document.getElementById('filterMinSessions')?.value;
   if (minSessions) p.set('min_sessions', minSessions);
   const shopViews = document.getElementById('filterShopViewsMin')?.value;
@@ -4057,7 +4065,7 @@ function applySegmentFilters(id) {
   const seg = _savedSegments.find(s => s.id === id);
   if (!seg) return;
   const f = seg.filters || {};
-  Object.assign(_profileFilters, { stage: f.stage || null, notifications: f.notifications || null, location: f.location || null, no_purchase: !!f.no_purchase });
+  Object.assign(_profileFilters, { stage: f.stage || null, notifications: f.notifications || null, location: f.location || null, no_purchase: !!f.no_purchase, asa_attributed: f.asa_attributed || null });
   document.querySelectorAll('#stageChips .chip').forEach(c => c.classList.toggle('on', c.dataset.stage === f.stage));
   document.querySelectorAll('.chip[data-filter]').forEach(c => c.classList.toggle('on', _profileFilters[c.dataset.filter] === c.dataset.value));
   document.getElementById('noPurchaseChip').classList.toggle('on', !!f.no_purchase);
@@ -4082,6 +4090,7 @@ async function saveCurrentSegment() {
   const filters = {
     stage: _profileFilters.stage, notifications: _profileFilters.notifications,
     location: _profileFilters.location, no_purchase: _profileFilters.no_purchase,
+    asa_attributed: _profileFilters.asa_attributed,
     min_sessions: document.getElementById('filterMinSessions').value ? Number(document.getElementById('filterMinSessions').value) : null,
     shop_views_min: document.getElementById('filterShopViewsMin').value ? Number(document.getElementById('filterShopViewsMin').value) : null,
   };
@@ -4213,6 +4222,7 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
     hasDayPass ? `<span class="pill badge-blue">day pass active</span>` : '',
     notifStatus ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${notifStatus === 'granted' ? '🔔' : '🔕'} notif. ${notifStatus}</span>` : '',
     locStatus ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">📍 loc. ${locStatus}</span>` : '',
+    user.asa_attribution?.attributed ? `<span class="pill badge-purple">🍎 Apple Search Ads</span>` : '',
     user.signup_platform ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${user.signup_platform}</span>` : '',
   ].filter(Boolean).join('');
 
