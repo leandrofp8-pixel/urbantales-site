@@ -1,0 +1,37 @@
+{
+  "badge_num": 10,
+  "city": "VIENNA",
+  "flag": "🇦🇹",
+  "cta_screenshot": "screen-vienna-hofburg-map.png",
+  "caption": "Vienna's most famous wine region is inside the city limits — and its most famous composer's grave has been empty this whole time. 👀\n\nComment your guess for which one before you swipe ⬇️\n\n.\n.\n.\n#Vienna #ViennaTravel #HiddenGems #TravelFacts #Hofburg #Schonbrunn #UrbanTales",
+  "facts": [
+    {
+      "headline": "The world's oldest operating Ferris wheel survived being burned to a skeleton",
+      "body_html": "The Riesenrad opened in Prater park in <b>1897</b> and is the oldest Ferris wheel still running anywhere on Earth. It was gutted by fire in 1944 and rebuilt with half its original 30 cabins — then went on to star in <b>The Third Man</b>."
+    },
+    {
+      "headline": "230,000 roof tiles form a Habsburg eagle you can only see from above",
+      "body_html": "St. Stephen's Cathedral's zigzag roof is covered in <b>230,000 glazed tiles</b> in ten colors, arranged into a double-headed eagle on one side and Vienna's coat of arms on the other — all visible only from a height."
+    },
+    {
+      "headline": "A 6-year-old Mozart reportedly proposed marriage after slipping on this floor",
+      "body_html": "In 1762, six-year-old Wolfgang Mozart performed for the imperial family in Schönbrunn's Hall of Mirrors, slipped on the polished floor, and was helped up by young Archduchess <b>Marie Antoinette</b> — he's said to have promised to marry her on the spot."
+    },
+    {
+      "headline": "This is the only place left where 16th-century horsemanship is still performed exactly as written",
+      "body_html": "The Spanish Riding School's white Lipizzaner stallions have trained in the Hofburg's baroque Winter Riding School since <b>1735</b> — the last place on Earth still practicing classical haute école dressage in its original, unbroken form."
+    },
+    {
+      "headline": "An empress once had gym equipment installed inside this palace to control her waist",
+      "body_html": "Empress Elisabeth (\"Sisi\") kept her waist near <b>19 inches</b> her entire adult life, wrapping herself in damp cloths and installing personal workout equipment in her Hofburg apartments — extreme even by Habsburg standards."
+    },
+    {
+      "headline": "Mozart has a grave here — he just isn't in it",
+      "body_html": "Vienna's Central Cemetery holds a place of honor for Mozart among Beethoven, Schubert, and Strauss — but it's a <b>memorial, not a burial</b>. His actual grave, in a different Vienna cemetery, was unmarked and its exact spot was lost."
+    },
+    {
+      "headline": "Vienna is the only capital city on Earth that still grows its own wine",
+      "body_html": "Over <b>600 hectares</b> of working vineyards sit inside Vienna's city limits, legally protected from ever becoming anything but vineyard. The blend grown there, Wiener Gemischter Satz, can't legally be made anywhere else."
+    }
+  ]
+}
