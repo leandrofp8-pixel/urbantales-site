@@ -5046,6 +5046,8 @@ function renderQuotaExperiment(data) {
         <th style="text-align:right">Conversion</th>
         <th style="text-align:right">D7 retention</th>
         <th style="text-align:right">Avg landmarks/user</th>
+        <th style="text-align:right">Landmarks before buy</th>
+        <th style="text-align:right">Days to buy</th>
       </tr></thead>
       <tbody>
         <tr>
@@ -5054,6 +5056,8 @@ function renderQuotaExperiment(data) {
           <td style="text-align:right;font-weight:700;color:var(--green)">${wt.overall_conversion_rate ?? 0}%</td>
           <td style="text-align:right;font-weight:700;color:${retentionWarning ? 'var(--danger)' : 'var(--text)'}">${wt.d7_retention_rate ?? 0}% <span style="color:var(--muted);font-weight:400">(n=${fmt(wt.d7_eligible)})</span></td>
           <td style="text-align:right">${wt.avg_landmarks_visited ?? 0}</td>
+          <td style="text-align:right">${wt.avg_landmarks_before_purchase ?? 0} <span style="color:var(--muted);font-weight:400">(n=${fmt(wt.purchased)})</span></td>
+          <td style="text-align:right">${wt.avg_days_to_purchase ?? 0}</td>
         </tr>
         <tr>
           <td><strong>📅 Daily Quota (control)</strong>${!convWinner ? '<span style="background:var(--green);color:#000;font-size:0.7rem;padding:2px 6px;border-radius:4px;margin-left:8px">converts better</span>' : ''}</td>
@@ -5061,12 +5065,15 @@ function renderQuotaExperiment(data) {
           <td style="text-align:right;font-weight:700;color:var(--green)">${dc.overall_conversion_rate ?? 0}%</td>
           <td style="text-align:right;font-weight:700">${dc.d7_retention_rate ?? 0}% <span style="color:var(--muted);font-weight:400">(n=${fmt(dc.d7_eligible)})</span></td>
           <td style="text-align:right">${dc.avg_landmarks_visited ?? 0}</td>
+          <td style="text-align:right">${dc.avg_landmarks_before_purchase ?? 0} <span style="color:var(--muted);font-weight:400">(n=${fmt(dc.purchased)})</span></td>
+          <td style="text-align:right">${dc.avg_days_to_purchase ?? 0}</td>
         </tr>
       </tbody>
     </table>
     <p style="color:var(--muted);font-size:0.72rem;margin-top:10px">
       Conversion is the upside thesis; D7 retention and avg landmarks/user are the downside risk — a conversion win paired with a retention drop isn't a win.
       "Avg landmarks/user" is lifetime, not time-normalized, so newer signups in either arm will read lower regardless of quota effect.
+      "Landmarks before buy" / "Days to buy" test whether a tighter quota accelerates conversion (blocks earlier) rather than just changing whether someone converts at all — both are averaged only over each arm's purchasers (n shown), so early reads are on very few people.
       Settings: ${data.settings?.test_pct}% of new signups in the 7-day-quota arm · daily limit ${fmt(data.settings?.daily_limit)} · weekly limit ${fmt(data.settings?.weekly_limit)}.
       ${fmt(data.unassigned_users)} users signed up before this experiment.
     </p>`;
