@@ -4994,6 +4994,7 @@ function renderGrowthExperiment(data) {
         <th style="text-align:right">Users</th>
         <th style="text-align:right">Purchased (any)</th>
         <th style="text-align:right">Overall conversion</th>
+        <th style="text-align:right">Days to buy</th>
       </tr></thead>
       <tbody>
         <tr>
@@ -5001,12 +5002,14 @@ function renderGrowthExperiment(data) {
           <td style="text-align:right">${fmt(po.total_users)}</td>
           <td style="text-align:right">${fmt(po.purchased)}</td>
           <td style="text-align:right;font-weight:700;color:var(--green)">${po.overall_conversion_rate ?? 0}%</td>
+          <td style="text-align:right">${po.avg_days_to_purchase ?? 0}</td>
         </tr>
         <tr>
           <td><strong>🤝 Referral CTA (control)</strong>${badge(false)}</td>
           <td style="text-align:right">${fmt(rc.total_users)}</td>
           <td style="text-align:right">${fmt(rc.purchased)}</td>
           <td style="text-align:right;font-weight:700;color:var(--green)">${rc.overall_conversion_rate ?? 0}%</td>
+          <td style="text-align:right">${rc.avg_days_to_purchase ?? 0}</td>
         </tr>
       </tbody>
     </table>
