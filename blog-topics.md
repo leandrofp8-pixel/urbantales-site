@@ -7,6 +7,7 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 
 | Date | Type | City | Post |
 |---|---|---|---|
+| 2026-09-11 | Hidden Story | New York | [blog-grand-central-secret-platform.html](blog-grand-central-secret-platform.html) — The secret platform hiding under Grand Central Terminal |
 | 2026-09-09 | City Guide | Tokyo | [blog-asakusa-tokyo-morning-walk.html](blog-asakusa-tokyo-morning-walk.html) — A self-guided Asakusa walk that beats the tour buses |
 | 2026-09-07 | Hidden Story | Prague | [blog-prague-astronomical-clock-legend.html](blog-prague-astronomical-clock-legend.html) — The blinding legend behind Prague's Astronomical Clock |
 | 2026-09-04 | City Guide | Barcelona | [blog-barcelona-gaudi-self-guided-day.html](blog-barcelona-gaudi-self-guided-day.html) — A self-guided Gaudí day in Barcelona |
@@ -23,7 +24,6 @@ already in this repo, so the post's CTAs and internal links can point to it.
 
 | Type | City | Angle |
 |---|---|---|
-| Hidden Story | New York | Grand Central's whispering gallery and the platform that officially doesn't exist |
 | City Guide | Florence | A self-guided Duomo-area walk that skips the worst of the lines |
 | Hidden Story | Vienna | The Hofburg Palace intrigue tour guides gloss over |
 | City Guide | Buenos Aires | A self-guided La Boca / Caminito route, and when to actually go |
