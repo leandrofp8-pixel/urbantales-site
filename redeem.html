@@ -102,13 +102,18 @@
             missing: 'Code fehlt', missingSub: 'Dieser Link enthält keinen Trip-Pass-Code. Prüfe den Link auf deinem Voucher.' },
     };
     function detectLang() {
+      const params = new URLSearchParams(window.location.search);
+      const paramLang = params.get('lang');
+      if (paramLang && STRINGS[paramLang]) return paramLang;
       const l = (navigator.language || 'en').slice(0, 2).toLowerCase();
       return STRINGS[l] ? l : 'en';
     }
 
     const params = new URLSearchParams(window.location.search);
     const code = (params.get('code') || '').trim().toUpperCase();
-    const s = STRINGS[detectLang()];
+    const lang = detectLang();
+    const s = STRINGS[lang];
+    document.documentElement.lang = lang;
 
     document.getElementById('t-title').textContent = code ? s.title : s.missing;
     document.getElementById('t-sub').textContent = code ? s.sub : s.missingSub;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <script>
@@ -8,7 +8,7 @@
     if (window.top !== window.self) { window.top.location = window.self.location; }
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal de Agências — Urban Tales</title>
+  <title id="pageTitleTag">Agency Portal — Urban Tales</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="icon.png">
@@ -51,6 +51,16 @@
     .msg { font-size: .85rem; margin-top: .8rem; text-align: center; min-height: 1.1em; }
     .msg.err { color: #ff9d8a; }
     .msg.ok { color: #9be3b4; }
+
+    /* ── LANGUAGE SWITCH ── */
+    .lang-switch { position: fixed; top: 14px; right: 14px; display: flex; gap: 4px; z-index: 200; }
+    .lang-switch button {
+      background: rgba(0,0,0,.4); border: 1px solid var(--border); color: var(--muted);
+      font-size: .68rem; font-weight: 700; padding: 5px 9px; border-radius: 999px;
+      cursor: pointer; font-family: inherit; letter-spacing: .03em;
+    }
+    .lang-switch button.active { background: var(--accent); color: #241407; border-color: var(--accent); }
+    .lang-switch button:hover:not(.active) { color: var(--text); border-color: var(--accent); }
 
     /* ── PORTAL ── */
     .portal { display: none; max-width: var(--max); margin: 0 auto; padding: 1.5rem; }
@@ -137,45 +147,53 @@
 </head>
 <body>
 
+  <div class="lang-switch" id="langSwitch">
+    <button data-lang="en">EN</button>
+    <button data-lang="pt-BR">PT</button>
+    <button data-lang="es">ES</button>
+    <button data-lang="fr">FR</button>
+    <button data-lang="de">DE</button>
+  </div>
+
   <!-- ── LOGIN ── -->
   <div class="auth-wrap" id="loginScreen">
     <div class="auth-card">
       <div class="auth-logo">
         <img src="icon.png" class="brand-icon" alt="Urban Tales" />
-        <p>Portal de Agências</p>
+        <p data-i18n="portalTagline">Agency Portal</p>
       </div>
-      <h2 id="authTitle">Entrar</h2>
+      <h2 id="authTitle">Sign in</h2>
 
       <div id="loginForm">
-        <div class="field"><label for="li_email">E-mail</label><input id="li_email" type="email" autocomplete="username" /></div>
-        <div class="field"><label for="li_pass">Senha</label><input id="li_pass" type="password" autocomplete="current-password" /></div>
-        <button class="btn-primary" id="loginBtn" onclick="doLogin()">Entrar</button>
+        <div class="field"><label for="li_email" data-i18n="emailLabel">Email</label><input id="li_email" type="email" autocomplete="username" /></div>
+        <div class="field"><label for="li_pass" data-i18n="passwordLabel">Password</label><input id="li_pass" type="password" autocomplete="current-password" /></div>
+        <button class="btn-primary" id="loginBtn" onclick="doLogin()" data-i18n="loginBtn">Sign in</button>
         <div class="msg" id="loginMsg"></div>
-        <div class="link-row"><a onclick="showForgot()">Esqueci minha senha</a></div>
-        <div class="link-row">Ainda não tem conta? <a onclick="showRegister()">Cadastre sua agência</a></div>
+        <div class="link-row"><a onclick="showForgot()" data-i18n="forgotLink">Forgot my password</a></div>
+        <div class="link-row"><span data-i18n="noAccountText">Don't have an account yet?</span> <a onclick="showRegister()" data-i18n="registerLink">Register your agency</a></div>
       </div>
 
       <div id="registerForm" style="display:none">
-        <div class="field"><label for="rg_company">Agência</label><input id="rg_company" /></div>
-        <div class="field"><label for="rg_name">Seu nome</label><input id="rg_name" /></div>
-        <div class="field"><label for="rg_email">E-mail</label><input id="rg_email" type="email" /></div>
-        <div class="field"><label for="rg_phone">Telefone</label><input id="rg_phone" /></div>
-        <div class="field"><label for="rg_pass">Senha</label><input id="rg_pass" type="password" autocomplete="new-password" /></div>
-        <button class="btn-primary" id="regBtn" onclick="doRegister()">Enviar cadastro</button>
+        <div class="field"><label for="rg_company" data-i18n="companyLabel">Agency</label><input id="rg_company" /></div>
+        <div class="field"><label for="rg_name" data-i18n="yourNameLabel">Your name</label><input id="rg_name" /></div>
+        <div class="field"><label for="rg_email" data-i18n="emailLabel">Email</label><input id="rg_email" type="email" /></div>
+        <div class="field"><label for="rg_phone" data-i18n="phoneLabel">Phone</label><input id="rg_phone" /></div>
+        <div class="field"><label for="rg_pass" data-i18n="passwordLabel">Password</label><input id="rg_pass" type="password" autocomplete="new-password" /></div>
+        <button class="btn-primary" id="regBtn" onclick="doRegister()" data-i18n="registerBtn">Submit application</button>
         <div class="msg" id="regMsg"></div>
-        <div class="link-row"><a onclick="showLogin()">Voltar para o login</a></div>
+        <div class="link-row"><a onclick="showLogin()" data-i18n="backToLogin">Back to sign in</a></div>
       </div>
 
       <div id="forgotForm" style="display:none">
-        <div class="field"><label for="fg_email">E-mail</label><input id="fg_email" type="email" /></div>
-        <button class="btn-primary" onclick="doForgot()">Enviar link de redefinição</button>
+        <div class="field"><label for="fg_email" data-i18n="emailLabel">Email</label><input id="fg_email" type="email" /></div>
+        <button class="btn-primary" onclick="doForgot()" data-i18n="sendResetLinkBtn">Send reset link</button>
         <div class="msg" id="forgotMsg"></div>
-        <div class="link-row"><a onclick="showLogin()">Voltar para o login</a></div>
+        <div class="link-row"><a onclick="showLogin()" data-i18n="backToLogin">Back to sign in</a></div>
       </div>
 
       <div id="resetForm" style="display:none">
-        <div class="field"><label for="rs_pass">Nova senha</label><input id="rs_pass" type="password" autocomplete="new-password" /></div>
-        <button class="btn-primary" onclick="doReset()">Salvar nova senha</button>
+        <div class="field"><label for="rs_pass" data-i18n="newPasswordLabel">New password</label><input id="rs_pass" type="password" autocomplete="new-password" /></div>
+        <button class="btn-primary" onclick="doReset()" data-i18n="savePasswordBtn">Save new password</button>
         <div class="msg" id="resetMsg"></div>
       </div>
     </div>
@@ -188,55 +206,55 @@
         <h1 id="agencyName">—</h1>
         <div class="sub" id="agencySub">—</div>
       </div>
-      <button class="btn-ghost" onclick="logout()">Sair</button>
+      <button class="btn-ghost" onclick="logout()" data-i18n="logoutBtn">Log out</button>
     </div>
 
     <div class="cards" id="statCards"></div>
 
     <div class="panel">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
-        <h3 style="margin:0">Faturamento</h3>
+        <h3 style="margin:0" data-i18n="billingTitle">Billing</h3>
         <input id="billingMonth" type="month" onchange="loadBilling()" style="background:rgba(0,0,0,.35);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:8px 11px;font-family:inherit;font-size:.85rem" />
       </div>
-      <div id="billingBody"><div class="empty">Carregando…</div></div>
+      <div id="billingBody"><div class="empty" data-i18n="loadingText">Loading…</div></div>
     </div>
 
     <div class="panel">
-      <h3>Emitir Trip Pass</h3>
+      <h3 data-i18n="issueTitle">Issue Trip Pass</h3>
       <div class="hint">
-        Cada passe é um código único, de uso único, válido em qualquer cidade do mundo durante os dias da viagem.
-        Cobrado por passe emitido — <b id="rateLabel">—</b> por viajante/dia.
-        Passes não resgatados podem ser cancelados ou editados até 1 dia antes do início da viagem.
+        <span id="issueHintText"></span>
       </div>
       <div class="issue-grid">
-        <div class="field"><label for="is_traveler">Viajante (opcional)</label><input id="is_traveler" placeholder="Nome do viajante" /></div>
-        <div class="field"><label for="is_email">E-mail do viajante (opcional)</label><input id="is_email" type="email" placeholder="para enviar o código" /></div>
-        <div class="field"><label for="is_start">Início da viagem</label><input id="is_start" type="date" /></div>
-        <div class="field"><label for="is_days">Dias</label><input id="is_days" type="number" min="1" max="60" value="7" /></div>
-        <div class="field"><label for="is_qty">Quantidade</label><input id="is_qty" type="number" min="1" max="100" value="1" /></div>
-        <button class="btn-primary" id="issueBtn" onclick="issuePasses()">Emitir</button>
+        <div class="field"><label for="is_traveler" data-i18n="travelerOptionalLabel">Traveler (optional)</label><input id="is_traveler" data-i18n-placeholder="travelerNamePlaceholder" placeholder="Traveler's name" /></div>
+        <div class="field"><label for="is_email" data-i18n="travelerEmailOptionalLabel">Traveler's email (optional)</label><input id="is_email" type="email" data-i18n-placeholder="travelerEmailPlaceholder" placeholder="to send the code" /></div>
+        <div class="field"><label for="is_start" data-i18n="tripStartLabel">Trip start date</label><input id="is_start" type="date" /></div>
+        <div class="field"><label for="is_days" data-i18n="daysLabel">Days</label><input id="is_days" type="number" min="1" max="60" value="7" /></div>
+        <div class="field"><label for="is_qty" data-i18n="qtyLabel">Quantity</label><input id="is_qty" type="number" min="1" max="100" value="1" /></div>
+        <button class="btn-primary" id="issueBtn" onclick="issuePasses()" data-i18n="issueBtn">Issue</button>
       </div>
       <label style="display:flex;align-items:center;gap:.5rem;margin-top:.9rem;font-size:.82rem;color:var(--muted);cursor:pointer">
         <input type="checkbox" id="is_send" style="width:16px;height:16px;accent-color:var(--accent)" />
-        Enviar o código por e-mail ao viajante (apenas para 1 passe com e-mail informado)
+        <span data-i18n="sendEmailCheckboxLabel">Email the code to the traveler (only for 1 pass with an email entered)</span>
       </label>
       <div id="issueResult"></div>
     </div>
 
     <div class="panel">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
-        <h3 style="margin:0">Passes emitidos</h3>
+        <h3 style="margin:0" data-i18n="issuedPassesTitle">Issued passes</h3>
         <div style="display:flex;gap:.5rem;align-items:center">
           <input id="filterMonth" type="month" onchange="loadPasses()" style="background:rgba(0,0,0,.35);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:8px 11px;font-family:inherit;font-size:.85rem" />
-          <button class="btn-ghost" onclick="loadPasses()">Atualizar</button>
-          <button class="btn-ghost" onclick="exportCsv()">Exportar CSV</button>
-          <button class="btn-ghost" onclick="printAllVouchers()">Imprimir vouchers</button>
+          <button class="btn-ghost" onclick="loadPasses()" data-i18n="refreshBtn">Refresh</button>
+          <button class="btn-ghost" onclick="exportCsv()" data-i18n="exportCsvBtn">Export CSV</button>
+          <button class="btn-ghost" onclick="printAllVouchers()" data-i18n="printVouchersBtn">Print vouchers</button>
         </div>
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Código</th><th>Viajante</th><th>Viagem</th><th>Status</th><th>Valor</th><th></th></tr></thead>
-          <tbody id="passBody"><tr><td colspan="6" class="empty">Carregando…</td></tr></tbody>
+          <thead><tr>
+            <th data-i18n="codeHeader">Code</th><th data-i18n="travelerHeader">Traveler</th><th data-i18n="tripHeader">Trip</th><th data-i18n="statusHeader">Status</th><th data-i18n="valueHeader">Value</th><th></th>
+          </tr></thead>
+          <tbody id="passBody"><tr><td colspan="6" class="empty" data-i18n="loadingText">Loading…</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -247,13 +265,360 @@ const API = 'https://friendly-fulfillment-production.up.railway.app/api';
 const tok = () => localStorage.getItem('ag_token');
 const usd = c => '$' + ((c || 0) / 100).toFixed(2);
 
+// ══════════════════════════════════════════════
+// i18n
+// ══════════════════════════════════════════════
+const STRINGS = {
+  en: {
+    pageTitle: 'Agency Portal — Urban Tales',
+    portalTagline: 'Agency Portal',
+    authTitleLogin: 'Sign in', authTitleRegister: 'Register your agency',
+    authTitleForgot: 'Reset password', authTitleReset: 'New password',
+    emailLabel: 'Email', passwordLabel: 'Password', loginBtn: 'Sign in',
+    forgotLink: 'Forgot my password', noAccountText: "Don't have an account yet?", registerLink: 'Register your agency',
+    companyLabel: 'Agency', yourNameLabel: 'Your name', phoneLabel: 'Phone',
+    registerBtn: 'Submit application', backToLogin: 'Back to sign in',
+    sendResetLinkBtn: 'Send reset link', newPasswordLabel: 'New password', savePasswordBtn: 'Save new password',
+    fillEmailPassword: 'Enter your email and password.', loggingIn: 'Signing in…',
+    pendingApproval: 'Your account is still awaiting approval.', invalidCreds: 'Invalid email or password.',
+    connError: 'Connection error. Please try again.',
+    fillNameEmailPassword: 'Fill in name, email, and password.', sending: 'Submitting…',
+    registerFailed: 'Could not submit the application.',
+    registerSuccess: "Application submitted! We'll email you as soon as your account is approved.",
+    enterEmail: 'Enter your email.', resetLinkSent: 'If an account exists with this email, we sent a reset link.',
+    passwordMinLength: 'Password must be at least 6 characters.',
+    invalidResetLink: 'Invalid or expired link. Request a new one.', passwordChanged: 'Password changed. You can sign in now.',
+    logoutBtn: 'Log out', yourAgencyFallback: 'Your agency', ratePerTravelerDay: '{rate} per traveler/day',
+    billingTitle: 'Billing', loadingText: 'Loading…',
+    billableStat: 'Billable passes', travelerDaysStat: 'Traveler-days', cancelledNotBilledStat: 'Cancelled (not billed)',
+    codeHeader: 'Code', travelerHeader: 'Traveler', tripStartHeader: 'Trip start', valueHeader: 'Value', tripHeader: 'Trip', statusHeader: 'Status',
+    noBillablePasses: 'No billable passes this month',
+    tripsStartingIn: 'For trips starting in {month} · due {date}',
+    statusPaid: 'Paid', statusPaidOn: 'Paid on {date}', statusOverdue: 'Overdue',
+    dueToday: 'Due today', dueTomorrow: 'Due tomorrow', dueInDays: 'Due in {n} days',
+    issueTitle: 'Issue Trip Pass',
+    issueHint: 'Each pass is a unique, single-use code, valid in any city in the world for the days of the trip. Billed per pass issued — {rate} per traveler/day. Unredeemed passes can be cancelled or edited up to 1 day before the trip starts.',
+    travelerOptionalLabel: 'Traveler (optional)', travelerNamePlaceholder: "Traveler's name",
+    travelerEmailOptionalLabel: "Traveler's email (optional)", travelerEmailPlaceholder: 'to send the code',
+    tripStartLabel: 'Trip start date', daysLabel: 'Days', qtyLabel: 'Quantity', issueBtn: 'Issue',
+    sendEmailCheckboxLabel: 'Email the code to the traveler (only for 1 pass with an email entered)',
+    fillStartDaysError: 'Enter the start date and number of days.', issuing: 'Issuing…',
+    issuedResultLabel: '{n} {passWord} issued · {amount}{emailSuffix}', emailSentSuffix: ' · email sent',
+    passSingular: 'pass', passPlural: 'passes', daySingular: 'day', dayPlural: 'days',
+    copyLinkBtn: 'Copy link', whatsappBtn: 'WhatsApp', viewQrPrintBtn: 'View QR / print',
+    newlyIssuedVouchers: 'Newly issued vouchers',
+    issuedPassesTitle: 'Issued passes', refreshBtn: 'Refresh', exportCsvBtn: 'Export CSV', printVouchersBtn: 'Print vouchers',
+    noPassesYet: 'No passes issued yet',
+    pillIssued: 'Issued', pillRedeemed: 'Redeemed', pillCancelled: 'Cancelled',
+    linkBtn: 'Link', qrBtn: 'QR', sendBtn: 'Send', resendBtn: 'Resend', editBtn: 'Edit', cancelBtn: 'Cancel',
+    promptTravelerEmail: "Traveler's email to send code {code}:",
+    confirmSendEmail: '{action} code {code} to {email}?', actionSend: 'Send', actionResend: 'Resend',
+    codeSentAlert: 'Code sent to {email}.', confirmCancelPass: 'Cancel pass {code}? It will no longer be billed.',
+    copiedBtnLabel: 'Copied!', copyLinkPrompt: 'Copy the link:',
+    whatsappMessage: 'Your Urban Tales Trip Pass{trip}: unlimited audio stories in any city. Activate here: {url}',
+    whatsappTripSuffix: ' for your trip on {date} ({days} {dayWord})',
+    vouchersTitle: 'Vouchers', vouchersCountTitle: 'Vouchers ({n})', closeBtn: 'Close', printBtn: 'Print',
+    noPassesToPrint: 'No passes to print.', nothingToExport: 'Nothing to export.',
+    editPassTitle: 'Edit pass', travelerLabel: 'Traveler',
+    fillDateAndDays: 'Enter the date and days.', saving: 'Saving…', saveBtn: 'Save',
+    monthClosed: 'closed month (final amount)', monthOpen: 'month in progress (amount may still change)',
+    csvHeaders: ['code', 'traveler', 'start', 'days', 'status', 'value_usd', 'link'],
+  },
+  'pt-BR': {
+    pageTitle: 'Portal de Agências — Urban Tales',
+    portalTagline: 'Portal de Agências',
+    authTitleLogin: 'Entrar', authTitleRegister: 'Cadastre sua agência',
+    authTitleForgot: 'Redefinir senha', authTitleReset: 'Nova senha',
+    emailLabel: 'E-mail', passwordLabel: 'Senha', loginBtn: 'Entrar',
+    forgotLink: 'Esqueci minha senha', noAccountText: 'Ainda não tem conta?', registerLink: 'Cadastre sua agência',
+    companyLabel: 'Agência', yourNameLabel: 'Seu nome', phoneLabel: 'Telefone',
+    registerBtn: 'Enviar cadastro', backToLogin: 'Voltar para o login',
+    sendResetLinkBtn: 'Enviar link de redefinição', newPasswordLabel: 'Nova senha', savePasswordBtn: 'Salvar nova senha',
+    fillEmailPassword: 'Informe e-mail e senha.', loggingIn: 'Entrando…',
+    pendingApproval: 'Sua conta ainda está aguardando aprovação.', invalidCreds: 'E-mail ou senha inválidos.',
+    connError: 'Erro de conexão. Tente novamente.',
+    fillNameEmailPassword: 'Preencha nome, e-mail e senha.', sending: 'Enviando…',
+    registerFailed: 'Não foi possível enviar o cadastro.',
+    registerSuccess: 'Cadastro enviado! Avisaremos por e-mail assim que sua conta for aprovada.',
+    enterEmail: 'Informe seu e-mail.', resetLinkSent: 'Se existir uma conta com este e-mail, enviamos um link de redefinição.',
+    passwordMinLength: 'A senha precisa ter ao menos 6 caracteres.',
+    invalidResetLink: 'Link inválido ou expirado. Peça um novo.', passwordChanged: 'Senha alterada. Você já pode entrar.',
+    logoutBtn: 'Sair', yourAgencyFallback: 'Sua agência', ratePerTravelerDay: '{rate} por viajante/dia',
+    billingTitle: 'Faturamento', loadingText: 'Carregando…',
+    billableStat: 'Passes faturáveis', travelerDaysStat: 'Diárias de viajante', cancelledNotBilledStat: 'Cancelados (não cobrados)',
+    codeHeader: 'Código', travelerHeader: 'Viajante', tripStartHeader: 'Início da viagem', valueHeader: 'Valor', tripHeader: 'Viagem', statusHeader: 'Status',
+    noBillablePasses: 'Nenhum passe faturável neste mês',
+    tripsStartingIn: 'Referente às viagens com início em {month} · vencimento {date}',
+    statusPaid: 'Pago', statusPaidOn: 'Pago em {date}', statusOverdue: 'Vencido',
+    dueToday: 'Vence hoje', dueTomorrow: 'Vence amanhã', dueInDays: 'Vence em {n} dias',
+    issueTitle: 'Emitir Trip Pass',
+    issueHint: 'Cada passe é um código único, de uso único, válido em qualquer cidade do mundo durante os dias da viagem. Cobrado por passe emitido — {rate} por viajante/dia. Passes não resgatados podem ser cancelados ou editados até 1 dia antes do início da viagem.',
+    travelerOptionalLabel: 'Viajante (opcional)', travelerNamePlaceholder: 'Nome do viajante',
+    travelerEmailOptionalLabel: 'E-mail do viajante (opcional)', travelerEmailPlaceholder: 'para enviar o código',
+    tripStartLabel: 'Início da viagem', daysLabel: 'Dias', qtyLabel: 'Quantidade', issueBtn: 'Emitir',
+    sendEmailCheckboxLabel: 'Enviar o código por e-mail ao viajante (apenas para 1 passe com e-mail informado)',
+    fillStartDaysError: 'Informe a data de início e a quantidade de dias.', issuing: 'Emitindo…',
+    issuedResultLabel: '{n} {passWord} emitido{adjS} · {amount}{emailSuffix}', emailSentSuffix: ' · e-mail enviado',
+    passSingular: 'passe', passPlural: 'passes', daySingular: 'dia', dayPlural: 'dias',
+    copyLinkBtn: 'Copiar link', whatsappBtn: 'WhatsApp', viewQrPrintBtn: 'Ver QR / imprimir',
+    newlyIssuedVouchers: 'Vouchers recém-emitidos',
+    issuedPassesTitle: 'Passes emitidos', refreshBtn: 'Atualizar', exportCsvBtn: 'Exportar CSV', printVouchersBtn: 'Imprimir vouchers',
+    noPassesYet: 'Nenhum passe emitido ainda',
+    pillIssued: 'Emitido', pillRedeemed: 'Resgatado', pillCancelled: 'Cancelado',
+    linkBtn: 'Link', qrBtn: 'QR', sendBtn: 'Enviar', resendBtn: 'Reenviar', editBtn: 'Editar', cancelBtn: 'Cancelar',
+    promptTravelerEmail: 'E-mail do viajante para enviar o código {code}:',
+    confirmSendEmail: '{action} o código {code} para {email}?', actionSend: 'Enviar', actionResend: 'Reenviar',
+    codeSentAlert: 'Código enviado para {email}.', confirmCancelPass: 'Cancelar o passe {code}? Ele deixa de ser faturado.',
+    copiedBtnLabel: 'Copiado!', copyLinkPrompt: 'Copie o link:',
+    whatsappMessage: 'Seu Trip Pass do Urban Tales{trip}: histórias de áudio ilimitadas em qualquer cidade. Ative aqui: {url}',
+    whatsappTripSuffix: ' para sua viagem de {date} ({days} {dayWord})',
+    vouchersTitle: 'Vouchers', vouchersCountTitle: 'Vouchers ({n})', closeBtn: 'Fechar', printBtn: 'Imprimir',
+    noPassesToPrint: 'Nenhum passe para imprimir.', nothingToExport: 'Nada para exportar.',
+    editPassTitle: 'Editar passe', travelerLabel: 'Viajante',
+    fillDateAndDays: 'Informe data e dias.', saving: 'Salvando…', saveBtn: 'Salvar',
+    monthClosed: 'mês fechado (valor final)', monthOpen: 'mês em andamento (valor pode mudar)',
+    csvHeaders: ['codigo', 'viajante', 'inicio', 'dias', 'status', 'valor_usd', 'link'],
+  },
+  es: {
+    pageTitle: 'Portal de Agencias — Urban Tales',
+    portalTagline: 'Portal de Agencias',
+    authTitleLogin: 'Iniciar sesión', authTitleRegister: 'Registra tu agencia',
+    authTitleForgot: 'Restablecer contraseña', authTitleReset: 'Nueva contraseña',
+    emailLabel: 'Correo electrónico', passwordLabel: 'Contraseña', loginBtn: 'Iniciar sesión',
+    forgotLink: 'Olvidé mi contraseña', noAccountText: '¿Aún no tienes cuenta?', registerLink: 'Registra tu agencia',
+    companyLabel: 'Agencia', yourNameLabel: 'Tu nombre', phoneLabel: 'Teléfono',
+    registerBtn: 'Enviar solicitud', backToLogin: 'Volver a iniciar sesión',
+    sendResetLinkBtn: 'Enviar enlace de restablecimiento', newPasswordLabel: 'Nueva contraseña', savePasswordBtn: 'Guardar nueva contraseña',
+    fillEmailPassword: 'Ingresa correo y contraseña.', loggingIn: 'Iniciando sesión…',
+    pendingApproval: 'Tu cuenta aún está pendiente de aprobación.', invalidCreds: 'Correo o contraseña inválidos.',
+    connError: 'Error de conexión. Intenta de nuevo.',
+    fillNameEmailPassword: 'Completa nombre, correo y contraseña.', sending: 'Enviando…',
+    registerFailed: 'No se pudo enviar la solicitud.',
+    registerSuccess: '¡Solicitud enviada! Te avisaremos por correo cuando tu cuenta sea aprobada.',
+    enterEmail: 'Ingresa tu correo.', resetLinkSent: 'Si existe una cuenta con este correo, enviamos un enlace de restablecimiento.',
+    passwordMinLength: 'La contraseña debe tener al menos 6 caracteres.',
+    invalidResetLink: 'Enlace inválido o vencido. Solicita uno nuevo.', passwordChanged: 'Contraseña cambiada. Ya puedes iniciar sesión.',
+    logoutBtn: 'Salir', yourAgencyFallback: 'Tu agencia', ratePerTravelerDay: '{rate} por viajante/día',
+    billingTitle: 'Facturación', loadingText: 'Cargando…',
+    billableStat: 'Pases facturables', travelerDaysStat: 'Días-viajero', cancelledNotBilledStat: 'Cancelados (no facturados)',
+    codeHeader: 'Código', travelerHeader: 'Viajante', tripStartHeader: 'Inicio del viaje', valueHeader: 'Valor', tripHeader: 'Viaje', statusHeader: 'Estado',
+    noBillablePasses: 'No hay pases facturables este mes',
+    tripsStartingIn: 'Para viajes que inician en {month} · vencimiento {date}',
+    statusPaid: 'Pagado', statusPaidOn: 'Pagado el {date}', statusOverdue: 'Vencido',
+    dueToday: 'Vence hoy', dueTomorrow: 'Vence mañana', dueInDays: 'Vence en {n} días',
+    issueTitle: 'Emitir Trip Pass',
+    issueHint: 'Cada pase es un código único, de un solo uso, válido en cualquier ciudad del mundo durante los días del viaje. Se cobra por pase emitido — {rate} por viajante/día. Los pases no canjeados pueden cancelarse o editarse hasta 1 día antes de que inicie el viaje.',
+    travelerOptionalLabel: 'Viajante (opcional)', travelerNamePlaceholder: 'Nombre del viajante',
+    travelerEmailOptionalLabel: 'Correo del viajante (opcional)', travelerEmailPlaceholder: 'para enviar el código',
+    tripStartLabel: 'Inicio del viaje', daysLabel: 'Días', qtyLabel: 'Cantidad', issueBtn: 'Emitir',
+    sendEmailCheckboxLabel: 'Enviar el código por correo al viajante (solo para 1 pase con correo indicado)',
+    fillStartDaysError: 'Ingresa la fecha de inicio y la cantidad de días.', issuing: 'Emitiendo…',
+    issuedResultLabel: '{n} {passWord} emitido{adjS} · {amount}{emailSuffix}', emailSentSuffix: ' · correo enviado',
+    passSingular: 'pase', passPlural: 'pases', daySingular: 'día', dayPlural: 'días',
+    copyLinkBtn: 'Copiar enlace', whatsappBtn: 'WhatsApp', viewQrPrintBtn: 'Ver QR / imprimir',
+    newlyIssuedVouchers: 'Vouchers recién emitidos',
+    issuedPassesTitle: 'Pases emitidos', refreshBtn: 'Actualizar', exportCsvBtn: 'Exportar CSV', printVouchersBtn: 'Imprimir vouchers',
+    noPassesYet: 'Aún no hay pases emitidos',
+    pillIssued: 'Emitido', pillRedeemed: 'Canjeado', pillCancelled: 'Cancelado',
+    linkBtn: 'Enlace', qrBtn: 'QR', sendBtn: 'Enviar', resendBtn: 'Reenviar', editBtn: 'Editar', cancelBtn: 'Cancelar',
+    promptTravelerEmail: 'Correo del viajante para enviar el código {code}:',
+    confirmSendEmail: '¿{action} el código {code} a {email}?', actionSend: 'Enviar', actionResend: 'Reenviar',
+    codeSentAlert: 'Código enviado a {email}.', confirmCancelPass: '¿Cancelar el pase {code}? Dejará de facturarse.',
+    copiedBtnLabel: '¡Copiado!', copyLinkPrompt: 'Copia el enlace:',
+    whatsappMessage: 'Tu Trip Pass de Urban Tales{trip}: historias de audio ilimitadas en cualquier ciudad. Actívalo aquí: {url}',
+    whatsappTripSuffix: ' para tu viaje del {date} ({days} {dayWord})',
+    vouchersTitle: 'Vouchers', vouchersCountTitle: 'Vouchers ({n})', closeBtn: 'Cerrar', printBtn: 'Imprimir',
+    noPassesToPrint: 'No hay pases para imprimir.', nothingToExport: 'Nada para exportar.',
+    editPassTitle: 'Editar pase', travelerLabel: 'Viajante',
+    fillDateAndDays: 'Ingresa fecha y días.', saving: 'Guardando…', saveBtn: 'Guardar',
+    monthClosed: 'mes cerrado (monto final)', monthOpen: 'mes en curso (el monto puede cambiar)',
+    csvHeaders: ['codigo', 'viajante', 'inicio', 'dias', 'estado', 'valor_usd', 'enlace'],
+  },
+  fr: {
+    pageTitle: 'Portail des Agences — Urban Tales',
+    portalTagline: 'Portail des Agences',
+    authTitleLogin: 'Se connecter', authTitleRegister: 'Inscrire votre agence',
+    authTitleForgot: 'Réinitialiser le mot de passe', authTitleReset: 'Nouveau mot de passe',
+    emailLabel: 'E-mail', passwordLabel: 'Mot de passe', loginBtn: 'Se connecter',
+    forgotLink: 'Mot de passe oublié', noAccountText: "Vous n'avez pas encore de compte ?", registerLink: 'Inscrire votre agence',
+    companyLabel: 'Agence', yourNameLabel: 'Votre nom', phoneLabel: 'Téléphone',
+    registerBtn: 'Envoyer la demande', backToLogin: 'Retour à la connexion',
+    sendResetLinkBtn: 'Envoyer le lien de réinitialisation', newPasswordLabel: 'Nouveau mot de passe', savePasswordBtn: 'Enregistrer le nouveau mot de passe',
+    fillEmailPassword: 'Indiquez e-mail et mot de passe.', loggingIn: 'Connexion…',
+    pendingApproval: "Votre compte est toujours en attente d'approbation.", invalidCreds: 'E-mail ou mot de passe invalide.',
+    connError: 'Erreur de connexion. Réessayez.',
+    fillNameEmailPassword: 'Renseignez nom, e-mail et mot de passe.', sending: 'Envoi…',
+    registerFailed: "Impossible d'envoyer la demande.",
+    registerSuccess: 'Demande envoyée ! Nous vous préviendrons par e-mail dès que votre compte sera approuvé.',
+    enterEmail: 'Indiquez votre e-mail.', resetLinkSent: 'Si un compte existe avec cet e-mail, nous avons envoyé un lien de réinitialisation.',
+    passwordMinLength: 'Le mot de passe doit contenir au moins 6 caractères.',
+    invalidResetLink: 'Lien invalide ou expiré. Demandez-en un nouveau.', passwordChanged: 'Mot de passe modifié. Vous pouvez vous connecter.',
+    logoutBtn: 'Se déconnecter', yourAgencyFallback: 'Votre agence', ratePerTravelerDay: '{rate} par voyageur/jour',
+    billingTitle: 'Facturation', loadingText: 'Chargement…',
+    billableStat: 'Passes facturables', travelerDaysStat: 'Jours-voyageur', cancelledNotBilledStat: 'Annulés (non facturés)',
+    codeHeader: 'Code', travelerHeader: 'Voyageur', tripStartHeader: 'Début du voyage', valueHeader: 'Montant', tripHeader: 'Voyage', statusHeader: 'Statut',
+    noBillablePasses: 'Aucun passe facturable ce mois-ci',
+    tripsStartingIn: 'Pour les voyages débutant en {month} · échéance {date}',
+    statusPaid: 'Payé', statusPaidOn: 'Payé le {date}', statusOverdue: 'En retard',
+    dueToday: "Échéance aujourd'hui", dueTomorrow: 'Échéance demain', dueInDays: 'Échéance dans {n} jours',
+    issueTitle: 'Émettre un Trip Pass',
+    issueHint: "Chaque passe est un code unique à usage unique, valable dans n'importe quelle ville du monde pendant les jours du voyage. Facturé par passe émis — {rate} par voyageur/jour. Les passes non utilisés peuvent être annulés ou modifiés jusqu'à 1 jour avant le début du voyage.",
+    travelerOptionalLabel: 'Voyageur (optionnel)', travelerNamePlaceholder: 'Nom du voyageur',
+    travelerEmailOptionalLabel: 'E-mail du voyageur (optionnel)', travelerEmailPlaceholder: 'pour envoyer le code',
+    tripStartLabel: 'Début du voyage', daysLabel: 'Jours', qtyLabel: 'Quantité', issueBtn: 'Émettre',
+    sendEmailCheckboxLabel: "Envoyer le code par e-mail au voyageur (uniquement pour 1 passe avec un e-mail renseigné)",
+    fillStartDaysError: 'Indiquez la date de début et le nombre de jours.', issuing: 'Émission…',
+    issuedResultLabel: '{n} {passWord} émis · {amount}{emailSuffix}', emailSentSuffix: ' · e-mail envoyé',
+    passSingular: 'pass', passPlural: 'pass', daySingular: 'jour', dayPlural: 'jours',
+    copyLinkBtn: 'Copier le lien', whatsappBtn: 'WhatsApp', viewQrPrintBtn: 'Voir QR / imprimer',
+    newlyIssuedVouchers: 'Vouchers nouvellement émis',
+    issuedPassesTitle: 'Passes émis', refreshBtn: 'Actualiser', exportCsvBtn: 'Exporter en CSV', printVouchersBtn: 'Imprimer les vouchers',
+    noPassesYet: 'Aucun passe émis pour le moment',
+    pillIssued: 'Émis', pillRedeemed: 'Utilisé', pillCancelled: 'Annulé',
+    linkBtn: 'Lien', qrBtn: 'QR', sendBtn: 'Envoyer', resendBtn: 'Renvoyer', editBtn: 'Modifier', cancelBtn: 'Annuler',
+    promptTravelerEmail: "E-mail du voyageur pour envoyer le code {code} :",
+    confirmSendEmail: '{action} le code {code} à {email} ?', actionSend: 'Envoyer', actionResend: 'Renvoyer',
+    codeSentAlert: 'Code envoyé à {email}.', confirmCancelPass: 'Annuler le passe {code} ? Il ne sera plus facturé.',
+    copiedBtnLabel: 'Copié !', copyLinkPrompt: 'Copiez le lien :',
+    whatsappMessage: 'Votre Trip Pass Urban Tales{trip} : histoires audio illimitées dans toutes les villes. Activez-le ici : {url}',
+    whatsappTripSuffix: ' pour votre voyage du {date} ({days} {dayWord})',
+    vouchersTitle: 'Vouchers', vouchersCountTitle: 'Vouchers ({n})', closeBtn: 'Fermer', printBtn: 'Imprimer',
+    noPassesToPrint: 'Aucun passe à imprimer.', nothingToExport: 'Rien à exporter.',
+    editPassTitle: 'Modifier le passe', travelerLabel: 'Voyageur',
+    fillDateAndDays: 'Indiquez la date et les jours.', saving: 'Enregistrement…', saveBtn: 'Enregistrer',
+    monthClosed: 'mois clos (montant définitif)', monthOpen: 'mois en cours (le montant peut encore changer)',
+    csvHeaders: ['code', 'voyageur', 'debut', 'jours', 'statut', 'valeur_usd', 'lien'],
+  },
+  de: {
+    pageTitle: 'Agentur-Portal — Urban Tales',
+    portalTagline: 'Agentur-Portal',
+    authTitleLogin: 'Anmelden', authTitleRegister: 'Agentur registrieren',
+    authTitleForgot: 'Passwort zurücksetzen', authTitleReset: 'Neues Passwort',
+    emailLabel: 'E-Mail', passwordLabel: 'Passwort', loginBtn: 'Anmelden',
+    forgotLink: 'Passwort vergessen', noAccountText: 'Noch kein Konto?', registerLink: 'Agentur registrieren',
+    companyLabel: 'Agentur', yourNameLabel: 'Dein Name', phoneLabel: 'Telefon',
+    registerBtn: 'Antrag senden', backToLogin: 'Zurück zur Anmeldung',
+    sendResetLinkBtn: 'Reset-Link senden', newPasswordLabel: 'Neues Passwort', savePasswordBtn: 'Neues Passwort speichern',
+    fillEmailPassword: 'Gib E-Mail und Passwort ein.', loggingIn: 'Anmeldung läuft…',
+    pendingApproval: 'Dein Konto wartet noch auf Freigabe.', invalidCreds: 'E-Mail oder Passwort ungültig.',
+    connError: 'Verbindungsfehler. Bitte erneut versuchen.',
+    fillNameEmailPassword: 'Gib Name, E-Mail und Passwort ein.', sending: 'Wird gesendet…',
+    registerFailed: 'Antrag konnte nicht gesendet werden.',
+    registerSuccess: 'Antrag gesendet! Wir informieren dich per E-Mail, sobald dein Konto freigeschaltet ist.',
+    enterEmail: 'Gib deine E-Mail ein.', resetLinkSent: 'Falls ein Konto mit dieser E-Mail existiert, haben wir einen Reset-Link gesendet.',
+    passwordMinLength: 'Das Passwort muss mindestens 6 Zeichen haben.',
+    invalidResetLink: 'Link ungültig oder abgelaufen. Fordere einen neuen an.', passwordChanged: 'Passwort geändert. Du kannst dich jetzt anmelden.',
+    logoutBtn: 'Abmelden', yourAgencyFallback: 'Deine Agentur', ratePerTravelerDay: '{rate} pro Reisendem/Tag',
+    billingTitle: 'Abrechnung', loadingText: 'Wird geladen…',
+    billableStat: 'Abrechenbare Pässe', travelerDaysStat: 'Reisende-Tage', cancelledNotBilledStat: 'Storniert (nicht abgerechnet)',
+    codeHeader: 'Code', travelerHeader: 'Reisender', tripStartHeader: 'Reisebeginn', valueHeader: 'Betrag', tripHeader: 'Reise', statusHeader: 'Status',
+    noBillablePasses: 'Keine abrechenbaren Pässe in diesem Monat',
+    tripsStartingIn: 'Für Reisen mit Beginn im {month} · fällig am {date}',
+    statusPaid: 'Bezahlt', statusPaidOn: 'Bezahlt am {date}', statusOverdue: 'Überfällig',
+    dueToday: 'Heute fällig', dueTomorrow: 'Morgen fällig', dueInDays: 'Fällig in {n} Tagen',
+    issueTitle: 'Trip Pass ausstellen',
+    issueHint: 'Jeder Pass ist ein einzigartiger, einmal nutzbarer Code, gültig in jeder Stadt der Welt für die Dauer der Reise. Abgerechnet pro ausgestelltem Pass — {rate} pro Reisendem/Tag. Nicht eingelöste Pässe können bis 1 Tag vor Reisebeginn storniert oder bearbeitet werden.',
+    travelerOptionalLabel: 'Reisender (optional)', travelerNamePlaceholder: 'Name des Reisenden',
+    travelerEmailOptionalLabel: 'E-Mail des Reisenden (optional)', travelerEmailPlaceholder: 'zum Versenden des Codes',
+    tripStartLabel: 'Reisebeginn', daysLabel: 'Tage', qtyLabel: 'Anzahl', issueBtn: 'Ausstellen',
+    sendEmailCheckboxLabel: 'Code per E-Mail an den Reisenden senden (nur für 1 Pass mit angegebener E-Mail)',
+    fillStartDaysError: 'Gib Startdatum und Anzahl der Tage ein.', issuing: 'Wird ausgestellt…',
+    issuedResultLabel: '{n} {passWord} ausgestellt · {amount}{emailSuffix}', emailSentSuffix: ' · E-Mail gesendet',
+    passSingular: 'Pass', passPlural: 'Pässe', daySingular: 'Tag', dayPlural: 'Tage',
+    copyLinkBtn: 'Link kopieren', whatsappBtn: 'WhatsApp', viewQrPrintBtn: 'QR ansehen / drucken',
+    newlyIssuedVouchers: 'Neu ausgestellte Voucher',
+    issuedPassesTitle: 'Ausgestellte Pässe', refreshBtn: 'Aktualisieren', exportCsvBtn: 'CSV exportieren', printVouchersBtn: 'Voucher drucken',
+    noPassesYet: 'Noch keine Pässe ausgestellt',
+    pillIssued: 'Ausgestellt', pillRedeemed: 'Eingelöst', pillCancelled: 'Storniert',
+    linkBtn: 'Link', qrBtn: 'QR', sendBtn: 'Senden', resendBtn: 'Erneut senden', editBtn: 'Bearbeiten', cancelBtn: 'Stornieren',
+    promptTravelerEmail: 'E-Mail des Reisenden zum Versenden von Code {code}:',
+    confirmSendEmail: 'Code {code} an {email} {action}?', actionSend: 'senden', actionResend: 'erneut senden',
+    codeSentAlert: 'Code an {email} gesendet.', confirmCancelPass: 'Pass {code} stornieren? Er wird nicht mehr abgerechnet.',
+    copiedBtnLabel: 'Kopiert!', copyLinkPrompt: 'Link kopieren:',
+    whatsappMessage: 'Dein Urban Tales Trip Pass{trip}: unbegrenzte Audiogeschichten in jeder Stadt. Hier aktivieren: {url}',
+    whatsappTripSuffix: ' für deine Reise am {date} ({days} {dayWord})',
+    vouchersTitle: 'Voucher', vouchersCountTitle: 'Voucher ({n})', closeBtn: 'Schließen', printBtn: 'Drucken',
+    noPassesToPrint: 'Keine Pässe zum Drucken.', nothingToExport: 'Nichts zu exportieren.',
+    editPassTitle: 'Pass bearbeiten', travelerLabel: 'Reisender',
+    fillDateAndDays: 'Gib Datum und Tage ein.', saving: 'Wird gespeichert…', saveBtn: 'Speichern',
+    monthClosed: 'abgeschlossener Monat (Endbetrag)', monthOpen: 'laufender Monat (Betrag kann sich noch ändern)',
+    csvHeaders: ['code', 'reisender', 'beginn', 'tage', 'status', 'betrag_usd', 'link'],
+  },
+};
+
+const DATE_LOCALE = { en: 'en-US', 'pt-BR': 'pt-BR', es: 'es-ES', fr: 'fr-FR', de: 'de-DE' };
+
+function detectLang() {
+  const saved = localStorage.getItem('ag_lang');
+  if (saved && STRINGS[saved]) return saved;
+  const params = new URLSearchParams(location.search);
+  const paramLang = params.get('lang');
+  if (paramLang && STRINGS[paramLang]) return paramLang;
+  const nav = navigator.language || 'en';
+  const exact = Object.keys(STRINGS).find(k => k.toLowerCase() === nav.toLowerCase());
+  if (exact) return exact;
+  const prefix = nav.split('-')[0].toLowerCase();
+  const prefixMatch = Object.keys(STRINGS).find(k => k.toLowerCase().startsWith(prefix));
+  return prefixMatch || 'en';
+}
+
+let LANG = detectLang();
+let s = STRINGS[LANG];
+
+// Simple {key} interpolation — no pluralization engine needed for this page's vocabulary.
+function fmt(str, vars) {
+  return str.replace(/\{(\w+)\}/g, (_, k) => (vars[k] != null ? vars[k] : ''));
+}
+
+// Word-form plural (not suffix concatenation) — German especially has irregular
+// plurals (Tag→Tage, Pass→Pässe) that a "+s" suffix can't produce correctly.
+function pl(n, singular, plural) { return n === 1 ? singular : plural; }
+
+const TITLE_KEYS = { loginForm: 'authTitleLogin', registerForm: 'authTitleRegister', forgotForm: 'authTitleForgot', resetForm: 'authTitleReset' };
+let _currentAuthForm = 'loginForm';
+
+function applyStaticStrings() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (s[key] != null) el.textContent = s[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (s[key] != null) el.placeholder = s[key];
+  });
+  document.getElementById('authTitle').textContent = s[TITLE_KEYS[_currentAuthForm]];
+  document.getElementById('pageTitleTag').textContent = s.pageTitle;
+  document.title = s.pageTitle;
+  document.querySelectorAll('.lang-switch button').forEach(b => b.classList.toggle('active', b.dataset.lang === LANG));
+}
+
+function setLang(lang) {
+  if (!STRINGS[lang]) return;
+  LANG = lang;
+  s = STRINGS[lang];
+  localStorage.setItem('ag_lang', lang);
+  document.documentElement.lang = lang;
+  applyStaticStrings();
+  // Re-render whatever dynamic content is currently on screen, in the new language.
+  if (document.getElementById('portal').style.display !== 'none') {
+    loadPasses();
+    loadBilling();
+  }
+}
+
+document.querySelectorAll('.lang-switch button').forEach(b => {
+  b.addEventListener('click', () => setLang(b.dataset.lang));
+});
+
+// ══════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════
 function show(id) {
   ['loginForm', 'registerForm', 'forgotForm', 'resetForm'].forEach(f => {
     document.getElementById(f).style.display = f === id ? 'block' : 'none';
   });
 }
-const TITLES = { loginForm: 'Entrar', registerForm: 'Cadastre sua agência', forgotForm: 'Redefinir senha', resetForm: 'Nova senha' };
-function setTitle(id) { document.getElementById('authTitle').textContent = TITLES[id]; }
+function setTitle(id) { _currentAuthForm = id; document.getElementById('authTitle').textContent = s[TITLE_KEYS[id]]; }
 function showLogin()    { show('loginForm');    setTitle('loginForm'); }
 function showRegister() { show('registerForm'); setTitle('registerForm'); }
 function showForgot()   { show('forgotForm');   setTitle('forgotForm'); }
@@ -262,21 +627,21 @@ async function doLogin() {
   const btn = document.getElementById('loginBtn'), msg = document.getElementById('loginMsg');
   const email = document.getElementById('li_email').value.trim();
   const password = document.getElementById('li_pass').value;
-  if (!email || !password) { msg.className = 'msg err'; msg.textContent = 'Informe e-mail e senha.'; return; }
-  btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Entrando…';
+  if (!email || !password) { msg.className = 'msg err'; msg.textContent = s.fillEmailPassword; return; }
+  btn.disabled = true; msg.className = 'msg'; msg.textContent = s.loggingIn;
   try {
     const res = await fetch(`${API}/agency/login`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
-    if (res.status === 403) { msg.className = 'msg err'; msg.textContent = 'Sua conta ainda está aguardando aprovação.'; return; }
-    if (!res.ok) { msg.className = 'msg err'; msg.textContent = 'E-mail ou senha inválidos.'; return; }
+    if (res.status === 403) { msg.className = 'msg err'; msg.textContent = s.pendingApproval; return; }
+    if (!res.ok) { msg.className = 'msg err'; msg.textContent = s.invalidCreds; return; }
     const d = await res.json();
     localStorage.setItem('ag_token', d.access_token);
     localStorage.setItem('ag_name', d.company || d.name || '');
     enterPortal();
   } catch (e) {
-    msg.className = 'msg err'; msg.textContent = 'Erro de conexão. Tente novamente.';
+    msg.className = 'msg err'; msg.textContent = s.connError;
   } finally { btn.disabled = false; }
 }
 
@@ -289,48 +654,48 @@ async function doRegister() {
     phone: document.getElementById('rg_phone').value.trim(),
     password: document.getElementById('rg_pass').value,
   };
-  if (!body.name || !body.email || !body.password) { msg.className = 'msg err'; msg.textContent = 'Preencha nome, e-mail e senha.'; return; }
-  btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Enviando…';
+  if (!body.name || !body.email || !body.password) { msg.className = 'msg err'; msg.textContent = s.fillNameEmailPassword; return; }
+  btn.disabled = true; msg.className = 'msg'; msg.textContent = s.sending;
   try {
     const res = await fetch(`${API}/agency/register`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
     });
     if (!res.ok) {
       const d = await res.json().catch(() => ({}));
-      msg.className = 'msg err'; msg.textContent = d.detail || 'Não foi possível enviar o cadastro.'; return;
+      msg.className = 'msg err'; msg.textContent = d.detail || s.registerFailed; return;
     }
     msg.className = 'msg ok';
-    msg.textContent = 'Cadastro enviado! Avisaremos por e-mail assim que sua conta for aprovada.';
-  } catch (e) { msg.className = 'msg err'; msg.textContent = 'Erro de conexão.'; }
+    msg.textContent = s.registerSuccess;
+  } catch (e) { msg.className = 'msg err'; msg.textContent = s.connError; }
   finally { btn.disabled = false; }
 }
 
 async function doForgot() {
   const msg = document.getElementById('forgotMsg');
   const email = document.getElementById('fg_email').value.trim();
-  if (!email) { msg.className = 'msg err'; msg.textContent = 'Informe seu e-mail.'; return; }
+  if (!email) { msg.className = 'msg err'; msg.textContent = s.enterEmail; return; }
   await fetch(`${API}/agency/forgot-password`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }),
   }).catch(() => {});
   // Always the same response, so the form can't be used to discover which emails exist.
   msg.className = 'msg ok';
-  msg.textContent = 'Se existir uma conta com este e-mail, enviamos um link de redefinição.';
+  msg.textContent = s.resetLinkSent;
 }
 
 async function doReset() {
   const msg = document.getElementById('resetMsg');
   const token = new URLSearchParams(location.search).get('reset_token');
   const pass = document.getElementById('rs_pass').value;
-  if (!pass || pass.length < 6) { msg.className = 'msg err'; msg.textContent = 'A senha precisa ter ao menos 6 caracteres.'; return; }
+  if (!pass || pass.length < 6) { msg.className = 'msg err'; msg.textContent = s.passwordMinLength; return; }
   try {
     const res = await fetch(`${API}/agency/reset-password`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token, new_password: pass }),
     });
-    if (!res.ok) { msg.className = 'msg err'; msg.textContent = 'Link inválido ou expirado. Peça um novo.'; return; }
-    msg.className = 'msg ok'; msg.textContent = 'Senha alterada. Você já pode entrar.';
+    if (!res.ok) { msg.className = 'msg err'; msg.textContent = s.invalidResetLink; return; }
+    msg.className = 'msg ok'; msg.textContent = s.passwordChanged;
     setTimeout(() => { location.href = 'agency.html'; }, 1600);
-  } catch (e) { msg.className = 'msg err'; msg.textContent = 'Erro de conexão.'; }
+  } catch (e) { msg.className = 'msg err'; msg.textContent = s.connError; }
 }
 
 function logout() { localStorage.removeItem('ag_token'); location.reload(); }
@@ -344,7 +709,7 @@ async function api(path, opts = {}) {
   if (!res.ok) {
     const d = await res.json().catch(() => ({}));
     const det = d.detail;
-    throw new Error((det && (det.message || det)) || `Erro ${res.status}`);
+    throw new Error((det && (det.message || det)) || `Error ${res.status}`);
   }
   return res.json();
 }
@@ -352,7 +717,7 @@ async function api(path, opts = {}) {
 function enterPortal() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('portal').style.display = 'block';
-  document.getElementById('agencyName').textContent = localStorage.getItem('ag_name') || 'Sua agência';
+  document.getElementById('agencyName').textContent = localStorage.getItem('ag_name') || s.yourAgencyFallback;
   const today = new Date().toISOString().slice(0, 10);
   document.getElementById('is_start').value = today;
   document.getElementById('is_start').min = today;
@@ -360,17 +725,20 @@ function enterPortal() {
   loadBilling();
 }
 
+// ══════════════════════════════════════════════
+// BILLING
+// ══════════════════════════════════════════════
 function monthLabel(yyyyMm) {
   const [y, m] = yyyyMm.split('-').map(Number);
-  return new Date(y, m - 1, 1).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+  return new Date(y, m - 1, 1).toLocaleDateString(DATE_LOCALE[LANG], { month: 'long', year: 'numeric' });
 }
 
 function dueInLabel(dueDateStr) {
   const due = new Date(dueDateStr + 'T00:00:00');
   const diffDays = Math.ceil((due - new Date()) / 86400000);
-  if (diffDays <= 0) return 'Vence hoje';
-  if (diffDays === 1) return 'Vence amanhã';
-  return `Vence em ${diffDays} dias`;
+  if (diffDays <= 0) return s.dueToday;
+  if (diffDays === 1) return s.dueTomorrow;
+  return fmt(s.dueInDays, { n: diffDays });
 }
 
 async function loadBilling() {
@@ -381,8 +749,8 @@ async function loadBilling() {
     if (!monthInput.value) monthInput.value = d.month;
 
     const STATUS_LABEL = {
-      paid: `Pago${d.paid_at ? ' em ' + new Date(d.paid_at).toLocaleDateString('pt-BR') : ''}`,
-      overdue: 'Vencido',
+      paid: d.paid_at ? fmt(s.statusPaidOn, { date: new Date(d.paid_at).toLocaleDateString(DATE_LOCALE[LANG]) }) : s.statusPaid,
+      overdue: s.statusOverdue,
       open: dueInLabel(d.due_date),
     };
 
@@ -392,7 +760,7 @@ async function loadBilling() {
         <td>${p.traveler_name || '—'}</td>
         <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
         <td class="num">${usd(p.net_cents)}</td>
-      </tr>`).join('') || '<tr><td colspan="4" class="empty">Nenhum passe faturável neste mês</td></tr>';
+      </tr>`).join('') || `<tr><td colspan="4" class="empty">${s.noBillablePasses}</td></tr>`;
 
     el.innerHTML = `
       <div style="display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:.3rem">
@@ -400,16 +768,16 @@ async function loadBilling() {
         <span class="pill ${d.status}">${STATUS_LABEL[d.status]}</span>
       </div>
       <div style="color:var(--muted);font-size:.82rem;margin-bottom:1rem">
-        Referente às viagens com início em ${monthLabel(d.month)} · vencimento ${new Date(d.due_date + 'T00:00:00').toLocaleDateString('pt-BR')}
+        ${fmt(s.tripsStartingIn, { month: monthLabel(d.month), date: new Date(d.due_date + 'T00:00:00').toLocaleDateString(DATE_LOCALE[LANG]) })}
       </div>
       <div class="cards" style="margin-bottom:1rem">
-        <div class="stat"><div class="n">${d.billable_count}</div><div class="l">Passes faturáveis</div></div>
-        <div class="stat"><div class="n">${d.traveler_days}</div><div class="l">Diárias de viajante</div></div>
-        <div class="stat"><div class="n">${d.cancelled_count}</div><div class="l">Cancelados (não cobrados)</div></div>
+        <div class="stat"><div class="n">${d.billable_count}</div><div class="l">${s.billableStat}</div></div>
+        <div class="stat"><div class="n">${d.traveler_days}</div><div class="l">${s.travelerDaysStat}</div></div>
+        <div class="stat"><div class="n">${d.cancelled_count}</div><div class="l">${s.cancelledNotBilledStat}</div></div>
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Código</th><th>Viajante</th><th>Início da viagem</th><th>Valor</th></tr></thead>
+          <thead><tr><th>${s.codeHeader}</th><th>${s.travelerHeader}</th><th>${s.tripStartHeader}</th><th>${s.valueHeader}</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>`;
@@ -418,6 +786,9 @@ async function loadBilling() {
   }
 }
 
+// ══════════════════════════════════════════════
+// ISSUE / LIST PASSES
+// ══════════════════════════════════════════════
 async function issuePasses() {
   const btn = document.getElementById('issueBtn');
   const out = document.getElementById('issueResult');
@@ -425,8 +796,8 @@ async function issuePasses() {
   const days = parseInt(document.getElementById('is_days').value, 10);
   const qty = parseInt(document.getElementById('is_qty').value, 10) || 1;
   const traveler = document.getElementById('is_traveler').value.trim();
-  if (!start || !days) { out.innerHTML = '<div class="msg err">Informe a data de início e a quantidade de dias.</div>'; return; }
-  btn.disabled = true; out.innerHTML = '<div class="msg">Emitindo…</div>';
+  if (!start || !days) { out.innerHTML = `<div class="msg err">${s.fillStartDaysError}</div>`; return; }
+  btn.disabled = true; out.innerHTML = `<div class="msg">${s.issuing}</div>`;
   try {
     const r = await api('/agency/trip-passes', {
       method: 'POST',
@@ -438,15 +809,15 @@ async function issuePasses() {
       }),
     });
     out.innerHTML = `<div class="issued-box">
-      <div style="font-weight:700;margin-bottom:.5rem">${r.issued} passe${r.issued !== 1 ? 's' : ''} emitido${r.issued !== 1 ? 's' : ''} · ${usd(r.total_net_cents)}${r.emailed ? ' · e-mail enviado' : ''}</div>
+      <div style="font-weight:700;margin-bottom:.5rem">${fmt(s.issuedResultLabel, { n: r.issued, passWord: pl(r.issued, s.passSingular, s.passPlural), adjS: r.issued !== 1 ? 's' : '', amount: usd(r.total_net_cents), emailSuffix: r.emailed ? s.emailSentSuffix : '' })}</div>
       <div class="link-list">${r.passes.map(p => `
         <div class="link-row-item">
           <span class="code-chip">${p.code}</span>
           <code class="link-text">${REDEEM_BASE}${p.code}</code>
-          <button class="row-btn" onclick="copyLink('${p.code}', this)">Copiar link</button>
-          <button class="row-btn" onclick="shareWhatsApp('${p.code}')">WhatsApp</button>
+          <button class="row-btn" onclick="copyLink('${p.code}', this)">${s.copyLinkBtn}</button>
+          <button class="row-btn" onclick="shareWhatsApp('${p.code}')">${s.whatsappBtn}</button>
         </div>`).join('')}</div>
-      <button class="btn-ghost" style="margin-top:.8rem" onclick="showQr(${JSON.stringify(r.passes.map(p => p.code)).replace(/"/g, '&quot;')},'Vouchers recém-emitidos')">Ver QR / imprimir</button>
+      <button class="btn-ghost" style="margin-top:.8rem" onclick="showQr(${JSON.stringify(r.passes.map(p => p.code)).replace(/"/g, '&quot;')},'${s.newlyIssuedVouchers}')">${s.viewQrPrintBtn}</button>
     </div>`;
     document.getElementById('is_traveler').value = '';
     document.getElementById('is_email').value = '';
@@ -462,20 +833,19 @@ async function loadPasses() {
   try {
     const d = await api(`/agency/trip-passes${month ? `?month=${month}` : ''}`);
     _lastPasses = d.passes || [];
-    document.getElementById('rateLabel').textContent = usd(d.rate_cents_per_day);
+    document.getElementById('issueHintText').textContent = fmt(s.issueHint, { rate: usd(d.rate_cents_per_day) });
     // Honour server-side duration limits in the form too, so the agency sees them.
     const daysInput = document.getElementById('is_days');
     if (d.min_days) daysInput.min = d.min_days;
     if (d.max_days) daysInput.max = d.max_days;
-    document.getElementById('agencySub').textContent =
-      `${usd(d.rate_cents_per_day)} por viajante/dia`;
+    document.getElementById('agencySub').textContent = fmt(s.ratePerTravelerDay, { rate: usd(d.rate_cents_per_day) });
     document.getElementById('statCards').innerHTML = `
-      <div class="stat"><div class="n accent">${usd(d.billable_net_cents)}</div><div class="l">A faturar</div></div>
-      <div class="stat"><div class="n">${d.billable_count}</div><div class="l">Passes emitidos</div></div>
-      <div class="stat"><div class="n">${d.redeemed_count}</div><div class="l">Resgatados</div></div>
-      <div class="stat"><div class="n">${d.cancelled_count}</div><div class="l">Cancelados</div></div>`;
+      <div class="stat"><div class="n accent">${usd(d.billable_net_cents)}</div><div class="l">${s.billableStat}</div></div>
+      <div class="stat"><div class="n">${d.billable_count}</div><div class="l">${s.issuedPassesTitle}</div></div>
+      <div class="stat"><div class="n">${d.redeemed_count}</div><div class="l">${s.pillRedeemed}</div></div>
+      <div class="stat"><div class="n">${d.cancelled_count}</div><div class="l">${s.pillCancelled}</div></div>`;
 
-    const LBL = { issued: 'Emitido', redeemed: 'Resgatado', cancelled: 'Cancelado' };
+    const LBL = { issued: s.pillIssued, redeemed: s.pillRedeemed, cancelled: s.pillCancelled };
     body.innerHTML = (d.passes || []).map(p => {
       const editable = p.status === 'issued';
       return `<tr>
@@ -485,15 +855,15 @@ async function loadPasses() {
         <td><span class="pill ${p.status}">${LBL[p.status] || p.status}</span></td>
         <td class="num">${usd(p.net_cents)}</td>
         <td style="white-space:nowrap">
-          <button class="row-btn" onclick="copyLink('${p.code}', this)">Link</button>
-          <button class="row-btn" onclick="shareWhatsApp('${p.code}')">WhatsApp</button>
-          <button class="row-btn" onclick="showQr(['${p.code}'],'Voucher ${p.code}')">QR</button>
-          ${p.status !== 'cancelled' ? `<button class="row-btn" onclick="sendPassEmail('${p.code}')">${p.emailed_at ? 'Reenviar' : 'Enviar'}</button>` : ''}
+          <button class="row-btn" onclick="copyLink('${p.code}', this)">${s.linkBtn}</button>
+          <button class="row-btn" onclick="shareWhatsApp('${p.code}')">${s.whatsappBtn}</button>
+          <button class="row-btn" onclick="showQr(['${p.code}'],'${s.vouchersTitle} ${p.code}')">${s.qrBtn}</button>
+          ${p.status !== 'cancelled' ? `<button class="row-btn" onclick="sendPassEmail('${p.code}')">${p.emailed_at ? s.resendBtn : s.sendBtn}</button>` : ''}
           ${editable
-            ? `<button class="row-btn" onclick="openEdit('${p.code}')">Editar</button>
-               <button class="row-btn" onclick="cancelPass('${p.code}')">Cancelar</button>` : ''}</td>
+            ? `<button class="row-btn" onclick="openEdit('${p.code}')">${s.editBtn}</button>
+               <button class="row-btn" onclick="cancelPass('${p.code}')">${s.cancelBtn}</button>` : ''}</td>
       </tr>`;
-    }).join('') || '<tr><td colspan="6" class="empty">Nenhum passe emitido ainda</td></tr>';
+    }).join('') || `<tr><td colspan="6" class="empty">${s.noPassesYet}</td></tr>`;
   } catch (e) {
     body.innerHTML = `<tr><td colspan="6" class="empty" style="color:#ff9d8a">${e.message}</td></tr>`;
   }
@@ -504,24 +874,24 @@ async function sendPassEmail(code) {
   let email = p.traveler_email || '';
   // Ask only when we don't already have an address on the pass.
   if (!email) {
-    email = prompt(`E-mail do viajante para enviar o código ${code}:`, '');
+    email = prompt(fmt(s.promptTravelerEmail, { code }), '');
     if (email === null) return;
     email = email.trim();
     if (!email) return;
-  } else if (!confirm(`${p.emailed_at ? 'Reenviar' : 'Enviar'} o código ${code} para ${email}?`)) {
+  } else if (!confirm(fmt(s.confirmSendEmail, { action: p.emailed_at ? s.actionResend : s.actionSend, code, email }))) {
     return;
   }
   try {
     const r = await api(`/agency/trip-passes/${encodeURIComponent(code)}/send-email`, {
       method: 'POST', body: JSON.stringify({ email: email || null }),
     });
-    alert(`Código enviado para ${r.sent_to}.`);
+    alert(fmt(s.codeSentAlert, { email: r.sent_to }));
     loadPasses();
   } catch (e) { alert(e.message); }
 }
 
 async function cancelPass(code) {
-  if (!confirm(`Cancelar o passe ${code}? Ele deixa de ser faturado.`)) return;
+  if (!confirm(fmt(s.confirmCancelPass, { code }))) return;
   try { await api(`/agency/trip-passes/${encodeURIComponent(code)}/cancel`, { method: 'POST' }); loadPasses(); }
   catch (e) { alert(e.message); }
 }
@@ -537,12 +907,12 @@ async function copyLink(code, btn) {
     await navigator.clipboard.writeText(url);
   } catch (e) {
     // Clipboard API needs a secure context / permission; fall back to a manual copy.
-    prompt('Copie o link:', url);
+    prompt(s.copyLinkPrompt, url);
     return;
   }
   if (btn) {
     const prev = btn.textContent;
-    btn.textContent = 'Copiado!';
+    btn.textContent = s.copiedBtnLabel;
     setTimeout(() => { btn.textContent = prev; }, 1400);
   }
 }
@@ -552,8 +922,8 @@ async function copyLink(code, btn) {
 function shareWhatsApp(code) {
   const p = _lastPasses.find(x => x.code === code);
   const url = REDEEM_BASE + code;
-  const trip = p ? ` para sua viagem de ${p.start_date} (${p.days} dia${p.days !== 1 ? 's' : ''})` : '';
-  const text = `Seu Trip Pass do Urban Tales${trip}: histórias de áudio ilimitadas em qualquer cidade. Ative aqui: ${url}`;
+  const trip = p ? fmt(s.whatsappTripSuffix, { date: p.start_date, days: p.days, dayWord: pl(p.days, s.daySingular, s.dayPlural) }) : '';
+  const text = fmt(s.whatsappMessage, { trip, url });
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
 }
 
@@ -571,7 +941,7 @@ function voucherHtml(p) {
   return `<div class="voucher">
     <img src="${qrDataUrl(url)}" alt="QR ${p.code}" />
     <div class="vcode">${p.code}</div>
-    <div class="vmeta">${p.traveler_name ? p.traveler_name + '<br>' : ''}${p.start_date} · ${p.days} dia${p.days !== 1 ? 's' : ''}</div>
+    <div class="vmeta">${p.traveler_name ? p.traveler_name + '<br>' : ''}${p.start_date} · ${p.days} ${pl(p.days, s.daySingular, s.dayPlural)}</div>
     <div class="vlink">${url}</div>
     <div class="vbrand">Urban Tales · Trip Pass</div>
   </div>`;
@@ -582,7 +952,7 @@ let _lastPasses = [];
 function showQr(codes, title) {
   const list = _lastPasses.filter(p => codes.includes(p.code));
   if (!list.length) return;
-  document.getElementById('qr_title').textContent = title || `Vouchers (${list.length})`;
+  document.getElementById('qr_title').textContent = title || fmt(s.vouchersCountTitle, { n: list.length });
   document.getElementById('qr_grid').innerHTML = list.map(voucherHtml).join('');
   document.getElementById('qrModal').classList.add('open');
 }
@@ -598,14 +968,14 @@ function printVouchers() {
 
 function printAllVouchers() {
   const open = _lastPasses.filter(p => p.status !== 'cancelled');
-  if (!open.length) { alert('Nenhum passe para imprimir.'); return; }
-  showQr(open.map(p => p.code), `Vouchers (${open.length})`);
+  if (!open.length) { alert(s.noPassesToPrint); return; }
+  showQr(open.map(p => p.code), fmt(s.vouchersCountTitle, { n: open.length }));
 }
 
 // ── CSV export ─────────────────────────────────────────────────
 function exportCsv() {
-  if (!_lastPasses.length) { alert('Nada para exportar.'); return; }
-  const head = ['codigo', 'viajante', 'inicio', 'dias', 'status', 'valor_usd', 'link'];
+  if (!_lastPasses.length) { alert(s.nothingToExport); return; }
+  const head = s.csvHeaders;
   const esc = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
   const rows = _lastPasses.map(p => [
     p.code, p.traveler_name || '', p.start_date, p.days, p.status,
@@ -614,7 +984,7 @@ function exportCsv() {
   // BOM so Excel opens accented names correctly.
   const blob = new Blob(['\ufeff' + [head.map(esc).join(','), ...rows].join('\r\n')],
                         { type: 'text/csv;charset=utf-8;' });
-  const month = document.getElementById('filterMonth').value || 'todos';
+  const month = document.getElementById('filterMonth').value || 'all';
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = `trip-passes-${month}.csv`;
@@ -645,8 +1015,8 @@ async function saveEdit() {
   const start = document.getElementById('ed_start').value;
   const days = parseInt(document.getElementById('ed_days').value, 10);
   const traveler = document.getElementById('ed_traveler').value.trim();
-  if (!start || !days) { msg.className = 'msg err'; msg.textContent = 'Informe data e dias.'; return; }
-  btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Salvando…';
+  if (!start || !days) { msg.className = 'msg err'; msg.textContent = s.fillDateAndDays; return; }
+  btn.disabled = true; msg.className = 'msg'; msg.textContent = s.saving;
   try {
     await api(`/agency/trip-passes/${encodeURIComponent(_editing)}`, {
       method: 'PATCH',
@@ -661,6 +1031,8 @@ async function saveEdit() {
 
 // ── boot ──
 (function () {
+  document.documentElement.lang = LANG;
+  applyStaticStrings();
   const resetToken = new URLSearchParams(location.search).get('reset_token');
   if (resetToken) { show('resetForm'); setTitle('resetForm'); return; }
   if (tok()) enterPortal();
@@ -670,14 +1042,14 @@ async function saveEdit() {
   <!-- Edit an unredeemed pass -->
   <div class="modal-back" id="editModal">
     <div class="modal">
-      <h4>Editar passe <span id="ed_code" style="font-family:ui-monospace,Menlo,monospace;color:var(--accent)"></span></h4>
-      <div class="field"><label for="ed_traveler">Viajante</label><input id="ed_traveler" /></div>
-      <div class="field"><label for="ed_start">Início da viagem</label><input id="ed_start" type="date" /></div>
-      <div class="field"><label for="ed_days">Dias</label><input id="ed_days" type="number" min="1" max="60" /></div>
+      <h4><span data-i18n="editPassTitle">Edit pass</span> <span id="ed_code" style="font-family:ui-monospace,Menlo,monospace;color:var(--accent)"></span></h4>
+      <div class="field"><label for="ed_traveler" data-i18n="travelerLabel">Traveler</label><input id="ed_traveler" /></div>
+      <div class="field"><label for="ed_start" data-i18n="tripStartLabel">Trip start date</label><input id="ed_start" type="date" /></div>
+      <div class="field"><label for="ed_days" data-i18n="daysLabel">Days</label><input id="ed_days" type="number" min="1" max="60" /></div>
       <div class="msg" id="ed_msg"></div>
       <div class="modal-actions">
-        <button class="btn-ghost" onclick="closeEdit()">Cancelar</button>
-        <button class="btn-primary" id="ed_save" onclick="saveEdit()">Salvar</button>
+        <button class="btn-ghost" onclick="closeEdit()" data-i18n="cancelBtn">Cancel</button>
+        <button class="btn-primary" id="ed_save" onclick="saveEdit()" data-i18n="saveBtn">Save</button>
       </div>
     </div>
   </div>
@@ -685,11 +1057,11 @@ async function saveEdit() {
   <!-- QR sheet for printing -->
   <div class="modal-back" id="qrModal">
     <div class="modal" style="max-width:640px;max-height:86vh;overflow:auto">
-      <h4 id="qr_title">Vouchers</h4>
+      <h4 id="qr_title" data-i18n="vouchersTitle">Vouchers</h4>
       <div class="qr-grid" id="qr_grid"></div>
       <div class="modal-actions">
-        <button class="btn-ghost" onclick="closeQr()">Fechar</button>
-        <button class="btn-primary" onclick="printVouchers()">Imprimir</button>
+        <button class="btn-ghost" onclick="closeQr()" data-i18n="closeBtn">Close</button>
+        <button class="btn-primary" onclick="printVouchers()" data-i18n="printBtn">Print</button>
       </div>
     </div>
   </div>
