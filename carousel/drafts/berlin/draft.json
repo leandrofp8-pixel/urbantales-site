@@ -1,0 +1,62 @@
+{
+  "badge_num": 11,
+  "city": "BERLIN",
+  "flag": "🇩🇪",
+  "cta_screenshot": "screen-berlin-brandenburggate-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> 'CONNECT tunnel failed, response 403' and the agent-proxy status endpoint logging it as a policy denial 'gateway answered 403 to CONNECT', and via WebFetch -> EGRESS_BLOCKED). This is the same block that hit batch #8 (Amsterdam), #9 (Barcelona), and #10 (Vienna) — four runs in a row now with no working photo sourcing path in this environment. No candidate photos could be downloaded this run. 'candidates' arrays are empty; 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access (or manually via commons.wikimedia.org search). Facts themselves were researched and verified via WebSearch, which is not subject to this block.",
+  "caption": "East Germany spent decades trying to erase a giant cross from Berlin's skyline — and Egypt has spent over 100 years asking for a queen's head back. 👀\n\nComment your guess for which one before you swipe ⬇️\n\n.\n.\n.\n#Berlin #BerlinTravel #HiddenGems #TravelFacts #ColdWarHistory #Fernsehturm #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Napoleon stole this gate's crown — and lost it eight years later",
+      "body_html": "After capturing Berlin in <b>1806</b>, Napoleon had the Brandenburg Gate's bronze Quadriga statue dismantled and shipped to Paris as a war trophy. Prussian troops found it still sitting in its packing crates inside the Louvre in <b>1814</b> and hauled it straight home.",
+      "candidates": [],
+      "suggested_queries": ["Brandenburg Gate Berlin Quadriga statue", "Brandenburg Gate Berlin facade night"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "A Communist state built a giant sphere — and accidentally gave it a cross",
+      "body_html": "Sunlight hitting the steel panels of the TV Tower's sphere forms a near-perfect <b>Christian cross</b>, visible across the divided city. The officially atheist state tried paint, chemicals, and spotlights to kill the glare — nothing worked, and Berliners still call it <b>'the Pope's Revenge.'</b>",
+      "candidates": [],
+      "suggested_queries": ["Fernsehturm Berlin TV tower sphere", "Berlin TV Tower Alexanderplatz skyline"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "You can literally stand above German lawmakers' heads",
+      "body_html": "The Reichstag's glass dome, added in <b>1999</b>, lets visitors walk a spiral ramp directly over the parliamentary chamber below — a deliberate statement that the public sits above its government. It's now the most-visited parliament building on Earth.",
+      "candidates": [],
+      "suggested_queries": ["Reichstag Berlin glass dome interior", "Reichstag building Berlin exterior dome"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "The world's longest open-air gallery is 1.3km of the Berlin Wall",
+      "body_html": "Within months of the Wall falling in 1989, <b>118 artists from 21 countries</b> painted the East Side Gallery — now the longest surviving, and longest painted, stretch of the Berlin Wall anywhere on Earth.",
+      "candidates": [],
+      "suggested_queries": ["East Side Gallery Berlin Wall mural", "Berlin Wall East Side Gallery painted section"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "Berliners nicknamed their bombed church 'the hollow tooth' — and kept it that way on purpose",
+      "body_html": "RAF bombs gutted the Kaiser Wilhelm Memorial Church in 1943, leaving only its jagged spire standing. Instead of demolishing it, the city built a new church right beside the ruin and left it standing as a <b>war memorial</b>, still nicknamed the 'Hohler Zahn.'",
+      "candidates": [],
+      "suggested_queries": ["Kaiser Wilhelm Memorial Church Berlin ruin tower", "Gedachtniskirche Berlin broken spire"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "Berliners voted to keep a giant airport completely empty forever",
+      "body_html": "When Tempelhof Airport closed in 2008, the city planned apartments and a lake on its runways. In <b>2014</b>, Berliners voted in a referendum to ban all construction — today it's one of the world's largest urban parks, roughly the <b>size of Central Park</b>.",
+      "candidates": [],
+      "suggested_queries": ["Tempelhofer Feld Berlin park runway", "Tempelhof Airport Berlin aerial former runway"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "Egypt has been asking for this 3,300-year-old bust back for over a century",
+      "body_html": "The bust of Queen Nefertiti has sat in Berlin's Neues Museum since it left Egypt in <b>1913</b>. Egypt calls the export illegal and has demanded its return for decades — even <b>Hitler refused to give it up.</b>",
+      "candidates": [],
+      "suggested_queries": ["Nefertiti bust Neues Museum Berlin", "Neues Museum Berlin exterior Museum Island"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Berlin skyline aerial Fernsehturm", "Berlin cityscape sunset Spree river"]
+}
