@@ -1567,6 +1567,24 @@
       </div>
 
       <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Fechamento Mensal — Agências</h2>
+          <input id="billingMonth" type="month" onchange="loadAgencyBilling()" style="background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 11px;font-family:inherit;font-size:0.85rem" />
+        </div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:14px">
+          O que cada agência deve, contando passes pela <b>data de início da viagem</b> (não a emissão) — passes cancelados até 1 dia antes da viagem não entram.
+          Cobrança real acontece fora do app; use o botão para registrar quando receber.
+        </div>
+        <div id="agencyBillingMsg" style="font-size:0.74rem;color:var(--muted);margin-bottom:10px"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Agência</th><th>Passes</th><th>Cancelados</th><th>Diárias</th><th>Valor devido</th><th>Status</th><th></th></tr></thead>
+            <tbody id="agencyBillingBody"><tr><td colspan="7" class="loading">Carregando…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
         <div class="card-title">Emitir Trip Pass</div>
         <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px">
           Cada passe é um código único de uso único. Cobrado por passe emitido —
@@ -1888,6 +1906,7 @@ function showTab(name) {
     _tripPassTabLoaded = true;
     loadTripPasses();
     loadAgencies();
+    loadAgencyBilling();
   }
 }
 
@@ -4427,6 +4446,66 @@ async function loadAgencies() {
     }).join('') || '<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:16px">Nenhuma agência cadastrada</td></tr>';
   } catch (e) {
     body.innerHTML = `<tr><td colspan="5" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${e.message}</td></tr>`;
+  }
+}
+
+const AGENCY_BILLING_STATUS = {
+  paid:    { label: 'Pago',    cls: 'badge-green' },
+  open:    { label: 'Em aberto', cls: 'badge-yellow' },
+  overdue: { label: 'Vencido', cls: 'badge-red' },
+};
+
+async function loadAgencyBilling() {
+  const body = document.getElementById('agencyBillingBody');
+  const msg = document.getElementById('agencyBillingMsg');
+  const monthInput = document.getElementById('billingMonth');
+  try {
+    const d = await api(`/admin/agency-billing${monthInput.value ? `?month=${monthInput.value}` : ''}`);
+    if (!monthInput.value) monthInput.value = d.month;
+    msg.textContent = `Vence ${new Date(d.due_date + 'T00:00:00').toLocaleDateString('pt-BR')} · ${d.is_final ? 'mês fechado (valor final)' : 'mês em andamento (valor pode mudar)'}`;
+
+    const rows = (d.agencies || []).map(a => {
+      const st = AGENCY_BILLING_STATUS[a.status] || AGENCY_BILLING_STATUS.open;
+      return `<tr>
+        <td><div style="font-weight:600">${a.agency_name}</div>
+            <div style="font-size:0.75rem;color:var(--muted)">${a.agency_email}</div></td>
+        <td class="num">${fmt(a.billable_count)}</td>
+        <td class="num">${fmt(a.cancelled_count)}</td>
+        <td class="num">${fmt(a.traveler_days)}</td>
+        <td class="num" style="font-weight:700">${_usd(a.amount_cents)}</td>
+        <td><span class="pill ${st.cls}">${st.label}</span></td>
+        <td><button onclick="toggleAgencyPaid('${a.agency_id}', '${d.month}', ${!a.paid})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">${a.paid ? 'Desfazer' : 'Marcar como pago'}</button></td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="7" style="color:var(--muted);text-align:center;padding:16px">Nenhum passe faturável neste mês</td></tr>';
+
+    const t = d.totals || {};
+    const totalsRow = d.agencies && d.agencies.length
+      ? `<tr style="border-top:1px solid var(--border)">
+          <td style="font-weight:700">Total</td>
+          <td class="num" style="font-weight:700">${fmt(t.billable_count)}</td>
+          <td class="num" style="font-weight:700">${fmt(t.cancelled_count)}</td>
+          <td class="num" style="font-weight:700">${fmt(t.traveler_days)}</td>
+          <td class="num" style="font-weight:700">${_usd(t.amount_cents)}</td>
+          <td></td><td></td>
+        </tr>` : '';
+
+    body.innerHTML = rows + totalsRow;
+  } catch (e) {
+    body.innerHTML = `<tr><td colspan="7" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${e.message}</td></tr>`;
+  }
+}
+
+async function toggleAgencyPaid(agencyId, month, paid) {
+  try {
+    const res = await fetch(`${API}/admin/agency-billing/mark-paid`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify({ agency_id: agencyId, month, paid }),
+    });
+    if (!res.ok) throw new Error(`Erro ${res.status}`);
+    loadAgencyBilling();
+  } catch (e) {
+    alert('Falha ao atualizar: ' + e.message);
   }
 }
 

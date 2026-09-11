@@ -90,6 +90,9 @@
     .pill.issued { background: rgba(226,165,107,.16); color: var(--accent); }
     .pill.redeemed { background: rgba(155,227,180,.14); color: #9be3b4; }
     .pill.cancelled { background: rgba(255,255,255,.07); color: var(--muted); }
+    .pill.paid { background: rgba(155,227,180,.14); color: #9be3b4; }
+    .pill.open { background: rgba(226,165,107,.16); color: var(--accent); }
+    .pill.overdue { background: rgba(255,157,138,.14); color: #ff9d8a; }
     .row-btn { font-size: .75rem; padding: 5px 11px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-family: inherit; }
     .row-btn:hover { border-color: var(--accent); color: var(--text); }
     .empty { text-align: center; color: var(--muted); padding: 1.4rem; }
@@ -189,6 +192,14 @@
     </div>
 
     <div class="cards" id="statCards"></div>
+
+    <div class="panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+        <h3 style="margin:0">Faturamento</h3>
+        <input id="billingMonth" type="month" onchange="loadBilling()" style="background:rgba(0,0,0,.35);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:8px 11px;font-family:inherit;font-size:.85rem" />
+      </div>
+      <div id="billingBody"><div class="empty">Carregando…</div></div>
+    </div>
 
     <div class="panel">
       <h3>Emitir Trip Pass</h3>
@@ -346,6 +357,65 @@ function enterPortal() {
   document.getElementById('is_start').value = today;
   document.getElementById('is_start').min = today;
   loadPasses();
+  loadBilling();
+}
+
+function monthLabel(yyyyMm) {
+  const [y, m] = yyyyMm.split('-').map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+}
+
+function dueInLabel(dueDateStr) {
+  const due = new Date(dueDateStr + 'T00:00:00');
+  const diffDays = Math.ceil((due - new Date()) / 86400000);
+  if (diffDays <= 0) return 'Vence hoje';
+  if (diffDays === 1) return 'Vence amanhã';
+  return `Vence em ${diffDays} dias`;
+}
+
+async function loadBilling() {
+  const el = document.getElementById('billingBody');
+  const monthInput = document.getElementById('billingMonth');
+  try {
+    const d = await api(`/agency/billing${monthInput.value ? `?month=${monthInput.value}` : ''}`);
+    if (!monthInput.value) monthInput.value = d.month;
+
+    const STATUS_LABEL = {
+      paid: `Pago${d.paid_at ? ' em ' + new Date(d.paid_at).toLocaleDateString('pt-BR') : ''}`,
+      overdue: 'Vencido',
+      open: dueInLabel(d.due_date),
+    };
+
+    const rows = (d.passes || []).map(p => `
+      <tr>
+        <td><code style="font-family:ui-monospace,Menlo,monospace;color:var(--accent);letter-spacing:1px;font-size:.82rem">${p.code}</code></td>
+        <td>${p.traveler_name || '—'}</td>
+        <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
+        <td class="num">${usd(p.net_cents)}</td>
+      </tr>`).join('') || '<tr><td colspan="4" class="empty">Nenhum passe faturável neste mês</td></tr>';
+
+    el.innerHTML = `
+      <div style="display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:.3rem">
+        <div style="font-size:2rem;font-weight:800">${usd(d.amount_cents)}</div>
+        <span class="pill ${d.status}">${STATUS_LABEL[d.status]}</span>
+      </div>
+      <div style="color:var(--muted);font-size:.82rem;margin-bottom:1rem">
+        Referente às viagens com início em ${monthLabel(d.month)} · vencimento ${new Date(d.due_date + 'T00:00:00').toLocaleDateString('pt-BR')}
+      </div>
+      <div class="cards" style="margin-bottom:1rem">
+        <div class="stat"><div class="n">${d.billable_count}</div><div class="l">Passes faturáveis</div></div>
+        <div class="stat"><div class="n">${d.traveler_days}</div><div class="l">Diárias de viajante</div></div>
+        <div class="stat"><div class="n">${d.cancelled_count}</div><div class="l">Cancelados (não cobrados)</div></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Código</th><th>Viajante</th><th>Início da viagem</th><th>Valor</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+  } catch (e) {
+    el.innerHTML = `<div class="empty" style="color:#ff9d8a">${e.message}</div>`;
+  }
 }
 
 async function issuePasses() {
