@@ -56,9 +56,18 @@ cut it down. See `carousel/drafts/paris/caption.md` for a full worked example.
 For `minimal` batches, each fact needs a `hook`: a **complete, self-contained 15-20 word sentence**
 that already states the interesting part (not a teaser — the slide itself is the whole fact, there's
 no body text to complete it). `headline` can stay too (useful for reference/drafting) but isn't
-rendered in this style. The caption format and philosophy are **unchanged** either way (see the
-Caption section above) — still just hook + comment-bait line + hashtags, still withholding the one
-hook fact. `minimal` only changes what's on the slides, not the caption.
+rendered in this style.
+
+**The caption changes for `minimal` batches.** The opening hook + comment-bait lines still work the
+same way (see the Caption section above — still withhold the single most surprising fact, still
+built for a comment). But since the slides no longer carry each fact's full `body_html` explanation,
+that text has to live somewhere — it goes in the caption, as a numbered list (1-7, matching slide
+order) right after the comment-bait line and before the hashtag block. Use each fact's full
+`body_html` content (lightly trimmed for caption reading, markdown bold stripped) rather than writing
+new shorter blurbs — this is the same story, just relocated from slide to caption. See
+`carousel/drafts/berlin/minimal-test/` for a full worked example (batch.json with `hook` fields,
+rendered slides, and caption.txt) — a TikTok-only test, not the batch that was published to
+Instagram, which used the `card` style.
 
 ## What to produce for one batch
 

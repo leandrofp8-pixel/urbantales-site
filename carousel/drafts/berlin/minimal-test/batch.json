@@ -1,0 +1,38 @@
+{
+  "badge_num": 11,
+  "city": "BERLIN",
+  "flag": "🇩🇪",
+  "cta_screenshot": "screen-berlin-brandenburggate-map.png",
+  "style": "minimal",
+  "caption": "See caption.txt in this folder — full text with the numbered per-fact recap.",
+  "facts": [
+    {
+      "headline": "Napoleon stole this gate's crown — and lost it eight years later",
+      "hook": "Napoleon stole the Brandenburg Gate's bronze Quadriga in 1806 — Prussian troops found it still in its crates in Paris, eight years later."
+    },
+    {
+      "headline": "A Communist state built a giant sphere — and accidentally gave it a cross",
+      "hook": "Sunlight hits the TV Tower just right to form a giant cross — Berliners call it the Pope's Revenge."
+    },
+    {
+      "headline": "You can literally stand above German lawmakers' heads",
+      "hook": "The Reichstag's glass dome lets visitors walk a spiral ramp directly above the parliamentary chamber below."
+    },
+    {
+      "headline": "The world's longest open-air gallery is 1.3km of the Berlin Wall",
+      "hook": "118 artists painted 1.3km of the Berlin Wall within months of it falling — the longest open-air gallery on Earth."
+    },
+    {
+      "headline": "Berliners nicknamed their bombed church 'the hollow tooth' — and kept it that way on purpose",
+      "hook": "RAF bombs gutted this church in 1943 — Berliners nicknamed the ruin 'the hollow tooth' and kept it standing on purpose."
+    },
+    {
+      "headline": "Berliners voted to keep a giant airport completely empty forever",
+      "hook": "Berliners voted in 2014 to ban all construction on this former airport — now a park roughly the size of Central Park."
+    },
+    {
+      "headline": "Egypt has been asking for this 3,300-year-old bust back for over a century",
+      "hook": "This 3,300-year-old bust has sat in Berlin since 1913 — Egypt has demanded it back for over a century, even Hitler refused."
+    }
+  ]
+}
