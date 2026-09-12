@@ -43,6 +43,23 @@ Two lines, then hashtags — nothing else:
 Total caption (excluding hashtags) should read in under 3 seconds. If it takes a beat to parse,
 cut it down. See `carousel/drafts/paris/caption.md` for a full worked example.
 
+## Slide style — "card" (default) vs "minimal" (2026-09-12 A/B test)
+
+`render.py` supports two fact-slide treatments, set via `"style"` in `draft.json`/`batch.json`
+(defaults to `"card"` if omitted). Cover and CTA slides are identical either way.
+
+- **`card`** (original): photo inset in a bordered card, headline above a full `body_html`
+  explanation below it, on a cream background.
+- **`minimal`** (new, testing for higher engagement): full-bleed photo, a `NN / 07` counter, and
+  one short **`hook`** line over a bottom gradient scrim — no separate body text on the slide.
+
+For `minimal` batches, each fact needs a `hook`: a **complete, self-contained 15-20 word sentence**
+that already states the interesting part (not a teaser — the slide itself is the whole fact, there's
+no body text to complete it). `headline` can stay too (useful for reference/drafting) but isn't
+rendered in this style. The caption format and philosophy are **unchanged** either way (see the
+Caption section above) — still just hook + comment-bait line + hashtags, still withholding the one
+hook fact. `minimal` only changes what's on the slides, not the caption.
+
 ## What to produce for one batch
 
 1. **Pick the next city.** Read `topics.md`'s Published table, pick something not on it. Check the
@@ -50,6 +67,8 @@ cut it down. See `carousel/drafts/paris/caption.md` for a full worked example.
 2. **Research and write 7 facts** about that city, each with:
    - `headline`: short punchy title (e.g. "A clockmaker built the world's largest dome")
    - `body_html`: 1-2 sentences, key phrases wrapped in `<b>...</b>`, matching the voice above
+   - `hook` (only if this batch is testing `style: "minimal"`): the same fact compressed into one
+     complete 15-20 word sentence, since it'll appear alone on the slide with no body text
 3. **Source photo candidates for 8 slots** — `cover` (a skyline/aerial shot of the city) plus
    `fact1` through `fact7` (each must show the SPECIFIC landmark/scene that fact is about, not a
    generic city photo). Use the **Wikimedia Commons API — no key needed**:

@@ -14,8 +14,13 @@ batch.json shape:
   "city": "VIENNA",
   "flag": "🇦🇹",
   "cta_screenshot": "screen-vienna-hofburg-map.png",   // path relative to repo root, a real app screenshot
+  "style": "card",   // optional: "card" (default, photo + headline + body) or "minimal"
+                      // (full-bleed photo, short bottom-anchored hook, no separate body slide text —
+                      // fuller context goes in the post caption instead). Cover/CTA slides are
+                      // identical either way.
   "facts": [
-    {"headline": "...", "body_html": "... <b>bold spans</b> ..."},
+    {"headline": "...", "body_html": "... <b>bold spans</b> ..."},   // "card" style
+    {"headline": "...", "hook": "15-20 word standalone sentence"},    // "minimal" style
     ... exactly 7 of these ...
   ]
 }
@@ -85,27 +90,46 @@ def main():
     print("rendered slide-1-cover.png")
 
     # slides 2-8: facts
+    style = spec.get("style", "card")
     for i, fact in enumerate(facts, start=1):
         img = f"fact{i}.jpg"
-        fact_html = f"""
-        <div style="width:1080px;height:1350px;background:#fae0cf;position:relative;">
-          <div class="badge">Only with Urban Tales #{badge}</div>
-          <div style="position:absolute; top:120px; left:64px; right:64px; bottom:70px; display:flex; flex-direction:column;">
-            <div style="width:952px; height:520px; flex-shrink:0; border-radius:26px; border:5px solid #d1531f; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.12);">
-              <img src="{img}" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:30px; margin-top:36px;">
-              <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:60px; color:#1c1a17; line-height:1.18;">
-                {i}. {fact['headline']}
+        if style == "minimal":
+            hook = fact.get("hook") or fact["headline"]
+            fact_html = f"""
+            <div style="width:1080px;height:1350px;position:relative;overflow:hidden;">
+              <img src="{img}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,8,8,0) 38%, rgba(8,8,8,0.5) 68%, rgba(8,8,8,0.93) 100%);"></div>
+              <div class="badge">Only with Urban Tales #{badge}</div>
+              <div style="position:absolute; left:0; right:0; bottom:76px; padding:0 64px;">
+                <div style="font-family:'Playfair Display'; font-style:italic; font-weight:700; font-size:26px; color:#d1531f; margin-bottom:14px; letter-spacing:0.02em;">
+                  {i:02d} / 07
+                </div>
+                <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:54px; color:#fff8f0; line-height:1.26; text-shadow:0 3px 16px rgba(0,0,0,0.35);">
+                  {hook}
+                </div>
               </div>
-              <div style="width:150px; height:6px; background:#d1531f; border-radius:3px;"></div>
-              <div style="font-family:'Baloo 2'; font-weight:500; font-size:44px; color:#231f1a; line-height:1.42;">
-                {fact['body_html']}
+            </div>
+            """
+        else:
+            fact_html = f"""
+            <div style="width:1080px;height:1350px;background:#fae0cf;position:relative;">
+              <div class="badge">Only with Urban Tales #{badge}</div>
+              <div style="position:absolute; top:120px; left:64px; right:64px; bottom:70px; display:flex; flex-direction:column;">
+                <div style="width:952px; height:520px; flex-shrink:0; border-radius:26px; border:5px solid #d1531f; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.12);">
+                  <img src="{img}" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:30px; margin-top:36px;">
+                  <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:60px; color:#1c1a17; line-height:1.18;">
+                    {i}. {fact['headline']}
+                  </div>
+                  <div style="width:150px; height:6px; background:#d1531f; border-radius:3px;"></div>
+                  <div style="font-family:'Baloo 2'; font-weight:500; font-size:44px; color:#231f1a; line-height:1.42;">
+                    {fact['body_html']}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        """
+            """
         render_html_to_png(fact_html, os.path.join(workdir, f"slide-{i+1}-fact{i}.png"), workdir)
         print(f"rendered slide-{i+1}-fact{i}.png")
 
