@@ -1,0 +1,37 @@
+{
+  "badge_num": 11,
+  "city": "BERLIN",
+  "flag": "🇩🇪",
+  "cta_screenshot": "screen-berlin-brandenburggate-map.png",
+  "caption": "East Germany spent decades trying to erase a giant cross from Berlin's skyline — and Egypt has spent over 100 years asking for a queen's head back. 👀\n\nComment your guess for which one before you swipe ⬇️\n\n.\n.\n.\n#Berlin #BerlinTravel #HiddenGems #TravelFacts #ColdWarHistory #Fernsehturm #UrbanTales",
+  "facts": [
+    {
+      "headline": "Napoleon stole this gate's crown — and lost it eight years later",
+      "body_html": "After capturing Berlin in <b>1806</b>, Napoleon had the Brandenburg Gate's bronze Quadriga statue dismantled and shipped to Paris as a war trophy. Prussian troops found it still sitting in its packing crates inside the Louvre in <b>1814</b> and hauled it straight home."
+    },
+    {
+      "headline": "A Communist state built a giant sphere — and accidentally gave it a cross",
+      "body_html": "Sunlight hitting the steel panels of the TV Tower's sphere forms a near-perfect <b>Christian cross</b>, visible across the divided city. The officially atheist state tried paint, chemicals, and spotlights to kill the glare — nothing worked, and Berliners still call it <b>'the Pope's Revenge.'</b>"
+    },
+    {
+      "headline": "You can literally stand above German lawmakers' heads",
+      "body_html": "The Reichstag's glass dome, added in <b>1999</b>, lets visitors walk a spiral ramp directly over the parliamentary chamber below — a deliberate statement that the public sits above its government. It's now the most-visited parliament building on Earth."
+    },
+    {
+      "headline": "The world's longest open-air gallery is 1.3km of the Berlin Wall",
+      "body_html": "Within months of the Wall falling in 1989, <b>118 artists from 21 countries</b> painted the East Side Gallery — now the longest surviving, and longest painted, stretch of the Berlin Wall anywhere on Earth."
+    },
+    {
+      "headline": "Berliners nicknamed their bombed church 'the hollow tooth' — and kept it that way on purpose",
+      "body_html": "RAF bombs gutted the Kaiser Wilhelm Memorial Church in 1943, leaving only its jagged spire standing. Instead of demolishing it, the city built a new church right beside the ruin and left it standing as a <b>war memorial</b>, still nicknamed the 'Hohler Zahn.'"
+    },
+    {
+      "headline": "Berliners voted to keep a giant airport completely empty forever",
+      "body_html": "When Tempelhof Airport closed in 2008, the city planned apartments and a lake on its runways. In <b>2014</b>, Berliners voted in a referendum to ban all construction — today it's one of the world's largest urban parks, roughly the <b>size of Central Park</b>."
+    },
+    {
+      "headline": "Egypt has been asking for this 3,300-year-old bust back for over a century",
+      "body_html": "The bust of Queen Nefertiti has sat in Berlin's Neues Museum since it left Egypt in <b>1913</b>. Egypt calls the export illegal and has demanded its return for decades — even <b>Hitler refused to give it up.</b>"
+    }
+  ]
+}
