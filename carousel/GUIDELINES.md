@@ -62,9 +62,18 @@ rendered in this style.
 same way (see the Caption section above — still withhold the single most surprising fact, still
 built for a comment). But since the slides no longer carry each fact's full `body_html` explanation,
 that text has to live somewhere — it goes in the caption, as a numbered list (1-7, matching slide
-order) right after the comment-bait line and before the hashtag block. Use each fact's full
-`body_html` content (lightly trimmed for caption reading, markdown bold stripped) rather than writing
-new shorter blurbs — this is the same story, just relocated from slide to caption. See
+order) right after the comment-bait line and before the hashtag block. Each entry is the landmark's
+name on its own line, then the full explanation on the line below it — e.g.:
+
+```
+4. Berlin Wall
+Within months of the Wall falling in 1989, 118 artists from 21 countries painted the East Side
+Gallery — now the longest surviving, and longest painted, stretch of the Berlin Wall anywhere on Earth.
+```
+
+Use each fact's full `body_html` content (lightly trimmed for caption reading, markdown bold
+stripped) rather than writing new shorter blurbs — this is the same story, just relocated from
+slide to caption. See
 `carousel/drafts/berlin/minimal-test/` for a full worked example (batch.json with `hook` fields,
 rendered slides, and caption.txt) — a TikTok-only test, not the batch that was published to
 Instagram, which used the `card` style.
