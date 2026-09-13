@@ -1,300 +1,542 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're Invited to Urban Tales!</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="Icon.png">
-    <link rel="apple-touch-icon" href="icon.png">
-    <meta name="description" content="Join Urban Tales and get bonus coins with your exclusive invite code!">
-    <meta property="og:title" content="You're Invited to Urban Tales!">
-    <meta property="og:description" content="Download Urban Tales and get bonus coins with your exclusive invite code!">
-    <meta property="og:image" content="https://urbantales.net/banner.png">
-    <meta property="og:url" content="https://urbantales.net/invite?code=UT500#">
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-    <style>
-      /* Invite-page-only fixes so the icon never takes over the page */
-      .invite-page { padding-top: 2.25rem; padding-bottom: 3rem; }
-      .invite-page main { display: block; max-width: 760px; margin: 0 auto; }
-      .invite-hero,
-      .promo-section,
-      .download-section,
-      .steps-section,
-      .qr-section {
-        background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-        border: 1px solid rgba(255,255,255,.10);
-        border-radius: 22px;
-        box-shadow: 0 18px 44px rgba(0,0,0,.28);
-        padding: 1.4rem;
-        margin-top: 1rem;
-      }
-      .promo-code-box { display: flex; gap: .9rem; align-items: center; flex-wrap: wrap; }
-      #promo-code {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 190px;
-        padding: .9rem 1rem;
-        border-radius: 16px;
-        background: rgba(255,255,255,.03);
-        border: 1px solid rgba(255,255,255,.10);
-        font-size: 1.85rem;
-        font-weight: 900;
-        letter-spacing: .04em;
-      }
-      .download-badges { display: flex; gap: 1rem; flex-wrap: wrap; }
-      .download-badges img { height: 56px; width: auto; max-width: none; }
-      .steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-      .step {
-        display: flex;
-        gap: .8rem;
-        align-items: flex-start;
-        padding: 1rem;
-        border-radius: 16px;
-        border: 1px solid rgba(255,255,255,.10);
-        background: rgba(255,255,255,.03);
-      }
-      #qr-code { margin-top: .75rem; }
-      #qr-code img { margin: 0 auto; }
-      @media (max-width: 760px) {
-        .steps { grid-template-columns: 1fr; }
-      }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitleTag">Seu convite chegou — Urban Tales</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <meta name="description" id="metaDescription" content="Baixe o Urban Tales, digite seu código e ganhe moedas bônus para explorar qualquer cidade do mundo com histórias em áudio.">
+  <meta property="og:title" id="ogTitle" content="Seu convite chegou — Urban Tales">
+  <meta property="og:description" id="ogDescription" content="Baixe o Urban Tales, digite seu código e ganhe moedas bônus para explorar qualquer cidade do mundo com histórias em áudio.">
+  <meta property="og:image" content="https://urbantales.net/banner.png">
+  <meta property="og:url" content="https://urbantales.net/invite">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #111110;
+      --dark2: #1a1918;
+      --cream: #f2ede6;
+      --cream2: #e8e0d4;
+      --orange: #d4541a;
+      --text-dark: #1c1b19;
+      --text-mid: #6b5e52;
+      --text-light: #9a8878;
+      --border-dark: #2a2825;
+      --border-light: #d4cbc0;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; background: var(--dark); color: var(--cream); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(17,17,16,0.95); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 0 6vw; height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--cream); }
+    .nav-logo img { width: 26px; height: 26px; border-radius: 6px; }
+    .nav-brand { font-size: 14px; font-weight: 500; }
+    .nav-brand span { display: block; font-size: 9px; font-weight: 300; color: var(--text-light); letter-spacing: 0.14em; text-transform: uppercase; }
+
+    section { padding: 64px 6vw; }
+    section.on-cream { background: var(--cream); color: var(--text-dark); }
+    hr { border: none; height: 1px; background: var(--border-dark); }
+
+    /* HERO */
+    .hero { padding-top: 80px; padding-bottom: 56px; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(212,84,26,0.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; text-align: center; }
+    .eyebrow {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--orange); display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    }
+    .eyebrow::before, .eyebrow::after { content: ''; display: block; width: 20px; height: 1px; background: var(--orange); }
+    h1 {
+      font-family: var(--font-serif); font-size: clamp(34px, 6vw, 56px);
+      font-weight: 900; line-height: 1.08; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 20px;
+    }
+    h1 em { font-style: italic; color: var(--orange); }
+    .hero-sub { font-size: 17px; line-height: 1.7; color: var(--text-light); font-weight: 300; max-width: 480px; margin: 0 auto; }
+
+    /* OFFER CARD */
+    .offer-wrap { max-width: 560px; margin: 40px auto 0; }
+    .offer-card {
+      background: var(--dark2); border: 1px solid var(--orange); border-radius: 20px;
+      padding: 36px 32px; text-align: center;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+    }
+    .offer-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .code-row { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+    #promo-code {
+      font-family: var(--font-serif); font-weight: 900; font-size: clamp(28px, 6vw, 38px);
+      letter-spacing: 0.06em; color: var(--cream);
+    }
+    .copy-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: transparent; border: 1px solid var(--border-dark); color: var(--text-light);
+      font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+      padding: 9px 16px; border-radius: 999px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .copy-btn:hover { border-color: var(--orange); color: var(--cream); }
+    .copy-btn.copied { border-color: var(--orange); color: var(--orange); }
+    .offer-desc { font-size: 15px; color: var(--text-light); font-weight: 300; line-height: 1.6; margin-bottom: 24px; min-height: 1.6em; }
+    .offer-desc strong { color: var(--cream); font-weight: 700; }
+
+    .store-badges { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; color: #000; text-decoration: none;
+      padding: 10px 18px; border-radius: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .store-badge svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .badge-text { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
+    .badge-text small { font-size: 9px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.65; }
+    .badge-text strong { font-size: 14px; font-weight: 700; }
+
+    /* SECTION HEADINGS */
+    .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; text-align: center; }
+    h2 {
+      font-family: var(--font-serif); font-size: clamp(24px, 3.4vw, 34px);
+      font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 8px;
+      text-align: center;
+    }
+    section.on-cream h2 { color: var(--text-dark); }
+    .section-center { max-width: 640px; margin: 0 auto; }
+
+    /* HOW TO CLAIM */
+    .how-grid { max-width: 720px; margin: 44px auto 0; display: flex; flex-direction: column; }
+    .how-step {
+      display: grid; grid-template-columns: 44px 1fr;
+      gap: 18px; padding: 24px 0; border-bottom: 1px solid var(--border-light);
+    }
+    .how-step:first-child { border-top: 1px solid var(--border-light); }
+    .step-n {
+      font-family: var(--font-serif); font-size: 28px; font-weight: 900;
+      color: var(--border-light); line-height: 1; letter-spacing: -0.03em; padding-top: 3px;
+    }
+    .how-step h3 { font-family: var(--font-serif); font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .how-step p { font-size: 14px; line-height: 1.6; color: var(--text-mid); font-weight: 300; margin: 0; }
+    .how-step code { font-family: ui-monospace, monospace; background: rgba(212,84,26,0.12); color: var(--orange); padding: 2px 7px; border-radius: 5px; font-weight: 700; font-size: 0.92em; }
+
+    /* WHY */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); margin-top: 44px; }
+    .feature-card { background: var(--dark2); padding: 28px 24px; }
+    .feature-name { font-family: var(--font-serif); font-size: 17px; font-weight: 700; color: var(--orange); margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; line-height: 1.6; color: var(--text-light); font-weight: 300; margin: 0; }
+
+    /* QR */
+    .qr-section { text-align: center; }
+    .qr-box {
+      display: inline-block; padding: 16px; background: var(--cream2); border-radius: 16px; margin-top: 20px;
+    }
+    #qr-code img { display: block; border-radius: 6px; }
+    .qr-hint { font-size: 13px; color: var(--text-light); margin-top: 14px; font-weight: 300; }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 32px 6vw; border-top: 1px solid var(--border-dark); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer p { font-size: 12px; color: var(--text-light); margin: 0; font-weight: 300; }
+    footer nav { position: static; height: auto; padding: 0; background: none; backdrop-filter: none; border: none; }
+    footer nav ul { display: flex; gap: 20px; list-style: none; }
+    footer nav a { color: var(--text-light); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+    footer nav a:hover { color: var(--cream); }
+
+    @media (max-width: 640px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .offer-card { padding: 28px 22px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="icon.png" alt="Urban Tales logo" class="brand-logo">
-      <span class="brand-copy">
-        <span class="name">Urban Tales</span>
-        <span class="tag">Self-guided audio tours</span>
-      </span>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html#how">How it works</a>
-      <a href="index.html#cities">Cities</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
-    </nav>
+
+<nav>
+  <a href="https://urbantales.net/" class="nav-logo">
+    <img src="icon.png" alt="Urban Tales" />
+    <div class="nav-brand">Urban Tales <span id="navTag">Guias de áudio autoguiados</span></div>
+  </a>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow" id="txt-eyebrow">Convite exclusivo</p>
+    <h1 id="txt-title">Seu convite chegou.<br><em id="txt-title-em">Seu bônus também.</em></h1>
+    <p class="hero-sub" id="txt-subtitle">O Urban Tales conta as histórias escondidas por trás de cada ponto turístico automaticamente, enquanto você caminha — sem grupo, sem horário marcado. Use seu código abaixo e ganhe ainda mais.</p>
+
+    <div class="offer-wrap">
+      <div class="offer-card">
+        <p class="offer-label" id="txt-offer-label">Seu código</p>
+        <div class="code-row">
+          <span id="promo-code">ANJOS26</span>
+          <button class="copy-btn" onclick="copyPromoCode()" id="copy-btn">Copiar</button>
+        </div>
+        <p class="offer-desc" id="txt-offer-desc">Carregando sua oferta…</p>
+        <div class="store-badges">
+          <a href="https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598?l=en-GB" class="store-badge" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="badge-text"><small id="txt-badge-ios-small">Baixar na</small><strong>App Store</strong></div>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="store-badge" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76c.3.16.64.2.98.1l11.53-11.53L12 8.64 3.18 23.76z" fill="#EA4335"/><path d="M20.58 10.42l-2.8-1.6-3.27 3.27 3.27 3.27 2.82-1.61a1.6 1.6 0 000-2.8l-.02-.03z" fill="#FBBC04"/><path d="M3.18 23.76L12 8.64l-8.82-5.12A1.6 1.6 0 001.6 5v14a1.6 1.6 0 001.58 1.76z" fill="#34A853"/><path d="M3.18.24A1.6 1.6 0 001.6 2v.24L12 8.64l2.78-2.78L3.18.24z" fill="#4285F4"/></svg>
+            <div class="badge-text"><small id="txt-badge-android-small">Disponível no</small><strong>Google Play</strong></div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
-<div class="container invite-page">
-    <main>
-        <div class="invite-hero">
-            <h1 id="txt-title">You've Been Invited!</h1>
-            <p class="invite-subtitle" id="txt-subtitle">A friend wants you to explore cities with AI-powered audio guides.</p>
-        </div>
+<hr>
 
-        <div class="promo-section">
-            <p class="promo-label" id="txt-promo-label">Your Exclusive Promo Code</p>
-            <div class="promo-code-box">
-                <span id="promo-code">ANJOS26</span>
-                <button class="copy-btn" onclick="copyPromoCode()" id="copy-btn">Copy</button>
-            </div>
-            <p class="promo-hint" id="txt-promo-hint">Enter this code when you sign up to get bonus coins.</p>
-        </div>
+<section class="on-cream">
+  <div class="section-center">
+    <p class="section-label" id="txt-steps-label">Como resgatar</p>
+    <h2 id="txt-steps-title">Quatro passos.<br>Menos de dois minutos.</h2>
+  </div>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="step-n">01</div>
+      <div><h3 id="txt-step1-h">Baixe o Urban Tales</h3><p id="txt-step1-p">Grátis para iPhone e Android — link acima.</p></div>
+    </div>
+    <div class="how-step">
+      <div class="step-n">02</div>
+      <div><h3 id="txt-step2-h">Crie sua conta</h3><p id="txt-step2-p">Com e-mail, Google ou Apple. Leva menos de um minuto.</p></div>
+    </div>
+    <div class="how-step">
+      <div class="step-n">03</div>
+      <div><h3 id="txt-step3-h">Digite seu código</h3><p id="txt-step3-p">Insira <code id="step-code">ANJOS26</code> na tela de cadastro.</p></div>
+    </div>
+    <div class="how-step">
+      <div class="step-n">04</div>
+      <div><h3 id="txt-step4-h">Aproveite seu bônus</h3><p id="txt-step4-p">Suas moedas caem na hora — e mais ainda na sua primeira compra.</p></div>
+    </div>
+  </div>
+</section>
 
-        <div class="download-section">
-            <div class="download-badges">
-              <a href="https://apps.apple.com/mx/app/urban-tales-city-explorer/id6760130598?l=en-GB" class="download-btn" target="_blank" aria-label="Download on the App Store">
-                  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-              </a>
-              <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="download-btn" target="_blank" aria-label="Get it on Google Play">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
-              </a>
-            </div>
-            <p class="download-hint" id="txt-download-hint">Tap to download from iPhone or Android.</p>
-        </div>
+<hr>
 
-        <div class="steps-section">
-            <h3 id="txt-steps-title">How to Claim Your Bonus</h3>
-            <div class="steps">
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <span class="step-text" id="txt-step1">Download Urban Tales</span>
-                </div>
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <span class="step-text" id="txt-step2">Create an account</span>
-                </div>
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <span class="step-text" id="txt-step3">Enter promo code <strong id="step-code">ANJOS26</strong></span>
-                </div>
-                <div class="step">
-                    <span class="step-number">4</span>
-                    <span class="step-text" id="txt-step4">Enjoy your bonus coins! 🎉</span>
-                </div>
-            </div>
-        </div>
+<section>
+  <div class="section-center">
+    <p class="section-label" id="txt-why-label">Por que Urban Tales</p>
+    <h2 id="txt-why-title">Uma cidade inteira,<br><em>contando histórias.</em></h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-name" id="txt-feat1-h">Toca sozinho</div>
+      <p id="txt-feat1-p">O GPS detecta quando você chega perto de um ponto turístico e a narração começa — sem tocar em nada.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-name" id="txt-feat2-h">Em qualquer lugar</div>
+      <p id="txt-feat2-p">Funciona em qualquer cidade, vila ou bairro do mundo, agora mesmo — não só nos destinos famosos.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-name" id="txt-feat3-h">4 estilos de narração</div>
+      <p id="txt-feat3-p">Histórico, Lendas, Curiosidades ou Cinematográfico — troque quando quiser, no mesmo lugar.</p>
+    </div>
+  </div>
+</section>
 
-        <div class="qr-section">
-            <p class="qr-label" id="txt-qr-label">Share this invite</p>
-            <div id="qr-code"></div>
-            <p class="qr-hint" id="txt-qr-hint">Scan to share with friends.</p>
-        </div>
-    </main>
+<hr>
 
-    <footer class="site-footer">
-        <div class="footer-row">
-            <nav class="footer-links">
-                <a href="index.html">Home</a>
-                <span class="divider">•</span>
-                <a href="privacy.html">Privacy Policy</a>
-                <span class="divider">•</span>
-                <a href="contact.html">Contact Us</a>
-            </nav>
-            <p class="copyright">© 2026 Urban Tales. All rights reserved.</p>
-        </div>
-    </footer>
-</div>
+<section class="on-cream qr-section">
+  <p class="section-label" id="txt-qr-label">Prefere escanear?</p>
+  <h2 id="txt-qr-title">Aponte a câmera aqui.</h2>
+  <div class="qr-box"><div id="qr-code"></div></div>
+  <p class="qr-hint" id="txt-qr-hint">Escaneie para abrir este convite no seu celular.</p>
+</section>
+
+<footer>
+  <p id="txt-footer-copy">© Urban Tales · Feito para quem quer mais que uma foto.</p>
+  <nav>
+    <ul>
+      <li><a href="https://urbantales.net/" id="txt-footer-home">Início</a></li>
+      <li><a href="https://urbantales.net/privacy.html" id="txt-footer-privacy">Política de Privacidade</a></li>
+      <li><a href="https://urbantales.net/contact.html" id="txt-footer-contact">Contato</a></li>
+    </ul>
+  </nav>
+</footer>
 
 <script>
-    const INVITE_STRINGS = {
-      en: {
-        title: "You've Been Invited!",
-        subtitle: "A friend wants you to explore cities with AI-powered audio guides.",
-        promoLabel: "Your Exclusive Promo Code",
-        promoHint: "Enter this code when you sign up to get bonus coins.",
-        downloadHint: "Tap to download from iPhone or Android.",
-        stepsTitle: "How to Claim Your Bonus",
-        step1: "Download Urban Tales",
-        step2: "Create an account",
-        step3: "Enter promo code",
-        step4: "Enjoy your bonus coins! 🎉",
-        qrLabel: "Share this invite",
-        qrHint: "Scan to share with friends.",
-        copy: "Copy",
-        copied: "Copied!",
-      },
-      "pt-BR": {
-        title: "Você Foi Convidado!",
-        subtitle: "Um amigo quer que você explore cidades com guias de áudio com IA.",
-        promoLabel: "Seu Código Promocional Exclusivo",
-        promoHint: "Digite este código ao se cadastrar para ganhar moedas bônus.",
-        downloadHint: "Toque para baixar no iPhone ou Android.",
-        stepsTitle: "Como Resgatar Seu Bônus",
-        step1: "Baixe o Urban Tales",
-        step2: "Crie uma conta",
-        step3: "Digite o código promocional",
-        step4: "Aproveite suas moedas bônus! 🎉",
-        qrLabel: "Compartilhe este convite",
-        qrHint: "Escaneie para compartilhar com amigos.",
-        copy: "Copiar",
-        copied: "Copiado!",
-      },
-      es: {
-        title: "¡Has Sido Invitado!",
-        subtitle: "Un amigo quiere que explores ciudades con guías de audio con IA.",
-        promoLabel: "Tu Código Promocional Exclusivo",
-        promoHint: "Ingresa este código al registrarte para obtener monedas de bonificación.",
-        downloadHint: "Toca para descargar en iPhone o Android.",
-        stepsTitle: "Cómo Reclamar Tu Bonificación",
-        step1: "Descarga Urban Tales",
-        step2: "Crea una cuenta",
-        step3: "Introduce el código promocional",
-        step4: "¡Disfruta tus monedas bônus! 🎉",
-        qrLabel: "Comparte esta invitación",
-        qrHint: "Escanea para compartir con amigos.",
-        copy: "Copiar",
-        copied: "¡Copiado!",
-      },
-      fr: {
-        title: "Vous Avez Été Invité !",
-        subtitle: "Un ami veut que vous exploriez des villes avec des guides audio IA.",
-        promoLabel: "Votre Code Promo Exclusif",
-        promoHint: "Entrez ce code lors de votre inscription pour recevoir des pièces bonus.",
-        downloadHint: "Appuyez pour télécharger sur iPhone ou Android.",
-        stepsTitle: "Comment Réclamer Votre Bonus",
-        step1: "Téléchargez Urban Tales",
-        step2: "Créez un compte",
-        step3: "Entrez le code promo",
-        step4: "Profitez de vos pièces bonus ! 🎉",
-        qrLabel: "Partagez cette invitation",
-        qrHint: "Scannez pour partager avec des amis.",
-        copy: "Copier",
-        copied: "Copié !",
-      },
-      de: {
-        title: "Du Wurdest Eingeladen!",
-        subtitle: "Ein Freund möchte, dass du Städte mit KI-Audioführern erkundest.",
-        promoLabel: "Dein Exklusiver Promo-Code",
-        promoHint: "Gib diesen Code bei der Registrierung ein, um Bonus-Münzen zu erhalten.",
-        downloadHint: "Tippe zum Herunterladen auf iPhone oder Android.",
-        stepsTitle: "So Beanspruchst Du Deinen Bonus",
-        step1: "Urban Tales herunterladen",
-        step2: "Konto erstellen",
-        step3: "Promo-Code eingeben",
-        step4: "Genieße deine Bonus-Münzen! 🎉",
-        qrLabel: "Diese Einladung teilen",
-        qrHint: "Scannen, um mit Freunden zu teilen.",
-        copy: "Kopieren",
-        copied: "Kopiert!",
-      },
-    };
+  const API = 'https://friendly-fulfillment-production.up.railway.app/api';
 
-    function detectLang() {
-      const params = new URLSearchParams(window.location.search);
-      const paramLang = params.get('lang');
-      if (paramLang && INVITE_STRINGS[paramLang]) return paramLang;
-      const nav = navigator.language || 'en';
-      const exact = Object.keys(INVITE_STRINGS).find(k => k.toLowerCase() === nav.toLowerCase());
-      if (exact) return exact;
-      const prefix = nav.split('-')[0].toLowerCase();
-      const prefixMatch = Object.keys(INVITE_STRINGS).find(k => k.toLowerCase().startsWith(prefix));
-      return prefixMatch || 'en';
-    }
+  const STRINGS = {
+    en: {
+      pageTitle: "You're Invited — Urban Tales",
+      metaDescription: "Download Urban Tales, enter your code, and get bonus coins to explore any city in the world with audio stories.",
+      navTag: "Self-guided audio tours",
+      eyebrow: "Exclusive invite",
+      eyebrowFrom: "Exclusive invite from {name}",
+      title: "Your invite is ready.", titleEm: "So is your bonus.",
+      subtitle: "Urban Tales plays the hidden stories behind every landmark automatically as you walk — no tour group, no fixed schedule. Use your code below and we'll sweeten the deal.",
+      offerLabel: "Your code", copy: "Copy", copied: "Copied!",
+      offerLoading: "Loading your offer…",
+      offerBoth: "Get <strong>{coins} bonus coins</strong> the moment you sign up — plus <strong>{pct}% more</strong> on your first purchase, within 24 hours.",
+      offerCoinsOnly: "Get <strong>{coins} bonus coins</strong> the moment you sign up.",
+      offerPctOnly: "Get <strong>{pct}% more coins</strong> on your first purchase, within 24 hours of signing up.",
+      offerFallback: "Enter your code when you sign up to unlock bonus coins.",
+      badgeIosSmall: "Download on the", badgeAndroidSmall: "Get it on",
+      stepsLabel: "How to claim it", stepsTitle: "Four steps.<br>Under two minutes.",
+      step1h: "Download Urban Tales", step1p: "Free on iPhone and Android — link above.",
+      step2h: "Create your account", step2p: "Email, Google or Apple. Takes under a minute.",
+      step3h: "Enter your code", step3p: "Type <code>{code}</code> on the signup screen.",
+      step4h: "Enjoy your bonus", step4p: "Coins land instantly — and there's more on your first purchase.",
+      whyLabel: "Why Urban Tales", whyTitle: "A whole city,<br><em>telling its own stories.</em>",
+      feat1h: "Plays itself", feat1p: "GPS detects when you're near a landmark and the narration starts — no tapping anything.",
+      feat2h: "Works anywhere", feat2p: "Any city, town or neighborhood in the world, right now — not just famous destinations.",
+      feat3h: "4 storytelling styles", feat3p: "Historical, Legends, Fun Facts or Cinematic — switch anytime, same spot.",
+      qrLabel: "Prefer to scan?", qrTitle: "Point your camera here.",
+      qrHint: "Scan to open this invite on your phone.",
+      footerCopy: "© Urban Tales · Built for travelers who want more than a photo.",
+      footerHome: "Home", footerPrivacy: "Privacy Policy", footerContact: "Contact",
+    },
+    "pt-BR": {
+      pageTitle: "Seu convite chegou — Urban Tales",
+      metaDescription: "Baixe o Urban Tales, digite seu código e ganhe moedas bônus para explorar qualquer cidade do mundo com histórias em áudio.",
+      navTag: "Guias de áudio autoguiados",
+      eyebrow: "Convite exclusivo",
+      eyebrowFrom: "Convite exclusivo de {name}",
+      title: "Seu convite chegou.", titleEm: "Seu bônus também.",
+      subtitle: "O Urban Tales conta as histórias escondidas por trás de cada ponto turístico automaticamente, enquanto você caminha — sem grupo, sem horário marcado. Use seu código abaixo e ganhe ainda mais.",
+      offerLabel: "Seu código", copy: "Copiar", copied: "Copiado!",
+      offerLoading: "Carregando sua oferta…",
+      offerBoth: "Ganhe <strong>{coins} moedas de bônus</strong> assim que se cadastrar — mais <strong>{pct}% a mais</strong> na sua primeira compra, em até 24 horas.",
+      offerCoinsOnly: "Ganhe <strong>{coins} moedas de bônus</strong> assim que se cadastrar.",
+      offerPctOnly: "Ganhe <strong>{pct}% a mais em moedas</strong> na sua primeira compra, em até 24 horas após o cadastro.",
+      offerFallback: "Digite seu código ao se cadastrar para desbloquear moedas bônus.",
+      badgeIosSmall: "Baixar na", badgeAndroidSmall: "Disponível no",
+      stepsLabel: "Como resgatar", stepsTitle: "Quatro passos.<br>Menos de dois minutos.",
+      step1h: "Baixe o Urban Tales", step1p: "Grátis para iPhone e Android — link acima.",
+      step2h: "Crie sua conta", step2p: "Com e-mail, Google ou Apple. Leva menos de um minuto.",
+      step3h: "Digite seu código", step3p: "Insira <code>{code}</code> na tela de cadastro.",
+      step4h: "Aproveite seu bônus", step4p: "Suas moedas caem na hora — e mais ainda na sua primeira compra.",
+      whyLabel: "Por que Urban Tales", whyTitle: "Uma cidade inteira,<br><em>contando histórias.</em>",
+      feat1h: "Toca sozinho", feat1p: "O GPS detecta quando você chega perto de um ponto turístico e a narração começa — sem tocar em nada.",
+      feat2h: "Em qualquer lugar", feat2p: "Funciona em qualquer cidade, vila ou bairro do mundo, agora mesmo — não só nos destinos famosos.",
+      feat3h: "4 estilos de narração", feat3p: "Histórico, Lendas, Curiosidades ou Cinematográfico — troque quando quiser, no mesmo lugar.",
+      qrLabel: "Prefere escanear?", qrTitle: "Aponte a câmera aqui.",
+      qrHint: "Escaneie para abrir este convite no seu celular.",
+      footerCopy: "© Urban Tales · Feito para quem quer mais que uma foto.",
+      footerHome: "Início", footerPrivacy: "Política de Privacidade", footerContact: "Contato",
+    },
+    es: {
+      pageTitle: "Tu invitación llegó — Urban Tales",
+      metaDescription: "Descarga Urban Tales, ingresa tu código y obtén monedas de bonificación para explorar cualquier ciudad del mundo con historias en audio.",
+      navTag: "Guías de audio autoguiados",
+      eyebrow: "Invitación exclusiva",
+      eyebrowFrom: "Invitación exclusiva de {name}",
+      title: "Tu invitación llegó.", titleEm: "Tu bono también.",
+      subtitle: "Urban Tales cuenta las historias escondidas detrás de cada lugar automáticamente mientras caminas — sin grupo, sin horario fijo. Usa tu código y te damos aún más.",
+      offerLabel: "Tu código", copy: "Copiar", copied: "¡Copiado!",
+      offerLoading: "Cargando tu oferta…",
+      offerBoth: "Obtén <strong>{coins} monedas de bono</strong> al registrarte — más <strong>{pct}% adicional</strong> en tu primera compra, dentro de 24 horas.",
+      offerCoinsOnly: "Obtén <strong>{coins} monedas de bono</strong> al registrarte.",
+      offerPctOnly: "Obtén <strong>{pct}% más monedas</strong> en tu primera compra, dentro de las 24 horas después de registrarte.",
+      offerFallback: "Ingresa tu código al registrarte para desbloquear monedas de bono.",
+      badgeIosSmall: "Descarga en", badgeAndroidSmall: "Disponible en",
+      stepsLabel: "Cómo reclamarlo", stepsTitle: "Cuatro pasos.<br>Menos de dos minutos.",
+      step1h: "Descarga Urban Tales", step1p: "Gratis para iPhone y Android — enlace arriba.",
+      step2h: "Crea tu cuenta", step2p: "Con correo, Google o Apple. Toma menos de un minuto.",
+      step3h: "Ingresa tu código", step3p: "Escribe <code>{code}</code> en la pantalla de registro.",
+      step4h: "Disfruta tu bono", step4p: "Las monedas llegan al instante — y hay más en tu primera compra.",
+      whyLabel: "Por qué Urban Tales", whyTitle: "Una ciudad entera,<br><em>contando sus historias.</em>",
+      feat1h: "Se activa solo", feat1p: "El GPS detecta cuando estás cerca de un lugar y la narración comienza — sin tocar nada.",
+      feat2h: "Funciona en todas partes", feat2p: "Cualquier ciudad, pueblo o barrio del mundo, ahora mismo — no solo los destinos famosos.",
+      feat3h: "4 estilos de narración", feat3p: "Histórico, Leyendas, Curiosidades o Cinematográfico — cambia cuando quieras, en el mismo lugar.",
+      qrLabel: "¿Prefieres escanear?", qrTitle: "Apunta tu cámara aquí.",
+      qrHint: "Escanea para abrir esta invitación en tu celular.",
+      footerCopy: "© Urban Tales · Hecho para quienes quieren más que una foto.",
+      footerHome: "Inicio", footerPrivacy: "Política de Privacidad", footerContact: "Contacto",
+    },
+    fr: {
+      pageTitle: "Votre invitation est arrivée — Urban Tales",
+      metaDescription: "Téléchargez Urban Tales, entrez votre code et obtenez des pièces bonus pour explorer n'importe quelle ville du monde avec des histoires audio.",
+      navTag: "Visites audio autoguidées",
+      eyebrow: "Invitation exclusive",
+      eyebrowFrom: "Invitation exclusive de {name}",
+      title: "Votre invitation est arrivée.", titleEm: "Votre bonus aussi.",
+      subtitle: "Urban Tales raconte les histoires cachées derrière chaque lieu automatiquement pendant que vous marchez — sans groupe, sans horaire fixe. Utilisez votre code ci-dessous pour en avoir encore plus.",
+      offerLabel: "Votre code", copy: "Copier", copied: "Copié !",
+      offerLoading: "Chargement de votre offre…",
+      offerBoth: "Recevez <strong>{coins} pièces bonus</strong> dès votre inscription — plus <strong>{pct}% de plus</strong> sur votre premier achat, sous 24 heures.",
+      offerCoinsOnly: "Recevez <strong>{coins} pièces bonus</strong> dès votre inscription.",
+      offerPctOnly: "Recevez <strong>{pct}% de pièces en plus</strong> sur votre premier achat, dans les 24 heures suivant votre inscription.",
+      offerFallback: "Entrez votre code lors de votre inscription pour débloquer des pièces bonus.",
+      badgeIosSmall: "Télécharger sur", badgeAndroidSmall: "Disponible sur",
+      stepsLabel: "Comment en profiter", stepsTitle: "Quatre étapes.<br>Moins de deux minutes.",
+      step1h: "Téléchargez Urban Tales", step1p: "Gratuit sur iPhone et Android — lien ci-dessus.",
+      step2h: "Créez votre compte", step2p: "Avec e-mail, Google ou Apple. Moins d'une minute.",
+      step3h: "Entrez votre code", step3p: "Saisissez <code>{code}</code> lors de l'inscription.",
+      step4h: "Profitez de votre bonus", step4p: "Les pièces arrivent instantanément — et il y en a plus lors de votre premier achat.",
+      whyLabel: "Pourquoi Urban Tales", whyTitle: "Toute une ville,<br><em>qui raconte ses histoires.</em>",
+      feat1h: "Se déclenche seul", feat1p: "Le GPS détecte votre proximité avec un lieu et la narration démarre — sans rien toucher.",
+      feat2h: "Fonctionne partout", feat2p: "N'importe quelle ville, village ou quartier du monde, dès maintenant — pas seulement les destinations connues.",
+      feat3h: "4 styles de narration", feat3p: "Historique, Légendes, Anecdotes ou Cinématographique — changez à tout moment, au même endroit.",
+      qrLabel: "Vous préférez scanner ?", qrTitle: "Pointez votre caméra ici.",
+      qrHint: "Scannez pour ouvrir cette invitation sur votre téléphone.",
+      footerCopy: "© Urban Tales · Conçu pour ceux qui veulent plus qu'une photo.",
+      footerHome: "Accueil", footerPrivacy: "Politique de Confidentialité", footerContact: "Contact",
+    },
+    de: {
+      pageTitle: "Deine Einladung ist da — Urban Tales",
+      metaDescription: "Lade Urban Tales herunter, gib deinen Code ein und erhalte Bonus-Münzen, um jede Stadt der Welt mit Audiogeschichten zu erkunden.",
+      navTag: "Selbstgeführte Audiotouren",
+      eyebrow: "Exklusive Einladung",
+      eyebrowFrom: "Exklusive Einladung von {name}",
+      title: "Deine Einladung ist da.", titleEm: "Dein Bonus auch.",
+      subtitle: "Urban Tales erzählt die versteckten Geschichten hinter jedem Wahrzeichen automatisch, während du läufst — keine Gruppe, kein fester Zeitplan. Nutze deinen Code unten für noch mehr.",
+      offerLabel: "Dein Code", copy: "Kopieren", copied: "Kopiert!",
+      offerLoading: "Dein Angebot wird geladen…",
+      offerBoth: "Erhalte <strong>{coins} Bonus-Münzen</strong> direkt bei der Anmeldung — plus <strong>{pct}% mehr</strong> auf deinen ersten Kauf, innerhalb von 24 Stunden.",
+      offerCoinsOnly: "Erhalte <strong>{coins} Bonus-Münzen</strong> direkt bei der Anmeldung.",
+      offerPctOnly: "Erhalte <strong>{pct}% mehr Münzen</strong> auf deinen ersten Kauf, innerhalb von 24 Stunden nach der Anmeldung.",
+      offerFallback: "Gib deinen Code bei der Anmeldung ein, um Bonus-Münzen freizuschalten.",
+      badgeIosSmall: "Laden im", badgeAndroidSmall: "Verfügbar bei",
+      stepsLabel: "So einlösen", stepsTitle: "Vier Schritte.<br>Unter zwei Minuten.",
+      step1h: "Urban Tales herunterladen", step1p: "Kostenlos für iPhone und Android — Link oben.",
+      step2h: "Konto erstellen", step2p: "Mit E-Mail, Google oder Apple. Dauert unter einer Minute.",
+      step3h: "Code eingeben", step3p: "Gib <code>{code}</code> bei der Anmeldung ein.",
+      step4h: "Bonus genießen", step4p: "Die Münzen landen sofort — und beim ersten Kauf gibt's noch mehr.",
+      whyLabel: "Warum Urban Tales", whyTitle: "Eine ganze Stadt,<br><em>erzählt ihre Geschichten.</em>",
+      feat1h: "Startet von selbst", feat1p: "GPS erkennt, wenn du in der Nähe eines Wahrzeichens bist, und die Erzählung beginnt — ohne etwas anzutippen.",
+      feat2h: "Funktioniert überall", feat2p: "Jede Stadt, jeder Ort, jedes Viertel der Welt, sofort — nicht nur bekannte Ziele.",
+      feat3h: "4 Erzählstile", feat3p: "Historisch, Legenden, Kuriositäten oder Kinoreif — jederzeit wechselbar, am selben Ort.",
+      qrLabel: "Lieber scannen?", qrTitle: "Richte deine Kamera hierauf.",
+      qrHint: "Scanne, um diese Einladung auf deinem Handy zu öffnen.",
+      footerCopy: "© Urban Tales · Für alle, die mehr wollen als ein Foto.",
+      footerHome: "Startseite", footerPrivacy: "Datenschutz", footerContact: "Kontakt",
+    },
+  };
 
-    const lang = detectLang();
-    const s = INVITE_STRINGS[lang];
+  function detectLang() {
+    const params = new URLSearchParams(window.location.search);
+    const paramLang = params.get('lang');
+    if (paramLang && STRINGS[paramLang]) return paramLang;
+    const nav = navigator.language || 'pt-BR';
+    const exact = Object.keys(STRINGS).find(k => k.toLowerCase() === nav.toLowerCase());
+    if (exact) return exact;
+    const prefix = nav.split('-')[0].toLowerCase();
+    const prefixMatch = Object.keys(STRINGS).find(k => k.toLowerCase().startsWith(prefix));
+    return prefixMatch || 'pt-BR';
+  }
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const promoCode = urlParams.get('code') || 'ANJOS26';
+  const lang = detectLang();
+  const s = STRINGS[lang];
+  document.documentElement.lang = lang;
 
-    document.getElementById('promo-code').textContent = promoCode;
-    document.getElementById('step-code').textContent = promoCode;
+  const urlParams = new URLSearchParams(window.location.search);
+  const promoCode = (urlParams.get('code') || 'ANJOS26').toUpperCase();
 
-    document.getElementById('txt-title').textContent = s.title;
-    document.getElementById('txt-subtitle').textContent = s.subtitle;
-    document.getElementById('txt-promo-label').textContent = s.promoLabel;
-    document.getElementById('txt-promo-hint').textContent = s.promoHint;
-    document.getElementById('txt-download-hint').textContent = s.downloadHint;
-    document.getElementById('txt-steps-title').textContent = s.stepsTitle;
-    document.getElementById('txt-step1').textContent = s.step1;
-    document.getElementById('txt-step2').textContent = s.step2;
-    document.getElementById('txt-step3').innerHTML = s.step3 + ' <strong id="step-code-inner">' + promoCode + '</strong>';
-    document.getElementById('txt-step4').textContent = s.step4;
-    document.getElementById('txt-qr-label').textContent = s.qrLabel;
-    document.getElementById('txt-qr-hint').textContent = s.qrHint;
-    document.getElementById('copy-btn').textContent = s.copy;
+  function fmt(str, vars) {
+    return str.replace(/\{(\w+)\}/g, (_, k) => (vars[k] != null ? vars[k] : ''));
+  }
 
-    const invitePath = window.location.pathname || '/invite';
-    const currentUrl = `${window.location.origin}${invitePath}?code=${encodeURIComponent(promoCode)}`;
+  document.getElementById('pageTitleTag').textContent = s.pageTitle;
+  document.title = s.pageTitle;
+  document.getElementById('metaDescription').setAttribute('content', s.metaDescription);
+  document.getElementById('ogTitle').setAttribute('content', s.pageTitle);
+  document.getElementById('ogDescription').setAttribute('content', s.metaDescription);
+  document.getElementById('navTag').textContent = s.navTag;
+  document.getElementById('txt-eyebrow').textContent = s.eyebrow;
+  document.getElementById('txt-title').innerHTML = s.title + ' <em id="txt-title-em"></em>';
+  document.getElementById('txt-title-em').textContent = s.titleEm;
+  document.getElementById('txt-subtitle').textContent = s.subtitle;
+  document.getElementById('promo-code').textContent = promoCode;
+  document.getElementById('step-code').textContent = promoCode;
+  document.getElementById('txt-offer-label').textContent = s.offerLabel;
+  document.getElementById('copy-btn').textContent = s.copy;
+  document.getElementById('txt-offer-desc').textContent = s.offerLoading;
+  document.getElementById('txt-badge-ios-small').textContent = s.badgeIosSmall;
+  document.getElementById('txt-badge-android-small').textContent = s.badgeAndroidSmall;
+  document.getElementById('txt-steps-label').textContent = s.stepsLabel;
+  document.getElementById('txt-steps-title').innerHTML = s.stepsTitle;
+  document.getElementById('txt-step1-h').textContent = s.step1h;
+  document.getElementById('txt-step1-p').textContent = s.step1p;
+  document.getElementById('txt-step2-h').textContent = s.step2h;
+  document.getElementById('txt-step2-p').textContent = s.step2p;
+  document.getElementById('txt-step3-h').textContent = s.step3h;
+  document.getElementById('txt-step3-p').innerHTML = fmt(s.step3p, { code: promoCode });
+  document.getElementById('txt-step4-h').textContent = s.step4h;
+  document.getElementById('txt-step4-p').textContent = s.step4p;
+  document.getElementById('txt-why-label').textContent = s.whyLabel;
+  document.getElementById('txt-why-title').innerHTML = s.whyTitle;
+  document.getElementById('txt-feat1-h').textContent = s.feat1h;
+  document.getElementById('txt-feat1-p').textContent = s.feat1p;
+  document.getElementById('txt-feat2-h').textContent = s.feat2h;
+  document.getElementById('txt-feat2-p').textContent = s.feat2p;
+  document.getElementById('txt-feat3-h').textContent = s.feat3h;
+  document.getElementById('txt-feat3-p').textContent = s.feat3p;
+  document.getElementById('txt-qr-label').textContent = s.qrLabel;
+  document.getElementById('txt-qr-title').textContent = s.qrTitle;
+  document.getElementById('txt-qr-hint').textContent = s.qrHint;
+  document.getElementById('txt-footer-copy').textContent = s.footerCopy;
+  document.getElementById('txt-footer-home').textContent = s.footerHome;
+  document.getElementById('txt-footer-privacy').textContent = s.footerPrivacy;
+  document.getElementById('txt-footer-contact').textContent = s.footerContact;
 
-    new QRCode(document.getElementById('qr-code'), {
-        text: currentUrl,
-        width: 150,
-        height: 150,
-        colorDark: '#FF6B35',
-        colorLight: '#1A1A1A',
-        correctLevel: QRCode.CorrectLevel.H
+  // Fetch the code's real offer so the page always matches whatever this
+  // specific code is actually configured to pay out — never a stale/generic
+  // number baked into the page.
+  fetch(`${API}/promo/validate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ code: promoCode }),
+  })
+    .then(r => r.json())
+    .then(d => {
+      const descEl = document.getElementById('txt-offer-desc');
+      if (!d.valid) { descEl.textContent = s.offerFallback; return; }
+      const coins = d.bonus_coins || 0;
+      const pct = d.first_purchase_bonus_pct || 0;
+      if (coins > 0 && pct > 0) {
+        descEl.innerHTML = fmt(s.offerBoth, { coins, pct });
+      } else if (coins > 0) {
+        descEl.innerHTML = fmt(s.offerCoinsOnly, { coins });
+      } else if (pct > 0) {
+        descEl.innerHTML = fmt(s.offerPctOnly, { pct });
+      } else {
+        descEl.textContent = s.offerFallback;
+      }
+      if (d.influencer_name) {
+        document.getElementById('txt-eyebrow').textContent = fmt(s.eyebrowFrom, { name: d.influencer_name });
+      }
+    })
+    .catch(() => {
+      document.getElementById('txt-offer-desc').textContent = s.offerFallback;
     });
 
-    function copyPromoCode() {
-        const code = document.getElementById('promo-code').textContent;
-        navigator.clipboard.writeText(code).then(() => {
-            const btn = document.getElementById('copy-btn');
-            btn.textContent = s.copied;
-            btn.classList.add('copied');
-            setTimeout(() => {
-                btn.textContent = s.copy;
-                btn.classList.remove('copied');
-            }, 2000);
-        });
-    }
+  const currentUrl = `${window.location.origin}/invite?code=${encodeURIComponent(promoCode)}`;
+  new QRCode(document.getElementById('qr-code'), {
+    text: currentUrl,
+    width: 140,
+    height: 140,
+    colorDark: '#1c1b19',
+    colorLight: '#e8e0d4',
+    correctLevel: QRCode.CorrectLevel.H,
+  });
+
+  function copyPromoCode() {
+    navigator.clipboard.writeText(promoCode).then(() => {
+      const btn = document.getElementById('copy-btn');
+      const prev = btn.textContent;
+      btn.textContent = s.copied;
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = prev; btn.classList.remove('copied'); }, 2000);
+    });
+  }
 </script>
 </body>
 </html>
