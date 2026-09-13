@@ -1421,10 +1421,17 @@
               </button>
             </div>
           </div>
-          <div style="margin-top:8px">
-            <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Linked Influencer Email (optional)</label>
-            <input id="pf_email" type="email" placeholder="influencer@example.com"
-              style="width:340px;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:7px 10px;font-size:0.85rem;box-sizing:border-box">
+          <div style="display:flex;gap:16px;margin-top:8px;flex-wrap:wrap">
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Linked Influencer Email (optional)</label>
+              <input id="pf_email" type="email" placeholder="influencer@example.com"
+                style="width:280px;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:7px 10px;font-size:0.85rem;box-sizing:border-box">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px" title="Bonus % of coins credited on their FIRST purchase instead of/alongside Bonus Coins above — can't be spent without a real purchase, unlike an upfront coin gift (e.g. 500 coins fully covers a Day Pass with no purchase at all).">First-Purchase Bonus % (optional)</label>
+              <input id="pf_fpbp" type="number" placeholder="e.g. 50" min="0"
+                style="width:140px;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:7px 10px;font-size:0.85rem;box-sizing:border-box">
+            </div>
           </div>
           <div id="pf_error" style="color:#f87171;font-size:0.82rem;margin-top:8px;display:none"></div>
         </div>
@@ -1433,7 +1440,7 @@
           <table>
             <thead>
               <tr>
-                <th>Code</th><th>Type</th><th>Coins</th><th>Uses</th><th>Linked Email</th><th>Active</th><th>Actions</th>
+                <th>Code</th><th>Type</th><th>Coins</th><th>1st-Purchase %</th><th>Uses</th><th>Linked Email</th><th>Active</th><th>Actions</th>
               </tr>
             </thead>
             <tbody id="promoCodesBody">
@@ -3837,11 +3844,12 @@ function renderPromoCodes(data) {
   const typeColor = { influencer: 'purple', own_campaigns: 'blue', mgm: 'primary' };
 
   document.getElementById('promoCodesBody').innerHTML = codes.length === 0
-    ? `<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:20px">No promo codes yet.</td></tr>`
+    ? `<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">No promo codes yet.</td></tr>`
     : codes.map(c => `<tr>
         <td style="font-family:monospace;font-weight:700;color:var(--primary)">${c.code}</td>
         <td><span class="pill badge-${typeColor[c.type] || 'blue'}">${c.type || '—'}</span></td>
         <td>${fmt(c.bonus_coins)}</td>
+        <td>${c.first_purchase_bonus_pct ? c.first_purchase_bonus_pct + '%' : '—'}</td>
         <td>${fmt(c.uses_count || 0)}</td>
         <td style="font-size:0.78rem;color:var(--muted)">${c.influencer_email || '—'}</td>
         <td><span class="pill badge-${c.is_active ? 'green' : 'orange'}">${c.is_active ? 'Active' : 'Inactive'}</span></td>
@@ -3865,6 +3873,7 @@ function showAddPromoForm() {
   document.getElementById('pf_coins').value = '500';
   document.getElementById('pf_type').value = 'own_campaigns';
   document.getElementById('pf_email').value = '';
+  document.getElementById('pf_fpbp').value = '';
   document.getElementById('pf_error').style.display = 'none';
   document.getElementById('pf_saveBtn').textContent = 'Create';
   document.getElementById('promoForm').style.display = 'block';
@@ -3877,6 +3886,7 @@ function editPromoCode(c) {
   document.getElementById('pf_coins').value = c.bonus_coins ?? 500;
   document.getElementById('pf_type').value = c.type || 'own_campaigns';
   document.getElementById('pf_email').value = c.influencer_email || '';
+  document.getElementById('pf_fpbp').value = c.first_purchase_bonus_pct ?? '';
   document.getElementById('pf_error').style.display = 'none';
   document.getElementById('pf_saveBtn').textContent = 'Update';
   document.getElementById('promoForm').style.display = 'block';
@@ -3894,6 +3904,8 @@ async function submitPromoForm() {
   const bonus_coins = parseInt(document.getElementById('pf_coins').value);
   const type = document.getElementById('pf_type').value;
   const influencer_email = document.getElementById('pf_email').value.trim() || null;
+  const fpbpRaw = document.getElementById('pf_fpbp').value.trim();
+  const first_purchase_bonus_pct = fpbpRaw === '' ? null : parseInt(fpbpRaw);
 
   if (!_promoEditingCode && !code) { errEl.textContent = 'Code is required'; errEl.style.display = 'block'; return; }
 
@@ -3901,6 +3913,7 @@ async function submitPromoForm() {
     if (_promoEditingCode) {
       const body = { bonus_coins, type };
       if (influencer_email !== null) body.influencer_email = influencer_email;
+      if (first_purchase_bonus_pct !== null) body.first_purchase_bonus_pct = first_purchase_bonus_pct;
       const r = await fetch(`${API}/admin/promo-codes/${_promoEditingCode}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
@@ -3910,6 +3923,7 @@ async function submitPromoForm() {
     } else {
       const body = { code, bonus_coins, type, is_active: true };
       if (influencer_email) body.influencer_email = influencer_email;
+      if (first_purchase_bonus_pct !== null) body.first_purchase_bonus_pct = first_purchase_bonus_pct;
       const r = await fetch(`${API}/admin/promo-codes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
