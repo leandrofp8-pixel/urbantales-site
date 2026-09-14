@@ -1,0 +1,38 @@
+{
+  "badge_num": 12,
+  "city": "LONDON",
+  "flag": "🇬🇧",
+  "cta_screenshot": "screen-london-bigben-map.png",
+  "style": "minimal",
+  "caption": "See caption.txt in this folder.",
+  "facts": [
+    {
+      "headline": "The tower everyone calls \"Big Ben\" isn't actually named that",
+      "hook": "Big Ben is actually the nickname of the 13.5-tonne bell inside — the tower itself was only officially renamed Elizabeth Tower in 2012."
+    },
+    {
+      "headline": "Legend says the kingdom falls the day these six birds leave",
+      "hook": "Since Charles II's reign, the Tower of London has kept six ravens with clipped wings, guarding a legend that the Crown falls the day they leave."
+    },
+    {
+      "headline": "Buckingham Palace has more rooms than most hotels",
+      "hook": "Buckingham Palace contains 775 rooms in total — including 92 offices, 78 bathrooms, and 188 staff bedrooms."
+    },
+    {
+      "headline": "The world's first underground railway opened here in 1863",
+      "hook": "The Metropolitan Railway between Paddington and Farringdon became the world's first underground passenger railway, running steam trains through smoke-filled tunnels in 1863."
+    },
+    {
+      "headline": "A Victorian time capsule has sat buried under this obelisk since 1878",
+      "hook": "Buried beneath this obelisk since 1878 sits a sealed time capsule packed with cigars, a baby's bottle, and photos of a dozen Victorian women."
+    },
+    {
+      "headline": "A tiny park hides ceramic tributes to strangers who died saving strangers",
+      "hook": "Postman's Park hides dozens of Victorian ceramic tablets, each honoring an ordinary Londoner who died saving someone else's life."
+    },
+    {
+      "headline": "Knights Templar effigies still lie inside this 800-year-old church",
+      "hook": "Built by the Knights Templar in the 12th century, Temple Church still holds stone knight effigies — and inspired a key scene in The Da Vinci Code."
+    }
+  ]
+}
