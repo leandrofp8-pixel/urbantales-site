@@ -1,0 +1,62 @@
+{
+  "badge_num": 12,
+  "city": "LONDON",
+  "flag": "🇬🇧",
+  "cta_screenshot": "screen-london-bigben-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> 'CONNECT tunnel failed, response 403' and via the WebFetch tool -> 'EGRESS_BLOCKED'; the agent-proxy status endpoint at $HTTPS_PROXY/__agentproxy/status logs it as a policy denial: 'gateway answered 403 to CONNECT'). No Pexels API key is available in this environment either. This is the same block that hit batch #8 (Amsterdam), #9 (Barcelona), #10 (Vienna), and #11 (Berlin) — five runs in a row now. No candidate photos could be downloaded this run. 'candidates' arrays are empty; 'suggested_queries' lists the Commons search terms to run from an environment with open network access, per GUIDELINES.md's instruction to note the gap rather than block the batch.",
+  "caption": "London's most famous clock tower isn't actually called Big Ben — and legend says the monarchy falls the day six ravens leave one particular fortress. 👀\n\nComment your guess for which one before you swipe ⬇️\n\n.\n.\n.\n#London #LondonTravel #HiddenGems #TravelFacts #TowerOfLondon #BigBen #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "The tower everyone calls \"Big Ben\" isn't actually named that",
+      "body_html": "\"Big Ben\" is the nickname of the <b>13.5-tonne bell</b> hanging inside the clock tower at the Palace of Westminster — the tower itself is officially the <b>Elizabeth Tower</b>, renamed in 2012 for the Queen's Diamond Jubilee.",
+      "candidates": [],
+      "suggested_queries": ["Elizabeth Tower Big Ben London clock face", "Palace of Westminster clock tower exterior"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "Legend says the kingdom falls the day these six birds leave",
+      "body_html": "Since Charles II's reign, the Tower of London has kept at least <b>six ravens</b> on site, guarding against an old legend that if they ever leave, the <b>Crown itself will fall</b>. Their wings are still clipped today, just in case.",
+      "candidates": [],
+      "suggested_queries": ["Tower of London ravens Yeoman Ravenmaster", "Tower of London raven close up"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "Buckingham Palace has more rooms than most hotels",
+      "body_html": "The Palace contains <b>775 rooms</b> in total — including 92 offices, 78 bathrooms, and 188 staff bedrooms — making it one of the largest working royal residences still in use anywhere on Earth.",
+      "candidates": [],
+      "suggested_queries": ["Buckingham Palace facade aerial", "Buckingham Palace forecourt gates"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "The world's first underground railway opened here in 1863",
+      "body_html": "The Metropolitan Railway between Paddington and Farringdon became the <b>world's first underground passenger railway</b>, running steam locomotives through smoke-filled tunnels more than 160 years ago.",
+      "candidates": [],
+      "suggested_queries": ["London Underground Metropolitan line historic station", "Baker Street tube station platform old"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "A Victorian time capsule has sat buried under this obelisk since 1878",
+      "body_html": "Beneath <b>Cleopatra's Needle</b> on the Victoria Embankment sits a sealed time capsule from 1878, packed with items like a box of cigars, a baby's bottle, and photographs of a dozen \"pretty Englishwomen\" of the day.",
+      "candidates": [],
+      "suggested_queries": ["Cleopatra's Needle Victoria Embankment London", "Cleopatra's Needle obelisk sphinx base"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "A tiny park hides ceramic tributes to strangers who died saving strangers",
+      "body_html": "Tucked inside <b>Postman's Park</b>, the Memorial to Heroic Self-Sacrifice holds dozens of Victorian ceramic tablets, each honoring an ordinary Londoner who <b>died saving someone else's life</b>.",
+      "candidates": [],
+      "suggested_queries": ["Postman's Park Memorial Heroic Self-Sacrifice tiles", "Postman's Park London memorial wall"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "Knights Templar effigies still lie inside this 800-year-old church",
+      "body_html": "Built by the <b>Knights Templar</b> in the 12th century, Temple Church still holds stone effigies of medieval knights on its floor — and later inspired a key scene in <b>The Da Vinci Code</b>.",
+      "candidates": [],
+      "suggested_queries": ["Temple Church London knight effigies interior", "Temple Church London round nave exterior"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["London skyline aerial River Thames Parliament", "London skyline sunset Thames bridges"]
+}
