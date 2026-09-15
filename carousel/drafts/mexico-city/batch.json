@@ -1,0 +1,38 @@
+{
+  "badge_num": 1,
+  "city": "MEXICO CITY",
+  "flag": "🇲🇽",
+  "cta_screenshot": "screen-cdmx-zocalo-map.png",
+  "style": "minimal",
+  "caption": "Mexico City's Cathedral was deliberately built on top of the Aztecs' most sacred temple — and one of its famous pyramids is 1,000 years older than the people everyone credits it to. 👀\n\nComment your guess for which one before you swipe ⬇️\n\n1. Metropolitan Cathedral\nWhen the Spanish conquered Tenochtitlan, they tore down the Aztecs' most sacred temple and built the Cathedral on the exact same spot — a deliberate move to erase one religion and plant another in its place.\n\n2. Angel of Independence\nThe Angel of Independence is bronze sheeted in genuine 24-karat gold. It's fallen once — a 1957 earthquake knocked the statue clean off its column, shattering it into pieces.\n\n3. Chapultepec Castle\nThe castle became home to Emperor Maximilian I and Empress Carlota in the 1860s. Decades earlier, it was the site of a US Army siege in 1847 — Mexican cadets as young as 13 died defending it.\n\n4. UNAM\nFounded in 1551, UNAM / Royal University became the first university in the Americas — almost a century before Harvard existed, while most of North America hadn't even seen a European settler yet.\n\n5. The sinking city\nMexico City was built over a lake the Aztecs drained centuries ago. The old lakebed is still settling under the weight of the modern city, so the ground quite literally sinks beneath your feet — up to 20 inches a year in some areas.\n\n6. Paseo de la Reforma\nIn the 1860s, Mexico's emperor wanted a grand boulevard to rival Europe's capitals, so Paseo de la Reforma was designed in the style of the Champs-Élysées — and it's stayed the city's most elegant avenue ever since.\n\n7. Teotihuacan\nTeotihuacan, located about an hour from Mexico City, was built over 1,000 years before the Aztecs even arrived in the region. When the Aztecs found the abandoned city centuries later, they were so stunned they assumed it was built by gods.\n\n.\n.\n.\n#MexicoCity #CDMX #HiddenGems #TravelFacts #Teotihuacan #AngelDeLaIndependencia #UrbanTales",
+  "facts": [
+    {
+      "headline": "The Cathedral at Zócalo sits on an Aztec temple",
+      "hook": "When the Spanish conquered Tenochtitlan, they tore down the Aztecs' most sacred temple and built this Cathedral on the exact same spot."
+    },
+    {
+      "headline": "That angel is wrapped in real gold",
+      "hook": "The Angel of Independence is sheeted in genuine 24-karat gold — a 1957 earthquake once knocked the statue clean off its column."
+    },
+    {
+      "headline": "Chapultepec Castle housed real royalty",
+      "hook": "Chapultepec Castle became home to Emperor Maximilian I and Empress Carlota in the 1860s, after cadets as young as 13 died defending it."
+    },
+    {
+      "headline": "This university is older than Harvard",
+      "hook": "Founded in 1551, UNAM became the first university in the Americas — almost a century before Harvard even existed."
+    },
+    {
+      "headline": "The city is sinking, right now",
+      "hook": "Mexico City was built over a lake the Aztecs drained centuries ago, and the old lakebed still sinks beneath the city today."
+    },
+    {
+      "headline": "This avenue feels like Paris",
+      "hook": "Mexico's 1860s emperor wanted a grand boulevard to rival Europe, so Paseo de la Reforma was designed in the style of the Champs-Élysées."
+    },
+    {
+      "headline": "The pyramids everyone calls \"Aztec\" aren't Aztec",
+      "hook": "Teotihuacan was built over 1,000 years before the Aztecs arrived — when they found the abandoned city, they assumed it was built by gods."
+    }
+  ]
+}
