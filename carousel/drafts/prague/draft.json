@@ -1,0 +1,62 @@
+{
+  "badge_num": 13,
+  "city": "PRAGUE",
+  "flag": "🇨🇿",
+  "cta_screenshot": "screen-prague-oldtown-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> 'CONNECT tunnel failed, response 403'; the agent-proxy status endpoint at $HTTPS_PROXY/__agentproxy/status logs it as a policy denial: 'gateway answered 403 to CONNECT (policy denial or upstream failure)', host commons.wikimedia.org:443). This is the same block that hit batch #8 (Amsterdam), #9 (Barcelona), #10 (Vienna), #11 (Berlin), and #12 (London) — six runs in a row now with no working photo-sourcing path in this environment. No Pexels API key is available either. No candidate photos could be downloaded this run; 'candidates' arrays are empty and 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access. Facts themselves were researched and verified via WebSearch, which is not subject to this block.",
+  "caption": "Prague allegedly blinded the man who built its famous clock — and chemists really did find egg yolk baked into the mortar of the bridge next door. 👀\n\nComment your guess for which one shocked you more before you swipe ⬇️\n\n.\n.\n.\n#Prague #PragueTravel #HiddenGems #TravelFacts #CharlesBridge #AstronomicalClock #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Legend says Prague blinded the man who built this clock",
+      "body_html": "According to legend, the city had clockmaker <b>Hanuš</b> blinded the moment he finished the Astronomical Clock's astronomical dial in 1490 so he could never build another one — he responded by reaching into the gears and <b>sabotaging the mechanism</b>, which reportedly sat broken for decades.",
+      "candidates": [],
+      "suggested_queries": ["Prague Astronomical Clock Orloj close up dial", "Old Town Hall tower Prague clock exterior"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "Chemists found real egg yolk baked into this bridge's mortar",
+      "body_html": "Legend claims King Charles IV ordered eggs mixed into the mortar of Charles Bridge, whose construction began at an astrologer-picked palindrome moment in <b>1357</b> — a 2008 lab analysis of the original mortar actually turned up <b>egg protein residue</b>, though a follow-up study in 2010 disputed the find.",
+      "candidates": [],
+      "suggested_queries": ["Charles Bridge Prague statues sunrise", "Charles Bridge Prague towers Vltava river"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "This is the largest ancient castle complex on Earth",
+      "body_html": "Guinness World Records recognizes Prague Castle as the <b>largest ancient castle complex in the world</b>, its core covering roughly <b>70,000 square meters</b> — about the size of seven football pitches.",
+      "candidates": [],
+      "suggested_queries": ["Prague Castle aerial St Vitus Cathedral", "Prague Castle courtyard exterior"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "A building nicknamed after two Hollywood dancers",
+      "body_html": "Architect Frank Gehry designed this <b>1996</b> office building to look like two dancers mid-move, nicknaming it <b>'Fred and Ginger'</b> after Fred Astaire and Ginger Rogers — it rose on a riverfront lot left empty since a 1945 bombing.",
+      "candidates": [],
+      "suggested_queries": ["Dancing House Prague Gehry building", "Dancing House Prague Rasinovo nabrezi facade"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "Communist police repainted this wall for a decade — it never stopped",
+      "body_html": "After John Lennon's death in 1980, Prague's secret police painted over the graffiti tribute to him again and again — but new art kept appearing overnight until the <b>1989 Velvet Revolution</b>, when the wall was finally left alone for good.",
+      "candidates": [],
+      "suggested_queries": ["John Lennon Wall Prague graffiti", "Lennon Wall Prague Kampa Island close up"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "Some graves here are stacked twelve deep",
+      "body_html": "Space in Prague's old Jewish quarter was so limited that when the Old Jewish Cemetery ran out of room, more soil was simply added on top — creating up to <b>12 layers of burials</b> beneath roughly <b>12,000 visible tombstones</b>.",
+      "candidates": [],
+      "suggested_queries": ["Old Jewish Cemetery Prague tombstones", "Old Jewish Cemetery Prague Josefov overview"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "Ten giant babies are crawling up Prague's tallest tower",
+      "body_html": "Artist <b>David Černý</b> installed 10 giant bronze babies with barcodes for faces onto the Žižkov Television Tower in 2000 — meant to be temporary, they proved so popular they're <b>still crawling up it today</b>.",
+      "candidates": [],
+      "suggested_queries": ["Zizkov Television Tower Prague babies sculpture", "Zizkov Tower Prague David Cerny baby closeup"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Prague skyline aerial Vltava river red roofs", "Prague Old Town skyline sunset Castle"]
+}
