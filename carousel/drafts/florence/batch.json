@@ -1,0 +1,38 @@
+{
+  "badge_num": 6,
+  "city": "FLORENCE",
+  "flag": "🇮🇹",
+  "cta_screenshot": "screen-florence-duomo-map.png",
+  "style": "minimal",
+  "caption": "A clockmaker built the world's largest dome, and six centuries later nobody has beaten it — and the David everyone photographs in the square is actually a fake. 👀\n\nComment your guess for which fact surprised you most before you swipe ⬇️\n\n1. The Duomo\nFor years no architect could figure out how to cover the top of the Duomo. Then clockmaker Filippo Brunelleschi designed a double-shell technique that needed no scaffolding, and built the largest dome in the world. Six centuries later, no one has built a bigger one.\n\n2. Ponte Vecchio\nThe Medici built a private tunnel above the Ponte Vecchio to avoid mixing with the public. The problem: the bridge was packed with butcher stalls, and the smell was very bad. So they evicted every butcher and brought in goldsmiths — the bridge still sells only gold today.\n\n3. Piazza della Signoria\nThe original David statue, carved by Michelangelo, stood outside in the Piazza della Signoria for nearly 370 years. Officials finally moved it indoors for its own protection in 1873; the one standing in the square since 1910 is a replica.\n\n4. Palazzo Vecchio\nLegend says a man kept stopping Michelangelo to talk, day after day, while he worked on Palazzo Vecchio. One day, fed up, Michelangelo carved the man's profile into the stone, immortalizing his annoyance in the wall forever.\n\n5. Santa Croce\nMichelangelo died in Rome in 1564, and the Pope wanted him buried there permanently. Instead, his body was secretly taken at night and brought back to Florence, the city he considered home, and buried at Santa Croce.\n\n6. The old streets\nFlorence paved its streets in the 14th century — the first city in Europe to do it, generations before any other capital.\n\n7. The wine windows\nTiny wine windows were cut into palace walls in the 1600s to sell wine without opening the door during the Plague. Forgotten for centuries, until 2020, when Florence reopened the exact same holes to serve drinks, untouched during COVID.\n\n.\n.\n.\n#Florence #Firenze #HiddenGems #TravelFacts #Duomo #PonteVecchio #UrbanTales",
+  "facts": [
+    {
+      "headline": "A clockmaker built the world's largest dome",
+      "hook": "No architect could figure out how to cap the Duomo, until clockmaker Filippo Brunelleschi built the largest dome in the world — still unbeaten."
+    },
+    {
+      "headline": "This bridge only sells gold because of a smell",
+      "hook": "The Medici built a private tunnel over Ponte Vecchio to avoid the public — then evicted its smelly butchers for goldsmiths, who never left."
+    },
+    {
+      "headline": "The David everyone photographs is a fake",
+      "hook": "Michelangelo's original David stood outside for nearly 370 years before being moved indoors — the one in the square today is a replica."
+    },
+    {
+      "headline": "Michelangelo carved a face out of pure annoyance",
+      "hook": "Legend says a man kept interrupting Michelangelo while he worked on Palazzo Vecchio, so he carved the man's profile into the wall out of spite."
+    },
+    {
+      "headline": "Florence smuggled Michelangelo's body back",
+      "hook": "Michelangelo died in Rome in 1564 and the Pope wanted him buried there — instead his body was secretly brought back to Florence at night."
+    },
+    {
+      "headline": "You're walking on Europe's first paved streets",
+      "hook": "Florence paved its streets in the 14th century, the first city in Europe to do it — generations before any other capital followed."
+    },
+    {
+      "headline": "A 400-year-old trick came back during COVID",
+      "hook": "Tiny wine windows were cut into palace walls in the 1600s to sell wine during the plague — Florence reopened the same holes in 2020."
+    }
+  ]
+}
