@@ -2004,7 +2004,7 @@ function timeAgo(iso) {
 // ══════════════════════════════════════════════
 // OVERVIEW
 // ══════════════════════════════════════════════
-function renderOverview(funnel, freeUsers, revenue) {
+function renderOverview(funnel, freeUsers, revenue, themeBreakdown) {
   const t = funnel.totals;
   const r = funnel.rates;
 
@@ -2022,7 +2022,11 @@ function renderOverview(funnel, freeUsers, revenue) {
       r.activation_rate > 60 ? 'green' : r.activation_rate > 30 ? 'yellow' : 'red') +
     kpiCard('Conversion Rate', fmtPct(r.conversion_rate), 'Free → paid',
       r.conversion_rate > 5 ? '↑ Strong' : r.conversion_rate > 2 ? '→ Average' : '↓ Low',
-      r.conversion_rate > 5 ? 'green' : r.conversion_rate > 2 ? 'yellow' : 'orange');
+      r.conversion_rate > 5 ? 'green' : r.conversion_rate > 2 ? 'yellow' : 'orange') +
+    (themeBreakdown ? kpiCard('Light Mode Adoption',
+      fmtPct(themeBreakdown.light_pct),
+      `${fmt(themeBreakdown.light)} of ${fmt(themeBreakdown.total)} users opted in · rest still on default dark`,
+      null, null) : '');
 
   // Build date range from (today - days) to today in UTC, filling missing days with zeros
   const rawDaily = [...(funnel.daily_data || [])].reverse();
@@ -4915,7 +4919,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -4941,9 +4945,10 @@ async function loadAllData() {
       api(`/admin/analytics/growth-experiment`).catch(() => null),
       api(`/admin/analytics/quota-experiment`).catch(() => null),
       api(`/admin/analytics/review-prompt`).catch(() => null),
+      api(`/admin/analytics/theme-breakdown`).catch(() => null),
     ]);
 
-    renderOverview(funnel, freeUsers, revenue);
+    renderOverview(funnel, freeUsers, revenue, themeBreakdown);
     renderFunnel(cohortFunnel, funnel, freeUsers);
     renderCohorts(cohortsMonthly);
     renderMAU(mau);
