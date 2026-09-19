@@ -1,0 +1,38 @@
+{
+  "badge_num": 3,
+  "city": "ROME",
+  "flag": "🇮🇹",
+  "cta_screenshot": "screen-colosseum-map.png",
+  "style": "minimal",
+  "caption": "The Pantheon's dome is pure unreinforced concrete, and after 2,000 years nobody has ever built a bigger one — and there's an entire second country hiding inside Rome's city limits. 👀\n\nComment your guess for which fact surprised you most before you swipe ⬇️\n\n1. The Pantheon\nThe Pantheon is made of pure unreinforced concrete — no steel, no support — and after almost two millennia, nobody has built a bigger dome. Modern engineers still study how the Romans did it.\n\n2. The Colosseum\nFor its opening games in 80 AD, the arena was filled with water and scaled-down warships fought inside it. The underneath tunnels you see today are the reason the sea battles ended, as they made the flooding impossible.\n\n3. Trevi Fountain\nTourists toss in roughly €1.3 million a year to the Trevi Fountain. Every night, workers collect the coins — and all of it goes to charity.\n\n4. Vatican City\nVatican City is the smallest independent state on Earth (0.44 km²) and it sits right in the middle of Rome. You can be walking down a Roman street and simply cross into another country without realizing it.\n\n5. Passetto del Borgo\nThe Passetto del Borgo is a hidden elevated passage connecting the Vatican to Castel Sant'Angelo. In 1527, a pope literally ran for his life through it while Rome was being sacked around him.\n\n6. Palatine Hill\nRoman emperors built their residences on Palatine Hill — \"palatium\" in Latin. Every palace in every language is, without knowing it, named after this one spot in Rome.\n\n7. The Roman Forum\nCenturies of rebuilding mean today's streets sit meters above the ancient ones. Basilicas, houses, and entire streets lie buried beneath the modern city — many still unexcavated.\n\n.\n.\n.\n#Rome #Italy #HiddenGems #TravelFacts #Colosseum #Pantheon #UrbanTales",
+  "facts": [
+    {
+      "headline": "This 2,000-year-old dome is still the world's largest",
+      "hook": "The Pantheon is pure unreinforced concrete — no steel, no support — and after two millennia, nobody has built a bigger dome."
+    },
+    {
+      "headline": "The Colosseum was once flooded for naval battles",
+      "hook": "For its opening games in 80 AD, the arena was flooded and scaled-down warships fought inside — until tunnels made it impossible."
+    },
+    {
+      "headline": "This fountain collects about €3,000 every day",
+      "hook": "Tourists toss roughly €1.3 million a year into the Trevi Fountain. Workers collect the coins nightly — and it all goes to charity."
+    },
+    {
+      "headline": "There's an entire country hiding inside Rome",
+      "hook": "Vatican City is the smallest independent state on Earth at 0.44 km² — you can cross into another country without even realizing it."
+    },
+    {
+      "headline": "The Vatican has a secret escape corridor to Rome",
+      "hook": "The Passetto del Borgo secretly connects the Vatican to Castel Sant'Angelo — in 1527, a pope literally ran through it for his life."
+    },
+    {
+      "headline": "The word \"palace\" comes from this exact hill",
+      "hook": "Roman emperors built their residences on Palatine Hill — \"palatium\" in Latin. Every palace in every language is named after this spot."
+    },
+    {
+      "headline": "There's a second Rome underneath Rome",
+      "hook": "Centuries of rebuilding mean today's streets sit meters above the ancient ones — entire buried streets remain unexcavated."
+    }
+  ]
+}
