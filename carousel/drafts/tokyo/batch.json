@@ -1,0 +1,38 @@
+{
+  "badge_num": 2,
+  "city": "TOKYO",
+  "flag": "🇯🇵",
+  "cta_screenshot": "screen-tokyo-sensoji-map.png",
+  "style": "minimal",
+  "caption": "At the peak of Japan's 1980s bubble, the grounds of the Imperial Palace alone were valued higher than all of California — and the city's most iconic mountain view isn't even inside city limits. 👀\n\nComment your guess for which fact surprised you most before you swipe ⬇️\n\n1. Imperial Palace\nAt the peak of Japan's 1980s real estate bubble, the grounds of the Imperial Palace — just 1.32 square miles — were valued higher than all real estate in California combined.\n\n2. Senso-ji\nSenso-ji in Asakusa was nearly destroyed in WWII Allied firebombing raids that killed over 80,000 people in a single night — the deadliest bombing raid in history. The temple was rebuilt, and today receives 30 million visitors a year.\n\n3. Shibuya Crossing\nUp to 2,500 people cross Shibuya Crossing simultaneously from every direction, with zero collisions. No designated lanes, no enforced paths. It just works.\n\n4. Shinjuku Station\nShinjuku Station serves over 3.5 million passengers daily. First-time visitors routinely get lost for hours and locals give directions by exit number, not street names — the station has around 200 exits.\n\n5. Tokyo Tower\nTokyo Tower was deliberately modeled on Paris's icon. It was built in 1958 as a symbol of Japan's post-war rebirth, and it stands 13 meters taller than its inspiration.\n\n6. Edo\nFor centuries Tokyo was called Edo — a small fishing village that grew into the world's largest city by the 1720s, a full century before London or New York came close. The name only changed to Tokyo in 1868.\n\n7. Mount Fuji\nOn clear days you can see Mount Fuji from the city. It's been an active volcano for 100,000 years, last erupted in 1707, and is still classified as potentially active today.\n\n.\n.\n.\n#Tokyo #Japan #HiddenGems #TravelFacts #ShibuyaCrossing #TokyoTower #UrbanTales",
+  "facts": [
+    {
+      "headline": "This garden was once worth more than California",
+      "hook": "At the peak of Japan's 1980s bubble, the Imperial Palace grounds — 1.32 square miles — were valued higher than all of California."
+    },
+    {
+      "headline": "Its most visited temple was almost lost forever",
+      "hook": "Senso-ji nearly burned down in a WWII firebombing raid that killed 80,000 people in one night — the deadliest bombing raid in history."
+    },
+    {
+      "headline": "This crossing has no traffic rules, just trust",
+      "hook": "Up to 2,500 people cross Shibuya Crossing at once from every direction, with no enforced lanes — and somehow, zero collisions."
+    },
+    {
+      "headline": "The world's busiest train station has 200 exits",
+      "hook": "Shinjuku Station serves 3.5 million passengers daily — locals give directions by exit number, not street names, since it's that easy to get lost."
+    },
+    {
+      "headline": "That tower looks exactly like the Eiffel Tower",
+      "hook": "Tokyo Tower was modeled on Paris's icon, built in 1958 as a symbol of postwar rebirth — and stands 13 meters taller than its inspiration."
+    },
+    {
+      "headline": "Tokyo wasn't always called Tokyo",
+      "hook": "For centuries Tokyo was called Edo, a fishing village that grew into the world's largest city by the 1720s — a century before London or New York."
+    },
+    {
+      "headline": "Tokyo's most iconic view isn't even in Tokyo",
+      "hook": "On clear days you can see Mount Fuji from the city — an active volcano for 100,000 years, still classified as potentially active today."
+    }
+  ]
+}
