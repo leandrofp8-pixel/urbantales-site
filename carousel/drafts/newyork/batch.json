@@ -1,0 +1,38 @@
+{
+  "badge_num": 4,
+  "city": "NEW YORK",
+  "flag": "🇺🇸",
+  "cta_screenshot": "screen-newyork-brooklyn-map.png",
+  "style": "minimal",
+  "caption": "You're picnicking on top of 20,000 bodies in one of the most popular parks in Manhattan — and New York City itself was once traded away for a tiny island of nutmeg. 👀\n\nComment your guess for which fact surprised you most before you swipe ⬇️\n\n1. Washington Square Park\nBefore it became a hub for musicians and students, Washington Square Park was a public execution site and a potter's field. An estimated 20,000+ people are still buried beneath the lawns.\n\n2. Grand Central Terminal\nTrack 61 was used by President Franklin D. Roosevelt to travel secretly from Grand Central to the hotel Waldorf Astoria, hiding his polio-related mobility struggles from the public. It's still there, sealed beneath one of the world's most famous hotels.\n\n3. Central Park\nEvery hill, lake, and forest in Central Park was hand-built in the 1850s. Buried beneath it are the ruins of Seneca Village, a thriving Black community demolished to build the park.\n\n4. Empire State Building\nThe spire wasn't decorative — it was designed as a mooring mast for airships. The plan was abandoned after the Hindenburg disaster, and the mast became a broadcast antenna instead.\n\n5. Brooklyn Bridge\nThe bridge's basement vaults stored wine and champagne for decades. In 2006, inspectors exploring them found a fully stocked Cold War-era bomb shelter hidden inside.\n\n6. New Amsterdam\nIn 1667, the Dutch gave New Amsterdam (today's New York) to the British in exchange for Run, a tiny spice island in Indonesia. At the time nutmeg was worth more than gold — arguably the worst trade in history.\n\n7. 6½ Avenue\nManhattan has a secret half-avenue. \"6½ Avenue\" is a real, signposted pedestrian passage running between 51st and 57th Street that most New Yorkers walk past without ever noticing.\n\n.\n.\n.\n#NewYork #NYC #HiddenGems #TravelFacts #CentralPark #BrooklynBridge #UrbanTales",
+  "facts": [
+    {
+      "headline": "You're picnicking on top of 20,000 bodies",
+      "hook": "Washington Square Park was once a public execution site and a potter's field — over 20,000 people are still buried beneath its lawns today."
+    },
+    {
+      "headline": "There's a secret train platform under a hotel",
+      "hook": "Track 61 let FDR travel secretly from Grand Central to the Waldorf Astoria, hiding his polio-related struggles — it's still sealed down there."
+    },
+    {
+      "headline": "Central Park is 100% man-made",
+      "hook": "Every hill, lake, and forest in Central Park was hand-built in the 1850s — buried beneath it are the ruins of Seneca Village, razed to build it."
+    },
+    {
+      "headline": "That spire was never meant for antennas",
+      "hook": "The Empire State Building's spire was designed as a mooring mast for airships — until the Hindenburg disaster turned it into a broadcast antenna."
+    },
+    {
+      "headline": "The Brooklyn Bridge has a hidden bomb shelter",
+      "hook": "The Brooklyn Bridge's basement vaults stored wine and champagne for decades — until 2006 inspectors found a Cold War bomb shelter hidden inside."
+    },
+    {
+      "headline": "New York was once traded away for nutmeg",
+      "hook": "In 1667, the Dutch gave New Amsterdam to the British for a tiny nutmeg island in Indonesia — arguably the worst trade in history."
+    },
+    {
+      "headline": "Manhattan has a secret half-avenue",
+      "hook": "\"6½ Avenue\" is a real, signposted passage between 51st and 57th Street — most New Yorkers walk past it without ever noticing."
+    }
+  ]
+}
