@@ -1053,13 +1053,14 @@
                   <th>Name</th>
                   <th>Code</th>
                   <th>Signups</th>
+                  <th>Activated</th>
                   <th>Purchased</th>
                   <th>Conv.</th>
                   <th>Revenue</th>
                 </tr>
               </thead>
               <tbody id="topInfluencersBody">
-                <tr><td colspan="6" class="loading">Loading…</td></tr>
+                <tr><td colspan="7" class="loading">Loading…</td></tr>
               </tbody>
             </table>
           </div>
@@ -1081,13 +1082,14 @@
                   <th>Name</th>
                   <th>Code</th>
                   <th>Signups</th>
+                  <th>Activated</th>
                   <th>Purchased</th>
                   <th>Conv.</th>
                   <th>Revenue</th>
                 </tr>
               </thead>
               <tbody id="topMgmBody">
-                <tr><td colspan="6" class="loading">Loading…</td></tr>
+                <tr><td colspan="7" class="loading">Loading…</td></tr>
               </tbody>
             </table>
           </div>
@@ -3047,13 +3049,14 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
   // ── Top Influencers leaderboard ──
   const topInf = acq.top_influencers || [];
   document.getElementById('topInfluencersBody').innerHTML = topInf.length === 0
-    ? `<tr><td colspan="6" class="loading">No influencer activity yet.</td></tr>`
+    ? `<tr><td colspan="7" class="loading">No influencer activity yet.</td></tr>`
     : topInf.map(r => {
         const cls = r.conversion_rate > 15 ? 'green' : r.conversion_rate > 7 ? 'yellow' : 'orange';
         return `<tr>
           <td><strong>${r.influencer_name || '—'}</strong></td>
           <td style="font-family:monospace;color:var(--muted)">${r.code}</td>
           <td>${fmt(r.signups)}</td>
+          <td>${fmt(r.activated)} <span style="color:var(--muted);font-size:0.78rem">(${(r.activation_rate||0).toFixed(0)}%)</span></td>
           <td>${fmt(r.purchased)}</td>
           <td><span class="pill badge-${cls}">${(r.conversion_rate||0).toFixed(1)}%</span></td>
           <td>$${(r.revenue_usd||0).toFixed(2)}</td>
@@ -3063,13 +3066,14 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
   // ── Top MGM Users leaderboard ──
   const topMgm = acq.top_mgm_users || [];
   document.getElementById('topMgmBody').innerHTML = topMgm.length === 0
-    ? `<tr><td colspan="6" class="loading">No MGM activity yet.</td></tr>`
+    ? `<tr><td colspan="7" class="loading">No MGM activity yet.</td></tr>`
     : topMgm.map(r => {
         const cls = r.conversion_rate > 15 ? 'green' : r.conversion_rate > 7 ? 'yellow' : 'orange';
         return `<tr>
           <td><strong>${r.influencer_name || '—'}</strong></td>
           <td style="font-family:monospace;color:var(--muted)">${r.code}</td>
           <td>${fmt(r.signups)}</td>
+          <td>${fmt(r.activated)} <span style="color:var(--muted);font-size:0.78rem">(${(r.activation_rate||0).toFixed(0)}%)</span></td>
           <td>${fmt(r.purchased)}</td>
           <td><span class="pill badge-${cls}">${(r.conversion_rate||0).toFixed(1)}%</span></td>
           <td>$${(r.revenue_usd||0).toFixed(2)}</td>
@@ -3081,7 +3085,7 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
   document.getElementById('recentReferralsBody').innerHTML = recent.length === 0
     ? `<tr><td colspan="6" class="loading">No referrals yet.</td></tr>`
     : recent.map(r => {
-        const statusCls = r.status === 'purchased' ? 'green' : 'blue';
+        const statusCls = r.status === 'purchased' ? 'green' : r.status === 'activated' ? 'yellow' : 'blue';
         const typeCls   = r.promoter_type === 'influencer' ? 'purple' : 'orange';
         return `<tr>
           <td>${r.invitee_display_name || '—'}<br><span style="font-size:0.75rem;color:var(--muted)">${r.invitee_email_masked || ''}</span></td>
