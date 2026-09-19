@@ -1,0 +1,38 @@
+{
+  "badge_num": 5,
+  "city": "ISTANBUL",
+  "flag": "🇹🇷",
+  "cta_screenshot": "screen-london-bigben-map.png",
+  "style": "minimal",
+  "caption": "This building has changed religion three times in 1,500 years — and 300 years before airplanes existed, a man flew off a tower here and lived. 👀\n\nComment your guess for which fact surprised you most before you swipe ⬇️\n\n1. Hagia Sophia\nBuilt as a Byzantine church in the 6th century, Hagia Sophia became a mosque after the Ottoman conquest in 1453, was turned into a museum in 1935, and in 2020 was converted back into a working mosque. Almost 1,500 years old, and still switching identities.\n\n2. Basilica Cistern\nBuilt in the 6th century under Byzantine Emperor Justinian I, the Basilica Cistern was only rediscovered by locals because they noticed they could lower buckets through their floorboards and pull up fresh water — and sometimes fish.\n\n3. Galata Tower\nHezârfen Ahmed Çelebi launched himself from the Galata Tower with handmade wooden wings and landed safely across the Bosphorus. The sultan rewarded him with a bag of gold, then exiled him, deciding a man who could do anything was too dangerous to keep around.\n\n4. Dolmabahçe Palace\nThe palace's construction cost the equivalent of 35 tons of gold — worth roughly $1.5 billion today. The spending was so extreme it helped push the Ottoman Empire into full financial default less than 20 years later.\n\n5. Maiden's Tower\nA fortuneteller warned a king his daughter would die from a snake bite, so he built Maiden's Tower to lock her away from land. A snake was smuggled in inside a basket of fruit sent to her, and the prophecy came true regardless.\n\n6. Grand Bazaar\nConstruction of the Grand Bazaar began in 1455, making it one of the oldest continuously operating covered markets in the world — 4,000+ shops, still trading today, in the same streets.\n\n7. Two continents\nIstanbul is the only city on Earth split across two continents — Europe and Asia — divided by the Bosphorus Strait. Cross by bridge, tunnel, or ferry, and you've changed continents before your coffee gets cold.\n\n.\n.\n.\n#Istanbul #Turkey #HiddenGems #TravelFacts #HagiaSophia #GalataTower #UrbanTales",
+  "facts": [
+    {
+      "headline": "This building has changed religion three times",
+      "hook": "Built as a Byzantine church in the 6th century, Hagia Sophia became a mosque, then a museum, then a mosque again — almost 1,500 years old."
+    },
+    {
+      "headline": "An entire palace of water was hiding under the city",
+      "hook": "The Basilica Cistern was rediscovered only because locals noticed they could lower buckets through their floorboards and pull up fresh fish."
+    },
+    {
+      "headline": "A man flew here 300 years before airplanes existed",
+      "hook": "In the 17th century, Hezârfen Ahmed Çelebi flew from Galata Tower on wooden wings — the sultan rewarded him, then exiled him as too dangerous."
+    },
+    {
+      "headline": "A single palace helped bankrupt an empire",
+      "hook": "Dolmabahçe Palace cost the equivalent of 35 tons of gold to build — spending so extreme it helped push the Ottoman Empire into default."
+    },
+    {
+      "headline": "A king built this tower to cheat a prophecy",
+      "hook": "A fortuneteller warned a king his daughter would die from a snake bite, so he locked her in Maiden's Tower — the prophecy came true anyway."
+    },
+    {
+      "headline": "People have been haggling here for over 560 years",
+      "hook": "Construction of the Grand Bazaar began in 1455 — over 4,000 shops are still trading today in the same covered streets."
+    },
+    {
+      "headline": "You can walk from one continent to another",
+      "hook": "Istanbul is the only city on Earth split across two continents — cross the Bosphorus by bridge, tunnel, or ferry and you've changed continents."
+    }
+  ]
+}
