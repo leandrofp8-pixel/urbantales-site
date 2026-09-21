@@ -1,0 +1,62 @@
+{
+  "badge_num": 14,
+  "city": "BUENOS AIRES",
+  "flag": "🇦🇷",
+  "cta_screenshot": "screen-buenosaires-caminito-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> exit 56 / HTTP_CODE 000, and the agent-proxy status endpoint at $HTTPS_PROXY/__agentproxy/status logging it as a policy denial: 'gateway answered 403 to CONNECT', host commons.wikimedia.org:443). upload.wikimedia.org, en.wikipedia.org, api.pexels.com and images.pexels.com were also tested and are all blocked the same way — no image-hosting domain in GUIDELINES.md is reachable from this environment. This is the same block that hit batch #8 (Amsterdam), #9 (Barcelona), #10 (Vienna), #11 (Berlin), #12 (London) and #13 (Prague, PR #18, still open) — seven runs in a row now with no working photo-sourcing path in this environment. This looks like a standing environment limitation rather than a one-off, worth checking on the network policy for this scheduled session if candidate photos are needed going forward. No candidate photos could be downloaded this run. 'candidates' arrays are empty; 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access. Facts themselves were researched and verified via WebSearch, which is not subject to this block — it reaches a different (allow-listed) backend than direct HTTPS egress.",
+  "caption": "Buenos Aires buried a 19-year-old alive by mistake — and its president's palace might be painted pink with cow's blood. 👀\n\nComment your guess for which one is true before you swipe ⬇️\n\n.\n.\n.\n#BuenosAires #BuenosAiresTravel #HiddenGems #TravelFacts #RecoletaCemetery #Argentina #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Every Thursday, mothers still march this square in silence",
+      "body_html": "Since 1977, the <b>Madres de Plaza de Mayo</b> have circled this square in white headscarves, carrying photos of children who disappeared under military rule. The protest began when public gatherings were banned — and it <b>still happens every Thursday</b>.",
+      "candidates": [],
+      "suggested_queries": ["Plaza de Mayo Buenos Aires aerial", "Plaza de Mayo Buenos Aires Casa Rosada square"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "A 19-year-old was buried here — and woke up inside her coffin",
+      "body_html": "Rufina Cambaceres collapsed and was declared dead in 1902, then buried at Recoleta Cemetery. The next night, staff found her coffin moved and her <b>fingers bloodied from clawing at the lid</b> — she had likely suffered a cataleptic fit and woken up entombed.",
+      "candidates": [],
+      "suggested_queries": ["Rufina Cambaceres tomb Recoleta Cemetery", "Recoleta Cemetery Buenos Aires mausoleums"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "A tango singer painted this street with leftover boat paint",
+      "body_html": "Caminito was a disused rail siding until tango singer <b>Benito Quinquela Martín</b> painted it into Argentina's most photographed street. The clashing colors trace back to immigrant dockworkers who <b>painted their houses with whatever ship paint was left over</b>.",
+      "candidates": [],
+      "suggested_queries": ["Caminito La Boca Buenos Aires colorful houses", "Caminito street La Boca Buenos Aires"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "A skyscraper built as a 3D map of Dante's Hell, Purgatory and Heaven",
+      "body_html": "Palacio Barolo's <b>22 floors</b> map directly onto the Divine Comedy — hell in the basement, heaven at the top — and its height in meters matches Dante's <b>100 cantos</b> exactly. Its rooftop spire was even built to align with the Southern Cross.",
+      "candidates": [],
+      "suggested_queries": ["Palacio Barolo Buenos Aires exterior", "Palacio Barolo dome interior Buenos Aires"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "The president's pink palace may owe its color to cow's blood",
+      "body_html": "Casa Rosada's signature pink is rumored to come from a 19th-century trick: mixing <b>cow's blood</b> into whitewash to fight off humidity damage. The balcony where <b>Eva Perón</b> famously addressed crowds still overlooks the square today.",
+      "candidates": [],
+      "suggested_queries": ["Casa Rosada Buenos Aires facade balcony", "Casa Rosada pink palace Plaza de Mayo"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "This stadium's nickname came from a birthday present",
+      "body_html": "Boca Juniors' stadium gets its nickname, <b>La Bombonera</b> ('the chocolate box'), from a box of chocolates the architect kept carrying to design meetings — its shape looked just like the tight, steep-walled stadium the team was building.",
+      "candidates": [],
+      "suggested_queries": ["La Bombonera stadium Boca Juniors exterior", "La Bombonera stadium La Boca aerial"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "Tango was too scandalous for Argentina — until Paris said it was fine",
+      "body_html": "Tango was born in the cramped immigrant tenements of <b>San Telmo</b> in the late 1800s, and Argentina's upper class banned it as indecent. It only became respectable at home after it turned <b>fashionable in Paris</b> first.",
+      "candidates": [],
+      "suggested_queries": ["San Telmo Buenos Aires tango dancers street", "San Telmo cobblestone street Buenos Aires"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Buenos Aires skyline aerial Puerto Madero", "Buenos Aires Obelisco Avenida 9 de Julio"]
+}
