@@ -7,6 +7,7 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 
 | Date | Type | City | Post |
 |---|---|---|---|
+| 2026-09-21 | City Guide | Buenos Aires | [blog-buenos-aires-caminito-walk.html](blog-buenos-aires-caminito-walk.html) — A self-guided Caminito walk — and why you leave before dark |
 | 2026-09-16 | Hidden Story | Vienna | [blog-hofburg-vienna-assassination-collar.html](blog-hofburg-vienna-assassination-collar.html) — The Hofburg story Vienna guides rush past |
 | 2026-09-14 | City Guide | Florence | [blog-florence-duomo-self-guided-walk.html](blog-florence-duomo-self-guided-walk.html) — A self-guided Duomo walk that skips Florence's worst lines |
 | 2026-09-11 | Hidden Story | New York | [blog-grand-central-secret-platform.html](blog-grand-central-secret-platform.html) — The secret platform hiding under Grand Central Terminal |
@@ -26,7 +27,6 @@ already in this repo, so the post's CTAs and internal links can point to it.
 
 | Type | City | Angle |
 |---|---|---|
-| City Guide | Buenos Aires | A self-guided La Boca / Caminito route, and when to actually go |
 | Hidden Story | Berlin | What's still standing (and what isn't) at the Brandenburg Gate and the Wall |
 | City Guide | Rio de Janeiro | Corcovado vs. Sugarloaf in one day, self-guided, in the right order |
 | Hidden Story | Amsterdam | The canal-district history most Anne Frank House visitors walk straight past |
