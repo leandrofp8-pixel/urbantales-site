@@ -1246,6 +1246,13 @@
             </label>
             <span style="font-size:0.82rem">Net of Google Maps free quota</span>
           </div>
+          <div style="display:flex;align-items:center;gap:10px;padding-left:20px;border-left:1px solid var(--border)">
+            <label class="toggle-switch">
+              <input type="checkbox" id="ltvViewModeToggle" onchange="_ltvAssumptions.viewMode=this.checked?'company':'per_user'; applyLTVFilters()">
+              <span class="toggle-slider"></span>
+            </label>
+            <span style="font-size:0.82rem" title="Per client (off): average $ per user in the cohort — use this to set max CAC. Company level (on): total $ across the cohort — use this to see overall $ impact.">Per client → Company level</span>
+          </div>
         </div>
         <div id="ltvSummary" style="font-size:0.85rem;color:var(--muted);margin-bottom:14px"></div>
         <div class="table-wrap">
@@ -3232,7 +3239,7 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
 // ══════════════════════════════════════════════
 let _ltvData = null;
 let _ltvFilters = { channel: 'all', platform: 'all', quota_group: 'all', payer: 'all' };
-let _ltvAssumptions = { storeCutPct: 15, taxPct: 0, quotaAware: false };
+let _ltvAssumptions = { storeCutPct: 15, taxPct: 0, quotaAware: false, viewMode: 'per_user' };
 
 function renderLTV(data) {
   _ltvData = data;
@@ -3285,25 +3292,28 @@ function applyLTVFilters() {
   }
 
   const netMultiplier = 1 - (a.storeCutPct / 100) - (a.taxPct / 100);
+  const isCompany = a.viewMode === 'company';
+  const money = n => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   document.getElementById('ltvBody').innerHTML = cohorts.map(c => {
     const cells = horizons.map(h => {
       const n = c.matured[h];
       if (n === 0) return `<td style="color:var(--muted)">—</td>`;
-      const grossAvg = c.grossSums[h] / n;
-      const costAvg = c.costSums[h] / n;
-      const netAvg = grossAvg * netMultiplier - costAvg;
+      const divisor = isCompany ? 1 : n;
+      const grossVal = c.grossSums[h] / divisor;
+      const costVal = c.costSums[h] / divisor;
+      const netVal = grossVal * netMultiplier - costVal;
       const notFullyMatured = n < c.size;
-      const netColor = netAvg < 0 ? 'color:var(--red,#ef4444)' : '';
+      const netColor = netVal < 0 ? 'color:var(--red,#ef4444)' : '';
       return `<td>
-        <span style="${netColor}">$${netAvg.toFixed(2)}</span>
-        <div style="color:var(--muted);font-size:0.7rem">gross $${grossAvg.toFixed(2)} · cost $${costAvg.toFixed(2)}${notFullyMatured ? ` · ${n}/${c.size}` : ''}</div>
+        <span style="${netColor}">${money(netVal)}</span>
+        <div style="color:var(--muted);font-size:0.7rem">gross ${money(grossVal)} · cost ${money(costVal)}${notFullyMatured ? ` · ${n}/${c.size}` : ''}</div>
       </td>`;
     }).join('');
     return `<tr><td><strong>${c.cohort}</strong></td><td>${fmt(c.size)}</td>${cells}</tr>`;
   }).join('');
 
   document.getElementById('ltvSummary').textContent =
-    `${fmt(filtered.length)} users across ${cohorts.length} cohorts. Main number is net (after ${a.storeCutPct}% commission, ${a.taxPct}% avg tax, and serving cost); small text below shows the gross/cost split. A trailing n/total means only that many users in the cohort are old enough to have reached that horizon — the average is computed only over them.`;
+    `${fmt(filtered.length)} users across ${cohorts.length} cohorts. Main number is net (after ${a.storeCutPct}% commission, ${a.taxPct}% avg tax, and serving cost), shown ${isCompany ? 'as a company-wide total' : 'per client (average)'}; small text below shows the gross/cost split. A trailing n/total means only that many users in the cohort are old enough to have reached that horizon — the ${isCompany ? 'total' : 'average'} is computed only over them.`;
 }
 
 // ══════════════════════════════════════════════
