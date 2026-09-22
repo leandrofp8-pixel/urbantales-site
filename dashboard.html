@@ -466,6 +466,7 @@
     <button class="tab-btn" onclick="showTab('costs')">API Costs</button>
     <button class="tab-btn" onclick="showTab('users')">Free Users</button>
     <button class="tab-btn" onclick="showTab('acquisition')">Acquisition</button>
+    <button class="tab-btn" onclick="showTab('ltv')">💰 LTV</button>
     <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
     <button class="tab-btn" onclick="showTab('viator')">🎫 Viator</button>
     <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
@@ -1195,6 +1196,60 @@
         </div>
       </div>
     </div><!-- /panel-acquisition -->
+
+    <!-- ── LTV ── -->
+    <div class="tab-panel" id="panel-ltv">
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Lifetime Value by Cohort
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Cumulative avg $ revenue per user, at fixed days since signup — for deciding max CAC. A cell only counts users old enough to have reached that horizon, so recent cohorts don't look artificially low.</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px">
+          <select id="ltvFilterChannel" onchange="_ltvFilters.channel=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
+            <option value="all">All channels</option>
+            <option value="organic">Organic</option>
+            <option value="mgm">MGM</option>
+            <option value="influencer">Influencer</option>
+            <option value="apple_search_ads">Apple Search Ads</option>
+          </select>
+          <select id="ltvFilterPlatform" onchange="_ltvFilters.platform=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
+            <option value="all">All platforms</option>
+            <option value="ios">iOS</option>
+            <option value="android">Android</option>
+          </select>
+          <select id="ltvFilterQuota" onchange="_ltvFilters.quota_group=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
+            <option value="all">All quota groups</option>
+            <option value="daily_control">Daily control</option>
+            <option value="weekly_test">Weekly test</option>
+            <option value="unassigned">Unassigned</option>
+          </select>
+          <select id="ltvFilterPayer" onchange="_ltvFilters.payer=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
+            <option value="all">Payers + non-payers</option>
+            <option value="payer">Payers only</option>
+            <option value="non_payer">Never paid</option>
+          </select>
+        </div>
+        <div id="ltvSummary" style="font-size:0.85rem;color:var(--muted);margin-bottom:14px"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Cohort</th>
+                <th>Users</th>
+                <th>Day 7</th>
+                <th>Day 30</th>
+                <th>Day 60</th>
+                <th>Day 90</th>
+                <th>Day 180</th>
+                <th>Day 360</th>
+              </tr>
+            </thead>
+            <tbody id="ltvBody">
+              <tr><td colspan="8" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /panel-ltv -->
 
     <!-- ── NOTIFICATIONS ── -->
     <div class="tab-panel" id="panel-notifications">
@@ -3154,6 +3209,70 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
 }
 
 // ══════════════════════════════════════════════
+// LTV
+// ══════════════════════════════════════════════
+let _ltvData = null;
+let _ltvFilters = { channel: 'all', platform: 'all', quota_group: 'all', payer: 'all' };
+
+function renderLTV(data) {
+  _ltvData = data;
+  applyLTVFilters();
+}
+
+function applyLTVFilters() {
+  if (!_ltvData) {
+    document.getElementById('ltvBody').innerHTML = `<tr><td colspan="8" class="loading">No data yet.</td></tr>`;
+    return;
+  }
+  const { horizons, users } = _ltvData;
+  const f = _ltvFilters;
+  const filtered = users.filter(u =>
+    (f.channel === 'all' || u.channel === f.channel) &&
+    (f.platform === 'all' || u.platform === f.platform) &&
+    (f.quota_group === 'all' || u.quota_group === f.quota_group) &&
+    (f.payer === 'all' || (f.payer === 'payer' ? u.is_payer : !u.is_payer))
+  );
+
+  const cohortMap = {};
+  filtered.forEach(u => {
+    if (!cohortMap[u.cohort]) {
+      cohortMap[u.cohort] = { cohort: u.cohort, size: 0, sums: {}, matured: {} };
+      horizons.forEach(h => { cohortMap[u.cohort].sums[h] = 0; cohortMap[u.cohort].matured[h] = 0; });
+    }
+    const c = cohortMap[u.cohort];
+    c.size++;
+    horizons.forEach(h => {
+      if (u.days_since_signup >= h) {
+        c.sums[h] += u[`ltv_${h}`] || 0;
+        c.matured[h] += 1;
+      }
+    });
+  });
+
+  const cohorts = Object.values(cohortMap).sort((a, b) => b.cohort.localeCompare(a.cohort));
+
+  if (cohorts.length === 0) {
+    document.getElementById('ltvBody').innerHTML = `<tr><td colspan="8" class="loading">No users match these filters.</td></tr>`;
+    document.getElementById('ltvSummary').textContent = '';
+    return;
+  }
+
+  document.getElementById('ltvBody').innerHTML = cohorts.map(c => {
+    const cells = horizons.map(h => {
+      const n = c.matured[h];
+      if (n === 0) return `<td style="color:var(--muted)">—</td>`;
+      const avg = c.sums[h] / n;
+      const notFullyMatured = n < c.size;
+      return `<td>$${avg.toFixed(2)}${notFullyMatured ? `<span style="color:var(--muted);font-size:0.72rem"> (${n}/${c.size})</span>` : ''}</td>`;
+    }).join('');
+    return `<tr><td><strong>${c.cohort}</strong></td><td>${fmt(c.size)}</td>${cells}</tr>`;
+  }).join('');
+
+  document.getElementById('ltvSummary').textContent =
+    `${fmt(filtered.length)} users across ${cohorts.length} cohorts. A number in parentheses (e.g. 12/40) means only that many users in the cohort are old enough to have reached that horizon yet — the average is computed only over them.`;
+}
+
+// ══════════════════════════════════════════════
 // VIATOR TAB
 // ══════════════════════════════════════════════
 function renderViator(v) {
@@ -4923,7 +5042,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -4950,6 +5069,7 @@ async function loadAllData() {
       api(`/admin/analytics/quota-experiment`).catch(() => null),
       api(`/admin/analytics/review-prompt`).catch(() => null),
       api(`/admin/analytics/theme-breakdown`).catch(() => null),
+      api(`/admin/analytics/ltv`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue, themeBreakdown);
@@ -4964,6 +5084,7 @@ async function loadAllData() {
     renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth);
     renderAcquisitionChannels(acqChannels);
     renderAcquisition(acquisition, freeUsers, acqChannels);
+    renderLTV(ltv);
     renderViator(viator);
     renderInfluencerAccounts(influencerAccounts);
     renderSettings(settings);
