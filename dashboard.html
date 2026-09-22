@@ -1201,9 +1201,9 @@
     <div class="tab-panel" id="panel-ltv">
       <div class="card" style="margin-bottom:24px">
         <div class="card-title">Lifetime Value by Cohort
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Cumulative avg $ revenue per user, at fixed days since signup — for deciding max CAC. A cell only counts users old enough to have reached that horizon, so recent cohorts don't look artificially low.</span>
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Net $ per user (after store commission, avg tax, and serving cost), at fixed days since signup — for deciding max CAC. A cell only counts users old enough to have reached that horizon, so recent cohorts don't look artificially low.</span>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px">
           <select id="ltvFilterChannel" onchange="_ltvFilters.channel=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
             <option value="all">All channels</option>
             <option value="organic">Organic</option>
@@ -1227,6 +1227,25 @@
             <option value="payer">Payers only</option>
             <option value="non_payer">Never paid</option>
           </select>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:18px;padding:12px 14px;background:#141414;border:1px solid var(--border);border-radius:10px">
+          <div style="display:flex;align-items:center;gap:6px">
+            <label for="ltvStoreCut" style="font-size:0.82rem;color:var(--muted)">Store commission</label>
+            <input type="number" id="ltvStoreCut" value="15" min="0" max="100" step="1" oninput="_ltvAssumptions.storeCutPct=parseFloat(this.value)||0; applyLTVFilters()" style="width:56px;font:inherit;padding:5px 6px;border-radius:6px;border:1px solid var(--border);background:#0c0c0c;color:var(--text)">
+            <span style="font-size:0.82rem;color:var(--muted)">%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <label for="ltvTaxPct" style="font-size:0.82rem;color:var(--muted)" title="App stores collect and remit sales tax/VAT in most markets, netted out of your proceeds before commission. No per-transaction tax data is stored (would need per-country attribution, which we're skipping for now), so this is a flat average assumption you control.">Avg tax</label>
+            <input type="number" id="ltvTaxPct" value="0" min="0" max="100" step="1" oninput="_ltvAssumptions.taxPct=parseFloat(this.value)||0; applyLTVFilters()" style="width:56px;font:inherit;padding:5px 6px;border-radius:6px;border:1px solid var(--border);background:#0c0c0c;color:var(--text)">
+            <span style="font-size:0.82rem;color:var(--muted)">%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <label class="toggle-switch">
+              <input type="checkbox" id="ltvQuotaAwareToggle" onchange="_ltvAssumptions.quotaAware=this.checked; applyLTVFilters()">
+              <span class="toggle-slider"></span>
+            </label>
+            <span style="font-size:0.82rem">Net of Google Maps free quota</span>
+          </div>
         </div>
         <div id="ltvSummary" style="font-size:0.85rem;color:var(--muted);margin-bottom:14px"></div>
         <div class="table-wrap">
@@ -3213,6 +3232,7 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
 // ══════════════════════════════════════════════
 let _ltvData = null;
 let _ltvFilters = { channel: 'all', platform: 'all', quota_group: 'all', payer: 'all' };
+let _ltvAssumptions = { storeCutPct: 15, taxPct: 0, quotaAware: false };
 
 function renderLTV(data) {
   _ltvData = data;
@@ -3226,6 +3246,8 @@ function applyLTVFilters() {
   }
   const { horizons, users } = _ltvData;
   const f = _ltvFilters;
+  const a = _ltvAssumptions;
+  const costKey = h => a.quotaAware ? `cost_qa_${h}` : `cost_flat_${h}`;
   const filtered = users.filter(u =>
     (f.channel === 'all' || u.channel === f.channel) &&
     (f.platform === 'all' || u.platform === f.platform) &&
@@ -3236,14 +3258,19 @@ function applyLTVFilters() {
   const cohortMap = {};
   filtered.forEach(u => {
     if (!cohortMap[u.cohort]) {
-      cohortMap[u.cohort] = { cohort: u.cohort, size: 0, sums: {}, matured: {} };
-      horizons.forEach(h => { cohortMap[u.cohort].sums[h] = 0; cohortMap[u.cohort].matured[h] = 0; });
+      cohortMap[u.cohort] = { cohort: u.cohort, size: 0, grossSums: {}, costSums: {}, matured: {} };
+      horizons.forEach(h => {
+        cohortMap[u.cohort].grossSums[h] = 0;
+        cohortMap[u.cohort].costSums[h] = 0;
+        cohortMap[u.cohort].matured[h] = 0;
+      });
     }
     const c = cohortMap[u.cohort];
     c.size++;
     horizons.forEach(h => {
       if (u.days_since_signup >= h) {
-        c.sums[h] += u[`ltv_${h}`] || 0;
+        c.grossSums[h] += u[`ltv_${h}`] || 0;
+        c.costSums[h] += u[costKey(h)] || 0;
         c.matured[h] += 1;
       }
     });
@@ -3257,19 +3284,26 @@ function applyLTVFilters() {
     return;
   }
 
+  const netMultiplier = 1 - (a.storeCutPct / 100) - (a.taxPct / 100);
   document.getElementById('ltvBody').innerHTML = cohorts.map(c => {
     const cells = horizons.map(h => {
       const n = c.matured[h];
       if (n === 0) return `<td style="color:var(--muted)">—</td>`;
-      const avg = c.sums[h] / n;
+      const grossAvg = c.grossSums[h] / n;
+      const costAvg = c.costSums[h] / n;
+      const netAvg = grossAvg * netMultiplier - costAvg;
       const notFullyMatured = n < c.size;
-      return `<td>$${avg.toFixed(2)}${notFullyMatured ? `<span style="color:var(--muted);font-size:0.72rem"> (${n}/${c.size})</span>` : ''}</td>`;
+      const netColor = netAvg < 0 ? 'color:var(--red,#ef4444)' : '';
+      return `<td>
+        <span style="${netColor}">$${netAvg.toFixed(2)}</span>
+        <div style="color:var(--muted);font-size:0.7rem">gross $${grossAvg.toFixed(2)} · cost $${costAvg.toFixed(2)}${notFullyMatured ? ` · ${n}/${c.size}` : ''}</div>
+      </td>`;
     }).join('');
     return `<tr><td><strong>${c.cohort}</strong></td><td>${fmt(c.size)}</td>${cells}</tr>`;
   }).join('');
 
   document.getElementById('ltvSummary').textContent =
-    `${fmt(filtered.length)} users across ${cohorts.length} cohorts. A number in parentheses (e.g. 12/40) means only that many users in the cohort are old enough to have reached that horizon yet — the average is computed only over them.`;
+    `${fmt(filtered.length)} users across ${cohorts.length} cohorts. Main number is net (after ${a.storeCutPct}% commission, ${a.taxPct}% avg tax, and serving cost); small text below shows the gross/cost split. A trailing n/total means only that many users in the cohort are old enough to have reached that horizon — the average is computed only over them.`;
 }
 
 // ══════════════════════════════════════════════
