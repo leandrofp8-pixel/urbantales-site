@@ -1,0 +1,62 @@
+{
+  "badge_num": 15,
+  "city": "LISBON",
+  "flag": "🇵🇹",
+  "cta_screenshot": "screen-lisbon-belem-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> 'CONNECT tunnel failed, response 403' and via the WebFetch tool -> 'EGRESS_BLOCKED'; the agent-proxy status endpoint at $HTTPS_PROXY/__agentproxy/status logs it under recentRelayFailures as 'gateway answered 403 to CONNECT (policy denial or upstream failure)' for host commons.wikimedia.org:443). No Pexels API key is available in this environment either. This is the same block that has now hit every carousel batch from #8 (Amsterdam) through #14 (Buenos Aires) -- seven runs in a row before this one, per the open, unmerged PRs for #13 Prague (#18) and #14 Buenos Aires (#26) sitting in this repo waiting on picks. No candidate photos could be downloaded this run either. 'candidates' arrays are empty; 'suggested_queries' lists the Commons search terms to run from an environment with open network access, per GUIDELINES.md's instruction to note the gap rather than block the batch.",
+  "caption": "Lisbon left a whole church without a roof on purpose — and once locked prisoners in cells that flooded with every high tide. 👀\n\nComment which one shocked you most 👇\n\n.\n.\n.\n#Lisbon #LisbonTravel #HiddenGems #TravelFacts #BelemTower #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Political prisoners were once held in cells that flooded at high tide",
+      "body_html": "Belém Tower's lower chambers were built for cannon storage, but from the 1580s to the 1830s they doubled as a <b>state prison</b> for political opponents — cells sitting below the waterline, where inmates reportedly stood in water up to their waists whenever the tide came in.",
+      "candidates": [],
+      "suggested_queries": ["Belem Tower Lisbon Tagus river exterior", "Torre de Belem Lisbon close up turret"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "A tax on pepper and cinnamon paid for this monastery",
+      "body_html": "King Manuel I funded Jerónimos Monastery with a <b>5% tax on every spice shipment</b> sailing home from Vasco da Gama's India route — roughly 70kg of gold a year, in thanks for the voyage that first opened it.",
+      "candidates": [],
+      "suggested_queries": ["Jeronimos Monastery Lisbon facade", "Jeronimos Monastery cloister interior Lisbon"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "This earthquake hit while the whole city was in church",
+      "body_html": "On All Saints' Day, 1755, three tremors in ten minutes leveled most of Lisbon while congregations packed the churches for morning Mass — the quake, tsunami, and fires that followed killed an estimated <b>30,000-40,000 people</b>.",
+      "candidates": [],
+      "suggested_queries": ["Lisbon 1755 earthquake illustration", "Baixa Lisbon downtown grid streets aerial"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "This church has had no roof for over 270 years — on purpose",
+      "body_html": "Carmo Convent's stone nave collapsed in the <b>1755 earthquake</b> and was deliberately never rebuilt, left open to the sky as a permanent memorial — you can still walk through its Gothic arches with nothing but clouds overhead.",
+      "candidates": [],
+      "suggested_queries": ["Carmo Convent ruins Lisbon roofless nave", "Convento do Carmo Lisbon Gothic arches sky"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "An Eiffel protégé built this iron elevator in the middle of downtown",
+      "body_html": "The Santa Justa Lift, opened in <b>1902</b>, was designed by Raoul Mesnier du Ponsard, a student of Gustave Eiffel himself — its neo-Gothic ironwork still hauls riders between Lisbon's lower and upper old town today.",
+      "candidates": [],
+      "suggested_queries": ["Santa Justa Lift Lisbon elevator street view", "Elevador de Santa Justa Lisbon top platform"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "This bridge only got its current name after a revolution",
+      "body_html": "Built by the same American company behind San Francisco's Golden Gate Bridge, this Tagus River crossing opened in 1966 as <b>Salazar Bridge</b>, named for Portugal's dictator — it was renamed <b>25 de Abril</b> after the 1974 revolution that overthrew him.",
+      "candidates": [],
+      "suggested_queries": ["25 de Abril Bridge Lisbon Tagus river", "Ponte 25 de Abril Lisbon suspension towers"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "A cardinal's 1934 trip to Rio is why this statue exists",
+      "body_html": "After seeing Rio's Christ the Redeemer in 1934, Lisbon's cardinal pushed to build a Portuguese version as thanks for the country being <b>spared from World War II</b> — Cristo Rei finally opened in 1959, standing 110 meters tall above the river.",
+      "candidates": [],
+      "suggested_queries": ["Cristo Rei statue Almada Lisbon river view", "Cristo Rei Lisbon pedestal base"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Lisbon skyline aerial Tagus river Alfama", "Lisbon rooftops tram sunset"]
+}
