@@ -1,0 +1,38 @@
+{
+  "badge_num": 13,
+  "city": "PRAGUE",
+  "flag": "🇨🇿",
+  "cta_screenshot": "screen-prague-oldtown-map.png",
+  "style": "minimal",
+  "caption": "Prague allegedly blinded the man who built its famous clock — and chemists really did find egg yolk baked into the mortar of the bridge next door. 👀\n\nComment your guess for which one shocked you more before you swipe ⬇️\n\n1. Astronomical Clock\nAccording to legend, the city had clockmaker Hanuš blinded the moment he finished the Astronomical Clock's astronomical dial in 1490 so he could never build another one — he responded by reaching into the gears and sabotaging the mechanism, which reportedly sat broken for decades.\n\n2. Charles Bridge\nLegend claims King Charles IV ordered eggs mixed into the mortar of Charles Bridge, whose construction began at an astrologer-picked palindrome moment in 1357 — a 2008 lab analysis of the original mortar actually turned up egg protein residue, though a follow-up study in 2010 disputed the find.\n\n3. Prague Castle\nGuinness World Records recognizes Prague Castle as the largest ancient castle complex in the world, its core covering roughly 70,000 square meters — about the size of seven football pitches.\n\n4. Dancing House\nArchitect Frank Gehry designed this 1996 office building to look like two dancers mid-move, nicknaming it \"Fred and Ginger\" after Fred Astaire and Ginger Rogers — it rose on a riverfront lot left empty since a 1945 bombing.\n\n5. Lennon Wall\nAfter John Lennon's death in 1980, Prague's secret police painted over the graffiti tribute to him again and again — but new art kept appearing overnight until the 1989 Velvet Revolution, when the wall was finally left alone for good.\n\n6. Old Jewish Cemetery\nSpace in Prague's old Jewish quarter was so limited that when the Old Jewish Cemetery ran out of room, more soil was simply added on top — creating up to 12 layers of burials beneath roughly 12,000 visible tombstones.\n\n7. Žižkov Television Tower\nArtist David Černý installed 10 giant bronze babies with barcodes for faces onto the Žižkov Television Tower in 2000 — meant to be temporary, they proved so popular they're still crawling up it today.\n\n.\n.\n.\n#Prague #PragueTravel #HiddenGems #TravelFacts #CharlesBridge #AstronomicalClock #UrbanTales",
+  "facts": [
+    {
+      "headline": "Legend says Prague blinded the man who built this clock",
+      "hook": "Legend says clockmaker Hanuš was blinded the moment he finished the Astronomical Clock in 1490 — he responded by sabotaging it himself."
+    },
+    {
+      "headline": "Chemists found real egg yolk baked into this bridge's mortar",
+      "hook": "Legend claims eggs were mixed into Charles Bridge's mortar in 1357 — a 2008 lab analysis actually found egg protein residue in the stone."
+    },
+    {
+      "headline": "This is the largest ancient castle complex on Earth",
+      "hook": "Guinness World Records recognizes Prague Castle as the largest ancient castle complex on Earth — its core covers about seven football pitches."
+    },
+    {
+      "headline": "A building nicknamed after two Hollywood dancers",
+      "hook": "Frank Gehry designed this 1996 building to look like two dancers mid-move, nicknaming it \"Fred and Ginger\" after Astaire and Rogers."
+    },
+    {
+      "headline": "Communist police repainted this wall for a decade — it never stopped",
+      "hook": "After John Lennon's death in 1980, secret police painted over this wall again and again — new art kept appearing until the 1989 revolution."
+    },
+    {
+      "headline": "Some graves here are stacked twelve deep",
+      "hook": "Space ran out in Prague's Old Jewish Cemetery, so more soil was added on top — creating up to 12 layers of burials beneath 12,000 tombstones."
+    },
+    {
+      "headline": "Ten giant babies are crawling up Prague's tallest tower",
+      "hook": "Artist David Černý installed 10 giant bronze babies with barcodes for faces onto this tower in 2000 — meant to be temporary, they never left."
+    }
+  ]
+}
