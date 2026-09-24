@@ -3,35 +3,36 @@
   "city": "BARCELONA",
   "flag": "🇪🇸",
   "cta_screenshot": "screen-barcelona-sagrada-map.png",
-  "caption": "Those bullet holes all over Barcelona's old town aren't from bullets — and officials spent 40 years lying about what they really are. 👀\n\nComment your guess before you swipe ⬇️\n\n.\n.\n.\n#Barcelona #BarcelonaTravel #HiddenGems #TravelFacts #GothicQuarter #SagradaFamilia #UrbanTales",
+  "style": "minimal",
+  "caption": "Those \"bullet holes\" all over Barcelona's old town aren't from bullets — and officials spent decades lying about what they really are. 👀\n\nComment your guess for which fact surprised you most before you swipe ⬇️\n\n1. Sagrada Família\nSagrada Família's central tower finally topped out in February 2026 at 172.5 meters — 144 years after construction began. Gaudí deliberately designed it to stay shorter than Montjuïc hill nearby, so his creation would never surpass God's.\n\n2. Park Güell\nGaudí's famous trencadís salamander is built from shattered tile and glass shards — and doubles as the overflow spout for a giant cistern hidden right beneath the park's main terrace.\n\n3. Casa Batlló\nCasa Batlló is a three-story tribute to Catalonia's patron saint: the scaled roof is the dragon's back, the bone-like columns and skull balconies are its victims, and the rooftop cross is Saint George's sword plunged into its spine.\n\n4. Plaça de Sant Felip Neri\nFor decades, Franco's regime claimed the pockmarked walls of this square came from firing-squad executions. They're really from a 1938 aerial bombing that killed 42 people, many of them children sheltering inside the church.\n\n5. The Gothic Quarter\nBeneath the Gothic Quarter, Barcelona's history museum preserves real streets and workshops from Barcino, the Roman colony founded here 2,000 years ago — laundries and wine vats still sitting underground.\n\n6. Barceloneta\nBarceloneta beach is entirely man-made — planners trucked in sand and rebuilt the whole coastline for the 1992 Olympics. Before that, this stretch was industrial shoreline, not sand.\n\n7. Palau de la Música Catalana\nPalau de la Música Catalana is lit by an inverted stained-glass skylight shaped like the sun — the only concert hall in Europe that performs by daylight alone. It's stunning, and it quietly wrecks the room's acoustics.\n\n.\n.\n.\n#Barcelona #Spain #HiddenGems #TravelFacts #SagradaFamilia #GothicQuarter #UrbanTales",
   "facts": [
     {
       "headline": "Gaudí made sure his tower could never out-build God",
-      "body_html": "Sagrada Família's central tower finally topped out in <b>February 2026 at 172.5 meters</b> — 144 years after construction began. Gaudí deliberately designed it to stay shorter than Montjuïc hill nearby, so his creation would never surpass God's."
+      "hook": "Sagrada Família's central tower topped out in 2026 — 144 years after construction began, deliberately kept shorter than Montjuïc hill."
     },
     {
       "headline": "The mosaic dragon guarding Park Güell is secretly plumbing",
-      "body_html": "Gaudí's famous trencadís salamander is built from <b>shattered tile and glass shards</b> — and doubles as the overflow spout for a giant cistern hidden right beneath the park's main terrace."
+      "hook": "Gaudí's mosaic salamander at Park Güell is really a drain — it hides the overflow spout for a giant cistern beneath the park's terrace."
     },
     {
-      "headline": "This house's skull-shaped balconies tell a dragon-slaying legend",
-      "body_html": "Casa Batlló is a three-story tribute to Catalonia's patron saint: the scaled roof is the <b>dragon's back</b>, the bone-like columns and skull balconies are its victims, and the rooftop cross is <b>Saint George's sword</b> plunged into its spine."
+      "headline": "This house's skull balconies tell a dragon-slaying legend",
+      "hook": "Casa Batlló secretly retells a dragon-slaying legend — the scaled roof is its back, the rooftop cross is Saint George's sword in its spine."
     },
     {
-      "headline": "Those 'bullet holes' in this square are actually bomb scars",
-      "body_html": "For decades, Franco's regime claimed the pockmarked walls of Plaça de Sant Felip Neri came from firing-squad executions. They're really from a <b>1938 aerial bombing that killed 42 people</b>, many of them children sheltering inside the church."
+      "headline": "Those \"bullet holes\" in this square are actually bomb scars",
+      "hook": "Franco's regime blamed firing squads for these pockmarked walls — they're really scars from a 1938 bombing that killed 42 people."
     },
     {
       "headline": "You can walk an actual Roman city under these streets",
-      "body_html": "Beneath the Gothic Quarter, Barcelona's history museum preserves real streets and workshops from <b>Barcino</b>, the Roman colony founded here 2,000 years ago — laundries and wine vats still sitting underground."
+      "hook": "Beneath the Gothic Quarter sits Barcino, the Roman colony founded here 2,000 years ago — its laundries and wine vats still sit underground."
     },
     {
       "headline": "Barcelona's most famous beach didn't exist 35 years ago",
-      "body_html": "Barceloneta beach is entirely man-made — planners trucked in sand and rebuilt the whole coastline for the <b>1992 Olympics</b>. Before that, this stretch was industrial shoreline, not sand."
+      "hook": "Barceloneta beach is entirely man-made — planners trucked in sand and rebuilt the coastline just for the 1992 Olympics."
     },
     {
       "headline": "One concert hall in Europe runs almost entirely on sunlight",
-      "body_html": "Palau de la Música Catalana is lit by an inverted stained-glass skylight shaped like the sun — the only concert hall in Europe that performs by daylight alone. It's stunning, and it <b>quietly wrecks the room's acoustics</b>."
+      "hook": "Palau de la Música is lit only by a sun-shaped stained-glass skylight — stunning to see, and it quietly wrecks the room's acoustics."
     }
   ]
 }
