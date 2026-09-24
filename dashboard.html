@@ -4223,7 +4223,8 @@ function renderUserList(users) {
     const name   = u.display_name || '';
     const label  = name ? `${name}` : '';
     const stage  = _stageBadge[u.funnel_stage] || '';
-    const sub    = `${stage} ${u.total_narrations_listened || 0} narrations · ${u.coins ?? 0} coins · ${timeAgo(u.last_active_at)}`;
+    const country = u.store_country_code ? `${countryFlag(u.store_country_code)} · ` : '';
+    const sub    = `${stage} ${country}${u.total_narrations_listened || 0} narrations · ${u.coins ?? 0} coins · ${timeAgo(u.last_active_at)}`;
     const badge  = isPaid
       ? `<span class="user-list-badge pill badge-green">paid</span>`
       : `<span class="user-list-badge pill badge-orange">free</span>`;
@@ -4393,6 +4394,12 @@ async function openUserProfile(email) {
   }
 }
 
+function countryFlag(code) {
+  if (!code || code.length !== 2) return '';
+  const base = 127397; // regional indicator symbols start at U+1F1E6, offset from 'A' (65)
+  return String.fromCodePoint(...[...code.toUpperCase()].map(c => c.charCodeAt(0) + base));
+}
+
 function _profileDate(iso) {
   if (!iso) return '—';
   return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -4428,6 +4435,7 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
     locStatus ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">📍 loc. ${locStatus}</span>` : '',
     user.asa_attribution?.attributed ? `<span class="pill badge-purple">🍎 Apple Search Ads</span>` : '',
     user.signup_platform ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${user.signup_platform}</span>` : '',
+    user.store_country_code ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${countryFlag(user.store_country_code)} ${user.store_country_code}</span>` : '',
   ].filter(Boolean).join('');
 
   // Header
@@ -5366,11 +5374,13 @@ function renderReviewPrompt(data) {
     el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No data yet.</p>';
     return;
   }
-  const feedbackRows = (data.feedback || []).map(f => `
+  const feedbackList = data.feedback || [];
+  const withText = feedbackList.filter(f => f.feedback_text).length;
+  const feedbackRows = feedbackList.map(f => `
     <tr>
       <td style="white-space:nowrap;color:var(--muted);font-size:0.78rem">${f.created_at ? new Date(f.created_at).toLocaleDateString() : '—'}</td>
-      <td style="font-size:0.8rem">${escapeHtml(f.user_email)}</td>
-      <td style="font-size:0.85rem">${escapeHtml(f.feedback_text) || '<span style="color:var(--muted)">(no text)</span>'}</td>
+      <td style="font-size:0.8rem">${f.display_name ? escapeHtml(f.display_name) + ' · ' : ''}${escapeHtml(f.user_email)}</td>
+      <td style="font-size:0.85rem">${f.feedback_text ? escapeHtml(f.feedback_text) : '<span style="color:var(--muted)">(declined, no text written)</span>'}</td>
     </tr>`).join('');
 
   el.innerHTML = `
@@ -5378,7 +5388,7 @@ function renderReviewPrompt(data) {
       ${kpiCard('Shown', fmt(data.shown), 'Users asked so far', null, null)}
       ${kpiCard('Positive', fmt(data.positive), `${data.positive_rate}% of shown`, data.positive_rate >= 70 ? '↑ Good' : null, data.positive_rate >= 70 ? 'green' : null)}
       ${kpiCard('Negative', fmt(data.negative), 'Sent to feedback instead', null, null)}
-      ${kpiCard('Feedback notes', fmt((data.feedback || []).length), 'With written text', null, null)}
+      ${kpiCard('Feedback notes', fmt(withText), `of ${fmt(feedbackList.length)} negative`, null, null)}
     </div>
     <div class="table-wrap">
       <table style="width:100%;border-collapse:collapse">
@@ -5387,7 +5397,7 @@ function renderReviewPrompt(data) {
           <th style="text-align:left;padding:6px 8px">User</th>
           <th style="text-align:left;padding:6px 0">Feedback</th>
         </tr></thead>
-        <tbody>${feedbackRows || '<tr><td colspan="3" class="loading">No feedback submitted yet.</td></tr>'}</tbody>
+        <tbody>${feedbackRows || '<tr><td colspan="3" class="loading">No one has answered negative yet.</td></tr>'}</tbody>
       </table>
     </div>
     <p style="color:var(--muted);font-size:0.72rem;margin-top:10px">
