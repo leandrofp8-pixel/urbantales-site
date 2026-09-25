@@ -2236,7 +2236,7 @@ function renderFunnel(cohortFunnel, funnel, freeUsers) {
         const score = (l.narrations || 0) + (l.shop_views || 0) * 3 + (l.paywall_hits || 0) * 5;
         const scoreClass = score > 30 ? 'green' : score > 15 ? 'yellow' : 'orange';
         return `<tr>
-          <td>${maskEmail(l.email)}</td>
+          <td>${escapeHtml(maskEmail(l.email))}</td>
           <td>${l.narrations || 0}</td>
           <td>${l.shop_views || 0}</td>
           <td>${l.paywall_hits || 0}</td>
@@ -2429,7 +2429,7 @@ function renderContent(content, funnel, listenCompletion) {
         const rateClass = total > 0 && parseFloat(rate) > 70 ? 'green' : parseFloat(rate) > 40 ? 'yellow' : 'orange';
         return `<tr>
           <td style="color:var(--muted)">${i+1}</td>
-          <td>${l.landmark_name || l.landmark_id || '—'}</td>
+          <td>${escapeHtml(l.landmark_name || l.landmark_id || '—')}</td>
           <td>${l.city || '—'}</td>
           <td><strong>${fmt(total)}</strong></td>
           <td>${fmt(hits)}</td>
@@ -2798,7 +2798,7 @@ function renderCosts(costs, funnel) {
   document.getElementById('topUsersBody').innerHTML = users.length === 0
     ? `<tr><td colspan="4" class="loading">No data.</td></tr>`
     : users.map(u => `<tr>
-        <td>${u.email}</td>
+        <td>${escapeHtml(u.email)}</td>
         <td>${fmtCost(u.total_cost)}</td>
         <td>${fmt(u.total_calls)}</td>
         <td>${fmtCost(u.total_cost / Math.max(u.total_calls, 1))}</td>
@@ -2850,7 +2850,7 @@ async function loadPurchases(reset) {
           : `<span class="pill" style="color:var(--muted);border-color:var(--border)">unknown</span>`;
       return `<tr>
         <td>${when ? when.toLocaleDateString() + ' ' + when.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) : '—'}</td>
-        <td>${p.user_email}</td>
+        <td>${escapeHtml(p.user_email)}</td>
         <td>${p.product_id}</td>
         <td>${fmt(p.coins)}</td>
         <td>${p.price ? '$' + p.price.toFixed(2) + ' ' + p.currency : '—'}</td>
@@ -3005,8 +3005,8 @@ function renderFreeUsers(freeUsers, cohortsMonthly, coinEconomy, streakHealth) {
       const name = tx.item_name || tx.item_id || '—';
       const when = tx.timestamp ? new Date(tx.timestamp).toLocaleDateString() : '—';
       return `<tr>
-        <td>${tx.display_name || tx.email}</td>
-        <td>${label}: ${name}</td>
+        <td>${escapeHtml(tx.display_name || tx.email)}</td>
+        <td>${escapeHtml(label)}: ${escapeHtml(name)}</td>
         <td style="color:#FF6B35;font-weight:600">${tx.amount}</td>
         <td style="color:#888">${when}</td>
       </tr>`;
@@ -3134,7 +3134,7 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
     : topInf.map(r => {
         const cls = r.conversion_rate > 15 ? 'green' : r.conversion_rate > 7 ? 'yellow' : 'orange';
         return `<tr>
-          <td><strong>${r.influencer_name || '—'}</strong></td>
+          <td><strong>${escapeHtml(r.influencer_name || '—')}</strong></td>
           <td style="font-family:monospace;color:var(--muted)">${r.code}</td>
           <td>${fmt(r.signups)}</td>
           <td>${fmt(r.activated)} <span style="color:var(--muted);font-size:0.78rem">(${(r.activation_rate||0).toFixed(0)}%)</span></td>
@@ -3151,7 +3151,7 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
     : topMgm.map(r => {
         const cls = r.conversion_rate > 15 ? 'green' : r.conversion_rate > 7 ? 'yellow' : 'orange';
         return `<tr>
-          <td><strong>${r.influencer_name || '—'}</strong></td>
+          <td><strong>${escapeHtml(r.influencer_name || '—')}</strong></td>
           <td style="font-family:monospace;color:var(--muted)">${r.code}</td>
           <td>${fmt(r.signups)}</td>
           <td>${fmt(r.activated)} <span style="color:var(--muted);font-size:0.78rem">(${(r.activation_rate||0).toFixed(0)}%)</span></td>
@@ -3169,11 +3169,11 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
         const statusCls = r.status === 'purchased' ? 'green' : r.status === 'activated' ? 'yellow' : 'blue';
         const typeCls   = r.promoter_type === 'influencer' ? 'purple' : 'orange';
         return `<tr>
-          <td>${r.invitee_display_name || '—'}<br><span style="font-size:0.75rem;color:var(--muted)">${r.invitee_email_masked || ''}</span></td>
-          <td>${r.promoter_name || '—'}</td>
-          <td style="font-family:monospace;color:var(--muted)">${r.promoter_code}</td>
-          <td><span class="pill badge-${typeCls}">${r.promoter_type}</span></td>
-          <td><span class="pill badge-${statusCls}">${r.status}</span></td>
+          <td>${escapeHtml(r.invitee_display_name || '—')}<br><span style="font-size:0.75rem;color:var(--muted)">${escapeHtml(r.invitee_email_masked || '')}</span></td>
+          <td>${escapeHtml(r.promoter_name || '—')}</td>
+          <td style="font-family:monospace;color:var(--muted)">${escapeHtml(r.promoter_code)}</td>
+          <td><span class="pill badge-${typeCls}">${escapeHtml(r.promoter_type)}</span></td>
+          <td><span class="pill badge-${statusCls}">${escapeHtml(r.status)}</span></td>
           <td>${fmtDate(r.created_at)}</td>
         </tr>`;
       }).join('');
@@ -3447,7 +3447,7 @@ function populateNotifSegmentOptions() {
   if (!group) return;
   const currentValue = document.getElementById('nFilterType').value;
   group.innerHTML = _savedSegments.length
-    ? _savedSegments.map(s => `<option value="segment:${s.id}">${s.name} — ${fmt(s.count)} users</option>`).join('')
+    ? _savedSegments.map(s => `<option value="segment:${s.id}">${escapeHtml(s.name)} — ${fmt(s.count)} users</option>`).join('')
     : '';
   // Keep whatever was selected if it still exists (segment list can refresh under the user)
   document.getElementById('nFilterType').value = currentValue;
@@ -3467,7 +3467,7 @@ async function showAudienceModal() {
     const users = res.users || [];
     document.getElementById('audienceModalCount').textContent = `${users.length} user${users.length !== 1 ? 's' : ''}`;
     document.getElementById('audienceTableBody').innerHTML = users.length
-      ? users.map((u, i) => `<tr><td style="color:var(--muted)">${i+1}</td><td>${u.name || '—'}</td><td style="color:var(--muted)">${u.email}</td></tr>`).join('')
+      ? users.map((u, i) => `<tr><td style="color:var(--muted)">${i+1}</td><td>${escapeHtml(u.name || '—')}</td><td style="color:var(--muted)">${escapeHtml(u.email)}</td></tr>`).join('')
       : '<tr><td colspan="3" style="text-align:center;color:var(--muted);padding:24px">No users found</td></tr>';
   } catch(e) {
     document.getElementById('audienceModalCount').textContent = 'Failed to load';
@@ -3770,19 +3770,19 @@ function renderInfluencerAccounts(data) {
     ? `<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">No pending applications.</td></tr>`
     : pending.map(a => {
         const socials = [
-          a.instagram ? `📷 @${a.instagram}` : '',
-          a.tiktok    ? `🎵 @${a.tiktok}`    : '',
-          a.youtube   ? `▶️ ${a.youtube}`    : '',
+          a.instagram ? `📷 @${escapeHtml(a.instagram)}` : '',
+          a.tiktok    ? `🎵 @${escapeHtml(a.tiktok)}`    : '',
+          a.youtube   ? `▶️ ${escapeHtml(a.youtube)}`    : '',
         ].filter(Boolean).join(' ');
         return `<tr>
-          <td><strong>${a.name || '—'}</strong>${a.audience_description ? `<br><span style="font-size:.75rem;color:var(--muted)">${a.audience_description.slice(0,60)}…</span>` : ''}</td>
-          <td style="color:var(--muted);font-size:.82rem">${a.email}</td>
+          <td><strong>${escapeHtml(a.name || '—')}</strong>${a.audience_description ? `<br><span style="font-size:.75rem;color:var(--muted)">${escapeHtml(a.audience_description.slice(0,60))}…</span>` : ''}</td>
+          <td style="color:var(--muted);font-size:.82rem">${escapeHtml(a.email)}</td>
           <td style="font-size:.82rem;color:var(--muted)">${socials || '—'}</td>
           <td style="font-size:.82rem;color:var(--muted)">${fmtDate(a.created_at)}</td>
           <td><input type="number" id="payout_${a._id}" value="15" min="0" max="100" step="1"
             style="width:60px;background:#111;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:4px 8px;font-size:.82rem"> %</td>
           <td>
-            <button onclick="approveInfluencer('${a._id}','${a.name}')"
+            <button onclick="approveInfluencer(${jsArg(`${a._id}`)},${jsArg(`${a.name}`)})"
               style="background:var(--green);color:#0a0a0a;border:none;border-radius:8px;padding:6px 14px;font-size:.82rem;font-weight:700;cursor:pointer">
               Approve
             </button>
@@ -3793,9 +3793,9 @@ function renderInfluencerAccounts(data) {
   document.getElementById('approvedInfluencersBody').innerHTML = approved.length === 0
     ? `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">No approved affiliates yet.</td></tr>`
     : approved.map(a => `<tr>
-        <td><strong>${a.name || '—'}</strong></td>
-        <td style="color:var(--muted);font-size:.82rem">${a.email}</td>
-        <td style="font-family:monospace;color:var(--primary)">${a.promo_code || '—'}</td>
+        <td><strong>${escapeHtml(a.name || '—')}</strong></td>
+        <td style="color:var(--muted);font-size:.82rem">${escapeHtml(a.email)}</td>
+        <td style="font-family:monospace;color:var(--primary)">${escapeHtml(a.promo_code || '—')}</td>
         <td>${((a.payout_rate != null ? a.payout_rate : 0.15) * 100).toFixed(0)}%</td>
         <td style="font-size:.82rem;color:var(--muted)">${fmtDate(a.approved_at)}</td>
       </tr>`).join('');
@@ -3836,14 +3836,14 @@ function renderSettings(data) {
 
   const field = (id, label, type, value, extra = '') =>
     `<div>
-      <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${label}</label>
+      <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${escapeHtml(label)}</label>
       <input id="s_${id}" type="${type}" value="${value}" ${extra}
         style="width:100%;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:8px 10px;font-size:0.88rem;box-sizing:border-box">
     </div>`;
 
   const lockedField = (id, label, type, value) =>
     `<div>
-      <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${label}</label>
+      <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${escapeHtml(label)}</label>
       <input id="s_${id}" type="${type}" value="${value}" disabled
         style="width:100%;background:#111;border:1px solid var(--border);color:#555;border-radius:6px;padding:8px 10px;font-size:0.88rem;box-sizing:border-box;cursor:not-allowed">
       <div style="font-size:0.72rem;color:#f59e0b;margin-top:3px">⚠ Hardcoded in app — requires new build to change</div>
@@ -3855,7 +3855,7 @@ function renderSettings(data) {
         <input type="checkbox" id="s_${id}" ${checked ? 'checked' : ''} onchange="this.closest('.toggle-switch').nextElementSibling.textContent=this.checked?'ON':'OFF'">
         <span class="toggle-slider"></span>
       </label>
-      <span style="font-size:0.88rem">${label}</span>
+      <span style="font-size:0.88rem">${escapeHtml(label)}</span>
       <span style="font-size:0.78rem;color:var(--muted)">${checked ? 'ON' : 'OFF'}</span>
     </div>`;
 
@@ -4017,21 +4017,21 @@ function renderPromoCodes(data) {
   document.getElementById('promoCodesBody').innerHTML = codes.length === 0
     ? `<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">No promo codes yet.</td></tr>`
     : codes.map(c => `<tr>
-        <td style="font-family:monospace;font-weight:700;color:var(--primary)">${c.code}</td>
-        <td><span class="pill badge-${typeColor[c.type] || 'blue'}">${c.type || '—'}</span></td>
+        <td style="font-family:monospace;font-weight:700;color:var(--primary)">${escapeHtml(c.code)}</td>
+        <td><span class="pill badge-${typeColor[c.type] || 'blue'}">${escapeHtml(c.type || '—')}</span></td>
         <td>${fmt(c.bonus_coins)}</td>
         <td>${c.first_purchase_bonus_pct ? c.first_purchase_bonus_pct + '%' : '—'}</td>
         <td>${fmt(c.uses_count || 0)}</td>
-        <td style="font-size:0.78rem;color:var(--muted)">${c.influencer_email || '—'}</td>
+        <td style="font-size:0.78rem;color:var(--muted)">${escapeHtml(c.influencer_email || '—')}</td>
         <td><span class="pill badge-${c.is_active ? 'green' : 'orange'}">${c.is_active ? 'Active' : 'Inactive'}</span></td>
         <td style="white-space:nowrap">
-          <button onclick='editPromoCode(${JSON.stringify(c)})'
+          <button onclick="editPromoCode(${jsArg(c)})"
             style="background:#333;color:var(--text);border:none;border-radius:6px;padding:4px 10px;font-size:0.78rem;cursor:pointer;margin-right:4px">Edit</button>
-          <button onclick="togglePromoActive('${c.code}', ${!c.is_active})"
+          <button onclick="togglePromoActive(${jsArg(`${c.code}`)}, ${!c.is_active})"
             style="background:#333;color:${c.is_active ? '#f87171' : 'var(--green)'};border:none;border-radius:6px;padding:4px 10px;font-size:0.78rem;cursor:pointer;margin-right:4px">
             ${c.is_active ? 'Deactivate' : 'Activate'}
           </button>
-          <button onclick="deletePromoCode('${c.code}')"
+          <button onclick="deletePromoCode(${jsArg(`${c.code}`)})"
             style="background:#3d1a1a;color:#f87171;border:none;border-radius:6px;padding:4px 10px;font-size:0.78rem;cursor:pointer">Delete</button>
         </td>
       </tr>`).join('');
@@ -4230,12 +4230,12 @@ function renderUserList(users) {
       : `<span class="user-list-badge pill badge-orange">free</span>`;
     const sel    = _selectedProfiles.has(u.email) ? 'selected' : '';
     const act    = _activeProfileEmail === u.email ? 'active-profile' : '';
-    return `<div class="user-list-item ${sel} ${act}" data-email="${u.email}">
-      <input type="checkbox" onclick="toggleUserSelect('${u.email}', event)"
+    return `<div class="user-list-item ${sel} ${act}" data-email="${escapeHtml(u.email)}">
+      <input type="checkbox" onclick="toggleUserSelect(${jsArg(`${u.email}`)}, event)"
         ${_selectedProfiles.has(u.email) ? 'checked' : ''} />
-      <div class="user-list-meta" onclick="openUserProfile('${u.email}')">
-        <div class="user-list-email">${u.email}</div>
-        ${label ? `<div class="user-list-sub">${label}</div>` : ''}
+      <div class="user-list-meta" onclick="openUserProfile(${jsArg(`${u.email}`)})">
+        <div class="user-list-email">${escapeHtml(u.email)}</div>
+        ${label ? `<div class="user-list-sub">${escapeHtml(label)}</div>` : ''}
         <div class="user-list-sub">${sub}</div>
       </div>
       ${badge}
@@ -4259,9 +4259,9 @@ function renderSavedSegments() {
   const wrap = document.getElementById('savedSegs');
   if (!wrap) return;
   wrap.innerHTML = _savedSegments.map(s => `
-    <span class="saved-seg-chip" onclick="applySegmentFilters('${s.id}')">
-      📁 ${s.name} — ${fmt(s.count)}
-      <span class="del" onclick="deleteSegmentChip(event,'${s.id}')" title="Delete segment">✕</span>
+    <span class="saved-seg-chip" onclick="applySegmentFilters(${jsArg(`${s.id}`)})">
+      📁 ${escapeHtml(s.name)} — ${fmt(s.count)}
+      <span class="del" onclick="deleteSegmentChip(event,${jsArg(`${s.id}`)})" title="Delete segment">✕</span>
     </span>
   `).join('');
 }
@@ -4431,19 +4431,19 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
     _stageBadge[user.funnel_stage] || '',
     isPaid ? `<span class="pill badge-green">paid</span>` : `<span class="pill badge-orange">free</span>`,
     hasDayPass ? `<span class="pill badge-blue">day pass active</span>` : '',
-    notifStatus ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${notifStatus === 'granted' ? '🔔' : '🔕'} notif. ${notifStatus}</span>` : '',
-    locStatus ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">📍 loc. ${locStatus}</span>` : '',
+    notifStatus ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${notifStatus === 'granted' ? '🔔' : '🔕'} notif. ${escapeHtml(notifStatus)}</span>` : '',
+    locStatus ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">📍 loc. ${escapeHtml(locStatus)}</span>` : '',
     user.asa_attribution?.attributed ? `<span class="pill badge-purple">🍎 Apple Search Ads</span>` : '',
-    user.signup_platform ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${user.signup_platform}</span>` : '',
-    user.store_country_code ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${countryFlag(user.store_country_code)} ${user.store_country_code}</span>` : '',
+    user.signup_platform ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${escapeHtml(user.signup_platform)}</span>` : '',
+    user.store_country_code ? `<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted)">${countryFlag(user.store_country_code)} ${escapeHtml(user.store_country_code)}</span>` : '',
   ].filter(Boolean).join('');
 
   // Header
   const header = `<div class="profile-hdr">
-    <div class="profile-avatar">${initial}</div>
+    <div class="profile-avatar">${escapeHtml(initial)}</div>
     <div class="profile-hdr-info">
-      <div class="profile-hdr-name">${user.display_name || '(no name)'}</div>
-      <div class="profile-hdr-email">${user.email}</div>
+      <div class="profile-hdr-name">${escapeHtml(user.display_name || '(no name)')}</div>
+      <div class="profile-hdr-email">${escapeHtml(user.email)}</div>
       <div class="profile-hdr-badges">${badges}</div>
     </div>
     <div style="text-align:right;flex-shrink:0">
@@ -4467,12 +4467,12 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
   const timelineRows = (events || []).map(e => {
     const m = _eventMeta[e.event_type] || { icon: '•', color: 'rgba(255,255,255,.06)', label: e.event_type };
     const detail = e.event_data && Object.keys(e.event_data).length
-      ? ` <span style="color:var(--muted);font-size:0.75rem">${JSON.stringify(e.event_data)}</span>`
+      ? ` <span style="color:var(--muted);font-size:0.75rem">${escapeHtml(JSON.stringify(e.event_data))}</span>`
       : '';
     return `<div class="timeline-item">
       <div class="timeline-icon" style="background:${m.color}">${m.icon}</div>
       <div class="timeline-body">
-        <div class="timeline-label">${m.label}${detail}</div>
+        <div class="timeline-label">${escapeHtml(m.label)}${detail}</div>
         <div class="timeline-time">${_profileTime(e.timestamp)}</div>
       </div>
     </div>`;
@@ -4489,8 +4489,8 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
     const cache = d.from_cache ? '<span style="color:var(--muted);font-size:0.75rem">cached</span>' : '<span style="color:var(--green);font-size:0.75rem">live</span>';
     return `<tr>
       <td>${_profileTime(l.timestamp)}</td>
-      <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.landmark_name || '—'}</td>
-      <td style="color:var(--muted)">${d.city || '—'}</td>
+      <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.landmark_name || '—')}</td>
+      <td style="color:var(--muted)">${escapeHtml(d.city || '—')}</td>
       <td>${cache}</td>
     </tr>`;
   }).join('') || '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:16px">No narrations yet</td></tr>';
@@ -4516,9 +4516,9 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
     const d = p.event_data || {};
     return `<tr>
       <td>${_profileTime(p.timestamp)}</td>
-      <td>${d.product_id || '—'}</td>
-      <td style="color:var(--green);font-weight:600">+${d.coins_amount || '—'} coins</td>
-      <td style="color:var(--muted)">${d.source || '—'}</td>
+      <td>${escapeHtml(d.product_id || '—')}</td>
+      <td style="color:var(--green);font-weight:600">+${escapeHtml(d.coins_amount || '—')} coins</td>
+      <td style="color:var(--muted)">${escapeHtml(d.source || '—')}</td>
     </tr>`;
   }).join('') || '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:16px">No purchases</td></tr>';
 
@@ -4537,7 +4537,7 @@ function renderUserProfile({ user, events, listens, narrations_per_day, purchase
     <div class="section-header" style="margin-bottom:12px">
       <h2>🗺️ Route Map</h2>
       <div style="display:flex;align-items:center;gap:8px">
-        <select id="journeyDate" onchange="renderUserJourney('${user.email}', this.value)"
+        <select id="journeyDate" onchange="renderUserJourney(${jsArg(user.email)}, this.value)"
           style="font:inherit;font-size:0.82rem;background:#141414;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 10px"></select>
         <span id="journeyMeta" style="font-size:0.74rem;color:var(--muted)"></span>
       </div>
@@ -4626,19 +4626,19 @@ async function loadAgencies() {
         ? `${_usd(a.effective_rate_cents_per_day)} <span style="color:var(--muted);font-size:0.75rem">(padrão)</span>`
         : _usd(a.rate_cents_per_day);
       return `<tr>
-        <td><div style="font-weight:600">${a.company || a.name || '—'}</div>
-            <div style="font-size:0.75rem;color:var(--muted)">${a.name || ''}</div></td>
-        <td style="color:var(--muted);font-size:0.8rem">${a.email}${a.phone ? '<br>' + a.phone : ''}</td>
+        <td><div style="font-weight:600">${escapeHtml(a.company || a.name || '—')}</div>
+            <div style="font-size:0.75rem;color:var(--muted)">${escapeHtml(a.name || '')}</div></td>
+        <td style="color:var(--muted);font-size:0.8rem">${escapeHtml(a.email)}${a.phone ? '<br>' + escapeHtml(a.phone) : ''}</td>
         <td class="num">${rate}</td>
         <td><span style="color:${a.approved ? 'var(--green)' : 'var(--yellow)'};font-weight:600;font-size:0.8rem">${a.approved ? 'Aprovada' : 'Pendente'}</span></td>
         <td style="white-space:nowrap">
-          ${a.approved ? '' : `<button class="row-btn" onclick="approveAgency('${a.email}')" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--primary);background:var(--primary);color:#160b06;cursor:pointer;margin-right:6px">Aprovar</button>`}
-          <button onclick="setAgencyRate('${a.email}', ${a.rate_cents_per_day ?? 'null'})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Tarifa</button>
+          ${a.approved ? '' : `<button class="row-btn" onclick="approveAgency(${jsArg(`${a.email}`)})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--primary);background:var(--primary);color:#160b06;cursor:pointer;margin-right:6px">Aprovar</button>`}
+          <button onclick="setAgencyRate(${jsArg(`${a.email}`)}, ${a.rate_cents_per_day ?? 'null'})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Tarifa</button>
         </td>
       </tr>`;
     }).join('') || '<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:16px">Nenhuma agência cadastrada</td></tr>';
   } catch (e) {
-    body.innerHTML = `<tr><td colspan="5" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${e.message}</td></tr>`;
+    body.innerHTML = `<tr><td colspan="5" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${escapeHtml(e.message)}</td></tr>`;
   }
 }
 
@@ -4660,14 +4660,14 @@ async function loadAgencyBilling() {
     const rows = (d.agencies || []).map(a => {
       const st = AGENCY_BILLING_STATUS[a.status] || AGENCY_BILLING_STATUS.open;
       return `<tr>
-        <td><div style="font-weight:600">${a.agency_name}</div>
-            <div style="font-size:0.75rem;color:var(--muted)">${a.agency_email}</div></td>
+        <td><div style="font-weight:600">${escapeHtml(a.agency_name)}</div>
+            <div style="font-size:0.75rem;color:var(--muted)">${escapeHtml(a.agency_email)}</div></td>
         <td class="num">${fmt(a.billable_count)}</td>
         <td class="num">${fmt(a.cancelled_count)}</td>
         <td class="num">${fmt(a.traveler_days)}</td>
         <td class="num" style="font-weight:700">${_usd(a.amount_cents)}</td>
-        <td><span class="pill ${st.cls}">${st.label}</span></td>
-        <td><button onclick="toggleAgencyPaid('${a.agency_id}', '${d.month}', ${!a.paid})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">${a.paid ? 'Desfazer' : 'Marcar como pago'}</button></td>
+        <td><span class="pill ${st.cls}">${escapeHtml(st.label)}</span></td>
+        <td><button onclick="toggleAgencyPaid(${jsArg(`${a.agency_id}`)}, ${jsArg(`${d.month}`)}, ${!a.paid})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">${a.paid ? 'Desfazer' : 'Marcar como pago'}</button></td>
       </tr>`;
     }).join('') || '<tr><td colspan="7" style="color:var(--muted);text-align:center;padding:16px">Nenhum passe faturável neste mês</td></tr>';
 
@@ -4684,7 +4684,7 @@ async function loadAgencyBilling() {
 
     body.innerHTML = rows + totalsRow;
   } catch (e) {
-    body.innerHTML = `<tr><td colspan="7" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${e.message}</td></tr>`;
+    body.innerHTML = `<tr><td colspan="7" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${escapeHtml(e.message)}</td></tr>`;
   }
 }
 
@@ -4774,7 +4774,7 @@ async function issueTripPasses() {
             return `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
               <code style="font-size:1rem;letter-spacing:2px;background:#0d0d0d;border:1px solid var(--border);padding:7px 12px;border-radius:8px;color:var(--primary)">${p.code}</code>
               <code style="font-size:0.76rem;color:var(--muted)">${link}</code>
-              <button onclick="navigator.clipboard.writeText('${link}').then(()=>{this.textContent='Copiado!';setTimeout(()=>this.textContent='Copiar link',1400)})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">Copiar link</button>
+              <button onclick="navigator.clipboard.writeText(${jsArg(`${link}`)}).then(()=>{this.textContent='Copiado!';setTimeout(()=>this.textContent='Copiar link',1400)})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">Copiar link</button>
               <a href="https://wa.me/?text=${encodeURIComponent('Seu Trip Pass do Urban Tales para sua viagem de ' + p.start_date + ' (' + p.days + (p.days !== 1 ? ' dias' : ' dia') + '): histórias de áudio ilimitadas em qualquer cidade. Ative aqui: ' + link)}" target="_blank" style="font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--text);text-decoration:none">WhatsApp</a>
             </div>`;
           }).join('')}
@@ -4782,7 +4782,7 @@ async function issueTripPasses() {
       </div>`;
     loadTripPasses();
   } catch (e) {
-    out.innerHTML = `<div style="color:var(--danger);font-size:0.85rem">Falha ao emitir: ${e.message}</div>`;
+    out.innerHTML = `<div style="color:var(--danger);font-size:0.85rem">Falha ao emitir: ${escapeHtml(e.message)}</div>`;
   }
 }
 
@@ -4820,24 +4820,24 @@ async function loadTripPasses() {
         if (!isNaN(d)) when = d;
       }
       const redeemedCell = p.redeemed_by
-        ? `<div style="font-size:0.82rem;word-break:break-all">${p.redeemed_by}</div>` +
+        ? `<div style="font-size:0.82rem;word-break:break-all">${escapeHtml(p.redeemed_by)}</div>` +
           (when ? `<div style="font-size:0.72rem;color:var(--muted);margin-top:2px">${when.toLocaleDateString()} ${when.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>` : '')
         : '<span style="color:var(--muted)">—</span>';
       return `<tr>
         <td><code style="color:var(--primary);letter-spacing:1px">${p.code}</code></td>
-        <td style="color:var(--muted)">${p.agency_name || p.agency_id || '—'}</td>
-        <td>${p.traveler_name || '—'}</td>
+        <td style="color:var(--muted)">${escapeHtml(p.agency_name || p.agency_id || '—')}</td>
+        <td>${escapeHtml(p.traveler_name || '—')}</td>
         <td>${redeemedCell}</td>
         <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
-        <td><span style="color:${st.color};font-weight:600;font-size:0.8rem">${st.label}</span></td>
+        <td><span style="color:${st.color};font-weight:600;font-size:0.8rem">${escapeHtml(st.label)}</span></td>
         <td class="num">${_usd(p.net_cents)}</td>
         <td style="white-space:nowrap">
-          <button onclick="navigator.clipboard.writeText('https://urbantales.net/redeem?code=${p.code}').then(()=>{this.textContent='Copiado!';setTimeout(()=>this.textContent='Link',1400)})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Link</button>
-          ${canCancel ? `<button onclick="cancelTripPass('${p.code}')" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Cancelar</button>` : ''}</td>
+          <button onclick="navigator.clipboard.writeText(${jsArg(`https://urbantales.net/redeem?code=${p.code}`)}).then(()=>{this.textContent='Copiado!';setTimeout(()=>this.textContent='Link',1400)})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Link</button>
+          ${canCancel ? `<button onclick="cancelTripPass(${jsArg(`${p.code}`)})" style="font:inherit;font-size:0.75rem;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:#141414;color:var(--muted);cursor:pointer">Cancelar</button>` : ''}</td>
       </tr>`;
     }).join('') || '<tr><td colspan="8" style="color:var(--muted);text-align:center;padding:16px">Nenhum passe emitido ainda</td></tr>';
   } catch (e) {
-    body.innerHTML = `<tr><td colspan="8" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${e.message}</td></tr>`;
+    body.innerHTML = `<tr><td colspan="8" style="color:var(--danger);text-align:center;padding:16px">Falha ao carregar: ${escapeHtml(e.message)}</td></tr>`;
   }
 }
 
@@ -4917,7 +4917,7 @@ async function renderUserJourney(email, date) {
         iconSize: [24, 24], iconAnchor: [12, 12],
       });
       L.marker([p.lat, p.lon], { icon }).addTo(_journeyMap)
-        .bindPopup(`<b>${p.order}. ${p.name || ''}</b><br>${p.city || ''}<br><span style="color:#888">${p.listened_at ? new Date(p.listened_at).toLocaleTimeString() : ''}</span>`);
+        .bindPopup(`<b>${p.order}. ${escapeHtml(p.name || '')}</b><br>${escapeHtml(p.city || '')}<br><span style="color:#888">${p.listened_at ? new Date(p.listened_at).toLocaleTimeString() : ''}</span>`);
     });
     _journeyMap.fitBounds(latlngs, { padding: [40, 40] });
     setTimeout(() => _journeyMap && _journeyMap.invalidateSize(), 50);
@@ -5357,14 +5357,12 @@ function renderQuotaExperiment(data) {
     </p>`;
 }
 
-function escapeHtml(str) {
-  if (str == null) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+// Encode data for HTML text/attributes; handler arguments also need JS encoding.
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
+}
+function jsArg(value) {
+  return escapeHtml(JSON.stringify(value ?? ''));
 }
 
 function renderReviewPrompt(data) {
