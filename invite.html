@@ -468,7 +468,8 @@
   document.getElementById('txt-step2-h').textContent = s.step2h;
   document.getElementById('txt-step2-p').textContent = s.step2p;
   document.getElementById('txt-step3-h').textContent = s.step3h;
-  document.getElementById('txt-step3-p').innerHTML = fmt(s.step3p, { code: promoCode });
+  document.getElementById('txt-step3-p').innerHTML = fmt(s.step3p, { code: '' });
+  document.querySelector('#txt-step3-p code').textContent = promoCode;
   document.getElementById('txt-step4-h').textContent = s.step4h;
   document.getElementById('txt-step4-p').textContent = s.step4p;
   document.getElementById('txt-why-label').textContent = s.whyLabel;
