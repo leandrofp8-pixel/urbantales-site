@@ -884,7 +884,7 @@
       <!-- ── COST TRENDS (cache efficiency over time) ── -->
       <div class="card" style="margin-top:24px">
         <div class="card-title">Cost Efficiency Trend
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Weekly. "Active" = requested ≥1 narration that week (cached or fresh) — the only historical per-week activity signal available, since last_active_at only ever reflects the most recent visit.</span>
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Weekly. Cost figures include both narration (OpenAI/Gemini/TTS) and Google Maps calls. "Active" = triggered ≥1 of either that week — the only historical per-week activity signal available, since last_active_at only ever reflects the most recent visit.</span>
         </div>
         <div class="grid-4" id="costTrendKpis">
           <div class="card"><div class="loading">Loading…</div></div>
@@ -910,7 +910,7 @@
       <div class="card" style="margin-top:24px">
         <div class="section-header">
           <h2>Cost &amp; Users by City</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">All-time · tests whether cost/user drops as more users share the same city's cache</span>
+          <span style="font-size:0.8rem;color:var(--muted)">All-time · cost includes narration + Maps; cache hit % is narration-specific (the caching hypothesis being tested)</span>
         </div>
         <div class="table-wrap" style="max-height:440px;overflow-y:auto">
           <table>
@@ -3397,15 +3397,16 @@ function renderCostTrends(data) {
   document.getElementById('costTrendKpis').innerHTML =
     kpiCard('Narration Cache Hit Rate', fmtPct(latest.cache_hit_rate), `Week of ${latest.week_start}`,
       cacheBadge?.text, cacheBadge?.cls) +
-    kpiCard('Cost / Active User', fmtCost(latest.cost_per_active_user), `${fmt(latest.active_users)} active users`,
+    kpiCard('Cost / Active User', fmtCost(latest.cost_per_active_user), `${fmt(latest.active_users)} active users · incl. Maps`,
       costActiveBadge?.text, costActiveBadge?.cls) +
     kpiCard('Cost / Paying User', fmtCost(latest.cost_per_paying_user), `${fmt(latest.paying_active_users)} paying-active`,
       costPayingBadge?.text, costPayingBadge?.cls) +
-    kpiCard('Narration Calls (week)', fmt(latest.narration_calls), `$${latest.total_cost.toFixed(2)} total cost`, null, null);
+    kpiCard('Total Cost (week)', `$${latest.total_cost.toFixed(2)}`, `${fmt(latest.narration_calls)} narration + ${fmt(latest.maps_calls)} Maps calls`, null, null);
 
   const labels = weekly.map(w => w.week_start);
   lineChart('chartCacheHitTrend', labels, [
-    { label: 'Cache hit %', data: weekly.map(w => w.cache_hit_rate), color: C.green },
+    { label: 'Narration cache hit %', data: weekly.map(w => w.cache_hit_rate), color: C.green },
+    { label: 'Maps cache hit %', data: weekly.map(w => w.maps_cache_hit_rate), color: C.blue },
   ], { y: { max: 100 } });
 
   lineChart('chartCostPerUserTrend', labels, [
