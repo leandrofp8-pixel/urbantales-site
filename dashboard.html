@@ -880,6 +880,58 @@
           <button id="purchasesLoadMoreBtn" onclick="loadMorePurchases()" style="font:inherit;font-size:0.82rem;font-weight:600;border-radius:9px;padding:8px 16px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">Load more</button>
         </div>
       </div>
+
+      <!-- ── COST TRENDS (cache efficiency over time) ── -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">Cost Efficiency Trend
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Weekly. "Active" = requested ≥1 narration that week (cached or fresh) — the only historical per-week activity signal available, since last_active_at only ever reflects the most recent visit.</span>
+        </div>
+        <div class="grid-4" id="costTrendKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+        <div class="grid-2" style="margin-top:20px">
+          <div class="card">
+            <div class="card-title">Narration Cache Hit Rate</div>
+            <div class="chart-wrap"><canvas id="chartCacheHitTrend"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-title">API Cost per User
+              <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Active vs paying-active</span>
+            </div>
+            <div class="chart-wrap"><canvas id="chartCostPerUserTrend"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── COST BY CITY ── -->
+      <div class="card" style="margin-top:24px">
+        <div class="section-header">
+          <h2>Cost &amp; Users by City</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">All-time · tests whether cost/user drops as more users share the same city's cache</span>
+        </div>
+        <div class="table-wrap" style="max-height:440px;overflow-y:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>City</th>
+                <th>Country</th>
+                <th>Narration calls</th>
+                <th>Cache hit %</th>
+                <th>Unique users</th>
+                <th>% of users</th>
+                <th>Total cost</th>
+                <th>Cost / user</th>
+              </tr>
+            </thead>
+            <tbody id="costByCityBody">
+              <tr><td colspan="8" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <!-- ── FREE USERS ── -->
@@ -3317,6 +3369,68 @@ function applyLTVFilters() {
 }
 
 // ══════════════════════════════════════════════
+// COST TRENDS (cache efficiency over time + by city)
+// ══════════════════════════════════════════════
+function renderCostTrends(data) {
+  if (!data || !data.weekly || data.weekly.length === 0) {
+    document.getElementById('costTrendKpis').innerHTML =
+      `<div class="card" style="grid-column:1/-1"><div class="kpi-sub" style="padding:16px">No data yet.</div></div>`;
+    document.getElementById('costByCityBody').innerHTML = `<tr><td colspan="8" class="loading">No data yet.</td></tr>`;
+    return;
+  }
+  const { weekly, by_city } = data;
+  const latest = weekly[weekly.length - 1];
+  const prior = weekly.length > 1 ? weekly[weekly.length - 2] : null;
+
+  const trendBadge = (curr, prior, lowerIsBetter) => {
+    if (prior === null || prior === undefined || prior === 0) return null;
+    const delta = curr - prior;
+    if (Math.abs(delta) < 0.01) return null;
+    const improved = lowerIsBetter ? delta < 0 : delta > 0;
+    return { text: `${delta > 0 ? '↑' : '↓'} ${Math.abs(delta).toFixed(2)} vs prior week`, cls: improved ? 'green' : 'orange' };
+  };
+
+  const cacheBadge = trendBadge(latest.cache_hit_rate, prior?.cache_hit_rate, false);
+  const costActiveBadge = trendBadge(latest.cost_per_active_user, prior?.cost_per_active_user, true);
+  const costPayingBadge = trendBadge(latest.cost_per_paying_user, prior?.cost_per_paying_user, true);
+
+  document.getElementById('costTrendKpis').innerHTML =
+    kpiCard('Narration Cache Hit Rate', fmtPct(latest.cache_hit_rate), `Week of ${latest.week_start}`,
+      cacheBadge?.text, cacheBadge?.cls) +
+    kpiCard('Cost / Active User', fmtCost(latest.cost_per_active_user), `${fmt(latest.active_users)} active users`,
+      costActiveBadge?.text, costActiveBadge?.cls) +
+    kpiCard('Cost / Paying User', fmtCost(latest.cost_per_paying_user), `${fmt(latest.paying_active_users)} paying-active`,
+      costPayingBadge?.text, costPayingBadge?.cls) +
+    kpiCard('Narration Calls (week)', fmt(latest.narration_calls), `$${latest.total_cost.toFixed(2)} total cost`, null, null);
+
+  const labels = weekly.map(w => w.week_start);
+  lineChart('chartCacheHitTrend', labels, [
+    { label: 'Cache hit %', data: weekly.map(w => w.cache_hit_rate), color: C.green },
+  ], { y: { max: 100 } });
+
+  lineChart('chartCostPerUserTrend', labels, [
+    { label: 'Cost / active user', data: weekly.map(w => w.cost_per_active_user), color: C.blue },
+    { label: 'Cost / paying user', data: weekly.map(w => w.cost_per_paying_user), color: C.primary },
+  ]);
+
+  if (!by_city || by_city.length === 0) {
+    document.getElementById('costByCityBody').innerHTML = `<tr><td colspan="8" class="loading">No city data yet.</td></tr>`;
+    return;
+  }
+  document.getElementById('costByCityBody').innerHTML = by_city.map(c => `
+    <tr>
+      <td><strong>${c.city_id}</strong></td>
+      <td>${c.country || '—'}</td>
+      <td>${fmt(c.narration_calls)}</td>
+      <td>${fmtPct(c.cache_hit_rate)}</td>
+      <td>${fmt(c.unique_users)}</td>
+      <td>${fmtPct(c.pct_of_users)}</td>
+      <td>$${c.total_cost.toFixed(2)}</td>
+      <td>$${c.cost_per_user.toFixed(4)}</td>
+    </tr>`).join('');
+}
+
+// ══════════════════════════════════════════════
 // VIATOR TAB
 // ══════════════════════════════════════════════
 function renderViator(v) {
@@ -5094,7 +5208,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -5122,6 +5236,7 @@ async function loadAllData() {
       api(`/admin/analytics/review-prompt`).catch(() => null),
       api(`/admin/analytics/theme-breakdown`).catch(() => null),
       api(`/admin/analytics/ltv`).catch(() => null),
+      api(`/admin/analytics/cost-trends?weeks=26`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue, themeBreakdown);
@@ -5137,6 +5252,7 @@ async function loadAllData() {
     renderAcquisitionChannels(acqChannels);
     renderAcquisition(acquisition, freeUsers, acqChannels);
     renderLTV(ltv);
+    renderCostTrends(costTrends);
     renderViator(viator);
     renderInfluencerAccounts(influencerAccounts);
     renderSettings(settings);
