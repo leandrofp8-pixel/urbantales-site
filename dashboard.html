@@ -1671,19 +1671,19 @@
           <div style="font-size:0.78rem;color:var(--yellow);margin-bottom:14px">⚠️ Keep all <code style="background:#222;padding:1px 4px;border-radius:3px">{landmark_name}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{city_name}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{country_str}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{neighborhood_str}</code> placeholders intact.</div>
           <div style="margin-bottom:16px">
             <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Historical</label>
-            <textarea id="nc_prompt_historical" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+            <textarea id="nc_prompt_historical" oninput="markPromptDirty('historical')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
           </div>
           <div style="margin-bottom:16px">
             <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Fun Facts</label>
-            <textarea id="nc_prompt_fun_facts" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+            <textarea id="nc_prompt_fun_facts" oninput="markPromptDirty('fun_facts')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
           </div>
           <div style="margin-bottom:16px">
             <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Cinematic</label>
-            <textarea id="nc_prompt_cinematic" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+            <textarea id="nc_prompt_cinematic" oninput="markPromptDirty('cinematic')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
           </div>
           <div>
             <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Legends</label>
-            <textarea id="nc_prompt_legends" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+            <textarea id="nc_prompt_legends" oninput="markPromptDirty('legends')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
           </div>
         </div>
       </div>
@@ -5277,6 +5277,12 @@ const _NARRATION_DEFAULTS = {
   speaking_rate: 1.0, pitch: 0.0,
 };
 
+// Tracks which prompt textareas the admin actually touched since the last
+// load/save, so saving (e.g. just to tweak temperature) doesn't silently
+// resend and freeze the other three prompts against future default changes.
+let _dirtyPromptFields = new Set();
+function markPromptDirty(style) { _dirtyPromptFields.add(style); }
+
 function renderNarrationConfig(cfg) {
   const c = cfg || _NARRATION_DEFAULTS;
   const selProvider = document.getElementById('nc_narration_provider');
@@ -5299,6 +5305,9 @@ function renderNarrationConfig(cfg) {
 function resetNarrationDefaults() {
   if (!confirm('Reset all narration config to production defaults? This will overwrite any custom prompts.')) return;
   renderNarrationConfig(_NARRATION_DEFAULTS);
+  // Explicit reset intent — mark all four so the next Save actually persists
+  // the defaults, unlike an incidental edit to an unrelated field.
+  ['historical','fun_facts','cinematic','legends'].forEach(s => _dirtyPromptFields.add(s));
 }
 
 async function saveNarrationConfig() {
@@ -5316,6 +5325,7 @@ async function saveNarrationConfig() {
     pitch: parseFloat(document.getElementById('nc_pitch').value),
   };
   ['historical','fun_facts','cinematic','legends'].forEach(s => {
+    if (!_dirtyPromptFields.has(s)) return;  // untouched — don't resend a stale snapshot
     const el = document.getElementById(`nc_prompt_${s}`);
     if (el && el.value.trim()) body[`prompt_${s}`] = el.value;
   });
@@ -5325,6 +5335,7 @@ async function saveNarrationConfig() {
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
       body: JSON.stringify(body),
     }).then(r => { if (!r.ok) throw new Error('Save failed'); return r.json(); });
+    _dirtyPromptFields.clear();
     msg.style.color = 'var(--green)'; msg.textContent = 'Saved — takes effect within 60s';
   } catch (e) {
     msg.style.color = '#f87171'; msg.textContent = 'Save failed — check console';
