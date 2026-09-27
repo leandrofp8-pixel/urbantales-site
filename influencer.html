@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <script>
+// Encode data for HTML text/attributes; handler arguments also need JS encoding.
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
+}
+function jsArg(value) {
+  return escapeHtml(JSON.stringify(value ?? ''));
+}
+
+
     /* Clickjacking defense: GitHub Pages can't send X-Frame-Options/CSP
        frame-ancestors headers, so this login/portal page busts out of any iframe. */
     if (window.top !== window.self) { window.top.location = window.self.location; }
@@ -495,9 +504,9 @@ function renderStats(d) {
     : refs.map(r => {
         const cls = r.status === 'purchased' ? 'pill-green' : 'pill-blue';
         return `<tr>
-          <td>${r.name || 'Explorer'}</td>
-          <td style="color:var(--muted);font-size:.78rem;font-weight:700;letter-spacing:.04em">${r.code || ''}</td>
-          <td><span class="pill ${cls}">${r.status}</span></td>
+          <td>${escapeHtml(r.name || 'Explorer')}</td>
+          <td style="color:var(--muted);font-size:.78rem;font-weight:700;letter-spacing:.04em">${escapeHtml(r.code || '')}</td>
+          <td><span class="pill ${cls}">${escapeHtml(r.status)}</span></td>
           <td style="color:var(--muted)">${fmtDate(r.date)}</td>
         </tr>`;
       }).join('');

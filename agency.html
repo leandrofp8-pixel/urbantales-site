@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <script>
+// Encode data for HTML text/attributes; handler arguments also need JS encoding.
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
+}
+function jsArg(value) {
+  return escapeHtml(JSON.stringify(value ?? ''));
+}
+
+
     /* Clickjacking defense: GitHub Pages can't send frame-ancestors headers,
        so this portal busts out of any iframe. */
     if (window.top !== window.self) { window.top.location = window.self.location; }
@@ -757,7 +766,7 @@ async function loadBilling() {
     const rows = (d.passes || []).map(p => `
       <tr>
         <td><code style="font-family:ui-monospace,Menlo,monospace;color:var(--accent);letter-spacing:1px;font-size:.82rem">${p.code}</code></td>
-        <td>${p.traveler_name || '—'}</td>
+        <td>${escapeHtml(p.traveler_name || '—')}</td>
         <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
         <td class="num">${usd(p.net_cents)}</td>
       </tr>`).join('') || `<tr><td colspan="4" class="empty">${s.noBillablePasses}</td></tr>`;
@@ -782,7 +791,7 @@ async function loadBilling() {
         </table>
       </div>`;
   } catch (e) {
-    el.innerHTML = `<div class="empty" style="color:#ff9d8a">${e.message}</div>`;
+    el.innerHTML = `<div class="empty" style="color:#ff9d8a">${escapeHtml(e.message)}</div>`;
   }
 }
 
@@ -814,16 +823,16 @@ async function issuePasses() {
         <div class="link-row-item">
           <span class="code-chip">${p.code}</span>
           <code class="link-text">${REDEEM_BASE}${p.code}</code>
-          <button class="row-btn" onclick="copyLink('${p.code}', this)">${s.copyLinkBtn}</button>
-          <button class="row-btn" onclick="shareWhatsApp('${p.code}')">${s.whatsappBtn}</button>
+          <button class="row-btn" onclick="copyLink(${jsArg(`${p.code}`)}, this)">${s.copyLinkBtn}</button>
+          <button class="row-btn" onclick="shareWhatsApp(${jsArg(`${p.code}`)})">${s.whatsappBtn}</button>
         </div>`).join('')}</div>
-      <button class="btn-ghost" style="margin-top:.8rem" onclick="showQr(${JSON.stringify(r.passes.map(p => p.code)).replace(/"/g, '&quot;')},'${s.newlyIssuedVouchers}')">${s.viewQrPrintBtn}</button>
+      <button class="btn-ghost" style="margin-top:.8rem" onclick="showQr(${JSON.stringify(r.passes.map(p => p.code)).replace(/"/g, '&quot;')},${jsArg(`${s.newlyIssuedVouchers}`)})">${s.viewQrPrintBtn}</button>
     </div>`;
     document.getElementById('is_traveler').value = '';
     document.getElementById('is_email').value = '';
     loadPasses();
   } catch (e) {
-    out.innerHTML = `<div class="msg err">${e.message}</div>`;
+    out.innerHTML = `<div class="msg err">${escapeHtml(e.message)}</div>`;
   } finally { btn.disabled = false; }
 }
 
@@ -850,22 +859,22 @@ async function loadPasses() {
       const editable = p.status === 'issued';
       return `<tr>
         <td><code style="color:var(--accent);letter-spacing:1px">${p.code}</code></td>
-        <td>${p.traveler_name || '—'}</td>
+        <td>${escapeHtml(p.traveler_name || '—')}</td>
         <td style="color:var(--muted)">${p.start_date} · ${p.days}d</td>
         <td><span class="pill ${p.status}">${LBL[p.status] || p.status}</span></td>
         <td class="num">${usd(p.net_cents)}</td>
         <td style="white-space:nowrap">
-          <button class="row-btn" onclick="copyLink('${p.code}', this)">${s.linkBtn}</button>
-          <button class="row-btn" onclick="shareWhatsApp('${p.code}')">${s.whatsappBtn}</button>
-          <button class="row-btn" onclick="showQr(['${p.code}'],'${s.vouchersTitle} ${p.code}')">${s.qrBtn}</button>
-          ${p.status !== 'cancelled' ? `<button class="row-btn" onclick="sendPassEmail('${p.code}')">${p.emailed_at ? s.resendBtn : s.sendBtn}</button>` : ''}
+          <button class="row-btn" onclick="copyLink(${jsArg(`${p.code}`)}, this)">${s.linkBtn}</button>
+          <button class="row-btn" onclick="shareWhatsApp(${jsArg(`${p.code}`)})">${s.whatsappBtn}</button>
+          <button class="row-btn" onclick="showQr([${jsArg(`${p.code}`)}],${jsArg(`${s.vouchersTitle} ${p.code}`)})">${s.qrBtn}</button>
+          ${p.status !== 'cancelled' ? `<button class="row-btn" onclick="sendPassEmail(${jsArg(`${p.code}`)})">${p.emailed_at ? s.resendBtn : s.sendBtn}</button>` : ''}
           ${editable
-            ? `<button class="row-btn" onclick="openEdit('${p.code}')">${s.editBtn}</button>
-               <button class="row-btn" onclick="cancelPass('${p.code}')">${s.cancelBtn}</button>` : ''}</td>
+            ? `<button class="row-btn" onclick="openEdit(${jsArg(`${p.code}`)})">${s.editBtn}</button>
+               <button class="row-btn" onclick="cancelPass(${jsArg(`${p.code}`)})">${s.cancelBtn}</button>` : ''}</td>
       </tr>`;
     }).join('') || `<tr><td colspan="6" class="empty">${s.noPassesYet}</td></tr>`;
   } catch (e) {
-    body.innerHTML = `<tr><td colspan="6" class="empty" style="color:#ff9d8a">${e.message}</td></tr>`;
+    body.innerHTML = `<tr><td colspan="6" class="empty" style="color:#ff9d8a">${escapeHtml(e.message)}</td></tr>`;
   }
 }
 
@@ -941,7 +950,7 @@ function voucherHtml(p) {
   return `<div class="voucher">
     <img src="${qrDataUrl(url)}" alt="QR ${p.code}" />
     <div class="vcode">${p.code}</div>
-    <div class="vmeta">${p.traveler_name ? p.traveler_name + '<br>' : ''}${p.start_date} · ${p.days} ${pl(p.days, s.daySingular, s.dayPlural)}</div>
+    <div class="vmeta">${p.traveler_name ? escapeHtml(p.traveler_name) + '<br>' : ''}${p.start_date} · ${p.days} ${pl(p.days, s.daySingular, s.dayPlural)}</div>
     <div class="vlink">${url}</div>
     <div class="vbrand">Urban Tales · Trip Pass</div>
   </div>`;
