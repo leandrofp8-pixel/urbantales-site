@@ -892,14 +892,19 @@
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
         </div>
+        <div class="grid-3" id="revenueTrendKpis" style="margin-top:12px">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
         <div class="grid-2" style="margin-top:20px">
           <div class="card">
             <div class="card-title">Narration Cache Hit Rate</div>
             <div class="chart-wrap"><canvas id="chartCacheHitTrend"></canvas></div>
           </div>
           <div class="card">
-            <div class="card-title">API Cost per User
-              <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Active vs paying-active</span>
+            <div class="card-title">Revenue vs Cost per User
+              <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Same weekly active/paying-active user sets, so cost and revenue lines are directly comparable</span>
             </div>
             <div class="chart-wrap"><canvas id="chartCostPerUserTrend"></canvas></div>
           </div>
@@ -3393,6 +3398,10 @@ function renderCostTrends(data) {
   const cacheBadge = trendBadge(latest.cache_hit_rate, prior?.cache_hit_rate, false);
   const costActiveBadge = trendBadge(latest.cost_per_active_user, prior?.cost_per_active_user, true);
   const costPayingBadge = trendBadge(latest.cost_per_paying_user, prior?.cost_per_paying_user, true);
+  const revActiveBadge = trendBadge(latest.revenue_per_active_user, prior?.revenue_per_active_user, false);
+  const revPayingBadge = trendBadge(latest.revenue_per_paying_user, prior?.revenue_per_paying_user, false);
+
+  const marginX = (rev, cost) => cost > 0 ? `${(rev / cost).toFixed(1)}x cost` : (rev > 0 ? '∞ (zero cost)' : '—');
 
   document.getElementById('costTrendKpis').innerHTML =
     kpiCard('Narration Cache Hit Rate', fmtPct(latest.cache_hit_rate), `Week of ${latest.week_start}`,
@@ -3403,6 +3412,13 @@ function renderCostTrends(data) {
       costPayingBadge?.text, costPayingBadge?.cls) +
     kpiCard('Total Cost (week)', `$${latest.total_cost.toFixed(2)}`, `${fmt(latest.narration_calls)} narration + ${fmt(latest.maps_calls)} Maps calls`, null, null);
 
+  document.getElementById('revenueTrendKpis').innerHTML =
+    kpiCard('Revenue / Active User', fmtCost(latest.revenue_per_active_user), `${marginX(latest.revenue_per_active_user, latest.cost_per_active_user)} vs API cost`,
+      revActiveBadge?.text, revActiveBadge?.cls) +
+    kpiCard('Revenue / Paying User', fmtCost(latest.revenue_per_paying_user), `${marginX(latest.revenue_per_paying_user, latest.cost_per_paying_user)} vs API cost`,
+      revPayingBadge?.text, revPayingBadge?.cls) +
+    kpiCard('Total Revenue (week)', `$${latest.revenue.toFixed(2)}`, `vs $${latest.total_cost.toFixed(2)} API cost`, null, null);
+
   const labels = weekly.map(w => w.week_start);
   lineChart('chartCacheHitTrend', labels, [
     { label: 'Narration cache hit %', data: weekly.map(w => w.cache_hit_rate), color: C.green },
@@ -3412,6 +3428,8 @@ function renderCostTrends(data) {
   lineChart('chartCostPerUserTrend', labels, [
     { label: 'Cost / active user', data: weekly.map(w => w.cost_per_active_user), color: C.blue },
     { label: 'Cost / paying user', data: weekly.map(w => w.cost_per_paying_user), color: C.primary },
+    { label: 'Revenue / active user', data: weekly.map(w => w.revenue_per_active_user), color: C.green },
+    { label: 'Revenue / paying user', data: weekly.map(w => w.revenue_per_paying_user), color: C.yellow },
   ]);
 
   if (!by_city || by_city.length === 0) {
