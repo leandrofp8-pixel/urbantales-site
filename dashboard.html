@@ -467,6 +467,7 @@
     <button class="tab-btn" onclick="showTab('users')">Free Users</button>
     <button class="tab-btn" onclick="showTab('acquisition')">Acquisition</button>
     <button class="tab-btn" onclick="showTab('ltv')">💰 LTV</button>
+    <button class="tab-btn" onclick="showTab('revenue')">📈 Revenue</button>
     <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
     <button class="tab-btn" onclick="showTab('viator')">🎫 Viator</button>
     <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
@@ -1333,6 +1334,109 @@
         </div>
       </div>
     </div><!-- /panel-ltv -->
+
+    <!-- ── REVENUE ── -->
+    <div class="tab-panel" id="panel-revenue">
+
+      <!-- WHEN people buy -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">When People Buy
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Days since signup snapshotted at the moment of each purchase event — not recomputed, so it's stable regardless of churn/reactivation later</span>
+        </div>
+        <div class="grid-2" id="revenueWhenKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+        <div class="grid-3" style="margin-top:20px">
+          <div class="card">
+            <div class="card-title" style="font-size:0.88rem">Days to First Purchase</div>
+            <div class="chart-wrap" style="height:220px"><canvas id="chartDaysToPurchase"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="font-size:0.88rem">Day of Week</div>
+            <div class="chart-wrap" style="height:220px"><canvas id="chartPurchaseDow"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="font-size:0.88rem">Hour of Day (UTC)</div>
+            <div class="chart-wrap" style="height:220px"><canvas id="chartPurchaseHour"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHO buys -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Who Buys
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Conversion rate and revenue share by segment — same channel/platform/quota-group classification as the LTV tab</span>
+        </div>
+        <div class="grid-3" style="gap:20px">
+          <div>
+            <div style="font-weight:600;margin-bottom:8px;font-size:0.88rem">By Channel</div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Channel</th><th>Users</th><th>Conv.</th><th>Revenue</th><th>Share</th></tr></thead>
+                <tbody id="revenueByChannelBody"><tr><td colspan="5" class="loading">Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div style="font-weight:600;margin-bottom:8px;font-size:0.88rem">By Platform</div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Platform</th><th>Users</th><th>Conv.</th><th>Revenue</th><th>Share</th></tr></thead>
+                <tbody id="revenueByPlatformBody"><tr><td colspan="5" class="loading">Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div style="font-weight:600;margin-bottom:8px;font-size:0.88rem">By Quota Group</div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Group</th><th>Users</th><th>Conv.</th><th>Revenue</th><th>Share</th></tr></thead>
+                <tbody id="revenueByQuotaBody"><tr><td colspan="5" class="loading">Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AVERAGE TICKET -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Average Ticket</div>
+        <div class="grid-3" id="revenueTicketKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+        <div class="grid-2" style="margin-top:20px">
+          <div class="card">
+            <div class="card-title" style="font-size:0.88rem">By Coin Pack</div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Pack</th><th>Price</th><th>Transactions</th><th>% of txns</th><th>Revenue</th></tr></thead>
+                <tbody id="revenueByPackBody"><tr><td colspan="5" class="loading">Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="font-size:0.88rem">Weekly Avg Ticket Trend</div>
+            <div class="chart-wrap"><canvas id="chartTicketTrend"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUYERS VS FREE BEHAVIOR -->
+      <div class="card">
+        <div class="card-title">Buyers vs. Free-User Behavior
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Payers = ever made a purchase. Live snapshot fields, not point-in-time.</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Users</th><th>Avg Sessions</th><th>Avg Narrations Listened</th><th>Avg Shop Views</th><th>Avg Days to Activation</th></tr></thead>
+            <tbody id="revenueBehaviorBody"><tr><td colspan="6" class="loading">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /panel-revenue -->
 
     <!-- ── NOTIFICATIONS ── -->
     <div class="tab-panel" id="panel-notifications">
@@ -3450,6 +3554,90 @@ function renderCostTrends(data) {
 }
 
 // ══════════════════════════════════════════════
+// REVENUE BREAKDOWN
+// ══════════════════════════════════════════════
+const DAYS_TO_PURCHASE_LABELS = {
+  same_day: 'Same day', '1_3_days': '1-3 days', '4_7_days': '4-7 days',
+  '8_30_days': '8-30 days', '31_plus_days': '31+ days',
+};
+const SEGMENT_LABELS = {
+  organic: 'Organic', mgm: 'MGM', influencer: 'Influencer', apple_search_ads: 'Apple Search Ads',
+  ios: 'iOS', android: 'Android', unknown: 'Unknown',
+  daily_control: 'Daily control', weekly_test: 'Weekly test', unassigned: 'Unassigned',
+};
+const segLabel = k => SEGMENT_LABELS[k] || k;
+
+function renderRevenueBreakdown(data) {
+  if (!data) {
+    document.getElementById('revenueWhenKpis').innerHTML =
+      `<div class="card" style="grid-column:1/-1"><div class="kpi-sub" style="padding:16px">No data yet.</div></div>`;
+    return;
+  }
+  const { when, who, ticket, behavior } = data;
+
+  // ── WHEN ──
+  document.getElementById('revenueWhenKpis').innerHTML =
+    kpiCard('Wall-Hit Purchases', fmtPct(when.wall_hit_pct),
+      `Preceded by hitting an "out of coins" wall within 30 min · ${fmt(when.total_transactions_analyzed)} transactions`, null, null) +
+    kpiCard('First Purchases Analyzed', fmt(when.total_first_purchases_analyzed),
+      `Distinct users with at least one purchase`, null, null);
+
+  barChart('chartDaysToPurchase',
+    when.days_to_first_purchase.map(b => DAYS_TO_PURCHASE_LABELS[b.bucket] || b.bucket),
+    [{ label: 'Users', data: when.days_to_first_purchase.map(b => b.count), color: C.primary }]);
+
+  barChart('chartPurchaseDow',
+    when.day_of_week.map(d => d.day),
+    [{ label: 'Purchases', data: when.day_of_week.map(d => d.count), color: C.blue }]);
+
+  barChart('chartPurchaseHour',
+    when.hour_of_day_utc.map(h => h.hour),
+    [{ label: 'Purchases', data: when.hour_of_day_utc.map(h => h.count), color: C.purple }]);
+
+  // ── WHO ──
+  const segRow = r => `<tr>
+    <td><strong>${segLabel(r.key)}</strong></td>
+    <td>${fmt(r.users)}</td>
+    <td>${fmtPct(r.conversion_rate)}</td>
+    <td>$${r.revenue.toFixed(2)}</td>
+    <td>${fmtPct(r.revenue_share_pct)}</td>
+  </tr>`;
+  document.getElementById('revenueByChannelBody').innerHTML = who.by_channel.map(segRow).join('') || `<tr><td colspan="5" class="loading">No data.</td></tr>`;
+  document.getElementById('revenueByPlatformBody').innerHTML = who.by_platform.map(segRow).join('') || `<tr><td colspan="5" class="loading">No data.</td></tr>`;
+  document.getElementById('revenueByQuotaBody').innerHTML = who.by_quota_group.map(segRow).join('') || `<tr><td colspan="5" class="loading">No data.</td></tr>`;
+
+  // ── TICKET ──
+  document.getElementById('revenueTicketKpis').innerHTML =
+    kpiCard('Avg Ticket (overall)', `$${ticket.avg_overall.toFixed(2)}`, null, null, null) +
+    kpiCard('Avg First Purchase', `$${ticket.avg_first_purchase.toFixed(2)}`, null, null, null) +
+    kpiCard('Avg Repeat Purchase', `$${ticket.avg_repeat_purchase.toFixed(2)}`, `${fmt(ticket.repeat_purchase_count)} repeat transactions`, null, null);
+
+  document.getElementById('revenueByPackBody').innerHTML = ticket.by_pack.map(p => `
+    <tr>
+      <td>${fmt(p.coins)} coins</td>
+      <td>$${p.price.toFixed(2)}</td>
+      <td>${fmt(p.transactions)}</td>
+      <td>${fmtPct(p.pct_of_transactions)}</td>
+      <td>$${p.revenue.toFixed(2)}</td>
+    </tr>`).join('') || `<tr><td colspan="5" class="loading">No data.</td></tr>`;
+
+  lineChart('chartTicketTrend', ticket.weekly_trend.map(w => w.week_start),
+    [{ label: 'Avg ticket', data: ticket.weekly_trend.map(w => w.avg_ticket), color: C.green }]);
+
+  // ── BEHAVIOR ──
+  const behaviorRow = (label, b) => `<tr>
+    <td><strong>${label}</strong></td>
+    <td>${fmt(b.count)}</td>
+    <td>${b.avg_sessions}</td>
+    <td>${b.avg_narrations}</td>
+    <td>${b.avg_shop_views}</td>
+    <td>${b.avg_days_to_activation === null ? '—' : b.avg_days_to_activation}</td>
+  </tr>`;
+  document.getElementById('revenueBehaviorBody').innerHTML =
+    behaviorRow('Payers', behavior.payers) + behaviorRow('Never Paid', behavior.non_payers);
+}
+
+// ══════════════════════════════════════════════
 // VIATOR TAB
 // ══════════════════════════════════════════════
 function renderViator(v) {
@@ -5227,7 +5415,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -5256,6 +5444,7 @@ async function loadAllData() {
       api(`/admin/analytics/theme-breakdown`).catch(() => null),
       api(`/admin/analytics/ltv`).catch(() => null),
       api(`/admin/analytics/cost-trends?weeks=26`).catch(() => null),
+      api(`/admin/analytics/revenue-breakdown`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue, themeBreakdown);
@@ -5272,6 +5461,7 @@ async function loadAllData() {
     renderAcquisition(acquisition, freeUsers, acqChannels);
     renderLTV(ltv);
     renderCostTrends(costTrends);
+    renderRevenueBreakdown(revenueBreakdown);
     renderViator(viator);
     renderInfluencerAccounts(influencerAccounts);
     renderSettings(settings);
