@@ -3801,6 +3801,8 @@ const PLAYBACK_END_LABELS = {
 const PLAYBACK_HEALING_LABELS = {
   too_old: 'Queued story dropped: waited too long',
   too_far: 'Queued story dropped: user walked away',
+  passed: 'Queued story dropped: already walked past',
+  passed_skipped: 'Landmark not auto-played: already walked past',
   stale_flag: "Repaired a stale 'playing' flag",
   stuck_generation: 'Freed a generation that never returned',
   stale_pause: 'Released a story paused outside the app',
@@ -3928,6 +3930,7 @@ function renderPlaybackHealth(d) {
     ...Object.entries(s.queue_dropped || {}),
     ...Object.entries(s.recovered || {}),
     ...Object.entries(s.gen_cancelled || {}),
+    ...(s.passed_skipped ? [['passed_skipped', s.passed_skipped]] : []),
   ].map(([reason, n]) => [PLAYBACK_HEALING_LABELS[reason] || reason, n]).sort((a, b) => b[1] - a[1]);
   document.getElementById('playbackSelfHealing').innerHTML = rowsHtml(healing);
 
@@ -4506,6 +4509,10 @@ function renderSettings(data) {
     `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Who runs the new engine. Testers always do; then a stable % of everyone else. Takes effect at each user's next app start. Set % to 0 to roll back. Compare engines in the Playback tab.</div>` +
     field('unified_engine_rollout_pct', 'Rollout % (0–100)', 'number', s.unified_engine_rollout_pct ?? 0, 'min="0" max="100"') +
     field('unified_engine_testers', 'Tester emails (comma-separated)', 'text', escapeHtml((s.unified_engine_testers || []).join(', ')), '') +
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Walking Direction (release 5)</div>` +
+    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Only for users on the unified engine above. Takes effect at each user's next app start. Direction-aware: prefer landmarks ahead, skip ones already walked past. Lead-ins: a short spoken "On your left: …" before automatic stories. Watch "% started behind you" in the Playback tab.</div>` +
+    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('direction_aware_enabled', 'Direction-Aware Auto-Play', s.direction_aware_enabled ?? false)}</div>` +
+    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('direction_intros_enabled', '"On your left…" Lead-ins', s.direction_intros_enabled ?? false)}</div>` +
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Vehicle Speed Protection</div>` +
     field('max_walking_speed_kmh', 'Max Speed km/h (above this threshold API calls are skipped)', 'number', s.max_walking_speed_kmh ?? 25, 'min="5" max="120"');
 }
@@ -4558,6 +4565,8 @@ async function saveSettings() {
     playback_telemetry_enabled: document.getElementById('s_playback_telemetry_enabled').checked,
     unified_engine_rollout_pct: parseInt(document.getElementById('s_unified_engine_rollout_pct').value) || 0,
     unified_engine_testers: document.getElementById('s_unified_engine_testers').value.split(',').map(e => e.trim()).filter(Boolean),
+    direction_aware_enabled: document.getElementById('s_direction_aware_enabled').checked,
+    direction_intros_enabled: document.getElementById('s_direction_intros_enabled').checked,
   };
 
   try {
