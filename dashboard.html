@@ -4518,7 +4518,8 @@ function renderSettings(data) {
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('direction_aware_enabled', 'Direction-Aware Auto-Play', s.direction_aware_enabled ?? false)}</div>` +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('direction_intros_enabled', '"On your left…" Lead-ins', s.direction_intros_enabled ?? false)}</div>` +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('facing_direction_enabled', 'Use Where the User Faces (compass)', s.facing_direction_enabled ?? false)}</div>` +
-    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">"Where the user faces" needs Direction-Aware on. Standing still with the Walk screen open, the phone's compass picks the landmark in front; later also headphones and glasses.</div>` +
+    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('head_tracking_enabled', 'Head Tracking (AirPods, Meta glasses)', s.head_tracking_enabled ?? false)}</div>` +
+    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">"Where the user faces" needs Direction-Aware on. Standing still with the Walk screen open, the phone's compass picks the landmark in front; With Head Tracking on, AirPods (iPhone; asks once for Motion access) and Meta glasses (glasses beta build only) tell it where the head points, also in Pocket Mode, and taking the glasses off pauses the story.</div>` +
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Vehicle Speed Protection</div>` +
     field('max_walking_speed_kmh', 'Max Speed km/h (above this threshold API calls are skipped)', 'number', s.max_walking_speed_kmh ?? 25, 'min="5" max="120"');
 }
@@ -4574,6 +4575,7 @@ async function saveSettings() {
     direction_aware_enabled: document.getElementById('s_direction_aware_enabled').checked,
     direction_intros_enabled: document.getElementById('s_direction_intros_enabled').checked,
     facing_direction_enabled: document.getElementById('s_facing_direction_enabled').checked,
+    head_tracking_enabled: document.getElementById('s_head_tracking_enabled').checked,
   };
 
   try {
