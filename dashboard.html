@@ -1926,6 +1926,16 @@
           <div id="playbackEndReasons"></div>
         </div>
       </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Interruptions <span class="kpi-sub">(calls, Siri, alarms, lost headphones)</span></div>
+          <div id="playbackInterruptions"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Self-healing <span class="kpi-sub">(occasional is normal; a spike means something broke)</span></div>
+          <div id="playbackSelfHealing"></div>
+        </div>
+      </div>
       <div class="card" style="margin-bottom:24px">
         <div class="section-header"><h2>By platform and engine</h2></div>
         <div class="table-wrap">
@@ -3781,6 +3791,19 @@ const PLAYBACK_SIGNAL_LABELS = {
 const PLAYBACK_END_LABELS = {
   finished: 'Played to the end', user_closed: 'User closed it', replaced: 'Replaced by another story',
   stopped_by_other_screen: 'Stopped by another screen',
+  interrupted_too_long: 'Moved on after a long call', walked_away: 'Moved on: walked away during a call',
+  system_said_no: 'Moved on: phone said not to resume', released_after_pause: 'Released after a long outside pause',
+  error: 'Player error',
+};
+const PLAYBACK_HEALING_LABELS = {
+  too_old: 'Queued story dropped: waited too long',
+  too_far: 'Queued story dropped: user walked away',
+  stale_flag: "Repaired a stale 'playing' flag",
+  stuck_generation: 'Freed a generation that never returned',
+  stale_pause: 'Released a story paused outside the app',
+  never_started: 'Released a story that never started',
+  cancelled: 'Generated story not played (card closed / newer story)',
+  foreground_active: 'Background story skipped (user playing in the app)',
 };
 
 function _playbackSeconds(ms) {
@@ -3815,6 +3838,8 @@ function renderPlaybackHealth(d) {
     document.getElementById('playbackKpis2').innerHTML = '';
     document.getElementById('playbackSignals').innerHTML = '';
     document.getElementById('playbackEndReasons').innerHTML = '';
+    document.getElementById('playbackInterruptions').innerHTML = '';
+    document.getElementById('playbackSelfHealing').innerHTML = '';
     document.getElementById('playbackBreakdownBody').innerHTML = `<tr><td colspan="6" class="loading">No data yet.</td></tr>`;
     document.getElementById('playbackProblemsBody').innerHTML = `<tr><td colspan="8" class="loading">No data yet.</td></tr>`;
     notice.innerHTML = d && d.telemetry_enabled === false
@@ -3878,6 +3903,28 @@ function renderPlaybackHealth(d) {
           <span style="font-size:0.9rem">${escapeHtml(PLAYBACK_END_LABELS[reason] || reason)}</span>
           <strong>${fmt(count)}</strong>
         </div>`).join('');
+
+  const rowsHtml = (pairs) => pairs.length === 0
+    ? `<div class="kpi-sub" style="padding:12px">Nothing yet.</div>`
+    : pairs.map(([label, count]) => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)">
+          <span style="font-size:0.9rem">${escapeHtml(label)}</span>
+          <strong>${fmt(count)}</strong>
+        </div>`).join('');
+  const intr = s.interruptions || {};
+  const movedOn = Object.entries(intr.moved_on || {});
+  document.getElementById('playbackInterruptions').innerHTML = rowsHtml([
+    ['Interruptions started', intr.began || 0],
+    ['Story resumed afterwards', intr.resumed || 0],
+    ...movedOn.map(([reason, n]) => [PLAYBACK_END_LABELS[reason] || reason, n]),
+    ['Headphones/glasses disconnected or audio taken', intr.audio_route_lost || 0],
+  ]);
+  const healing = [
+    ...Object.entries(s.queue_dropped || {}),
+    ...Object.entries(s.recovered || {}),
+    ...Object.entries(s.gen_cancelled || {}),
+  ].map(([reason, n]) => [PLAYBACK_HEALING_LABELS[reason] || reason, n]).sort((a, b) => b[1] - a[1]);
+  document.getElementById('playbackSelfHealing').innerHTML = rowsHtml(healing);
 
   const rows = d.breakdown || [];
   document.getElementById('playbackBreakdownBody').innerHTML = rows.length === 0
