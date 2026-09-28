@@ -51,5 +51,22 @@ function decode(value) { return value.replace(/&(quot|#39|lt|gt|amp);/g,(_,key)=
   vm.runInNewContext(lines.join('\n'),{promoCode:payload,s:{step3p:'Enter <code>{code}</code> now.'},
     fmt:(s,v)=>s.replace('{code}',v.code),document:{getElementById:()=>container,querySelector:()=>code}});
   assert.equal(container.innerHTML,'Enter <code></code> now.');assert.equal(code.textContent,payload);
-  console.log('Rendering security checks passed: names, attributes, button arguments, vouchers, referral code.');
+  // Playback tab: every string from the app (landmark names, versions, reasons) must be escaped.
+  ({context:c,elements:e}=setup('dashboard.html',['kpiCard','_playbackSeconds','_playbackPct','_playbackMeters','_playbackEngine','renderPlaybackHealth']));
+  const dash=source('dashboard.html');
+  vm.runInContext(dash.slice(dash.indexOf('const PLAYBACK_SIGNAL_LABELS'),dash.indexOf('function _playbackSeconds')),c);
+  Object.assign(c,{lineChart:()=>{},doughnutChart:()=>{},shortDate:String,C:{primary:'',yellow:'',green:'',blue:''}});
+  c.renderPlaybackHealth({
+    summary:{plays:1,auto_plays:1,users:1,sessions:1,signals:{overlapping_audio:1},direction_zones:{ahead:1,side:0,behind:0},
+      end_reasons:{[payload]:1},trigger_to_audio_p50_ms:null,started_out_of_range_pct:null,started_behind_pct:null,
+      external_pauses_per_100_plays:null,queued_age_p50_s:null,queued_age_p90_s:null},
+    app_versions:[payload],
+    breakdown:[{platform:payload,engine:payload,plays:1}],
+    daily:[],
+    recent_problems:[{timestamp:'2026-09-28T10:00:00Z',kind:payload,type:payload,detail:payload,landmark_name:payload,
+      platform:payload,engine:payload,app_state:payload,app_version:payload}],
+  });
+  for(const id of ['playbackVersion','playbackEndReasons','playbackBreakdownBody','playbackProblemsBody','playbackSignals','playbackKpis','playbackKpis2','playbackNotice']) safe(e.get(id).innerHTML);
+  assert(e.get('playbackProblemsBody').innerHTML.includes('&lt;img src=x'));
+  console.log('Rendering security checks passed: names, attributes, button arguments, vouchers, referral code, playback tab.');
 })().catch(error=>{console.error(error);process.exitCode=1;});
