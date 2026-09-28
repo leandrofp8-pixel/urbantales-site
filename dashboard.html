@@ -1892,6 +1892,9 @@
           <select id="playbackPlatform" onchange="loadPlaybackHealth()" style="font:inherit;font-size:0.82rem;border-radius:8px;padding:7px 11px;border:1px solid var(--border);background:#141414;color:var(--text)">
             <option value="">All platforms</option><option value="ios">iOS</option><option value="android">Android</option>
           </select>
+          <select id="playbackEngine" onchange="loadPlaybackHealth()" style="font:inherit;font-size:0.82rem;border-radius:8px;padding:7px 11px;border:1px solid var(--border);background:#141414;color:var(--text)">
+            <option value="">Both engines</option><option value="unified">Unified engine (release 4)</option><option value="legacy">Current engine</option>
+          </select>
           <select id="playbackVersion" onchange="loadPlaybackHealth()" style="font:inherit;font-size:0.82rem;border-radius:8px;padding:7px 11px;border:1px solid var(--border);background:#141414;color:var(--text)">
             <option value="">All app versions</option>
           </select>
@@ -3825,6 +3828,8 @@ async function loadPlaybackHealth() {
   let q = _dateParams();
   if (platform) q += `&platform=${encodeURIComponent(platform)}`;
   if (version) q += `&app_version=${encodeURIComponent(version)}`;
+  const engine = document.getElementById('playbackEngine').value;
+  if (engine) q += `&engine_impl=${encodeURIComponent(engine)}`;
   const data = await api(`/admin/analytics/playback-health?${q}`).catch(() => null);
   renderPlaybackHealth(data);
 }
@@ -4497,6 +4502,10 @@ function renderSettings(data) {
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Diagnostics</div>` +
     `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Auto-play diagnostics shown in the Playback tab. Turning this off makes the app stop sending them (takes effect on each phone's next send).</div>` +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('playback_telemetry_enabled', 'Collect Playback Diagnostics', s.playback_telemetry_enabled ?? true)}</div>` +
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Unified Auto-Play Engine (release 4)</div>` +
+    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Who runs the new engine. Testers always do; then a stable % of everyone else. Takes effect at each user's next app start. Set % to 0 to roll back. Compare engines in the Playback tab.</div>` +
+    field('unified_engine_rollout_pct', 'Rollout % (0–100)', 'number', s.unified_engine_rollout_pct ?? 0, 'min="0" max="100"') +
+    field('unified_engine_testers', 'Tester emails (comma-separated)', 'text', escapeHtml((s.unified_engine_testers || []).join(', ')), '') +
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Vehicle Speed Protection</div>` +
     field('max_walking_speed_kmh', 'Max Speed km/h (above this threshold API calls are skipped)', 'number', s.max_walking_speed_kmh ?? 25, 'min="5" max="120"');
 }
@@ -4547,6 +4556,8 @@ async function saveSettings() {
     review_prompt_min_sessions: parseInt(document.getElementById('s_review_prompt_min_sessions').value),
     review_prompt_min_narrations: parseInt(document.getElementById('s_review_prompt_min_narrations').value),
     playback_telemetry_enabled: document.getElementById('s_playback_telemetry_enabled').checked,
+    unified_engine_rollout_pct: parseInt(document.getElementById('s_unified_engine_rollout_pct').value) || 0,
+    unified_engine_testers: document.getElementById('s_unified_engine_testers').value.split(',').map(e => e.trim()).filter(Boolean),
   };
 
   try {
