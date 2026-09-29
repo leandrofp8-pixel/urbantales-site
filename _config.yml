@@ -1,0 +1,4 @@
+# GitHub Pages skips dot-folders by default; .well-known holds the
+# apple-app-site-association file for the app's universal links.
+include:
+  - .well-known

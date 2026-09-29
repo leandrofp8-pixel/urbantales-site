@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["2J44KF44L8.com.urbantales.app"],
+        "components": [
+          { "/": "/meta-wearables", "comment": "Meta AI app returning after glasses registration" },
+          { "/": "/meta-wearables/*" }
+        ]
+      }
+    ]
+  }
+}
