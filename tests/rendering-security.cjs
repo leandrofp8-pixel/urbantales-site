@@ -60,14 +60,18 @@ function decode(value) { return value.replace(/&(quot|#39|lt|gt|amp);/g,(_,key)=
     summary:{plays:1,auto_plays:1,users:1,sessions:1,signals:{overlapping_audio:1},direction_zones:{ahead:1,side:0,behind:0},
       end_reasons:{[payload]:1},queue_dropped:{[payload]:1},recovered:{[payload]:2},gen_cancelled:{},
       interruptions:{began:1,resumed:0,moved_on:{[payload]:1},audio_route_lost:0},trigger_to_audio_p50_ms:null,started_out_of_range_pct:null,started_behind_pct:null,
-      external_pauses_per_100_plays:null,queued_age_p50_s:null,queued_age_p90_s:null},
+      external_pauses_per_100_plays:null,queued_age_p50_s:null,queued_age_p90_s:null,
+      per_user:{listeners:1,stories:{avg:2.5,p50:1,p90:4},auto_stories:{avg:2,p50:1,p90:3},finished_stories:{avg:1,p50:0,p90:2},
+        stories_per_active_day:1.7,users_with_problem_pct:25}},
     app_versions:[payload],
     breakdown:[{platform:payload,engine:payload,plays:1}],
     daily:[],
     recent_problems:[{timestamp:'2026-09-28T10:00:00Z',kind:payload,type:payload,detail:payload,landmark_name:payload,
       platform:payload,engine:payload,app_state:payload,app_version:payload}],
   });
-  for(const id of ['playbackVersion','playbackEndReasons','playbackBreakdownBody','playbackProblemsBody','playbackSignals','playbackKpis','playbackKpis2','playbackNotice','playbackInterruptions','playbackSelfHealing']) safe(e.get(id).innerHTML);
+  for(const id of ['playbackVersion','playbackEndReasons','playbackBreakdownBody','playbackProblemsBody','playbackSignals','playbackKpis','playbackKpis2','playbackKpis3','playbackNotice','playbackInterruptions','playbackSelfHealing']) safe(e.get(id).innerHTML);
   assert(e.get('playbackProblemsBody').innerHTML.includes('&lt;img src=x'));
+  const perUser=e.get('playbackKpis3').innerHTML;
+  assert(perUser.includes('Stories per User')&&perUser.includes('2.5')&&perUser.includes('median 1')&&perUser.includes('25'), perUser);
   console.log('Rendering security checks passed: names, attributes, button arguments, vouchers, referral code, playback tab.');
 })().catch(error=>{console.error(error);process.exitCode=1;});
