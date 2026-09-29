@@ -1408,6 +1408,7 @@
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
         </div>
+        <div class="grid-3" id="revenuePerUserKpis" style="margin-top:16px"></div>
         <div class="grid-2" style="margin-top:20px">
           <div class="card">
             <div class="card-title" style="font-size:0.88rem">By Coin Pack</div>
@@ -3687,6 +3688,15 @@ function renderRevenueBreakdown(data) {
     kpiCard('Avg Ticket (overall)', `$${ticket.avg_overall.toFixed(2)}`, null, null, null) +
     kpiCard('Avg First Purchase', `$${ticket.avg_first_purchase.toFixed(2)}`, null, null, null) +
     kpiCard('Avg Repeat Purchase', `$${ticket.avg_repeat_purchase.toFixed(2)}`, `${fmt(ticket.repeat_purchase_count)} repeat transactions`, null, null);
+
+  // Per user: medians next to averages, so a couple of big spenders don't carry it.
+  const pu = ticket.per_user;
+  const money = (v) => (v === null || v === undefined ? '—' : `$${Number(v).toFixed(2)}`);
+  const num = (v) => (v === null || v === undefined ? '—' : String(v));
+  document.getElementById('revenuePerUserKpis').innerHTML = !pu ? '' :
+    kpiCard('Revenue per Paying User', money(pu.revenue_per_payer_avg), `median ${money(pu.revenue_per_payer_median)} · ${fmt(pu.paying_users)} paying users`, null, null) +
+    kpiCard('Purchases per Paying User', num(pu.purchases_per_payer_avg), `median ${num(pu.purchases_per_payer_median)} · ${pu.repeat_buyer_pct === null ? '—' : fmtPct(pu.repeat_buyer_pct)} bought more than once`, null, null) +
+    kpiCard('Revenue per User (all)', money(pu.revenue_per_user), `across ${fmt(pu.users)} signed-up users, paying or not`, null, null);
 
   document.getElementById('revenueByPackBody').innerHTML = ticket.by_pack.map(p => `
     <tr>
