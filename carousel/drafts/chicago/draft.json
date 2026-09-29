@@ -1,0 +1,62 @@
+{
+  "badge_num": 14,
+  "city": "CHICAGO",
+  "flag": "🇺🇸",
+  "cta_screenshot": "screen-chicago-millennium-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy blocks commons.wikimedia.org, en.wikipedia.org, upload.wikimedia.org, and every other general web host (confirmed via curl and WebFetch — both returned 403/EGRESS_BLOCKED; only github.com/api.github.com/raw.githubusercontent.com and a short package-registry allowlist are reachable). No candidate photos could be downloaded this run. 'candidates' arrays are empty; 'suggested_queries' lists the Commons search terms to run from an environment with open network access. Same blocker previously hit the Amsterdam batch (#8, PR #7).",
+  "caption": "Chicago quite literally reversed an entire river so the city wouldn't poison its own drinking water. 🤯\n\nComment which one of these facts you didn't know 👇\n\n.\n.\n.\n#Chicago #ChicagoTravel #HiddenGems #TravelFacts #ChicagoRiver #WindyCity #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "The Bean has no seams — on purpose",
+      "body_html": "Anish Kapoor's 110-ton Cloud Gate is welded together from <b>168 stainless steel plates</b> and polished until every seam disappeared — the mirror finish took over two years to perfect.",
+      "candidates": [],
+      "suggested_queries": ["Cloud Gate Bean Chicago Millennium Park", "Cloud Gate sculpture reflection Chicago skyline"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "Chicago engineers reversed an entire river",
+      "body_html": "In 1900, the city blasted open a new canal and made the <b>Chicago River flow backward</b> — away from Lake Michigan instead of into it — so its own sewage would stop poisoning the city's drinking water.",
+      "candidates": [],
+      "suggested_queries": ["Chicago River downtown locks", "Chicago Sanitary and Ship Canal"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "These glass boxes hang 1,353 feet over nothing",
+      "body_html": "The Ledge at Willis Tower puts you inside a <b>glass balcony 4.3 feet off the building</b>, floating a quarter-mile above the street with only 1.5 inches of glass underfoot.",
+      "candidates": [],
+      "suggested_queries": ["Willis Tower Ledge glass box Chicago", "Willis Tower Skydeck exterior"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "Wrigley's scoreboard has never gone digital",
+      "body_html": "Built in 1937, Wrigley Field's centerfield scoreboard is still <b>flipped by hand from the inside</b> — and the outfield ivy planted that same year remains the only living wall in Major League Baseball.",
+      "candidates": [],
+      "suggested_queries": ["Wrigley Field scoreboard ivy outfield", "Wrigley Field exterior Chicago"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "Chicago's 'corncobs' park cars in a spiral",
+      "body_html": "Marina City's twin towers wrap their <b>bottom 19 floors into an exposed spiral parking ramp</b> — when they opened in 1964, they were the tallest reinforced-concrete structures on Earth.",
+      "candidates": [],
+      "suggested_queries": ["Marina City Chicago corncob towers", "Marina City towers Chicago River"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "Nobody knows what the Picasso downtown actually is",
+      "body_html": "Picasso gave this 50-foot, 162-ton sculpture to Chicago for free in 1967 and <b>never said what it depicts</b> — guesses range from his Afghan hound to a woman's profile hidden in the curves.",
+      "candidates": [],
+      "suggested_queries": ["Chicago Picasso sculpture Daley Plaza", "Daley Plaza Picasso untitled sculpture"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "One tower walked through the fire that burned the city down",
+      "body_html": "When the Great Chicago Fire leveled the city in 1871, the Water Tower's <b>yellow Joliet limestone</b> walls didn't burn — it's one of the only structures left standing from before the fire.",
+      "candidates": [],
+      "suggested_queries": ["Chicago Water Tower Michigan Avenue", "Chicago Water Tower historic limestone"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Chicago skyline aerial Lake Michigan", "Chicago downtown skyline sunset"]
+}
