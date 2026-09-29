@@ -90,6 +90,13 @@
   .col-var { font-weight: 600; }
   .col-ytd { font-weight: 700; color: var(--orange); }
   .month-header { color: var(--orange); }
+  /* Frozen "Line Item" column: stays put while the months scroll sideways.
+     Opaque backgrounds (row tints layered on top) so numbers don't show through. */
+  #plTable th:first-child, #plTable td:first-child { position: sticky; left: 0; z-index: 2; box-shadow: 1px 0 0 var(--border); }
+  #plTable th:first-child { background: var(--surface); z-index: 3; }
+  #plTable td:first-child { background: var(--card); }
+  #plTable .row-section td:first-child { background: linear-gradient(rgba(255,255,255,.02), rgba(255,255,255,.02)), var(--card); }
+  #plTable tr:hover td:first-child { background: linear-gradient(rgba(255,255,255,.02), rgba(255,255,255,.02)), var(--card); }
 
   /* ── Chart ── */
   .chart-wrap { position: relative; height: 260px; }
