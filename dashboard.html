@@ -1909,6 +1909,7 @@
         <div class="card"><div class="loading">…</div></div>
       </div>
       <div class="grid-4" id="playbackKpis2"></div>
+      <div class="grid-4" id="playbackKpis3"></div>
       <div class="grid-2">
         <div class="card">
           <div class="card-title">Reliability signals <span class="kpi-sub">(should all be 0)</span></div>
@@ -3853,6 +3854,7 @@ function renderPlaybackHealth(d) {
     document.getElementById('playbackKpis').innerHTML =
       `<div class="card" style="grid-column:1/-1"><div class="kpi-sub" style="padding:16px">No data yet — tracking starts once the app version with playback diagnostics is live.</div></div>`;
     document.getElementById('playbackKpis2').innerHTML = '';
+    document.getElementById('playbackKpis3').innerHTML = '';
     document.getElementById('playbackSignals').innerHTML = '';
     document.getElementById('playbackEndReasons').innerHTML = '';
     document.getElementById('playbackInterruptions').innerHTML = '';
@@ -3889,6 +3891,18 @@ function renderPlaybackHealth(d) {
     kpiCard('External Pauses', s.external_pauses_per_100_plays === null ? '—' : s.external_pauses_per_100_plays.toFixed(1), `per 100 stories · ${fmt(s.external_pauses)} total · ${fmt(s.resumes)} resumes`, null, null) +
     kpiCard('Queued Story Wait (p50)', s.queued_age_p50_s === null ? '—' : Math.round(s.queued_age_p50_s) + 's', `p90 ${s.queued_age_p90_s === null ? '—' : Math.round(s.queued_age_p90_s) + 's'} · median ${_playbackMeters(s.dequeue_distance_p50_m)} away when played`, null, null) +
     kpiCard('Story Cache Hits', _playbackPct(s.cache_hit_pct), `new story p50 ${_playbackSeconds(s.gen_uncached_p50_ms)}, p90 ${_playbackSeconds(s.gen_uncached_p90_ms)} · ${fmt(s.gen_failures)} failures`, null, null);
+
+  // Per user: averages with medians next to them, since a few testers or heavy
+  // users can pull an average up on their own.
+  const pu = s.per_user;
+  const num = (v) => (v === null || v === undefined ? '—' : String(v));
+  const problemBadge = !pu || pu.users_with_problem_pct === null ? null
+    : (pu.users_with_problem_pct <= 5 ? ['good', 'green'] : pu.users_with_problem_pct <= 15 ? ['watch', 'yellow'] : ['high', 'red']);
+  document.getElementById('playbackKpis3').innerHTML = !pu ? '' :
+    kpiCard('Stories per User', num(pu.stories.avg), `median ${num(pu.stories.p50)} · top 10% ${num(pu.stories.p90)}+ · ${fmt(pu.listeners)} users who heard a story`, null, null) +
+    kpiCard('Stories per Walking Day', num(pu.stories_per_active_day), 'per user, on days they heard at least one story', null, null) +
+    kpiCard('Heard to the End per User', num(pu.finished_stories.avg), `median ${num(pu.finished_stories.p50)} · automatic stories per user ${num(pu.auto_stories.avg)} (median ${num(pu.auto_stories.p50)})`, null, null) +
+    kpiCard('Users Hitting a Problem', _playbackPct(pu.users_with_problem_pct), `of ${fmt(s.users)} users · at least one reliability problem · outside pauses not counted`, problemBadge && problemBadge[0], problemBadge && problemBadge[1]);
 
   const signals = s.signals || {};
   document.getElementById('playbackSignals').innerHTML = Object.keys(PLAYBACK_SIGNAL_LABELS)
