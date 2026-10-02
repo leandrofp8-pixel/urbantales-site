@@ -1033,6 +1033,12 @@
         <div id="growthExperimentPanel"><div class="loading">Loading…</div></div>
       </div>
 
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">Store: Subscription First vs. Coins First</div>
+        <p style="color:var(--muted);font-size:0.8rem">All-time experiment cohorts, independent of the date filter above. Only users who had never paid and saw a supported Store layout are counted. Both layouts receive the scrolling fix.</p>
+        <div id="storefrontExperimentPanel"><div class="loading">Loading…</div></div>
+      </div>
+
       <!-- Quota experiment: daily vs. rolling 7-day free landmark limit -->
       <div class="card" style="margin-top:24px">
         <div class="card-title">Daily vs. 7-Day Free Quota
@@ -4536,6 +4542,11 @@ function renderSettings(data) {
     field('first_purchase_offer_bonus_pct', 'Bonus Coins % on Qualifying Purchase', 'number', s.first_purchase_offer_bonus_pct ?? 50, 'min="0" max="200"') +
     field('first_purchase_offer_window_hours', 'Offer Window (hours)', 'number', s.first_purchase_offer_window_hours ?? 24, 'min="1" max="168"') +
     field('first_purchase_offer_min_pack_coins', 'Min Pack Size to Qualify (coins) — avoids bonus that doesn\'t cross a 500/1000-point redemption threshold', 'number', s.first_purchase_offer_min_pack_coins ?? 1000, 'min="0" step="100"') +
+    `<div style="grid-column:1/-1;font-weight:700;margin-top:16px">Store layout experiment</div>` +
+    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted)">All never-paid users on supported apps. Pausing stops new enrollment; existing assignments stay fixed. Percentage changes affect new assignments only. The conversion window locks once enrollment starts. Results appear in Acquisition.</div>` +
+    `<div>${toggle('storefront_experiment_enabled', 'Enroll new participants', s.storefront_experiment_enabled ?? false)}</div>` +
+    field('storefront_experiment_pct', 'Coins-first group % (remaining users see subscription first)', 'number', s.storefront_experiment_pct ?? 50, 'min="0" max="100"') +
+    field('storefront_experiment_days', 'Conversion window (days)', 'number', s.storefront_experiment_days ?? 7, 'min="1" max="30"') +
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Growth Experiment — Daily vs. 7-Day Free Quota</div>` +
     `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Rolling 7-day window, not a Monday reset — can't be gamed at a boundary. Assigned once at signup. Reported in Acquisition tab.</div>` +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('weekly_quota_experiment_enabled', 'Experiment Active', s.weekly_quota_experiment_enabled ?? true)}</div>` +
@@ -4603,6 +4614,9 @@ async function saveSettings() {
     first_purchase_offer_bonus_pct: parseInt(document.getElementById('s_first_purchase_offer_bonus_pct').value),
     first_purchase_offer_window_hours: parseInt(document.getElementById('s_first_purchase_offer_window_hours').value),
     first_purchase_offer_min_pack_coins: parseInt(document.getElementById('s_first_purchase_offer_min_pack_coins').value),
+    storefront_experiment_enabled: document.getElementById('s_storefront_experiment_enabled').checked,
+    storefront_experiment_pct: parseInt(document.getElementById('s_storefront_experiment_pct').value),
+    storefront_experiment_days: parseInt(document.getElementById('s_storefront_experiment_days').value),
     weekly_quota_experiment_enabled: document.getElementById('s_weekly_quota_experiment_enabled').checked,
     weekly_quota_experiment_pct: parseInt(document.getElementById('s_weekly_quota_experiment_pct').value),
     weekly_free_landmark_limit: parseInt(document.getElementById('s_weekly_free_landmark_limit').value),
@@ -5740,7 +5754,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth, storefrontExperiment] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -5771,6 +5785,7 @@ async function loadAllData() {
       api(`/admin/analytics/cost-trends?weeks=26`).catch(() => null),
       api(`/admin/analytics/revenue-breakdown`).catch(() => null),
       api(`/admin/analytics/playback-health?${_dateParams()}`).catch(() => null),
+      api(`/admin/analytics/storefront-experiment`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue, themeBreakdown);
@@ -5796,6 +5811,7 @@ async function loadAllData() {
     renderAbTest(abTest);
     renderGrowthExperiment(growthExperiment);
     renderQuotaExperiment(quotaExperiment);
+    renderStorefrontExperiment(storefrontExperiment);
     renderReviewPrompt(reviewPrompt);
     renderNarrationConfig(narrationConfigResp?.config || null);
   } catch (e) {
@@ -5961,6 +5977,19 @@ function renderGrowthExperiment(data) {
       Settings: ${data.settings?.test_pct}% of new users in the offer arm · +${data.settings?.bonus_pct}% bonus · ${data.settings?.window_hours}h window · min pack ${fmt(data.settings?.min_pack_coins)} coins.
       ${fmt(data.unassigned_users)} users signed up before this experiment.
     </p>`;
+}
+
+function renderStorefrontExperiment(data) {
+  const el = document.getElementById('storefrontExperimentPanel');
+  if (!data) { el.textContent = 'Report unavailable. The backend update is required.'; return; }
+  const rows = data.rows || [];
+  const labels = {subscription_first: 'Subscription first', coins_first: 'Coins first'};
+  const segment = value => ({overall: 'All', 'platform:android': 'Android', 'platform:ios': 'iOS', 'platform:web': 'Web', 'bonus:true': 'Bonus active', 'bonus:false': 'No active bonus'}[value] || value);
+  const pct = value => value == null ? '—' : Number(value).toFixed(2) + '%';
+  const money = value => value == null ? '—' : '$' + Number(value).toFixed(2);
+  el.innerHTML = `<p>${data.enabled ? 'Enrolling' : 'Enrollment paused'} · ${Number(data.test_pct)}% coins first · ${Number(data.window_days)}-day conversion window</p>
+    <p style="color:var(--muted);font-size:0.8rem">Conversion and revenue use only users whose full window has elapsed. Purchases must follow first exposure and fall within that window. Coin and subscription buyers can overlap. Sandbox, renewals and known zero-price trials are excluded. Revenue is recorded gross USD before fees/refunds; missing prices are disclosed. Small samples do not establish a winner.</p>
+    ${!rows.length ? '<p>No measured Store exposures yet. Release the supported mobile app and enable enrollment in Settings.</p>' : `<div class="table-wrap"><table><thead><tr><th>Segment</th><th>Layout</th><th>Exposed</th><th>Completed window</th><th>Paid buyers</th><th>Conversion</th><th>Coin buyers</th><th>Subscription buyers</th><th>Gross USD</th><th>USD / completed user</th><th>Unpriced purchases</th></tr></thead><tbody>${rows.map(r => `<tr><td>${escapeHtml(segment(r.segment))}</td><td>${escapeHtml(labels[r.variant] || r.variant)}</td><td>${fmt(r.exposed)}</td><td>${fmt(r.mature)}</td><td>${fmt(r.buyers)}</td><td>${pct(r.conversion_pct)}</td><td>${fmt(r.coin_buyers)}</td><td>${fmt(r.subscription_buyers)}</td><td>${money(r.gross_usd)}</td><td>${money(r.revenue_per_exposed_usd)}</td><td>${fmt(r.unpriced_purchases)}</td></tr>`).join('')}</tbody></table></div>`}`;
 }
 
 function renderQuotaExperiment(data) {
