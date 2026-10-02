@@ -786,12 +786,15 @@
           <span class="toggle-slider"></span>
         </label>
         <span style="font-size:0.88rem">Net of Google Maps free quota (overall + per client)</span>
-        <span id="quotaAwareState" style="font-size:0.78rem;color:var(--muted)">OFF — showing full list price · doesn't affect OpenAI/Gemini, which have no such quota</span>
+        <span id="quotaAwareState" style="font-size:0.78rem;color:var(--muted)">OFF — recorded list-price estimates; provider credits and non-Maps allowances excluded</span>
         <button id="geocodeBackfillBtn" onclick="backfillNarrationGeocode()" title="Every cache-miss narration fired an untracked, uncached Geocoding call before af4243d — reconstructs one google_geocode record per historical narration. Idempotent, safe to re-run." style="margin-left:auto;flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Backfill geocode calls</button>
         <button id="geminiCostFixBtn" onclick="backfillGeminiCosts()" title="Gemini calls were recorded at $0 before gemini_flash_input/output had a rate — recompute their cost from the token counts already stored. Safe to re-run." style="flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Fix Gemini costs</button>
       </div>
+      <p id="costEstimateNote" style="color:var(--muted);font-size:0.85rem"></p>
       <div id="geocodeBackfillStatus" style="font-size:0.78rem;color:var(--muted);margin-bottom:4px"></div>
       <div id="geminiCostFixStatus" style="font-size:0.78rem;color:var(--muted);margin-bottom:10px"></div>
+      <div class="grid-4" id="requestCacheKpis"></div>
+      <p id="requestCacheNote" style="color:var(--muted);font-size:0.85rem"></p>
       <div class="grid-4" id="costKpis">
         <div class="card"><div class="loading">Loading…</div></div>
         <div class="card"><div class="loading">…</div></div>
@@ -808,8 +811,7 @@
           </div>
         </div>
         <div style="font-size:0.78rem;color:var(--muted);margin:8px 0 12px">
-          The cost figures above are list price with no free tier applied — they don't say whether Google actually billed you.
-          This does: non-cached calls in the selected calendar month against each SKU's free monthly allotment (resets the 1st, nothing carries over between months).
+          Recorded upstream requests against each billing category’s monthly free allowance. These estimates cannot see other applications sharing your Google billing account or reconstruct previously untracked requests. Confirm charges in Google Cloud Billing.
         </div>
         <div id="googleQuotaRows"><div class="loading">Loading…</div></div>
       </div>
@@ -833,7 +835,7 @@
         </div>
         <div class="card">
           <div class="card-title">Cache Efficiency Trend
-            <span title="% of API requests served from cache instead of hitting paid APIs. Higher = lower cost." style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+            <span title="Measured logical cache lookups reused after the tracking update. Missing history is not zero." style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
           </div>
           <div class="chart-wrap-lg"><canvas id="chartCacheTrend"></canvas></div>
         </div>
@@ -886,7 +888,7 @@
       <!-- ── COST TRENDS (cache efficiency over time) ── -->
       <div class="card" style="margin-top:24px">
         <div class="card-title">Cost Efficiency Trend
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Weekly. Cost figures include both narration (OpenAI/Gemini/TTS) and Google Maps calls. "Active" = triggered ≥1 of either that week — the only historical per-week activity signal available, since last_active_at only ever reflects the most recent visit.</span>
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Weekly recorded list-price estimates, before free allowances. Cost figures include both narration (OpenAI/Gemini/TTS) and Google Maps calls. "Active" = triggered ≥1 of either that week — the only historical per-week activity signal available, since last_active_at only ever reflects the most recent visit.</span>
         </div>
         <div class="grid-4" id="costTrendKpis">
           <div class="card"><div class="loading">Loading…</div></div>
@@ -2854,8 +2856,11 @@ function renderTours(tours) {
 // COSTS
 // ══════════════════════════════════════════════
 const GOOGLE_SKU_LABELS = {
-  google_nearby_search: 'Nearby Search (New)',
-  google_text_search: 'Text Search (New)',
+  google_nearby_search: 'Nearby Search — Enterprise',
+  google_text_search: 'Text Search — Pro',
+  google_text_search_enterprise: 'Text Search — Enterprise',
+  google_text_search_atmosphere: 'Text Search — Enterprise + Atmosphere',
+  google_place_details_atmosphere: 'Place Details — Enterprise + Atmosphere',
   google_geocode: 'Geocoding API',
   google_streetview: 'Street View Static',
 };
@@ -2974,13 +2979,13 @@ async function onQuotaAwareToggle() {
   const stateEl = document.getElementById('quotaAwareState');
   stateEl.textContent = _quotaAware
     ? 'ON — loading…'
-    : 'OFF — showing full list price · doesn\'t affect OpenAI/Gemini, which have no such quota';
+    : 'OFF — recorded list-price estimates; provider credits and non-Maps allowances excluded';
   try {
     const costs = await api(`/admin/cost-report?${_dateParams()}&quota_aware=${_quotaAware}`);
     renderCosts(costs, _lastFunnel || {});
     stateEl.textContent = _quotaAware
-      ? 'ON — Maps costs within the free monthly allotment show as $0'
-      : 'OFF — showing full list price · doesn\'t affect OpenAI/Gemini, which have no such quota';
+      ? 'ON — estimated Maps allowances and volume tiers applied; not an invoice'
+      : 'OFF — recorded list-price estimates; provider credits and non-Maps allowances excluded';
   } catch (e) {
     stateEl.textContent = 'Failed to reload — try again';
   }
@@ -2989,11 +2994,21 @@ async function onQuotaAwareToggle() {
 function renderCosts(costs, funnel) {
   const s = costs.summary;
   document.getElementById('costKpis').innerHTML =
-    kpiCard('Total Cost (period)', '$' + (s.total_cost||0).toFixed(2), `${fmt(s.total_calls)} total calls`, null, null) +
-    kpiCard('Cache Hit Rate', s.cache_hit_rate || '—', 'Saved vs live API calls',
-      parseFloat(s.cache_hit_rate) > 70 ? '↑ Efficient' : '↓ Low', parseFloat(s.cache_hit_rate) > 70 ? 'green' : 'yellow') +
-    kpiCard('Active Users (period)', fmt(s.unique_users), 'Made at least 1 API call', null, null) +
+    kpiCard('Estimated API Cost (period)', '$' + (s.total_cost||0).toFixed(2), `${fmt(s.actual_api_calls)} recorded upstream calls`, null, null) +
+    kpiCard('Measured Cache Lookups', costs.cache_metrics ? fmt(Object.values(costs.cache_metrics).reduce((n, m) => n + m.requests, 0)) : '—', 'Requests checked for reusable results', null, null) +
+    kpiCard('Active Users (period)', fmt(s.unique_users), 'Used tracked APIs or shared caches', null, null) +
     kpiCard('Avg Cost / User', '$' + (s.avg_cost_per_user||0).toFixed(4), 'For the period', null, null);
+
+  document.getElementById('costEstimateNote').textContent = (costs.cost_basis || 'Estimated costs, not provider invoices.') +
+    (costs.legacy_events ? ` ${fmt(costs.legacy_events)} older events retain their original pricing assumptions.` : '');
+  const families = [['nearby', 'Nearby searches'], ['city_search', 'City searches'], ['narration', 'Complete narrations'], ['geocode', 'Geocoding']];
+  const metrics = costs.cache_metrics || {};
+  document.getElementById('requestCacheKpis').innerHTML = families.map(([key, label]) => {
+    const m = metrics[key];
+    return kpiCard(label + ' reused', m ? `${Number(m.hit_rate).toFixed(1)}%` : '—',
+      m ? `${fmt(m.hits)} / ${fmt(m.requests)} requests · ${fmt(m.distinct_keys)} distinct searches or variants` : 'No measured requests in this period', null, null);
+  }).join('');
+  document.getElementById('requestCacheNote').textContent = 'One observation per cache lookup, collected after the tracking update (retained for 180 days). Narration reuse requires a complete audio file; each language, style and voice is a separate variant. Historical periods are not reconstructed.';
 
   const breakdown = costs.daily_breakdown || {};
   const sortedDates = Object.keys(breakdown).sort();
@@ -3022,16 +3037,16 @@ function renderCosts(costs, funnel) {
     { label: 'Purchases', data: funnelDaily.map(d => d.total_purchases || 0), color: C.green }
   ]);
 
-  // ── Cache Efficiency Trend — % of calls served from cache, per day ──
-  const cacheLabels = sortedDates.map(d => shortDate(d));
-  const cacheRates = sortedDates.map(d => {
-    const total = breakdown[d]?.total_calls || 0;
-    const hits  = breakdown[d]?.cache_hits  || 0;
-    return total > 0 ? +(hits / total * 100).toFixed(1) : 0;
-  });
-  lineChart('chartCacheTrend', cacheLabels, [
-    { label: 'Cache Hit %', data: cacheRates, color: C.green }
-  ]);
+  // Complete logical cache lookups, never synthetic provider-component events.
+  const cacheRows = costs.cache_daily || [];
+  const cacheDates = [...new Set(cacheRows.map(r => r._id.date))].sort();
+  lineChart('chartCacheTrend', cacheDates.map(shortDate), families.map(([key, label], i) => ({
+    label,
+    data: cacheDates.map(date => {
+      const r = cacheRows.find(x => x._id.date === date && x._id.family === key);
+      return r && r.requests ? +(100 * r.hits / r.requests).toFixed(1) : null;
+    }), color: [C.green, C.purple, C.primary, C.blue][i]
+  })), { y: { max: 100 } });
 
   const users = costs.top_users_by_cost || [];
   document.getElementById('topUsersBody').innerHTML = users.length === 0
@@ -3570,7 +3585,7 @@ function renderCostTrends(data) {
   const prior = weekly.length > 1 ? weekly[weekly.length - 2] : null;
 
   const trendBadge = (curr, prior, lowerIsBetter) => {
-    if (prior === null || prior === undefined || prior === 0) return null;
+    if (curr == null || prior === null || prior === undefined || prior === 0) return null;
     const delta = curr - prior;
     if (Math.abs(delta) < 0.01) return null;
     const improved = lowerIsBetter ? delta < 0 : delta > 0;
@@ -3586,13 +3601,13 @@ function renderCostTrends(data) {
   const marginX = (rev, cost) => cost > 0 ? `${(rev / cost).toFixed(1)}x cost` : (rev > 0 ? '∞ (zero cost)' : '—');
 
   document.getElementById('costTrendKpis').innerHTML =
-    kpiCard('Narration Cache Hit Rate', fmtPct(latest.cache_hit_rate), `Week of ${latest.week_start}`,
+    kpiCard('Narration Cache Hit Rate', latest.cache_hit_rate == null ? '—' : fmtPct(latest.cache_hit_rate), `Measured requests · week of ${latest.week_start}`,
       cacheBadge?.text, cacheBadge?.cls) +
     kpiCard('Cost / Active User', fmtCost(latest.cost_per_active_user), `${fmt(latest.active_users)} active users · incl. Maps`,
       costActiveBadge?.text, costActiveBadge?.cls) +
     kpiCard('Cost / Paying User', fmtCost(latest.cost_per_paying_user), `${fmt(latest.paying_active_users)} paying-active`,
       costPayingBadge?.text, costPayingBadge?.cls) +
-    kpiCard('Total Cost (week)', `$${latest.total_cost.toFixed(2)}`, `${fmt(latest.narration_calls)} narration + ${fmt(latest.maps_calls)} Maps calls`, null, null);
+    kpiCard('Total Cost (week)', `$${latest.total_cost.toFixed(2)}`, `${fmt(latest.narration_calls)} narration + ${fmt(latest.maps_calls)} Maps usage events`, null, null);
 
   document.getElementById('revenueTrendKpis').innerHTML =
     kpiCard('Revenue / Active User', fmtCost(latest.revenue_per_active_user), `${marginX(latest.revenue_per_active_user, latest.cost_per_active_user)} vs API cost`,
@@ -3603,8 +3618,8 @@ function renderCostTrends(data) {
 
   const labels = weekly.map(w => w.week_start);
   lineChart('chartCacheHitTrend', labels, [
-    { label: 'Narration cache hit %', data: weekly.map(w => w.cache_hit_rate), color: C.green },
-    { label: 'Maps cache hit %', data: weekly.map(w => w.maps_cache_hit_rate), color: C.blue },
+    { label: 'Measured narration reuse %', data: weekly.map(w => w.cache_hit_rate), color: C.green },
+    { label: 'Measured Maps request reuse %', data: weekly.map(w => w.maps_cache_hit_rate), color: C.blue },
   ], { y: { max: 100 } });
 
   lineChart('chartCostPerUserTrend', labels, [
@@ -4503,7 +4518,7 @@ function renderSettings(data) {
     field('influencer_revenue_share_pct', 'Influencer Revenue Share (%)', 'number', s.influencer_revenue_share_pct ?? 25, 'min="0" max="100"') +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">API Cost Controls (Google Places Cache)</div>` +
-    field('places_cache_ttl_days', 'Nearby Places Cache TTL (days)', 'number', s.places_cache_ttl_days ?? 10, 'min="1" max="30"') +
+    field('places_cache_ttl_days', 'Nearby Places freshness (days)', 'number', s.places_cache_ttl_days ?? 10, 'min="1" max="90"') +
     field('city_landmarks_cache_ttl_days', 'City Landmarks Cache TTL (days)', 'number', s.city_landmarks_cache_ttl_days ?? 7, 'min="1" max="30"') +
     field('geocode_cache_ttl_days', 'Geocode Cache TTL (days) — a coordinate\'s city/country basically never changes', 'number', s.geocode_cache_ttl_days ?? 90, 'min="1" max="365"') +
     field('places_grid_size_meters', 'Location Grid Size (meters)', 'number', s.places_grid_size_meters ?? 500, 'min="100" max="2000" step="50"') +
