@@ -14,6 +14,9 @@ batch.json shape:
   "city": "VIENNA",
   "flag": "🇦🇹",
   "cta_screenshot": "screen-vienna-hofburg-map.png",   // path relative to repo root, a real app screenshot
+  "lang": "es",      // optional: "en" (default) or "es" — picks the fixed slide copy below;
+                      // non-English output PNGs get a suffix (slide-1-cover.es.png) so they sit
+                      // beside the English set and reuse the same photos
   "style": "card",   // optional: "card" (default, photo + headline + body) or "minimal"
                       // (full-bleed photo, short bottom-anchored hook, no separate body slide text —
                       // fuller context goes in the post caption instead). Cover/CTA slides are
@@ -26,6 +29,23 @@ batch.json shape:
 }
 """
 import sys, os, json, subprocess
+
+STRINGS = {
+    "en": {
+        "badge": "Only with Urban Tales #{n}",
+        "cover_line": "things you only discover when exploring with",
+        "cta_title": "If you want to explore the cities, not just pass by",
+        "cta_tagline": "Turn cities into stories",
+        "link_in_bio": "Link in bio",
+    },
+    "es": {
+        "badge": "Solo con Urban Tales #{n}",
+        "cover_line": "cosas que solo descubres cuando exploras con",
+        "cta_title": "Si quieres explorar las ciudades, no solo pasar por ellas",
+        "cta_tagline": "Convierte ciudades en historias",
+        "link_in_bio": "Link en la bio",
+    },
+}
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
@@ -63,6 +83,9 @@ def main():
     city = spec["city"]
     flag = spec["flag"]
     facts = spec["facts"]
+    lang = spec.get("lang", "en")
+    t = STRINGS[lang]
+    sfx = "" if lang == "en" else f".{lang}"
     assert len(facts) == 7, "need exactly 7 facts"
 
     # slide 1: cover
@@ -70,11 +93,11 @@ def main():
     <div style="width:1080px;height:1350px;position:relative;">
       <img src="cover.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
       <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,8,8,0.5) 0%, rgba(8,8,8,0.38) 32%, rgba(8,8,8,0.55) 60%, rgba(8,8,8,0.88) 100%);"></div>
-      <div class="badge">Only with Urban Tales #{badge}</div>
+      <div class="badge">{t["badge"].format(n=badge)}</div>
       <div style="position:absolute; top:330px; left:0; right:0; text-align:center; padding:0 70px;">
         <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:190px; color:#fff; line-height:0.9; text-shadow:0 6px 24px rgba(0,0,0,0.35);">7</div>
         <div style="font-family:'Playfair Display'; font-style:italic; font-weight:700; font-size:60px; color:#fff8f0; line-height:1.22; margin-top:14px; text-shadow:0 4px 18px rgba(0,0,0,0.35);">
-          things you only discover when exploring with
+          {t["cover_line"]}
         </div>
         <div style="display:inline-block; margin-top:34px; background:#d1531f; color:#fff8f0; font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:54px; padding:20px 52px; border-radius:22px; box-shadow:0 10px 26px rgba(0,0,0,0.3);">
           Urban Tales
@@ -86,8 +109,8 @@ def main():
       </div>
     </div>
     """
-    render_html_to_png(cover, os.path.join(workdir, "slide-1-cover.png"), workdir)
-    print("rendered slide-1-cover.png")
+    render_html_to_png(cover, os.path.join(workdir, f"slide-1-cover{sfx}.png"), workdir)
+    print(f"rendered slide-1-cover{sfx}.png")
 
     # slides 2-8: facts
     style = spec.get("style", "card")
@@ -99,7 +122,7 @@ def main():
             <div style="width:1080px;height:1350px;position:relative;overflow:hidden;">
               <img src="{img}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
               <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,8,8,0) 38%, rgba(8,8,8,0.5) 68%, rgba(8,8,8,0.93) 100%);"></div>
-              <div class="badge">Only with Urban Tales #{badge}</div>
+              <div class="badge">{t["badge"].format(n=badge)}</div>
               <div style="position:absolute; left:0; right:0; bottom:76px; padding:0 64px;">
                 <div style="font-family:'Playfair Display'; font-style:italic; font-weight:700; font-size:26px; color:#d1531f; margin-bottom:14px; letter-spacing:0.02em;">
                   {i:02d} / 07
@@ -113,7 +136,7 @@ def main():
         else:
             fact_html = f"""
             <div style="width:1080px;height:1350px;background:#fae0cf;position:relative;">
-              <div class="badge">Only with Urban Tales #{badge}</div>
+              <div class="badge">{t["badge"].format(n=badge)}</div>
               <div style="position:absolute; top:120px; left:64px; right:64px; bottom:70px; display:flex; flex-direction:column;">
                 <div style="width:952px; height:520px; flex-shrink:0; border-radius:26px; border:5px solid #d1531f; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.12);">
                   <img src="{img}" style="width:100%; height:100%; object-fit:cover;">
@@ -130,26 +153,26 @@ def main():
               </div>
             </div>
             """
-        render_html_to_png(fact_html, os.path.join(workdir, f"slide-{i+1}-fact{i}.png"), workdir)
-        print(f"rendered slide-{i+1}-fact{i}.png")
+        render_html_to_png(fact_html, os.path.join(workdir, f"slide-{i+1}-fact{i}{sfx}.png"), workdir)
+        print(f"rendered slide-{i+1}-fact{i}{sfx}.png")
 
     # slide 9: CTA
     cta_screenshot = spec["cta_screenshot"]
     cta = f"""
     <div style="width:1080px;height:1350px;background:#111110;position:relative;overflow:hidden;">
       <div style="position:absolute; top:50%; left:18%; width:900px; height:900px; transform:translate(-50%,-50%); background:radial-gradient(circle, rgba(209,83,31,0.32) 0%, rgba(209,83,31,0) 62%); pointer-events:none;"></div>
-      <div class="badge">Only with Urban Tales #{badge}</div>
+      <div class="badge">{t["badge"].format(n=badge)}</div>
       <div style="position:absolute; top:230px; left:70px; width:430px; height:900px; border-radius:52px; border:12px solid #f2ede6; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.5); z-index:2;">
         <img src="{cta_screenshot}" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <div style="position:absolute; top:230px; left:560px; width:450px; height:900px; display:flex; flex-direction:column; justify-content:center; gap:40px; z-index:2;">
         <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:56px; color:#f2ede6; line-height:1.26;">
-          If you want to explore the cities, not just pass by
+          {t["cta_title"]}
         </div>
         <div style="display:flex; align-items:center; gap:22px;">
           <img src="icon.png" style="width:104px; height:104px; border-radius:26px; box-shadow:0 10px 24px rgba(0,0,0,0.4); flex-shrink:0;">
           <div style="font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:38px; color:#d1531f; line-height:1.22;">
-            Turn cities into stories
+            {t["cta_tagline"]}
           </div>
         </div>
         <a style="display:inline-flex; align-items:center; gap:12px; background:#d1531f; color:#fff8f0; font-family:'Baloo 2'; font-weight:700; font-size:32px; padding:22px 34px; border-radius:18px; box-shadow:0 10px 26px rgba(0,0,0,0.35); width:fit-content;">
@@ -157,12 +180,12 @@ def main():
         </a>
       </div>
       <div style="position:absolute; bottom:56px; left:0; right:0; text-align:center; z-index:2;">
-        <div style="font-family:'Baloo 2'; font-weight:600; font-size:26px; color:#9a8878; letter-spacing:0.04em; text-transform:uppercase;">Link in bio</div>
+        <div style="font-family:'Baloo 2'; font-weight:600; font-size:26px; color:#9a8878; letter-spacing:0.04em; text-transform:uppercase;">{t["link_in_bio"]}</div>
       </div>
     </div>
     """
-    render_html_to_png(cta, os.path.join(workdir, "slide-9-cta.png"), workdir)
-    print("rendered slide-9-cta.png")
+    render_html_to_png(cta, os.path.join(workdir, f"slide-9-cta{sfx}.png"), workdir)
+    print(f"rendered slide-9-cta{sfx}.png")
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,39 @@
+{
+  "badge_num": 1,
+  "city": "CIUDAD DE MÉXICO",
+  "flag": "🇲🇽",
+  "cta_screenshot": "screen-cdmx-zocalo-map.png",
+  "style": "minimal",
+  "caption": "La Catedral de la Ciudad de México se construyó a propósito sobre el templo más sagrado de los mexicas, y una de sus pirámides más famosas es 1,000 años más antigua que el pueblo al que todos se la atribuyen. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. Catedral Metropolitana\nCuando los españoles conquistaron Tenochtitlan, derribaron el templo más sagrado de los mexicas y levantaron la Catedral en el mismo lugar: una forma deliberada de borrar una religión y sembrar otra en su lugar.\n\n2. Ángel de la Independencia\nEl Ángel de la Independencia es de bronce recubierto con oro de 24 quilates. Ya se cayó una vez: el sismo de 1957 lo tiró de su columna y lo hizo pedazos.\n\n3. Castillo de Chapultepec\nEl castillo fue hogar del emperador Maximiliano I y la emperatriz Carlota en la década de 1860. Años antes, en 1847, el ejército de Estados Unidos lo sitió, y los Niños Héroes, algunos de apenas 13 años, murieron defendiéndolo.\n\n4. UNAM\nEn 1551 se fundó la Real Universidad de México, antecesora de la UNAM y una de las primeras universidades de América, casi un siglo antes de que existiera Harvard.\n\n5. La ciudad que se hunde\nLa ciudad se levantó sobre el lago de Texcoco, que fue desecado a lo largo de los siglos. El antiguo lecho sigue asentándose bajo el peso de la ciudad, así que el suelo literalmente se hunde bajo tus pies: hasta 50 cm al año en algunas zonas.\n\n6. Paseo de la Reforma\nEn la década de 1860, el emperador Maximiliano quería un gran bulevar a la altura de las capitales europeas, así que el Paseo de la Reforma se trazó al estilo de los Campos Elíseos. Desde entonces es la avenida más elegante de la ciudad.\n\n7. Teotihuacan\nTeotihuacan, a una hora de la Ciudad de México, se construyó más de 1,000 años antes de que los mexicas llegaran a la región. Cuando encontraron la ciudad abandonada siglos después, quedaron tan impresionados que creyeron que la habían construido los dioses.\n\n.\n.\n.\n#CiudadDeMexico #CDMX #LugaresSecretos #DatosCuriosos #Teotihuacan #AngelDeLaIndependencia #UrbanTales",
+  "facts": [
+    {
+      "headline": "La Catedral del Zócalo está sobre un templo mexica",
+      "hook": "Al conquistar Tenochtitlan, los españoles derribaron el templo más sagrado de los mexicas y levantaron esta Catedral en el mismo lugar."
+    },
+    {
+      "headline": "Ese ángel está cubierto de oro real",
+      "hook": "El Ángel de la Independencia está cubierto de oro de 24 quilates, y el sismo de 1957 llegó a tirarlo de su columna."
+    },
+    {
+      "headline": "El Castillo de Chapultepec fue hogar de la realeza",
+      "hook": "Maximiliano y Carlota vivieron en este castillo en la década de 1860, años después de que los Niños Héroes murieran defendiéndolo."
+    },
+    {
+      "headline": "Esta universidad es más antigua que Harvard",
+      "hook": "La UNAM nació en 1551 como la Real Universidad de México, una de las primeras de América, casi un siglo antes que Harvard."
+    },
+    {
+      "headline": "La ciudad se está hundiendo, ahora mismo",
+      "hook": "La ciudad se levantó sobre un lago que fue desecado hace siglos, y el antiguo lecho sigue hundiéndose bajo sus calles hoy."
+    },
+    {
+      "headline": "Esta avenida se siente como París",
+      "hook": "El emperador Maximiliano quería un bulevar a la altura de Europa, así que el Paseo de la Reforma se inspiró en los Campos Elíseos."
+    },
+    {
+      "headline": "Las pirámides que todos llaman \"aztecas\" no son aztecas",
+      "hook": "Teotihuacan se construyó más de 1,000 años antes de que llegaran los mexicas; al hallarla abandonada, creyeron que era obra de los dioses."
+    }
+  ],
+  "lang": "es"
+}
