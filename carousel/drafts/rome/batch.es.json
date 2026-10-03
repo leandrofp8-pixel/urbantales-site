@@ -1,0 +1,39 @@
+{
+  "badge_num": 3,
+  "city": "ROMA",
+  "flag": "🇮🇹",
+  "cta_screenshot": "screen-colosseum-map.png",
+  "style": "minimal",
+  "caption": "La cúpula del Panteón es de concreto sin refuerzo y, 2,000 años después, sigue siendo la más grande de su tipo en el mundo. Y dentro de Roma se esconde un país entero. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. El Panteón\nLa cúpula del Panteón es de concreto romano sin una sola varilla de acero, y casi dos milenios después sigue siendo la cúpula de concreto sin refuerzo más grande del mundo. Los ingenieros modernos todavía estudian cómo lo lograron.\n\n2. El Coliseo\nPara los juegos inaugurales del año 80 d. C., según los cronistas romanos, la arena se inundó y barcos de guerra a escala combatieron dentro. Los túneles subterráneos que ves hoy se construyeron después e hicieron imposible volver a inundarla.\n\n3. Fontana di Trevi\nLos turistas lanzan alrededor de 1.3 millones de euros al año a la Fontana di Trevi. Las monedas se recogen con regularidad y todo se dona a Cáritas, que lo usa para ayudar a personas necesitadas de la ciudad.\n\n4. Ciudad del Vaticano\nEl Vaticano es el Estado independiente más pequeño del mundo (0.44 km²) y está en pleno centro de Roma. Puedes ir caminando por una calle romana y cruzar a otro país sin darte cuenta.\n\n5. Passetto di Borgo\nEl Passetto di Borgo es un pasadizo elevado que conecta el Vaticano con el Castel Sant'Angelo. En 1527, el papa Clemente VII huyó corriendo por él para salvar su vida mientras Roma era saqueada.\n\n6. Monte Palatino\nLos emperadores romanos construyeron sus residencias en el Palatino, \"Palatium\" en latín. De ahí viene la palabra \"palacio\", y también \"palace\" en inglés o \"palais\" en francés.\n\n7. El Foro Romano\nSiglos de reconstrucción hicieron que las calles actuales queden varios metros por encima de las antiguas. Basílicas, casas y calles enteras siguen enterradas bajo la ciudad moderna, muchas aún sin excavar.\n\n.\n.\n.\n#Roma #Italia #LugaresSecretos #DatosCuriosos #Coliseo #Panteon #UrbanTales",
+  "facts": [
+    {
+      "headline": "Esta cúpula de 2,000 años sigue sin rival",
+      "hook": "La cúpula del Panteón es de concreto sin una sola varilla de acero y, dos milenios después, sigue siendo la más grande de su tipo."
+    },
+    {
+      "headline": "El Coliseo se inundó para batallas navales",
+      "hook": "En sus juegos inaugurales del año 80, la arena se inundó y barcos de guerra a escala combatieron dentro, hasta que los túneles lo impidieron."
+    },
+    {
+      "headline": "Esta fuente recauda unos 3,000 euros al día",
+      "hook": "Los turistas lanzan cerca de 1.3 millones de euros al año a la Fontana di Trevi, y cada moneda se dona a la caridad."
+    },
+    {
+      "headline": "Dentro de Roma se esconde un país entero",
+      "hook": "El Vaticano es el Estado más pequeño del mundo, con 0.44 km², y puedes cruzar a otro país sin siquiera darte cuenta."
+    },
+    {
+      "headline": "El Vaticano tiene un pasadizo secreto de escape",
+      "hook": "El Passetto di Borgo une el Vaticano con el Castel Sant'Angelo; en 1527, un papa huyó corriendo por él para salvar su vida."
+    },
+    {
+      "headline": "La palabra \"palacio\" nace en esta colina",
+      "hook": "Los emperadores romanos vivían en el Palatino, \"Palatium\" en latín. De ahí viene la palabra \"palacio\"."
+    },
+    {
+      "headline": "Hay otra Roma debajo de Roma",
+      "hook": "Siglos de reconstrucción dejaron las calles actuales metros por encima de las antiguas, y hay calles enteras enterradas sin excavar."
+    }
+  ],
+  "lang": "es"
+}
