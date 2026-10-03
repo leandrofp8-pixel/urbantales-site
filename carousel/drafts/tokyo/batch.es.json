@@ -1,0 +1,39 @@
+{
+  "badge_num": 2,
+  "city": "TOKIO",
+  "flag": "🇯🇵",
+  "cta_screenshot": "screen-tokyo-sensoji-map.png",
+  "style": "minimal",
+  "caption": "En plena burbuja económica de Japón en los 80, solo los jardines del Palacio Imperial valían más que toda California, y la vista más icónica de la ciudad ni siquiera está dentro de Tokio. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. Palacio Imperial\nEn el pico de la burbuja inmobiliaria japonesa de los 80, los terrenos del Palacio Imperial, de apenas 3.4 km², llegaron a valer más que todos los bienes raíces de California juntos.\n\n2. Senso-ji\nEl templo Senso-ji, en Asakusa, quedó casi destruido en los bombardeos incendiarios aliados de 1945. En una sola noche murieron unas 80,000 personas: el bombardeo más mortífero de la historia. El templo se reconstruyó y hoy recibe 30 millones de visitantes al año.\n\n3. Cruce de Shibuya\nHasta 2,500 personas cruzan Shibuya al mismo tiempo desde todas direcciones. Sin carriles marcados ni rutas obligatorias, y aun así casi nadie choca. Simplemente funciona.\n\n4. Estación de Shinjuku\nShinjuku mueve más de 3.5 millones de pasajeros al día y tiene unas 200 salidas. Quienes la visitan por primera vez se pierden durante horas, y los locales dan indicaciones por número de salida, no por nombres de calles.\n\n5. Torre de Tokio\nLa Torre de Tokio se inspiró a propósito en la Torre Eiffel. Se construyó en 1958 como símbolo del renacer de Japón tras la guerra, y mide 13 metros más que su modelo.\n\n6. Edo\nDurante siglos Tokio se llamó Edo, una pequeña aldea de pescadores que para 1720 ya era la ciudad más grande del mundo, un siglo antes de que Londres o Nueva York se le acercaran. El nombre cambió a Tokio recién en 1868.\n\n7. Monte Fuji\nEn días despejados se ve el Monte Fuji desde la ciudad. Es un volcán que hizo erupción por última vez en 1707 y que todavía se considera activo.\n\n.\n.\n.\n#Tokio #Japon #LugaresSecretos #DatosCuriosos #Shibuya #TorreDeTokio #UrbanTales",
+  "facts": [
+    {
+      "headline": "Este jardín valió más que California",
+      "hook": "En plena burbuja japonesa de los 80, los jardines del Palacio Imperial, de apenas 3.4 km², valían más que toda California."
+    },
+    {
+      "headline": "Su templo más visitado casi se pierde para siempre",
+      "hook": "Senso-ji casi desapareció en un bombardeo de 1945 que mató a unas 80,000 personas en una sola noche, el más mortífero de la historia."
+    },
+    {
+      "headline": "Este cruce no tiene reglas, solo confianza",
+      "hook": "Hasta 2,500 personas cruzan Shibuya al mismo tiempo desde todas direcciones, sin carriles marcados, y casi nadie choca."
+    },
+    {
+      "headline": "La estación más transitada del mundo tiene 200 salidas",
+      "hook": "Shinjuku mueve 3.5 millones de pasajeros al día; los locales dan indicaciones por número de salida, no por nombres de calles."
+    },
+    {
+      "headline": "Esa torre se parece a la Torre Eiffel",
+      "hook": "La Torre de Tokio se inspiró en la Torre Eiffel: se construyó en 1958 como símbolo del renacer de posguerra y es 13 metros más alta."
+    },
+    {
+      "headline": "Tokio no siempre se llamó Tokio",
+      "hook": "Durante siglos Tokio se llamó Edo, una aldea de pescadores que para 1720 ya era la ciudad más grande del mundo."
+    },
+    {
+      "headline": "La vista más icónica de Tokio ni siquiera está en Tokio",
+      "hook": "En días despejados se ve el Monte Fuji desde la ciudad, un volcán que hizo erupción por última vez en 1707 y sigue considerado activo."
+    }
+  ],
+  "lang": "es"
+}
