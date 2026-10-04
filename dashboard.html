@@ -131,6 +131,26 @@
     .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 24px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    /* iOS vs Android tab */
+    .pf-ios { color: var(--blue); } .pf-and { color: var(--green); }
+    .pf-worse { color: var(--danger); } .pf-better { color: var(--green); } .pf-flat { color: var(--muted); }
+    .pf-loses { border-left: 3px solid var(--danger); }
+    .pf-rank { display: grid; gap: 8px; }
+    .pf-rank-row { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: center; padding: 9px 12px; background: #141414; border-radius: 8px; }
+    .pf-rank-row .n { color: #555; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .pf-rank-row .vals { font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .pf-pill { font-size: 0.74rem; font-weight: 800; padding: 3px 9px; border-radius: 99px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .pf-pill.bad { background: #3a1616; color: var(--danger); } .pf-pill.mid { background: #3a2f10; color: var(--yellow); } .pf-pill.ok { background: #13321f; color: var(--green); }
+    .pf-kpi-vals { display: flex; gap: 14px; align-items: baseline; font-variant-numeric: tabular-nums; }
+    .pf-kpi-vals .kpi-value { font-size: 1.5rem; }
+    .pf-step { display: grid; grid-template-columns: 170px 1fr 120px; gap: 12px; align-items: center; margin-bottom: 10px; }
+    .pf-step.hot { background: #2a1414; border-radius: 8px; padding: 6px; margin: -6px -6px 4px; }
+    .pf-bars { display: grid; gap: 3px; }
+    .pf-bar { height: 13px; background: #222; border-radius: 3px; position: relative; }
+    .pf-bar i { position: absolute; inset: 0 auto 0 0; border-radius: 3px; }
+    .pf-bar b { position: absolute; right: 6px; top: -1px; font-size: 0.68rem; font-variant-numeric: tabular-nums; }
+    .pf-num td:not(:first-child), .pf-num th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+    @media (max-width: 600px) { .pf-step { grid-template-columns: 1fr; } }
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
     @media (max-width: 900px) { .grid-4,.grid-5 { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 600px) { .grid-5,.grid-4,.grid-3,.grid-2 { grid-template-columns: 1fr; } }
@@ -473,6 +493,7 @@
     <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
     <button class="tab-btn" onclick="showTab('narration')">🎙️ Narration</button>
     <button class="tab-btn" onclick="showTab('playback')">🎧 Playback</button>
+    <button class="tab-btn" onclick="showTab('platforms')">📱 iOS vs Android</button>
     <button class="tab-btn" onclick="showTab('profiles')">👤 Profiles</button>
     <button class="tab-btn" onclick="showTab('trippass')">🎟️ Trip Pass</button>
   </nav>
@@ -1969,6 +1990,38 @@
       </div>
     </div>
 
+    <div class="tab-panel" id="panel-platforms">
+      <div class="kpi-sub" style="max-width:780px;margin-bottom:14px">Users are grouped by the platform they <strong>signed up on</strong>; money by the <strong>store</strong> the payment went through; playback by the phone it ran on. Uses the period selected at the top. Each figure shows the previous period of the same length for comparison.</div>
+      <div id="pfNotice"></div>
+      <div class="card pf-loses" style="margin-bottom:24px">
+        <div class="card-title">Where Android loses <span class="kpi-sub">(Android vs iOS, worst first)</span></div>
+        <div class="pf-rank" id="pfGaps"><div class="loading">Loading…</div></div>
+      </div>
+      <div class="grid-3" id="pfKpis"></div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Funnel, step by step <span class="kpi-sub">(share of each platform's sign-ups in the period; right: step-to-step rate)</span></div>
+        <div id="pfFunnel"></div>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="card-title">Sign-ups per week</div><div class="chart-wrap"><canvas id="chartPfSignups"></canvas></div></div>
+        <div class="card"><div class="card-title">Activation rate per sign-up week</div><div class="chart-wrap"><canvas id="chartPfActivation"></canvas></div></div>
+        <div class="card"><div class="card-title">Paying rate per sign-up week</div><div class="chart-wrap"><canvas id="chartPfPaid"></canvas></div></div>
+      </div>
+      <div class="grid-2">
+        <div class="card"><div class="card-title">Money <span class="kpi-sub">(by store)</span></div><div class="table-wrap"><table class="pf-num" id="pfMoney"></table></div></div>
+        <div class="card"><div class="card-title">Retention and use</div><div class="table-wrap"><table class="pf-num" id="pfRetention"></table></div><div class="kpi-sub" style="margin-top:8px">Retention = still active N days or more after signing up, measured on the most recent sign-ups old enough for N.</div></div>
+      </div>
+      <div class="grid-2">
+        <div class="card"><div class="card-title">App quality</div><div class="table-wrap"><table class="pf-num" id="pfQuality"></table></div><div class="kpi-sub" style="margin-top:8px">Crash and ANR rates are in Play Console and App Store Connect.</div></div>
+        <div class="card"><div class="card-title">Who the users are</div><div id="pfMix"></div></div>
+      </div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Paying rate in the same country <span class="kpi-sub">(countries with 5+ sign-ups on both platforms)</span></div>
+        <div class="table-wrap"><table class="pf-num" id="pfCountries"></table></div>
+        <div class="kpi-sub" style="margin-top:8px">Android country is estimated from the phone's time zone until the app records the Play Store country.</div>
+      </div>
+    </div>
+
     <div class="tab-panel" id="panel-profiles">
       <div class="profiles-layout">
 
@@ -2231,6 +2284,10 @@ function showTab(name) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(`panel-${name}`).classList.add('active');
   event.currentTarget.classList.add('active');
+  if (name === 'platforms') {
+    _platformTabLoaded = true;
+    loadPlatformComparison();
+  }
   if (name === 'profiles' && !_profilesTabLoaded) {
     _profilesTabLoaded = true;
     loadUserList('');
@@ -5587,6 +5644,144 @@ async function renderUserJourney(email, date) {
   }
 }
 
+let _platformTabLoaded = false;
+
+function _pfDays() {
+  if (document.getElementById('periodSelect').value === 'custom') {
+    const from = document.getElementById('dateFrom').value;
+    if (from) return Math.max(1, Math.round((Date.now() - new Date(from + 'T00:00:00Z').getTime()) / 86400000));
+  }
+  return days;
+}
+
+async function loadPlatformComparison() {
+  const el = document.getElementById('pfGaps');
+  el.innerHTML = '<div class="loading">Loading…</div>';
+  const d = await api(`/admin/analytics/platform-comparison?days=${_pfDays()}`).catch(() => null);
+  renderPlatformComparison(d);
+}
+
+function renderPlatformComparison(d) {
+  const pct = (v) => (v === null || v === undefined) ? '—' : `${v}%`;
+  const num = (v, dp = 1) => (v === null || v === undefined) ? '—' : Number(v).toFixed(dp);
+  const usd = (v) => (v === null || v === undefined) ? '—' : `$${Number(v).toFixed(2)}`;
+  if (!d || !d.platforms) {
+    document.getElementById('pfGaps').innerHTML = '<div class="kpi-sub">Could not load the comparison.</div>';
+    return;
+  }
+  const I = d.platforms.ios, A = d.platforms.android;
+  document.getElementById('pfNotice').innerHTML = d.signups_unknown_platform
+    ? `<div class="kpi-sub" style="margin-bottom:10px">${d.signups_unknown_platform} sign-ups in this period have no recorded platform (older app versions or web) and are left out.</div>` : '';
+
+  // Where Android loses
+  const rows = d.gaps || [];
+  document.getElementById('pfGaps').innerHTML = rows.length ? rows.map((g, i) => {
+    const cls = g.relative_gap_pct <= -15 ? 'bad' : g.relative_gap_pct < -5 ? 'mid' : 'ok';
+    const sign = g.relative_gap_pct > 0 ? '+' : '';
+    // For "lower is better" metrics (failure rates) a ratio reads better than a percentage.
+    const label = (g.higher_is_better === false && g.ios > 0)
+      ? `Android ${(g.android / g.ios).toFixed(1)}× iOS`
+      : `${sign}${g.relative_gap_pct}%`;
+    return `<div class="pf-rank-row"><span class="n">${i + 1}</span><div><div>${escapeHtml(g.metric)}</div>
+      <div class="vals"><span class="pf-ios">iOS ${num(g.ios)}</span> · <span class="pf-and">Android ${num(g.android)}</span></div></div>
+      <span class="pf-pill ${cls}">${label}</span></div>`;
+  }).join('') : '<div class="kpi-sub">Not enough data in this period.</div>';
+
+  // KPI cards: current values plus previous period
+  const kpi = (title, iv, av, ip, ap, fmt, note) => {
+    const gap = (iv === null || av === null || iv === undefined || av === undefined || !iv) ? null : Math.round((av - iv) / Math.abs(iv) * 100);
+    const gapHtml = gap === null ? '' : `<span class="${gap <= -5 ? 'pf-worse' : gap >= 5 ? 'pf-better' : 'pf-flat'}" style="font-size:.8rem;font-weight:700">Android ${gap > 0 ? '+' : ''}${gap}%</span>`;
+    return `<div class="card"><h3>${title}</h3><div class="pf-kpi-vals"><span class="kpi-value pf-ios">${fmt(iv)}</span><span class="kpi-value pf-and">${fmt(av)}</span>${gapHtml}</div>
+      <div class="kpi-sub">${(ip === null && ap === null) ? '' : `Previous period: <span class="pf-ios">${fmt(ip)}</span> · <span class="pf-and">${fmt(ap)}</span>`}${note ? ((ip === null && ap === null) ? '' : ' · ') + note : ''}</div></div>`;
+  };
+  const F = (p) => p.funnel, PF = (p) => p.prior_funnel;
+  document.getElementById('pfKpis').innerHTML = [
+    kpi('Sign-ups', F(I).signups, F(A).signups, PF(I).signups, PF(A).signups, (v) => v ?? '—'),
+    kpi('Heard a first story', F(I).activation_rate, F(A).activation_rate, PF(I).activation_rate, PF(A).activation_rate, pct),
+    kpi('Sign-ups who paid', F(I).paid_rate, F(A).paid_rate, PF(I).paid_rate, PF(A).paid_rate, pct),
+    kpi('Revenue', I.money.revenue, A.money.revenue, I.prior_money.revenue, A.prior_money.revenue, usd),
+    kpi('Revenue per paying user', I.money.revenue_per_paying_user, A.money.revenue_per_paying_user, I.prior_money.revenue_per_paying_user, A.prior_money.revenue_per_paying_user, usd),
+    kpi('Day-7 retention', I.retention.d7, A.retention.d7, null, null, pct, `measured on ${I.retention.d7_cohort} iOS / ${A.retention.d7_cohort} Android sign-ups`),
+  ].join('');
+
+  // Funnel bars
+  const steps = [
+    ['Signed up', 'account created', 100, 100, null, null],
+    ['Heard first story', 'activation', F(I).activation_rate, F(A).activation_rate, F(I).step_rates.activation, F(A).step_rates.activation],
+    ['Hit the free limit', 'paywall shown', F(I).paywall_rate, F(A).paywall_rate, F(I).step_rates.paywall_of_activated, F(A).step_rates.paywall_of_activated],
+    ['Opened the shop', '', F(I).shop_rate, F(A).shop_rate, F(I).step_rates.shop_of_paywall, F(A).step_rates.shop_of_paywall],
+    ['Paid', 'first purchase', F(I).paid_rate, F(A).paid_rate, F(I).step_rates.paid_of_shop, F(A).step_rates.paid_of_shop],
+  ];
+  let hot = -1, worst = 0;
+  steps.forEach((s, i) => {
+    if (s[4] && s[5] !== null && s[5] !== undefined) {
+      const rel = (s[5] - s[4]) / s[4];
+      if (rel < worst) { worst = rel; hot = i; }
+    }
+  });
+  const bar = (v, color) => `<div class="pf-bar"><i style="width:${Math.min(100, v || 0)}%;background:${color}"></i><b>${pct(v)}</b></div>`;
+  document.getElementById('pfFunnel').innerHTML = (F(I).signups || F(A).signups) ? steps.map((s, i) => `
+    <div class="pf-step${i === hot ? ' hot' : ''}"><div>${s[0]}${s[1] ? `<div class="kpi-sub" style="margin:0">${s[1]}</div>` : ''}</div>
+      <div class="pf-bars">${bar(s[2], 'var(--blue)')}${bar(s[3], 'var(--green)')}</div>
+      <div style="text-align:right;font-size:.8rem;font-variant-numeric:tabular-nums">${s[4] === null ? '—' : `<span class="pf-ios">${pct(s[4])}</span> · <span class="pf-and">${pct(s[5])}</span>`}</div></div>`).join('')
+    : '<div class="kpi-sub">No sign-ups in this period.</div>';
+
+  // Weekly charts
+  const labels = (d.weekly.ios || []).map((w) => w.week_start.slice(5));
+  const series = (key) => [
+    { label: 'iOS', data: d.weekly.ios.map((w) => w[key]), color: '#60a5fa' },
+    { label: 'Android', data: d.weekly.android.map((w) => w[key]), color: '#34d399' },
+  ];
+  lineChart('chartPfSignups', labels, series('signups'));
+  lineChart('chartPfActivation', labels, series('activation_rate'), { y: { max: 100 } });
+  lineChart('chartPfPaid', labels, series('paid_rate'));
+
+  // Tables
+  const table = (rows) => `<tr><th>Metric</th><th class="pf-ios">iOS</th><th class="pf-and">Android</th></tr>` +
+    rows.map(([label, iv, av]) => `<tr><td>${label}</td><td>${iv}</td><td>${av}</td></tr>`).join('');
+  document.getElementById('pfMoney').innerHTML = table([
+    ['Revenue', usd(I.money.revenue), usd(A.money.revenue)],
+    ['Purchases', I.money.purchases, A.money.purchases],
+    ['Paying users', I.money.paying_users, A.money.paying_users],
+    ['Average ticket', usd(I.money.average_ticket), usd(A.money.average_ticket)],
+    ['Revenue per paying user', usd(I.money.revenue_per_paying_user), usd(A.money.revenue_per_paying_user)],
+    ['Unlimited share of revenue', pct(I.money.unlimited_share), pct(A.money.unlimited_share)],
+    ['Repeat buyers (2+ purchases ever)', pct(I.money.repeat_buyer_rate), pct(A.money.repeat_buyer_rate)],
+    ['Days from sign-up to first purchase (median)', num(F(I).median_days_to_first_purchase), num(F(A).median_days_to_first_purchase)],
+  ]);
+  document.getElementById('pfRetention').innerHTML = table([
+    ['Day 1', pct(I.retention.d1), pct(A.retention.d1)],
+    ['Day 7', pct(I.retention.d7), pct(A.retention.d7)],
+    ['Day 30', pct(I.retention.d30), pct(A.retention.d30)],
+    ['Stories per activated user', num(F(I).stories_per_activated_user), num(F(A).stories_per_activated_user)],
+    ['Hours from sign-up to first story (median)', num(F(I).median_hours_to_activation), num(F(A).median_hours_to_activation)],
+    ['Push notifications enabled', pct(F(I).push_enabled_rate), pct(F(A).push_enabled_rate)],
+    ['Active users in the period', I.active_users, A.active_users],
+  ]);
+  document.getElementById('pfQuality').innerHTML = table([
+    ['Stories played', I.quality.plays, A.quality.plays],
+    ['Stories that fail to play (per 100)', num(I.quality.play_errors_per_100), num(A.quality.play_errors_per_100)],
+    ['Story generation failures (per 100)', num(I.quality.generation_failures_per_100), num(A.quality.generation_failures_per_100)],
+    ['Interrupted, not resumed (per 100 plays)', num(I.quality.interrupted_not_resumed_per_100), num(A.quality.interrupted_not_resumed_per_100)],
+    ['Active users on the latest build', pct(I.versions.on_latest_rate), pct(A.versions.on_latest_rate)],
+    ['Latest build seen', I.versions.latest_build ?? '—', A.versions.latest_build ?? '—'],
+  ]);
+
+  // Mix
+  const list = (items, key) => (items || []).map((x) => `${escapeHtml(String(x[key]))} ${pct(x.share)}`).join(' · ') || '—';
+  document.getElementById('pfMix').innerHTML = `
+    <div class="kpi-sub" style="margin:0 0 4px">Countries</div>
+    <div style="margin-bottom:6px"><span class="pf-ios">iOS:</span> ${list(d.mix.countries.ios, 'country')}</div>
+    <div style="margin-bottom:14px"><span class="pf-and">Android:</span> ${list(d.mix.countries.android, 'country')}</div>
+    <div class="kpi-sub" style="margin:0 0 4px">Acquisition</div>
+    <div style="margin-bottom:6px"><span class="pf-ios">iOS:</span> ${list(d.mix.channels.ios, 'channel')}</div>
+    <div><span class="pf-and">Android:</span> ${list(d.mix.channels.android, 'channel')}</div>`;
+  const pc = d.mix.paid_rate_by_country || [];
+  document.getElementById('pfCountries').innerHTML = `<tr><th>Country</th><th class="pf-ios">iOS sign-ups</th><th class="pf-and">Android sign-ups</th><th class="pf-ios">iOS paid</th><th class="pf-and">Android paid</th></tr>` +
+    (pc.length ? pc.map((c) => `<tr><td>${escapeHtml(c.country)}</td><td>${c.ios_users}</td><td>${c.android_users}</td><td>${pct(c.ios_paid_rate)}</td><td>${pct(c.android_paid_rate)}</td></tr>`).join('')
+      : '<tr><td colspan="5" class="loading">No country with 5+ sign-ups on both platforms in this period.</td></tr>');
+}
+
 let _profilesTabLoaded = false;
 
 // ══════════════════════════════════════════════
@@ -5789,6 +5984,7 @@ async function loadAllData() {
     ]);
 
     renderOverview(funnel, freeUsers, revenue, themeBreakdown);
+    if (_platformTabLoaded) loadPlatformComparison();
     renderFunnel(cohortFunnel, funnel, freeUsers);
     renderCohorts(cohortsMonthly);
     renderMAU(mau);
