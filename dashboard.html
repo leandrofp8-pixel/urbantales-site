@@ -130,6 +130,10 @@
     /* ── CARDS ── */
     .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 24px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .tab-group { align-self: center; font-size: 0.66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #555; padding: 0 4px 0 14px; white-space: nowrap; }
+    .tab-group:first-child { padding-left: 2px; }
+    .dash-section { font-size: 1.05rem; font-weight: 700; margin: 36px 0 14px; padding-top: 22px; border-top: 1px solid var(--border); }
+    .dash-section span { font-size: 0.78rem; font-weight: 400; color: var(--muted); margin-left: 8px; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
     /* iOS vs Android tab */
     .pf-ios { color: var(--blue); } .pf-and { color: var(--green); }
@@ -480,22 +484,24 @@
   </header>
 
   <nav class="tabs">
+    <span class="tab-group">Growth</span>
     <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
-    <button class="tab-btn" onclick="showTab('funnel')">Funnel</button>
-    <button class="tab-btn" onclick="showTab('content')">Content</button>
-    <button class="tab-btn" onclick="showTab('costs')">API Costs</button>
-    <button class="tab-btn" onclick="showTab('users')">Free Users</button>
     <button class="tab-btn" onclick="showTab('acquisition')">Acquisition</button>
-    <button class="tab-btn" onclick="showTab('ltv')">💰 LTV</button>
-    <button class="tab-btn" onclick="showTab('revenue')">📈 Revenue</button>
-    <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
-    <button class="tab-btn" onclick="showTab('viator')">🎫 Viator</button>
-    <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
-    <button class="tab-btn" onclick="showTab('narration')">🎙️ Narration</button>
-    <button class="tab-btn" onclick="showTab('playback')">🎧 Playback</button>
+    <button class="tab-btn" onclick="showTab('funnel')">Funnel &amp; Retention</button>
+    <button class="tab-btn" onclick="showTab('experiments')">🧪 Experiments</button>
     <button class="tab-btn" onclick="showTab('platforms')">📱 iOS vs Android</button>
+    <span class="tab-group">Money</span>
+    <button class="tab-btn" onclick="showTab('revenue')">💰 Revenue &amp; LTV</button>
+    <button class="tab-btn" onclick="showTab('costs')">API Costs</button>
+    <span class="tab-group">Product</span>
+    <button class="tab-btn" onclick="showTab('content')">Content</button>
+    <button class="tab-btn" onclick="showTab('playback')">🎧 Playback</button>
+    <span class="tab-group">Tools</span>
     <button class="tab-btn" onclick="showTab('profiles')">👤 Profiles</button>
+    <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
     <button class="tab-btn" onclick="showTab('trippass')">🎟️ Trip Pass</button>
+    <button class="tab-btn" onclick="showTab('narration')">🎙️ Narration</button>
+    <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
   </nav>
 
   <main>
@@ -640,7 +646,124 @@
           </table>
         </div>
       </div>
-    </div>
+    
+      <h2 class="dash-section">Free users <span>engagement, retention, time to conversion, coin economy</span></h2>
+
+      <div class="grid-4" id="freeUserKpis">
+        <div class="card"><div class="loading">Loading…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+      </div>
+      <div class="grid-2" style="margin-top:24px">
+        <div class="card">
+          <div class="card-title">Free User Engagement
+            <span title="Mutually exclusive: each user lands in their highest-intent bucket only" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+          </div>
+          <div class="chart-wrap"><canvas id="chartFreeEngagement"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Cohort Retention — Signups vs Conversions
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">% above each bar = cohort conversion rate</span>
+          </div>
+          <div class="chart-wrap"><canvas id="chartFreeCohorts"></canvas></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">Time to Conversion
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Days between signup and first purchase (paid users)</span>
+        </div>
+        <div class="chart-wrap-lg"><canvas id="chartTimeToConversion"></canvas></div>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <div class="section-header">
+          <h2>🪙 Coin Economy Health</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
+        </div>
+        <div class="grid-4" id="coinEconomyKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+        <div class="grid-2" style="margin-top:16px">
+          <div>
+            <div class="card-title" style="margin-bottom:8px">Coins Spent by Category</div>
+            <div class="chart-wrap"><canvas id="chartCoinSpendByType"></canvas></div>
+          </div>
+          <div>
+            <div class="card-title" style="margin-bottom:8px">Recent Spend Transactions</div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>User</th><th>Item</th><th>Coins</th><th>Date</th></tr>
+                </thead>
+                <tbody id="recentSpendsBody">
+                  <tr><td colspan="4" class="loading">Loading…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <div class="section-header">
+          <h2>Streak Health</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
+        </div>
+        <div class="grid-4" id="streakHealthKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+      </div>
+
+    </div><!-- /panel-funnel -->
+
+    <!-- ── EXPERIMENTS ── -->
+    <div class="tab-panel" id="panel-experiments">
+      <div class="kpi-sub" style="margin-bottom:12px">Every running A/B test and rollout in one place.</div>
+      <!-- A/B test: default tab -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">A/B Test — Default Tab
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Activation rate by first-tab assignment</span>
+        </div>
+        <div id="abTestPanel"><div class="loading">Loading…</div></div>
+      </div>
+
+      <!-- Growth experiment: first-purchase offer vs. referral CTA -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">First-Purchase Offer vs. Referral CTA
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">One or the other, assigned once per user at their first narration — never both</span>
+        </div>
+        <div id="growthExperimentPanel"><div class="loading">Loading…</div></div>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">Store: Subscription First vs. Coins First</div>
+        <p style="color:var(--muted);font-size:0.8rem">All-time experiment cohorts, independent of the date filter above. Only users who had never paid and saw a supported Store layout are counted. Both layouts receive the scrolling fix.</p>
+        <div id="storefrontExperimentPanel"><div class="loading">Loading…</div></div>
+      </div>
+
+      <!-- Quota experiment: daily vs. rolling 7-day free landmark limit -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">Daily vs. 7-Day Free Quota
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Assigned once at signup — needs 30+ days of data before drawing conclusions</span>
+        </div>
+        <div id="quotaExperimentPanel"><div class="loading">Loading…</div></div>
+      </div>
+
+      <!-- App store rating pre-gate -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">App Store Rating Prompt
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">"Enjoying it?" pre-gate before the native store prompt — asked at most once per user</span>
+        </div>
+        <div id="reviewPromptPanel"><div class="loading">Loading…</div></div>
+      </div>
+        </div><!-- /panel-experiments -->
 
     <!-- ── CONTENT ── -->
     <div class="tab-panel" id="panel-content">
@@ -965,117 +1088,7 @@
     </div>
 
     <!-- ── FREE USERS ── -->
-    <div class="tab-panel" id="panel-users">
-      <div class="grid-4" id="freeUserKpis">
-        <div class="card"><div class="loading">Loading…</div></div>
-        <div class="card"><div class="loading">…</div></div>
-        <div class="card"><div class="loading">…</div></div>
-        <div class="card"><div class="loading">…</div></div>
-      </div>
-      <div class="grid-2" style="margin-top:24px">
-        <div class="card">
-          <div class="card-title">Free User Engagement
-            <span title="Mutually exclusive: each user lands in their highest-intent bucket only" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
-          </div>
-          <div class="chart-wrap"><canvas id="chartFreeEngagement"></canvas></div>
-        </div>
-        <div class="card">
-          <div class="card-title">Cohort Retention — Signups vs Conversions
-            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">% above each bar = cohort conversion rate</span>
-          </div>
-          <div class="chart-wrap"><canvas id="chartFreeCohorts"></canvas></div>
-        </div>
-      </div>
-      <div class="card" style="margin-top:24px">
-        <div class="card-title">Time to Conversion
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Days between signup and first purchase (paid users)</span>
-        </div>
-        <div class="chart-wrap-lg"><canvas id="chartTimeToConversion"></canvas></div>
-      </div>
-
-      <div class="card" style="margin-top:24px">
-        <div class="section-header">
-          <h2>🪙 Coin Economy Health</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
-        </div>
-        <div class="grid-4" id="coinEconomyKpis">
-          <div class="card"><div class="loading">Loading…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-        </div>
-        <div class="grid-2" style="margin-top:16px">
-          <div>
-            <div class="card-title" style="margin-bottom:8px">Coins Spent by Category</div>
-            <div class="chart-wrap"><canvas id="chartCoinSpendByType"></canvas></div>
-          </div>
-          <div>
-            <div class="card-title" style="margin-bottom:8px">Recent Spend Transactions</div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr><th>User</th><th>Item</th><th>Coins</th><th>Date</th></tr>
-                </thead>
-                <tbody id="recentSpendsBody">
-                  <tr><td colspan="4" class="loading">Loading…</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:24px">
-        <div class="section-header">
-          <h2>Streak Health</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
-        </div>
-        <div class="grid-4" id="streakHealthKpis">
-          <div class="card"><div class="loading">Loading…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-        </div>
-      </div>
-
-      <!-- A/B test: default tab -->
-      <div class="card" style="margin-top:24px">
-        <div class="card-title">A/B Test — Default Tab
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Activation rate by first-tab assignment</span>
-        </div>
-        <div id="abTestPanel"><div class="loading">Loading…</div></div>
-      </div>
-
-      <!-- Growth experiment: first-purchase offer vs. referral CTA -->
-      <div class="card" style="margin-top:24px">
-        <div class="card-title">First-Purchase Offer vs. Referral CTA
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">One or the other, assigned once per user at their first narration — never both</span>
-        </div>
-        <div id="growthExperimentPanel"><div class="loading">Loading…</div></div>
-      </div>
-
-      <div class="card" style="margin-top:24px">
-        <div class="card-title">Store: Subscription First vs. Coins First</div>
-        <p style="color:var(--muted);font-size:0.8rem">All-time experiment cohorts, independent of the date filter above. Only users who had never paid and saw a supported Store layout are counted. Both layouts receive the scrolling fix.</p>
-        <div id="storefrontExperimentPanel"><div class="loading">Loading…</div></div>
-      </div>
-
-      <!-- Quota experiment: daily vs. rolling 7-day free landmark limit -->
-      <div class="card" style="margin-top:24px">
-        <div class="card-title">Daily vs. 7-Day Free Quota
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Assigned once at signup — needs 30+ days of data before drawing conclusions</span>
-        </div>
-        <div id="quotaExperimentPanel"><div class="loading">Loading…</div></div>
-      </div>
-
-      <!-- App store rating pre-gate -->
-      <div class="card" style="margin-top:24px">
-        <div class="card-title">App Store Rating Prompt
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">"Enjoying it?" pre-gate before the native store prompt — asked at most once per user</span>
-        </div>
-        <div id="reviewPromptPanel"><div class="loading">Loading…</div></div>
-      </div>
-    </div>
+    
 
     <!-- ── ACQUISITION (MGM + Influencers) ── -->
     <div class="tab-panel" id="panel-acquisition">
@@ -1286,84 +1299,7 @@
     </div><!-- /panel-acquisition -->
 
     <!-- ── LTV ── -->
-    <div class="tab-panel" id="panel-ltv">
-      <div class="card" style="margin-bottom:24px">
-        <div class="card-title">Lifetime Value by Cohort
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Net $ per user (after store commission, avg tax, and serving cost), at fixed days since signup — for deciding max CAC. A cell only counts users old enough to have reached that horizon, so recent cohorts don't look artificially low.</span>
-        </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px">
-          <select id="ltvFilterChannel" onchange="_ltvFilters.channel=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
-            <option value="all">All channels</option>
-            <option value="organic">Organic</option>
-            <option value="mgm">MGM</option>
-            <option value="influencer">Influencer</option>
-            <option value="apple_search_ads">Apple Search Ads</option>
-          </select>
-          <select id="ltvFilterPlatform" onchange="_ltvFilters.platform=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
-            <option value="all">All platforms</option>
-            <option value="ios">iOS</option>
-            <option value="android">Android</option>
-          </select>
-          <select id="ltvFilterQuota" onchange="_ltvFilters.quota_group=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
-            <option value="all">All quota groups</option>
-            <option value="daily_control">Daily control</option>
-            <option value="weekly_test">Weekly test</option>
-            <option value="unassigned">Unassigned</option>
-          </select>
-          <select id="ltvFilterPayer" onchange="_ltvFilters.payer=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
-            <option value="all">Payers + non-payers</option>
-            <option value="payer">Payers only</option>
-            <option value="non_payer">Never paid</option>
-          </select>
-        </div>
-        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:18px;padding:12px 14px;background:#141414;border:1px solid var(--border);border-radius:10px">
-          <div style="display:flex;align-items:center;gap:6px">
-            <label for="ltvStoreCut" style="font-size:0.82rem;color:var(--muted)">Store commission</label>
-            <input type="number" id="ltvStoreCut" value="15" min="0" max="100" step="1" oninput="_ltvAssumptions.storeCutPct=parseFloat(this.value)||0; applyLTVFilters()" style="width:56px;font:inherit;padding:5px 6px;border-radius:6px;border:1px solid var(--border);background:#0c0c0c;color:var(--text)">
-            <span style="font-size:0.82rem;color:var(--muted)">%</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <label for="ltvTaxPct" style="font-size:0.82rem;color:var(--muted)" title="App stores collect and remit sales tax/VAT in most markets, netted out of your proceeds before commission. No per-transaction tax data is stored (would need per-country attribution, which we're skipping for now), so this is a flat average assumption you control.">Avg tax</label>
-            <input type="number" id="ltvTaxPct" value="0" min="0" max="100" step="1" oninput="_ltvAssumptions.taxPct=parseFloat(this.value)||0; applyLTVFilters()" style="width:56px;font:inherit;padding:5px 6px;border-radius:6px;border:1px solid var(--border);background:#0c0c0c;color:var(--text)">
-            <span style="font-size:0.82rem;color:var(--muted)">%</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <label class="toggle-switch">
-              <input type="checkbox" id="ltvQuotaAwareToggle" onchange="_ltvAssumptions.quotaAware=this.checked; applyLTVFilters()">
-              <span class="toggle-slider"></span>
-            </label>
-            <span style="font-size:0.82rem">Net of Google Maps free quota</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;padding-left:20px;border-left:1px solid var(--border)">
-            <label class="toggle-switch">
-              <input type="checkbox" id="ltvViewModeToggle" onchange="_ltvAssumptions.viewMode=this.checked?'company':'per_user'; applyLTVFilters()">
-              <span class="toggle-slider"></span>
-            </label>
-            <span style="font-size:0.82rem" title="Per client (off): average $ per user in the cohort — use this to set max CAC. Company level (on): total $ across the cohort — use this to see overall $ impact.">Per client → Company level</span>
-          </div>
-        </div>
-        <div id="ltvSummary" style="font-size:0.85rem;color:var(--muted);margin-bottom:14px"></div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Cohort</th>
-                <th>Users</th>
-                <th>Day 7</th>
-                <th>Day 30</th>
-                <th>Day 60</th>
-                <th>Day 90</th>
-                <th>Day 180</th>
-                <th>Day 360</th>
-              </tr>
-            </thead>
-            <tbody id="ltvBody">
-              <tr><td colspan="8" class="loading">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div><!-- /panel-ltv -->
+    
 
     <!-- ── REVENUE ── -->
     <div class="tab-panel" id="panel-revenue">
@@ -1467,7 +1403,124 @@
           </table>
         </div>
       </div>
-    </div><!-- /panel-revenue -->
+    
+      <h2 class="dash-section">Lifetime value <span>net $ per user by sign-up cohort</span></h2>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Lifetime Value by Cohort
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Net $ per user (after store commission, avg tax, and serving cost), at fixed days since signup — for deciding max CAC. A cell only counts users old enough to have reached that horizon, so recent cohorts don't look artificially low.</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+          <select id="ltvFilterChannel" onchange="_ltvFilters.channel=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
+            <option value="all">All channels</option>
+            <option value="organic">Organic</option>
+            <option value="mgm">MGM</option>
+            <option value="influencer">Influencer</option>
+            <option value="apple_search_ads">Apple Search Ads</option>
+          </select>
+          <select id="ltvFilterPlatform" onchange="_ltvFilters.platform=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
+            <option value="all">All platforms</option>
+            <option value="ios">iOS</option>
+            <option value="android">Android</option>
+          </select>
+          <select id="ltvFilterQuota" onchange="_ltvFilters.quota_group=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
+            <option value="all">All quota groups</option>
+            <option value="daily_control">Daily control</option>
+            <option value="weekly_test">Weekly test</option>
+            <option value="unassigned">Unassigned</option>
+          </select>
+          <select id="ltvFilterPayer" onchange="_ltvFilters.payer=this.value; applyLTVFilters()" style="font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text)">
+            <option value="all">Payers + non-payers</option>
+            <option value="payer">Payers only</option>
+            <option value="non_payer">Never paid</option>
+          </select>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:18px;padding:12px 14px;background:#141414;border:1px solid var(--border);border-radius:10px">
+          <div style="display:flex;align-items:center;gap:6px">
+            <label for="ltvStoreCut" style="font-size:0.82rem;color:var(--muted)">Store commission</label>
+            <input type="number" id="ltvStoreCut" value="15" min="0" max="100" step="1" oninput="_ltvAssumptions.storeCutPct=parseFloat(this.value)||0; applyLTVFilters()" style="width:56px;font:inherit;padding:5px 6px;border-radius:6px;border:1px solid var(--border);background:#0c0c0c;color:var(--text)">
+            <span style="font-size:0.82rem;color:var(--muted)">%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <label for="ltvTaxPct" style="font-size:0.82rem;color:var(--muted)" title="App stores collect and remit sales tax/VAT in most markets, netted out of your proceeds before commission. No per-transaction tax data is stored (would need per-country attribution, which we're skipping for now), so this is a flat average assumption you control.">Avg tax</label>
+            <input type="number" id="ltvTaxPct" value="0" min="0" max="100" step="1" oninput="_ltvAssumptions.taxPct=parseFloat(this.value)||0; applyLTVFilters()" style="width:56px;font:inherit;padding:5px 6px;border-radius:6px;border:1px solid var(--border);background:#0c0c0c;color:var(--text)">
+            <span style="font-size:0.82rem;color:var(--muted)">%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <label class="toggle-switch">
+              <input type="checkbox" id="ltvQuotaAwareToggle" onchange="_ltvAssumptions.quotaAware=this.checked; applyLTVFilters()">
+              <span class="toggle-slider"></span>
+            </label>
+            <span style="font-size:0.82rem">Net of Google Maps free quota</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding-left:20px;border-left:1px solid var(--border)">
+            <label class="toggle-switch">
+              <input type="checkbox" id="ltvViewModeToggle" onchange="_ltvAssumptions.viewMode=this.checked?'company':'per_user'; applyLTVFilters()">
+              <span class="toggle-slider"></span>
+            </label>
+            <span style="font-size:0.82rem" title="Per client (off): average $ per user in the cohort — use this to set max CAC. Company level (on): total $ across the cohort — use this to see overall $ impact.">Per client → Company level</span>
+          </div>
+        </div>
+        <div id="ltvSummary" style="font-size:0.85rem;color:var(--muted);margin-bottom:14px"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Cohort</th>
+                <th>Users</th>
+                <th>Day 7</th>
+                <th>Day 30</th>
+                <th>Day 60</th>
+                <th>Day 90</th>
+                <th>Day 180</th>
+                <th>Day 360</th>
+              </tr>
+            </thead>
+            <tbody id="ltvBody">
+              <tr><td colspan="8" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+      <h2 class="dash-section">Viator <span>tour and ticket clicks from the app</span></h2>
+
+      <div class="grid-4" id="viatorKpis">
+        <div class="card"><div class="loading">Loading…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+      </div>
+      <div class="grid-2" style="margin-top:24px;margin-bottom:24px">
+        <div class="card">
+          <div class="card-title">Daily Clicks</div>
+          <div class="chart-wrap-lg"><canvas id="chartViatorDaily"></canvas></div>
+        </div>
+        <div class="grid-1" style="display:flex;flex-direction:column;gap:16px">
+          <div class="card" style="flex:1">
+            <div class="card-title">By Link Type</div>
+            <div id="viatorByType"></div>
+          </div>
+          <div class="card" style="flex:1">
+            <div class="card-title">By Screen</div>
+            <div id="viatorBySource"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-header"><h2>Top Landmarks by Clicks</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>#</th><th>Landmark</th><th>City</th><th>Clicks</th></tr>
+            </thead>
+            <tbody id="viatorLandmarksBody">
+              <tr><td colspan="4" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+        </div><!-- /panel-revenue -->
 
     <!-- ── NOTIFICATIONS ── -->
     <div class="tab-panel" id="panel-notifications">
@@ -1594,43 +1647,7 @@
     </div>
 
     <!-- ── VIATOR ── -->
-    <div class="tab-panel" id="panel-viator">
-      <div class="grid-4" id="viatorKpis">
-        <div class="card"><div class="loading">Loading…</div></div>
-        <div class="card"><div class="loading">…</div></div>
-        <div class="card"><div class="loading">…</div></div>
-        <div class="card"><div class="loading">…</div></div>
-      </div>
-      <div class="grid-2" style="margin-top:24px;margin-bottom:24px">
-        <div class="card">
-          <div class="card-title">Daily Clicks</div>
-          <div class="chart-wrap-lg"><canvas id="chartViatorDaily"></canvas></div>
-        </div>
-        <div class="grid-1" style="display:flex;flex-direction:column;gap:16px">
-          <div class="card" style="flex:1">
-            <div class="card-title">By Link Type</div>
-            <div id="viatorByType"></div>
-          </div>
-          <div class="card" style="flex:1">
-            <div class="card-title">By Screen</div>
-            <div id="viatorBySource"></div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="section-header"><h2>Top Landmarks by Clicks</h2></div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>#</th><th>Landmark</th><th>City</th><th>Clicks</th></tr>
-            </thead>
-            <tbody id="viatorLandmarksBody">
-              <tr><td colspan="4" class="loading">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+    
 
     <!-- ── SETTINGS ── -->
     <div class="tab-panel" id="panel-settings">
