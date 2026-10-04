@@ -1,0 +1,39 @@
+{
+  "badge_num": 4,
+  "city": "NUEVA YORK",
+  "flag": "🇺🇸",
+  "cta_screenshot": "screen-newyork-brooklyn-map.png",
+  "style": "minimal",
+  "caption": "En uno de los parques más populares de Manhattan, la gente hace picnic sobre unas 20,000 tumbas, y la propia Nueva York terminó cambiada por una islita de nuez moscada. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. Washington Square Park\nAntes de llenarse de músicos y estudiantes, Washington Square Park fue una fosa común para pobres y víctimas de epidemias. Se calcula que más de 20,000 personas siguen enterradas bajo su pasto.\n\n2. Grand Central Terminal\nBajo el hotel Waldorf Astoria hay un andén secreto, la Vía 61. Según la historia más conocida, Franklin D. Roosevelt lo usaba para llegar sin ser visto y ocultar las secuelas de su polio. Todavía sigue ahí, sellado.\n\n3. Central Park\nCada colina, lago y bosque de Central Park se construyó a mano a partir de 1850. Bajo el parque están las ruinas de Seneca Village, una próspera comunidad afroamericana que fue demolida para hacerlo.\n\n4. Empire State Building\nLa aguja no era decorativa: se diseñó como mástil de amarre para dirigibles. La idea resultó demasiado peligrosa por los vientos a esa altura, se abandonó, y el mástil terminó convertido en antena de transmisión.\n\n5. Puente de Brooklyn\nDurante décadas, las bóvedas bajo el puente guardaron vino y champaña. En 2006, unos inspectores encontraron ahí un depósito secreto de la Guerra Fría: agua, medicinas y raciones para sobrevivir a un ataque nuclear.\n\n6. Nueva Ámsterdam\nEn 1667, con el Tratado de Breda, los neerlandeses se quedaron con Run, una diminuta isla de nuez moscada en Indonesia, y dejaron Nueva Ámsterdam, la actual Nueva York, en manos de los ingleses. Visto hoy, quizá el peor intercambio de la historia.\n\n7. Avenida 6½\nManhattan tiene una media avenida secreta. La \"6½ Avenue\" es un pasaje peatonal real, con señalización oficial, entre las calles 51 y 57. La mayoría de los neoyorquinos pasa por ahí sin notarla.\n\n.\n.\n.\n#NuevaYork #NYC #LugaresSecretos #DatosCuriosos #CentralPark #PuenteDeBrooklyn #UrbanTales",
+  "facts": [
+    {
+      "headline": "Estás haciendo picnic sobre 20,000 tumbas",
+      "hook": "Washington Square Park fue una fosa común para pobres y víctimas de epidemias: más de 20,000 personas siguen enterradas bajo su pasto."
+    },
+    {
+      "headline": "Hay un andén secreto bajo un hotel",
+      "hook": "Bajo el Waldorf Astoria hay un andén sellado, la Vía 61; según la leyenda, Roosevelt lo usaba para ocultar las secuelas de su polio."
+    },
+    {
+      "headline": "Central Park es 100% artificial",
+      "hook": "Cada colina, lago y bosque de Central Park se hizo a mano, y bajo él yacen las ruinas de Seneca Village, demolida para construirlo."
+    },
+    {
+      "headline": "Esa aguja no se pensó para antenas",
+      "hook": "La aguja del Empire State se diseñó como mástil de amarre para dirigibles, pero el viento lo hizo demasiado peligroso."
+    },
+    {
+      "headline": "El Puente de Brooklyn escondía un búnker",
+      "hook": "Las bóvedas del Puente de Brooklyn guardaron vino durante décadas, y en 2006 apareció ahí un depósito secreto de la Guerra Fría."
+    },
+    {
+      "headline": "Nueva York se cambió por nuez moscada",
+      "hook": "En 1667, los neerlandeses cedieron Nueva Ámsterdam a los ingleses a cambio de una islita de nuez moscada en Indonesia."
+    },
+    {
+      "headline": "Manhattan tiene una media avenida secreta",
+      "hook": "La \"6½ Avenue\" es un pasaje real y señalizado entre las calles 51 y 57, y casi nadie en Nueva York lo nota."
+    }
+  ],
+  "lang": "es"
+}
