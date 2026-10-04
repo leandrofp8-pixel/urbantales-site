@@ -1,0 +1,39 @@
+{
+  "badge_num": 5,
+  "city": "ESTAMBUL",
+  "flag": "🇹🇷",
+  "cta_screenshot": "screen-london-bigben-map.png",
+  "style": "minimal",
+  "caption": "Este edificio cambió de religión tres veces en 1,500 años, y 300 años antes de que existieran los aviones, según cuentan, un hombre se lanzó desde una torre de esta ciudad y sobrevivió. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. Santa Sofía\nConstruida como iglesia bizantina en el siglo VI, Santa Sofía se convirtió en mezquita tras la conquista otomana de 1453, pasó a ser museo en 1935 y en 2020 volvió a ser mezquita. Casi 1,500 años de historia y sigue cambiando de identidad.\n\n2. Cisterna Basílica\nConstruida en el siglo VI bajo el emperador Justiniano I, la Cisterna Basílica quedó olvidada durante siglos. Se redescubrió en el siglo XVI porque los vecinos bajaban cubetas por agujeros en el suelo de sus casas y sacaban agua fresca, y a veces hasta peces.\n\n3. Torre de Gálata\nSegún el cronista Evliya Çelebi, en el siglo XVII Hezârfen Ahmed Çelebi se lanzó desde la Torre de Gálata con alas de madera y aterrizó sano y salvo al otro lado del Bósforo. El sultán lo premió con una bolsa de oro y luego lo desterró: un hombre capaz de algo así era demasiado peligroso.\n\n4. Palacio de Dolmabahçe\nConstruir el palacio costó el equivalente a 35 toneladas de oro. Un gasto tan desmedido que ayudó a empujar al Imperio otomano a la bancarrota menos de 20 años después.\n\n5. Torre de la Doncella\nCuenta la leyenda que un adivino le advirtió a un rey que su hija moriría por la mordida de una serpiente, así que él construyó la Torre de la Doncella en medio del mar para aislarla. Pero una serpiente llegó escondida en una canasta de frutas, y la profecía se cumplió de todos modos.\n\n6. Gran Bazar\nLa construcción del Gran Bazar empezó en 1455, lo que lo convierte en uno de los mercados cubiertos más antiguos del mundo que siguen en funcionamiento: más de 4,000 tiendas que todavía venden en las mismas calles.\n\n7. Dos continentes\nEstambul es la gran ciudad del mundo partida entre dos continentes, Europa y Asia, separados por el estrecho del Bósforo. Cruza por puente, túnel o ferry y habrás cambiado de continente antes de que se enfríe tu café.\n\n.\n.\n.\n#Estambul #Turquia #LugaresSecretos #DatosCuriosos #SantaSofia #TorreDeGalata #UrbanTales",
+  "facts": [
+    {
+      "headline": "Este edificio cambió de religión tres veces",
+      "hook": "Construida como iglesia bizantina en el siglo VI, Santa Sofía fue mezquita, luego museo y otra vez mezquita: casi 1,500 años de historia."
+    },
+    {
+      "headline": "Bajo la ciudad se escondía un palacio de agua",
+      "hook": "La Cisterna Basílica se redescubrió porque los vecinos bajaban cubetas por el suelo de sus casas y sacaban agua, y hasta peces."
+    },
+    {
+      "headline": "Un hombre voló aquí 300 años antes que los aviones",
+      "hook": "Según la leyenda, en el siglo XVII un hombre voló desde la Torre de Gálata con alas de madera; el sultán lo premió y luego lo desterró."
+    },
+    {
+      "headline": "Un solo palacio ayudó a quebrar un imperio",
+      "hook": "El Palacio de Dolmabahçe costó el equivalente a 35 toneladas de oro, un gasto que ayudó a llevar al Imperio otomano a la bancarrota."
+    },
+    {
+      "headline": "Un rey construyó esta torre para burlar una profecía",
+      "hook": "Un adivino le dijo a un rey que su hija moriría por una serpiente, así que la encerró en esta torre; la profecía se cumplió igual."
+    },
+    {
+      "headline": "Aquí se regatea desde hace más de 560 años",
+      "hook": "La construcción del Gran Bazar empezó en 1455, y más de 4,000 tiendas siguen vendiendo hoy bajo las mismas calles cubiertas."
+    },
+    {
+      "headline": "Puedes caminar de un continente a otro",
+      "hook": "Estambul está partida entre Europa y Asia: cruza el Bósforo en puente, túnel o ferry y habrás cambiado de continente."
+    }
+  ],
+  "lang": "es"
+}

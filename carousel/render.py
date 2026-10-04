@@ -69,7 +69,7 @@ def render_html_to_png(html, out_png, workdir):
     html_path = os.path.join(workdir, "_tmp_slide.html")
     open(html_path, "w").write(f"<!DOCTYPE html><html><head><meta charset='utf-8'>{SHARED_HEAD}</head><body>{html}</body></html>")
     subprocess.run([
-        CHROME, "--headless", "--disable-gpu",
+        CHROME, "--headless", "--disable-gpu", "--virtual-time-budget=5000",
         f"--screenshot={out_png}", "--window-size=1080,1350", "--hide-scrollbars",
         f"file://{html_path}",
     ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

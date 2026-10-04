@@ -1,0 +1,39 @@
+{
+  "badge_num": 6,
+  "city": "FLORENCIA",
+  "flag": "🇮🇹",
+  "cta_screenshot": "screen-florence-duomo-map.png",
+  "style": "minimal",
+  "caption": "Un orfebre construyó la cúpula de ladrillo más grande del mundo y, seis siglos después, nadie la ha superado. Y el David que todos fotografían en la plaza es una copia. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. El Duomo\nDurante años ningún arquitecto supo cómo cerrar la parte superior del Duomo. Hasta que Filippo Brunelleschi, un orfebre y relojero, diseñó una técnica de doble cúpula que no necesitaba cimbra y levantó la cúpula de ladrillo más grande del mundo. Seis siglos después, sigue sin rival.\n\n2. Ponte Vecchio\nLos Médici construyeron un corredor privado sobre el Ponte Vecchio para no mezclarse con la gente. El problema: el puente estaba lleno de carnicerías y el olor era terrible. Así que echaron a todos los carniceros y trajeron orfebres. Hasta hoy, el puente sigue lleno de joyerías.\n\n3. Piazza della Signoria\nEl David original de Miguel Ángel estuvo a la intemperie en la Piazza della Signoria durante casi 370 años. En 1873 lo trasladaron a un interior para protegerlo; el que está en la plaza desde 1910 es una réplica.\n\n4. Palazzo Vecchio\nCuenta la leyenda que un hombre interrumpía a Miguel Ángel día tras día para platicar mientras trabajaba cerca del Palazzo Vecchio. Un día, harto, Miguel Ángel talló el perfil del hombre en la piedra, y ahí sigue, inmortalizado en la pared.\n\n5. Santa Croce\nMiguel Ángel murió en Roma en 1564 y el papa quería que lo enterraran ahí. Pero su cuerpo fue sacado en secreto, de noche, y llevado de vuelta a Florencia, la ciudad que consideraba su hogar. Hoy descansa en Santa Croce.\n\n6. Las calles antiguas\nFlorencia pavimentó sus calles en el siglo XIV, siendo una de las primeras ciudades de Europa en hacerlo, generaciones antes que muchas capitales.\n\n7. Las ventanitas del vino\nEn el siglo XVII se abrieron pequeñas ventanas en los muros de los palacios para vender vino sin abrir la puerta durante la peste. Quedaron olvidadas durante siglos, hasta que en 2020, durante el COVID, varias volvieron a usarse para servir bebidas.\n\n.\n.\n.\n#Florencia #Firenze #LugaresSecretos #DatosCuriosos #Duomo #PonteVecchio #UrbanTales",
+  "facts": [
+    {
+      "headline": "Un orfebre construyó la cúpula de ladrillo más grande",
+      "hook": "Nadie sabía cómo cerrar el Duomo, hasta que el orfebre Brunelleschi levantó la cúpula de ladrillo más grande del mundo, aún sin rival."
+    },
+    {
+      "headline": "Este puente vende oro por culpa de un olor",
+      "hook": "Los Médici hicieron un corredor privado sobre el Ponte Vecchio y, hartos del olor, cambiaron a los carniceros por orfebres."
+    },
+    {
+      "headline": "El David que todos fotografían es una copia",
+      "hook": "El David original de Miguel Ángel estuvo casi 370 años a la intemperie antes de pasar a un interior; el de la plaza es una réplica."
+    },
+    {
+      "headline": "Miguel Ángel talló una cara por puro fastidio",
+      "hook": "Cuenta la leyenda que un hombre interrumpía tanto a Miguel Ángel que este talló su perfil en la pared del Palazzo Vecchio."
+    },
+    {
+      "headline": "Florencia se llevó en secreto a Miguel Ángel",
+      "hook": "Miguel Ángel murió en Roma en 1564 y el papa quería enterrarlo ahí, pero su cuerpo fue llevado de noche, en secreto, a Florencia."
+    },
+    {
+      "headline": "Caminas sobre unas de las primeras calles pavimentadas",
+      "hook": "Florencia pavimentó sus calles en el siglo XIV, una de las primeras ciudades de Europa en hacerlo, generaciones antes que otras."
+    },
+    {
+      "headline": "Un truco de 400 años volvió con el COVID",
+      "hook": "En el siglo XVII se abrieron ventanitas en los muros para vender vino durante la peste, y en 2020 volvieron a usarse."
+    }
+  ],
+  "lang": "es"
+}

@@ -1,0 +1,39 @@
+{
+  "badge_num": 7,
+  "city": "PARÍS",
+  "flag": "🇫🇷",
+  "cta_screenshot": "screen-paris-eiffel-map.png",
+  "style": "minimal",
+  "caption": "La Pirámide del Louvre no tiene 666 cristales, diga lo que diga El código Da Vinci, y el gallo que coronaba la aguja de Notre-Dame es en realidad un relicario. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. Pirámide del Louvre\nEl código Da Vinci hizo famosa la cifra de \"666 cristales\", pero la pirámide de I. M. Pei en realidad tiene 673: 603 rombos y 70 triángulos, según el propio equipo del arquitecto.\n\n2. Sainte-Chapelle\nLos vitrales del siglo XIII de la Sainte-Chapelle reúnen 1,113 escenas bíblicas en unos 600 metros cuadrados de vidrio, y la mayoría sobrevivió a la Segunda Guerra Mundial porque los desmontaron pieza por pieza y los escondieron.\n\n3. Notre-Dame\nEl gallo dorado de la aguja de Notre-Dame guarda en su interior fragmentos de reliquias, incluida una de la Corona de Espinas. En el incendio de 2019 cayó junto con la aguja, pero lo rescataron entre los escombros.\n\n4. El Panteón\nEn 1851, Léon Foucault colgó una esfera de 28 kg de un cable de 67 metros bajo la cúpula del Panteón: la primera prueba visible de que la Tierra gira. Todavía puedes ver un péndulo oscilando ahí hoy.\n\n5. Palais Garnier\nBajo la Ópera de París hay un depósito subterráneo de 25 x 50 metros que Charles Garnier construyó para contener el agua del subsuelo: la verdadera inspiración del lago de El fantasma de la ópera. Los bomberos todavía entrenan buceo ahí.\n\n6. Las Catacumbas\nLas Catacumbas de París guardan los huesos de unos 6 millones de personas, más del doble de la población que vive hoy en la ciudad.\n\n7. Shakespeare and Company\nDesde 1951, más de 30,000 escritores viajeros han dormido gratis entre los estantes de Shakespeare and Company a cambio de leer un libro al día y echar una mano en la librería.\n\n.\n.\n.\n#Paris #Francia #LugaresSecretos #DatosCuriosos #Louvre #NotreDame #UrbanTales",
+  "facts": [
+    {
+      "headline": "La pirámide no tiene 666 cristales",
+      "hook": "El código Da Vinci hizo famosos los \"666 cristales\", pero la Pirámide del Louvre en realidad tiene 673: 603 rombos y 70 triángulos."
+    },
+    {
+      "headline": "Una capilla con más vitrales que muchas catedrales",
+      "hook": "La Sainte-Chapelle reúne 1,113 escenas bíblicas en sus vitrales del siglo XIII, salvados en la guerra pieza por pieza."
+    },
+    {
+      "headline": "El gallo de Notre-Dame es un relicario",
+      "hook": "El gallo dorado de la aguja de Notre-Dame guarda reliquias de la Corona de Espinas, y lo rescataron entre los escombros en 2019."
+    },
+    {
+      "headline": "Un péndulo aquí demostró que la Tierra gira",
+      "hook": "En 1851, Léon Foucault colgó una esfera de 28 kg de un cable de 67 metros en el Panteón: la primera prueba visible de que la Tierra gira."
+    },
+    {
+      "headline": "La Ópera de París esconde un lago",
+      "hook": "Bajo la Ópera de París hay un depósito secreto de agua subterránea: la verdadera inspiración de El fantasma de la ópera."
+    },
+    {
+      "headline": "6 millones de parisinos bajo tus pies",
+      "hook": "Las Catacumbas de París guardan los huesos de unos 6 millones de personas, más del doble de quienes viven hoy en la ciudad."
+    },
+    {
+      "headline": "Esta librería ofrece 30,000 noches gratis",
+      "hook": "Desde 1951, más de 30,000 escritores viajeros han dormido gratis entre los estantes de Shakespeare and Company."
+    }
+  ],
+  "lang": "es"
+}
