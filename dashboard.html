@@ -142,6 +142,10 @@
     .pf-rank { display: grid; gap: 8px; }
     .pf-rank-row { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: center; padding: 9px 12px; background: #141414; border-radius: 8px; }
     .pf-rank-row .n { color: #555; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .pf-rank-row.low { opacity: .55; }
+    .pf-unit { color: #777; }
+    .pf-small-head { font-size: 0.75rem; color: var(--muted); margin: 10px 2px 2px; }
+    .pf-pill.small { background: #222; color: #888; }
     .pf-rank-row .vals { font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
     .pf-pill { font-size: 0.74rem; font-weight: 800; padding: 3px 9px; border-radius: 99px; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .pf-pill.bad { background: #3a1616; color: var(--danger); } .pf-pill.mid { background: #3a2f10; color: var(--yellow); } .pf-pill.ok { background: #13321f; color: var(--green); }
@@ -998,37 +1002,6 @@
         </div>
       </div>
 
-      <div class="card" style="margin-top:24px">
-        <div class="section-header" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-          <h2>RevenueCat Purchases</h2>
-          <div style="display:flex;gap:8px;align-items:center">
-            <input id="purchasesSearch" type="search" placeholder="Search by email…"
-              oninput="onPurchasesSearch()" style="font:inherit;font-size:0.82rem;border-radius:8px;padding:7px 11px;border:1px solid var(--border);background:#141414;color:var(--text);min-width:200px">
-            <select id="purchasesEnvFilter" onchange="reloadPurchases()" style="font:inherit;font-size:0.82rem;border-radius:8px;padding:7px 11px;border:1px solid var(--border);background:#141414;color:var(--text)">
-              <option value="">All environments</option>
-              <option value="PRODUCTION">Production only</option>
-              <option value="SANDBOX">Sandbox only</option>
-            </select>
-          </div>
-        </div>
-        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:10px">
-          Environment/exact price are only known for purchases received after this table shipped — older rows show "unknown" environment and the product's configured list price.
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Date</th><th>User</th><th>Product</th><th>Coins</th><th>Price</th><th>Store</th><th>Environment</th></tr>
-            </thead>
-            <tbody id="purchasesBody">
-              <tr><td colspan="7" class="loading">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div style="display:flex;justify-content:center;margin-top:12px">
-          <button id="purchasesLoadMoreBtn" onclick="loadMorePurchases()" style="font:inherit;font-size:0.82rem;font-weight:600;border-radius:9px;padding:8px 16px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">Load more</button>
-        </div>
-      </div>
-
       <!-- ── COST TRENDS (cache efficiency over time) ── -->
       <div class="card" style="margin-top:24px">
         <div class="card-title">Cost Efficiency Trend
@@ -1520,7 +1493,38 @@
           </table>
         </div>
       </div>
-        </div><!-- /panel-revenue -->
+          <div class="card" style="margin-top:24px">
+        <div class="section-header" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <h2>RevenueCat Purchases</h2>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="purchasesSearch" type="search" placeholder="Search by email…"
+              oninput="onPurchasesSearch()" style="font:inherit;font-size:0.82rem;border-radius:8px;padding:7px 11px;border:1px solid var(--border);background:#141414;color:var(--text);min-width:200px">
+            <select id="purchasesEnvFilter" onchange="reloadPurchases()" style="font:inherit;font-size:0.82rem;border-radius:8px;padding:7px 11px;border:1px solid var(--border);background:#141414;color:var(--text)">
+              <option value="PRODUCTION" selected>Production only</option>
+              <option value="">All environments</option>
+              <option value="SANDBOX">Sandbox only</option>
+            </select>
+          </div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:10px">
+          Environment/exact price are only known for purchases received after this table shipped — older rows show "unknown" environment and the product's configured list price.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Date</th><th>User</th><th>Product</th><th>Coins</th><th>Price</th><th>Store</th><th>Environment</th></tr>
+            </thead>
+            <tbody id="purchasesBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="display:flex;justify-content:center;margin-top:12px">
+          <button id="purchasesLoadMoreBtn" onclick="loadMorePurchases()" style="font:inherit;font-size:0.82rem;font-weight:600;border-radius:9px;padding:8px 16px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">Load more</button>
+        </div>
+      </div>
+
+    </div><!-- /panel-revenue -->
 
     <!-- ── NOTIFICATIONS ── -->
     <div class="tab-panel" id="panel-notifications">
@@ -2011,7 +2015,8 @@
       <div class="kpi-sub" style="max-width:780px;margin-bottom:14px">Users are grouped by the platform they <strong>signed up on</strong>; money by the <strong>store</strong> the payment went through; playback by the phone it ran on. Uses the period selected at the top. Each figure shows the previous period of the same length for comparison.</div>
       <div id="pfNotice"></div>
       <div class="card pf-loses" style="margin-bottom:24px">
-        <div class="card-title">Where Android loses <span class="kpi-sub">(Android vs iOS, worst first)</span></div>
+        <div class="card-title">Where Android loses <span class="kpi-sub">(Android vs iOS, worst first) · <span id="pfPeriod"></span></span></div>
+        <div class="kpi-sub" style="margin:-4px 0 12px">Each row: the metric's value on each platform, its unit, and how many users/events it's based on (iOS / Android). The pill is Android's gap vs iOS.</div>
         <div class="pf-rank" id="pfGaps"><div class="loading">Loading…</div></div>
       </div>
       <div class="grid-3" id="pfKpis"></div>
@@ -2304,6 +2309,10 @@ function showTab(name) {
   if (name === 'platforms') {
     _platformTabLoaded = true;
     loadPlatformComparison();
+  }
+  if (name === 'revenue' && !_purchasesLoaded) {
+    _purchasesLoaded = true;
+    loadPurchases(true);
   }
   if (name === 'profiles' && !_profilesTabLoaded) {
     _profilesTabLoaded = true;
@@ -3138,10 +3147,6 @@ function renderCosts(costs, funnel) {
         <td>${fmtCost(u.total_cost / Math.max(u.total_calls, 1))}</td>
       </tr>`).join('');
 
-  if (!_purchasesLoaded) {
-    _purchasesLoaded = true;
-    loadPurchases(true);
-  }
 }
 
 // ══════════════════════════════════════════════
@@ -5692,17 +5697,31 @@ function renderPlatformComparison(d) {
 
   // Where Android loses
   const rows = d.gaps || [];
-  document.getElementById('pfGaps').innerHTML = rows.length ? rows.map((g, i) => {
-    const cls = g.relative_gap_pct <= -15 ? 'bad' : g.relative_gap_pct < -5 ? 'mid' : 'ok';
+  const fmtDay = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  document.getElementById('pfPeriod').textContent = d.period
+    ? `${fmtDay(d.period.start)} – ${fmtDay(d.period.end)} (last ${d.period.days} days)` : '';
+  const gapRow = (g, i) => {
+    const cls = g.low_sample ? 'small' : g.relative_gap_pct <= -15 ? 'bad' : g.relative_gap_pct < -5 ? 'mid' : 'ok';
     const sign = g.relative_gap_pct > 0 ? '+' : '';
     // For "lower is better" metrics (failure rates) a ratio reads better than a percentage.
-    const label = (g.higher_is_better === false && g.ios > 0)
-      ? `Android ${(g.android / g.ios).toFixed(1)}× iOS`
+    const label = g.low_sample ? 'too few to judge'
+      : (g.higher_is_better === false && g.ios > 0) ? `Android ${(g.android / g.ios).toFixed(1)}× iOS`
       : `${sign}${g.relative_gap_pct}%`;
-    return `<div class="pf-rank-row"><span class="n">${i + 1}</span><div><div>${escapeHtml(g.metric)}</div>
-      <div class="vals"><span class="pf-ios">iOS ${num(g.ios)}</span> · <span class="pf-and">Android ${num(g.android)}</span></div></div>
+    const unit = g.unit || '';
+    const isPct = unit.startsWith('%');
+    const val = (v) => v === null || v === undefined ? '—' : isPct ? `${num(v)}%` : unit.startsWith('USD') ? usd(v) : num(v);
+    const unitText = isPct ? unit.slice(2) : unit.replace(/^USD /, '');
+    const n = g.n ? ` · based on <span class="pf-ios">${fmt(g.n.ios)}</span> / <span class="pf-and">${fmt(g.n.android)}</span>` : '';
+    return `<div class="pf-rank-row${g.low_sample ? ' low' : ''}"><span class="n">${i + 1}</span><div><div>${escapeHtml(g.metric)}</div>
+      <div class="vals"><span class="pf-ios">iOS ${val(g.ios)}</span> · <span class="pf-and">Android ${val(g.android)}</span>${unitText ? ` <span class="pf-unit">${escapeHtml(unitText)}</span>` : ''}${n}</div></div>
       <span class="pf-pill ${cls}">${label}</span></div>`;
-  }).join('') : '<div class="kpi-sub">Not enough data in this period.</div>';
+  };
+  const solid = rows.filter(g => !g.low_sample), small = rows.filter(g => g.low_sample);
+  document.getElementById('pfGaps').innerHTML = rows.length
+    ? solid.map(gapRow).join('') + (small.length
+      ? `<div class="pf-small-head">Too little data to compare yet: fewer than 20 users/events on at least one platform. Don't act on these.</div>`
+        + small.map((g, i) => gapRow(g, solid.length + i)).join('') : '')
+    : '<div class="kpi-sub">Not enough data in this period.</div>';
 
   // KPI cards: current values plus previous period
   const kpi = (title, iv, av, ip, ap, fmt, note) => {
