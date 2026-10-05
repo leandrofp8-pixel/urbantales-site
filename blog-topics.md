@@ -7,6 +7,7 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 
 | Date | Type | City | Post |
 |---|---|---|---|
+| 2026-10-05 | Hidden Story | Amsterdam | [blog-amsterdam-rembrandt-unmarked-grave.html](blog-amsterdam-rembrandt-unmarked-grave.html) — The tower Anne Frank heard from hiding hides Rembrandt's grave |
 | 2026-09-28 | City Guide | Rio de Janeiro | [blog-rio-corcovado-sugarloaf-one-day.html](blog-rio-corcovado-sugarloaf-one-day.html) — Corcovado and Sugarloaf in one day — and the order that actually works |
 | 2026-09-23 | Hidden Story | Berlin | [blog-brandenburg-gate-quadriga-history.html](blog-brandenburg-gate-quadriga-history.html) — What's still standing at the Brandenburg Gate — and what isn't |
 | 2026-09-21 | City Guide | Buenos Aires | [blog-buenos-aires-caminito-walk.html](blog-buenos-aires-caminito-walk.html) — A self-guided Caminito walk — and why you leave before dark |
@@ -29,7 +30,6 @@ already in this repo, so the post's CTAs and internal links can point to it.
 
 | Type | City | Angle |
 |---|---|---|
-| Hidden Story | Amsterdam | The canal-district history most Anne Frank House visitors walk straight past |
 | City Guide | Marrakech | A self-guided Jemaa el-Fna evening route — what to see before the square gets loud |
 | Hidden Story | Bangkok | The rivalry behind Wat Pho and Wat Arun |
 | City Guide | Chicago | A self-guided Millennium Park to Willis Tower walk |
