@@ -1,0 +1,62 @@
+{
+  "badge_num": 14,
+  "city": "RIO DE JANEIRO",
+  "flag": "🇧🇷",
+  "cta_screenshot": "screen-rio-corcovado-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org, upload.wikimedia.org, en.wikipedia.org and api.pexels.com (confirmed via curl -> 'CONNECT tunnel failed, response 403' for all four hosts; the agent-proxy status endpoint logs them as 'connect_rejected... organization policy'). This is the same block that has hit every batch since #8 (Amsterdam) — this run makes it 7+ consecutive automated batches with no working photo-sourcing path in this environment (and there are at least 3 other open, unaddressed carousel PRs — #26 Buenos Aires, #28 Lisbon, #40 Chicago — that hit the identical block). No candidate photos could be downloaded this run; 'candidates' arrays are empty and 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access. Facts themselves were researched and verified via WebSearch, which is not subject to this block.",
+  "caption": "The artist who spent 20+ years tiling Rio's most famous staircase died on it — and nobody agrees on why. 👀\n\nComment your theory before you swipe ⬇️\n\n.\n.\n.\n#Rio #RioTravel #HiddenGems #TravelFacts #Brazil #SelaronSteps #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "The sculptor who built this statue was never invited to its unveiling",
+      "body_html": "French sculptor <b>Paul Landowski</b> built Christ the Redeemer's face and hands in Paris and shipped them to Rio in pieces for the <b>1931</b> unveiling — the statue gets struck by lightning roughly <b>four times a year</b>, once hard enough to knock a thumb loose.",
+      "candidates": [],
+      "suggested_queries": ["Christ the Redeemer Rio de Janeiro statue close up", "Corcovado Christ the Redeemer aerial view"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "This cable car system is the third ever built on Earth",
+      "body_html": "The Sugarloaf cable car has carried visitors up Pão de Açúcar since <b>1912</b>, making it the <b>third aerial tramway ever built anywhere in the world</b> — riders still switch cars halfway up at Morro da Urca before the final climb.",
+      "candidates": [],
+      "suggested_queries": ["Sugarloaf Mountain Rio cable car Pao de Acucar", "Sugarloaf Mountain Rio de Janeiro aerial"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "This isn't a bridge — it's a 300-year-old water pipe",
+      "body_html": "The 42 arches of Arcos da Lapa were built between <b>1723 and 1750</b> to carry drinking water into Rio's center — since <b>1896</b> they've carried something else entirely: the city's last working tram, still crossing the top today.",
+      "candidates": [],
+      "suggested_queries": ["Arcos da Lapa Rio de Janeiro aqueduct arches", "Lapa Arches Rio tram Santa Teresa"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "This staircase took one obsessive artist 20+ years to tile — and he died on it",
+      "body_html": "Chilean-born artist <b>Jorge Selarón</b> covered 215 steps near Lapa with more than <b>2,000 tiles from over 60 countries</b>, funding the decades-long project by selling his paintings — in 2013 he was found dead on his own staircase, and the cause was never fully resolved.",
+      "candidates": [],
+      "suggested_queries": ["Selaron Steps Rio de Janeiro mosaic staircase", "Escadaria Selaron Lapa tiles close up"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "More people may have watched this World Cup final than were officially counted",
+      "body_html": "The <b>1950 World Cup final</b> at Maracanã Stadium drew an official attendance of <b>173,850</b> — but with ticketless fans and staff included, estimates run as high as <b>200,000</b>, still the largest crowd ever at a World Cup match.",
+      "candidates": [],
+      "suggested_queries": ["Maracana Stadium Rio de Janeiro exterior", "Maracana Stadium Rio aerial full"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "The world's largest urban forest was planted entirely by hand",
+      "body_html": "Tijuca Forest was cleared for coffee plantations, then hand-replanted starting in the <b>1860s</b> after the clearing threatened Rio's water supply — more than <b>100,000 trees</b> went in over 13 years, making it the largest hand-planted urban forest on Earth.",
+      "candidates": [],
+      "suggested_queries": ["Tijuca Forest Rio de Janeiro aerial", "Tijuca National Park Rio rainforest canopy"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "Rio's Carnival runway was designed by the same architect who built its capital city",
+      "body_html": "Oscar Niemeyer, the architect behind Brasília, designed the Sambadrome in just <b>110 days</b> — it opened in <b>1984</b>, his first major work after Brazil's military dictatorship ended.",
+      "candidates": [],
+      "suggested_queries": ["Sambadrome Rio de Janeiro Marques de Sapucai", "Sambadrome Rio Carnival empty runway"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Rio de Janeiro skyline aerial Guanabara Bay", "Rio de Janeiro Sugarloaf Corcovado aerial view"]
+}
