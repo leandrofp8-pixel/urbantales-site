@@ -738,12 +738,16 @@
         <div id="abTestPanel"><div class="loading">Loading…</div></div>
       </div>
 
-      <!-- Growth experiment: first-purchase offer vs. referral CTA -->
+      <!-- Growth experiment: what users see right after their first story -->
       <div class="card" style="margin-top:24px">
-        <div class="card-title">First-Purchase Offer vs. Referral CTA
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">One or the other, assigned once per user at their first narration — never both</span>
+        <div class="card-title">First Story: Bonus Offer vs. Perks Card
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Assigned once per user at their first story. Share prompt comes later (after N stories) in every group.</span>
         </div>
-        <div id="growthExperimentPanel"><div class="loading">Loading…</div></div>
+        <div id="growthExperimentRound2"><div class="loading">Loading…</div></div>
+        <details style="margin-top:18px">
+          <summary style="cursor:pointer;color:var(--muted);font-size:0.82rem">Round 1 (closed): bonus offer vs. nothing at the first story</summary>
+          <div id="growthExperimentPanel" style="margin-top:12px"><div class="loading">Loading…</div></div>
+        </details>
       </div>
 
       <div class="card" style="margin-top:24px">
@@ -4597,7 +4601,7 @@ function renderSettings(data) {
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Referrals &amp; Payouts</div>` +
     field('referral_cooldown_days', 'MGM Push Notification Cooldown (days)', 'number', s.referral_cooldown_days ?? 15, 'min="0"') +
-    field('referral_prompt_min_landmarks', 'Landmarks Heard to Trigger Referral Prompt (proximity-independent)', 'number', s.referral_prompt_min_landmarks ?? 3, 'min="1"') +
+    field('referral_prompt_min_landmarks', 'Stories Heard Before the Share Prompt (every group; never at the first story)', 'number', s.referral_prompt_min_landmarks ?? 5, 'min="2"') +
     field('mgm_invitee_bonus_coins', 'MGM Invitee Signup Bonus (coins)', 'number', s.mgm_invitee_bonus_coins ?? 250, 'min="0"') +
     field('mgm_inviter_reward_coins', 'MGM Inviter Purchase Reward (coins)', 'number', s.mgm_inviter_reward_coins ?? 250, 'min="0"') +
     field('influencer_revenue_share_pct', 'Influencer Revenue Share (%)', 'number', s.influencer_revenue_share_pct ?? 25, 'min="0" max="100"') +
@@ -4617,7 +4621,7 @@ function renderSettings(data) {
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Growth Experiment — First-Purchase Offer vs. Referral CTA</div>` +
     `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">One or the other, assigned once per user at their first narration. Reported in Acquisition tab.</div>` +
     `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('first_purchase_offer_enabled', 'Experiment Active', s.first_purchase_offer_enabled ?? true)}</div>` +
-    field('first_purchase_offer_test_pct', 'Offer Group % (rest keep the existing referral CTA)', 'number', s.first_purchase_offer_test_pct ?? 50, 'min="0" max="100"') +
+    field('first_purchase_offer_test_pct', 'Bonus Offer Group % (rest see the perks card)', 'number', s.first_purchase_offer_test_pct ?? 50, 'min="0" max="100"') +
     field('first_purchase_offer_bonus_pct', 'Bonus Coins % on Qualifying Purchase', 'number', s.first_purchase_offer_bonus_pct ?? 50, 'min="0" max="200"') +
     field('first_purchase_offer_window_hours', 'Offer Window (hours)', 'number', s.first_purchase_offer_window_hours ?? 24, 'min="1" max="168"') +
     field('first_purchase_offer_min_pack_coins', 'Min Pack Size to Qualify (coins) — avoids bonus that doesn\'t cross a 500/1000-point redemption threshold', 'number', s.first_purchase_offer_min_pack_coins ?? 1000, 'min="0" step="100"') +
@@ -6160,7 +6164,54 @@ function renderAbTest(data) {
     <p style="color:var(--muted);font-size:0.75rem;margin-top:12px">${fmt(data.unassigned_users)} users signed up before the experiment.</p>`;
 }
 
+function renderGrowthExperimentRound2(data) {
+  const el = document.getElementById('growthExperimentRound2');
+  if (!el) return;
+  const r2 = data?.round2;
+  if (!r2 || !r2.started_at) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">Starts when the app version with the perks card (3.1.10) reaches users. Until then, everyone follows round 1 below.</p>';
+    return;
+  }
+  const pc = r2.groups.perks_control || {}, po = r2.groups.purchase_offer || {};
+  const pct = (v) => v === null || v === undefined ? '—' : `${v}%`;
+  const small = Math.min(pc.mature_users || 0, po.mature_users || 0) < 100;
+  const lead = (pc.conversion_7d_rate ?? -1) === (po.conversion_7d_rate ?? -1) ? null
+    : (pc.conversion_7d_rate ?? -1) > (po.conversion_7d_rate ?? -1) ? 'pc' : 'po';
+  const badge = (k) => lead === k && !small
+    ? '<span style="background:var(--green);color:#000;font-size:0.7rem;padding:2px 6px;border-radius:4px;margin-left:8px">ahead</span>' : '';
+  const row = (label, g, k) => `<tr>
+      <td><strong>${label}</strong>${badge(k)}</td>
+      <td style="text-align:right">${fmt(g.total_users)}</td>
+      <td style="text-align:right">${fmt(g.mature_users)}</td>
+      <td style="text-align:right">${fmt(g.paid_within_7d)}</td>
+      <td style="text-align:right;font-weight:700;color:var(--green)">${pct(g.conversion_7d_rate)}</td>
+      <td style="text-align:right">${pct(g.overall_conversion_rate)}</td>
+    </tr>`;
+  el.innerHTML = `
+    <div class="table-wrap"><table style="width:100%;border-collapse:collapse">
+      <thead><tr style="color:var(--muted);font-size:0.75rem">
+        <th style="text-align:left;padding:6px 0">Group</th>
+        <th style="text-align:right">Users</th>
+        <th style="text-align:right">7+ days in</th>
+        <th style="text-align:right">Paid within 7 days</th>
+        <th style="text-align:right">7-day conversion</th>
+        <th style="text-align:right">Paid ever</th>
+      </tr></thead>
+      <tbody>
+        ${row('ℹ️ Perks card (control)', pc, 'pc')}
+        ${row('🎁 +' + (data.settings?.bonus_pct ?? 50) + '% bonus offer', po, 'po')}
+      </tbody>
+    </table></div>
+    <p style="color:var(--muted);font-size:0.72rem;margin-top:10px">
+      Started ${new Date(r2.started_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}.
+      "7-day conversion" counts only users assigned at least 7 days ago, so every user had the same chance to buy — that's the number to decide on.
+      ${small ? '<strong style="color:var(--yellow)">Under 100 matured users in a group: too early to call a winner.</strong>' : ''}
+      Split: ${data.settings?.test_pct}% of new users get the bonus offer, the rest the perks card.
+    </p>`;
+}
+
 function renderGrowthExperiment(data) {
+  renderGrowthExperimentRound2(data);
   const el = document.getElementById('growthExperimentPanel');
   if (!el) return;
   if (!data || !data.groups) {
@@ -6191,7 +6242,7 @@ function renderGrowthExperiment(data) {
           <td style="text-align:right">${po.avg_days_to_purchase ?? 0}</td>
         </tr>
         <tr>
-          <td><strong>🤝 Referral CTA (control)</strong>${badge(false)}</td>
+          <td><strong>🤝 Nothing at first story (control)</strong>${badge(false)}</td>
           <td style="text-align:right">${fmt(rc.total_users)}</td>
           <td style="text-align:right">${fmt(rc.purchased)}</td>
           <td style="text-align:right;font-weight:700;color:var(--green)">${rc.overall_conversion_rate ?? 0}%</td>
