@@ -1660,6 +1660,24 @@
     <!-- ── SETTINGS ── -->
     <div class="tab-panel" id="panel-settings">
 
+      <!-- One-off data fixes -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Data fixes</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">One-off corrections. Each one shows what it would change before you apply it.</span>
+        </div>
+        <div style="display:grid;gap:10px;margin-top:12px">
+          <div><strong>Sandbox purchases counted as conversions</strong>
+            <div style="font-size:0.82rem;color:var(--muted);margin-top:4px;max-width:80ch">Test (sandbox) purchases used to mark accounts as paying users, inflating conversion numbers. New sandbox purchases no longer count. This removes the ones already recorded: accounts with only sandbox purchases lose their conversion; accounts with real purchases too keep it, dated at their first real purchase. Real customers who never used sandbox aren't touched.</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button id="sbxCheckBtn" onclick="sandboxConversions(false)" style="font:inherit;font-size:0.85rem;font-weight:600;border-radius:9px;padding:8px 16px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--text)">Check</button>
+            <button id="sbxApplyBtn" onclick="sandboxConversions(true)" disabled style="font:inherit;font-size:0.85rem;font-weight:700;border-radius:9px;padding:8px 16px;cursor:pointer;border:0;background:var(--accent, #ff6b35);color:#fff;opacity:0.4">Apply</button>
+          </div>
+          <div id="sbxResult" style="font-size:0.85rem"></div>
+        </div>
+      </div>
+
       <!-- Operational Settings -->
       <div class="card" style="margin-bottom:24px">
         <div class="section-header">
@@ -2235,6 +2253,35 @@ async function api(path) {
   if (res.status === 401) { logout(); throw new Error('Unauthorized'); }
   if (!res.ok) throw new Error(`API error ${res.status}`);
   return res.json();
+}
+
+// One-off fix: sandbox purchases recorded as conversions. Check = dry run;
+// Apply is enabled only after a check found something to change.
+async function sandboxConversions(apply) {
+  const out = document.getElementById('sbxResult');
+  const applyBtn = document.getElementById('sbxApplyBtn');
+  out.innerHTML = '<span class="loading">Working…</span>';
+  try {
+    const res = await fetch(`${API}/admin/maintenance/sandbox-conversions${apply ? '?apply=true' : ''}`, {
+      method: 'POST', headers: { 'Authorization': `Bearer ${getToken()}` },
+    });
+    if (res.status === 401) { logout(); return; }
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    const d = await res.json();
+    const total = d.cleared.length + d.moved.length;
+    const list = (rows, fmtRow) => rows.length ? `<ul style="margin:6px 0 0;padding-left:18px">${rows.map(fmtRow).join('')}</ul>` : '';
+    const date = (iso) => iso ? new Date(iso + (iso.endsWith('Z') ? '' : 'Z')).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : '—';
+    out.innerHTML = total === 0
+      ? '<span style="color:var(--green)">Nothing to fix — no sandbox conversions recorded.</span>'
+      : `<div style="margin-top:4px"><strong>${d.applied ? 'Fixed' : 'Would fix'}: ${d.cleared.length} account(s) lose a sandbox-only conversion, ${d.moved.length} get their conversion moved to their first real purchase.</strong></div>`
+        + list(d.cleared, (c) => `<li>${escapeHtml(c.email)} — converted ${date(c.first_purchase_at)} (sandbox only)</li>`)
+        + list(d.moved, (m) => `<li>${escapeHtml(m.email)} — ${date(m.from)} → ${date(m.to)}</li>`)
+        + `<div style="color:var(--muted);margin-top:6px">${d.applied ? 'Rebuilt' : 'Would rebuild'} the daily stats for ${d.days_rebuilt.length} day(s).${d.applied ? ' Reload the dashboard to see the corrected numbers.' : ''}</div>`;
+    applyBtn.disabled = d.applied || total === 0;
+    applyBtn.style.opacity = applyBtn.disabled ? '0.4' : '1';
+  } catch (e) {
+    out.innerHTML = `<span style="color:var(--danger)">Could not run: ${escapeHtml(e.message)}</span>`;
+  }
 }
 
 // ══════════════════════════════════════════════
