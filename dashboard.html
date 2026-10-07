@@ -182,6 +182,19 @@
     .card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
     .chart-wrap { position: relative; height: 220px; }
     .chart-wrap-lg { position: relative; height: 280px; }
+    .gran-switch { float: right; display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-left: 10px; }
+    .gran-switch button { font: inherit; font-size: 0.72rem; font-weight: 700; padding: 3px 9px; background: #141414; color: var(--muted); border: 0; cursor: pointer; }
+    .gran-switch button + button { border-left: 1px solid var(--border); }
+    .gran-switch button.active { background: #2a2a2a; color: #fff; }
+    .cfg-box { border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; background: #151515; }
+    .cfg-box summary { cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+    .cfg-box[open] summary { margin-bottom: 12px; }
+    .cfg-state { font-weight: 500; margin-left: 8px; font-size: 0.78rem; }
+    .cfg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px 16px; }
+    .cfg-actions { margin-top: 12px; display: flex; align-items: center; gap: 12px; font-size: 0.8rem; }
+    .cfg-actions button { font: inherit; font-size: 0.82rem; font-weight: 600; padding: 7px 16px; border-radius: 8px; border: 0; background: var(--primary); color: #fff; cursor: pointer; }
+    .cfg-actions button:disabled { opacity: .6; cursor: default; }
+    .gran-note { font-size: 0.72rem; color: var(--muted); margin-top: 8px; min-height: 0; }
 
     /* ── FUNNEL ── */
     .funnel-wrap { display: flex; flex-direction: column; gap: 0; }
@@ -520,28 +533,28 @@
       </div>
       <div class="grid-2">
         <div class="card">
-          <div class="card-title">Daily Activity</div>
+          <div class="card-title"><span data-gran-word="activity">Daily</span> Activity<span class="gran-switch" data-card="activity"></span></div>
           <div class="chart-wrap"><canvas id="chartActivity"></canvas></div>
         </div>
         <div class="card">
-          <div class="card-title">Feature Usage (sessions)</div>
+          <div class="card-title">Feature Usage (sessions)<span class="gran-switch" data-card="features"></span></div>
           <div class="chart-wrap"><canvas id="chartFeatures"></canvas></div>
         </div>
       </div>
       <div class="grid-2">
         <div class="card">
-          <div class="card-title">Active Users — Lifetime Paid vs Never Paid</div>
+          <div class="card-title">Active Users — Lifetime Paid vs Never Paid<span class="gran-switch" data-card="freepaid"></span></div>
           <div class="chart-wrap"><canvas id="chartFreePaid"></canvas></div>
         </div>
         <div class="card">
-          <div class="card-title">Paywall Pressure</div>
+          <div class="card-title">Paywall Pressure<span class="gran-switch" data-card="paywall"></span></div>
           <div class="chart-wrap"><canvas id="chartPaywall"></canvas></div>
         </div>
       </div>
       <div class="grid-2" style="margin-top:24px">
         <div class="card">
           <div class="card-title">Revenue — Coin Pack Sales
-            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">via RevenueCat</span>
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">via RevenueCat</span><span class="gran-switch" data-card="revenue"></span>
           </div>
           <div class="grid-2" id="revenueKpis" style="margin-bottom:16px;gap:12px">
             <div class="card"><div class="loading">Loading…</div></div>
@@ -551,7 +564,7 @@
         </div>
         <div class="card">
           <div class="card-title">Paywall Hit Rate
-            <span title="Out-of-coins events ÷ daily active users × 100" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ % of DAU hitting coin wall</span>
+            <span title="Out-of-coins events ÷ daily active users × 100 (weeks/months: total events ÷ total daily actives)" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ % of DAU hitting coin wall</span><span class="gran-switch" data-card="paywallRate"></span>
           </div>
           <div class="chart-wrap"><canvas id="chartPaywallRate"></canvas></div>
         </div>
@@ -570,8 +583,8 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-title">Daily Acquisition &amp; Re-engagement
-            <span title="Recovered = users returning after 30+ days of inactivity" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+          <div class="card-title"><span data-gran-word="funnelDaily">Daily</span> Acquisition &amp; Re-engagement
+            <span title="Recovered = users returning after 30+ days of inactivity" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span><span class="gran-switch" data-card="funnelDaily"></span>
           </div>
           <div class="chart-wrap-lg"><canvas id="chartFunnelDaily"></canvas></div>
         </div>
@@ -729,12 +742,17 @@
 
     <!-- ── EXPERIMENTS ── -->
     <div class="tab-panel" id="panel-experiments">
-      <div class="kpi-sub" style="margin-bottom:12px">Every running A/B test and rollout in one place.</div>
+      <div class="kpi-sub" style="margin-bottom:12px">Every running A/B test in one place — each card: configuration, then results. The auto-play engine rollout is configured and measured in the <a href="#" onclick="showTab('playback');return false" style="color:var(--primary)">🎧 Playback</a> tab.</div>
       <!-- A/B test: default tab -->
       <div class="card" style="margin-top:24px">
         <div class="card-title">A/B Test — Default Tab
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Activation rate by first-tab assignment</span>
         </div>
+        <details class="cfg-box" id="cfgBox_abTab">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_abTab"></span></summary>
+          <div class="cfg-grid" id="cfg_abTab"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('abTab')" id="cfgSave_abTab">Save</button><span id="cfgMsg_abTab"></span></div>
+        </details>
         <div id="abTestPanel"><div class="loading">Loading…</div></div>
       </div>
 
@@ -743,6 +761,11 @@
         <div class="card-title">First Story: Bonus Offer vs. Perks Card
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Assigned once per user at their first story. Share prompt comes later (after N stories) in every group.</span>
         </div>
+        <details class="cfg-box" id="cfgBox_growth">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_growth"></span></summary>
+          <div class="cfg-grid" id="cfg_growth"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('growth')" id="cfgSave_growth">Save</button><span id="cfgMsg_growth"></span></div>
+        </details>
         <div id="growthExperimentRound2"><div class="loading">Loading…</div></div>
         <details style="margin-top:18px">
           <summary style="cursor:pointer;color:var(--muted);font-size:0.82rem">Round 1 (closed): bonus offer vs. nothing at the first story</summary>
@@ -753,6 +776,11 @@
       <div class="card" style="margin-top:24px">
         <div class="card-title">Store: Subscription First vs. Coins First</div>
         <p style="color:var(--muted);font-size:0.8rem">All-time experiment cohorts, independent of the date filter above. Only users who had never paid and saw a supported Store layout are counted. Both layouts receive the scrolling fix.</p>
+        <details class="cfg-box" id="cfgBox_storefront">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_storefront"></span></summary>
+          <div class="cfg-grid" id="cfg_storefront"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('storefront')" id="cfgSave_storefront">Save</button><span id="cfgMsg_storefront"></span></div>
+        </details>
         <div id="storefrontExperimentPanel"><div class="loading">Loading…</div></div>
       </div>
 
@@ -761,6 +789,11 @@
         <div class="card-title">Daily vs. 7-Day Free Quota
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Assigned once at signup — needs 30+ days of data before drawing conclusions</span>
         </div>
+        <details class="cfg-box" id="cfgBox_quota">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_quota"></span></summary>
+          <div class="cfg-grid" id="cfg_quota"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('quota')" id="cfgSave_quota">Save</button><span id="cfgMsg_quota"></span></div>
+        </details>
         <div id="quotaExperimentPanel"><div class="loading">Loading…</div></div>
       </div>
 
@@ -769,6 +802,11 @@
         <div class="card-title">App Store Rating Prompt
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">"Enjoying it?" pre-gate before the native store prompt — asked at most once per user</span>
         </div>
+        <details class="cfg-box" id="cfgBox_review">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_review"></span></summary>
+          <div class="cfg-grid" id="cfg_review"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('review')" id="cfgSave_review">Save</button><span id="cfgMsg_review"></span></div>
+        </details>
         <div id="reviewPromptPanel"><div class="loading">Loading…</div></div>
       </div>
         </div><!-- /panel-experiments -->
@@ -800,7 +838,7 @@
       </div>
 
       <div class="card" style="margin-bottom:24px">
-        <div class="card-title">Daily Narrations</div>
+        <div class="card-title"><span data-gran-word="narrations">Daily</span> Narrations<span class="gran-switch" data-card="narrations"></span></div>
         <div class="chart-wrap-lg"><canvas id="chartNarrations"></canvas></div>
       </div>
 
@@ -872,12 +910,13 @@
           <div class="card"><div class="loading">Loading…</div></div>
         </div>
         <div style="margin-top:20px">
-          <h3 style="font-size:0.85rem;color:var(--muted);margin-bottom:8px">Monthly trend — avg completion % by tier</h3>
+          <h3 style="font-size:0.85rem;color:var(--muted);margin-bottom:8px"><span data-gran-word="lcTier">Monthly</span> trend — avg completion % by tier<span class="gran-switch" data-card="lcTier"></span></h3>
           <div class="chart-wrap-lg"><canvas id="chartListenCompletionMonthly"></canvas></div>
         </div>
         <div style="margin-top:20px">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px">
             <h3 style="font-size:0.85rem;color:var(--muted)" id="listenCompletionProviderTitle">Monthly trend — avg completion % by narration writer (OpenAI vs Gemini)</h3>
+            <span class="gran-switch" data-card="lcProvider" style="float:none;margin-left:auto"></span>
             <button id="lcpBackfill" onclick="backfillListenProvider()" title="Best-effort match of past listen events to the narration they belonged to, to infer provider for history. Safe to re-run." style="flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Backfill history</button>
           </div>
           <div id="lcpBackfillStatus" style="font-size:0.78rem;color:var(--muted);margin-bottom:8px"></div>
@@ -970,7 +1009,7 @@
 
       <div class="grid-2">
         <div class="card">
-          <div class="card-title">Daily API Cost ($)</div>
+          <div class="card-title"><span data-gran-word="costDaily">Daily</span> API Cost ($)<span class="gran-switch" data-card="costDaily"></span></div>
           <div class="chart-wrap-lg"><canvas id="chartCostDaily"></canvas></div>
         </div>
         <div class="card">
@@ -1280,6 +1319,18 @@
 
     <!-- ── REVENUE ── -->
     <div class="tab-panel" id="panel-revenue">
+
+      <!-- Revenue history: all time, independent of the period selector -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Revenue over time
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">All time · production purchases only (coin packs + Unlimited) · independent of the date filter above</span>
+          <span class="gran-switch" data-card="revHistory"></span>
+        </div>
+        <div class="grid-3" id="revHistoryKpis" style="margin-bottom:16px">
+          <div class="card"><div class="loading">Loading…</div></div>
+        </div>
+        <div class="chart-wrap-lg"><canvas id="chartRevenueHistory"></canvas></div>
+      </div>
 
       <!-- WHEN people buy -->
       <div class="card" style="margin-bottom:24px">
@@ -1941,6 +1992,16 @@
 
     <!-- ── PLAYBACK HEALTH ── -->
     <div class="tab-panel" id="panel-playback">
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-title">Auto-play engine rollout &amp; walking direction
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Configuration — the results are this tab: filter by engine above, compare in "By platform and engine"</span>
+        </div>
+        <details class="cfg-box" open id="cfgBox_playback">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_playback"></span></summary>
+          <div class="cfg-grid" id="cfg_playback"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('playback')" id="cfgSave_playback">Save</button><span id="cfgMsg_playback"></span></div>
+        </details>
+      </div>
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px">
         <div class="kpi-sub" style="max-width:720px">How auto-play (Walk + Pocket Mode) behaves on real phones: how fast stories start, where the user is when they start, and what interrupts them. <strong>External pause</strong> = lock screen, AirPods, phone call or Bluetooth drop — the app can't tell these apart yet.</div>
         <div style="display:flex;gap:8px">
@@ -2303,6 +2364,375 @@ function doughnutChart(id, labels, data, colors) {
 }
 
 // ══════════════════════════════════════════════
+// DAILY / WEEKLY / MONTHLY SWITCH
+// Each card keeps its daily rows; weeks (Mon–Sun) and months are built here.
+// Counts are summed, level metrics (active users) averaged per day, ratios
+// recomputed from their totals. A bucket cut off by the range edge or still
+// in progress is drawn faded/dashed. Weekly/monthly on a short range pulls
+// 12 weeks / 12 months for that card only.
+// ══════════════════════════════════════════════
+const GRAN = { cards: {}, fetched: {}, tokens: {} };
+const GRAN_WORD = { day: 'Daily', week: 'Weekly', month: 'Monthly' };
+const GRAN_NEED_DAYS = { day: 0, week: 84, month: 365 };
+
+function _granGet(card, fallback) {
+  try { return localStorage.getItem('ut_gran_' + card) || fallback || 'day'; } catch (e) { return fallback || 'day'; }
+}
+function setGran(card, g) {
+  try { localStorage.setItem('ut_gran_' + card, g); } catch (e) {}
+  renderGran(card);
+}
+function initGranSwitches() {
+  document.querySelectorAll('.gran-switch[data-card]').forEach(el => {
+    const card = el.dataset.card;
+    el.innerHTML = ['day', 'week', 'month'].map(g =>
+      `<button type="button" data-g="${g}" onclick="setGran('${card}','${g}')" title="${GRAN_WORD[g]}">${g[0].toUpperCase()}</button>`).join('');
+  });
+}
+
+function _addDays(dateStr, n) {
+  const d = new Date(dateStr + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10);
+}
+function _todayStr() { return new Date().toISOString().slice(0, 10); }
+function _bucketStart(dateStr, g) {
+  if (g === 'month') return dateStr.slice(0, 7) + '-01';
+  if (g === 'week') { const dow = (new Date(dateStr + 'T00:00:00Z').getUTCDay() + 6) % 7; return _addDays(dateStr, -dow); }
+  return dateStr;
+}
+function _bucketEnd(start, g) {
+  if (g === 'week') return _addDays(start, 6);
+  if (g === 'month') { const d = new Date(start + 'T00:00:00Z'); d.setUTCMonth(d.getUTCMonth() + 1); d.setUTCDate(0); return d.toISOString().slice(0, 10); }
+  return start;
+}
+function _bucketLabel(start, g) {
+  if (g === 'month') {
+    const d = new Date(start + 'T00:00:00Z');
+    return d.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' }) + " '" + String(d.getUTCFullYear()).slice(2);
+  }
+  return shortDate(start);
+}
+
+// Contiguous daily rows from {date: row}, from max(start, first day with data) to end.
+function fillDaily(byDate, start, end) {
+  const dates = Object.keys(byDate).sort();
+  if (dates.length && dates[0] > start) start = dates[0];
+  const out = [];
+  for (let d = start; d <= end; d = _addDays(d, 1)) out.push(byDate[d] || { date: d });
+  return out;
+}
+function _rangeStart(nDays) {
+  if (nDays == null && document.getElementById('periodSelect').value === 'custom') {
+    const from = document.getElementById('dateFrom').value;
+    if (from) return from;
+  }
+  return _addDays(_todayStr(), -(nDays ?? days));
+}
+function _rangeEnd(nDays) {
+  if (nDays == null && document.getElementById('periodSelect').value === 'custom') {
+    const to = document.getElementById('dateTo').value;
+    if (to) return to;
+  }
+  return _todayStr();
+}
+
+// specs: [{label, color, agg: 'sum'|'avg'|'ratio', value: row => n, num, den, scale, type, yAxisID}]
+function bucketize(rows, g, specs) {
+  const order = [], groups = {};
+  rows.forEach(r => {
+    const k = _bucketStart(r.date, g);
+    if (!groups[k]) { groups[k] = []; order.push(k); }
+    groups[k].push(r);
+  });
+  const first = rows.length ? rows[0].date : null, last = rows.length ? rows[rows.length - 1].date : null;
+  const today = _todayStr();
+  const partial = order.map(k => g !== 'day' && (k < first || _bucketEnd(k, g) > last || _bucketEnd(k, g) >= today));
+  const sum = (rs, f) => rs.reduce((a, r) => a + (+f(r) || 0), 0);
+  const datasets = specs.map(sp => ({
+    ...sp,
+    data: order.map(k => {
+      const rs = groups[k];
+      if (sp.agg === 'ratio') {
+        const den = sum(rs, sp.den);
+        if (!den) return sp.emptyAsGap ? null : 0;
+        return +(sum(rs, sp.num) / den * (sp.scale || 1)).toFixed(1);
+      }
+      const s = sum(rs, sp.value);
+      return sp.agg === 'avg' ? +(s / rs.length).toFixed(1) : +s.toFixed(2);
+    }),
+  }));
+  return { labels: order.map(k => _bucketLabel(k, g)), keys: order, partial, datasets };
+}
+
+function _markPartial(datasets, partial, kind) {
+  if (!partial.some(Boolean)) return datasets;
+  return datasets.map(d => {
+    const color = d.color;
+    if ((d.type || kind) === 'bar') {
+      return { ...d, backgroundColor: d.data.map((_, i) => color + (partial[i] ? '44' : 'cc')) };
+    }
+    return {
+      ...d,
+      segment: { borderDash: ctx => (partial[ctx.p0DataIndex] || partial[ctx.p1DataIndex]) ? [5, 4] : undefined },
+      pointBackgroundColor: d.data.map((_, i) => partial[i] ? '#1a1a1a' : color),
+    };
+  });
+}
+
+async function _granFetch(card, cfg, nDays) {
+  const key = card + ':' + nDays + ':' + days;
+  if (!GRAN.fetched[key]) GRAN.fetched[key] = api(cfg.fetchPath(nDays)).then(resp => cfg.build(resp, _rangeStart(nDays), _rangeEnd(nDays)));
+  return GRAN.fetched[key];
+}
+
+function _granNoteEl(cfg) {
+  const canvas = document.getElementById(cfg.canvas);
+  const wrap = canvas.parentElement;
+  let el = wrap.nextElementSibling;
+  if (!el || !el.classList.contains('gran-note')) {
+    el = document.createElement('div'); el.className = 'gran-note'; wrap.after(el);
+  }
+  return el;
+}
+
+// cfg: {canvas, kind: 'line'|'bar'|'mixed', stacked, specs, specsFor(g)?, yOpts, rows, fetchPath(n)?, build(resp, start, end)?,
+//       defaultGran?, monthly(g)? -> {labels, datasets} override, after(b, g)?}
+function granCard(card, cfg) {
+  GRAN.cards[card] = cfg;
+  return renderGran(card);
+}
+
+async function renderGran(card) {
+  const cfg = GRAN.cards[card];
+  if (!cfg) return;
+  const g = _granGet(card, cfg.defaultGran);
+  const token = (GRAN.tokens[card] || 0) + 1; GRAN.tokens[card] = token;
+  document.querySelectorAll(`.gran-switch[data-card="${card}"] button`).forEach(b => b.classList.toggle('active', b.dataset.g === g));
+  document.querySelectorAll(`[data-gran-word="${card}"]`).forEach(el => { el.textContent = GRAN_WORD[g]; });
+  const note = _granNoteEl(cfg);
+  let rows = cfg.rows || [], noteText = '';
+
+  const need = GRAN_NEED_DAYS[g];
+  const span = rows.length;
+  if (need && cfg.fetchPath && span < need && (days < need || document.getElementById('periodSelect').value === 'custom')) {
+    try {
+      rows = await _granFetch(card, cfg, need);
+      noteText = g === 'week' ? 'Showing up to the last 12 weeks — the selected period is too short for a weekly view.'
+                              : 'Showing up to the last 12 months — the selected period is too short for a monthly view.';
+    } catch (e) {
+      noteText = 'Could not load a longer range; showing the selected period.';
+    }
+  }
+  if (GRAN.tokens[card] !== token) return;  // a newer switch click won
+
+  const specs = cfg.specsFor ? cfg.specsFor(g) : cfg.specs;
+  const b = cfg.custom ? cfg.custom(g, rows) : bucketize(rows, g, specs);
+  if (!b) return;
+  const datasets = _markPartial(b.datasets, b.partial || [], cfg.kind === 'bar' ? 'bar' : 'line');
+  if (cfg.kind === 'bar') barChart(cfg.canvas, b.labels, datasets, { stacked: cfg.stacked });
+  else if (cfg.kind === 'mixed') mixedChart(cfg.canvas, b.labels, datasets, cfg.yOpts || {});
+  else lineChart(cfg.canvas, b.labels, datasets, cfg.yOpts || {});
+  if ((b.partial || []).some(Boolean)) noteText += (noteText ? ' ' : '') + 'Faded / dashed = period still in progress or cut off by the date range.';
+  note.textContent = noteText;
+  if (cfg.after) cfg.after(b, g);
+}
+
+// Row builders: API response -> contiguous daily rows for granCard.
+const FUNNEL_FETCH = n => `/analytics/kpi/funnel?days=${n}`;
+function funnelRows(funnel, start, end) {
+  const by = {}; (funnel?.daily_data || []).forEach(d => { by[d.date] = d; });
+  return fillDaily(by, start, end);
+}
+function revenueRows(revenue, start, end) {
+  const by = {}; (revenue?.daily || []).forEach(d => { by[d.date] = d; });
+  return fillDaily(by, start, end);
+}
+function costRows(costs, start, end) {
+  const by = {}; Object.entries(costs?.daily_breakdown || {}).forEach(([date, v]) => { by[date] = { date, total_cost: v?.total_cost || 0 }; });
+  return fillDaily(by, start, end);
+}
+
+// ── Revenue over time (Revenue tab): all-time history with D/W/M ──
+async function loadRevenueHistory() {
+  const kpis = document.getElementById('revHistoryKpis');
+  const resp = await api('/admin/analytics/revenue?days=3650').catch(() => null);
+  if (!resp) {
+    kpis.innerHTML = '<div style="color:var(--muted);font-size:0.85rem;padding:8px">Could not load revenue history.</div>';
+    return;
+  }
+  granCard('revHistory', {
+    canvas: 'chartRevenueHistory', kind: 'mixed', defaultGran: 'week',
+    rows: revenueRows(resp, _addDays(_todayStr(), -3650), _todayStr()),
+    specsFor: g => [
+      { label: GRAN_WORD[g] + ' revenue ($)', agg: 'sum', value: d => d.revenue, color: C.green, type: 'bar' },
+      { label: 'Purchases', agg: 'sum', value: d => d.purchases, color: C.blue, type: 'line' },
+    ],
+    yOpts: { yTicks: { callback: v => '$' + v } },
+    after: renderRevHistoryKpis,
+  });
+}
+
+function renderRevHistoryKpis(b, g) {
+  const el = document.getElementById('revHistoryKpis');
+  const today = _todayStr();
+  // Only complete periods count: not cut off, not in progress (today is never a full day).
+  const full = b.keys.map((k, i) => i).filter(i => !b.partial[i] && b.keys[i] !== today);
+  const rev = b.datasets[0].data, buys = b.datasets[1].data;
+  const unit = { day: 'day', week: 'week', month: 'month' }[g];
+  if (!full.length) {
+    el.innerHTML = `<div style="color:var(--muted);font-size:0.85rem;padding:8px">No complete ${unit} yet.</div>`;
+    return;
+  }
+  const money = v => '$' + (v || 0).toFixed(2);
+  const last = full[full.length - 1], prev = full.length > 1 ? full[full.length - 2] : null;
+  const name = i => g === 'week' ? 'Week of ' + b.labels[i] : b.labels[i];
+  let change = null, badge = null;
+  if (prev != null && rev[prev] > 0) {
+    change = (rev[last] - rev[prev]) / rev[prev] * 100;
+    badge = (change >= 0 ? '↑ ' : '↓ ') + Math.abs(change).toFixed(0) + '%';
+  } else if (prev != null) {
+    badge = rev[last] > 0 ? '↑ from $0' : '→ $0 both';
+  }
+  const window4 = full.slice(-4);
+  const avg4 = window4.reduce((a, i) => a + (rev[i] || 0), 0) / window4.length;
+  el.innerHTML =
+    kpiCard('Last full ' + unit, money(rev[last]), `${name(last)} · ${fmt(buys[last])} purchases`, null, null) +
+    kpiCard('vs previous ' + unit, badge || '—',
+      prev != null ? `${name(prev)}: ${money(rev[prev])}` : 'No earlier complete ' + unit,
+      null, null) +
+    kpiCard(`${window4.length}-${unit} average`, money(avg4),
+      rev[last] >= avg4 ? 'Last ' + unit + ' at or above average' : 'Last ' + unit + ' below average',
+      rev[last] >= avg4 ? '↑ Above avg' : '↓ Below avg', rev[last] >= avg4 ? 'green' : 'orange');
+}
+
+// Bars on the left axis, lines on a right axis (revenue $ vs purchase count).
+function mixedChart(id, labels, datasets, opts = {}) {
+  destroyChart(id);
+  const ctx = document.getElementById(id).getContext('2d');
+  CHARTS[id] = new Chart(ctx, {
+    data: { labels, datasets: datasets.map(d => d.type === 'line'
+      ? { tension: 0.35, pointRadius: 3, borderWidth: 2, fill: false, borderColor: d.color, pointBackgroundColor: d.color, yAxisID: 'y1', ...d }
+      : { type: 'bar', backgroundColor: d.color + 'cc', borderColor: d.color, borderWidth: 1, borderRadius: 4, ...d }) },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+      scales: {
+        x: { ticks: { color: '#555', font: { size: 10 }, maxTicksLimit: 12 }, grid: { color: '#1f1f1f' } },
+        y: { ticks: { color: '#555', font: { size: 10 }, ...(opts.yTicks || {}) }, grid: { color: '#1f1f1f' }, beginAtZero: true },
+        y1: { position: 'right', ticks: { color: '#555', font: { size: 10 }, precision: 0 }, grid: { display: false }, beginAtZero: true },
+      }
+    }
+  });
+}
+
+// ══════════════════════════════════════════════
+// PER-CARD CONFIGURATION (experiments + playback)
+// Each group saves only its own keys; PUT /admin/settings ignores keys it isn't sent.
+// ══════════════════════════════════════════════
+const CONFIG_GROUPS = {
+  abTab: { state: s => (s.ab_default_tab_enabled ?? true) ? `Active · ${s.ab_default_tab_explore_pct ?? 50}% Explore` : 'Paused', fields: [
+    { key: 'ab_default_tab_enabled', type: 'toggle', label: 'Experiment active', def: true },
+    { key: 'ab_default_tab_explore_pct', label: 'Explore group % (0 = all Walk, 100 = all Explore)', def: 50, attrs: 'min="0" max="100"' },
+  ] },
+  growth: { state: s => (s.first_purchase_offer_enabled ?? true) ? `Active · ${s.first_purchase_offer_test_pct ?? 50}% bonus offer` : 'Paused', fields: [
+    { key: 'first_purchase_offer_enabled', type: 'toggle', label: 'Experiment active', def: true },
+    { key: 'first_purchase_offer_test_pct', label: 'Bonus offer group % (rest see the perks card)', def: 50, attrs: 'min="0" max="100"' },
+    { key: 'first_purchase_offer_bonus_pct', label: 'Bonus coins % on qualifying purchase', def: 50, attrs: 'min="0" max="200"' },
+    { key: 'first_purchase_offer_window_hours', label: 'Offer window (hours)', def: 24, attrs: 'min="1" max="168"' },
+    { key: 'first_purchase_offer_min_pack_coins', label: 'Min pack size to qualify (coins) — keeps the bonus crossing a 500/1000 redemption threshold', def: 1000, attrs: 'min="0" step="100"' },
+  ] },
+  storefront: { state: s => (s.storefront_experiment_enabled ?? false) ? `Enrolling · ${s.storefront_experiment_pct ?? 50}% coins first` : 'Not enrolling', fields: [
+    { note: 'All never-paid users on supported apps. Pausing stops new enrollment; existing assignments stay fixed. Percentage changes affect new assignments only. The conversion window locks once enrollment starts.' },
+    { key: 'storefront_experiment_enabled', type: 'toggle', label: 'Enroll new participants', def: false },
+    { key: 'storefront_experiment_pct', label: 'Coins-first group % (remaining users see subscription first)', def: 50, attrs: 'min="0" max="100"' },
+    { key: 'storefront_experiment_days', label: 'Conversion window (days)', def: 7, attrs: 'min="1" max="30"' },
+  ] },
+  quota: { state: s => (s.weekly_quota_experiment_enabled ?? true) ? `Active · ${s.weekly_quota_experiment_pct ?? 30}% on 7-day quota` : 'Paused', fields: [
+    { note: "Rolling 7-day window, not a Monday reset — can't be gamed at a boundary. Assigned once at signup." },
+    { key: 'weekly_quota_experiment_enabled', type: 'toggle', label: 'Experiment active', def: true },
+    { key: 'weekly_quota_experiment_pct', label: '7-day-quota group % (rest keep the daily limit)', def: 30, attrs: 'min="0" max="100"' },
+    { key: 'weekly_free_landmark_limit', label: 'Free landmarks per rolling 7 days (test group)', def: 3, attrs: 'min="0"' },
+  ] },
+  review: { state: s => `Ask on app open #${s.review_prompt_min_sessions ?? 3}`, fields: [
+    { key: 'review_prompt_min_sessions', label: 'Ask on app-open count', def: 3, attrs: 'min="1"' },
+    { key: 'review_prompt_min_narrations', label: 'Minimum narrations heard first', def: 1, attrs: 'min="0"' },
+  ] },
+  playback: { state: s => `Unified engine: ${s.unified_engine_rollout_pct ?? 0}% + testers`, fields: [
+    { heading: 'Diagnostics' },
+    { note: "Auto-play diagnostics shown in this tab. Turning this off makes the app stop sending them (takes effect on each phone's next send)." },
+    { key: 'playback_telemetry_enabled', type: 'toggle', label: 'Collect playback diagnostics', def: true },
+    { heading: 'Unified auto-play engine (release 4)' },
+    { note: "Who runs the new engine. Testers always do; then a stable % of everyone else. Takes effect at each user's next app start. Set % to 0 to roll back." },
+    { key: 'unified_engine_rollout_pct', label: 'Rollout % (0–100)', def: 0, attrs: 'min="0" max="100"', zeroIfEmpty: true },
+    { key: 'unified_engine_testers', type: 'list', label: 'Tester emails (comma-separated)', def: [] },
+    { heading: 'Walking direction (release 5)' },
+    { note: 'Only for users on the unified engine above. Takes effect at each user\'s next app start. Direction-aware: prefer landmarks ahead, skip ones already walked past. Lead-ins: a short spoken "On your left: …" before automatic stories. Watch "% started behind you" below.' },
+    { key: 'direction_aware_enabled', type: 'toggle', label: 'Direction-aware auto-play', def: false },
+    { key: 'direction_intros_enabled', type: 'toggle', label: '"On your left…" lead-ins', def: false },
+    { key: 'facing_direction_enabled', type: 'toggle', label: 'Use where the user faces (compass)', def: false },
+    { key: 'head_tracking_enabled', type: 'toggle', label: 'Head tracking (AirPods, Meta glasses)', def: false },
+    { note: '"Where the user faces" needs Direction-aware on. Standing still with the Walk screen open, the phone\'s compass picks the landmark in front; with Head tracking on, AirPods (iPhone; asks once for Motion access) and Meta glasses (glasses beta build only) tell it where the head points, also in Pocket Mode, and taking the glasses off pauses the story.' },
+  ] },
+};
+
+function _cfgFieldHtml(f, s) {
+  if (f.heading) return `<div style="grid-column:1/-1;font-size:0.74rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:4px">${escapeHtml(f.heading)}</div>`;
+  if (f.note) return `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted)">${escapeHtml(f.note)}</div>`;
+  const v = s[f.key] ?? f.def;
+  if (f.type === 'toggle') return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0">
+      <label class="toggle-switch">
+        <input type="checkbox" id="s_${f.key}" ${v ? 'checked' : ''} onchange="this.closest('div').lastElementChild.textContent=this.checked?'ON':'OFF'">
+        <span class="toggle-slider"></span>
+      </label>
+      <span style="font-size:0.88rem">${escapeHtml(f.label)}</span>
+      <span style="font-size:0.78rem;color:var(--muted)">${v ? 'ON' : 'OFF'}</span>
+    </div>`;
+  const val = f.type === 'list' ? (v || []).join(', ') : v;
+  return `<div>
+      <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${escapeHtml(f.label)}</label>
+      <input id="s_${f.key}" type="${f.type === 'list' ? 'text' : 'number'}" value="${escapeHtml(String(val))}" ${f.attrs || ''}
+        style="width:100%;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:8px 10px;font-size:0.88rem;box-sizing:border-box">
+    </div>`;
+}
+
+function renderConfigGroups(s) {
+  s = s || {};
+  Object.entries(CONFIG_GROUPS).forEach(([g, grp]) => {
+    const el = document.getElementById('cfg_' + g);
+    if (!el) return;
+    el.innerHTML = grp.fields.map(f => _cfgFieldHtml(f, s)).join('');
+    document.getElementById('cfgState_' + g).textContent = '· ' + grp.state(s);
+  });
+}
+
+async function saveConfigGroup(g) {
+  const grp = CONFIG_GROUPS[g];
+  const btn = document.getElementById('cfgSave_' + g), msg = document.getElementById('cfgMsg_' + g);
+  const body = {};
+  grp.fields.filter(f => f.key).forEach(f => {
+    const el = document.getElementById('s_' + f.key);
+    if (f.type === 'toggle') body[f.key] = el.checked;
+    else if (f.type === 'list') body[f.key] = el.value.split(',').map(e => e.trim()).filter(Boolean);
+    else { const n = parseInt(el.value); body[f.key] = isNaN(n) ? (f.zeroIfEmpty ? 0 : null) : n; }
+  });
+  btn.disabled = true; btn.textContent = 'Saving…'; msg.textContent = '';
+  try {
+    const r = await fetch(`${API}/admin/settings`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+      body: JSON.stringify(body),
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    Object.assign(_currentSettings, body);
+    document.getElementById('cfgState_' + g).textContent = '· ' + grp.state(_currentSettings);
+    msg.style.color = 'var(--green)'; msg.textContent = 'Saved';
+  } catch (e) {
+    msg.style.color = '#f87171'; msg.textContent = 'Save failed — ' + e.message;
+  }
+  btn.disabled = false; btn.textContent = 'Save';
+  setTimeout(() => { msg.textContent = ''; }, 5000);
+}
+
+// ══════════════════════════════════════════════
 // TAB NAVIGATION
 // ══════════════════════════════════════════════
 function showTab(name) {
@@ -2445,52 +2875,41 @@ function renderOverview(funnel, freeUsers, revenue, themeBreakdown) {
       `${fmt(themeBreakdown.light)} of ${fmt(themeBreakdown.total)} users opted in · rest still on default dark`,
       null, null) : '');
 
-  // Build date range from (today - days) to today in UTC, filling missing days with zeros
-  const rawDaily = [...(funnel.daily_data || [])].reverse();
-  const byDate = {};
-  rawDaily.forEach(d => { byDate[d.date] = d; });
-  const daily = [];
-  const _end = new Date(); // today UTC
-  const _start = new Date(_end); _start.setUTCDate(_end.getUTCDate() - days);
-  for (let cur = new Date(_start); cur <= _end; cur.setUTCDate(cur.getUTCDate() + 1)) {
-    const key = cur.toISOString().slice(0, 10);
-    daily.push(byDate[key] || { date: key });
-  }
-  const labels = daily.map(d => shortDate(d.date));
+  const rows = funnelRows(funnel, _rangeStart(), _rangeEnd());
+  const activeLabel = g => g === 'day' ? 'Active Users' : 'Avg daily active users';
 
-  lineChart('chartActivity', labels, [
-    { label: 'Active Users', data: daily.map(d => d.total_active_users || 0), color: C.primary },
-    { label: 'New Signups',  data: daily.map(d => d.new_signups || 0),        color: C.blue },
-    { label: 'Converted',    data: daily.map(d => d.free_users_converted || 0), color: C.green },
-  ]);
+  granCard('activity', { canvas: 'chartActivity', kind: 'line', rows, fetchPath: FUNNEL_FETCH, build: funnelRows,
+    specsFor: g => [
+      { label: activeLabel(g), agg: 'avg', value: d => d.total_active_users, color: C.primary },
+      { label: 'New Signups',  agg: 'sum', value: d => d.new_signups, color: C.blue },
+      { label: 'Converted',    agg: 'sum', value: d => d.free_users_converted, color: C.green },
+    ] });
 
-  barChart('chartFeatures', labels, [
-    { label: 'Walk',    data: daily.map(d => d.walk_sessions    || 0), color: C.primary },
-    { label: 'Explore', data: daily.map(d => d.explore_sessions || 0), color: C.blue },
-    { label: 'Tours',   data: daily.map(d => d.tours_sessions   || 0), color: C.purple },
-  ], { stacked: true });
+  granCard('features', { canvas: 'chartFeatures', kind: 'bar', stacked: true, rows, fetchPath: FUNNEL_FETCH, build: funnelRows,
+    specs: [
+      { label: 'Walk',    agg: 'sum', value: d => d.walk_sessions, color: C.primary },
+      { label: 'Explore', agg: 'sum', value: d => d.explore_sessions, color: C.blue },
+      { label: 'Tours',   agg: 'sum', value: d => d.tours_sessions, color: C.purple },
+    ] });
 
-  lineChart('chartFreePaid', labels, [
-    { label: 'Never Paid (Free)',  data: daily.map(d => d.active_free_users || 0), color: C.blue },
-    { label: 'Lifetime Paid',  data: daily.map(d => d.active_paid_users || 0), color: C.green },
-  ]);
+  granCard('freepaid', { canvas: 'chartFreePaid', kind: 'line', rows, fetchPath: FUNNEL_FETCH, build: funnelRows,
+    specsFor: g => [
+      { label: g === 'day' ? 'Never Paid (Free)' : 'Never Paid (avg per day)', agg: 'avg', value: d => d.active_free_users, color: C.blue },
+      { label: g === 'day' ? 'Lifetime Paid' : 'Lifetime Paid (avg per day)', agg: 'avg', value: d => d.active_paid_users, color: C.green },
+    ] });
 
-  lineChart('chartPaywall', labels, [
-    { label: 'Out-of-coins events', data: daily.map(d => d.out_of_coins_events   || 0), color: C.yellow },
-    { label: 'Shop Views (no buy)', data: daily.map(d => d.shop_views_no_purchase || 0), color: C.primary },
-  ]);
+  granCard('paywall', { canvas: 'chartPaywall', kind: 'line', rows, fetchPath: FUNNEL_FETCH, build: funnelRows,
+    specs: [
+      { label: 'Out-of-coins events', agg: 'sum', value: d => d.out_of_coins_events, color: C.yellow },
+      { label: 'Shop Views (no buy)', agg: 'sum', value: d => d.shop_views_no_purchase, color: C.primary },
+    ] });
 
-  // ── Paywall Hit Rate as % of DAU ──
-  lineChart('chartPaywallRate', labels, [
-    {
-      label: 'Paywall hits % of DAU',
-      data: daily.map(d => {
-        const dau = d.total_active_users || 0;
-        return dau > 0 ? +((d.out_of_coins_events || 0) / dau * 100).toFixed(1) : 0;
-      }),
-      color: C.yellow,
-    },
-  ], { y: { ticks: { callback: v => v + '%' } } });
+  // ── Paywall Hit Rate as % of DAU (weeks/months: total hits ÷ total daily actives) ──
+  granCard('paywallRate', { canvas: 'chartPaywallRate', kind: 'line', rows, fetchPath: FUNNEL_FETCH, build: funnelRows,
+    yOpts: { y: { ticks: { callback: v => v + '%' } } },
+    specs: [
+      { label: 'Paywall hits % of DAU', agg: 'ratio', num: d => d.out_of_coins_events, den: d => d.total_active_users, scale: 100, color: C.yellow },
+    ] });
 
   // ── Revenue KPIs + chart ──
   if (revenue) {
@@ -2501,10 +2920,9 @@ function renderOverview(funnel, freeUsers, revenue, themeBreakdown) {
       kpiCard('All-time Revenue', '$' + (revenue.all_time_revenue || 0).toFixed(2),
         'Since first sale', null, 'green');
 
-    const revDaily = (revenue.daily || []);
-    lineChart('chartRevenue', revDaily.map(d => shortDate(d.date)), [
-      { label: 'Daily Revenue ($)', data: revDaily.map(d => d.revenue || 0), color: C.green },
-    ]);
+    granCard('revenue', { canvas: 'chartRevenue', kind: 'line', rows: revenueRows(revenue, _rangeStart(), _rangeEnd()),
+      fetchPath: n => `/admin/analytics/revenue?days=${n}`, build: revenueRows,
+      specsFor: g => [{ label: GRAN_WORD[g] + ' Revenue ($)', agg: 'sum', value: d => d.revenue, color: C.green }] });
   } else {
     document.getElementById('revenueKpis').innerHTML =
       `<div style="color:var(--muted);font-size:0.85rem;padding:8px">No revenue data yet.</div>`;
@@ -2542,24 +2960,14 @@ function renderFunnel(cohortFunnel, funnel, freeUsers) {
   }
 
   // Daily chart — same client-side date range as Overview
-  const rawFunnelDaily = [...(funnel.daily_data || [])].reverse();
-  const funnelByDate = {};
-  rawFunnelDaily.forEach(d => { funnelByDate[d.date] = d; });
-  const funnelDaily = [];
-  const _fEnd = new Date();
-  const _fStart = new Date(_fEnd); _fStart.setUTCDate(_fEnd.getUTCDate() - days);
-  for (let cur = new Date(_fStart); cur <= _fEnd; cur.setUTCDate(cur.getUTCDate() + 1)) {
-    const key = cur.toISOString().slice(0, 10);
-    funnelDaily.push(funnelByDate[key] || { date: key });
-  }
-  const labels = funnelDaily.map(d => shortDate(d.date));
-
-  lineChart('chartFunnelDaily', labels, [
-    { label: 'New Signups',   data: funnelDaily.map(d => d.new_signups            || 0), color: C.blue },
-    { label: 'Activated',     data: funnelDaily.map(d => d.new_users_activated    || 0), color: C.primary },
-    { label: 'Converted',     data: funnelDaily.map(d => d.free_users_converted   || 0), color: C.green },
-    { label: 'Recovered (30d+)', data: funnelDaily.map(d => d.recovered_users     || 0), color: C.yellow },
-  ]);
+  granCard('funnelDaily', { canvas: 'chartFunnelDaily', kind: 'line', rows: funnelRows(funnel, _rangeStart(), _rangeEnd()),
+    fetchPath: FUNNEL_FETCH, build: funnelRows,
+    specs: [
+      { label: 'New Signups',      agg: 'sum', value: d => d.new_signups, color: C.blue },
+      { label: 'Activated',        agg: 'sum', value: d => d.new_users_activated, color: C.primary },
+      { label: 'Converted',        agg: 'sum', value: d => d.free_users_converted, color: C.green },
+      { label: 'Recovered (30d+)', agg: 'sum', value: d => d.recovered_users, color: C.yellow },
+    ] });
 
   // Hot leads table
   const leads = freeUsers.hot_leads || [];
@@ -2719,11 +3127,9 @@ const STYLE_LABELS = {
 
 function renderContent(content, funnel, listenCompletion) {
   // ── Daily Narrations chart (still pulls from funnel.daily_data) ──
-  const funnelDaily = [...(funnel.daily_data || [])].reverse();
-  const labels = funnelDaily.map(d => shortDate(d.date));
-  lineChart('chartNarrations', labels, [
-    { label: 'Narrations', data: funnelDaily.map(d => d.total_narrations || 0), color: C.primary }
-  ]);
+  granCard('narrations', { canvas: 'chartNarrations', kind: 'line', rows: funnelRows(funnel, _rangeStart(), _rangeEnd()),
+    fetchPath: FUNNEL_FETCH, build: funnelRows,
+    specs: [{ label: 'Narrations', agg: 'sum', value: d => d.total_narrations, color: C.primary }] });
 
   // ── Storytelling Styles doughnut ──
   const styles = content.style_breakdown || {};
@@ -2814,41 +3220,62 @@ function renderContent(content, funnel, listenCompletion) {
 function renderListenCompletionMonthly(listenCompletion) {
   const TIER_LABELS = { MAJOR: 'Major', NOTABLE: 'Notable', LOCAL: 'Local' };
   const TIER_COLORS = { MAJOR: C.primary, NOTABLE: C.blue, LOCAL: C.green };
-
-  const byMonthTier = listenCompletion?.by_month_tier || [];
-  const months = [...new Set(byMonthTier.map(r => r.month))].sort();
-  const tierDatasets = Object.keys(TIER_LABELS).map(tier => ({
-    label: TIER_LABELS[tier],
-    color: TIER_COLORS[tier],
-    data: months.map(m => {
-      const row = byMonthTier.find(r => r.month === m && r.tier === tier);
-      return row ? Math.round(row.avg_pct) : null;
-    }),
-    spanGaps: true,
-  }));
-  lineChart('chartListenCompletionMonthly', months, tierDatasets, { y: { max: 100 } });
-
-  // Provider split (OpenAI vs Gemini) — only populated for listens on app versions that report it
   const PROVIDER_LABELS = { openai: 'ChatGPT (OpenAI)', gemini: 'Gemini' };
   const PROVIDER_COLORS = { openai: C.purple, gemini: C.yellow };
-  const byMonthProvider = listenCompletion?.by_month_provider || [];
-  const providerMonths = [...new Set(byMonthProvider.map(r => r.month))].sort();
+
+  // Daily rows carry completion-sum and event count per group, so a week is
+  // weighted by events (sum of pct × count ÷ count), not by days.
+  const dailyRows = (list, field) => {
+    const by = {};
+    list.forEach(r => {
+      const d = by[r.date] || (by[r.date] = { date: r.date });
+      d[r[field] + '_n'] = (d[r[field] + '_n'] || 0) + (r.avg_pct || 0) * r.count;
+      d[r[field] + '_c'] = (d[r[field] + '_c'] || 0) + r.count;
+    });
+    const dates = Object.keys(by).sort();
+    return dates.length ? fillDaily(by, dates[0], _todayStr()) : [];
+  };
+  // Monthly view keeps the full-history monthly series from the API.
+  const series = (monthlyList, field, LABELS, COLORS) => (g, rows) => {
+    if (g === 'month') {
+      const months = [...new Set(monthlyList.map(r => r.month))].sort();
+      const thisMonth = _todayStr().slice(0, 7);
+      return {
+        labels: months.map(m => _bucketLabel(m + '-01', 'month')),
+        partial: months.map(m => m === thisMonth),
+        datasets: Object.keys(LABELS).map(k => ({
+          label: LABELS[k], color: COLORS[k], spanGaps: true,
+          data: months.map(m => {
+            const row = monthlyList.find(r => r.month === m && r[field] === k);
+            return row ? Math.round(row.avg_pct) : null;
+          }),
+        })),
+      };
+    }
+    return bucketize(rows, g, Object.keys(LABELS).map(k => ({
+      label: LABELS[k], color: COLORS[k], spanGaps: true, emptyAsGap: true,
+      agg: 'ratio', num: d => d[k + '_n'], den: d => d[k + '_c'],
+    })));
+  };
+
+  granCard('lcTier', {
+    canvas: 'chartListenCompletionMonthly', kind: 'line', defaultGran: 'month', yOpts: { y: { max: 100 } },
+    rows: dailyRows(listenCompletion?.by_day_tier || [], 'tier'),
+    custom: series(listenCompletion?.by_month_tier || [], 'tier', TIER_LABELS, TIER_COLORS),
+  });
+
+  // Provider split (OpenAI vs Gemini) — only populated for listens on app versions that report it
   const providerSince = listenCompletion?.provider_tracking_since
     ? new Date(listenCompletion.provider_tracking_since).toLocaleDateString()
     : null;
-  document.getElementById('listenCompletionProviderTitle').textContent = providerSince
-    ? `Monthly trend — avg completion % by narration writer (OpenAI vs Gemini) · tracking since ${providerSince}`
-    : 'Monthly trend — avg completion % by narration writer (OpenAI vs Gemini) · no data yet, ships in the next app build';
-  const providerDatasets = Object.keys(PROVIDER_LABELS).map(p => ({
-    label: PROVIDER_LABELS[p],
-    color: PROVIDER_COLORS[p],
-    data: providerMonths.map(m => {
-      const row = byMonthProvider.find(r => r.month === m && r.provider === p);
-      return row ? Math.round(row.avg_pct) : null;
-    }),
-    spanGaps: true,
-  }));
-  lineChart('chartListenCompletionProvider', providerMonths, providerDatasets, { y: { max: 100 } });
+  document.getElementById('listenCompletionProviderTitle').innerHTML = providerSince
+    ? `<span data-gran-word="lcProvider">Monthly</span> trend — avg completion % by narration writer (OpenAI vs Gemini) · tracking since ${providerSince}`
+    : '<span data-gran-word="lcProvider">Monthly</span> trend — avg completion % by narration writer (OpenAI vs Gemini) · no data yet, ships in the next app build';
+  granCard('lcProvider', {
+    canvas: 'chartListenCompletionProvider', kind: 'line', defaultGran: 'month', yOpts: { y: { max: 100 } },
+    rows: dailyRows(listenCompletion?.by_day_provider || [], 'provider'),
+    custom: series(listenCompletion?.by_month_provider || [], 'provider', PROVIDER_LABELS, PROVIDER_COLORS),
+  });
 }
 
 async function backfillListenProvider() {
@@ -3107,9 +3534,9 @@ function renderCosts(costs, funnel) {
   const sortedDates = Object.keys(breakdown).sort();
   const labels = sortedDates.map(d => shortDate(d));
 
-  lineChart('chartCostDaily', labels, [
-    { label: 'Daily Cost ($)', data: sortedDates.map(d => +(breakdown[d]?.total_cost||0).toFixed(4)), color: C.primary }
-  ]);
+  granCard('costDaily', { canvas: 'chartCostDaily', kind: 'line', rows: costRows(costs, _rangeStart(), _rangeEnd()),
+    fetchPath: n => `/admin/cost-report?days=${n}&quota_aware=${_quotaAware}`, build: costRows,
+    specsFor: g => [{ label: GRAN_WORD[g] + ' Cost ($)', agg: 'sum', value: d => d.total_cost, color: C.primary }] });
 
   // Aggregate API types across all days
   const apiTotals = {};
@@ -4615,44 +5042,7 @@ function renderSettings(data) {
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App</div>` +
     field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '') +
 
-    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">A/B Testing — Default Tab</div>` +
-    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('ab_default_tab_enabled', 'Experiment Active', s.ab_default_tab_enabled ?? true)}</div>` +
-    field('ab_default_tab_explore_pct', 'Explore Group % (0 = all Walk, 100 = all Explore)', 'number', s.ab_default_tab_explore_pct ?? 50, 'min="0" max="100"') +
-    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Growth Experiment — First-Purchase Offer vs. Referral CTA</div>` +
-    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">One or the other, assigned once per user at their first narration. Reported in Acquisition tab.</div>` +
-    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('first_purchase_offer_enabled', 'Experiment Active', s.first_purchase_offer_enabled ?? true)}</div>` +
-    field('first_purchase_offer_test_pct', 'Bonus Offer Group % (rest see the perks card)', 'number', s.first_purchase_offer_test_pct ?? 50, 'min="0" max="100"') +
-    field('first_purchase_offer_bonus_pct', 'Bonus Coins % on Qualifying Purchase', 'number', s.first_purchase_offer_bonus_pct ?? 50, 'min="0" max="200"') +
-    field('first_purchase_offer_window_hours', 'Offer Window (hours)', 'number', s.first_purchase_offer_window_hours ?? 24, 'min="1" max="168"') +
-    field('first_purchase_offer_min_pack_coins', 'Min Pack Size to Qualify (coins) — avoids bonus that doesn\'t cross a 500/1000-point redemption threshold', 'number', s.first_purchase_offer_min_pack_coins ?? 1000, 'min="0" step="100"') +
-    `<div style="grid-column:1/-1;font-weight:700;margin-top:16px">Store layout experiment</div>` +
-    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted)">All never-paid users on supported apps. Pausing stops new enrollment; existing assignments stay fixed. Percentage changes affect new assignments only. The conversion window locks once enrollment starts. Results appear in Acquisition.</div>` +
-    `<div>${toggle('storefront_experiment_enabled', 'Enroll new participants', s.storefront_experiment_enabled ?? false)}</div>` +
-    field('storefront_experiment_pct', 'Coins-first group % (remaining users see subscription first)', 'number', s.storefront_experiment_pct ?? 50, 'min="0" max="100"') +
-    field('storefront_experiment_days', 'Conversion window (days)', 'number', s.storefront_experiment_days ?? 7, 'min="1" max="30"') +
-    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Growth Experiment — Daily vs. 7-Day Free Quota</div>` +
-    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Rolling 7-day window, not a Monday reset — can't be gamed at a boundary. Assigned once at signup. Reported in Acquisition tab.</div>` +
-    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('weekly_quota_experiment_enabled', 'Experiment Active', s.weekly_quota_experiment_enabled ?? true)}</div>` +
-    field('weekly_quota_experiment_pct', '7-Day-Quota Group % (rest keep the existing daily limit)', 'number', s.weekly_quota_experiment_pct ?? 30, 'min="0" max="100"') +
-    field('weekly_free_landmark_limit', 'Free Landmarks per Rolling 7 Days (test arm)', 'number', s.weekly_free_landmark_limit ?? 3, 'min="0"') +
-    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App Store Rating Prompt</div>` +
-    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">"Enjoying it?" pre-gate before the native store prompt — asked at most once per user. Reported in Acquisition tab.</div>` +
-    field('review_prompt_min_sessions', 'Ask on App-Open Count', 'number', s.review_prompt_min_sessions ?? 3, 'min="1"') +
-    field('review_prompt_min_narrations', 'Minimum Narrations Heard First', 'number', s.review_prompt_min_narrations ?? 1, 'min="0"') +
-    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Diagnostics</div>` +
-    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Auto-play diagnostics shown in the Playback tab. Turning this off makes the app stop sending them (takes effect on each phone's next send).</div>` +
-    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('playback_telemetry_enabled', 'Collect Playback Diagnostics', s.playback_telemetry_enabled ?? true)}</div>` +
-    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Unified Auto-Play Engine (release 4)</div>` +
-    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Who runs the new engine. Testers always do; then a stable % of everyone else. Takes effect at each user's next app start. Set % to 0 to roll back. Compare engines in the Playback tab.</div>` +
-    field('unified_engine_rollout_pct', 'Rollout % (0–100)', 'number', s.unified_engine_rollout_pct ?? 0, 'min="0" max="100"') +
-    field('unified_engine_testers', 'Tester emails (comma-separated)', 'text', escapeHtml((s.unified_engine_testers || []).join(', ')), '') +
-    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Walking Direction (release 5)</div>` +
-    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">Only for users on the unified engine above. Takes effect at each user's next app start. Direction-aware: prefer landmarks ahead, skip ones already walked past. Lead-ins: a short spoken "On your left: …" before automatic stories. Watch "% started behind you" in the Playback tab.</div>` +
-    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('direction_aware_enabled', 'Direction-Aware Auto-Play', s.direction_aware_enabled ?? false)}</div>` +
-    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('direction_intros_enabled', '"On your left…" Lead-ins', s.direction_intros_enabled ?? false)}</div>` +
-    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('facing_direction_enabled', 'Use Where the User Faces (compass)', s.facing_direction_enabled ?? false)}</div>` +
-    `<div style="display:flex;flex-direction:column;justify-content:center">${toggle('head_tracking_enabled', 'Head Tracking (AirPods, Meta glasses)', s.head_tracking_enabled ?? false)}</div>` +
-    `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--muted);margin-bottom:4px">"Where the user faces" needs Direction-Aware on. Standing still with the Walk screen open, the phone's compass picks the landmark in front; With Head Tracking on, AirPods (iPhone; asks once for Motion access) and Meta glasses (glasses beta build only) tell it where the head points, also in Pocket Mode, and taking the glasses off pauses the story.</div>` +
+    `<div style="grid-column:1/-1;font-size:0.8rem;color:var(--muted);padding:10px 12px;border:1px dashed var(--border);border-radius:8px;margin-top:12px">Experiment settings now live in each experiment's card on the <a href="#" onclick="showTab('experiments');return false" style="color:var(--primary)">🧪 Experiments</a> tab, and auto-play engine settings at the top of the <a href="#" onclick="showTab('playback');return false" style="color:var(--primary)">🎧 Playback</a> tab.</div>` +
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Vehicle Speed Protection</div>` +
     field('max_walking_speed_kmh', 'Max Speed km/h (above this threshold API calls are skipped)', 'number', s.max_walking_speed_kmh ?? 25, 'min="5" max="120"');
 }
@@ -4683,8 +5073,6 @@ async function saveSettings() {
     mgm_inviter_reward_coins: parseInt(document.getElementById('s_mgm_inviter_reward_coins').value),
     influencer_revenue_share_pct: parseInt(document.getElementById('s_influencer_revenue_share_pct').value),
     minimum_app_version: document.getElementById('s_minimum_app_version').value.trim(),
-    ab_default_tab_enabled: document.getElementById('s_ab_default_tab_enabled').checked,
-    ab_default_tab_explore_pct: parseInt(document.getElementById('s_ab_default_tab_explore_pct').value),
     viator_min_rating: parseFloat(document.getElementById('s_viator_min_rating').value),
     viator_min_reviews: parseInt(document.getElementById('s_viator_min_reviews').value),
     places_cache_ttl_days: parseInt(document.getElementById('s_places_cache_ttl_days').value),
@@ -4692,26 +5080,6 @@ async function saveSettings() {
     geocode_cache_ttl_days: parseInt(document.getElementById('s_geocode_cache_ttl_days').value),
     places_grid_size_meters: parseInt(document.getElementById('s_places_grid_size_meters').value),
     max_walking_speed_kmh: parseInt(document.getElementById('s_max_walking_speed_kmh').value),
-    first_purchase_offer_enabled: document.getElementById('s_first_purchase_offer_enabled').checked,
-    first_purchase_offer_test_pct: parseInt(document.getElementById('s_first_purchase_offer_test_pct').value),
-    first_purchase_offer_bonus_pct: parseInt(document.getElementById('s_first_purchase_offer_bonus_pct').value),
-    first_purchase_offer_window_hours: parseInt(document.getElementById('s_first_purchase_offer_window_hours').value),
-    first_purchase_offer_min_pack_coins: parseInt(document.getElementById('s_first_purchase_offer_min_pack_coins').value),
-    storefront_experiment_enabled: document.getElementById('s_storefront_experiment_enabled').checked,
-    storefront_experiment_pct: parseInt(document.getElementById('s_storefront_experiment_pct').value),
-    storefront_experiment_days: parseInt(document.getElementById('s_storefront_experiment_days').value),
-    weekly_quota_experiment_enabled: document.getElementById('s_weekly_quota_experiment_enabled').checked,
-    weekly_quota_experiment_pct: parseInt(document.getElementById('s_weekly_quota_experiment_pct').value),
-    weekly_free_landmark_limit: parseInt(document.getElementById('s_weekly_free_landmark_limit').value),
-    review_prompt_min_sessions: parseInt(document.getElementById('s_review_prompt_min_sessions').value),
-    review_prompt_min_narrations: parseInt(document.getElementById('s_review_prompt_min_narrations').value),
-    playback_telemetry_enabled: document.getElementById('s_playback_telemetry_enabled').checked,
-    unified_engine_rollout_pct: parseInt(document.getElementById('s_unified_engine_rollout_pct').value) || 0,
-    unified_engine_testers: document.getElementById('s_unified_engine_testers').value.split(',').map(e => e.trim()).filter(Boolean),
-    direction_aware_enabled: document.getElementById('s_direction_aware_enabled').checked,
-    direction_intros_enabled: document.getElementById('s_direction_intros_enabled').checked,
-    facing_direction_enabled: document.getElementById('s_facing_direction_enabled').checked,
-    head_tracking_enabled: document.getElementById('s_head_tracking_enabled').checked,
   };
 
   try {
@@ -6039,10 +6407,12 @@ async function loadAllData() {
     renderLTV(ltv);
     renderCostTrends(costTrends);
     renderRevenueBreakdown(revenueBreakdown);
+    loadRevenueHistory();
     renderViator(viator);
     renderPlaybackHealth(playbackHealth);
     renderInfluencerAccounts(influencerAccounts);
     renderSettings(settings);
+    renderConfigGroups(settings && settings.settings);
     renderPromoCodes(promoCodes);
     renderAbTest(abTest);
     renderGrowthExperiment(growthExperiment);
@@ -6390,6 +6760,7 @@ function showDashboard() {
   loadSavedSegments();
 }
 
+initGranSwitches();
 if (getToken()) {
   showDashboard();
 }
