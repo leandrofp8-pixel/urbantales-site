@@ -2495,7 +2495,8 @@ function _granNoteEl(cfg) {
 }
 
 // cfg: {canvas, kind: 'line'|'bar'|'mixed', stacked, specs, specsFor(g)?, yOpts, rows, fetchPath(n)?, build(resp, start, end)?,
-//       defaultGran?, monthly(g)? -> {labels, datasets} override, after(b, g)?}
+//       defaultGran?, monthly(g)? -> {labels, datasets} override, after(b, g)?,
+//       decorate(datasets, b, g)? -> {datasets, stacked?, note?} to add series after bucketing}
 function granCard(card, cfg) {
   GRAN.cards[card] = cfg;
   return renderGran(card);
@@ -2527,11 +2528,14 @@ async function renderGran(card) {
   const specs = cfg.specsFor ? cfg.specsFor(g) : cfg.specs;
   const b = cfg.custom ? cfg.custom(g, rows) : bucketize(rows, g, specs);
   if (!b) return;
-  const datasets = _markPartial(b.datasets, b.partial || [], cfg.kind === 'bar' ? 'bar' : 'line');
+  let datasets = _markPartial(b.datasets, b.partial || [], cfg.kind === 'bar' ? 'bar' : 'line');
+  const deco = cfg.decorate ? cfg.decorate(datasets, b, g) : null;
+  if (deco) datasets = deco.datasets;
   if (cfg.kind === 'bar') barChart(cfg.canvas, b.labels, datasets, { stacked: cfg.stacked });
-  else if (cfg.kind === 'mixed') mixedChart(cfg.canvas, b.labels, datasets, cfg.yOpts || {});
+  else if (cfg.kind === 'mixed') mixedChart(cfg.canvas, b.labels, datasets, { ...(cfg.yOpts || {}), stacked: deco?.stacked });
   else lineChart(cfg.canvas, b.labels, datasets, cfg.yOpts || {});
   if ((b.partial || []).some(Boolean)) noteText += (noteText ? ' ' : '') + 'Faded / dashed = period still in progress or cut off by the date range.';
+  if (deco?.note) noteText += (noteText ? ' ' : '') + deco.note;
   note.textContent = noteText;
   if (cfg.after) cfg.after(b, g);
 }
@@ -2567,8 +2571,44 @@ async function loadRevenueHistory() {
       { label: 'Purchases', agg: 'sum', value: d => d.purchases, color: C.blue, type: 'line' },
     ],
     yOpts: { yTicks: { callback: v => '$' + v } },
+    decorate: revenueProjection,
     after: renderRevHistoryKpis,
   });
+}
+
+// Linear projection for the period still in progress: revenue so far divided
+// by the share of the period elapsed (UTC, like the revenue dates).
+function _linearProjection(b, g) {
+  const i = b.keys.length - 1;
+  if (i < 0) return null;
+  const start = Date.parse(b.keys[i] + 'T00:00:00Z');
+  const end = Date.parse(_addDays(_bucketEnd(b.keys[i], g), 1) + 'T00:00:00Z');
+  const now = Date.now();
+  if (now < start || now >= end) return null;
+  const elapsed = (now - start) / (end - start);
+  const actual = b.datasets[0].data[i] || 0;
+  return { i, actual, projected: actual / elapsed, elapsed,
+           dayOf: Math.floor((now - start) / 864e5) + 1, totalDays: Math.round((end - start) / 864e5) };
+}
+
+function revenueProjection(datasets, b, g) {
+  const p = _linearProjection(b, g);
+  if (!p || p.projected <= p.actual) return null;
+  const money = v => '$' + v.toFixed(2);
+  const unit = { day: 'day', week: 'week', month: 'month' }[g];
+  const progress = g === 'day' ? `${Math.round(p.elapsed * 100)}% of the day` : `day ${p.dayOf} of ${p.totalDays}`;
+  return {
+    stacked: true,
+    datasets: [
+      { ...datasets[0], stack: 'revenue' },
+      { label: 'Projected (linear)', type: 'bar', stack: 'revenue', color: C.green,
+        data: b.keys.map((_, j) => j === p.i ? +(p.projected - p.actual).toFixed(2) : null),
+        backgroundColor: C.green + '1a', borderColor: C.green, borderWidth: 1.5, borderRadius: 4,
+        tooltipLabel: `Projected total: ${money(p.projected)} (${money(p.actual)} so far)` },
+      ...datasets.slice(1),
+    ],
+    note: `Outline = linear projection for this ${unit}: ${money(p.actual)} after ${progress} → ~${money(p.projected)} at the same pace.`,
+  };
 }
 
 function renderRevHistoryKpis(b, g) {
@@ -2614,10 +2654,13 @@ function mixedChart(id, labels, datasets, opts = {}) {
       : { type: 'bar', backgroundColor: d.color + 'cc', borderColor: d.color, borderWidth: 1, borderRadius: 4, ...d }) },
     options: {
       responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+      plugins: {
+        legend: { labels: { color: '#888', font: { size: 11 } } },
+        tooltip: { callbacks: { label: c => c.dataset.tooltipLabel || `${c.dataset.label}: ${c.formattedValue}` } },
+      },
       scales: {
-        x: { ticks: { color: '#555', font: { size: 10 }, maxTicksLimit: 12 }, grid: { color: '#1f1f1f' } },
-        y: { ticks: { color: '#555', font: { size: 10 }, ...(opts.yTicks || {}) }, grid: { color: '#1f1f1f' }, beginAtZero: true },
+        x: { stacked: !!opts.stacked, ticks: { color: '#555', font: { size: 10 }, maxTicksLimit: 12 }, grid: { color: '#1f1f1f' } },
+        y: { stacked: !!opts.stacked, ticks: { color: '#555', font: { size: 10 }, ...(opts.yTicks || {}) }, grid: { color: '#1f1f1f' }, beginAtZero: true },
         y1: { position: 'right', ticks: { color: '#555', font: { size: 10 }, precision: 0 }, grid: { display: false }, beginAtZero: true },
       }
     }
