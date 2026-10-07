@@ -2,3 +2,6 @@
 # apple-app-site-association file for the app's universal links.
 include:
   - .well-known
+# Translation dictionaries and build script; the generated pages live in /es/.
+exclude:
+  - i18n
