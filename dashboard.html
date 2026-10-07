@@ -3598,6 +3598,18 @@ function reloadPurchases() {
   loadPurchases(true);
 }
 
+
+// `price` is RevenueCat's USD conversion; show what the buyer actually paid
+// next to it when that was another currency (e.g. "$7.99 (£5.99)").
+function purchaseLocalPrice(p) {
+  if (!p.currency || p.currency === 'USD') return '';
+  if (p.price_local == null) return ` <span style="color:var(--muted)">· paid in ${escapeHtml(p.currency)}</span>`;
+  let local;
+  try { local = new Intl.NumberFormat('en-GB', { style: 'currency', currency: p.currency }).format(p.price_local); }
+  catch (e) { local = `${p.price_local} ${p.currency}`; }
+  return ` <span style="color:var(--muted)">(${escapeHtml(local)})</span>`;
+}
+
 async function loadPurchases(reset) {
   const body = document.getElementById('purchasesBody');
   const loadMoreBtn = document.getElementById('purchasesLoadMoreBtn');
@@ -3623,7 +3635,7 @@ async function loadPurchases(reset) {
         <td>${escapeHtml(p.user_email)}</td>
         <td>${p.product_id}</td>
         <td>${fmt(p.coins)}</td>
-        <td>${p.price ? '$' + p.price.toFixed(2) + ' ' + p.currency : '—'}</td>
+        <td>${p.price ? '$' + p.price.toFixed(2) + purchaseLocalPrice(p) : '—'}</td>
         <td>${p.store || '—'}</td>
         <td>${envBadge}</td>
       </tr>`;
