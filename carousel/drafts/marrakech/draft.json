@@ -1,0 +1,62 @@
+{
+  "badge_num": 14,
+  "city": "MARRAKECH",
+  "flag": "🇲🇦",
+  "cta_screenshot": "screen-marrakech-jemaa-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> 'CONNECT tunnel failed, response 403'; the agent-proxy status endpoint logs it as a policy denial: 'gateway answered 403 to CONNECT (policy denial or upstream failure)', host commons.wikimedia.org:443). This is the same block that has now hit every batch since #8 (Amsterdam, Barcelona, Vienna, Berlin, London, Prague, Rio de Janeiro) — this is the 8th run in a row with no working photo-sourcing path in this environment. No Pexels API key is available either. No candidate photos could be downloaded this run; 'candidates' arrays are empty and 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access. Facts themselves were researched and verified via WebSearch, which is not subject to this block. Flagging again to Leandro: this needs either commons.wikimedia.org added to the environment's allowed network domains, or a Pexels API key, or photo sourcing will keep blocking every batch.",
+  "caption": "Marrakech once nearly bulldozed its most famous square for a glass tower — and a vizier's 160-room palace got stripped bare within hours of his death. 👀\n\nComment which one surprised you more before you swipe ⬇️\n\n.\n.\n.\n#Marrakech #MarrakechTravel #HiddenGems #TravelFacts #BahiaPalace #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "The world's most famous square was almost replaced by a glass tower",
+      "body_html": "In the 1990s, developers planned a <b>glass tower</b> next to Jemaa el-Fnaa, the square that flips from a daytime market into a <b>spontaneous food and performance arena</b> every night. Writer Juan Goytisolo's campaign against it got UNESCO to name the square's oral traditions a <b>protected heritage</b> in 2001 — the first designation of its kind.",
+      "candidates": [],
+      "suggested_queries": ["Jemaa el-Fnaa Marrakech night market square", "Jemaa el-Fnaa Marrakech aerial day"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "A 14th-century school's tilework wasn't decoration — it was a lesson",
+      "body_html": "At <b>Ben Youssef Madrasa</b>, once the largest Islamic school in North Africa, every wall is covered in carved cedar, zellij tile and stucco arranged in complex geometric patterns built as <b>a visual argument about the infinite</b> — the mathematics was literally part of the curriculum.",
+      "candidates": [],
+      "suggested_queries": ["Ben Youssef Madrasa Marrakech courtyard tilework", "Ben Youssef Madrasa Marrakech interior geometric"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "This palace's 160 rooms were designed so no room would win",
+      "body_html": "Built for Grand Vizier <b>Ba Ahmed</b>, who effectively ruled Morocco while the sultan was a child, Bahia Palace's rooms were deliberately decorated so <b>no single room outranked another</b> — keeping his rival wives and concubines from claiming precedence. He died in 1900, and the sultan's men stripped the palace bare <b>within hours</b>.",
+      "candidates": [],
+      "suggested_queries": ["Bahia Palace Marrakech courtyard zellij", "Bahia Palace Marrakech interior painted ceiling"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "This leather dye recipe hasn't changed in 900 years — pigeon droppings included",
+      "body_html": "Marrakech's leather tanners still soften hides in stone vats using <b>pigeon droppings and quicklime</b>, then color them with natural dyes like saffron and indigo — the same process used since the medieval era. The vats sit downwind on purpose; shopkeepers still hand visitors <b>sprigs of mint</b> for a reason.",
+      "candidates": [],
+      "suggested_queries": ["Marrakech tanneries leather dye vats", "Bab Debbagh tannery Marrakech workers"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "A fashion designer bought this garden just to stop it from becoming a hotel",
+      "body_html": "French painter Jacques Majorelle spent <b>40 years</b> building this garden and patented its vivid blue paint as \"Majorelle Blue.\" After his death it fell into ruin — until <b>Yves Saint Laurent</b> bought it in 1980 to save it from demolition. His ashes are scattered here.",
+      "candidates": [],
+      "suggested_queries": ["Majorelle Garden Marrakech blue villa", "Majorelle Garden Marrakech cactus blue"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "Builders tore down a finished mosque over a tiny alignment mistake",
+      "body_html": "When the original Koutoubia mosque was found <b>slightly misaligned with Mecca</b>, the Almohads didn't fix it — they built an entirely new one next door, completed in 1199. Its proportions became the <b>template for Seville's Giralda and Rabat's Hassan Tower</b>.",
+      "candidates": [],
+      "suggested_queries": ["Koutoubia Mosque minaret Marrakech exterior", "Koutoubia Mosque Marrakech sunset"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "Legend says this entire palm forest grew from spat-out fruit pits",
+      "body_html": "The Palmeraie, Marrakech's palm grove oasis on the city's edge, is said by legend to have sprung from <b>date pits spat out by marching Almoravid soldiers</b> centuries ago. Barely visible from the medina, the oasis is still there today.",
+      "candidates": [],
+      "suggested_queries": ["Palmeraie Marrakech palm grove oasis", "Marrakech Palmeraie aerial palms Atlas mountains"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Marrakech skyline Koutoubia minaret Atlas mountains", "Marrakech medina aerial sunset"]
+}
