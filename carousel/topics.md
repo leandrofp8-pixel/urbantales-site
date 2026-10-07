@@ -20,9 +20,18 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 11 | Berlin |
 | 12 | London |
 | 13 | Prague |
+| 14 | Rio de Janeiro |
 
 ## Next batch
 
-**#14 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#15 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
+
+> Note (added by the #14 Rio de Janeiro batch, 2026-10-05): there are at least 3 other open,
+> unmerged carousel PRs sitting unreviewed — #26 (Buenos Aires, opened 2026-09-21), #28 (Lisbon,
+> opened 2026-09-23), #40 (Chicago, opened 2026-09-28). None are reflected in the Published table
+> above because none were merged. Whoever picks the next city should check open PRs for
+> `carousel/*` branches first, not just this file, to avoid duplicating a city that's already
+> drafted and waiting on photo picks. Batch numbers across those PRs will also collide (two call
+> themselves "#14") and need reconciling at merge time.
