@@ -5093,6 +5093,7 @@ function renderSettings(data) {
     field('city_landmarks_cache_ttl_days', 'City Landmarks Cache TTL (days)', 'number', s.city_landmarks_cache_ttl_days ?? 7, 'min="1" max="30"') +
     field('geocode_cache_ttl_days', 'Geocode Cache TTL (days) — a coordinate\'s city/country basically never changes', 'number', s.geocode_cache_ttl_days ?? 90, 'min="1" max="365"') +
     field('places_grid_size_meters', 'Location Grid Size (meters)', 'number', s.places_grid_size_meters ?? 500, 'min="100" max="2000" step="50"') +
+    field('nearby_reuse_max_offset_m', 'Nearby Cache Reuse Distance (meters) — reuse a saved search only if made this close to the user; lower = better-centred map, more Google calls', 'number', s.nearby_reuse_max_offset_m ?? 200, 'min="0" max="1000" step="25"') +
 
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App</div>` +
     field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '') +
@@ -5134,6 +5135,7 @@ async function saveSettings() {
     city_landmarks_cache_ttl_days: parseInt(document.getElementById('s_city_landmarks_cache_ttl_days').value),
     geocode_cache_ttl_days: parseInt(document.getElementById('s_geocode_cache_ttl_days').value),
     places_grid_size_meters: parseInt(document.getElementById('s_places_grid_size_meters').value),
+    nearby_reuse_max_offset_m: parseInt(document.getElementById('s_nearby_reuse_max_offset_m').value),
     max_walking_speed_kmh: parseInt(document.getElementById('s_max_walking_speed_kmh').value),
   };
 
