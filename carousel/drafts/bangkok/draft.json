@@ -1,0 +1,62 @@
+{
+  "badge_num": 16,
+  "city": "BANGKOK",
+  "flag": "🇹🇭",
+  "cta_screenshot": "screen-bangkok-watarun-map.png",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org, upload.wikimedia.org, and api.pexels.com (confirmed via curl -> 'CONNECT tunnel failed, response 403'; the agent-proxy status endpoint at $HTTPS_PROXY/__agentproxy/status logs it as a policy denial: 'gateway answered 403 to CONNECT (policy denial or upstream failure)', host commons.wikimedia.org:443). This is the same block that has now hit every carousel batch from #8 (Amsterdam) onward, including the five other open, unpicked draft PRs already sitting on this repo (#26 Buenos Aires, #28 Lisbon, #40 Chicago, #46 Rio de Janeiro, #50 Marrakech) — none of which could source real photos either. No candidate photos could be downloaded this run; 'candidates' arrays are empty and 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access. Facts themselves were researched and verified via WebSearch, which is not subject to this block.",
+  "caption": "Bangkok's real name is 168 characters long — and the city sinks a little more every year. 👀\n\nComment your guess for how long the name actually is before you swipe ⬇️\n\n.\n.\n.\n#Bangkok #BangkokTravel #HiddenGems #TravelFacts #WatArun #Thailand #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "A temple's shimmering spire is built from literal trash",
+      "body_html": "Wat Arun's 70-meter spire is covered in <b>millions of pieces of broken Chinese porcelain</b> — plates and bowls used as ballast on trading ships and discarded once they reached port. Craftsmen pressed the shards into intricate floral patterns, and they still hand-repair the mosaic today.",
+      "candidates": [],
+      "suggested_queries": ["Wat Arun Bangkok spire porcelain closeup", "Wat Arun Temple of Dawn Chao Phraya river"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "A king turned this temple's walls into Thailand's first encyclopedia",
+      "body_html": "In the 1830s, <b>King Rama III</b> had Wat Pho's walls inscribed with everything from medicine to astrology — reasoning that books burn but stone doesn't. The complex is also the birthplace of traditional <b>Thai massage</b>, still taught there today.",
+      "candidates": [],
+      "suggested_queries": ["Wat Pho Bangkok temple courtyard", "Wat Pho reclining Buddha temple exterior"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "Only one person on Earth is allowed to touch this statue — and only 3 times a year",
+      "body_html": "Thailand's most sacred object, the Emerald Buddha, gets its cloak changed by the <b>king himself</b> for each season — cool, hot, and rainy. No one else is permitted to touch it, and despite the name, it isn't actually made of emerald.",
+      "candidates": [],
+      "suggested_queries": ["Grand Palace Bangkok Wat Phra Kaew exterior", "Temple of the Emerald Buddha Bangkok facade"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "This city's real name has 168 characters — and holds a world record",
+      "body_html": "Bangkok's full ceremonial name, <b>Krung Thep Mahanakhon...</b>, runs 168 characters and is recognized by Guinness as the longest place name on Earth. Locals almost never use it; the English name actually comes from an old village called 'place of hog plums.'",
+      "candidates": [],
+      "suggested_queries": ["Bangkok skyline aerial Chao Phraya", "Bangkok city sign street view"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "Parts of this city are only half a meter above sea level — and dropping",
+      "body_html": "Built on soft clay, Bangkok has been sinking for decades, driven mostly by <b>groundwater extraction</b>. It was sinking up to <b>10 centimeters a year</b> in the 1970s before pumping bans slowed it — but some districts are still dropping today.",
+      "candidates": [],
+      "suggested_queries": ["Bangkok flooded street canal", "Bangkok Chao Phraya riverside flooding"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "More than 200,000 people pass through this market in a single weekend",
+      "body_html": "Chatuchak spans roughly <b>35 acres</b> and packs thousands of stalls into 27 sections, making it one of the largest markets on the planet. It started as a 1940s government plan to put one market in every province.",
+      "candidates": [],
+      "suggested_queries": ["Chatuchak Market Bangkok aerial stalls", "Chatuchak weekend market crowd Bangkok"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "This city used to be crossed by canals instead of roads",
+      "body_html": "19th-century visitors called Bangkok the <b>'Venice of the East'</b> — in 1855, three-quarters of its population lived on boats or stilted houses along the khlongs. Most canals were later paved over, but floating markets still run on the ones that remain.",
+      "candidates": [],
+      "suggested_queries": ["Bangkok khlong canal floating market", "Bangkok canal houses Thonburi"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Bangkok skyline aerial Chao Phraya river sunset", "Bangkok Wat Arun skyline view river"]
+}
