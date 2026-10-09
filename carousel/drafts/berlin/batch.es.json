@@ -1,0 +1,39 @@
+{
+  "badge_num": 11,
+  "city": "BERLÍN",
+  "flag": "🇩🇪",
+  "cta_screenshot": "screen-berlin-brandenburggate-map.png",
+  "style": "minimal",
+  "caption": "La Alemania comunista pasó décadas intentando borrar una cruz gigante del cielo de Berlín, y Egipto lleva más de 100 años pidiendo que le devuelvan la cabeza de una reina. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. Puerta de Brandeburgo\nEn 1806, Napoleón mandó desmontar la Cuadriga de bronce de la Puerta de Brandeburgo y llevarla a París como trofeo de guerra. En 1814, las tropas prusianas la encontraron todavía en sus cajas y la llevaron de vuelta a casa.\n\n2. Torre de Televisión\nCuando el sol da en los paneles de acero de la esfera de la Torre de Televisión, se forma una cruz casi perfecta visible desde toda la ciudad. El Estado oficialmente ateo probó pintura, químicos y focos para quitar el reflejo, sin éxito. Los berlineses la llaman \"la venganza del Papa\".\n\n3. Reichstag\nLa cúpula de cristal del Reichstag, añadida en 1999, tiene una rampa en espiral que pasa justo por encima del pleno del parlamento: una forma deliberada de decir que el pueblo está por encima de su gobierno. Es uno de los parlamentos más visitados del mundo.\n\n4. Muro de Berlín\nPocos meses después de la caída del Muro en 1989, 118 artistas de 21 países pintaron la East Side Gallery: 1.3 km del Muro convertidos en la galería al aire libre más larga del mundo.\n\n5. Iglesia Memorial del Káiser Guillermo\nLas bombas de 1943 dejaron la iglesia en ruinas, con solo su torre rota en pie. En lugar de demolerla, la ciudad construyó una iglesia nueva al lado y conservó la ruina como memorial de guerra. Los berlineses la llaman \"el diente hueco\".\n\n6. Aeropuerto de Tempelhof\nCuando Tempelhof cerró en 2008, la ciudad planeaba construir viviendas y un lago en sus pistas. En 2014, los berlineses votaron en referéndum prohibir cualquier construcción: hoy es uno de los parques urbanos más grandes del mundo, del tamaño de Central Park.\n\n7. Busto de Nefertiti\nEl busto de la reina Nefertiti está en Berlín desde que salió de Egipto en 1913. Egipto considera ilegal su salida y lleva décadas pidiendo su devolución; ni siquiera Hitler quiso entregarlo.\n\n.\n.\n.\n#Berlin #Alemania #LugaresSecretos #DatosCuriosos #GuerraFria #Fernsehturm #UrbanTales",
+  "facts": [
+    {
+      "headline": "Napoleón se robó la corona de esta puerta",
+      "hook": "Napoleón se llevó la Cuadriga de la Puerta de Brandeburgo en 1806, y los prusianos la encontraron en sus cajas en París ocho años después."
+    },
+    {
+      "headline": "Un Estado comunista creó una cruz sin querer",
+      "hook": "Cuando el sol da en la esfera de la Torre de Televisión, se forma una cruz gigante: los berlineses la llaman \"la venganza del Papa\"."
+    },
+    {
+      "headline": "Puedes caminar sobre la cabeza de los diputados",
+      "hook": "La cúpula de cristal del Reichstag tiene una rampa en espiral que pasa justo por encima del pleno del parlamento alemán."
+    },
+    {
+      "headline": "La galería al aire libre más larga del mundo",
+      "hook": "118 artistas pintaron 1.3 km del Muro de Berlín meses después de su caída: la galería al aire libre más larga del mundo."
+    },
+    {
+      "headline": "Conservaron su iglesia bombardeada a propósito",
+      "hook": "Las bombas destrozaron esta iglesia en 1943: los berlineses la llamaron \"el diente hueco\" y la dejaron en pie a propósito."
+    },
+    {
+      "headline": "Votaron dejar vacío un aeropuerto gigante",
+      "hook": "En 2014, los berlineses votaron prohibir construir en este antiguo aeropuerto: hoy es un parque del tamaño de Central Park."
+    },
+    {
+      "headline": "Egipto lleva más de un siglo pidiendo este busto",
+      "hook": "Este busto de 3,300 años está en Berlín desde 1913, y Egipto lleva más de un siglo pidiéndolo: ni Hitler quiso devolverlo."
+    }
+  ],
+  "lang": "es"
+}

@@ -1,0 +1,39 @@
+{
+  "badge_num": 12,
+  "city": "LONDRES",
+  "flag": "🇬🇧",
+  "cta_screenshot": "screen-london-bigben-map.png",
+  "style": "minimal",
+  "caption": "La torre del reloj más famosa de Londres en realidad no se llama Big Ben, y la leyenda dice que la monarquía caerá el día que seis cuervos abandonen cierta fortaleza. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. Torre Isabel (Big Ben)\n\"Big Ben\" es el apodo de la campana de 13.5 toneladas que cuelga dentro de la torre del reloj del Palacio de Westminster. La torre se llama oficialmente Torre Isabel desde 2012, en honor al Jubileo de Diamante de la reina.\n\n2. Los cuervos de la Torre de Londres\nDesde el reinado de Carlos II, la Torre de Londres mantiene al menos seis cuervos, por una vieja leyenda que dice que si algún día se van, caerá la Corona. Todavía hoy les recortan las alas, por si acaso.\n\n3. Palacio de Buckingham\nEl palacio tiene 775 habitaciones, entre ellas 92 oficinas, 78 baños y 188 dormitorios para el personal. Es una de las residencias reales en uso más grandes del mundo.\n\n4. El metro de Londres\nEn 1863, el Metropolitan Railway entre Paddington y Farringdon se convirtió en el primer ferrocarril subterráneo de pasajeros del mundo, con locomotoras de vapor que llenaban de humo los túneles.\n\n5. La Aguja de Cleopatra\nBajo la Aguja de Cleopatra, en el Victoria Embankment, hay una cápsula del tiempo sellada en 1878, con objetos como una caja de puros, un biberón y fotos de una docena de \"las mujeres inglesas más guapas\" de la época.\n\n6. Postman's Park\nEscondido en el Postman's Park, el Memorial al Sacrificio Heroico reúne decenas de placas de cerámica victorianas, cada una dedicada a un londinense común que murió salvando la vida de otra persona.\n\n7. Temple Church\nConstruida por los caballeros templarios en el siglo XII, la Temple Church todavía conserva en su suelo figuras de piedra de caballeros medievales, y más tarde inspiró una escena clave de El código Da Vinci.\n\n.\n.\n.\n#Londres #ReinoUnido #LugaresSecretos #DatosCuriosos #TorreDeLondres #BigBen #UrbanTales",
+  "facts": [
+    {
+      "headline": "La torre que todos llaman Big Ben no se llama así",
+      "hook": "Big Ben es el apodo de la campana de 13.5 toneladas que está dentro: la torre se llama oficialmente Torre Isabel desde 2012."
+    },
+    {
+      "headline": "El reino caerá el día que estos cuervos se vayan",
+      "hook": "Desde Carlos II, la Torre de Londres mantiene seis cuervos con las alas recortadas: la leyenda dice que si se van, caerá la Corona."
+    },
+    {
+      "headline": "Buckingham tiene más habitaciones que muchos hoteles",
+      "hook": "El Palacio de Buckingham tiene 775 habitaciones, entre ellas 92 oficinas, 78 baños y 188 dormitorios para el personal."
+    },
+    {
+      "headline": "El primer metro del mundo abrió aquí en 1863",
+      "hook": "En 1863, la línea entre Paddington y Farringdon fue el primer metro del mundo, con trenes de vapor en túneles llenos de humo."
+    },
+    {
+      "headline": "Una cápsula del tiempo victoriana bajo este obelisco",
+      "hook": "Bajo este obelisco hay una cápsula del tiempo sellada en 1878, con puros, un biberón y fotos de doce mujeres victorianas."
+    },
+    {
+      "headline": "Un parquecito honra a quienes murieron por desconocidos",
+      "hook": "El Postman's Park esconde decenas de placas de cerámica victorianas, cada una por un londinense que murió salvando a otra persona."
+    },
+    {
+      "headline": "Templarios de piedra en esta iglesia de 800 años",
+      "hook": "Construida por los templarios en el siglo XII, la Temple Church conserva figuras de caballeros e inspiró a El código Da Vinci."
+    }
+  ],
+  "lang": "es"
+}

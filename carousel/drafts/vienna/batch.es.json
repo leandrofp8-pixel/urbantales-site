@@ -1,0 +1,39 @@
+{
+  "badge_num": 10,
+  "city": "VIENA",
+  "flag": "🇦🇹",
+  "cta_screenshot": "screen-vienna-hofburg-map.png",
+  "style": "minimal",
+  "caption": "La zona de vinos más famosa de Viena está dentro de la ciudad, y la tumba de su compositor más famoso ha estado vacía todo este tiempo. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. La Riesenrad\nLa noria Riesenrad abrió en el Prater en 1897 y es la noria más antigua del mundo que sigue funcionando. Un incendio la dejó en los huesos en 1944; se reconstruyó con la mitad de sus 30 cabinas originales y después fue estrella de la película El tercer hombre.\n\n2. Catedral de San Esteban\nEl tejado en zigzag de la Catedral de San Esteban está cubierto por 230,000 tejas esmaltadas de diez colores que forman un águila bicéfala de un lado y el escudo de Viena del otro, visibles solo desde lo alto.\n\n3. Palacio de Schönbrunn\nEn 1762, un Mozart de seis años tocó para la familia imperial en la Gran Galería de Schönbrunn, se resbaló en el suelo encerado y lo ayudó a levantarse la pequeña archiduquesa María Antonieta. Según la anécdota, ahí mismo le prometió casarse con ella.\n\n4. Escuela Española de Equitación\nLos caballos lipizanos blancos de la Escuela Española de Equitación entrenan en la barroca Escuela de Invierno del Hofburg desde 1735. Es la escuela de equitación clásica más antigua del mundo que sigue en activo, reconocida por la UNESCO.\n\n5. La emperatriz Isabel\nLa emperatriz Isabel, Sissi, mantuvo una cintura de unos 50 centímetros toda su vida adulta: se envolvía en paños húmedos e hizo instalar aparatos de gimnasia en sus aposentos del Hofburg, algo extremo incluso para los Habsburgo.\n\n6. Cementerio Central de Viena\nEn el Cementerio Central, Mozart tiene un lugar de honor junto a Beethoven, Schubert y Strauss, pero es un monumento, no una tumba. Fue enterrado en otro cementerio de Viena, en una tumba sin nombre cuyo lugar exacto se perdió.\n\n7. Los viñedos\nDentro de los límites de Viena hay más de 600 hectáreas de viñedos en producción, protegidos por ley para que nunca dejen de serlo. Su vino típico, el Wiener Gemischter Satz, tiene denominación de origen propia.\n\n.\n.\n.\n#Viena #Austria #LugaresSecretos #DatosCuriosos #Hofburg #Schonbrunn #UrbanTales",
+  "facts": [
+    {
+      "headline": "La noria más antigua del mundo sobrevivió al fuego",
+      "hook": "La Riesenrad abrió en 1897 y es la noria más antigua del mundo en funcionamiento: un incendio la dejó en los huesos en 1944."
+    },
+    {
+      "headline": "230,000 tejas forman un águila que solo se ve desde arriba",
+      "hook": "El tejado en zigzag de San Esteban tiene 230,000 tejas esmaltadas que forman un águila bicéfala, visible solo desde lo alto."
+    },
+    {
+      "headline": "Mozart, con seis años, propuso matrimonio aquí",
+      "hook": "En 1762, Mozart, con seis años, se resbaló al tocar ante la familia imperial y lo levantó la pequeña María Antonieta."
+    },
+    {
+      "headline": "La escuela de equitación clásica más antigua",
+      "hook": "Los lipizanos blancos de la Escuela Española de Equitación entrenan en esta sala barroca desde 1735, con la misma doma clásica."
+    },
+    {
+      "headline": "Una emperatriz se hizo instalar un gimnasio",
+      "hook": "La emperatriz Sissi mantuvo una cintura de unos 50 cm toda su vida, con una rutina de ejercicio extrema incluso para la realeza."
+    },
+    {
+      "headline": "Mozart tiene tumba aquí, pero no está en ella",
+      "hook": "Mozart tiene un monumento en el Cementerio Central, junto a Beethoven y Schubert, pero su tumba real se perdió hace siglos."
+    },
+    {
+      "headline": "Viena tiene viñedos dentro de la ciudad",
+      "hook": "Más de 600 hectáreas de viñedos en producción están dentro de Viena: la única gran capital con su propio vino de verdad."
+    }
+  ],
+  "lang": "es"
+}

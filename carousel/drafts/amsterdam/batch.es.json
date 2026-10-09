@@ -1,0 +1,39 @@
+{
+  "badge_num": 8,
+  "city": "ÁMSTERDAM",
+  "flag": "🇳🇱",
+  "cta_screenshot": "screen-amsterdam-annefrank-map.png",
+  "style": "minimal",
+  "caption": "Una librería escondió a ocho personas de los nazis durante dos años y todavía se abre hoy, y un solo bulbo de tulipán llegó a valer más que una casa junto a un canal. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. Casa de Ana Frank\nEn 1942, uno de sus protectores construyó una librería giratoria para ocultar la entrada al Anexo Secreto, la única forma de entrar o salir para las ocho personas escondidas detrás. Sigue ahí, y todavía se abre.\n\n2. Palacio Real\nConstruido sobre terreno pantanoso en el siglo XVII, el Palacio Real de la plaza Dam se sostiene sobre 13,659 pilotes de madera clavados en el suelo. Cuando se inauguró como ayuntamiento, los locales lo llamaron la octava maravilla del mundo.\n\n3. Begijnhof\nCruza una puerta sin letrero junto a una calle comercial llena de gente y aparece el Begijnhof: un patio medieval silencioso donde está una de las dos últimas casas de madera de la ciudad, de alrededor de 1528.\n\n4. Casas de los canales\nSe dice que los impuestos se calculaban según el ancho de la fachada sobre el canal, así que las casas se construían estrechas y altas. Los muebles todavía entran por las ventanas con los ganchos de las fachadas.\n\n5. Tulipomanía\nDurante la tulipomanía de 1637, un bulbo de tulipán raro se vendió por más que una casa junto a un canal. Se considera la primera burbuja financiera registrada de la historia, y se desplomó tan rápido como subió.\n\n6. El cinturón de canales\nÁmsterdam tiene 165 canales y más de 1,500 puentes, todos hechos por el ser humano. Más canales que Venecia, construidos para drenar el pantano sobre el que está la ciudad, no para góndolas.\n\n7. Bicis en los canales\nCada año se sacan de los canales de Ámsterdam unas 12,000 a 15,000 bicicletas, casi todas robadas o abandonadas. Lo hacen barcos con grúas de garra que pescan bicis como si fueran peluches.\n\n.\n.\n.\n#Amsterdam #PaisesBajos #LugaresSecretos #DatosCuriosos #AnaFrank #Canales #UrbanTales",
+  "facts": [
+    {
+      "headline": "Una librería escondió a ocho personas de los nazis",
+      "hook": "En 1942 se construyó una librería giratoria para ocultar la entrada al Anexo Secreto, y todavía se abre hoy."
+    },
+    {
+      "headline": "Este palacio se sostiene sobre 13,659 pilotes",
+      "hook": "Construido sobre un pantano en el siglo XVII, el Palacio Real se apoya en 13,659 pilotes de madera: la octava maravilla del mundo, decían."
+    },
+    {
+      "headline": "Un jardín secreto de 500 años detrás de esta puerta",
+      "hook": "Cruza una puerta sin letrero y aparece el Begijnhof, un patio medieval silencioso con una de las últimas casas de madera de la ciudad."
+    },
+    {
+      "headline": "Las casas son estrechas por culpa de un impuesto",
+      "hook": "Se dice que el impuesto dependía del ancho de la fachada, así que las casas crecieron hacia arriba: los muebles aún entran por la ventana."
+    },
+    {
+      "headline": "Un bulbo de tulipán valió más que una casa",
+      "hook": "En la tulipomanía de 1637, un bulbo raro se vendió por más que una casa junto a un canal: la primera burbuja financiera de la historia."
+    },
+    {
+      "headline": "Ámsterdam tiene más canales que Venecia",
+      "hook": "Ámsterdam tiene 165 canales y más de 1,500 puentes, todos hechos a mano: más canales que Venecia, pensados para drenar el pantano."
+    },
+    {
+      "headline": "Miles de bicis salen de estos canales cada año",
+      "hook": "Cada año se pescan de los canales de Ámsterdam entre 12,000 y 15,000 bicicletas, casi todas robadas o abandonadas."
+    }
+  ],
+  "lang": "es"
+}
