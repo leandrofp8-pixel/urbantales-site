@@ -2714,7 +2714,7 @@ const CONFIG_GROUPS = {
     { key: 'facing_direction_enabled', type: 'toggle', label: 'Use where the user faces (compass)', def: false },
     { key: 'head_tracking_enabled', type: 'toggle', label: 'Head tracking (AirPods, Meta glasses)', def: false },
     { heading: 'Where the landmark is (release 5d, app 3.4.1+)' },
-    { note: 'Lead-ins also say the side and roughly how far: "Ahead on your left, about 30 meters away: Pantheon." (feet for users who chose them). Needs the lead-ins switch above. The distance is said only with good GPS; with poor GPS while walking the lead-in is skipped. Each recording is made once and shared by everyone; the daily cap limits new recordings, past it lead-ins fall back to the short "On your left: …".' },
+    { note: 'Lead-ins say the side and roughly how far, without the name (the story says it): "Ahead on your left, about 30 meters away." (feet for users who chose them). Needs the lead-ins switch above. The distance is said only with good GPS; with poor GPS while walking the lead-in is skipped. Recordings don't depend on the landmark, so a few hundred serve everyone and are kept on the phone; past the daily cap of new recordings, no lead-in.' },
     { key: 'intro_distance_enabled', type: 'toggle', label: 'Say side + distance', def: false },
     { key: 'intro_distance_max_accuracy_m', label: 'Say the distance only if GPS is within (m)', def: 15, attrs: 'min="1" max="100"' },
     { key: 'intro_direction_max_accuracy_m', label: 'Skip the lead-in if GPS is worse than (m, walking)', def: 40, attrs: 'min="1" max="200"' },
