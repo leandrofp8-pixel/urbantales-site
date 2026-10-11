@@ -1,0 +1,17 @@
+name: Check pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  inline-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Inline scripts parse
+        run: node tests/inline-scripts-parse.cjs
