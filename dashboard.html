@@ -1133,6 +1133,8 @@
             <button type="button" data-store="ios" class="active" onclick="loadStoreOverview('ios')">iPhone</button>
             <button type="button" data-store="android" onclick="loadStoreOverview('android')">Android</button>
           </span>
+          <button id="storeBackfillBtn" onclick="backfillStoreHistory()" title="Re-read every month of App Store and Google Play reports (the daily import only reads recent ones). Safe to re-run." style="margin-left:8px;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Import full history</button>
+          <span id="storeBackfillStatus" style="font-size:0.75rem;color:var(--muted);margin-left:6px"></span>
         </div>
         <div class="grid-4" id="storeKpis"><div class="card"><div class="loading">Loading…</div></div></div>
         <div style="font-weight:600;font-size:0.9rem">From App Store to paying user <span style="font-weight:400;color:var(--muted);font-size:0.78rem" id="storeFunnelNote"></span></div>
@@ -2613,7 +2615,7 @@ async function loadStoreOverview(store) {
   if (!r || r.status !== 'ok') {
     kpis.innerHTML = `<div class="card" style="grid-column:1/-1"><div style="color:var(--muted);font-size:0.85rem">${
       !r ? 'Could not load store data.' : store === 'android'
-        ? 'No Google Play data yet: the service account still needs access to the Play Console reports.'
+        ? 'No Google Play data imported yet. Reports arrive daily at 06:30 UTC; use Import full history for past months.'
         : 'No App Store data imported yet.'}</div></div>`;
     ['storeFunnel', 'storeSources', 'storeCountries'].forEach(id => { document.getElementById(id).innerHTML = ''; });
     document.getElementById('storeFunnelNote').textContent = '';
@@ -2635,9 +2637,11 @@ async function loadStoreOverview(store) {
     return kpiCard(title, fmt(cur[key] || 0),
       `prev. ${fmt(prev[key] || 0)} · ${((cur[key] || 0) / p.days).toFixed(1)}/day<br>${hint}`, badge, cls);
   };
+  const noImpr = (r.unavailable || []).includes('impressions');
   kpis.innerHTML =
-    kpi('Impressions', 'impressions', 'Shown in App Store search and browse') +
-    kpi('Page visits', 'page_views', 'Views of your App Store page') +
+    (noImpr ? kpiCard('Impressions', '—', 'Not in the Google Play report exports<br>See Play Console › Store performance') :
+      kpi('Impressions', 'impressions', 'Shown in App Store search and browse')) +
+    kpi('Page visits', 'page_views', store === 'ios' ? 'Views of your App Store page' : 'Visitors to your Google Play page') +
     kpi('First-time downloads', 'first_downloads', 'New devices') +
     kpi('Deletions', 'deletions', 'Small numbers undercount', true);
 
@@ -2652,9 +2656,9 @@ async function loadStoreOverview(store) {
   ];
   const pctTxt = (a, b) => { if (!b) return '—'; const v = a / b * 100; return v.toFixed(v < 10 ? 1 : 0) + '%'; };
   const lowerFirst = t => t.replace(/^[A-Z](?=[a-z])/, ch => ch.toLowerCase());
-  document.getElementById('storeFunnelNote').textContent = `· ${pName(p.start)}–${pName(p.end)} · impressions: ${fmt(cur.impressions || 0)}`;
+  document.getElementById('storeFunnelNote').textContent = `· ${pName(p.start)}–${pName(p.end)}` + (noImpr ? '' : ` · impressions: ${fmt(cur.impressions || 0)}`);
   document.getElementById('storeFunnel').innerHTML =
-    '<div class="fsrc apple">App Store · ' + (store === 'ios' ? 'Apple' : 'Google Play') + '</div><div class="fsrc ut">Urban Tales · your data</div>' +
+    '<div class="fsrc apple">' + (store === 'ios' ? 'App Store · Apple' : 'Google Play') + '</div><div class="fsrc ut">Urban Tales · your data</div>' +
     steps.map(([name, c, pr], i) => {
       const before = steps[i - 1];
       const conv = before
@@ -2681,7 +2685,7 @@ async function loadStoreOverview(store) {
   });
 
   // Sources and countries for the period.
-  const srcName = { 'App Store search': 'App Store search', 'App referrer': 'Other apps<div style="font-size:0.7rem;color:var(--muted)">Instagram, TikTok, ads…</div>',
+  const srcName = { 'Google Play search': 'Google Play search', 'Google Play explore': 'Google Play explore', 'Ads and referrals': 'Ads &amp; referrals<div style="font-size:0.7rem;color:var(--muted)">Meta/Google ads, links, other apps</div>', 'App Store search': 'App Store search', 'App referrer': 'Other apps<div style="font-size:0.7rem;color:var(--muted)">Instagram, TikTok, ads…</div>',
     'Web referrer': 'Websites &amp; links<div style="font-size:0.7rem;color:var(--muted)">urbantales.net, invite links</div>', 'App Store browse': 'App Store browse', 'Unavailable': 'Unknown' };
   const rateTag = (n, d, good, bad) => {
     if (!d) return '<span style="color:var(--muted)">—</span>';
@@ -3671,6 +3675,29 @@ async function backfillNarrationGeocode() {
     await loadAllData();
   } catch (e) {
     status.textContent = 'Backfill failed — try again';
+  } finally {
+    btn.disabled = false; btn.innerHTML = prev;
+  }
+}
+
+async function backfillStoreHistory() {
+  const btn = document.getElementById('storeBackfillBtn');
+  const status = document.getElementById('storeBackfillStatus');
+  const prev = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = 'Importing…';
+  status.textContent = '';
+  try {
+    const res = await fetch(`${API}/admin/store-analytics/run?backfill=true`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+    });
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    const r = await res.json();
+    const part = (name, x) => !x ? '' : x.status === 'ok' ? `${name}: ${fmt(x.rows || 0)} rows` : `${name}: ${x.error || x.status}`;
+    status.textContent = [part('iPhone', r.ios), part('Android', r.android)].filter(Boolean).join(' · ') || 'Done';
+    await loadStoreOverview(_storeSelected);
+  } catch (e) {
+    status.textContent = 'Import failed: ' + e.message;
   } finally {
     btn.disabled = false; btn.innerHTML = prev;
   }
