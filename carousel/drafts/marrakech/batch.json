@@ -1,0 +1,38 @@
+{
+ "badge_num": 14,
+ "city": "MARRAKECH",
+ "flag": "🇲🇦",
+ "cta_screenshot": "screen-marrakech-jemaa-map.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Marrakech secrets didn't you know? Comment the number 👇\n\n1. Jemaa el-Fnaa\nIn the 1990s a glass tower was planned next to Jemaa el-Fnaa, the square that's a market by day and an open-air food and performance stage by night. Writer Juan Goytisolo's campaign led UNESCO to protect its oral traditions in 2001, in the first proclamation of its kind.\n\n2. Ben Youssef Madrasa\nBen Youssef Madrasa grew to be the largest Islamic school in North Africa. Every wall is covered in carved cedar, zellige tile and stucco in geometric patterns that repeat without end, a way of evoking the infinite.\n\n3. Bahia Palace\nBahia Palace was built for Grand Vizier Ba Ahmed, who effectively ruled Morocco while the sultan was a child. As the story goes, its rooms were decorated so none outranked another, to avoid jealousy among his wives and concubines. When he died in 1900, the sultan's men stripped the palace within hours.\n\n4. Tanneries\nMarrakech's tanners still soften hides in stone vats with pigeon droppings and quicklime, then color them with natural dyes like saffron and indigo, as they did in the Middle Ages. That's why shopkeepers still hand visitors a sprig of mint.\n\n5. Majorelle Garden\nFrench painter Jacques Majorelle spent 40 years on this garden and registered its intense blue as 'Majorelle Blue'. After his death it fell into ruin, until Yves Saint Laurent bought it in 1980 to save it from a hotel project. His ashes were scattered here.\n\n6. Koutoubia Mosque\nWhen the first Koutoubia mosque turned out to be misaligned with Mecca, the Almohads didn't fix it: they built a new one right next door. Its minaret, finished in the late 12th century, became the model for Seville's Giralda and Rabat's Hassan Tower.\n\n7. The Palmeraie\nThe Palmeraie, the palm-grove oasis on Marrakech's edge, sprang according to legend from date pits spat out by marching Almoravid soldiers centuries ago. It's still there today, a few minutes from the medina.\n\n.\n.\n.\n#Marrakech #Morocco #TravelFacts #HiddenGems #UrbanTales",
+ "facts": [
+  {
+   "headline": "This square nearly lost to a glass tower",
+   "hook": "A writer stopped a glass tower beside Jemaa el-Fnaa, and in 2001 UNESCO protected the square's oral traditions."
+  },
+  {
+   "headline": "Every wall of this school evokes infinity",
+   "hook": "Ben Youssef Madrasa, once North Africa's largest Islamic school, covers every wall in endlessly repeating geometry."
+  },
+  {
+   "headline": "A palace designed so no wife could come out ahead",
+   "hook": "As the story goes, vizier Ba Ahmed decorated the Bahia Palace so that no wife's room outshone another."
+  },
+  {
+   "headline": "This tanning recipe calls for pigeon droppings",
+   "hook": "Marrakech's tanneries still soften hides with pigeon droppings and quicklime, just as in the Middle Ages."
+  },
+  {
+   "headline": "Yves Saint Laurent bought this garden to save it",
+   "hook": "In 1980 Yves Saint Laurent bought painter Jacques Majorelle's garden to stop it from becoming a hotel."
+  },
+  {
+   "headline": "They built a second mosque over a misalignment",
+   "hook": "The first Koutoubia didn't face Mecca correctly, so the Almohads built a new one right next to it."
+  },
+  {
+   "headline": "This palm grove grew, they say, from date pits",
+   "hook": "Legend says Marrakech's Palmeraie grew from date pits spat out by marching Almoravid soldiers."
+  }
+ ]
+}

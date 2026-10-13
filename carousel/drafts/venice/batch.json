@@ -1,0 +1,38 @@
+{
+ "badge_num": 17,
+ "city": "VENICE",
+ "flag": "🇮🇹",
+ "cta_screenshot": "screen-venice-rialto-map.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Venice secrets didn't you know? Comment the number 👇\n\n1. St. Mark's Basilica\nAccording to legend, in 828 two Venetian merchants smuggled the body of St. Mark the Evangelist out of Alexandria hidden under a layer of pork and cabbage. Muslim customs inspectors, who wouldn't touch pork, waved the crates straight through.\n\n2. Rialto Bridge\nThe stone Rialto Bridge was completed in 1591, after proposals by Michelangelo and Palladio were turned down. Rows of shops line both sides, and their rent helped cover construction and upkeep, a model Venice had used since the 1400s.\n\n3. Bridge of Sighs\nThe enclosed Bridge of Sighs, built around 1600, links the Doge's Palace to its prison. Its name comes from the legend that condemned men sighed at their last view of the city through its small stone-grilled windows.\n\n4. Gondolas\nVenetian nobles once competed to build the most extravagant gondolas, until a 1562 sumptuary law ordered every gondola painted plain black to curb the showing-off. The rule is still followed today.\n\n5. MOSE\nVenice sinks a couple of millimeters a year while the sea around it rises. In 2020 the city switched on MOSE: 78 mobile gates on the seabed that rise to seal off the lagoon during the highest tides.\n\n6. Venice Carnival\nVenice's Carnival masks go back centuries: they let nobles and commoners mingle anonymously, erasing class lines while the festival lasted. Some styles, like the beak-nosed plague doctor mask, began as protective gear.\n\n7. A city without cars\nVenice is built across 118 small islands linked by roughly 400 bridges, with canals and alleys standing in for streets. It's the largest car-free urban area in Europe.\n\n.\n.\n.\n#Venice #Italy #TravelFacts #HiddenGems #UrbanTales",
+ "facts": [
+  {
+   "headline": "Legend says the saint arrived hidden under pork",
+   "hook": "Legend says that in 828 two merchants smuggled St. Mark's body out of Alexandria under a layer of pork to get past customs."
+  },
+  {
+   "headline": "This bridge's shops helped pay for it",
+   "hook": "The Rialto Bridge, finished in 1591, has shops along both sides: their rent helped pay for building and maintaining it."
+  },
+  {
+   "headline": "Prisoners saw Venice for the last time through this window",
+   "hook": "Legend says condemned men sighed at their final glimpse of the city through the stone grilles of the Bridge of Sighs."
+  },
+  {
+   "headline": "A 1562 law is why every gondola is black",
+   "hook": "Nobles competed for the most lavish gondola until a 1562 law ordered every one of them painted plain black."
+  },
+  {
+   "headline": "78 underwater gates now guard this city",
+   "hook": "Since 2020, the MOSE system raises 78 gates from the seabed to seal off the lagoon during the highest tides."
+  },
+  {
+   "headline": "Behind a mask, nobles and commoners were equal",
+   "hook": "During Carnival, masks let nobles and commoners mingle anonymously, erasing class lines for the length of the festival."
+  },
+  {
+   "headline": "118 islands and not a single car",
+   "hook": "Venice stands on 118 islands linked by about 400 bridges, making it Europe's largest car-free urban area."
+  }
+ ]
+}

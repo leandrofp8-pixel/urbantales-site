@@ -9,6 +9,22 @@ not to pick final photos or render final images. Leandro picks the photo for eac
 the candidates you provide; final rendering happens afterward, separately. Do not run `render.py`
 in this step.
 
+## Two languages, two channels (decided 2026-10-13)
+
+Every batch ships in **English for Instagram** and **Spanish for TikTok**, both in the `minimal`
+style. In your draft, write each fact's `hook` (15-20 words) and full explanation in English, **and**
+the same in Spanish (`hook_es`, `body_es`, `headline_es`), plus a Spanish caption (`caption_es`)
+that follows the same caption rules below (lead "¿Cuál de estos 7 secretos de {Ciudad} no conocías?
+Comenta el número 👇" or similar, max 90 characters, max 5 Spanish hashtags such as `#Praga
+#RepublicaCheca #DatosCuriosos #Viajes #UrbanTales`). Neutral Latin American Spanish: "cancha de
+futbol", "200 mil", no vosotros.
+
+After the photos are picked, the final step writes `batch.json` (English) and `batch.es.json`
+(Spanish, `"lang": "es"`) and renders both. `render.py` also writes `slide-*.es.jpg` for the Spanish
+set, because TikTok only accepts JPEG/WebP photos. Once the PR is merged, the publisher on
+Leandro's Mac posts the English set to Instagram and sends the Spanish set to the TikTok inbox on
+the posting schedule (Tue/Thu/Sat 18:00 Mexico City). Nobody posts by hand.
+
 ## Voice — this is not the blog
 
 This is punchy social copy, not the long-form Wander Log voice. Look at any existing batch's facts

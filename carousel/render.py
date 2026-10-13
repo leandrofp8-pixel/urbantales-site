@@ -187,5 +187,14 @@ def main():
     render_html_to_png(cta, os.path.join(workdir, f"slide-9-cta{sfx}.png"), workdir)
     print(f"rendered slide-9-cta{sfx}.png")
 
+    # TikTok photo posts only accept JPEG/WebP, so the Spanish (TikTok) set also gets JPG copies.
+    if lang != "en":
+        for name in sorted(os.listdir(workdir)):
+            if name.startswith("slide-") and name.endswith(f"{sfx}.png"):
+                subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "90",
+                                os.path.join(workdir, name), "--out", os.path.join(workdir, name[:-4] + ".jpg")],
+                               stdout=subprocess.DEVNULL, check=True)
+        print(f"wrote slide-*{sfx}.jpg for TikTok")
+
 if __name__ == "__main__":
     main()
