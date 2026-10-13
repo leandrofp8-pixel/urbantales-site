@@ -131,6 +131,33 @@
     .store-badge strong { display: block; font-size: 13px; font-weight: 700; line-height: 1.3; }
     @media (max-width: 560px) { .app-cta { padding: 30px 26px; text-align: center; justify-content: center; } .app-cta-badges { justify-content: center; } .app-cta-rating { justify-content: center; } }
 
+    .walk-pointer { display: flex; align-items: center; gap: 10px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); background: var(--card); border: 1px dashed var(--rule); border-radius: 8px; padding: 10px 14px; margin: -8px 0 32px; }
+    .walk-pointer .pin { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--orange); color: #fff8f0; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+    .walk-pointer a { color: var(--orange-deep); font-weight: 600; text-underline-offset: 3px; }
+
+    .walk { margin: 48px 0 0; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; box-shadow: 0 18px 40px -28px rgba(91,60,30,.45); }
+    .walk-head { padding: 26px 26px 18px; background: linear-gradient(155deg, #f6e2d3 0%, var(--paper2) 70%); border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; }
+    .walk-label { font-family: var(--font-hand); font-size: 24px; line-height: 1; color: var(--stamp); }
+    .walk-head h3 { font-family: var(--font-serif); font-size: clamp(22px, 3.6vw, 27px); line-height: 1.2; text-wrap: balance; color: var(--ink); }
+    .walk-facts { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13.5px; color: var(--ink-soft); }
+    .walk-facts span { white-space: nowrap; }
+    .walk-facts b { color: var(--ink); font-weight: 600; }
+    .stops { list-style: none; padding: 18px 26px 6px; display: flex; flex-direction: column; }
+    .stop { display: grid; grid-template-columns: 30px 1fr; gap: 0 14px; position: relative; padding-bottom: 14px; }
+    .stop:not(:last-child)::before { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; border-left: 2px dotted var(--rule); }
+    .stop .n { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--orange); color: var(--orange-deep); background: var(--card); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; position: relative; z-index: 1; }
+    .stop .name { font-weight: 600; font-size: 16px; line-height: 1.35; padding-top: 4px; color: var(--ink); }
+    .stop .hook { font-size: 14px; color: var(--ink-faint); line-height: 1.45; }
+    .stop.here .n { background: var(--orange); color: #fff8f0; }
+    .stop.here .tag { display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); background: #f6e2d3; border-radius: 999px; padding: 1px 8px; vertical-align: 2px; }
+    .walk-actions { padding: 8px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+    .open-walk { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--orange); color: #fff8f0; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 20px; border-radius: 8px; transition: background .2s; }
+    .open-walk:hover { background: var(--orange-deep); }
+    .open-walk img { width: 26px; height: 26px; border-radius: 7px; }
+    article.post p.walk-sub { font-size: 13.5px; color: var(--ink-faint); opacity: 1; text-align: center; line-height: 1.5; margin: 0; }
+    .walk .app-cta-badges { justify-content: center; margin-top: 0; }
+    @media (max-width: 480px) { .walk-head, .stops, .walk-actions { padding-left: 18px; padding-right: 18px; } }
+
     .article-footer { max-width: 660px; margin: 0 auto; padding: 0 48px 80px; }
     .share-row { display: flex; align-items: center; gap: 14px; padding: 26px 0; border-top: 1px solid var(--rule); }
     .share-row span { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
@@ -178,6 +205,11 @@
     </div>
   </div>
 
+  <div class="walk-pointer">
+    <span class="pin">→</span>
+    <span>This walk is in the app as a free route through La Boca. <a href="#walk">See it ↓</a></span>
+  </div>
+
   <p class="lede">The most photographed street in Argentina is four short blocks of corrugated metal, and a hundred years ago it was the kind of place nobody with money would admit to living on.</p>
 
   <p>This self-guided Caminito walk covers La Boca, the old Genoese dockworkers' neighborhood at the southern edge of Buenos Aires, built around that one street. It's short enough to see properly in under two hours, which is convenient, because almost nobody recommends staying in La Boca after the light goes — including our own hotel's front desk, which brought it up twice, unprompted, before we'd even asked.</p>
@@ -191,8 +223,8 @@
   <div class="ps-note">
     <div class="ps-icon">✎</div>
     <div class="ps-text">
-      <span class="ps-label">P.S.</span>
-      <p>We had <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> narrate the boat-paint story standing right on Caminito — it's a strange, small pleasure to look at mismatched paint and suddenly know exactly why it doesn't match.</p>
+      <span class="ps-label">Tip</span>
+      <p>Look closely at the walls on Caminito: many houses change color halfway up a wall or from one sheet of metal to the next. That's the leftover boat paint. With <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> running, the story plays as you walk in. Go in daylight; locals advise leaving La Boca before dark.</p>
     </div>
     <a href="https://urbantales.net/index.html" class="btn small">Try it free</a>
   </div>
@@ -207,13 +239,19 @@
 
   <p>We finished with choripán from a stall a block off Caminito — grilled chorizo split down the middle and handed over wrapped in a napkin — and caught a cab back toward San Telmo while there was still light in the sky. If you're spending more time in the city, <a href="https://urbantales.net/buenos-aires.html">Urban Tales' Buenos Aires guide</a> covers the tango halls and cemetery walks further north, once this stretch is done.</p>
 
-  <div class="app-cta">
-    <img src="icon.png" alt="Urban Tales" class="app-cta-icon" style="object-fit:cover;">
-    <div class="app-cta-body">
-      <p class="app-cta-eyebrow">Heading to Buenos Aires?</p>
-      <h3>Let this walk (and dozens more) find you</h3>
-      <p>Urban Tales plays hidden history like this automatically as you walk past the real landmark — Buenos Aires, and everywhere else. No booking, no group.</p>
-      <div class="app-cta-rating"><span class="stars">★★★★★</span> 4.8 rating · Free to start</div>
+  <section class="walk" id="walk" aria-labelledby="walk-title">
+    <div class="walk-head">
+      <span class="walk-label">Walk this route</span>
+      <h3 id="walk-title">La Boca: Caminito and La Bombonera</h3>
+      <div class="walk-facts"><span><b>2 stops</b></span><span><b>0.6 km</b></span><span>about <b>10 min</b> of walking, plus time at each stop</span><span>a story at every stop</span></div>
+    </div>
+    <ol class="stops">
+      <li class="stop"><span class="n">1</span><div><div class="name">Caminito</div><div class="hook">Houses painted with leftover boat paint, on an old rail spur</div></div></li>
+      <li class="stop"><span class="n">2</span><div><div class="name">La Bombonera</div><div class="hook">Boca Juniors' stadium, five minutes away</div></div></li>
+    </ol>
+    <div class="walk-actions">
+      <a class="open-walk" href="https://urbantales.net/tour.html?id=6acd849305c75287826fdd83&amp;utm_source=blog&amp;utm_campaign=buenos-aires-caminito-walk"><img src="icon.png" alt="">Open this walk in Urban Tales</a>
+      <p class="walk-sub">Free to start. No app yet? The link opens the walk's page with a story preview and download links.</p>
       <div class="app-cta-badges">
         <a href="https://apps.apple.com/app/id6760130598" class="store-badge">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -225,7 +263,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </section>
 </article>
 
 <div class="article-footer">
