@@ -1,0 +1,114 @@
+{
+ "slug": "newyork-brooklyn-bridge",
+ "landmark": "Brooklyn Bridge",
+ "city": "newyork",
+ "story": "After a deadly 1883 stampede made people doubt the new bridge, P.T. Barnum marched 21 elephants (Jumbo last) across it in May 1884.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Brooklyn_Bridge",
+  "https://www.history.com/articles/brooklyn-bridge-elephant-procession-p-t-barnum-jumbo-1884",
+  "https://www.6sqft.com/in-1883-21-elephants-walked-across-the-newly-opened-brooklyn-bridge-to-prove-its-safety/"
+ ],
+ "week": "2026-W42",
+ "created": "2026-10-13T16:49",
+ "media_sha": "52c0a155a9b2cad49417451fb125c05b68bf881f",
+ "es": {
+  "video": "https://cdn.jsdelivr.net/gh/leandrofp8-pixel/urbantales-site@52c0a155a9b2cad49417451fb125c05b68bf881f/reels/newyork-brooklyn-bridge-es.mp4",
+  "caption": "21 elefantes me cruzaron. ¿Qué monumento debería contar su historia? 👇\n\nEn 1883, una semana después de la inauguración del Puente de Brooklyn, una estampida en sus escaleras dejó doce muertos y mucha gente dudó de su seguridad. En mayo de 1884, el empresario de circo P. T. Barnum hizo desfilar veintiún elefantes sobre el puente, con el famoso Jumbo al final, ante miles de espectadores.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n\n.\n.\n.\n#NuevaYork #PuenteDeBrooklyn #DatosCuriosos #Historia #UrbanTales"
+ },
+ "en": {
+  "video": "https://cdn.jsdelivr.net/gh/leandrofp8-pixel/urbantales-site@52c0a155a9b2cad49417451fb125c05b68bf881f/reels/newyork-brooklyn-bridge-en.mp4",
+  "caption": "21 elephants walked across me. Which landmark should tell its story next? 👇\n\nA week after the Brooklyn Bridge opened in 1883, a stampede on its stairs killed twelve people, and many New Yorkers doubted it was safe. In May 1884, circus showman P.T. Barnum marched twenty-one elephants across, with the famous Jumbo at the back, as thousands watched.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n\n.\n.\n.\n#NewYork #BrooklynBridge #NYC #TravelFacts #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-5828496.mp4",
+   "url": "https://www.pexels.com/video/vertical-video-of-a-suspension-bridge-5828496/",
+   "author": "Charles Parker",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Brooklyn Bridge"
+  },
+  {
+   "file": "pexels-5828500.mp4",
+   "url": "https://www.pexels.com/video/bridge-closeup-5828500/",
+   "author": "Charles Parker",
+   "w": 720,
+   "h": 1280,
+   "dur": 12,
+   "query": "Brooklyn Bridge"
+  },
+  {
+   "file": "pexels-5828495.mp4",
+   "url": "https://www.pexels.com/video/vertical-video-of-a-suspension-bridge-5828495/",
+   "author": "Charles Parker",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Brooklyn Bridge"
+  },
+  {
+   "file": "pexels-28858050.mp4",
+   "url": "https://www.pexels.com/video/iconic-walk-on-brooklyn-bridge-in-nyc-28858050/",
+   "author": "Teju",
+   "w": 720,
+   "h": 1280,
+   "dur": 12,
+   "query": "Brooklyn Bridge"
+  },
+  {
+   "file": "pexels-29551360.mp4",
+   "url": "https://www.pexels.com/video/stunning-brooklyn-bridge-walk-in-new-york-city-29551360/",
+   "author": "Chris",
+   "w": 720,
+   "h": 1280,
+   "dur": 4,
+   "query": "Brooklyn Bridge"
+  },
+  {
+   "file": "pexels-19145696.mp4",
+   "url": "https://www.pexels.com/video/new-york-nights-19145696/",
+   "author": "Lukas Rodriguez",
+   "w": 1280,
+   "h": 720,
+   "dur": 5,
+   "query": "Brooklyn Bridge aerial"
+  },
+  {
+   "file": "pexels-5838621.mp4",
+   "url": "https://www.pexels.com/video/drone-shot-of-the-brooklyn-bridge-during-the-night-5838621/",
+   "author": "CityXcape",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "Brooklyn Bridge aerial"
+  },
+  {
+   "file": "pexels-36206025.mp4",
+   "url": "https://www.pexels.com/video/aerial-night-view-of-new-york-city-skyline-36206025/",
+   "author": "Ben Prater",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Brooklyn Bridge aerial"
+  },
+  {
+   "file": "pexels-37493546.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-manhattan-skyline-37493546/",
+   "author": "Joseph Eulo",
+   "w": 1280,
+   "h": 720,
+   "dur": 38,
+   "query": "Brooklyn Bridge aerial"
+  },
+  {
+   "file": "pexels-8491138.mp4",
+   "url": "https://www.pexels.com/video/aerial-shot-of-city-buildings-8491138/",
+   "author": "ArtHouse Studio",
+   "w": 1366,
+   "h": 720,
+   "dur": 17,
+   "query": "Brooklyn Bridge aerial"
+  }
+ ]
+}

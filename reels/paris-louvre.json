@@ -1,0 +1,87 @@
+{
+ "slug": "paris-louvre",
+ "landmark": "Louvre Museum",
+ "city": "paris",
+ "story": "In 1911 a former Louvre worker walked out with the Mona Lisa; it was missing two years, Picasso was questioned, and it was recovered in Florence in 1913.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Vincenzo_Peruggia",
+  "https://www.thecollector.com/how-did-vincenzo-peruggia-steal-the-mona-lisa/",
+  "https://www.history.com/articles/the-heist-that-made-the-mona-lisa-famous"
+ ],
+ "week": "2026-W42",
+ "created": "2026-10-13T16:49",
+ "media_sha": "52c0a155a9b2cad49417451fb125c05b68bf881f",
+ "es": {
+  "video": "https://cdn.jsdelivr.net/gh/leandrofp8-pixel/urbantales-site@52c0a155a9b2cad49417451fb125c05b68bf881f/reels/paris-louvre-es.mp4",
+  "caption": "Perdí a la Mona Lisa durante dos años. ¿Qué monumento debería contar su historia? 👇\n\nEn agosto de 1911, Vincenzo Peruggia, que había trabajado en el Louvre, sacó la Mona Lisa del museo vestido como empleado. La policía llegó a interrogar a Pablo Picasso, y la gente hacía visitas solo para ver la pared vacía. En 1913 intentó venderla en Florencia, el comerciante avisó a la policía y la pintura volvió a París.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n\n.\n.\n.\n#París #Louvre #MonaLisa #DatosCuriosos #UrbanTales"
+ },
+ "en": {
+  "video": "https://cdn.jsdelivr.net/gh/leandrofp8-pixel/urbantales-site@52c0a155a9b2cad49417451fb125c05b68bf881f/reels/paris-louvre-en.mp4",
+  "caption": "I lost the Mona Lisa for two years. Which landmark should tell its story next? 👇\n\nIn August 1911, Vincenzo Peruggia, who had worked at the Louvre, took the Mona Lisa out of the museum dressed like a member of staff. Police even questioned Pablo Picasso, and visitors came just to stare at the empty wall. In 1913 he tried to sell it to a dealer in Florence, who called the police, and the painting went back to Paris.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n\n.\n.\n.\n#Paris #Louvre #MonaLisa #TravelFacts #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-39354182.mp4",
+   "url": "https://www.pexels.com/video/people-strolling-under-historic-parisian-archway-39354182/",
+   "author": "Lena Netkach",
+   "w": 720,
+   "h": 1280,
+   "dur": 14,
+   "query": "Louvre"
+  },
+  {
+   "file": "pexels-10664465.mp4",
+   "url": "https://www.pexels.com/video/people-around-louvre-museum-10664465/",
+   "author": "phil",
+   "w": 1280,
+   "h": 720,
+   "dur": 5,
+   "query": "Louvre"
+  },
+  {
+   "file": "pexels-3703770.mp4",
+   "url": "https://www.pexels.com/video/water-fountain-outdoors-3703770/",
+   "author": "Joshua Miranda",
+   "w": 1280,
+   "h": 720,
+   "dur": 17,
+   "query": "Louvre"
+  },
+  {
+   "file": "pexels-29102001.mp4",
+   "url": "https://www.pexels.com/video/louvre-pyramid-on-a-cloudy-day-in-paris-29102001/",
+   "author": "BAE  JUN",
+   "w": 720,
+   "h": 1280,
+   "dur": 3,
+   "query": "Louvre pyramid"
+  },
+  {
+   "file": "pexels-30580261.mp4",
+   "url": "https://www.pexels.com/video/louvre-museum-pyramid-at-twilight-in-paris-30580261/",
+   "author": "Samar Layek",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Louvre pyramid"
+  },
+  {
+   "file": "pexels-38534013.mp4",
+   "url": "https://www.pexels.com/video/tourists-at-the-louvre-pyramid-in-paris-38534013/",
+   "author": "Efrem  Efre",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "Louvre pyramid"
+  },
+  {
+   "file": "pexels-30580120.mp4",
+   "url": "https://www.pexels.com/video/louvre-pyramid-at-sunrise-in-paris-30580120/",
+   "author": "Samar Layek",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "Louvre pyramid"
+  }
+ ]
+}
