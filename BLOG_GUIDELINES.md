@@ -17,10 +17,20 @@ app mentioned the way a friend would mention it — not as an ad unit bolted ont
 
 ## Voice — read this twice
 
-Write like someone who has actually stood in the place, in first person plural ("we") or first
-person singular ("I") when recounting something specific that happened. There is no named individual
-author (no invented persona, no fake bio, no fake headshot) — bylines read "Written by the Urban
-Tales team." But the *voice inside the post* can and should be personal and anecdotal.
+Write like a knowledgeable friend who knows the place well and is telling the reader exactly what to
+look for. There is no named individual author (no invented persona, no fake bio, no fake headshot) —
+bylines read "Written by the Urban Tales team."
+
+**Never invent a first-hand experience (decided by Leandro, 2026-10-12).** Do not write "we stood
+here", "we got there at 8am", "I watched…", or any visit, queue, conversation or moment that did not
+happen. Readers trust the blog because what it says is true; a made-up visit is a lie, however vivid.
+Turn the same detail into a **tip addressed to the reader**:
+- Instead of "We stood at the left edge and finally saw the stone," write "Stand at the fountain's
+  left edge and look for the tall stone vase: that's the one the barber story is about."
+- Instead of "We got there early and there were already forty people ahead of us," write "Arrive
+  before 8am; by mid-morning the crowd is several rows deep."
+A first-person anecdote is allowed **only** when Leandro supplies a real one; say so in the PR
+description ("anecdote from Leandro's visit, <date>").
 
 **Concrete rules:**
 - Open with a specific, surprising fact or scene — never a throat-clearing intro ("When you think of
@@ -28,13 +38,14 @@ Tales team." But the *voice inside the post* can and should be personal and anec
   a one-sentence hook with a real number or a real name in it.
 - Vary sentence length on purpose. Follow a long sentence with a short one. A paragraph that is all
   15-20 word sentences reads like a press release.
-- Include at least one detail that could only come from actually being there or doing real research:
+- Include at least one detail that only comes from doing real research (and is true today):
   a price, a specific street, a time of day, a smell, a queue length, a specific person's name, an
   exact number. "The fountain collects roughly €3,000 a day" beats "the fountain collects a lot of
   money."
-- It is fine — good, even — to admit something didn't go perfectly. "We got there at what we thought
-  was early and there were already forty people ahead of us" reads as true. A post where everything
-  about the trip was flawless reads as fake.
+- Practical honesty beats polish: tips can warn about crowds, closures, a steep climb or a
+  disappointing angle ("the famous view is from the far side of the square, not the steps"). Only
+  state what research supports; when unsure about something time-sensitive (hours, prices), leave
+  it out.
 - Never use these AI tells: "In today's fast-paced world," "Moreover," "Furthermore," "It's important
   to note that," "Whether you're a X or a Y," "Let's dive in," "In conclusion," rhetorical questions
   used as paragraph transitions ("But what makes this place so special?"), or a closing paragraph that
@@ -107,25 +118,35 @@ here (decided 2026-09-02).
   it under ~60 characters.
 - Add the new post's URL to `sitemap.xml` with today's date, `changefreq=monthly`, `priority=0.7`.
 
-## The app mention — how to keep it organic
+## The app mention — how to keep it organic (updated 2026-10-12)
 
-Every post gets exactly three touchpoints with the app, no more:
+Every post connects to the app through **one real walk** — a shared tour in the app that includes the
+post's landmark — plus at most one tip. Three touchpoints, no more:
 
-1. **Nothing extra in the body copy.** Do not mention Urban Tales outside of the two CTA blocks below,
-   except one soft, in-context mention if it genuinely fits a sentence (see the Trevi post's P.S. —
-   that's the ceiling, not a pattern to repeat elsewhere in the same post).
-2. **One mid-article "P.S." card** (class `ps-note`), placed after the most interesting revelation in
-   the post — not at a random paragraph break. The copy must reference something *specific* from the
-   post itself ("...the barber bit hits different when you can see the stone"), never a generic
-   "download our app" line. Copy the exact `ps-note` markup from `blog-trevi-fountain-secret-history.html`.
-3. **One `app-cta` block at the very end of the article**, after the last paragraph, inside
-   `<article class="post">`. Its headline and first line of copy should reference the post's specific
-   city/topic ("Heading to Rome? Let this story find you"), not be a copy-pasted generic line. Copy the
-   exact markup structure (icon, rating line, both store badges) from the Trevi post — do not simplify
-   it into a plain link or a plain button. The visual weight of this block is intentional; keep the
-   icon, the star rating, and both real store badges every time.
+1. **Walk pointer, right under the byline** (class `walk-pointer`). One line naming the stop:
+   "The Trevi Fountain is stop 2 of a free 6-stop walk through Baroque Rome. See the route ↓", linking
+   to `#walk`. For a City Guide post, "This walk is in the app as a free 6-stop route. See it ↓".
+2. **One mid-article "P.S." card** (class `ps-note`) written as a **tip, never as a visit**: something
+   the reader can do on the spot that pays off the story ("Stand at the left edge and look for the
+   tall stone vase. With Urban Tales running, the barber story plays as you reach the fountain.").
+   The label reads "Tip". Place it after the most interesting revelation, not at a random break.
+3. **The "Walk this route" card** (`<section class="walk" id="walk">`) at the very end of the
+   article, inside `<article class="post">`. It replaces the old `app-cta` box. It holds: the walk's
+   name, stop count, distance and time (from the app), the numbered stop list with a one-line true
+   hook per stop and the post's own stop marked "This story", an "Open this walk in Urban Tales"
+   button linking to the tour's share page, and both store badges. Copy the exact markup from
+   `blog-trevi-fountain-secret-history.html`.
 
-Never add a fourth CTA, a popup, a sticky bar, or a banner. Three is the ceiling.
+**The walk must be real.** Create it in the app with the official content account ("Urban Tales
+Team", `tours@urbantales.net`), make it shareable, and use its share link
+(`https://urbantales.net/tour.html?id=<tour id>&utm_source=blog&utm_campaign=<post slug>`). Stop names,
+order, distance and time come from that tour; never invent a route. If you can't create the tour,
+stop and say so in the PR instead of shipping a placeholder.
+
+**No star ratings or review counts** anywhere on the blog until the real store ratings back them
+(decided 2026-10-12). No "4.8 rating" lines.
+
+Never add a fourth touchpoint, a popup, a sticky bar, or a banner. Three is the ceiling.
 
 ## Images (added 2026-09-02)
 
@@ -162,8 +183,8 @@ committed to the repo (`blog-img-{slug}.jpg`) plus its Pexels credit info (`phot
    self-guided route) for a city already represented in the repo's `{city}.html` pages where possible
    — that lets the CTA and internal links connect to an existing page.
 2. Copy `blog-trevi-fountain-secret-history.html` as your structural template. Keep every CSS class
-   name and the overall structure (`app-tie`, `nav`, `article-hero`, `byline`, `ps-note`, `app-cta`,
-   `article-footer`, `footer.site-footer`) identical — only change content, and apply the Images
+   name and the overall structure (`app-tie`, `nav`, `article-hero`, `byline`, `walk-pointer`, `ps-note`,
+   `walk`, `article-footer`, `footer.site-footer`) identical — only change content, and apply the Images
    section above for the hero/thumbnail background and the `post-tag` label.
 3. Write the post following the Voice and SEO sections above.
 4. Save it as `blog-{slug}.html` in the repo root (flat, no subfolder — matches every other page here).
