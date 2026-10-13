@@ -1,39 +1,39 @@
 {
  "badge_num": 19,
- "city": "LISBOA",
  "flag": "🇵🇹",
  "cta_screenshot": "screen-lisbon-belem-map.png",
  "style": "minimal",
- "caption": "¿Cuál de estos 7 secretos de Lisboa no conocías? Comenta el número 👇\n\n1. Torre de Belém\nLa cámara baja de la Torre de Belém se construyó para guardar cañones, pero durante siglos también funcionó como prisión. Sus celdas estaban bajo el nivel del agua, y se dice que los presos quedaban con el agua a la cintura cuando subía la marea.\n\n2. Monasterio de los Jerónimos\nEl rey Manuel I financió el Monasterio de los Jerónimos con un impuesto del 5% al comercio de especias de África y Oriente, la riqueza que llegó tras el viaje de Vasco da Gama a la India. Se levantó cerca del lugar de donde zarpó en 1497.\n\n3. Terremoto de 1755\nLa mañana del Día de Todos los Santos de 1755, un enorme terremoto sacudió Lisboa mientras las iglesias estaban llenas para la misa. Los temblores, el tsunami y días de incendios destruyeron casi toda la ciudad y mataron a decenas de miles de personas. El centro se reconstruyó con la cuadrícula que recorres hoy.\n\n4. Convento do Carmo\nLa nave de piedra del Convento do Carmo se derrumbó en el terremoto de 1755 y su techo nunca se reconstruyó. La ruina se quedó abierta al cielo como memorial: todavía puedes caminar bajo sus arcos góticos con solo nubes encima.\n\n5. Elevador de Santa Justa\nEl Elevador de Santa Justa, inaugurado en 1902 y diseñado por el ingeniero Raoul Mesnier du Ponsard, es una torre de hierro neogótica en plena Baixa. Todavía sube a la gente de la parte baja al barrio del Carmo, con una pasarela hasta las ruinas del convento.\n\n6. Puente 25 de Abril\nLo construyó la American Bridge Company, la misma del Bay Bridge de San Francisco, y se parece tanto al Golden Gate que muchos los confunden. Se inauguró en 1966 como Puente Salazar, por el dictador de Portugal, y se renombró 25 de Abril por la revolución de 1974 que acabó con su régimen.\n\n7. Cristo Rei\nDespués de ver el Cristo Redentor de Río en 1934, el cardenal de Lisboa impulsó una versión portuguesa, como agradecimiento por que Portugal se salvara de la Segunda Guerra Mundial. El Cristo Rei se inauguró en 1959 y mide unos 110 metros con su pedestal, al otro lado del río.\n\n.\n.\n.\n#Lisboa #Portugal #DatosCuriosos #Viajes #UrbanTales",
+ "city": "LISBOA",
+ "caption": "¿Cuál de estos 7 secretos de Lisboa no conocías? Comenta el número 👇\n\n1. Torre de Belém\nConstruida en la década de 1510 para vigilar el río Tajo, la Torre de Belém también sirvió como prisión de Estado: hasta 1830, los opositores a la corona eran encerrados en sus sótanos, en celdas que, según se cuenta, se inundaban con la marea alta.\n\n2. Monasterio de los Jerónimos\nEl rey Manuel I financió el monasterio con la \"Vintena da Pimenta\", un impuesto del 5% al comercio que llegaba de África y Oriente por la ruta marítima que abrió Vasco da Gama, calculado a menudo en unos 70 kilos de oro al año.\n\n3. Terremoto de 1755\nLa mañana del Día de Todos los Santos de 1755, tres sacudidas en unos diez minutos golpearon Lisboa con las iglesias llenas para la misa. El terremoto, el tsunami y los incendios que siguieron mataron a unas 30 mil a 40 mil personas; el arco y la plaza de la foto se levantaron durante la reconstrucción del centro.\n\n4. Convento do Carmo\nEl terremoto de 1755 derribó el techo de piedra del Convento do Carmo. La reconstrucción empezó pero nunca se terminó, y la nave gótica sin techo se conservó como memorial del terremoto; hoy alberga un museo arqueológico.\n\n5. Elevador de Santa Justa\nEl Elevador de Santa Justa suele atribuirse a Gustave Eiffel, pero lo diseñó Raoul Mesnier du Ponsard, un ingeniero nacido en Oporto de padres franceses. Inaugurado en 1902, su torre de hierro neogótica todavía sube a los pasajeros del centro hasta la zona del Carmo.\n\n6. Puente 25 de Abril\nEste puente colgante sobre el Tajo se inauguró en 1966 como Puente Salazar, en honor al dictador de Portugal. Tras la Revolución de los Claveles del 25 de abril de 1974, que acabó con su régimen, pasó a llamarse 25 de Abril.\n\n7. Cristo Rei\nEl cardenal de Lisboa imaginó la estatua tras ver el Cristo Redentor de Río en 1934. En 1940 los obispos portugueses prometieron construirla si el país se libraba de la Segunda Guerra Mundial; se inauguró en 1959, mirando a Lisboa desde Almada, al otro lado del río.\n\n.\n.\n.\n#Lisboa #Portugal #DatosCuriosos #Viajes #UrbanTales",
+ "lang": "es",
  "facts": [
   {
-   "headline": "Aquí hubo presos en celdas bajo el nivel del agua",
-   "hook": "Las cámaras bajas de la Torre de Belém se usaron como prisión, con celdas bajo el nivel del agua que se inundaban con la marea."
+   "headline": "Sus celdas, según se cuenta, se inundaban con la marea",
+   "hook": "Hasta 1830, la Torre de Belém fue prisión política, con celdas que, según se cuenta, se inundaban con la marea."
   },
   {
-   "headline": "Un impuesto a las especias pagó este monasterio",
-   "hook": "El rey Manuel I pagó el Monasterio de los Jerónimos con un impuesto del 5% a las especias que llegaban por la ruta de Vasco da Gama."
+   "headline": "Un impuesto del 5% a la ruta de las especias pagó este monasterio",
+   "hook": "El Monasterio de los Jerónimos se pagó con un impuesto del 5% al comercio marítimo con África y Asia."
   },
   {
-   "headline": "Este terremoto llegó mientras la ciudad estaba en misa",
-   "hook": "El Día de Todos los Santos de 1755, un terremoto, un tsunami e incendios destruyeron casi toda Lisboa con las iglesias llenas."
+   "headline": "Este terremoto llegó con toda la ciudad en misa",
+   "hook": "En 1755, un terremoto arrasó Lisboa durante la misa de Todos los Santos: murieron entre 30 mil y 40 mil."
   },
   {
-   "headline": "Esta iglesia no tiene techo desde 1755, a propósito",
-   "hook": "La nave del Convento do Carmo se derrumbó en el terremoto de 1755 y se dejó abierta al cielo como memorial."
+   "headline": "Esta iglesia lleva más de 270 años sin techo",
+   "hook": "El terremoto de 1755 derribó el techo del Convento do Carmo, y sus arcos góticos siguen abiertos al cielo."
   },
   {
-   "headline": "Un elevador de hierro en pleno centro",
-   "hook": "Desde 1902, el elevador neogótico de Santa Justa sube a la gente de la Baixa al barrio del Carmo."
+   "headline": "Todos se lo atribuyen a Eiffel, pero no lo diseñó él",
+   "hook": "Suele atribuirse a Eiffel, pero el Elevador de Santa Justa lo diseñó Raoul Mesnier du Ponsard, nacido en Oporto."
   },
   {
    "headline": "Este puente cambió de nombre tras una revolución",
-   "hook": "Este puente se inauguró en 1966 como Puente Salazar, por el dictador portugués, y se renombró tras la revolución de 1974."
+   "hook": "Se inauguró en 1966 como Puente Salazar y, al caer su régimen en 1974, pasó a llamarse 25 de Abril."
   },
   {
-   "headline": "El Cristo de Lisboa se inspiró en el de Río",
-   "hook": "Tras visitar el Cristo Redentor de Río, el cardenal de Lisboa impulsó el Cristo Rei, que se inauguró en 1959."
+   "headline": "Una promesa para salvarse de la guerra levantó esta estatua",
+   "hook": "En 1940 los obispos portugueses prometieron construir el Cristo Rei si el país se libraba de la Segunda Guerra Mundial."
   }
- ],
- "lang": "es"
+ ]
 }
