@@ -1,0 +1,38 @@
+{
+ "badge_num": 21,
+ "city": "RIO DE JANEIRO",
+ "flag": "🇧🇷",
+ "cta_screenshot": "screen-rio-corcovado-map.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Rio secrets didn't you know? Comment the number 👇\n\n1. Christ the Redeemer\nChrist the Redeemer, unveiled in 1931, was designed by French sculptor Paul Landowski, with the face by Romanian sculptor Gheorghe Leonida. Standing on top of Corcovado, it's hit by lightning several times a year; a 2014 strike chipped a thumb and a finger.\n\n2. Sugarloaf cable car\nThe Sugarloaf cable car has carried visitors up Pão de Açúcar since 1912, making it Brazil's first and one of the earliest passenger cable cars in the world. Riders still change cars halfway, at Morro da Urca.\n\n3. Lapa Arches\nThe 42 arches of the Arcos da Lapa were finished in 1750 as an aqueduct carrying drinking water into Rio's center. Since 1896 they've carried something else: the Santa Teresa tram, which still crosses the top today.\n\n4. Selarón Steps\nChilean-born artist Jorge Selarón spent more than 20 years covering 215 steps near Lapa with over 2,000 tiles from more than 60 countries, funding the work by selling his paintings. He was found dead on his staircase in 2013.\n\n5. Maracanã\nThe 1950 World Cup final at the Maracanã had an official paid attendance of 173,850; counting everyone without a ticket, estimates reach about 200,000. It's still the largest crowd ever at a World Cup match, and Brazil lost to Uruguay.\n\n6. Tijuca Forest\nTijuca Forest was cut down for coffee plantations until the clearing threatened Rio's water supply. From 1861, it was replanted by hand, with around 100,000 trees in 13 years. Today it's one of the largest urban forests in the world.\n\n7. Sambadrome\nOscar Niemeyer, the architect behind Brasília, designed the Sambadrome, Rio's purpose-built parade avenue for the samba schools. It was built in about four months and opened for the 1984 Carnival.\n\n.\n.\n.\n#RioDeJaneiro #Brazil #TravelFacts #HiddenGems #UrbanTales",
+ "facts": [
+  {
+   "headline": "Lightning hits this statue several times a year",
+   "hook": "Christ the Redeemer is struck by lightning several times a year, and in 2014 a strike chipped one of its fingers."
+  },
+  {
+   "headline": "One of the world's first cable cars climbs this rock",
+   "hook": "The Sugarloaf cable car opened in 1912, the first in Brazil and one of the first passenger cable cars in the world."
+  },
+  {
+   "headline": "This isn't a bridge, it's an old aqueduct",
+   "hook": "The 42 arches of Lapa were built in the 1700s to carry water into Rio, and since 1896 a tram runs across the top."
+  },
+  {
+   "headline": "One artist spent over 20 years tiling this staircase",
+   "hook": "Artist Jorge Selarón covered 215 steps with more than 2,000 tiles from over 60 countries, paying for it by selling paintings."
+  },
+  {
+   "headline": "The biggest crowd in World Cup history was here",
+   "hook": "The 1950 World Cup final at the Maracanã drew 173,850 paying fans, and estimates with everyone inside reach 200,000."
+  },
+  {
+   "headline": "This rainforest was replanted by hand",
+   "hook": "Tijuca Forest was cleared for coffee and replanted by hand from 1861, with around 100,000 trees in 13 years."
+  },
+  {
+   "headline": "Brasília's architect designed Carnival's runway",
+   "hook": "Oscar Niemeyer, the architect of Brasília, designed the Sambadrome, which was built in about four months and opened in 1984."
+  }
+ ]
+}

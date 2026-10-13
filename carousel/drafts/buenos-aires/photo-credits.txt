@@ -1,0 +1,9 @@
+Photos: Wikimedia Commons
+cover: Dpalma01 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Obelisco_de_Buenos_Aires_at_sunset.jpg
+fact1: National University of La Plata — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:La_Asociaci%C3%B3n_Madres_de_Plaza_de_Mayo_L%C3%ADnea_Fundadora_recibe_el_t%C3%ADtulo_de_Honoris_Causa_de_la_UNLP.jpg
+fact2: Godot13 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Recoleta_Cemetery_-_Mausoleum_64.jpg
+fact3: Luis Argerich — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Caminito_Farolito.jpg
+fact4: Tadeo GV — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Palacio_Barolo_Dramatic.jpg
+fact5: The Cosmonaut — CC BY-SA 2.5 ca — https://commons.wikimedia.org/wiki/File:Casa_Rosada_fa%C3%A7ade.jpg
+fact6: Matibro — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:La_Bombonera_2.jpg
+fact7: Liliana beatriz rizzi — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Bailarines_de_Tango_en_San_Telmo.JPG

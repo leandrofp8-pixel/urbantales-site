@@ -1,0 +1,38 @@
+{
+ "badge_num": 19,
+ "city": "LISBON",
+ "flag": "🇵🇹",
+ "cta_screenshot": "screen-lisbon-belem-map.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Lisbon secrets didn't you know? Comment the number 👇\n\n1. Belém Tower\nBelém Tower's lower chamber was built to store cannons, but for centuries it also served as a prison. Its cells sat below the waterline, and inmates were said to stand in water whenever the tide came in.\n\n2. Jerónimos Monastery\nKing Manuel I funded Jerónimos Monastery with a 5% tax on the spice trade from Africa and the East, the riches that followed Vasco da Gama's voyage to India. The monastery was built near the spot where da Gama set sail in 1497.\n\n3. 1755 earthquake\nOn the morning of All Saints' Day, 1755, a huge earthquake struck while Lisbon's churches were packed for Mass. The tremors, the tsunami that followed and days of fire destroyed most of the city and killed tens of thousands of people. Downtown was rebuilt on the grid you walk today.\n\n4. Carmo Convent\nCarmo Convent's stone nave collapsed in the 1755 earthquake, and its roof was never rebuilt. The ruin was kept open to the sky as a memorial: you can still walk under its Gothic arches with nothing but clouds overhead.\n\n5. Santa Justa Lift\nThe Santa Justa Lift, opened in 1902 and designed by engineer Raoul Mesnier du Ponsard, is a neo-Gothic iron tower in the middle of the Baixa. It still carries riders between the lower town and the Carmo hill above, with a walkway across to the convent ruins.\n\n6. 25 de Abril Bridge\nBuilt by the American Bridge Company, the firm behind San Francisco's Bay Bridge, this Tagus crossing looks so much like the Golden Gate that visitors mix them up. It opened in 1966 as the Salazar Bridge, after Portugal's dictator, and was renamed 25 de Abril for the 1974 revolution that ended his regime.\n\n7. Cristo Rei\nAfter seeing Rio's Christ the Redeemer in 1934, Lisbon's cardinal championed a Portuguese version, built as thanks for Portugal being spared from World War II. Cristo Rei opened in 1959 and stands about 110 meters tall with its pedestal, across the river from the city.\n\n.\n.\n.\n#Lisbon #Portugal #TravelFacts #HiddenGems #UrbanTales",
+ "facts": [
+  {
+   "headline": "Prisoners were once held below the waterline here",
+   "hook": "Belém Tower's lower chambers were used as a prison, with cells below the waterline that flooded when the tide came in."
+  },
+  {
+   "headline": "A tax on spices paid for this monastery",
+   "hook": "King Manuel I paid for Jerónimos Monastery with a 5% tax on the spices arriving from Vasco da Gama's sea route to India."
+  },
+  {
+   "headline": "This earthquake struck while the city was at Mass",
+   "hook": "On All Saints' Day 1755, an earthquake, tsunami and fires destroyed most of Lisbon while its churches were full."
+  },
+  {
+   "headline": "This church has had no roof since 1755, on purpose",
+   "hook": "Carmo Convent's nave collapsed in the 1755 earthquake and was left open to the sky as a memorial."
+  },
+  {
+   "headline": "An iron elevator in the middle of downtown",
+   "hook": "Since 1902, the neo-Gothic iron Santa Justa Lift has carried people from Lisbon's lower town up to the Carmo hill."
+  },
+  {
+   "headline": "This bridge was renamed after a revolution",
+   "hook": "This bridge opened in 1966 as the Salazar Bridge, named for Portugal's dictator, and was renamed after the 1974 revolution."
+  },
+  {
+   "headline": "Lisbon's Christ was inspired by Rio's",
+   "hook": "After visiting Rio's Christ the Redeemer, Lisbon's cardinal pushed to build Cristo Rei, which opened in 1959."
+  }
+ ]
+}

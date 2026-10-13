@@ -1,0 +1,149 @@
+{
+  "badge_num": 20,
+  "city": "CHICAGO",
+  "flag": "🇺🇸",
+  "cta_screenshot": "screen-chicago-millennium-map.png",
+  "photo_sourcing_blocked": false,
+  "photo_sourcing_note": "Photos sourced from Wikimedia Commons on the Mac (2026-10-13); see photo-credits.txt.",
+  "caption": "Chicago quite literally reversed an entire river so the city wouldn't poison its own drinking water. 🤯\n\nComment which one of these facts you didn't know 👇\n\n.\n.\n.\n#Chicago #ChicagoTravel #HiddenGems #TravelFacts #ChicagoRiver #WindyCity #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "This fountain is a map of Lake Michigan",
+      "body_html": "Buckingham Fountain, opened in <b>1927</b>, represents Lake Michigan; its <b>four sea horses</b> stand for the four states that border the lake. (Replaced the Cloud Gate fact: the sculpture is copyrighted and has no usable free photos.)",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Buckingham_Fountain_Oct_2022.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Sea Cow",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Buckingham Fountain"
+      ]
+    },
+    {
+      "slot": "fact2",
+      "headline": "Chicago engineers reversed an entire river",
+      "body_html": "In 1900, the city blasted open a new canal and made the <b>Chicago River flow backward</b> — away from Lake Michigan instead of into it — so its own sewage would stop poisoning the city's drinking water.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Chicago_River_and_Wrigley_Building_-_03.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "NorbertNagel",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Chicago River downtown locks",
+        "Chicago Sanitary and Ship Canal"
+      ]
+    },
+    {
+      "slot": "fact3",
+      "headline": "These glass boxes hang 1,353 feet over nothing",
+      "body_html": "The Ledge at Willis Tower puts you inside a <b>glass balcony 4.3 feet off the building</b>, floating a quarter-mile above the street with only 1.5 inches of glass underfoot.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:The_Ledge,_Willis_Tower_Skydeck,_Chicago,_Illinois_(43391737671).jpg",
+          "license": "CC BY-SA 2.0",
+          "artist": "Ken Lund from Reno, Nevada, USA",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Willis Tower Ledge glass box Chicago",
+        "Willis Tower Skydeck exterior"
+      ]
+    },
+    {
+      "slot": "fact4",
+      "headline": "Wrigley's scoreboard has never gone digital",
+      "body_html": "Built in 1937, Wrigley Field's centerfield scoreboard is still <b>flipped by hand from the inside</b> — and the outfield ivy planted that same year remains the only living wall in Major League Baseball.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:201200801_Wrigley_Field_scoreboard_(cropped).JPG",
+          "license": "CC BY-SA 3.0",
+          "artist": "TonyTheTiger",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Wrigley Field scoreboard ivy outfield",
+        "Wrigley Field exterior Chicago"
+      ]
+    },
+    {
+      "slot": "fact5",
+      "headline": "Chicago's 'corncobs' park cars in a spiral",
+      "body_html": "Marina City's twin towers wrap their <b>bottom 19 floors into an exposed spiral parking ramp</b> — when they opened in 1964, they were the tallest reinforced-concrete structures on Earth.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Marina_City_and_State_Street_Bridge_at_blue_hour,_Chicago.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "NorbertNagel",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Marina City Chicago corncob towers",
+        "Marina City towers Chicago River"
+      ]
+    },
+    {
+      "slot": "fact6",
+      "headline": "Nobody knows what the Picasso downtown actually is",
+      "body_html": "Picasso gave this 50-foot, 162-ton sculpture to Chicago for free in 1967 and <b>never said what it depicts</b> — guesses range from his Afghan hound to a woman's profile hidden in the curves.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:2004-09-07_1800x2400_chicago_picasso.jpg",
+          "license": "Public domain",
+          "artist": "J. Crocker",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Chicago Picasso sculpture Daley Plaza",
+        "Daley Plaza Picasso untitled sculpture"
+      ]
+    },
+    {
+      "slot": "fact7",
+      "headline": "One tower walked through the fire that burned the city down",
+      "body_html": "When the Great Chicago Fire leveled the city in 1871, the Water Tower's <b>yellow Joliet limestone</b> walls didn't burn — it's one of the only structures left standing from before the fire.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Chicago-Water-Tower-September-2014.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Acediscovery",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Chicago Water Tower Michigan Avenue",
+        "Chicago Water Tower historic limestone"
+      ]
+    }
+  ],
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Skyline_de_Chicago_desde_el_centro,_Illinois,_Estados_Unidos,_2012-10-20,_DD_06.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Diego Delso",
+      "note": "chosen"
+    }
+  ],
+  "cover_suggested_queries": [
+    "Chicago skyline aerial Lake Michigan",
+    "Chicago downtown skyline sunset"
+  ]
+}
