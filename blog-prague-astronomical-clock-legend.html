@@ -131,6 +131,33 @@
     .store-badge strong { display: block; font-size: 13px; font-weight: 700; line-height: 1.3; }
     @media (max-width: 560px) { .app-cta { padding: 30px 26px; text-align: center; justify-content: center; } .app-cta-badges { justify-content: center; } .app-cta-rating { justify-content: center; } }
 
+    .walk-pointer { display: flex; align-items: center; gap: 10px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); background: var(--card); border: 1px dashed var(--rule); border-radius: 8px; padding: 10px 14px; margin: -8px 0 32px; }
+    .walk-pointer .pin { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--orange); color: #fff8f0; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+    .walk-pointer a { color: var(--orange-deep); font-weight: 600; text-underline-offset: 3px; }
+
+    .walk { margin: 48px 0 0; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; box-shadow: 0 18px 40px -28px rgba(91,60,30,.45); }
+    .walk-head { padding: 26px 26px 18px; background: linear-gradient(155deg, #f6e2d3 0%, var(--paper2) 70%); border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; }
+    .walk-label { font-family: var(--font-hand); font-size: 24px; line-height: 1; color: var(--stamp); }
+    .walk-head h3 { font-family: var(--font-serif); font-size: clamp(22px, 3.6vw, 27px); line-height: 1.2; text-wrap: balance; color: var(--ink); }
+    .walk-facts { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13.5px; color: var(--ink-soft); }
+    .walk-facts span { white-space: nowrap; }
+    .walk-facts b { color: var(--ink); font-weight: 600; }
+    .stops { list-style: none; padding: 18px 26px 6px; display: flex; flex-direction: column; }
+    .stop { display: grid; grid-template-columns: 30px 1fr; gap: 0 14px; position: relative; padding-bottom: 14px; }
+    .stop:not(:last-child)::before { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; border-left: 2px dotted var(--rule); }
+    .stop .n { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--orange); color: var(--orange-deep); background: var(--card); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; position: relative; z-index: 1; }
+    .stop .name { font-weight: 600; font-size: 16px; line-height: 1.35; padding-top: 4px; color: var(--ink); }
+    .stop .hook { font-size: 14px; color: var(--ink-faint); line-height: 1.45; }
+    .stop.here .n { background: var(--orange); color: #fff8f0; }
+    .stop.here .tag { display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); background: #f6e2d3; border-radius: 999px; padding: 1px 8px; vertical-align: 2px; }
+    .walk-actions { padding: 8px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+    .open-walk { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--orange); color: #fff8f0; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 20px; border-radius: 8px; transition: background .2s; }
+    .open-walk:hover { background: var(--orange-deep); }
+    .open-walk img { width: 26px; height: 26px; border-radius: 7px; }
+    article.post p.walk-sub { font-size: 13.5px; color: var(--ink-faint); opacity: 1; text-align: center; line-height: 1.5; margin: 0; }
+    .walk .app-cta-badges { justify-content: center; margin-top: 0; }
+    @media (max-width: 480px) { .walk-head, .stops, .walk-actions { padding-left: 18px; padding-right: 18px; } }
+
     .article-footer { max-width: 660px; margin: 0 auto; padding: 0 48px 80px; }
     .share-row { display: flex; align-items: center; gap: 14px; padding: 26px 0; border-top: 1px solid var(--rule); }
     .share-row span { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
@@ -178,6 +205,11 @@
     </div>
   </div>
 
+  <div class="walk-pointer">
+    <span class="pin">3</span>
+    <span>The Astronomical Clock is stop 3 of a free 4-stop walk through Old Town. <a href="#walk">See the route ↓</a></span>
+  </div>
+
   <p class="lede">Every hour, a mechanical skeleton yanks a bell rope above Prague's Old Town Square, and a couple hundred phones tilt up to film it. Almost none of those people know the story locals still tell about the man who built the Astronomical Clock the skeleton lives on — how the city allegedly blinded him the moment he finished it, and how he answered by breaking the thing so badly it sat dead for decades.</p>
 
   <p>The Prague Astronomical Clock, the Orloj, has been mounted on the Old Town Hall tower since 1410, which makes it the oldest astronomical clock in the world still running. Everything else about it is at least a little contested — starting with who actually built it, and what the city supposedly did to him for it.</p>
@@ -192,7 +224,7 @@
   <h2>What the dial is actually doing</h2>
   <p>Under the legend, there's a genuinely strange piece of engineering. The Orloj doesn't just tell the hour — it tracks the position of the sun and moon against the zodiac, and it still runs on Old Czech Time, a 24-hour system that started counting at sunset rather than midnight. Four carved figures flank the dial: Vanity checks a mirror, a skeleton representing Death tips an hourglass and rings the bell, and two more figures act out vanity and greed getting quietly overruled by mortality, on the hour, every hour, since before Columbus sailed.</p>
 
-  <p>We showed up at 11:58 for the hourly show, certain we'd landed a great spot, and spent the first ten seconds of it squinting at the wrong window — the apostles only appear in the two dark openings above the dial, not on the dial itself, and by the time we found them half the show was already over. Now we know: get there five minutes early and pick your window before the crowd closes in around you.</p>
+  <p>The most common mistake at the hourly show is watching the wrong spot: the apostles only appear in the two dark openings above the dial, not on the dial itself, and the show is short. Get there five minutes early and pick your window before the crowd closes in around you.</p>
 
   <h2>The apostles who didn't survive the war</h2>
   <p>Here's the part almost nobody mentions, and it isn't legend — it's May 8, 1945. During the final days of the Prague Uprising, retreating German forces shelled the Old Town Hall and the fire that followed tore through the tower. The wooden Twelve Apostles that parade past two small windows above the dial each hour burned along with the hand-painted 1865 calendar ring underneath the clock. Nothing you see move on the clock face today is older than 1948 — sculptor Vojtěch Sucharda carved a new set of apostles from scratch, and the calendar ring is a later copy of the original.</p>
@@ -200,21 +232,29 @@
   <div class="ps-note">
     <div class="ps-icon">✎</div>
     <div class="ps-text">
-      <span class="ps-label">P.S.</span>
-      <p>We stood under the tower with headphones in and let <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> tell us this while the apostles rolled past overhead — knowing they're 1948 replacements, not medieval originals, changes what you're actually watching.</p>
+      <span class="ps-label">Tip</span>
+      <p>Stand in front of the Old Town Hall a few minutes before the hour and watch the two small windows above the dial: the apostles appear there, and the skeleton pulls its rope first. With <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> running, the clockmaker's legend plays as you arrive.</p>
     </div>
     <a href="https://urbantales.net/index.html" class="btn small">Try it free</a>
   </div>
 
   <p>So the clock in front of you now is a strange kind of original: a 616-year-old mechanism wearing a 78-year-old face, running on a system of hours nobody else uses, tied to a legend most historians think got attached to the wrong man. Locals still call it cursed anyway. Whether or not Hanuš existed the way the story says, something did keep this clock breaking down and getting stubbornly rebuilt for six centuries straight — and that's arguably the more impressive story. If you're mapping out a longer morning around Old Town, our <a href="https://urbantales.net/prague.html">Prague city guide</a> has where the clock fits before the square fills up.</p>
 
-  <div class="app-cta">
-    <img src="icon.png" alt="Urban Tales" class="app-cta-icon" style="object-fit:cover;">
-    <div class="app-cta-body">
-      <p class="app-cta-eyebrow">Heading to Prague?</p>
-      <h3>Let this story (and the ones the guides skip) find you</h3>
-      <p>Urban Tales plays hidden history like this automatically as you walk past the real landmark — Prague, and everywhere else. No booking, no group.</p>
-      <div class="app-cta-rating"><span class="stars">★★★★★</span> 4.8 rating · Free to start</div>
+  <section class="walk" id="walk" aria-labelledby="walk-title">
+    <div class="walk-head">
+      <span class="walk-label">Walk this route</span>
+      <h3 id="walk-title">Old Town Prague to Charles Bridge</h3>
+      <div class="walk-facts"><span><b>4 stops</b></span><span><b>1.4 km</b></span><span>about <b>20 min</b> of walking, plus time at each stop</span><span>a story at every stop</span></div>
+    </div>
+    <ol class="stops">
+      <li class="stop"><span class="n">1</span><div><div class="name">Powder Tower</div><div class="hook">An old city gate named after what it stored</div></div></li>
+      <li class="stop"><span class="n">2</span><div><div class="name">Týn Church</div><div class="hook">The twin spires over Old Town Square</div></div></li>
+      <li class="stop here"><span class="n">3</span><div><div class="name">Astronomical Clock<span class="tag">This story</span></div><div class="hook">The clockmaker who saw too much</div></div></li>
+      <li class="stop"><span class="n">4</span><div><div class="name">Charles Bridge</div><div class="hook">Thirty statues over the Vltava</div></div></li>
+    </ol>
+    <div class="walk-actions">
+      <a class="open-walk" href="https://urbantales.net/tour.html?id=6acd849b05c75287826fdd98&amp;utm_source=blog&amp;utm_campaign=prague-astronomical-clock-legend"><img src="icon.png" alt="">Open this walk in Urban Tales</a>
+      <p class="walk-sub">Free to start. No app yet? The link opens the walk's page with a story preview and download links.</p>
       <div class="app-cta-badges">
         <a href="https://apps.apple.com/app/id6760130598" class="store-badge">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -226,7 +266,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </section>
 </article>
 
 <div class="article-footer">

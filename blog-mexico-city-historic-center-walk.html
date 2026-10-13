@@ -131,6 +131,33 @@
     .store-badge strong { display: block; font-size: 13px; font-weight: 700; line-height: 1.3; }
     @media (max-width: 560px) { .app-cta { padding: 30px 26px; text-align: center; justify-content: center; } .app-cta-badges { justify-content: center; } .app-cta-rating { justify-content: center; } }
 
+    .walk-pointer { display: flex; align-items: center; gap: 10px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); background: var(--card); border: 1px dashed var(--rule); border-radius: 8px; padding: 10px 14px; margin: -8px 0 32px; }
+    .walk-pointer .pin { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--orange); color: #fff8f0; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+    .walk-pointer a { color: var(--orange-deep); font-weight: 600; text-underline-offset: 3px; }
+
+    .walk { margin: 48px 0 0; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; box-shadow: 0 18px 40px -28px rgba(91,60,30,.45); }
+    .walk-head { padding: 26px 26px 18px; background: linear-gradient(155deg, #f6e2d3 0%, var(--paper2) 70%); border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; }
+    .walk-label { font-family: var(--font-hand); font-size: 24px; line-height: 1; color: var(--stamp); }
+    .walk-head h3 { font-family: var(--font-serif); font-size: clamp(22px, 3.6vw, 27px); line-height: 1.2; text-wrap: balance; color: var(--ink); }
+    .walk-facts { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13.5px; color: var(--ink-soft); }
+    .walk-facts span { white-space: nowrap; }
+    .walk-facts b { color: var(--ink); font-weight: 600; }
+    .stops { list-style: none; padding: 18px 26px 6px; display: flex; flex-direction: column; }
+    .stop { display: grid; grid-template-columns: 30px 1fr; gap: 0 14px; position: relative; padding-bottom: 14px; }
+    .stop:not(:last-child)::before { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; border-left: 2px dotted var(--rule); }
+    .stop .n { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--orange); color: var(--orange-deep); background: var(--card); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; position: relative; z-index: 1; }
+    .stop .name { font-weight: 600; font-size: 16px; line-height: 1.35; padding-top: 4px; color: var(--ink); }
+    .stop .hook { font-size: 14px; color: var(--ink-faint); line-height: 1.45; }
+    .stop.here .n { background: var(--orange); color: #fff8f0; }
+    .stop.here .tag { display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); background: #f6e2d3; border-radius: 999px; padding: 1px 8px; vertical-align: 2px; }
+    .walk-actions { padding: 8px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+    .open-walk { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--orange); color: #fff8f0; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 20px; border-radius: 8px; transition: background .2s; }
+    .open-walk:hover { background: var(--orange-deep); }
+    .open-walk img { width: 26px; height: 26px; border-radius: 7px; }
+    article.post p.walk-sub { font-size: 13.5px; color: var(--ink-faint); opacity: 1; text-align: center; line-height: 1.5; margin: 0; }
+    .walk .app-cta-badges { justify-content: center; margin-top: 0; }
+    @media (max-width: 480px) { .walk-head, .stops, .walk-actions { padding-left: 18px; padding-right: 18px; } }
+
     .article-footer { max-width: 660px; margin: 0 auto; padding: 0 48px 80px; }
     .share-row { display: flex; align-items: center; gap: 14px; padding: 26px 0; border-top: 1px solid var(--rule); }
     .share-row span { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
@@ -178,7 +205,12 @@
     </div>
   </div>
 
-  <p class="lede">The Zócalo is roughly 240 meters on a side — big enough that the National Palace looks small from the far corner. We got there at 7:40am specifically to see it before the flag-raising crowd, and for about twenty minutes, it was just us, a street sweeper, and a man selling coffee out of a thermos strapped to a bicycle.</p>
+  <div class="walk-pointer">
+    <span class="pin">→</span>
+    <span>This walk is in the app as a free 7-stop route through the historic center. <a href="#walk">See it ↓</a></span>
+  </div>
+
+  <p class="lede">The Zócalo is roughly 240 meters on a side — big enough that the National Palace looks small from the far corner. Get there before the flag-raising crowd, around 7:30am, and you'll have it nearly to yourself.</p>
 
   <p>This is a self-guided day in Mexico City's historic center — Centro Histórico — built around one idea: everything worth seeing here is close enough to walk, so the only real decision is what order to see it in and when to show up. Done right, you can cover the Zócalo, the Templo Mayor, and the Palacio de Bellas Artes in a single unhurried morning and early afternoon, with lunch built in.</p>
 
@@ -187,43 +219,54 @@
   <p>Walk into the Metropolitan Cathedral on the plaza's north side — it's free, and mass schedules aside, doors are generally open by 8am. Once inside, look at the floor near the altar rail: you can see, and sometimes feel, the slope. Mexico City is built on the drained bed of Lake Texcoco, and the whole city has been sinking for two centuries, unevenly. The cathedral is one of the few places where the tilt is honestly visible without a tour guide pointing it out.</p>
 
   <h2>8:15–9:30am: The Palacio Nacional murals — bring ID and go before the line builds</h2>
-  <p>The Palacio Nacional, on the plaza's east side, is free to enter but requires ID (your passport or a photo of it works; some days a driver's license is accepted, some days it isn't — bring the actual passport if you have one) and a bag check. By 8:30am on a weekday we waited about ten minutes at security. On a Sunday two weeks later, checking back, that same line was past forty people by 10am.</p>
+  <p>The Palacio Nacional, on the plaza's east side, is free to enter but requires ID (your passport or a photo of it works; some days a driver's license is accepted, some days it isn't — bring the actual passport if you have one) and a bag check. Go early on a weekday: the security line is short first thing and grows quickly, especially on Sundays.</p>
   <p>Inside, Diego Rivera's mural cycle along the main staircase — often called "Epic of the Mexican People" — took him over 20 years to complete and covers roughly 3,000 years of Mexican history in a single sweep, from the Aztec empire through the Spanish conquest to the 20th century. Give it at least 20 minutes; it rewards a slow walk up and down the stairs, not a single glance from the bottom.</p>
 
   <blockquote>"The Spanish built their cathedral out of Aztec temple stone. The murals inside the palace next door spend twenty years explaining exactly why that still matters."</blockquote>
 
   <h2>9:30–11:00am: The Templo Mayor, found by accident by an electric company crew</h2>
-  <p>Walk two minutes east from the Zócalo's corner to the Templo Mayor Museum — closed Mondays, open the rest of the week from 9am. Last time we checked, general admission was around 90 pesos, roughly the price of a coffee and a pastry two blocks away, and worth every peso of it.</p>
+  <p>Walk two minutes east from the Zócalo's corner to the Templo Mayor Museum — closed Mondays, open the rest of the week from 9am. Admission costs about as much as a coffee and a pastry nearby (check the current price before you go), and it's worth it.</p>
   <p>In February 1978, electric company workers digging near the cathedral hit something they weren't expecting: a carved stone disc almost 3.5 meters across, showing the dismembered moon goddess Coyolxauhqui. That discovery led archaeologists to the Templo Mayor itself — the spiritual center of the Aztec empire, buried under a city block for 450 years because the Spanish had simply built on top of it rather than clearing it away. The excavated site is now an open-air museum you walk through at street level, with the modern city visibly rising on all four sides.</p>
 
   <div class="ps-note">
     <div class="ps-icon">✎</div>
     <div class="ps-text">
-      <span class="ps-label">P.S.</span>
-      <p>Standing at the excavation with <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> in our ears, hearing the 1978 discovery story while looking at the actual stone the electric crew hit, made the "accidental find" part land in a way a placard never does.</p>
+      <span class="ps-label">Tip</span>
+      <p>Stand in front of the Metropolitan Cathedral and compare its towers with the buildings beside it: the lean is visible once you look for it. With <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> running, the story of the city sinking into its old lake plays as you cross the Zócalo.</p>
     </div>
     <a href="https://urbantales.net/index.html" class="btn small">Try it free</a>
   </div>
 
   <h2>11:00–11:45am: Walking Madero, and a stop at the Casa de los Azulejos</h2>
   <p>From the Templo Mayor, cut west back through the Zócalo and up Francisco I. Madero — a pedestrian-only street, so no need to watch for traffic — toward Bellas Artes. It's about 900 meters, roughly 12 minutes if you don't stop, but you should stop.</p>
-  <p>Halfway up, on the left, is the Casa de los Azulejos — the House of Tiles — an 18th-century palace covered floor to roofline in blue-and-white Talavera tile shipped from Puebla. It now houses a Sanborns restaurant and store, and walking in costs nothing. We ducked in for five minutes just to look up at the interior stairwell mural and ended up staying for coffee because the courtyard was quieter than the street outside.</p>
+  <p>Halfway up, on the left, is the Casa de los Azulejos — the House of Tiles — an 18th-century palace covered floor to roofline in blue-and-white Talavera tile shipped from Puebla. It now houses a Sanborns restaurant and store, and walking in costs nothing. Duck in to look up at the stairwell mural; the courtyard is a quieter spot for coffee than the street outside.</p>
 
   <h2>11:45am–1:00pm: Palacio de Bellas Artes — and whether the mural ticket is worth it</h2>
-  <p>Bellas Artes sits at the end of Madero, unmistakable with its white Carrara marble exterior and orange-domed roofline. The building itself, and the Art Nouveau/Art Deco lobby, cost nothing to see. Going upstairs to the mural floor — Rivera, Orozco, and Siqueiros all have major works here — requires a ticket, last we checked around 85 pesos, and it's genuinely worth the detour if you have 30 spare minutes.</p>
-  <p>What you probably won't see, unless you're there for an actual performance, is the theater's famous Tiffany stained-glass curtain — nearly a million pieces of colored glass depicting the two volcanoes outside the city, Popocatépetl and Iztaccíhuatl. It's raised and lit only before certain shows, not during general daytime visits. We didn't know that going in and spent ten minutes looking for it in the wrong hallway before a guard set us straight. Worth knowing before you go so you don't do the same.</p>
+  <p>Bellas Artes sits at the end of Madero, unmistakable with its white Carrara marble exterior and orange-domed roofline. The building itself, and the Art Nouveau/Art Deco lobby, cost nothing to see. Going upstairs to the mural floor — Rivera, Orozco, and Siqueiros all have major works here — requires a ticket (check the current price), and it's genuinely worth the detour if you have 30 spare minutes.</p>
+  <p>What you probably won't see, unless you're there for an actual performance, is the theater's famous Tiffany stained-glass curtain — nearly a million pieces of colored glass depicting the two volcanoes outside the city, Popocatépetl and Iztaccíhuatl. It's raised and lit only before certain shows, not during general daytime visits. Worth knowing before you go, so you don't spend time looking for it in the wrong hallway.</p>
 
   <h2>Optional afternoon: Torre Latinoamericana, or just keep walking</h2>
   <p>If you've kept pace, you'll be finishing around 1pm with the whole afternoon open. Two blocks south of Bellas Artes, the Torre Latinoamericana has an observation deck with a genuinely wide view over the historic center's rooftops — a good way to see, from above, everything you just walked through at street level. Otherwise, the Centro Histórico rewards aimless wandering as much as it rewards a plan; side streets off Madero and República de Uruguay have some of the best-preserved 19th-century facades in the neighborhood, with none of the crowds.</p>
   <p>If you want the fuller version of this route — plus Coyoacán, Chapultepec, and Teotihuacán — <a href="https://urbantales.net/mexico-city.html">Urban Tales' Mexico City guide</a> covers the wider city in more depth than one day can.</p>
 
-  <div class="app-cta">
-    <img src="icon.png" alt="Urban Tales" class="app-cta-icon" style="object-fit:cover;">
-    <div class="app-cta-body">
-      <p class="app-cta-eyebrow">Exploring Mexico City?</p>
-      <h3>Let the historic center narrate itself as you walk it</h3>
-      <p>Urban Tales plays stories like the Templo Mayor's 1978 discovery automatically as you approach the real landmark — no booking, no group, no guessing which hallway the Tiffany curtain is in.</p>
-      <div class="app-cta-rating"><span class="stars">★★★★★</span> 4.8 rating · Free to start</div>
+  <section class="walk" id="walk" aria-labelledby="walk-title">
+    <div class="walk-head">
+      <span class="walk-label">Walk this route</span>
+      <h3 id="walk-title">Mexico City's historic center in a morning</h3>
+      <div class="walk-facts"><span><b>7 stops</b></span><span><b>2.5 km</b></span><span>about <b>35 min</b> of walking, plus time at each stop</span><span>a story at every stop</span></div>
+    </div>
+    <ol class="stops">
+      <li class="stop"><span class="n">1</span><div><div class="name">Zócalo</div><div class="hook">Built on top of Tenochtitlán</div></div></li>
+      <li class="stop"><span class="n">2</span><div><div class="name">Metropolitan Cathedral</div><div class="hook">Visibly tilting as the old lakebed sinks</div></div></li>
+      <li class="stop"><span class="n">3</span><div><div class="name">Palacio Nacional</div><div class="hook">Diego Rivera's murals on the stairway</div></div></li>
+      <li class="stop"><span class="n">4</span><div><div class="name">Templo Mayor</div><div class="hook">Found by an electric company crew in 1978</div></div></li>
+      <li class="stop"><span class="n">5</span><div><div class="name">Casa de los Azulejos</div><div class="hook">The House of Tiles on Madero</div></div></li>
+      <li class="stop"><span class="n">6</span><div><div class="name">Palacio de Bellas Artes</div><div class="hook">White Carrara marble, murals upstairs</div></div></li>
+      <li class="stop"><span class="n">7</span><div><div class="name">Torre Latinoamericana</div><div class="hook">Optional: the view over everything you just walked</div></div></li>
+    </ol>
+    <div class="walk-actions">
+      <a class="open-walk" href="https://urbantales.net/tour.html?id=6acd849505c75287826fdd87&amp;utm_source=blog&amp;utm_campaign=mexico-city-historic-center-walk"><img src="icon.png" alt="">Open this walk in Urban Tales</a>
+      <p class="walk-sub">Free to start. No app yet? The link opens the walk's page with a story preview and download links.</p>
       <div class="app-cta-badges">
         <a href="https://apps.apple.com/app/id6760130598" class="store-badge">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -235,7 +278,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </section>
 </article>
 
 <div class="article-footer">
