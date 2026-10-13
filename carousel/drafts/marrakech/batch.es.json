@@ -1,0 +1,39 @@
+{
+ "badge_num": 14,
+ "city": "MARRAKECH",
+ "flag": "🇲🇦",
+ "cta_screenshot": "screen-marrakech-jemaa-map.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Marrakech no conocías? Comenta el número 👇\n\n1. Plaza Jemaa el-Fna\nEn los años 90 se planeó una torre de vidrio junto a Jemaa el-Fna, la plaza que de día es mercado y de noche se transforma en un escenario de comida y espectáculos. La campaña del escritor Juan Goytisolo llevó a la UNESCO a proteger sus tradiciones orales en 2001, en la primera proclamación de ese tipo.\n\n2. Madrasa Ben Youssef\nLa Madrasa Ben Youssef llegó a ser la mayor escuela islámica del norte de África. Cada muro está cubierto de cedro tallado, azulejos (zellige) y yesería en patrones geométricos que se repiten sin fin, una forma de evocar lo infinito.\n\n3. Palacio de la Bahía\nEl Palacio de la Bahía se construyó para el gran visir Ba Ahmed, que gobernó Marruecos en la práctica mientras el sultán era un niño. Según se cuenta, sus habitaciones se decoraron para que ninguna superara a otra y así evitar celos entre sus esposas y concubinas. Cuando murió, en 1900, los hombres del sultán vaciaron el palacio en cuestión de horas.\n\n4. Curtidurías\nLas curtidurías de Marrakech siguen ablandando las pieles en tinas de piedra con excremento de paloma y cal viva, y las tiñen con tintes naturales como azafrán e índigo, igual que en la Edad Media. Por eso los comerciantes todavía le dan a los visitantes una ramita de menta.\n\n5. Jardín Majorelle\nEl pintor francés Jacques Majorelle dedicó 40 años a este jardín y registró su azul intenso como 'azul Majorelle'. Tras su muerte quedó abandonado, hasta que Yves Saint Laurent lo compró en 1980 para salvarlo de un proyecto hotelero. Sus cenizas se esparcieron aquí.\n\n6. Mezquita Koutoubia\nCuando descubrieron que la primera mezquita Koutoubia no estaba bien orientada hacia La Meca, los almohades no la corrigieron: construyeron una nueva justo al lado. Su minarete, terminado a finales del siglo XII, sirvió de modelo para la Giralda de Sevilla y la Torre Hassan de Rabat.\n\n7. El Palmeral\nEl Palmeral, el oasis de palmeras a las afueras de Marrakech, nació según la leyenda de los huesos de dátil que escupían los soldados almorávides en marcha hace siglos. Sigue ahí hoy, a pocos minutos de la medina.\n\n.\n.\n.\n#Marrakech #Marruecos #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "Esta plaza casi pierde contra una torre de vidrio",
+   "hook": "Un escritor frenó una torre de vidrio junto a Jemaa el-Fna, y en 2001 la UNESCO protegió la vida oral de la plaza."
+  },
+  {
+   "headline": "Cada muro de esta escuela evoca el infinito",
+   "hook": "La Madrasa Ben Youssef, que llegó a ser la mayor escuela coránica del norte de África, cubre cada muro con geometrías sin fin."
+  },
+  {
+   "headline": "Un palacio pensado para que ninguna esposa saliera ganando",
+   "hook": "Según se cuenta, el visir Ba Ahmed decoró el Palacio de la Bahía para que ninguna habitación de sus esposas superara a otra."
+  },
+  {
+   "headline": "Esta receta de curtido lleva excremento de paloma",
+   "hook": "Las curtidurías de Marrakech todavía ablandan las pieles con excremento de paloma y cal, como en la Edad Media."
+  },
+  {
+   "headline": "Yves Saint Laurent compró este jardín para salvarlo",
+   "hook": "Yves Saint Laurent compró en 1980 el jardín del pintor Jacques Majorelle para evitar que se convirtiera en un hotel."
+  },
+  {
+   "headline": "Construyeron otra mezquita por un error de orientación",
+   "hook": "La primera Koutoubia no apuntaba bien hacia La Meca, así que los almohades construyeron una nueva justo al lado."
+  },
+  {
+   "headline": "Este palmeral nació, dicen, de huesos de dátil",
+   "hook": "Según la leyenda, el Palmeral de Marrakech nació de los huesos de dátil que escupían los soldados almorávides."
+  }
+ ],
+ "lang": "es"
+}

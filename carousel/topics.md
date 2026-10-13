@@ -20,6 +20,7 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 11 | Berlin |
 | 12 | London |
 | 13 | Prague |
+| 14 | Marrakech |
 | 16 | Bangkok |
 | 17 | Venice |
 
