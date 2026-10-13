@@ -1,0 +1,39 @@
+{
+ "badge_num": 17,
+ "city": "VENECIA",
+ "flag": "🇮🇹",
+ "cta_screenshot": "screen-venice-rialto-map.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Venecia no conocías? Comenta el número 👇\n\n1. Basílica de San Marcos\nSegún la leyenda, en el año 828 dos mercaderes venecianos sacaron el cuerpo de San Marcos Evangelista de Alejandría escondido bajo una capa de carne de cerdo y repollo. Los inspectores musulmanes, que no podían tocar el cerdo, dejaron pasar las cajas sin revisarlas.\n\n2. Puente de Rialto\nEl Puente de Rialto de piedra se terminó en 1591, después de que se rechazaran propuestas de Miguel Ángel y Palladio. Tiene filas de tiendas a ambos lados: su alquiler ayudaba a cubrir la construcción y el mantenimiento, un modelo que Venecia ya usaba desde el siglo XV.\n\n3. Puente de los Suspiros\nEl Puente de los Suspiros, construido hacia 1600, une el Palacio Ducal con su prisión. Su nombre viene de la leyenda de que los condenados suspiraban al ver la ciudad por última vez a través de sus pequeñas ventanas enrejadas de piedra.\n\n4. Góndolas\nLos nobles venecianos competían por tener la góndola más extravagante, hasta que una ley suntuaria de 1562 ordenó pintarlas todas de negro liso para frenar la ostentación. La regla se sigue respetando hoy.\n\n5. MOSE\nVenecia se hunde un par de milímetros al año mientras el mar a su alrededor sube. En 2020 la ciudad activó el MOSE: 78 compuertas móviles en el fondo del mar que se levantan para cerrar la laguna durante las mareas más altas.\n\n6. Carnaval de Venecia\nLas máscaras del Carnaval de Venecia tienen siglos de historia: permitían que nobles y plebeyos se mezclaran en el anonimato, borrando las diferencias de clase mientras duraba la fiesta. Algunos modelos, como la máscara de pico del médico de la peste, nacieron como equipo de protección.\n\n7. Una ciudad sin coches\nVenecia está construida sobre 118 pequeñas islas unidas por unos 400 puentes, con canales y callejones en lugar de calles. Es la zona urbana sin coches más grande de Europa.\n\n.\n.\n.\n#Venecia #Italia #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "Según la leyenda, el santo llegó escondido bajo cerdo",
+   "hook": "Según la leyenda, en 828 dos mercaderes sacaron el cuerpo de San Marcos de Alejandría escondido bajo carne de cerdo para burlar la aduana."
+  },
+  {
+   "headline": "Las tiendas de este puente ayudaban a pagarlo",
+   "hook": "El Puente de Rialto, terminado en 1591, tiene tiendas a ambos lados: sus alquileres ayudaban a pagar la obra y su mantenimiento."
+  },
+  {
+   "headline": "Por esta ventana, los presos veían Venecia por última vez",
+   "hook": "Cuenta la leyenda que los condenados suspiraban al ver la ciudad por última vez desde las rejas del Puente de los Suspiros."
+  },
+  {
+   "headline": "Una ley de 1562 pintó de negro todas las góndolas",
+   "hook": "Los nobles competían por tener la góndola más lujosa, hasta que una ley de 1562 ordenó pintarlas todas de negro."
+  },
+  {
+   "headline": "78 compuertas bajo el mar protegen esta ciudad",
+   "hook": "Desde 2020, el sistema MOSE levanta 78 compuertas desde el fondo del mar para cerrar la laguna en las mareas más altas."
+  },
+  {
+   "headline": "Con máscara, nobles y plebeyos eran iguales",
+   "hook": "Durante el Carnaval, las máscaras dejaban que nobles y plebeyos se mezclaran en el anonimato, borrando las clases sociales."
+  },
+  {
+   "headline": "Una ciudad de 118 islas sin un solo coche",
+   "hook": "Venecia se levanta sobre 118 islas unidas por unos 400 puentes: es la mayor zona urbana sin coches de Europa."
+  }
+ ],
+ "lang": "es"
+}
