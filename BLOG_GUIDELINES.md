@@ -123,19 +123,17 @@ here (decided 2026-09-02).
 Every post connects to the app through **one real walk** — a shared tour in the app that includes the
 post's landmark — plus at most one tip. Three touchpoints, no more:
 
-1. **Walk pointer, right under the byline** (class `walk-pointer`). One line naming the stop:
-   "The Trevi Fountain is stop 2 of a free 6-stop walk through Baroque Rome. See the route ↓", linking
-   to `#walk`. For a City Guide post, "This walk is in the app as a free 6-stop route. See it ↓".
+1. **Walk pointer, right under the byline** (class `walk-pointer`). You write its sentence in the
+   route JSON below and leave the `<!-- WALK-POINTER -->` placeholder; the script builds it.
 2. **One mid-article "P.S." card** (class `ps-note`) written as a **tip, never as a visit**: something
    the reader can do on the spot that pays off the story ("Stand at the left edge and look for the
    tall stone vase. With Urban Tales running, the barber story plays as you reach the fountain.").
    The label reads "Tip". Place it after the most interesting revelation, not at a random break.
 3. **The "Walk this route" card** (`<section class="walk" id="walk">`) at the very end of the
-   article, inside `<article class="post">`. It replaces the old `app-cta` box. It holds: the walk's
-   name, stop count, distance and time (from the app), the numbered stop list with a one-line true
-   hook per stop and the post's own stop marked "This story", an "Open this walk in Urban Tales"
-   button linking to the tour's share page, and both store badges. Copy the exact markup from
-   `blog-trevi-fountain-secret-history.html`.
+   article, inside `<article class="post">`. It replaces the old `app-cta` box. You leave the
+   `<!-- WALK-CARD -->` placeholder and the route JSON; the script builds the card (name, stops with
+   hooks, distance and time from the real tour, "Open this walk" button, store badges). See the Trevi
+   post for what it looks like. Keep the walk CSS from the Trevi template in your post's `<style>`.
 
 **The walk follows the post (decided by Leandro, 2026-10-12).**
 - **City Guide / walking posts** (the post itself walks the reader through stops): the tour is
@@ -145,12 +143,46 @@ post's landmark — plus at most one tip. Three touchpoints, no more:
 - **Hidden Story posts** (one landmark): a short walk (4-6 stops, about 2-3 km) that includes the
   post's landmark, built from the closest well-known sights, in a sensible walking order.
 
-**The walk must be real.** Create it in the app with the official content account ("Urban Tales
-Team", `tours@urbantales.net`, language set to English so the share page's preview is in English),
-make it shareable, and use its share link
-(`https://urbantales.net/tour.html?id=<tour id>&utm_source=blog&utm_campaign=<post slug>`). Stop names,
-order, distance and time come from that tour; never invent a route. If you can't create the tour,
-stop and say so in the PR instead of shipping a placeholder.
+**The walk must be real, and you don't create it yourself (updated 2026-10-12).** Tours are created
+with the official content account ("Urban Tales Team"), whose login only exists on Leandro's Mac. So
+the post-writing session does **not** create the tour. Instead:
+
+1. Under the byline, put exactly `<!-- WALK-POINTER -->` on its own line.
+2. At the very end of `<article class="post">` (where the walk card goes), put exactly
+   `<!-- WALK-CARD -->` on its own line.
+3. Right after it, add the route as JSON, exactly in this shape:
+
+```html
+<script type="application/json" id="walk-spec">
+{
+  "name": "Trevi and the Baroque heart of Rome",
+  "city": "Rome, Italy",
+  "mode": "walk",
+  "story": 2,
+  "pointer": "The Trevi Fountain is stop 2 of a free 6-stop walk through Baroque Rome.",
+  "stops": [
+    {"query": "Spanish Steps", "name": "Spanish Steps", "hook": "Built with French money, named for the Spanish embassy"},
+    {"query": "Trevi Fountain", "name": "Trevi Fountain", "hook": "The aqueduct, the architect and the barber"}
+  ]
+}
+</script>
+```
+
+- `city`: "City, Country", used to look the stops up.
+- `mode`: `"walk"`, or `"transit"` when the stops are too far apart to walk (the card then says "a full
+  day, with metro or taxi between stops").
+- `story`: the 1-based number of the post's own landmark among the stops (Hidden Story posts), or
+  `null` for City Guides.
+- `pointer`: one sentence for the line under the byline, without a link (the link is added for you).
+  City Guides: "This walk is in the app as a free 4-stop route through Asakusa."
+- `stops`: in walking order. `query` is what to search for (the landmark's common name, specific
+  enough to find the right place); `name` is how the card shows it; `hook` is one short, true,
+  well-documented line. City Guides: **exactly the post's stops, in the post's order.**
+
+A script on Leandro's Mac then looks each stop up in the app, checks the matches, creates and shares
+the tour, replaces both placeholders with the pointer and the card, removes the JSON, and pushes the
+result to your PR (usually within the hour). If a stop can't be matched safely it comments on the PR
+instead of guessing. Mention in the PR description that the walk card is pending.
 
 **No star ratings or review counts** anywhere on the blog until the real store ratings back them
 (decided 2026-10-12). No "4.8 rating" lines.
