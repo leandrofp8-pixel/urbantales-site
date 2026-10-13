@@ -5,60 +5,148 @@
   "cta_screenshot": "screen-florence-pontevecchio-map.png",
   "cta_screenshot_is_placeholder": true,
   "cta_screenshot_note": "No screen-venice-*-map.png exists in the repo root yet. Using Florence's Ponte Vecchio screenshot as a placeholder (same country, same 'bridge' theme as fact2) — swap for a real Venice screenshot once one exists.",
-  "photo_sourcing_blocked": true,
-  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org and upload.wikimedia.org (confirmed: curl -> 'CONNECT tunnel failed, response 403'; WebFetch -> DNS/403 failures too). api.github.com resolves fine, so this is a Wikimedia-specific host block, not a general outage. No Pexels key is available either. This is the same block noted on the Chicago (#40), Rio de Janeiro (#46), and Marrakech (#50) draft PRs, which are all still open and unmerged — Prague (#13) hit the identical block but was published anyway after Leandro manually sourced photos post-draft, so that's the known workaround. 'candidates' arrays are empty here; 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access (or manually via Google/Commons web search).",
+  "photo_sourcing_blocked": false,
+  "photo_sourcing_note": "Photos sourced from Wikimedia Commons on the Mac (2026-10-13); see photo-credits.txt.",
   "caption": "Venice's holiest basilica exists because of a barrel of pork 🐷\n\nComment which fact surprised you most before you swipe ⬇️\n\n.\n.\n.\n#Venice #VeniceTravel #HiddenGems #TravelFacts #StMarksBasilica #UrbanTales",
   "facts": [
     {
       "slot": "fact1",
       "headline": "Venice's patron saint arrived hidden in a barrel of pork",
       "body_html": "According to legend, two Venetian merchants smuggled the body of <b>St. Mark the Evangelist</b> out of Alexandria in <b>828 AD</b> by hiding it under a layer of pork and cabbage — Muslim customs inspectors, forbidden from touching pork, let the crates straight through.",
-      "candidates": [],
-      "suggested_queries": ["St Mark's Basilica Venice exterior golden facade", "Basilica San Marco Venice mosaics exterior"]
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Exterior_of_St._Mark%27s_Basilica_14.jpg",
+          "license": "CC0",
+          "artist": "SIG SG 510",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "St Mark's Basilica Venice exterior golden facade",
+        "Basilica San Marco Venice mosaics exterior"
+      ]
     },
     {
       "slot": "fact2",
       "headline": "This bridge's shops were built to pay for it",
       "body_html": "The stone Rialto Bridge, completed in <b>1591</b> after designs by Michelangelo and Palladio were rejected, has <b>rows of shops lining both sides</b> — their rent helped cover the cost of building and maintaining it, a model used since the 1400s.",
-      "candidates": [],
-      "suggested_queries": ["Rialto Bridge Venice shops exterior", "Ponte di Rialto Venice Grand Canal"]
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Rialto_Gondoliers.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Saffron Blaze",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Rialto Bridge Venice shops exterior",
+        "Ponte di Rialto Venice Grand Canal"
+      ]
     },
     {
       "slot": "fact3",
       "headline": "Condemned prisoners took their last look at Venice through this window",
       "body_html": "The enclosed <b>Bridge of Sighs</b>, built around 1600 to link the Doge's Palace to its prison, got its name from the legend that condemned men sighed at their final glimpse of the city through its small stone-grilled windows.",
-      "candidates": [],
-      "suggested_queries": ["Bridge of Sighs Venice exterior canal", "Ponte dei Sospiri Venice close up"]
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Venice_-_The_Bridge_of_Sighs.jpg",
+          "license": "CC BY 2.5",
+          "artist": "Nino Barbieri",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Bridge of Sighs Venice exterior canal",
+        "Ponte dei Sospiri Venice close up"
+      ]
     },
     {
       "slot": "fact4",
       "headline": "A 1562 law is why every gondola in Venice is black",
       "body_html": "Venetian nobles once competed to build the most extravagant gondolas — until a <b>1562 sumptuary law</b> ordered every gondola painted <b>plain black</b> to curb the showing-off. The rule is still followed today.",
-      "candidates": [],
-      "suggested_queries": ["Venice gondolas black canal rows", "Venice gondola Grand Canal black boats"]
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Venice_awakes_(20618763815).jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Benh LIEU SONG (Flickr)",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Venice gondolas black canal rows",
+        "Venice gondola Grand Canal black boats"
+      ]
     },
     {
       "slot": "fact5",
       "headline": "78 underwater gates now hold back the sea for this city",
       "body_html": "Venice sinks a couple of millimeters a year while the sea around it rises — in <b>2020</b>, the city activated <b>MOSE</b>, a system of <b>78 mobile floodgates</b> on the seafloor that rise to seal off the lagoon during high tides, keeping St. Mark's Square dry for the first time in years.",
-      "candidates": [],
-      "suggested_queries": ["Venice acqua alta flooded St Mark's Square", "MOSE flood barrier Venice lagoon"]
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Acqua_Alta_(High_Water),_Venice.jpg",
+          "license": "CC BY 2.0",
+          "artist": "Dimitry B.",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Venice acqua alta flooded St Mark's Square",
+        "MOSE flood barrier Venice lagoon"
+      ]
     },
     {
       "slot": "fact6",
       "headline": "Masks let every Venetian pretend to be equal for one season",
       "body_html": "Venice's Carnival masks trace back centuries and let nobles and commoners mingle <b>anonymously</b>, erasing class lines for the length of the festival — some styles, like the beak-nosed <b>plague doctor mask</b>, started out as protective gear centuries earlier.",
-      "candidates": [],
-      "suggested_queries": ["Venice Carnival masks costume close up", "Venetian Carnival mask gold detail"]
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Maschera_Carnevale_Venezia.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "No machine-readable author provided. Scarantino assumed (based on copyright claims).",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Venice Carnival masks costume close up",
+        "Venetian Carnival mask gold detail"
+      ]
     },
     {
       "slot": "fact7",
       "headline": "This city of 118 islands has no cars at all",
       "body_html": "Venice is built across <b>118 small islands</b> linked by roughly <b>400 bridges</b>, with canals and footpaths standing in for streets — making it <b>Europe's largest car-free urban area</b>.",
-      "candidates": [],
-      "suggested_queries": ["Venice canals aerial islands bridges", "Venice narrow canal footbridge view"]
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Stazione_di_Venezia_Santa_Lucia,_Ponte_della_Libert%C3%A0,_Mestre,_Santa_Maria_Gloriosa_dei_Frari_-_Canal_Grande_Aug_2020_7_(cropped).jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Kasa Fue, photocropper: Ludwig Sebastian Micheler",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Venice canals aerial islands bridges",
+        "Venice narrow canal footbridge view"
+      ]
     }
   ],
-  "cover_candidates": [],
-  "cover_suggested_queries": ["Venice Grand Canal aerial skyline", "Venice canals aerial view sunset"]
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Canal_Grande_Chiesa_della_Salute_e_Dogana_dal_ponte_dell_Accademia.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "This Photo was taken by Wolfgang Moroder.  \n\nFeel free to use my photos, but please mention me as the author and send me",
+      "note": "chosen"
+    }
+  ],
+  "cover_suggested_queries": [
+    "Venice Grand Canal aerial skyline",
+    "Venice canals aerial view sunset"
+  ]
 }
