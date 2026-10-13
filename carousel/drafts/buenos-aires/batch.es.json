@@ -1,0 +1,39 @@
+{
+ "badge_num": 18,
+ "city": "BUENOS AIRES",
+ "flag": "🇦🇷",
+ "cta_screenshot": "screen-buenosaires-caminito-map.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Buenos Aires no conocías? Comenta el número 👇\n\n1. Plaza de Mayo\nDesde 1977, las Madres de Plaza de Mayo dan vueltas a esta plaza con pañuelos blancos y fotos de sus hijos desaparecidos durante la dictadura militar. La marcha empezó cuando las reuniones públicas estaban prohibidas, y se sigue haciendo cada jueves.\n\n2. Cementerio de la Recoleta\nSegún una de las leyendas más conocidas de Buenos Aires, Rufina Cambaceres, de 19 años, se desvaneció y fue declarada muerta en 1902, y la enterraron en el Cementerio de la Recoleta. Días después encontraron su ataúd movido y arañado, como si hubiera despertado dentro tras un ataque de catalepsia.\n\n3. Caminito\nCaminito era un ramal ferroviario abandonado hasta que el pintor Benito Quinquela Martín impulsó en 1959 convertirlo en una calle museo al aire libre. Sus colores imitan las viejas casas de chapa de La Boca, que los estibadores inmigrantes pintaban con la pintura de barco que sobraba.\n\n4. Palacio Barolo\nEl Palacio Barolo, terminado en 1923, está organizado como la Divina Comedia de Dante: el infierno en el sótano y la planta baja, el purgatorio en el medio y el cielo arriba. Sus 100 metros de altura coinciden con los 100 cantos del poema.\n\n5. Casa Rosada\nUna historia popular dice que la Casa Rosada debe su color a un truco del siglo XIX: mezclar sangre de vaca con la cal para proteger los muros de la humedad. El balcón desde el que Eva Perón le hablaba a la multitud sigue mirando a la Plaza de Mayo.\n\n6. La Bombonera\nEl estadio de Boca Juniors se apoda La Bombonera. Según la historia, al arquitecto Viktor Sulčič le regalaron una caja de bombones y vio en ella la forma cerrada y empinada del estadio que estaba diseñando.\n\n7. San Telmo\nEl tango nació a finales del siglo XIX en los barrios inmigrantes de Buenos Aires, como San Telmo y La Boca, y la clase alta lo consideraba indecente. Solo se volvió respetable en casa después de convertirse en furor en París, hacia 1913.\n\n.\n.\n.\n#BuenosAires #Argentina #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "Cada jueves, unas madres siguen marchando en esta plaza",
+   "hook": "Desde 1977, las Madres de Plaza de Mayo caminan esta plaza con pañuelos blancos por los hijos desaparecidos en la dictadura."
+  },
+  {
+   "headline": "Dice la leyenda que una joven despertó en su ataúd aquí",
+   "hook": "Según la leyenda, Rufina Cambaceres, de 19 años, fue enterrada viva en la Recoleta en 1902 y despertó dentro de su ataúd."
+  },
+  {
+   "headline": "Los colores de esta calle salieron de pintura de barco",
+   "hook": "El pintor Benito Quinquela Martín convirtió un viejo ramal de tren en Caminito, con los colores de las casas pintadas con sobras de pintura naval."
+  },
+  {
+   "headline": "Un edificio diseñado como un mapa de la Divina Comedia",
+   "hook": "Los pisos del Palacio Barolo siguen la Divina Comedia de Dante, del infierno abajo al cielo arriba, y mide 100 metros: uno por canto."
+  },
+  {
+   "headline": "El rosa de este palacio podría venir de sangre de vaca",
+   "hook": "Una historia popular dice que el rosa de la Casa Rosada salió de mezclar sangre de vaca en la cal para protegerla de la humedad."
+  },
+  {
+   "headline": "Este estadio lleva el nombre de una caja de bombones",
+   "hook": "El estadio de Boca se llama La Bombonera porque su arquitecto vio su forma en una caja de bombones."
+  },
+  {
+   "headline": "El tango era un escándalo hasta que París lo aprobó",
+   "hook": "El tango nació en los barrios humildes de Buenos Aires, y la élite lo despreció hasta que se puso de moda en París."
+  }
+ ],
+ "lang": "es"
+}

@@ -23,10 +23,14 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 14 | Marrakech |
 | 16 | Bangkok |
 | 17 | Venice |
+| 18 | Buenos Aires |
+| 19 | Lisbon |
+| 20 | Chicago |
+| 21 | Rio de Janeiro |
 
 ## Next batch
 
-**#18 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#22 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
 

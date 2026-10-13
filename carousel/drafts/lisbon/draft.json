@@ -1,0 +1,179 @@
+{
+  "badge_num": 19,
+  "city": "LISBON",
+  "flag": "🇵🇹",
+  "cta_screenshot": "screen-lisbon-belem-map.png",
+  "photo_sourcing_blocked": false,
+  "caption": "Which of these 7 Lisbon secrets didn't you know? Comment the number 👇\n\n1. Belém Tower\nBuilt in the 1510s to guard the Tagus, Belém Tower later doubled as a state prison: until 1830, opponents of the crown were held in its lower vaults, in cells said to flood at high tide.\n\n2. Jerónimos Monastery\nKing Manuel I funded the monastery with the Vintena da Pimenta, a 5% levy on trade arriving from Africa and the East along the sea route Vasco da Gama had opened, often estimated at around 70 kg of gold a year.\n\n3. 1755 Earthquake\nOn the morning of All Saints' Day 1755, three tremors in about ten minutes shook Lisbon while churches were full for Mass. The quake, tsunami and fires that followed killed an estimated 30,000-40,000 people; the arch and square in the photo were built as part of the rebuilt downtown.\n\n4. Carmo Convent\nThe 1755 earthquake brought down Carmo Convent's stone roof. Rebuilding started but was never finished, and the roofless Gothic nave was kept as a memorial to the quake; today it houses an archaeological museum.\n\n5. Santa Justa Lift\nThe Santa Justa Lift is often credited to Gustave Eiffel, but it was designed by Raoul Mesnier du Ponsard, an engineer born in Porto to French parents. Opened in 1902, its neo-Gothic iron tower still carries riders up from downtown to the Carmo area.\n\n6. 25 de Abril Bridge\nThis suspension bridge over the Tagus opened in 1966 as the Salazar Bridge, named after Portugal's dictator. It was renamed 25 de Abril after the Carnation Revolution of 25 April 1974 ended his regime.\n\n7. Cristo Rei\nLisbon's cardinal dreamed up the statue after seeing Rio's Christ the Redeemer in 1934. In 1940 Portugal's bishops vowed to build it if the country was spared from World War II; it opened in 1959, facing Lisbon from across the river in Almada.\n\n.\n.\n.\n#Lisbon #Portugal #TravelFacts #HiddenGems #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Its prison cells were said to flood at high tide",
+      "body_html": "Built in the 1510s to guard the Tagus, Belém Tower later doubled as a <b>state prison</b>: until 1830, opponents of the crown were held in its lower vaults, in cells said to <b>flood at high tide</b>.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Torre_Bel%C3%A9m_April_2009-4a.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Alvesgaspar",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Belem Tower Lisbon Tagus river exterior",
+        "Torre de Belem Lisbon close up turret"
+      ],
+      "hook": "Until 1830, Belém Tower's lower vaults held political prisoners, in cells said to flood at every high tide.",
+      "headline_es": "Sus celdas, según se cuenta, se inundaban con la marea",
+      "body_es": "Construida en la década de 1510 para vigilar el río Tajo, la Torre de Belém también sirvió como prisión de Estado: hasta 1830, los opositores a la corona eran encerrados en sus sótanos, en celdas que, según se cuenta, se inundaban con la marea alta.",
+      "hook_es": "Hasta 1830, la Torre de Belém fue prisión política, con celdas que, según se cuenta, se inundaban con la marea."
+    },
+    {
+      "slot": "fact2",
+      "headline": "A 5% tax on the spice route paid for this monastery",
+      "body_html": "King Manuel I funded the monastery with the <b>Vintena da Pimenta</b>, a <b>5% levy</b> on trade arriving from Africa and the East along the sea route Vasco da Gama had opened, often estimated at around 70 kg of gold a year.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m_-_Lisbon_-_Portugal_-_03.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "NorbertNagel",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Jeronimos Monastery Lisbon facade",
+        "Jeronimos Monastery cloister interior Lisbon"
+      ],
+      "hook": "Jerónimos Monastery was paid for by a 5% tax on trade from Portugal's new sea routes to Africa and Asia.",
+      "headline_es": "Un impuesto del 5% a la ruta de las especias pagó este monasterio",
+      "body_es": "El rey Manuel I financió el monasterio con la \"Vintena da Pimenta\", un impuesto del 5% al comercio que llegaba de África y Oriente por la ruta marítima que abrió Vasco da Gama, calculado a menudo en unos 70 kilos de oro al año.",
+      "hook_es": "El Monasterio de los Jerónimos se pagó con un impuesto del 5% al comercio marítimo con África y Asia."
+    },
+    {
+      "slot": "fact3",
+      "headline": "This earthquake hit while the whole city was in church",
+      "body_html": "On the morning of All Saints' Day 1755, three tremors in about ten minutes shook Lisbon while churches were full for Mass. The quake, tsunami and fires that followed killed an estimated <b>30,000-40,000 people</b>; the arch and square in the photo were built as part of the rebuilt downtown.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Arco_Triunfal_da_Rua_Augusta,_Plaza_del_Comercio,_Lisboa,_Portugal,_2012-05-12,_DD_02.JPG",
+          "license": "CC BY-SA 3.0",
+          "artist": "Diego Delso",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Lisbon 1755 earthquake illustration",
+        "Baixa Lisbon downtown grid streets aerial"
+      ],
+      "hook": "On All Saints' Day 1755, an earthquake hit as churches filled for Mass, killing an estimated 30,000-40,000 people in Lisbon.",
+      "headline_es": "Este terremoto llegó con toda la ciudad en misa",
+      "body_es": "La mañana del Día de Todos los Santos de 1755, tres sacudidas en unos diez minutos golpearon Lisboa con las iglesias llenas para la misa. El terremoto, el tsunami y los incendios que siguieron mataron a unas 30 mil a 40 mil personas; el arco y la plaza de la foto se levantaron durante la reconstrucción del centro.",
+      "hook_es": "En 1755, un terremoto arrasó Lisboa durante la misa de Todos los Santos: murieron entre 30 mil y 40 mil."
+    },
+    {
+      "slot": "fact4",
+      "headline": "This church has had no roof for over 270 years",
+      "body_html": "The 1755 earthquake brought down Carmo Convent's stone roof. Rebuilding started but was never finished, and the roofless Gothic nave was kept as a <b>memorial to the quake</b>; today it houses an archaeological museum.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Convento_do_Carmo_ruins_in_Lisbon.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Chris Adams",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Carmo Convent ruins Lisbon roofless nave",
+        "Convento do Carmo Lisbon Gothic arches sky"
+      ],
+      "hook": "The 1755 earthquake brought down Carmo Convent's roof, and its Gothic arches have stood open to the sky ever since.",
+      "headline_es": "Esta iglesia lleva más de 270 años sin techo",
+      "body_es": "El terremoto de 1755 derribó el techo de piedra del Convento do Carmo. La reconstrucción empezó pero nunca se terminó, y la nave gótica sin techo se conservó como memorial del terremoto; hoy alberga un museo arqueológico.",
+      "hook_es": "El terremoto de 1755 derribó el techo del Convento do Carmo, y sus arcos góticos siguen abiertos al cielo."
+    },
+    {
+      "slot": "fact5",
+      "headline": "Everyone credits Eiffel, but he didn't design it",
+      "body_html": "The Santa Justa Lift is often credited to Gustave Eiffel, but it was designed by <b>Raoul Mesnier du Ponsard</b>, an engineer born in Porto to French parents. Opened in <b>1902</b>, its neo-Gothic iron tower still carries riders up from downtown to the Carmo area.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Elevador_de_Santa_Justa,_Lisboa,_Portugal,_2022-07-24,_DD_06.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Diego Delso",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Santa Justa Lift Lisbon elevator street view",
+        "Elevador de Santa Justa Lisbon top platform"
+      ],
+      "hook": "Often credited to Eiffel, Lisbon's 1902 Santa Justa Lift was designed by Porto-born engineer Raoul Mesnier du Ponsard.",
+      "headline_es": "Todos se lo atribuyen a Eiffel, pero no lo diseñó él",
+      "body_es": "El Elevador de Santa Justa suele atribuirse a Gustave Eiffel, pero lo diseñó Raoul Mesnier du Ponsard, un ingeniero nacido en Oporto de padres franceses. Inaugurado en 1902, su torre de hierro neogótica todavía sube a los pasajeros del centro hasta la zona del Carmo.",
+      "hook_es": "Suele atribuirse a Eiffel, pero el Elevador de Santa Justa lo diseñó Raoul Mesnier du Ponsard, nacido en Oporto."
+    },
+    {
+      "slot": "fact6",
+      "headline": "This bridge only got its current name after a revolution",
+      "body_html": "This suspension bridge over the Tagus opened in 1966 as the <b>Salazar Bridge</b>, named after Portugal's dictator. It was renamed <b>25 de Abril</b> after the Carnation Revolution of 25 April 1974 ended his regime.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:View_of_Ponte_25_de_Abril_from_the_Tagus_River,_20250604_1928_9520.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Jakub Hałun",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "25 de Abril Bridge Lisbon Tagus river",
+        "Ponte 25 de Abril Lisbon suspension towers"
+      ],
+      "hook": "Opened in 1966 as Salazar Bridge, it took the revolution's date, 25 de Abril, after his regime fell in 1974.",
+      "headline_es": "Este puente cambió de nombre tras una revolución",
+      "body_es": "Este puente colgante sobre el Tajo se inauguró en 1966 como Puente Salazar, en honor al dictador de Portugal. Tras la Revolución de los Claveles del 25 de abril de 1974, que acabó con su régimen, pasó a llamarse 25 de Abril.",
+      "hook_es": "Se inauguró en 1966 como Puente Salazar y, al caer su régimen en 1974, pasó a llamarse 25 de Abril."
+    },
+    {
+      "slot": "fact7",
+      "headline": "A promise to stay out of World War II built this statue",
+      "body_html": "Lisbon's cardinal dreamed up the statue after seeing Rio's Christ the Redeemer in 1934. In 1940 Portugal's bishops vowed to build it if the country was <b>spared from World War II</b>; it opened in <b>1959</b>, facing Lisbon from across the river in Almada.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Cristo_Rei,_Lisboa,_Portugal,_2012-05-12,_DD_02.JPG",
+          "license": "CC BY-SA 3.0",
+          "artist": "Diego Delso",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Cristo Rei statue Almada Lisbon river view",
+        "Cristo Rei Lisbon pedestal base"
+      ],
+      "hook": "In 1940, Portugal's bishops vowed to build Cristo Rei if the country stayed out of World War II.",
+      "headline_es": "Una promesa para salvarse de la guerra levantó esta estatua",
+      "body_es": "El cardenal de Lisboa imaginó la estatua tras ver el Cristo Redentor de Río en 1934. En 1940 los obispos portugueses prometieron construirla si el país se libraba de la Segunda Guerra Mundial; se inauguró en 1959, mirando a Lisboa desde Almada, al otro lado del río.",
+      "hook_es": "En 1940 los obispos portugueses prometieron construir el Cristo Rei si el país se libraba de la Segunda Guerra Mundial."
+    }
+  ],
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alfama,_Lisbon_(DSC03371).jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Matti Blume",
+      "note": "chosen"
+    }
+  ],
+  "cover_suggested_queries": [
+    "Lisbon skyline aerial Tagus river Alfama",
+    "Lisbon rooftops tram sunset"
+  ],
+  "style": "minimal",
+  "caption_es": "¿Cuál de estos 7 secretos de Lisboa no conocías? Comenta el número 👇\n\n1. Torre de Belém\nConstruida en la década de 1510 para vigilar el río Tajo, la Torre de Belém también sirvió como prisión de Estado: hasta 1830, los opositores a la corona eran encerrados en sus sótanos, en celdas que, según se cuenta, se inundaban con la marea alta.\n\n2. Monasterio de los Jerónimos\nEl rey Manuel I financió el monasterio con la \"Vintena da Pimenta\", un impuesto del 5% al comercio que llegaba de África y Oriente por la ruta marítima que abrió Vasco da Gama, calculado a menudo en unos 70 kilos de oro al año.\n\n3. Terremoto de 1755\nLa mañana del Día de Todos los Santos de 1755, tres sacudidas en unos diez minutos golpearon Lisboa con las iglesias llenas para la misa. El terremoto, el tsunami y los incendios que siguieron mataron a unas 30 mil a 40 mil personas; el arco y la plaza de la foto se levantaron durante la reconstrucción del centro.\n\n4. Convento do Carmo\nEl terremoto de 1755 derribó el techo de piedra del Convento do Carmo. La reconstrucción empezó pero nunca se terminó, y la nave gótica sin techo se conservó como memorial del terremoto; hoy alberga un museo arqueológico.\n\n5. Elevador de Santa Justa\nEl Elevador de Santa Justa suele atribuirse a Gustave Eiffel, pero lo diseñó Raoul Mesnier du Ponsard, un ingeniero nacido en Oporto de padres franceses. Inaugurado en 1902, su torre de hierro neogótica todavía sube a los pasajeros del centro hasta la zona del Carmo.\n\n6. Puente 25 de Abril\nEste puente colgante sobre el Tajo se inauguró en 1966 como Puente Salazar, en honor al dictador de Portugal. Tras la Revolución de los Claveles del 25 de abril de 1974, que acabó con su régimen, pasó a llamarse 25 de Abril.\n\n7. Cristo Rei\nEl cardenal de Lisboa imaginó la estatua tras ver el Cristo Redentor de Río en 1934. En 1940 los obispos portugueses prometieron construirla si el país se libraba de la Segunda Guerra Mundial; se inauguró en 1959, mirando a Lisboa desde Almada, al otro lado del río.\n\n.\n.\n.\n#Lisboa #Portugal #DatosCuriosos #Viajes #UrbanTales"
+}

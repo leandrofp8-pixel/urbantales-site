@@ -1,0 +1,39 @@
+{
+ "badge_num": 21,
+ "city": "RÍO DE JANEIRO",
+ "flag": "🇧🇷",
+ "cta_screenshot": "screen-rio-corcovado-map.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Río no conocías? Comenta el número 👇\n\n1. Cristo Redentor\nEl Cristo Redentor, inaugurado en 1931, lo diseñó el escultor francés Paul Landowski, y su rostro lo hizo el rumano Gheorghe Leonida. En la cima del Corcovado, le caen rayos varias veces al año; uno de 2014 le dañó un pulgar y un dedo.\n\n2. Teleférico del Pan de Azúcar\nEl teleférico del Pan de Azúcar sube visitantes desde 1912: fue el primero de Brasil y uno de los primeros teleféricos de pasajeros del mundo. A medio camino, en el Morro da Urca, todavía hay que cambiar de cabina.\n\n3. Arcos de Lapa\nLos 42 arcos de los Arcos de Lapa se terminaron en 1750 como acueducto para llevar agua potable al centro de Río. Desde 1896 llevan otra cosa: el tranvía de Santa Teresa, que todavía cruza por encima.\n\n4. Escalera Selarón\nEl artista chileno Jorge Selarón pasó más de 20 años cubriendo 215 escalones cerca de Lapa con más de 2 mil azulejos de más de 60 países, y lo pagaba vendiendo sus cuadros. Fue encontrado muerto en su escalera en 2013.\n\n5. Maracaná\nLa final del Mundial de 1950 en el Maracaná tuvo 173,850 espectadores pagantes oficiales; contando a quienes entraron sin boleto, se calcula que hubo unos 200 mil. Sigue siendo el mayor público de un partido de Mundial, y Brasil perdió contra Uruguay.\n\n6. Bosque de Tijuca\nEl Bosque de Tijuca se taló para plantaciones de café hasta que puso en riesgo el agua de Río. Desde 1861 se replantó a mano, con unos 100 mil árboles en 13 años. Hoy es uno de los bosques urbanos más grandes del mundo.\n\n7. Sambódromo\nOscar Niemeyer, el arquitecto de Brasilia, diseñó el Sambódromo, la avenida construida para los desfiles de las escuelas de samba. Se levantó en unos cuatro meses y abrió para el Carnaval de 1984.\n\n.\n.\n.\n#RioDeJaneiro #Brasil #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "Los rayos le caen a esta estatua varias veces al año",
+   "hook": "Al Cristo Redentor le caen rayos varias veces al año, y en 2014 uno le dañó un dedo."
+  },
+  {
+   "headline": "Uno de los primeros teleféricos del mundo sube esta roca",
+   "hook": "El teleférico del Pan de Azúcar abrió en 1912: el primero de Brasil y uno de los primeros teleféricos de pasajeros del mundo."
+  },
+  {
+   "headline": "Esto no es un puente, es un viejo acueducto",
+   "hook": "Los 42 arcos de Lapa se construyeron en el siglo XVIII para llevar agua a Río, y desde 1896 un tranvía cruza por encima."
+  },
+  {
+   "headline": "Un artista pasó más de 20 años cubriendo esta escalera",
+   "hook": "El artista Jorge Selarón cubrió 215 escalones con más de 2 mil azulejos de más de 60 países, pagándolo con la venta de sus cuadros."
+  },
+  {
+   "headline": "Aquí estuvo el público más grande de la historia de los Mundiales",
+   "hook": "La final del Mundial de 1950 en el Maracaná tuvo 173,850 pagantes, y con todos los que entraron se calcula que hubo unos 200 mil."
+  },
+  {
+   "headline": "Esta selva se replantó a mano",
+   "hook": "El Bosque de Tijuca se taló para sembrar café y se replantó a mano desde 1861: unos 100 mil árboles en 13 años."
+  },
+  {
+   "headline": "El arquitecto de Brasilia diseñó la pasarela del Carnaval",
+   "hook": "Oscar Niemeyer, el arquitecto de Brasilia, diseñó el Sambódromo, que se construyó en unos cuatro meses y abrió en 1984."
+  }
+ ],
+ "lang": "es"
+}

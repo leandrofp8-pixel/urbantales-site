@@ -1,0 +1,9 @@
+Photos: Wikimedia Commons
+cover: Matti Blume — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Alfama,_Lisbon_(DSC03371).jpg
+fact1: Alvesgaspar — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Torre_Bel%C3%A9m_April_2009-4a.jpg
+fact2: NorbertNagel — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m_-_Lisbon_-_Portugal_-_03.jpg
+fact3: Diego Delso — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Arco_Triunfal_da_Rua_Augusta,_Plaza_del_Comercio,_Lisboa,_Portugal,_2012-05-12,_DD_02.JPG
+fact4: Chris Adams — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Convento_do_Carmo_ruins_in_Lisbon.jpg
+fact5: Diego Delso — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Elevador_de_Santa_Justa,_Lisboa,_Portugal,_2022-07-24,_DD_06.jpg
+fact6: Jakub Hałun — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:View_of_Ponte_25_de_Abril_from_the_Tagus_River,_20250604_1928_9520.jpg
+fact7: Diego Delso — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Cristo_Rei,_Lisboa,_Portugal,_2012-05-12,_DD_02.JPG

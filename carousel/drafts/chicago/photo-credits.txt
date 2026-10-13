@@ -1,0 +1,9 @@
+Photos: Wikimedia Commons
+cover: Diego Delso — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Skyline_de_Chicago_desde_el_centro,_Illinois,_Estados_Unidos,_2012-10-20,_DD_06.jpg
+fact1: Sea Cow — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Buckingham_Fountain_Oct_2022.jpg
+fact2: NorbertNagel — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Chicago_River_and_Wrigley_Building_-_03.jpg
+fact3: Ken Lund from Reno, Nevada, USA — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:The_Ledge,_Willis_Tower_Skydeck,_Chicago,_Illinois_(43391737671).jpg
+fact4: TonyTheTiger — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:201200801_Wrigley_Field_scoreboard_(cropped).JPG
+fact5: NorbertNagel — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Marina_City_and_State_Street_Bridge_at_blue_hour,_Chicago.jpg
+fact6: J. Crocker — Public domain — https://commons.wikimedia.org/wiki/File:2004-09-07_1800x2400_chicago_picasso.jpg
+fact7: Acediscovery — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Chicago-Water-Tower-September-2014.jpg

@@ -1,0 +1,38 @@
+{
+ "badge_num": 19,
+ "flag": "🇵🇹",
+ "cta_screenshot": "screen-lisbon-belem-map.png",
+ "style": "minimal",
+ "city": "LISBON",
+ "caption": "Which of these 7 Lisbon secrets didn't you know? Comment the number 👇\n\n1. Belém Tower\nBuilt in the 1510s to guard the Tagus, Belém Tower later doubled as a state prison: until 1830, opponents of the crown were held in its lower vaults, in cells said to flood at high tide.\n\n2. Jerónimos Monastery\nKing Manuel I funded the monastery with the Vintena da Pimenta, a 5% levy on trade arriving from Africa and the East along the sea route Vasco da Gama had opened, often estimated at around 70 kg of gold a year.\n\n3. 1755 Earthquake\nOn the morning of All Saints' Day 1755, three tremors in about ten minutes shook Lisbon while churches were full for Mass. The quake, tsunami and fires that followed killed an estimated 30,000-40,000 people; the arch and square in the photo were built as part of the rebuilt downtown.\n\n4. Carmo Convent\nThe 1755 earthquake brought down Carmo Convent's stone roof. Rebuilding started but was never finished, and the roofless Gothic nave was kept as a memorial to the quake; today it houses an archaeological museum.\n\n5. Santa Justa Lift\nThe Santa Justa Lift is often credited to Gustave Eiffel, but it was designed by Raoul Mesnier du Ponsard, an engineer born in Porto to French parents. Opened in 1902, its neo-Gothic iron tower still carries riders up from downtown to the Carmo area.\n\n6. 25 de Abril Bridge\nThis suspension bridge over the Tagus opened in 1966 as the Salazar Bridge, named after Portugal's dictator. It was renamed 25 de Abril after the Carnation Revolution of 25 April 1974 ended his regime.\n\n7. Cristo Rei\nLisbon's cardinal dreamed up the statue after seeing Rio's Christ the Redeemer in 1934. In 1940 Portugal's bishops vowed to build it if the country was spared from World War II; it opened in 1959, facing Lisbon from across the river in Almada.\n\n.\n.\n.\n#Lisbon #Portugal #TravelFacts #HiddenGems #UrbanTales",
+ "facts": [
+  {
+   "headline": "Its prison cells were said to flood at high tide",
+   "hook": "Until 1830, Belém Tower's lower vaults held political prisoners, in cells said to flood at every high tide."
+  },
+  {
+   "headline": "A 5% tax on the spice route paid for this monastery",
+   "hook": "Jerónimos Monastery was paid for by a 5% tax on trade from Portugal's new sea routes to Africa and Asia."
+  },
+  {
+   "headline": "This earthquake hit while the whole city was in church",
+   "hook": "On All Saints' Day 1755, an earthquake hit as churches filled for Mass, killing an estimated 30,000-40,000 people in Lisbon."
+  },
+  {
+   "headline": "This church has had no roof for over 270 years",
+   "hook": "The 1755 earthquake brought down Carmo Convent's roof, and its Gothic arches have stood open to the sky ever since."
+  },
+  {
+   "headline": "Everyone credits Eiffel, but he didn't design it",
+   "hook": "Often credited to Eiffel, Lisbon's 1902 Santa Justa Lift was designed by Porto-born engineer Raoul Mesnier du Ponsard."
+  },
+  {
+   "headline": "This bridge only got its current name after a revolution",
+   "hook": "Opened in 1966 as Salazar Bridge, it took the revolution's date, 25 de Abril, after his regime fell in 1974."
+  },
+  {
+   "headline": "A promise to stay out of World War II built this statue",
+   "hook": "In 1940, Portugal's bishops vowed to build Cristo Rei if the country stayed out of World War II."
+  }
+ ]
+}
