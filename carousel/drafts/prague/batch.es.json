@@ -1,0 +1,39 @@
+{
+ "badge_num": 13,
+ "city": "PRAGA",
+ "flag": "🇨🇿",
+ "cta_screenshot": "screen-prague-oldtown-map.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Praga no conocías? Comenta el número 👇\n\n1. Reloj Astronómico\nSegún la leyenda, la ciudad mandó cegar al relojero Hanuš en cuanto terminó la esfera del Reloj Astronómico en 1490, para que nunca construyera otro. Él respondió metiendo la mano en el mecanismo y saboteándolo; dicen que estuvo descompuesto durante décadas.\n\n2. Puente de Carlos\nLa leyenda cuenta que Carlos IV mandó mezclar huevos en la argamasa del Puente de Carlos, cuya construcción empezó en 1357 en un momento elegido por un astrólogo. Un análisis de laboratorio de 2008 encontró restos de proteína de huevo en la argamasa original, aunque un estudio de 2010 lo puso en duda.\n\n3. Castillo de Praga\nGuinness reconoce al Castillo de Praga como el complejo de castillo antiguo más grande del mundo: su núcleo ocupa unos 70 mil metros cuadrados, el tamaño de unas siete canchas de futbol.\n\n4. Casa Danzante\nEl arquitecto Frank Gehry diseñó este edificio de oficinas de 1996 para que pareciera una pareja bailando, y lo apodó \"Fred y Ginger\" por Fred Astaire y Ginger Rogers. Se levantó en un terreno junto al río que estaba vacío desde un bombardeo de 1945.\n\n5. Muro de John Lennon\nTras la muerte de John Lennon en 1980, la policía secreta de Praga cubrió una y otra vez los grafitis en su honor, pero cada noche aparecían nuevos, hasta que la Revolución de Terciopelo de 1989 dejó el muro en paz para siempre.\n\n6. Antiguo Cementerio Judío\nEl antiguo barrio judío de Praga tenía tan poco espacio que, cuando el Antiguo Cementerio Judío se llenó, simplemente se añadió más tierra encima. Hoy hay hasta 12 capas de entierros bajo unas 12 mil lápidas visibles.\n\n7. Torre de Televisión de Žižkov\nEn 2000, el artista David Černý colocó en la Torre de Televisión de Žižkov 10 bebés gigantes de fibra de vidrio con códigos de barras en lugar de cara. Iban a ser temporales, pero gustaron tanto que siguen trepando por ella.\n\n.\n.\n.\n#Praga #RepublicaCheca #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "La leyenda dice que Praga cegó a quien hizo este reloj",
+   "hook": "Según la leyenda, el relojero Hanuš fue cegado al terminar el Reloj Astronómico en 1490, y él mismo lo saboteó en venganza."
+  },
+  {
+   "headline": "Encontraron huevo de verdad en la argamasa de este puente",
+   "hook": "La leyenda dice que se mezclaron huevos en la argamasa del Puente de Carlos en 1357, y un análisis de 2008 encontró proteína de huevo."
+  },
+  {
+   "headline": "El complejo de castillo antiguo más grande del mundo",
+   "hook": "Guinness reconoce al Castillo de Praga como el mayor complejo de castillo antiguo del mundo: unas siete canchas de futbol."
+  },
+  {
+   "headline": "Un edificio con nombre de pareja de baile de Hollywood",
+   "hook": "Frank Gehry diseñó este edificio de 1996 como dos bailarines en pleno movimiento y lo apodó \"Fred y Ginger\"."
+  },
+  {
+   "headline": "La policía secreta no logró borrar este muro",
+   "hook": "Tras la muerte de Lennon en 1980, la policía secreta pintaba este muro una y otra vez, pero el arte volvía cada noche hasta 1989."
+  },
+  {
+   "headline": "Aquí hay tumbas apiladas hasta 12 capas",
+   "hook": "Sin espacio, el Antiguo Cementerio Judío añadió tierra encima: hay hasta 12 capas de entierros bajo unas 12 mil lápidas."
+  },
+  {
+   "headline": "Diez bebés gigantes trepan por esta torre",
+   "hook": "En 2000, David Černý instaló 10 bebés gigantes con códigos de barras por cara en esta torre: eran temporales y nunca se fueron."
+  }
+ ],
+ "lang": "es"
+}

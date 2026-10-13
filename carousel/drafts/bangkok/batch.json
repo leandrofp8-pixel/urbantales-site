@@ -1,0 +1,38 @@
+{
+ "badge_num": 16,
+ "city": "BANGKOK",
+ "flag": "🇹🇭",
+ "cta_screenshot": "screen-bangkok-watarun-map.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Bangkok secrets didn't you know? Comment the number 👇\n\n1. Wat Arun\nWat Arun's 70-meter spire is covered in millions of pieces of broken Chinese porcelain: plates and bowls that trading ships used as ballast and threw away on reaching port. Craftsmen pressed them into floral patterns, and the mosaic is still repaired by hand today.\n\n2. Wat Pho\nIn the 1830s, King Rama III had Wat Pho's walls inscribed with everything from medicine to astrology, reasoning that books burn but stone doesn't. The temple is also the birthplace of traditional Thai massage, still taught there today.\n\n3. Emerald Buddha\nThe Emerald Buddha, Thailand's most sacred object, changes its robe with each season (cool, hot and rainy) in a ceremony led by the king or a member of the royal family. Despite its name, it's carved from jade, not emerald.\n\n4. Bangkok's real name\nBangkok's full ceremonial name, Krung Thep Mahanakhon..., runs to 168 letters and is recognized by Guinness as the longest place name on Earth. Thais almost never use it; they say Krung Thep. 'Bangkok' comes from an old village named after a kind of wild plum.\n\n5. A sinking city\nBangkok is built on soft clay, only about one and a half meters above sea level on average. Groundwater pumping made it sink up to 10 centimeters a year in the 1970s. Pumping limits slowed it, but some districts are still dropping today.\n\n6. Chatuchak Market\nChatuchak covers about 14 hectares and packs thousands of stalls into 27 sections, making it one of the largest markets on the planet, with more than 200,000 visitors every weekend. It began as a 1940s government plan to give every province a market.\n\n7. The khlongs\n19th-century visitors called Bangkok the 'Venice of the East': in 1855, three-quarters of its people lived on boats or in stilt houses along the khlongs (canals). Most were later paved over, but floating markets still run on the ones that remain.\n\n.\n.\n.\n#Bangkok #Thailand #TravelFacts #HiddenGems #UrbanTales",
+ "facts": [
+  {
+   "headline": "This temple's spire is made of broken plates",
+   "hook": "Wat Arun's 70-meter spire is covered in millions of pieces of Chinese porcelain that arrived as ships' ballast."
+  },
+  {
+   "headline": "A king turned these walls into an encyclopedia",
+   "hook": "In the 1830s, King Rama III had Wat Pho's walls inscribed with the knowledge of his time, from medicine to astrology."
+  },
+  {
+   "headline": "Only royalty may dress this statue",
+   "hook": "Three times a year, in a ceremony led by the king, the Emerald Buddha's robe is changed. It isn't made of emerald."
+  },
+  {
+   "headline": "This city's real name has 168 letters",
+   "hook": "Bangkok's full ceremonial name, Krung Thep Mahanakhon..., is the world's longest place name according to Guinness."
+  },
+  {
+   "headline": "This city is sinking centimeter by centimeter",
+   "hook": "Built on soft clay, Bangkok sank up to 10 cm a year in the 1970s because of groundwater pumping."
+  },
+  {
+   "headline": "200,000 people pass through here every weekend",
+   "hook": "Chatuchak packs thousands of stalls into 27 sections and draws more than 200,000 visitors every weekend."
+  },
+  {
+   "headline": "Bangkok used to have canals instead of roads",
+   "hook": "19th-century visitors called it the 'Venice of the East': in 1855, three in four residents lived on boats or over the water."
+  }
+ ]
+}
