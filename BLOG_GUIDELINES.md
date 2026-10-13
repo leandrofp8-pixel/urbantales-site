@@ -137,8 +137,17 @@ post's landmark — plus at most one tip. Three touchpoints, no more:
    button linking to the tour's share page, and both store badges. Copy the exact markup from
    `blog-trevi-fountain-secret-history.html`.
 
+**The walk follows the post (decided by Leandro, 2026-10-12).**
+- **City Guide / walking posts** (the post itself walks the reader through stops): the tour is
+  **exactly the post's path**: the same stops, in the same order, nothing added or skipped. If the
+  post's route has a stop the app can't find, fix the post or the stop, never quietly change the
+  route.
+- **Hidden Story posts** (one landmark): a short walk (4-6 stops, about 2-3 km) that includes the
+  post's landmark, built from the closest well-known sights, in a sensible walking order.
+
 **The walk must be real.** Create it in the app with the official content account ("Urban Tales
-Team", `tours@urbantales.net`), make it shareable, and use its share link
+Team", `tours@urbantales.net`, language set to English so the share page's preview is in English),
+make it shareable, and use its share link
 (`https://urbantales.net/tour.html?id=<tour id>&utm_source=blog&utm_campaign=<post slug>`). Stop names,
 order, distance and time come from that tour; never invent a route. If you can't create the tour,
 stop and say so in the PR instead of shipping a placeholder.
