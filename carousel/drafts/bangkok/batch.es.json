@@ -1,0 +1,39 @@
+{
+ "badge_num": 16,
+ "city": "BANGKOK",
+ "flag": "🇹🇭",
+ "cta_screenshot": "screen-bangkok-watarun-map.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Bangkok no conocías? Comenta el número 👇\n\n1. Wat Arun\nLa torre de 70 metros de Wat Arun está cubierta de millones de trozos de porcelana china rota: platos y tazones que los barcos mercantes usaban como lastre y desechaban al llegar al puerto. Los artesanos los colocaron formando flores, y el mosaico se sigue reparando a mano hoy.\n\n2. Wat Pho\nEn la década de 1830, el rey Rama III mandó inscribir en los muros de Wat Pho todo tipo de conocimientos, de la medicina a la astrología, porque los libros se queman y la piedra no. El templo también es la cuna del masaje tailandés tradicional, que todavía se enseña allí.\n\n3. Buda de Esmeralda\nEl Buda de Esmeralda, el objeto más sagrado de Tailandia, cambia de manto con cada estación (fresca, calurosa y de lluvias) en una ceremonia que encabeza el rey o un miembro de la familia real. Y a pesar de su nombre, no está hecho de esmeralda, sino de jade.\n\n4. El verdadero nombre de Bangkok\nEl nombre ceremonial completo de Bangkok, Krung Thep Mahanakhon..., tiene 168 letras y Guinness lo reconoce como el nombre de lugar más largo del mundo. Los tailandeses casi nunca lo usan: dicen Krung Thep. Y 'Bangkok' viene de un antiguo pueblo cuyo nombre hacía referencia a unas ciruelas silvestres.\n\n5. Una ciudad que se hunde\nBangkok está construida sobre arcilla blanda, apenas un metro y medio sobre el nivel del mar en promedio. Por la extracción de agua subterránea, llegó a hundirse hasta 10 centímetros al año en los 70. Las restricciones al bombeo lo frenaron, pero algunas zonas siguen bajando hoy.\n\n6. Mercado de Chatuchak\nChatuchak ocupa unas 14 hectáreas y reúne miles de puestos en 27 secciones: es uno de los mercados más grandes del planeta, con más de 200 mil visitantes cada fin de semana. Nació en los años 40 de un plan del gobierno para tener un mercado en cada provincia.\n\n7. Los khlongs\nLos viajeros del siglo XIX llamaban a Bangkok 'la Venecia de Oriente': en 1855, tres cuartas partes de la población vivía en barcos o en casas sobre pilotes junto a los khlongs (canales). La mayoría se pavimentó después, pero en los que quedan siguen funcionando mercados flotantes.\n\n.\n.\n.\n#Bangkok #Tailandia #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "La torre de este templo está hecha de platos rotos",
+   "hook": "La torre de 70 metros de Wat Arun está cubierta de millones de trozos de porcelana china que llegaba como lastre en los barcos."
+  },
+  {
+   "headline": "Un rey convirtió estos muros en una enciclopedia",
+   "hook": "En la década de 1830, el rey Rama III mandó grabar en los muros de Wat Pho el saber de su época, de la medicina a la astrología."
+  },
+  {
+   "headline": "Solo la realeza puede vestir a esta estatua",
+   "hook": "Tres veces al año, en una ceremonia que encabeza el rey, cambian el manto del Buda de Esmeralda... que no es de esmeralda."
+  },
+  {
+   "headline": "El nombre real de esta ciudad tiene 168 letras",
+   "hook": "El nombre ceremonial completo de Bangkok, Krung Thep Mahanakhon..., es el nombre de lugar más largo del mundo según Guinness."
+  },
+  {
+   "headline": "Esta ciudad se hunde centímetro a centímetro",
+   "hook": "Construida sobre arcilla blanda, Bangkok llegó a hundirse hasta 10 cm al año en los 70 por la extracción de agua subterránea."
+  },
+  {
+   "headline": "Más de 200 mil personas pasan por aquí cada fin de semana",
+   "hook": "Chatuchak reúne miles de puestos en 27 secciones y recibe más de 200 mil visitantes cada fin de semana."
+  },
+  {
+   "headline": "Bangkok tenía canales en lugar de calles",
+   "hook": "En el siglo XIX la llamaban 'la Venecia de Oriente': en 1855, tres de cada cuatro habitantes vivían en barcos o casas sobre el agua."
+  }
+ ],
+ "lang": "es"
+}
