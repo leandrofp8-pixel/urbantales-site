@@ -10,9 +10,10 @@ For a batch with "lang": "es" it posts the slide-*.es.png set. Caption comes fro
 
 Instagram's API can't attach music: add it in the app after publishing.
 """
-import sys, os, json, time, urllib.request, urllib.parse
+import sys, os, json, time, urllib.request, urllib.parse, urllib.error
 
-GRAPH = "https://graph.facebook.com/v21.0"
+# Tokens from "Instagram API with Instagram Login" use graph.instagram.com; Facebook-Page tokens use graph.facebook.com.
+GRAPH = os.environ.get("IG_GRAPH", "https://graph.instagram.com/v21.0")
 BASE = "https://urbantales.net/carousel/drafts"
 SLIDES = ["1-cover"] + [f"{i+1}-fact{i}" for i in range(1, 8)] + ["9-cta"]
 
