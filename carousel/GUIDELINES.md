@@ -26,19 +26,18 @@ Every batch needs an Instagram caption too, not just the 9 slides. Write one and
 app CTA already lives on slide 9; the caption's only job is to make someone stop and comment.
 Two lines, then hashtags — nothing else:
 
-1. **Hook** — one short, slightly provocative line built around the single most surprising fact
-   from the set (usually the same one that makes the best cover-slide teaser). Withhold the
-   answer — "hiding something 99% of visitors never notice," not "here's what's hiding." The
-   curiosity gap is the whole point; do not resolve it in the caption.
-2. **Comment bait** — one line, a direct prompt to comment, almost always a guess/reaction
-   question tied to the hook ("Comment which one shocked you most 👇", "Comment your guess before
-   you swipe ⬇️"). Never "double tap if you agree," never "link in bio" (that's the last slide's
-   job, not the caption's).
-3. **Hashtag block** — a line of three dots on their own (`.`) repeated 3 times (standard IG
-   spacing convention to push hashtags below the fold), then ONE line of 6-8 hashtags: the city
-   (`#Paris`), a city+travel tag (`#ParisTravel`), 2-3 niche/interest tags (`#HiddenGems`,
-   `#TravelFacts`), one landmark-specific tag tied to the hook fact (`#NotreDame`), and
-   `#UrbanTales`. Never more than 8 — a wall of tags reads as spam, not reach.
+1. **Lead line = a comment prompt, 90 characters max (TikTok limit, decided 2026-10-13).** TikTok
+   uses the caption's first line as the post title and cuts it at 90 characters, so the first
+   line is not a summary: it's a direct question that makes people comment, tied to the most
+   surprising fact and withholding the answer ("¿Cuál de estos 7 secretos de Berlín no
+   conocías? 👇", "Which of these 7 would you have walked right past? 👇"). Count the characters.
+   Never "double tap if you agree," never "link in bio" (that's the last slide's job).
+2. **Optional hook line** — one short line that opens the curiosity gap without resolving it.
+3. **Hashtag block** — a line of three dots on their own (`.`) repeated 3 times (pushes hashtags
+   below the fold), then ONE line of **at most 5 hashtags** (TikTok allows 5; use the same 5 on
+   Instagram): the city (`#Paris`), the country or a travel tag (`#Francia` / `#ParisTravel`), one
+   niche/interest tag (`#DatosCuriosos`), one landmark tag tied to the hook fact (`#NotreDame`),
+   and `#UrbanTales`. The TikTok draft script refuses captions with a longer lead or more tags.
 
 Total caption (excluding hashtags) should read in under 3 seconds. If it takes a beat to parse,
 cut it down. See `carousel/drafts/paris/caption.md` for a full worked example.

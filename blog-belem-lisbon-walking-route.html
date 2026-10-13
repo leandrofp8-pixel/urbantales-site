@@ -131,6 +131,33 @@
     .store-badge strong { display: block; font-size: 13px; font-weight: 700; line-height: 1.3; }
     @media (max-width: 560px) { .app-cta { padding: 30px 26px; text-align: center; justify-content: center; } .app-cta-badges { justify-content: center; } .app-cta-rating { justify-content: center; } }
 
+    .walk-pointer { display: flex; align-items: center; gap: 10px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); background: var(--card); border: 1px dashed var(--rule); border-radius: 8px; padding: 10px 14px; margin: -8px 0 32px; }
+    .walk-pointer .pin { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--orange); color: #fff8f0; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+    .walk-pointer a { color: var(--orange-deep); font-weight: 600; text-underline-offset: 3px; }
+
+    .walk { margin: 48px 0 0; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; box-shadow: 0 18px 40px -28px rgba(91,60,30,.45); }
+    .walk-head { padding: 26px 26px 18px; background: linear-gradient(155deg, #f6e2d3 0%, var(--paper2) 70%); border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; }
+    .walk-label { font-family: var(--font-hand); font-size: 24px; line-height: 1; color: var(--stamp); }
+    .walk-head h3 { font-family: var(--font-serif); font-size: clamp(22px, 3.6vw, 27px); line-height: 1.2; text-wrap: balance; color: var(--ink); }
+    .walk-facts { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13.5px; color: var(--ink-soft); }
+    .walk-facts span { white-space: nowrap; }
+    .walk-facts b { color: var(--ink); font-weight: 600; }
+    .stops { list-style: none; padding: 18px 26px 6px; display: flex; flex-direction: column; }
+    .stop { display: grid; grid-template-columns: 30px 1fr; gap: 0 14px; position: relative; padding-bottom: 14px; }
+    .stop:not(:last-child)::before { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; border-left: 2px dotted var(--rule); }
+    .stop .n { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--orange); color: var(--orange-deep); background: var(--card); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; position: relative; z-index: 1; }
+    .stop .name { font-weight: 600; font-size: 16px; line-height: 1.35; padding-top: 4px; color: var(--ink); }
+    .stop .hook { font-size: 14px; color: var(--ink-faint); line-height: 1.45; }
+    .stop.here .n { background: var(--orange); color: #fff8f0; }
+    .stop.here .tag { display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); background: #f6e2d3; border-radius: 999px; padding: 1px 8px; vertical-align: 2px; }
+    .walk-actions { padding: 8px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+    .open-walk { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--orange); color: #fff8f0; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 20px; border-radius: 8px; transition: background .2s; }
+    .open-walk:hover { background: var(--orange-deep); }
+    .open-walk img { width: 26px; height: 26px; border-radius: 7px; }
+    article.post p.walk-sub { font-size: 13.5px; color: var(--ink-faint); opacity: 1; text-align: center; line-height: 1.5; margin: 0; }
+    .walk .app-cta-badges { justify-content: center; margin-top: 0; }
+    @media (max-width: 480px) { .walk-head, .stops, .walk-actions { padding-left: 18px; padding-right: 18px; } }
+
     .article-footer { max-width: 660px; margin: 0 auto; padding: 0 48px 80px; }
     .share-row { display: flex; align-items: center; gap: 14px; padding: 26px 0; border-top: 1px solid var(--rule); }
     .share-row span { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
@@ -178,15 +205,20 @@
     </div>
   </div>
 
+  <div class="walk-pointer">
+    <span class="pin">→</span>
+    <span>This walk is in the app as a free 4-stop route through Belém. <a href="#walk">See it ↓</a></span>
+  </div>
+
   <p class="lede">Pastéis de Belém sells more than 20,000 custard tarts on an average day, and the fastest way into the building has nothing to do with the line coiled out the door.</p>
 
   <p>That line is for a table. There's a second, shorter counter around the side for takeaway, and locals use it constantly — most visitors never notice it's there. It's the kind of detail that decides whether your morning in <a href="https://urbantales.net/lisbon.html">Belém</a> is forty minutes of standing around or a few unhurried hours actually looking at things. The neighborhood sits about 6km west of central Lisbon, an easy tram ride or a flat riverside walk, and it holds three of the city's biggest sights within ten minutes of each other on foot. Get the order wrong, or show up too late in the morning, and you'll spend the day in queues instead of looking up.</p>
 
   <h2>The tower that used to sit in the middle of a river</h2>
-  <p>We got to Belém Tower at 9:15, sure that counted as early. A cruise group was already posing on the ramparts. The tower was built between 1515 and 1521 to guard the mouth of the Tagus, and for more than two centuries it genuinely stood surrounded by water, reachable only by boat. The 1755 earthquake shifted enough sediment downriver that the shoreline crept out to meet it, and it's sat on dry land ever since — most people photographing it have no idea they're looking at a beached fortress. Look up at the loggia facing the water and you'll find a small stone rhinoceros carved into the stonework, modeled on a live rhino gifted to King Manuel I in 1515.</p>
+  <p>Don't assume 9:15 counts as early at Belém Tower: cruise groups often arrive first. The tower was built between 1515 and 1521 to guard the mouth of the Tagus, and for more than two centuries it genuinely stood surrounded by water, reachable only by boat. The 1755 earthquake shifted enough sediment downriver that the shoreline crept out to meet it, and it's sat on dry land ever since — most people photographing it have no idea they're looking at a beached fortress. Look up at the loggia facing the water and you'll find a small stone rhinoceros carved into the stonework, modeled on a live rhino gifted to King Manuel I in 1515.</p>
 
   <h2>A compass on the ground, and a queue that isn't worth the euros</h2>
-  <p>Ten minutes east along the river is the Padrão dos Descobrimentos, a monument shaped like a ship's prow, built in 1960 for the 500th anniversary of Henry the Navigator's death. Set into the pavement in front of it is a large marble compass rose and world map, a gift from South Africa — worth walking onto and looking down at more than the monument itself. There's an elevator to a viewing platform near the top; we skipped it after watching the line barely move for ten minutes, and from what we could see over the railing, the rooftops don't look meaningfully different from up there than they do from the pavement.</p>
+  <p>Ten minutes east along the river is the Padrão dos Descobrimentos, a monument shaped like a ship's prow, built in 1960 for the 500th anniversary of Henry the Navigator's death. Set into the pavement in front of it is a large marble compass rose and world map, a gift from South Africa — worth walking onto and looking down at more than the monument itself. There's an elevator to a viewing platform near the top; if the line is long, skip it, since the compass rose is best seen right where you're standing.</p>
 
   <h2>The monastery a spice tax built</h2>
   <p>Jerónimos Monastery is next, and it's the one stop worth planning ahead for. The church is free to enter, but the ticket everyone lines up for is the cloisters — a two-story Manueline courtyard so dense with carved stone rope and coral that it barely looks load-bearing. King Manuel I paid for it almost entirely with a 5% tax on spices arriving from the East, back when pepper moved through Lisbon's port the way oil moves through a modern one. Vasco da Gama is buried inside, near the entrance most people walk straight past on their way to the courtyard. Book the timed cloisters ticket online the night before — walking up without one in high season can mean standing in the sun for close to an hour just to buy what you could have gotten on your phone at breakfast.</p>
@@ -194,8 +226,8 @@
   <div class="ps-note">
     <div class="ps-icon">✎</div>
     <div class="ps-text">
-      <span class="ps-label">P.S.</span>
-      <p>We had <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> narrating the rhino carving story while we stood underneath it at the tower — worth the detour of actually looking up instead of just photographing the outline from the ramp.</p>
+      <span class="ps-label">Tip</span>
+      <p>At Belém Tower, look up at the west side: a small carved rhinoceros sits under one of the watchtowers. With <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> running, its story plays as you reach the tower, so you know where to look instead of photographing the outline from the ramp.</p>
     </div>
     <a href="https://urbantales.net/index.html" class="btn small">Try it free</a>
   </div>
@@ -205,13 +237,21 @@
 
   <p>None of this is complicated once you know the order: tower first, compass rose on the way past, monastery before midday, tarts last. It just isn't obvious walking in cold, which is most of why the lines exist in the first place.</p>
 
-  <div class="app-cta">
-    <img src="icon.png" alt="Urban Tales" class="app-cta-icon" style="object-fit:cover;">
-    <div class="app-cta-body">
-      <p class="app-cta-eyebrow">Heading to Lisbon?</p>
-      <h3>Let Belém's stories find you as you walk</h3>
-      <p>Urban Tales plays hidden history like the tower's rhino and the monastery's spice tax automatically as you approach each landmark — Lisbon, and everywhere else. No booking, no group.</p>
-      <div class="app-cta-rating"><span class="stars">★★★★★</span> 4.8 rating · Free to start</div>
+  <section class="walk" id="walk" aria-labelledby="walk-title">
+    <div class="walk-head">
+      <span class="walk-label">Walk this route</span>
+      <h3 id="walk-title">Belém by the river</h3>
+      <div class="walk-facts"><span><b>4 stops</b></span><span><b>2.7 km</b></span><span>about <b>35 min</b> of walking, plus time at each stop</span><span>a story at every stop</span></div>
+    </div>
+    <ol class="stops">
+      <li class="stop"><span class="n">1</span><div><div class="name">Belém Tower</div><div class="hook">Built to stand in the river; the 1755 earthquake moved the shore</div></div></li>
+      <li class="stop"><span class="n">2</span><div><div class="name">Monument to the Discoveries</div><div class="hook">The ship's prow, and the compass rose set into the pavement</div></div></li>
+      <li class="stop"><span class="n">3</span><div><div class="name">Jerónimos Monastery</div><div class="hook">Paid for with a 5% tax on the spice trade</div></div></li>
+      <li class="stop"><span class="n">4</span><div><div class="name">Pastéis de Belém</div><div class="hook">Custard tarts from a recipe the monks sold in the 1830s</div></div></li>
+    </ol>
+    <div class="walk-actions">
+      <a class="open-walk" href="https://urbantales.net/tour.html?id=6acd849205c75287826fdd82&amp;utm_source=blog&amp;utm_campaign=belem-lisbon-walking-route"><img src="icon.png" alt="">Open this walk in Urban Tales</a>
+      <p class="walk-sub">Free to start. No app yet? The link opens the walk's page with a story preview and download links.</p>
       <div class="app-cta-badges">
         <a href="https://apps.apple.com/app/id6760130598" class="store-badge">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -223,7 +263,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </section>
 </article>
 
 <div class="article-footer">

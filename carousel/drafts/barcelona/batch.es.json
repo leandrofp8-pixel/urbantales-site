@@ -1,0 +1,39 @@
+{
+  "badge_num": 9,
+  "city": "BARCELONA",
+  "flag": "🇪🇸",
+  "cta_screenshot": "screen-barcelona-sagrada-map.png",
+  "style": "minimal",
+  "caption": "Esos \"agujeros de bala\" de una plaza del casco antiguo de Barcelona no son de balas, y durante décadas se contó otra historia sobre ellos. 👀\n\nComenta cuál te sorprendió más antes de deslizar ⬇️\n\n1. Sagrada Familia\nLa torre central de la Sagrada Familia, la de Jesucristo, alcanzó en 2026 sus 172.5 metros, 144 años después de empezar las obras. Gaudí la diseñó a propósito un poco más baja que la montaña de Montjuïc: su obra nunca debía superar a la de Dios.\n\n2. Park Güell\nLa famosa salamandra de trencadís de Gaudí está hecha de azulejos y vidrios rotos, y además funciona como desagüe: es la salida de rebose de una enorme cisterna escondida bajo la plaza principal del parque.\n\n3. Casa Batlló\nLa Casa Batlló es un homenaje a Sant Jordi, patrón de Cataluña: el tejado de escamas es el lomo del dragón, las columnas con forma de hueso y los balcones con forma de calavera son sus víctimas, y la cruz de la azotea es la lanza del santo clavada en su espalda.\n\n4. Plaça de Sant Felip Neri\nDurante décadas, el franquismo sostuvo que las marcas de las paredes de esta plaza eran de fusilamientos. En realidad son de un bombardeo aéreo de 1938 que mató a 42 personas, muchas de ellas niños refugiados en la iglesia.\n\n5. Barrio Gótico\nBajo el Barrio Gótico, el Museo de Historia de Barcelona conserva calles y talleres reales de Barcino, la colonia romana fundada aquí hace 2,000 años: lavanderías y depósitos de vino siguen ahí, bajo tierra.\n\n6. La Barceloneta\nLa playa de la Barceloneta que ves hoy se rehízo para los Juegos Olímpicos de 1992: se trajo arena, se derribaron los chiringuitos de la orilla y se transformó por completo un frente marítimo industrial.\n\n7. Palau de la Música Catalana\nEl Palau de la Música Catalana se ilumina con una gran claraboya de vitral en forma de sol, y presume de ser el único auditorio de Europa iluminado de día solo con luz natural. Es precioso… y no le hace ningún favor a la acústica.\n\n.\n.\n.\n#Barcelona #España #LugaresSecretos #DatosCuriosos #SagradaFamilia #BarrioGotico #UrbanTales",
+  "facts": [
+    {
+      "headline": "Gaudí se aseguró de no superar a Dios",
+      "hook": "La torre central de la Sagrada Familia se completó en 2026, 144 años después, a propósito más baja que la montaña de Montjuïc."
+    },
+    {
+      "headline": "El dragón de mosaico del Park Güell es fontanería",
+      "hook": "La salamandra de mosaico de Gaudí en el Park Güell es en realidad un desagüe: la salida de una enorme cisterna bajo la plaza."
+    },
+    {
+      "headline": "Los balcones-calavera cuentan una leyenda",
+      "hook": "La Casa Batlló cuenta la leyenda de Sant Jordi: el tejado es el lomo del dragón y la cruz, la lanza clavada en su espalda."
+    },
+    {
+      "headline": "Esos \"agujeros de bala\" son cicatrices de bombas",
+      "hook": "El franquismo atribuyó estas marcas a fusilamientos, pero son de un bombardeo de 1938 que mató a 42 personas, muchas de ellas niños."
+    },
+    {
+      "headline": "Bajo estas calles hay una ciudad romana",
+      "hook": "Bajo el Barrio Gótico está Barcino, la colonia romana fundada hace 2,000 años, con lavanderías y depósitos de vino bajo tierra."
+    },
+    {
+      "headline": "Su playa más famosa se rehízo hace 35 años",
+      "hook": "La Barceloneta que ves hoy se rehízo para los Juegos de 1992: se trajo arena y se transformó un frente marítimo industrial."
+    },
+    {
+      "headline": "Un auditorio que funciona con luz del sol",
+      "hook": "El Palau de la Música se ilumina de día solo con una claraboya de vitral en forma de sol: precioso, pero no ayuda a la acústica."
+    }
+  ],
+  "lang": "es"
+}

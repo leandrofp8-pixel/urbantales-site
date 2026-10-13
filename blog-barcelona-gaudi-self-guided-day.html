@@ -131,6 +131,33 @@
     .store-badge strong { display: block; font-size: 13px; font-weight: 700; line-height: 1.3; }
     @media (max-width: 560px) { .app-cta { padding: 30px 26px; text-align: center; justify-content: center; } .app-cta-badges { justify-content: center; } .app-cta-rating { justify-content: center; } }
 
+    .walk-pointer { display: flex; align-items: center; gap: 10px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); background: var(--card); border: 1px dashed var(--rule); border-radius: 8px; padding: 10px 14px; margin: -8px 0 32px; }
+    .walk-pointer .pin { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--orange); color: #fff8f0; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+    .walk-pointer a { color: var(--orange-deep); font-weight: 600; text-underline-offset: 3px; }
+
+    .walk { margin: 48px 0 0; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; box-shadow: 0 18px 40px -28px rgba(91,60,30,.45); }
+    .walk-head { padding: 26px 26px 18px; background: linear-gradient(155deg, #f6e2d3 0%, var(--paper2) 70%); border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; }
+    .walk-label { font-family: var(--font-hand); font-size: 24px; line-height: 1; color: var(--stamp); }
+    .walk-head h3 { font-family: var(--font-serif); font-size: clamp(22px, 3.6vw, 27px); line-height: 1.2; text-wrap: balance; color: var(--ink); }
+    .walk-facts { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13.5px; color: var(--ink-soft); }
+    .walk-facts span { white-space: nowrap; }
+    .walk-facts b { color: var(--ink); font-weight: 600; }
+    .stops { list-style: none; padding: 18px 26px 6px; display: flex; flex-direction: column; }
+    .stop { display: grid; grid-template-columns: 30px 1fr; gap: 0 14px; position: relative; padding-bottom: 14px; }
+    .stop:not(:last-child)::before { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; border-left: 2px dotted var(--rule); }
+    .stop .n { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--orange); color: var(--orange-deep); background: var(--card); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; position: relative; z-index: 1; }
+    .stop .name { font-weight: 600; font-size: 16px; line-height: 1.35; padding-top: 4px; color: var(--ink); }
+    .stop .hook { font-size: 14px; color: var(--ink-faint); line-height: 1.45; }
+    .stop.here .n { background: var(--orange); color: #fff8f0; }
+    .stop.here .tag { display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); background: #f6e2d3; border-radius: 999px; padding: 1px 8px; vertical-align: 2px; }
+    .walk-actions { padding: 8px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+    .open-walk { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--orange); color: #fff8f0; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 20px; border-radius: 8px; transition: background .2s; }
+    .open-walk:hover { background: var(--orange-deep); }
+    .open-walk img { width: 26px; height: 26px; border-radius: 7px; }
+    article.post p.walk-sub { font-size: 13.5px; color: var(--ink-faint); opacity: 1; text-align: center; line-height: 1.5; margin: 0; }
+    .walk .app-cta-badges { justify-content: center; margin-top: 0; }
+    @media (max-width: 480px) { .walk-head, .stops, .walk-actions { padding-left: 18px; padding-right: 18px; } }
+
     .article-footer { max-width: 660px; margin: 0 auto; padding: 0 48px 80px; }
     .share-row { display: flex; align-items: center; gap: 14px; padding: 26px 0; border-top: 1px solid var(--rule); }
     .share-row span { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
@@ -178,12 +205,17 @@
     </div>
   </div>
 
+  <div class="walk-pointer">
+    <span class="pin">→</span>
+    <span>This route is in the app as a free 3-stop Gaudí day. <a href="#walk">See it ↓</a></span>
+  </div>
+
   <p class="lede">Park Güell only ever sold two of its planned sixty building plots — and Antoni Gaudí bought one of them himself, because nobody else would.</p>
 
   <p>That failure is the reason the park exists at all: the developer gave up, the city bought the land, and today it's one leg of a self-guided Gaudí day in <a href="https://urbantales.net/barcelona.html">Barcelona</a> that actually works if you walk it in the right order — Park Güell in the morning, Sagrada Família at midday, Casa Batlló once the light starts turning gold on Passeig de Gràcia.</p>
 
   <h2>Park Güell, before the hill fills up</h2>
-  <p>We booked the first entry slot we could find online, assuming that meant we'd have the place close to ourselves. A school group beat us to the gate by about ten minutes and moved through the Monumental Zone in one loud wave, so once they'd passed on toward the market hall, we still had the mosaic terrace mostly to ourselves. Eusebi Güell hired Gaudí in 1900 to lay out a gated estate of sixty houses here, with winding paths, the tiled dragon fountain, and a hypostyle hall holding up the terrace above. By 1914 exactly two of those sixty plots had sold. One buyer was Gaudí, who moved into the show house and lived there for almost twenty years — it's now the Gaudí House Museum, and it's usually far emptier than the terrace everyone photographs above it.</p>
+  <p>Book the first entry slot online, and don't panic if a school group gets to the gate first: groups tend to move through the Monumental Zone in one loud wave, and once they've passed toward the market hall, the mosaic terrace quiets down again. Eusebi Güell hired Gaudí in 1900 to lay out a gated estate of sixty houses here, with winding paths, the tiled dragon fountain, and a hypostyle hall holding up the terrace above. By 1914 exactly two of those sixty plots had sold. One buyer was Gaudí, who moved into the show house and lived there for almost twenty years — it's now the Gaudí House Museum, and it's usually far emptier than the terrace everyone photographs above it.</p>
 
   <h2>Sagrada Família, still not finished</h2>
   <p>From the park it's a short taxi ride or a couple of metro changes down to Sagrada Família, under construction since 1883 and due, after everything, to finally finish this year. Gaudí spent his last sixteen years living in a workshop inside the crypt, working on nothing else. In 1926 he was hit by a tram on his way to confession, and dressed so plainly that the people who reached him first assumed he was a beggar and didn't call for help right away. He died three days later, decades before the building he'd spend his life on was anywhere near done. Book the timed entry a few days ahead — turning up without one, even at midday on an ordinary Tuesday, means joining a line that barely moves for over an hour.</p>
@@ -191,8 +223,8 @@
   <div class="ps-note">
     <div class="ps-icon">✎</div>
     <div class="ps-text">
-      <span class="ps-label">P.S.</span>
-      <p>We had <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> narrating the tram accident right outside the entrance gate where Gaudí was found — hearing it standing at the actual doors he never lived to see finished hits very differently than reading it later.</p>
+      <span class="ps-label">Tip</span>
+      <p>Book the first Park Güell slot of the day and go straight to the mosaic terrace before the groups arrive. At Sagrada Família, find the Passion façade on the west side: it looks nothing like the Nativity side. With <a href="https://urbantales.net/index.html" class="inline-link">Urban Tales</a> running, the story of Gaudí's last day plays as you reach the doors he never saw finished.</p>
     </div>
     <a href="https://urbantales.net/index.html" class="btn small">Try it free</a>
   </div>
@@ -202,13 +234,20 @@
 
   <p>None of these three needs the other two to be worth seeing on its own. But walking them in this order — hill first, unfinished cathedral at midday, dragon roof at dusk — turns the day into a walk downhill through a hundred years of one architect's arguments with what a building is supposed to look like, instead of backtracking across the city for whichever one you saved for last.</p>
 
-  <div class="app-cta">
-    <img src="icon.png" alt="Urban Tales" class="app-cta-icon" style="object-fit:cover;">
-    <div class="app-cta-body">
-      <p class="app-cta-eyebrow">Heading to Barcelona?</p>
-      <h3>Let Gaudí's buildings narrate themselves as you walk</h3>
-      <p>Urban Tales plays stories like the failed housing estate behind Park Güell and the tram that killed Gaudí automatically as you approach each building — Barcelona, and everywhere else. No booking, no group.</p>
-      <div class="app-cta-rating"><span class="stars">★★★★★</span> 4.8 rating · Free to start</div>
+  <section class="walk" id="walk" aria-labelledby="walk-title">
+    <div class="walk-head">
+      <span class="walk-label">Follow this route</span>
+      <h3 id="walk-title">A Gaudí day in Barcelona</h3>
+      <div class="walk-facts"><span><b>3 stops</b></span><span>a full day, with metro or taxi between stops</span><span>a story at every stop</span></div>
+    </div>
+    <ol class="stops">
+      <li class="stop"><span class="n">1</span><div><div class="name">Park Güell</div><div class="hook">A planned housing estate where only two houses were ever built</div></div></li>
+      <li class="stop"><span class="n">2</span><div><div class="name">Sagrada Família</div><div class="hook">Under construction since 1883; Gaudí lived in its workshop</div></div></li>
+      <li class="stop"><span class="n">3</span><div><div class="name">Casa Batlló</div><div class="hook">An ordinary 1877 block rebuilt with a dragon on its roof</div></div></li>
+    </ol>
+    <div class="walk-actions">
+      <a class="open-walk" href="https://urbantales.net/tour.html?id=6acd849105c75287826fdd81&amp;utm_source=blog&amp;utm_campaign=barcelona-gaudi-self-guided-day"><img src="icon.png" alt="">Open this route in Urban Tales</a>
+      <p class="walk-sub">Free to start. No app yet? The link opens the route's page with a story preview and download links.</p>
       <div class="app-cta-badges">
         <a href="https://apps.apple.com/app/id6760130598" class="store-badge">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -220,7 +259,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </section>
 </article>
 
 <div class="article-footer">
