@@ -6,7 +6,7 @@
    - Apple: needs the provider token (App Store Connect > Analytics > Campaigns > "pt=..."); until it's set,
      Apple links are left as they are. Google Play: utm referrer, shown in Play Console > Acquisition. */
 (function () {
-  var APPLE_PROVIDER_TOKEN = '';  // e.g. '123456789'
+  var APPLE_PROVIDER_TOKEN = '128624357';
   function source() {
     try {
       var q = new URLSearchParams(location.search).get('src');
