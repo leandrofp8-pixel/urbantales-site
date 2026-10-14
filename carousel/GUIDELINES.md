@@ -25,12 +25,11 @@ set, because TikTok only accepts JPEG/WebP photos. Once the PR is merged, the pu
 Leandro's Mac posts the English set to Instagram and sends the Spanish set to the TikTok inbox on
 the posting schedule (Tue/Thu/Sat 18:00 Mexico City). Nobody posts by hand.
 
-## Pick a city that has an app screenshot (added 2026-10-14)
+## The last slide's app screenshot (updated 2026-10-14)
 
-The last slide shows a real Urban Tales map screenshot of the same city, and there is no way to make one
-from this session. So the next city must be one with a `screen-{city}-*-map.png` in the repo root (run
-`ls screen-*-map.png`) that isn't in the Published list of `topics.md` yet. If every such city is taken,
-open the PR anyway with the city you'd pick and say in the description that it needs a screenshot.
+Any city can be next. For the last slide, use the city's own map screenshot if one exists in the repo
+root (`ls screen-*-map.png`); otherwise use the generic one, `screen-generic-narration-style.png` (the
+app's "how would you like your stories told?" screen, no city on it). Never use another city's map.
 
 ## Voice — this is not the blog
 
