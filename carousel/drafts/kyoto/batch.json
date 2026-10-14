@@ -1,0 +1,38 @@
+{
+ "badge_num": 23,
+ "flag": "🇯🇵",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "KYOTO",
+ "caption": "Which of these 7 Kyoto secrets didn't you know? Comment the number 👇\n\n1. Fushimi Inari Shrine\nFushimi Inari's famous orange tunnel is built from more than 10,000 torii gates, each one donated by a person or company. The donor's name and the date of the gift are carved into the back of every gate.\n\n2. Kinkaku-ji (Golden Pavilion)\nIn 1950, a 22-year-old novice monk burned Kinkaku-ji to the ground, destroying a building more than 500 years old. It was rebuilt in 1955 as a close copy of the original, and its top two floors are covered in real gold leaf.\n\n3. Kiyomizu-dera\nKiyomizu-dera's wooden stage stands 13 meters above the hillside, held up by interlocking joints with no nails. In the Edo period, people jumped off it believing that surviving would grant a wish. Temple records count 234 jumps, and about 85% of the jumpers survived.\n\n4. Nijo Castle\nThe corridors of Nijo Castle's Ninomaru Palace have \"nightingale floors\" that chirp with every step. Legend says they were an alarm so no ninja could sneak up on the shogun. The castle's own sign says the sound comes from nails rubbing against metal clamps as the boards wore over the centuries.\n\n5. Ginkaku-ji (Silver Pavilion)\nDespite its name, a 2007 survey found no trace of silver on Ginkaku-ji. Whether the shogun who built it ran out of money or never planned any, its wooden exterior has stayed bare for over 500 years.\n\n6. Arashiyama Bamboo Grove\nThe wind moving through Arashiyama's towering bamboo is one of Japan's \"100 Soundscapes\", a list the government drew up of everyday sounds worth noticing and preserving.\n\n7. Gion\nGion's traditional ochaya teahouses still follow ichigensan okotowari, \"no first-timers\": without a personal introduction from an existing client, no amount of money will get you a seat.\n\n.\n.\n.\n#Kyoto #Japan #HiddenGems #FushimiInari #UrbanTales",
+ "facts": [
+  {
+   "headline": "Every one of these gates was paid for by a stranger",
+   "hook": "Fushimi Inari's orange tunnel is made of over 10,000 donated torii gates, each carved with its donor's name."
+  },
+  {
+   "headline": "A monk burned this temple down — then it rose from the ashes",
+   "hook": "In 1950 a 22-year-old monk burned Kinkaku-ji down; its 1955 rebuild has real gold leaf on the top two floors."
+  },
+  {
+   "headline": "People jumped off this 13-meter stage to make a wish",
+   "hook": "Edo-era people jumped off Kiyomizu-dera's 13-meter stage hoping for a wish; temple records say about 85% survived."
+  },
+  {
+   "headline": "The floors in this palace chirp like birds",
+   "hook": "Nijo Castle's floors chirp like birds with every step; legend says they were a built-in alarm against ninjas."
+  },
+  {
+   "headline": "The 'Silver Pavilion' has never worn a speck of silver",
+   "hook": "Ginkaku-ji is nicknamed the Silver Pavilion, yet a 2007 survey found no trace of silver on it."
+  },
+  {
+   "headline": "This forest's sound is on an official list of Japan's treasures",
+   "hook": "The wind rustling through Arashiyama's bamboo is on Japan's official list of 100 soundscapes worth preserving."
+  },
+  {
+   "headline": "You can't just walk into these teahouses — even with cash",
+   "hook": "Gion's traditional teahouses turn away first-timers: without an introduction from a regular, no amount of money gets you in."
+  }
+ ]
+}
