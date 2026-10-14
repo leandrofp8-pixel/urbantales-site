@@ -1,0 +1,117 @@
+{
+  "badge_num": 22,
+  "city": "KYOTO",
+  "flag": "🇯🇵",
+  "cta_screenshot": "screen-tokyo-sensoji-map.png",
+  "cta_screenshot_note": "No Kyoto-specific app screenshot exists in the repo root yet (only screen-tokyo-* files). Used Tokyo's temple-map screenshot as the closest same-country placeholder — swap for a real Kyoto screenshot (e.g. Fushimi Inari or Kiyomizu-dera) if/when one is captured.",
+  "style": "minimal",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> 'CONNECT tunnel failed, response 403', the agent-proxy status endpoint logging it as a policy denial 'gateway answered 403 to CONNECT', and via WebFetch -> 'getaddrinfo ENOTFOUND commons.wikimedia.org'). This is the same recurring block that hit batches #8-#13 (Amsterdam, Barcelona, Berlin, London, Prague) — this makes at least an eighth run in a row with no working Commons access from this environment. No candidate photos could be downloaded this run. 'candidates' arrays are empty; 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access (or search manually on commons.wikimedia.org), per GUIDELINES.md's instruction to note the gap rather than block the batch. Facts themselves were researched and verified via WebSearch, which is not subject to this block.",
+  "caption": "Which of these 7 Kyoto secrets did you not know? Comment the number 👇\n\n1. Fushimi Inari Shrine\nFushimi Inari's famous orange tunnel is built from more than 10,000 torii gates, each one donated by a person or company. The donor's name and the date of the gift are carved into the back of every gate.\n\n2. Kinkaku-ji (Golden Pavilion)\nIn 1950, a 22-year-old monk burned Kinkaku-ji to the ground, destroying a 500-year-old temple. It was rebuilt in 1955 as an exact replica, and its top two floors are still covered in real gold leaf.\n\n3. Kiyomizu-dera\nKiyomizu-dera's wooden stage, 13 meters above the hillside, was built entirely with interlocking joints and no nails. Edo-period visitors believed surviving a jump off it would grant a wish; of 234 recorded jumps, about 85% survived.\n\n4. Nijo Castle\nNijo Castle's corridors are lined with \"nightingale floors\" — loose boards fitted with metal clamps that squeak with every step, designed so no one, not even a ninja, could sneak up on the shogun unheard.\n\n5. Ginkaku-ji (Silver Pavilion)\nDespite its name, Ginkaku-ji has never been covered in silver; a 2007 study found none on its walls. Whether money ran out or the bare look was always the plan, the wood exterior has stayed that way for over 500 years.\n\n6. Arashiyama Bamboo Grove\nThe wind moving through Arashiyama's bamboo stalks was named one of Japan's \"100 Soundscapes\" by the Ministry of the Environment in 1996 — one of a handful of sounds in the country officially flagged for preservation.\n\n7. Gion\nGion's traditional ochaya teahouses still follow ichigensan okotowari, \"no first-timers\": without a personal introduction from an existing client, no amount of money will get you a seat.\n\n.\n.\n.\n#Kyoto #Japan #HiddenGems #FushimiInari #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Kioto no conocías? Comenta el número 👇\n\n1. Santuario Fushimi Inari\nEl famoso túnel naranja de Fushimi Inari está hecho de más de 10 mil portales torii, cada uno donado por una persona o empresa. El nombre del donante y la fecha del donativo están grabados en la parte de atrás de cada portal.\n\n2. Kinkaku-ji (Pabellón Dorado)\nEn 1950, un monje de 22 años quemó Kinkaku-ji hasta los cimientos, destruyendo un templo de 500 años. Se reconstruyó en 1955 como una réplica exacta, y sus dos pisos de arriba siguen cubiertos de oro de verdad.\n\n3. Kiyomizu-dera\nEl escenario de madera de Kiyomizu-dera, a 13 metros sobre la ladera, se construyó solo con uniones de madera entrelazadas, sin un solo clavo. En la era Edo, la gente creía que sobrevivir un salto desde ahí concedía un deseo; de 234 saltos registrados, sobrevivió casi el 85%.\n\n4. Castillo Nijo\nLos pasillos del Castillo Nijo tienen \"pisos de ruiseñor\" — tablas sueltas con grapas de metal que chirrían con cada paso, pensadas para que nadie, ni un ninja, pudiera acercarse al shogún sin hacer ruido.\n\n5. Ginkaku-ji (Pabellón de Plata)\nA pesar del nombre, Ginkaku-ji nunca estuvo cubierto de plata; un estudio de 2007 no encontró nada en sus paredes. Ya fuera porque se acabó el dinero o porque el aspecto sencillo fue siempre el plan, la madera al descubierto se ha mantenido así por más de 500 años.\n\n6. Bosque de bambú de Arashiyama\nEl viento moviéndose entre los tallos de bambú de Arashiyama fue nombrado uno de los \"100 Paisajes Sonoros\" de Japón por el Ministerio de Medio Ambiente en 1996 — uno de los pocos sonidos del país señalados oficialmente para su preservación.\n\n7. Gion\nLas casas de té tradicionales (ochaya) de Gion todavía siguen la regla ichigensan okotowari, \"sin clientes primerizos\": sin una presentación personal de un cliente ya establecido, ni con dinero consigues un lugar.\n\n.\n.\n.\n#Kioto #Japon #DatosCuriosos #FushimiInari #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Every one of these gates was paid for by a stranger",
+      "headline_es": "Cada uno de estos portales lo pagó un desconocido",
+      "body_html": "Fushimi Inari's famous orange tunnel is made of more than <b>10,000 torii gates</b>, each one donated by a person or company — their name and donation date are carved into the back.",
+      "body_es": "El famoso túnel naranja de Fushimi Inari está hecho de más de <b>10 mil portales torii</b>, cada uno donado por una persona o empresa — su nombre y la fecha de donación están grabados en la parte de atrás.",
+      "hook": "Fushimi Inari's orange tunnel is built from over 10,000 donated torii gates, each one carved with its donor's name and date.",
+      "hook_es": "El túnel naranja de Fushimi Inari tiene más de 10 mil portales torii, cada uno grabado con el nombre de su donante.",
+      "candidates": [],
+      "suggested_queries": [
+        "Fushimi Inari torii gates tunnel",
+        "Fushimi Inari Taisha senbon torii"
+      ]
+    },
+    {
+      "slot": "fact2",
+      "headline": "A monk burned this temple down — then it rose from the ashes",
+      "headline_es": "Un monje quemó este templo — y resurgió de las cenizas",
+      "body_html": "In <b>1950</b>, a 22-year-old monk set fire to Kinkaku-ji, destroying a 500-year-old treasure; rebuilt in <b>1955</b> as an exact replica, its top two floors are covered in real gold leaf.",
+      "body_es": "En <b>1950</b>, un monje de 22 años le prendió fuego a Kinkaku-ji, destruyendo un tesoro de 500 años; reconstruido en <b>1955</b> como una réplica exacta, sus dos pisos superiores están cubiertos de oro real.",
+      "hook": "In 1950, a young monk burned Kinkaku-ji to the ground; rebuilt in 1955, its top two floors are covered in real gold leaf.",
+      "hook_es": "En 1950 un monje joven quemó Kinkaku-ji hasta los cimientos; reconstruido en 1955, sus dos pisos de arriba están cubiertos de oro de verdad.",
+      "candidates": [],
+      "suggested_queries": [
+        "Kinkaku-ji golden pavilion",
+        "Kinkakuji reflection pond Kyoto"
+      ]
+    },
+    {
+      "slot": "fact3",
+      "headline": "This 13-meter stage was built without a single nail",
+      "headline_es": "Este escenario de 13 metros se construyó sin un solo clavo",
+      "body_html": "Kiyomizu-dera's wooden stage, perched <b>13 meters</b> above the hillside, was assembled entirely with interlocking joints — no nails. Edo-era visitors believed surviving a jump off it would grant a wish; of 234 recorded jumps, about <b>85%</b> survived.",
+      "body_es": "El escenario de madera de Kiyomizu-dera, a <b>13 metros</b> sobre la ladera, se armó solo con uniones de madera entrelazadas — sin clavos. En la era Edo, la gente creía que sobrevivir un salto desde ahí concedía un deseo; de 234 saltos registrados, sobrevivió casi el <b>85%</b>.",
+      "hook": "Kiyomizu-dera's 13-meter wooden stage was built with zero nails, and Edo-era visitors used to jump off it believing survival would grant a wish.",
+      "hook_es": "El escenario de 13 metros de Kiyomizu-dera se construyó sin un solo clavo, usando solo uniones de madera entrelazadas.",
+      "candidates": [],
+      "suggested_queries": [
+        "Kiyomizu-dera stage wooden pillars",
+        "Kiyomizu-dera main hall Kyoto"
+      ]
+    },
+    {
+      "slot": "fact4",
+      "headline": "The floors in this castle were built to chirp like birds",
+      "headline_es": "Los pisos de este castillo se diseñaron para chirriar como pájaros",
+      "body_html": "Nijo Castle's corridors are lined with <b>'nightingale floors'</b> — loose boards fitted with metal clamps that squeak with every step, supposedly so no one, not even a ninja, could sneak up on the shogun unheard.",
+      "body_es": "Los pasillos del Castillo Nijo tienen <b>'pisos de ruiseñor'</b> — tablas sueltas con grapas de metal que chirrían con cada paso, para que nadie, ni un ninja, pudiera acercarse sin hacer ruido.",
+      "hook": "Nijo Castle's floorboards are rigged with metal clamps that squeak with every footstep, a built-in alarm meant to stop any ninja sneaking in unheard.",
+      "hook_es": "Los pisos del Castillo Nijo chirrían con cada paso gracias a grapas de metal, para detectar a cualquier intruso.",
+      "candidates": [],
+      "suggested_queries": [
+        "Nijo Castle Ninomaru Palace corridor",
+        "Nijo Castle Kyoto exterior"
+      ]
+    },
+    {
+      "slot": "fact5",
+      "headline": "The 'Silver Pavilion' has never worn a speck of silver",
+      "headline_es": "El 'Pabellón de Plata' nunca ha tenido ni una pizca de plata",
+      "body_html": "Despite the name, Ginkaku-ji's <b>'Silver Pavilion'</b> has never had any silver on it — a <b>2007 study</b> confirmed the walls are bare wood, whether because the shogun who built it ran out of money or simply preferred the look.",
+      "body_es": "A pesar del nombre, el <b>'Pabellón de Plata'</b> de Ginkaku-ji nunca tuvo plata — un <b>estudio de 2007</b> confirmó que las paredes son de madera al descubierto, ya fuera porque al shogún que lo construyó se le acabó el dinero o porque prefería ese aspecto.",
+      "hook": "Ginkaku-ji is called the Silver Pavilion, but a 2007 study found no silver on it at all.",
+      "hook_es": "A Ginkaku-ji lo llaman el Pabellón de Plata, pero un estudio de 2007 no encontró nada de plata en él.",
+      "candidates": [],
+      "suggested_queries": [
+        "Ginkaku-ji Silver Pavilion Kyoto",
+        "Ginkakuji garden sand cone"
+      ]
+    },
+    {
+      "slot": "fact6",
+      "headline": "This forest's sound is officially protected by the government",
+      "headline_es": "El sonido de este bosque está oficialmente protegido por el gobierno",
+      "body_html": "The wind moving through Arashiyama's towering bamboo stalks was named one of Japan's <b>'100 Soundscapes'</b> by the Ministry of the Environment in <b>1996</b> — one of only a handful of sounds in the country singled out for preservation.",
+      "body_es": "El viento moviéndose entre los tallos de bambú de Arashiyama fue nombrado uno de los <b>'100 Paisajes Sonoros'</b> de Japón por el Ministerio de Medio Ambiente en <b>1996</b> — uno de los pocos sonidos del país señalados para su preservación.",
+      "hook": "The wind through Arashiyama's bamboo stalks was named one of Japan's official '100 Soundscapes' in 1996, a sound the government flagged for preservation.",
+      "hook_es": "El viento entre el bambú de Arashiyama es uno de los '100 Paisajes Sonoros' oficiales de Japón, protegido desde 1996.",
+      "candidates": [],
+      "suggested_queries": [
+        "Arashiyama bamboo grove path",
+        "Arashiyama bamboo forest Kyoto"
+      ]
+    },
+    {
+      "slot": "fact7",
+      "headline": "You can't just walk into these teahouses — even with cash",
+      "headline_es": "No puedes simplemente entrar a estas casas de té — ni con dinero",
+      "body_html": "Gion's traditional ochaya teahouses still follow <b>ichigensan okotowari</b> ('no first-timers') — without a personal introduction from an existing client, money alone won't get you a seat, no matter how much you offer.",
+      "body_es": "Las casas de té tradicionales (ochaya) de Gion todavía siguen la regla <b>ichigensan okotowari</b> ('sin clientes primerizos') — sin una presentación personal de un cliente ya establecido, ni con dinero entras.",
+      "hook": "Gion's teahouses follow a rule called ichigensan okotowari — no first-time customers — so without a personal introduction, no amount of money gets you in.",
+      "hook_es": "Las casas de té de Gion siguen una regla: sin clientes nuevos, ni el dinero te abre la puerta sin presentación.",
+      "candidates": [],
+      "suggested_queries": [
+        "Gion Hanamikoji street Kyoto",
+        "Gion teahouses machiya Kyoto"
+      ]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": [
+    "Kyoto Yasaka pagoda street view",
+    "Kyoto cityscape aerial pagodas"
+  ]
+}
