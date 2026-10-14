@@ -1,0 +1,14 @@
+{
+ "_how": "A pinned city posts on its date (18:00 slot) on the listed channels and is held back from the queue until then. Merging a change here = approval.",
+ "pins": [
+  {
+   "date": "2026-10-31",
+   "city": "lisbon",
+   "channels": [
+    "instagram",
+    "tiktok"
+   ],
+   "why": "1 Nov is the anniversary of the 1755 earthquake (Scout, 13 Oct)"
+  }
+ ]
+}
