@@ -25,6 +25,13 @@ set, because TikTok only accepts JPEG/WebP photos. Once the PR is merged, the pu
 Leandro's Mac posts the English set to Instagram and sends the Spanish set to the TikTok inbox on
 the posting schedule (Tue/Thu/Sat 18:00 Mexico City). Nobody posts by hand.
 
+## Pick a city that has an app screenshot (added 2026-10-14)
+
+The last slide shows a real Urban Tales map screenshot of the same city, and there is no way to make one
+from this session. So the next city must be one with a `screen-{city}-*-map.png` in the repo root (run
+`ls screen-*-map.png`) that isn't in the Published list of `topics.md` yet. If every such city is taken,
+open the PR anyway with the city you'd pick and say in the description that it needs a screenshot.
+
 ## Voice — this is not the blog
 
 This is punchy social copy, not the long-form Wander Log voice. Look at any existing batch's facts
