@@ -25,6 +25,12 @@ set, because TikTok only accepts JPEG/WebP photos. Once the PR is merged, the pu
 Leandro's Mac posts the English set to Instagram and sends the Spanish set to the TikTok inbox on
 the posting schedule (Tue/Thu/Sat 18:00 Mexico City). Nobody posts by hand.
 
+## The last slide's app screenshot (updated 2026-10-14)
+
+Any city can be next. For the last slide, use the city's own map screenshot if one exists in the repo
+root (`ls screen-*-map.png`); otherwise use the generic one, `screen-generic-narration-style.png` (the
+app's "how would you like your stories told?" screen, no city on it). Never use another city's map.
+
 ## Voice — this is not the blog
 
 This is punchy social copy, not the long-form Wander Log voice. Look at any existing batch's facts
