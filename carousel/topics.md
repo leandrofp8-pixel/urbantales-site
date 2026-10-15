@@ -27,15 +27,15 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 19 | Lisbon |
 | 20 | Chicago |
 | 21 | Rio de Janeiro |
+| 23 | Kyoto |
 
 ## Next batch
 
-**#22 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#24 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
 
-Note (added 2026-10-12): batch numbers 14-16 are currently claimed by open, unmerged draft PRs
-(Buenos Aires, Rio de Janeiro, Chicago, and Marrakech all used **#14**; Lisbon used **#15**;
-Bangkok used **#16**) — see open PRs on `carousel/*` branches. This batch used **#17** to avoid
-adding a fifth collision. Whoever merges these should renumber to keep the table sequential, and
-it's worth consolidating the duplicate #14s before more batches pile up.
+Note (2026-10-14): Kyoto was drafted as #22; the finisher that sourced photos and rendered it
+bumped the badge to **#23** instead (reason not stated in its PR comment — no other PR claimed
+#22). Removed the stale duplicate #22 row this left in the table above. #22 is now an unused gap
+in the numbering; no action needed unless it's worth consolidating later.

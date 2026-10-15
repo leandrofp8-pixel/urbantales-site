@@ -1,0 +1,180 @@
+{
+  "badge_num": 23,
+  "city": "KYOTO",
+  "flag": "🇯🇵",
+  "cta_screenshot": "screen-generic-narration-style.png",
+  "cta_screenshot_note": "No Kyoto map screenshot in the repo; using the generic app screen per GUIDELINES.md.",
+  "style": "minimal",
+  "photo_sourcing_blocked": false,
+  "caption": "Which of these 7 Kyoto secrets didn't you know? Comment the number 👇\n\n1. Fushimi Inari Shrine\nFushimi Inari's famous orange tunnel is built from more than 10,000 torii gates, each one donated by a person or company. The donor's name and the date of the gift are carved into the back of every gate.\n\n2. Kinkaku-ji (Golden Pavilion)\nIn 1950, a 22-year-old novice monk burned Kinkaku-ji to the ground, destroying a building more than 500 years old. It was rebuilt in 1955 as a close copy of the original, and its top two floors are covered in real gold leaf.\n\n3. Kiyomizu-dera\nKiyomizu-dera's wooden stage stands 13 meters above the hillside, held up by interlocking joints with no nails. In the Edo period, people jumped off it believing that surviving would grant a wish. Temple records count 234 jumps, and about 85% of the jumpers survived.\n\n4. Nijo Castle\nThe corridors of Nijo Castle's Ninomaru Palace have \"nightingale floors\" that chirp with every step. Legend says they were an alarm so no ninja could sneak up on the shogun. The castle's own sign says the sound comes from nails rubbing against metal clamps as the boards wore over the centuries.\n\n5. Ginkaku-ji (Silver Pavilion)\nDespite its name, a 2007 survey found no trace of silver on Ginkaku-ji. Whether the shogun who built it ran out of money or never planned any, its wooden exterior has stayed bare for over 500 years.\n\n6. Arashiyama Bamboo Grove\nThe wind moving through Arashiyama's towering bamboo is one of Japan's \"100 Soundscapes\", a list the government drew up of everyday sounds worth noticing and preserving.\n\n7. Gion\nGion's traditional ochaya teahouses still follow ichigensan okotowari, \"no first-timers\": without a personal introduction from an existing client, no amount of money will get you a seat.\n\n.\n.\n.\n#Kyoto #Japan #HiddenGems #FushimiInari #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Kioto no conocías? Comenta el número 👇\n\n1. Santuario Fushimi Inari\nEl famoso túnel naranja de Fushimi Inari está hecho de más de 10 mil portales torii, cada uno donado por una persona o empresa. El nombre del donante y la fecha del donativo están grabados en la parte de atrás de cada portal.\n\n2. Kinkaku-ji (Pabellón Dorado)\nEn 1950, un monje novicio de 22 años quemó Kinkaku-ji hasta los cimientos y destruyó un edificio de más de 500 años. Se reconstruyó en 1955 como una copia fiel del original, y sus dos pisos de arriba están cubiertos de hoja de oro de verdad.\n\n3. Kiyomizu-dera\nEl escenario de madera de Kiyomizu-dera está a 13 metros sobre la ladera, sostenido solo con uniones de madera entrelazadas, sin clavos. En la era Edo, la gente saltaba creyendo que sobrevivir le concedería un deseo. Los registros del templo cuentan 234 saltos, y sobrevivió cerca del 85%.\n\n4. Castillo Nijo\nLos pasillos del Palacio Ninomaru, en el Castillo Nijo, tienen \"pisos de ruiseñor\" que chirrían con cada paso. La leyenda dice que eran una alarma para que ningún ninja se acercara al shogún sin ser oído. El propio castillo explica que el sonido viene de clavos que rozan con grapas de metal por el desgaste de los siglos.\n\n5. Ginkaku-ji (Pabellón de Plata)\nA pesar del nombre, un estudio de 2007 no encontró ni rastro de plata en Ginkaku-ji. Ya sea porque al shogún que lo construyó se le acabó el dinero o porque nunca la planeó, su madera lleva más de 500 años al descubierto.\n\n6. Bosque de bambú de Arashiyama\nEl viento entre los altísimos bambúes de Arashiyama es uno de los \"100 Paisajes Sonoros\" de Japón, una lista que hizo el gobierno con sonidos cotidianos que vale la pena escuchar y preservar.\n\n7. Gion\nLas casas de té tradicionales (ochaya) de Gion todavía siguen la regla ichigensan okotowari, \"sin clientes primerizos\": sin una presentación personal de un cliente ya establecido, ni con dinero consigues un lugar.\n\n.\n.\n.\n#Kioto #Japon #DatosCuriosos #Viajes #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Every one of these gates was paid for by a stranger",
+      "headline_es": "Cada uno de estos portales lo pagó un desconocido",
+      "body_html": "Fushimi Inari's famous orange tunnel is made of more than <b>10,000 torii gates</b>, each one donated by a person or company — their name and donation date are carved into the back.",
+      "body_es": "El famoso túnel naranja de Fushimi Inari está hecho de más de <b>10 mil portales torii</b>, cada uno donado por una persona o empresa — su nombre y la fecha de donación están grabados en la parte de atrás.",
+      "hook": "Fushimi Inari's orange tunnel is made of over 10,000 donated torii gates, each carved with its donor's name.",
+      "hook_es": "Cada uno de los más de 10 mil portales torii de Fushimi Inari lleva grabado el nombre de su donante.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:FUS_-_Inscribed_Senbon_torii_at_Fushimi_Inari-taisha,_Kyoto,_Japan,_2015.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Josep M. Gracia",
+          "note": "Senbon torii tunnel with donor inscriptions visible, portrait"
+        }
+      ],
+      "suggested_queries": [
+        "Fushimi Inari torii gates tunnel",
+        "Fushimi Inari Taisha senbon torii"
+      ]
+    },
+    {
+      "slot": "fact2",
+      "headline": "A monk burned this temple down — then it rose from the ashes",
+      "headline_es": "Un monje quemó este templo — y resurgió de las cenizas",
+      "body_html": "In <b>1950</b>, a 22-year-old monk set fire to Kinkaku-ji, destroying a building more than 500 years old; rebuilt in <b>1955</b> as a close copy, its top two floors are covered in real gold leaf.",
+      "body_es": "En <b>1950</b>, un monje de 22 años le prendió fuego a Kinkaku-ji y destruyó un edificio de más de 500 años; reconstruido en <b>1955</b> como una copia fiel, sus dos pisos superiores están cubiertos de oro de verdad.",
+      "hook": "In 1950 a 22-year-old monk burned Kinkaku-ji down; its 1955 rebuild has real gold leaf on the top two floors.",
+      "hook_es": "En 1950 un monje de 22 años quemó Kinkaku-ji; reconstruido en 1955, sus pisos de arriba están cubiertos de oro.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Nacaru",
+          "note": "Golden Pavilion and its reflection, portrait"
+        }
+      ],
+      "suggested_queries": [
+        "Kinkaku-ji golden pavilion",
+        "Kinkakuji reflection pond Kyoto"
+      ]
+    },
+    {
+      "slot": "fact3",
+      "headline": "People jumped off this 13-meter stage to make a wish",
+      "headline_es": "La gente saltaba de este escenario de 13 metros para pedir un deseo",
+      "body_html": "Kiyomizu-dera's wooden stage stands <b>13 meters</b> above the hillside, held up by interlocking joints and no nails. In the Edo period, people jumped off it believing survival would grant a wish; temple records count <b>234 jumps</b>, and about 85% survived.",
+      "body_es": "El escenario de madera de Kiyomizu-dera está a <b>13 metros</b> sobre la ladera, sostenido con uniones de madera entrelazadas y sin clavos. En la era Edo, la gente saltaba creyendo que sobrevivir le concedería un deseo; los registros del templo cuentan <b>234 saltos</b>, y sobrevivió cerca del 85%.",
+      "hook": "Edo-era people jumped off Kiyomizu-dera's 13-meter stage hoping for a wish; temple records say about 85% survived.",
+      "hook_es": "En la era Edo saltaban del escenario de 13 metros de Kiyomizu-dera para pedir un deseo; casi el 85% sobrevivió.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera,_Kyoto,_November_2016_-02.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Martin Falbisoner",
+          "note": "Main hall and wooden stage on its pillars, autumn"
+        }
+      ],
+      "suggested_queries": [
+        "Kiyomizu-dera stage wooden pillars",
+        "Kiyomizu-dera main hall Kyoto"
+      ]
+    },
+    {
+      "slot": "fact4",
+      "headline": "The floors in this palace chirp like birds",
+      "headline_es": "Los pisos de este palacio chirrían como pájaros",
+      "body_html": "The corridors of Nijo Castle's Ninomaru Palace have <b>'nightingale floors'</b> that chirp with every step. Legend says they were an alarm so no ninja could reach the shogun unheard; the castle's own sign says the sound comes from nails rubbing against metal clamps as the boards wore.",
+      "body_es": "Los pasillos del Palacio Ninomaru, en el Castillo Nijo, tienen <b>'pisos de ruiseñor'</b> que chirrían con cada paso. La leyenda dice que eran una alarma para que ningún ninja llegara al shogún sin ser oído; el propio castillo explica que el sonido viene de clavos que rozan con grapas de metal por el desgaste.",
+      "hook": "Nijo Castle's floors chirp like birds with every step; legend says they were a built-in alarm against ninjas.",
+      "hook_es": "Los pisos del Castillo Nijo chirrían como pájaros a cada paso; la leyenda dice que eran una alarma contra ninjas.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Ninomaru_Palace,_November_2016.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Martin Falbisoner",
+          "note": "Ninomaru Palace, the building with the nightingale floors"
+        }
+      ],
+      "suggested_queries": [
+        "Nijo Castle Ninomaru Palace corridor",
+        "Nijo Castle Kyoto exterior"
+      ]
+    },
+    {
+      "slot": "fact5",
+      "headline": "The 'Silver Pavilion' has never worn a speck of silver",
+      "headline_es": "El 'Pabellón de Plata' nunca ha tenido ni una pizca de plata",
+      "body_html": "Despite the name, a <b>2007 survey</b> found no trace of silver on Ginkaku-ji's <b>'Silver Pavilion'</b>. Whether the shogun who built it ran out of money or never planned any, its wood has stayed bare for over 500 years.",
+      "body_es": "A pesar del nombre, un <b>estudio de 2007</b> no encontró ni rastro de plata en el <b>'Pabellón de Plata'</b> de Ginkaku-ji. Ya sea porque al shogún se le acabó el dinero o porque nunca la planeó, su madera lleva más de 500 años al descubierto.",
+      "hook": "Ginkaku-ji is nicknamed the Silver Pavilion, yet a 2007 survey found no trace of silver on it.",
+      "hook_es": "A Ginkaku-ji lo llaman el Pabellón de Plata, pero un estudio de 2007 no encontró ni rastro de plata.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Silver_Pavilion,_Ginkaku-ji,_Kyoto,_20240820_1100_5007.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Jakub Hałun",
+          "note": "Ginkaku-ji's Kannon-den (Silver Pavilion), bare wood"
+        }
+      ],
+      "suggested_queries": [
+        "Ginkaku-ji Silver Pavilion Kyoto",
+        "Ginkakuji garden sand cone"
+      ]
+    },
+    {
+      "slot": "fact6",
+      "headline": "This forest's sound is on an official list of Japan's treasures",
+      "headline_es": "El sonido de este bosque está en una lista oficial de tesoros de Japón",
+      "body_html": "The wind moving through Arashiyama's towering bamboo is one of Japan's <b>'100 Soundscapes'</b>, a list the government made of sounds worth preserving.",
+      "body_es": "El viento entre los altísimos bambúes de Arashiyama es uno de los <b>'100 Paisajes Sonoros'</b> de Japón, una lista del gobierno de sonidos que vale la pena preservar.",
+      "hook": "The wind rustling through Arashiyama's bamboo is on Japan's official list of 100 soundscapes worth preserving.",
+      "hook_es": "El viento entre el bambú de Arashiyama está en la lista de los 100 paisajes sonoros que Japón quiere preservar.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Bamboo_Grove,_Arashiyama,_Kyoto,_Japan.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Basile Morin",
+          "note": "Arashiyama bamboo grove path, portrait"
+        }
+      ],
+      "suggested_queries": [
+        "Arashiyama bamboo grove path",
+        "Arashiyama bamboo forest Kyoto"
+      ]
+    },
+    {
+      "slot": "fact7",
+      "headline": "You can't just walk into these teahouses — even with cash",
+      "headline_es": "No puedes simplemente entrar a estas casas de té — ni con dinero",
+      "body_html": "Gion's traditional ochaya teahouses still follow <b>ichigensan okotowari</b> ('no first-timers') — without a personal introduction from an existing client, money alone won't get you a seat.",
+      "body_es": "Las casas de té tradicionales (ochaya) de Gion todavía siguen la regla <b>ichigensan okotowari</b> ('sin clientes primerizos') — sin una presentación personal de un cliente ya establecido, ni con dinero entras.",
+      "hook": "Gion's traditional teahouses turn away first-timers: without an introduction from a regular, no amount of money gets you in.",
+      "hook_es": "Las casas de té de Gion no aceptan primerizos: sin la presentación de un cliente habitual, ni con dinero entras.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Hanamikoji_Dori.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Christophe95",
+          "note": "Hanamikoji-dori teahouse street in Gion, no people"
+        }
+      ],
+      "suggested_queries": [
+        "Gion Hanamikoji street Kyoto",
+        "Gion teahouses machiya Kyoto"
+      ]
+    }
+  ],
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Yasaka-dori_early_morning_with_street_lanterns_and_the_Tower_of_Yasaka_(Hokan-ji_Temple),_Kyoto,_Japan.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Basile Morin",
+      "note": "Yasaka Pagoda over Yasaka-dori, early morning"
+    }
+  ],
+  "cover_suggested_queries": [
+    "Kyoto Yasaka pagoda street view",
+    "Kyoto cityscape aerial pagodas"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+ "badge_num": 23,
+ "flag": "🇯🇵",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "KIOTO",
+ "caption": "¿Cuál de estos 7 secretos de Kioto no conocías? Comenta el número 👇\n\n1. Santuario Fushimi Inari\nEl famoso túnel naranja de Fushimi Inari está hecho de más de 10 mil portales torii, cada uno donado por una persona o empresa. El nombre del donante y la fecha del donativo están grabados en la parte de atrás de cada portal.\n\n2. Kinkaku-ji (Pabellón Dorado)\nEn 1950, un monje novicio de 22 años quemó Kinkaku-ji hasta los cimientos y destruyó un edificio de más de 500 años. Se reconstruyó en 1955 como una copia fiel del original, y sus dos pisos de arriba están cubiertos de hoja de oro de verdad.\n\n3. Kiyomizu-dera\nEl escenario de madera de Kiyomizu-dera está a 13 metros sobre la ladera, sostenido solo con uniones de madera entrelazadas, sin clavos. En la era Edo, la gente saltaba creyendo que sobrevivir le concedería un deseo. Los registros del templo cuentan 234 saltos, y sobrevivió cerca del 85%.\n\n4. Castillo Nijo\nLos pasillos del Palacio Ninomaru, en el Castillo Nijo, tienen \"pisos de ruiseñor\" que chirrían con cada paso. La leyenda dice que eran una alarma para que ningún ninja se acercara al shogún sin ser oído. El propio castillo explica que el sonido viene de clavos que rozan con grapas de metal por el desgaste de los siglos.\n\n5. Ginkaku-ji (Pabellón de Plata)\nA pesar del nombre, un estudio de 2007 no encontró ni rastro de plata en Ginkaku-ji. Ya sea porque al shogún que lo construyó se le acabó el dinero o porque nunca la planeó, su madera lleva más de 500 años al descubierto.\n\n6. Bosque de bambú de Arashiyama\nEl viento entre los altísimos bambúes de Arashiyama es uno de los \"100 Paisajes Sonoros\" de Japón, una lista que hizo el gobierno con sonidos cotidianos que vale la pena escuchar y preservar.\n\n7. Gion\nLas casas de té tradicionales (ochaya) de Gion todavía siguen la regla ichigensan okotowari, \"sin clientes primerizos\": sin una presentación personal de un cliente ya establecido, ni con dinero consigues un lugar.\n\n.\n.\n.\n#Kioto #Japon #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "Cada uno de estos portales lo pagó un desconocido",
+   "hook": "Cada uno de los más de 10 mil portales torii de Fushimi Inari lleva grabado el nombre de su donante."
+  },
+  {
+   "headline": "Un monje quemó este templo — y resurgió de las cenizas",
+   "hook": "En 1950 un monje de 22 años quemó Kinkaku-ji; reconstruido en 1955, sus pisos de arriba están cubiertos de oro."
+  },
+  {
+   "headline": "La gente saltaba de este escenario de 13 metros para pedir un deseo",
+   "hook": "En la era Edo saltaban del escenario de 13 metros de Kiyomizu-dera para pedir un deseo; casi el 85% sobrevivió."
+  },
+  {
+   "headline": "Los pisos de este palacio chirrían como pájaros",
+   "hook": "Los pisos del Castillo Nijo chirrían como pájaros a cada paso; la leyenda dice que eran una alarma contra ninjas."
+  },
+  {
+   "headline": "El 'Pabellón de Plata' nunca ha tenido ni una pizca de plata",
+   "hook": "A Ginkaku-ji lo llaman el Pabellón de Plata, pero un estudio de 2007 no encontró ni rastro de plata."
+  },
+  {
+   "headline": "El sonido de este bosque está en una lista oficial de tesoros de Japón",
+   "hook": "El viento entre el bambú de Arashiyama está en la lista de los 100 paisajes sonoros que Japón quiere preservar."
+  },
+  {
+   "headline": "No puedes simplemente entrar a estas casas de té — ni con dinero",
+   "hook": "Las casas de té de Gion no aceptan primerizos: sin la presentación de un cliente habitual, ni con dinero entras."
+  }
+ ],
+ "lang": "es"
+}
