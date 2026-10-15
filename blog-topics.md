@@ -7,6 +7,9 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 
 | Date | Type | City | Post |
 |---|---|---|---|
+| Hidden Story | Venice | Venice's Ghetto: the walled island that gave the world a word (Scout 15 Oct: The Jewish Museum reopens 22 Oct 2026 after six years, with three restored 16th-century synagogues.) |
+| City Guide | Buenos Aires | Noche de los Museos 2026: a self-guided walk through Monserrat and San Telmo (Scout 15 Oct: La Noche de los Museos, Sat 14 Nov 2026, 19:00–02:00, free entry.) |
+| City Guide | Prague | Walking the Velvet Revolution: from Národní třída to Wenceslas Square (Scout 15 Oct: 17 Nov 2026 anniversary; Korzo Národní street event and 17:11 minute of silence.) |
 | 2026-10-14 | City Guide | Chicago | [blog-chicago-millennium-park-willis-tower-walk.html](blog-chicago-millennium-park-willis-tower-walk.html) — A self-guided Chicago walking tour, from the Bean to the Skydeck |
 | 2026-10-12 | Hidden Story | Bangkok | [blog-wat-arun-wat-pho-rivalry.html](blog-wat-arun-wat-pho-rivalry.html) — The grudge behind Wat Arun and Wat Pho |
 | 2026-10-07 | City Guide | Marrakech | [blog-marrakech-jemaa-el-fnaa-evening-walk.html](blog-marrakech-jemaa-el-fnaa-evening-walk.html) — A self-guided Jemaa el-Fnaa walk timed for the moment it comes alive |
