@@ -7,6 +7,7 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 
 | Date | Type | City | Post |
 |---|---|---|---|
+| 2026-10-16 | Hidden Story | London | [blog-tower-of-london-secret-history.html](blog-tower-of-london-secret-history.html) — The secret history of the Tower of London's 600-year zoo |
 | Hidden Story | Venice | Venice's Ghetto: the walled island that gave the world a word (Scout 15 Oct: The Jewish Museum reopens 22 Oct 2026 after six years, with three restored 16th-century synagogues.) |
 | City Guide | Buenos Aires | Noche de los Museos 2026: a self-guided walk through Monserrat and San Telmo (Scout 15 Oct: La Noche de los Museos, Sat 14 Nov 2026, 19:00–02:00, free entry.) |
 | City Guide | Prague | Walking the Velvet Revolution: from Národní třída to Wenceslas Square (Scout 15 Oct: 17 Nov 2026 anniversary; Korzo Národní street event and 17:11 minute of silence.) |
@@ -36,7 +37,8 @@ already in this repo, so the post's CTAs and internal links can point to it.
 
 | Type | City | Angle |
 |---|---|---|
-| Hidden Story | London | What the Tower of London guides don't dwell on |
+
+The formal Queue is now empty. The three "Scout" rows mis-filed at the top of the Published table above (Venice, Buenos Aires, Prague) are the de facto next candidates — each has a time-sensitive hook and no post written yet. The next writer should treat those as the queue. Since this run published a Hidden Story (London), the next post should be a City Guide — pick Buenos Aires or Prague (Prague's 17 Nov anniversary hook is the more time-sensitive of the two) — and move it properly into Published with a date/filename once it's written.
 
 ## Adding new topics
 
