@@ -1,0 +1,39 @@
+{
+ "badge_num": 25,
+ "city": "BUDAPEST",
+ "flag": "🇭🇺",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Budapest no conocías? Comenta el número 👇\n\n1. Parlamento húngaro\nLa escalera principal del Parlamento húngaro tiene 96 escalones y su cúpula mide 96 metros: un guiño al año 896, cuando según la tradición se asentaron aquí las tribus magiares. Sus salones están decorados con unos 40 kg de oro.\n\n2. Bastión de los Pescadores\nA pesar de sus torres, el Bastión de los Pescadores se construyó entre 1895 y 1902 como mirador, nunca como fortaleza real. Se dice que debe su nombre al gremio de pescadores que defendía este tramo de la antigua muralla, y sus siete torres representan a las siete tribus magiares.\n\n3. Leones del Puente de las Cadenas\nLa leyenda cuenta que el escultor János Marschalkó se lanzó al Danubio después de que se burlaran de sus leones del Puente de las Cadenas, colocados en 1852, por no tener lengua. En realidad los leones sí tienen lengua, solo que no se ve desde la calle, y él vivió varias décadas más.\n\n4. Hospital en la Roca\nLa Colina del Castillo se asienta sobre una red de cuevas y sótanos de unos 10 kilómetros. En 1944 una parte se convirtió en el Hospital en la Roca, un hospital de emergencia secreto que se llenó de heridos durante el sitio de Budapest y que luego fue búnker nuclear en la Guerra Fría.\n\n5. Zapatos en la orilla del Danubio\nSesenta pares de zapatos de hierro fundido bordean la orilla de Pest, cerca del Parlamento. Marcan el lugar donde milicianos de la Cruz Flechada obligaban a víctimas judías a quitarse los zapatos antes de dispararles y arrojarlas al Danubio en 1944-45.\n\n6. Baño termal Széchenyi\nEl agua del Baño Széchenyi viene de un pozo artesiano que el ingeniero de minas Vilmos Zsigmondy perforó a 970 metros de profundidad entre 1868 y 1878. Sale a la superficie a unos 74°C.\n\n7. Sinagoga de la Calle Dohány\nTerminada en 1859 en estilo neomorisco, la Sinagoga de la Calle Dohány tiene casi 3 mil asientos: es la sinagoga más grande de Europa y una de las más grandes del mundo.\n\n.\n.\n.\n#Budapest #Hungria #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "Esta escalera tiene exactamente 96 escalones — y no es casualidad",
+   "hook": "La escalera principal del Parlamento húngaro tiene 96 escalones, en honor al año 896, cuando llegaron las tribus magiares."
+  },
+  {
+   "headline": "Esta 'fortaleza medieval' se terminó en 1902 — y nunca defendió nada",
+   "hook": "El Bastión de los Pescadores parece medieval, pero se terminó en 1902 y nunca sirvió para defender nada."
+  },
+  {
+   "headline": "La leyenda dice que el escultor se ahogó por estos leones — no fue así",
+   "hook": "Dicen que el escultor de estos leones se ahogó por olvidar sus lenguas. Las tienen, y vivió décadas más."
+  },
+  {
+   "headline": "Un hospital secreto se esconde en las cuevas bajo esta colina",
+   "hook": "Bajo la Colina del Castillo se esconde un hospital secreto que atendió heridos durante el sitio de 1944-45."
+  },
+  {
+   "headline": "60 pares de zapatos de hierro marcan dónde obligaron a las víctimas a quitarse los suyos",
+   "hook": "Sesenta pares de zapatos de hierro junto al Danubio recuerdan dónde la Cruz Flechada fusiló a judíos en 1944-45."
+  },
+  {
+   "headline": "Este baño se alimenta de agua de casi un kilómetro bajo tierra",
+   "hook": "El Baño Széchenyi se alimenta de un pozo de 970 metros cuya agua sale a la superficie a unos 74°C."
+  },
+  {
+   "headline": "La sinagoga más grande de Europa tiene casi 3 mil asientos",
+   "hook": "La Sinagoga de la Calle Dohány tiene casi 3 mil asientos: es la sinagoga más grande de Europa."
+  }
+ ],
+ "lang": "es"
+}

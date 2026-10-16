@@ -1,0 +1,181 @@
+{
+  "badge_num": 25,
+  "city": "BUDAPEST",
+  "flag": "🇭🇺",
+  "cta_screenshot": "screen-generic-narration-style.png",
+  "cta_screenshot_note": "No Budapest map screenshot in the repo (no screen-budapest-*-map.png file and no budapest.html page exists yet); using the generic app screen per GUIDELINES.md.",
+  "style": "minimal",
+  "photo_sourcing_blocked": false,
+  "photo_sourcing_note": "Photos sourced from Wikimedia Commons on Leandro's Mac; credits in photo-credits.txt.",
+  "caption": "Which of these 7 Budapest secrets didn't you know? Comment the number 👇\n\n1. Hungarian Parliament\nThe Hungarian Parliament's main staircase has 96 steps and its dome is 96 meters tall — both a nod to 896, the year the Magyar tribes are traditionally said to have settled here. Its halls are decorated with about 40 kg of gold.\n\n2. Fisherman's Bastion\nDespite its turrets, Fisherman's Bastion was built between 1895 and 1902 as a lookout terrace, never a real fortification. It's said to be named after the fishermen's guild that defended this stretch of the old city wall, and its seven towers stand for the seven Magyar tribes.\n\n3. Chain Bridge lions\nLegend says sculptor János Marschalkó threw himself into the Danube after people mocked his Chain Bridge lions, installed in 1852, for having no tongues. In reality the lions do have tongues, just not visible from street level, and he lived for decades more.\n\n4. Hospital in the Rock\nCastle Hill sits on a roughly 10-kilometer network of caves and cellars. In 1944 part of it became the Hospital in the Rock, a secret emergency hospital packed with wounded during the siege of Budapest, and later a Cold War nuclear bunker.\n\n5. Shoes on the Danube Bank\nSixty pairs of cast-iron shoes line the Pest riverbank near Parliament. They mark where Arrow Cross militiamen made Jewish victims take off their shoes before shooting them into the Danube in 1944-45.\n\n6. Széchenyi Thermal Bath\nSzéchenyi Bath's water comes from an artesian well that mining engineer Vilmos Zsigmondy drilled 970 meters deep between 1868 and 1878. It reaches the surface at about 74°C.\n\n7. Dohány Street Synagogue\nFinished in 1859 in Moorish Revival style, Dohány Street Synagogue seats nearly 3,000 people, making it the largest synagogue in Europe and one of the largest in the world.\n\n.\n.\n.\n#Budapest #Hungary #HiddenGems #ChainBridge #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Budapest no conocías? Comenta el número 👇\n\n1. Parlamento húngaro\nLa escalera principal del Parlamento húngaro tiene 96 escalones y su cúpula mide 96 metros: un guiño al año 896, cuando según la tradición se asentaron aquí las tribus magiares. Sus salones están decorados con unos 40 kg de oro.\n\n2. Bastión de los Pescadores\nA pesar de sus torres, el Bastión de los Pescadores se construyó entre 1895 y 1902 como mirador, nunca como fortaleza real. Se dice que debe su nombre al gremio de pescadores que defendía este tramo de la antigua muralla, y sus siete torres representan a las siete tribus magiares.\n\n3. Leones del Puente de las Cadenas\nLa leyenda cuenta que el escultor János Marschalkó se lanzó al Danubio después de que se burlaran de sus leones del Puente de las Cadenas, colocados en 1852, por no tener lengua. En realidad los leones sí tienen lengua, solo que no se ve desde la calle, y él vivió varias décadas más.\n\n4. Hospital en la Roca\nLa Colina del Castillo se asienta sobre una red de cuevas y sótanos de unos 10 kilómetros. En 1944 una parte se convirtió en el Hospital en la Roca, un hospital de emergencia secreto que se llenó de heridos durante el sitio de Budapest y que luego fue búnker nuclear en la Guerra Fría.\n\n5. Zapatos en la orilla del Danubio\nSesenta pares de zapatos de hierro fundido bordean la orilla de Pest, cerca del Parlamento. Marcan el lugar donde milicianos de la Cruz Flechada obligaban a víctimas judías a quitarse los zapatos antes de dispararles y arrojarlas al Danubio en 1944-45.\n\n6. Baño termal Széchenyi\nEl agua del Baño Széchenyi viene de un pozo artesiano que el ingeniero de minas Vilmos Zsigmondy perforó a 970 metros de profundidad entre 1868 y 1878. Sale a la superficie a unos 74°C.\n\n7. Sinagoga de la Calle Dohány\nTerminada en 1859 en estilo neomorisco, la Sinagoga de la Calle Dohány tiene casi 3 mil asientos: es la sinagoga más grande de Europa y una de las más grandes del mundo.\n\n.\n.\n.\n#Budapest #Hungria #DatosCuriosos #Viajes #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "This staircase has exactly 96 steps — and that's not a coincidence",
+      "headline_es": "Esta escalera tiene exactamente 96 escalones — y no es casualidad",
+      "body_html": "The Hungarian Parliament's main staircase has <b>96 steps</b> and its dome is 96 meters tall — both a nod to <b>896</b>, the year the Magyar tribes are traditionally said to have settled here. Its halls are decorated with about <b>40 kg of gold</b>.",
+      "body_es": "La escalera principal del Parlamento húngaro tiene <b>96 escalones</b> y su cúpula mide 96 metros: un guiño al año <b>896</b>, cuando según la tradición se asentaron aquí las tribus magiares. Sus salones están decorados con unos <b>40 kg de oro</b>.",
+      "hook": "The Hungarian Parliament's main staircase has 96 steps, a nod to 896, the year the Magyar tribes settled here.",
+      "hook_es": "La escalera principal del Parlamento húngaro tiene 96 escalones, en honor al año 896, cuando llegaron las tribus magiares.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Hungarian_Parliament_001_-_Flickr_-_granada_turnier.jpg",
+          "license": "CC BY 2.0",
+          "artist": "granada_turnier",
+          "note": "matches — Parliament's grand main staircase"
+        }
+      ],
+      "suggested_queries": [
+        "Hungarian Parliament Building exterior Danube",
+        "Hungarian Parliament grand staircase interior"
+      ]
+    },
+    {
+      "slot": "fact2",
+      "headline": "This 'medieval' fortress was finished in 1902 — and never defended anything",
+      "headline_es": "Esta 'fortaleza medieval' se terminó en 1902 — y nunca defendió nada",
+      "body_html": "Despite its turrets, Fisherman's Bastion was built between <b>1895 and 1902</b> as a lookout terrace, never a real fortification. It's said to be named after the fishermen's guild that defended this stretch of the old city wall, and its <b>seven towers</b> stand for the seven Magyar tribes.",
+      "body_es": "A pesar de sus torres, el Bastión de los Pescadores se construyó entre <b>1895 y 1902</b> como mirador, nunca como fortaleza real. Se dice que debe su nombre al gremio de pescadores que defendía este tramo de la antigua muralla, y sus <b>siete torres</b> representan a las siete tribus magiares.",
+      "hook": "Fisherman's Bastion looks medieval, but it was finished in 1902 and was never meant to defend anything.",
+      "hook_es": "El Bastión de los Pescadores parece medieval, pero se terminó en 1902 y nunca sirvió para defender nada.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Budapest_Fisherman%27s_Bastion-20080321-RM-102153.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Ermell",
+          "note": "matches — Fisherman's Bastion towers, portrait"
+        }
+      ],
+      "suggested_queries": [
+        "Fisherman's Bastion Budapest towers",
+        "Fishermans Bastion Matthias Church view"
+      ]
+    },
+    {
+      "slot": "fact3",
+      "headline": "Legend says the sculptor drowned himself over these lions — he didn't",
+      "headline_es": "La leyenda dice que el escultor se ahogó por estos leones — no fue así",
+      "body_html": "Legend says sculptor János Marschalkó threw himself into the Danube after people mocked his Chain Bridge lions, installed in <b>1852</b>, for having no tongues. In reality the lions do have tongues, just not visible from street level, and he lived for <b>decades more</b>.",
+      "body_es": "La leyenda cuenta que el escultor János Marschalkó se lanzó al Danubio después de que se burlaran de sus leones del Puente de las Cadenas, colocados en <b>1852</b>, por no tener lengua. En realidad los leones sí tienen lengua, solo que no se ve desde la calle, y él vivió <b>varias décadas más</b>.",
+      "hook": "Legend says the Chain Bridge sculptor drowned himself because his lions had no tongues. They do, and he lived on.",
+      "hook_es": "Dicen que el escultor de estos leones se ahogó por olvidar sus lenguas. Las tienen, y vivió décadas más.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Lion-statue-Chain-Bridge-Budapest.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Acediscovery",
+          "note": "matches — Chain Bridge lion with Parliament across the Danube"
+        }
+      ],
+      "suggested_queries": [
+        "Szechenyi Chain Bridge Budapest lion statue",
+        "Chain Bridge Budapest night Danube"
+      ]
+    },
+    {
+      "slot": "fact4",
+      "headline": "A secret hospital hides in the caves under this hill",
+      "headline_es": "Un hospital secreto se esconde en las cuevas bajo esta colina",
+      "body_html": "Castle Hill sits on a roughly <b>10-kilometer</b> network of caves and cellars. In <b>1944</b> part of it became the Hospital in the Rock, a secret emergency hospital packed with wounded during the siege of Budapest, and later a Cold War nuclear bunker.",
+      "body_es": "La Colina del Castillo se asienta sobre una red de cuevas y sótanos de unos <b>10 kilómetros</b>. En <b>1944</b> una parte se convirtió en el Hospital en la Roca, un hospital de emergencia secreto que se llenó de heridos durante el sitio de Budapest y que luego fue búnker nuclear en la Guerra Fría.",
+      "hook": "In the caves under Castle Hill hides a secret hospital that treated the wounded through the 1944-45 siege.",
+      "hook_es": "Bajo la Colina del Castillo se esconde un hospital secreto que atendió heridos durante el sitio de 1944-45.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Laika_ac_Hospital_in_the_Rock_(10088615063).jpg",
+          "license": "CC BY-SA 2.0",
+          "artist": "Laika ac from USA",
+          "note": "matches — Hospital in the Rock entrance on Castle Hill, portrait"
+        }
+      ],
+      "suggested_queries": [
+        "Buda Castle Labyrinth cave tunnel",
+        "Castle Hill Budapest cellar system"
+      ]
+    },
+    {
+      "slot": "fact5",
+      "headline": "60 pairs of iron shoes mark where victims were made to take theirs off",
+      "headline_es": "60 pares de zapatos de hierro marcan dónde obligaron a las víctimas a quitarse los suyos",
+      "body_html": "<b>Sixty pairs</b> of cast-iron shoes line the Pest riverbank near Parliament. They mark where Arrow Cross militiamen made Jewish victims take off their shoes before shooting them into the Danube in <b>1944-45</b>.",
+      "body_es": "<b>Sesenta pares</b> de zapatos de hierro fundido bordean la orilla de Pest, cerca del Parlamento. Marcan el lugar donde milicianos de la Cruz Flechada obligaban a víctimas judías a quitarse los zapatos antes de dispararles y arrojarlas al Danubio en <b>1944-45</b>.",
+      "hook": "Sixty pairs of iron shoes on the Danube mark where Arrow Cross militiamen shot Jews into the river in 1944-45.",
+      "hook_es": "Sesenta pares de zapatos de hierro junto al Danubio recuerdan dónde la Cruz Flechada fusiló a judíos en 1944-45.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Shoes_Danube_Promenade_IMGP1297.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Nikodem Nijaki",
+          "note": "matches — Shoes on the Danube Bank, Chain Bridge behind, no people"
+        }
+      ],
+      "suggested_queries": [
+        "Shoes on the Danube Bank memorial Budapest",
+        "Cipok a Duna-parton emlekmu"
+      ]
+    },
+    {
+      "slot": "fact6",
+      "headline": "This bath is fed by water from almost a kilometer underground",
+      "headline_es": "Este baño se alimenta de agua de casi un kilómetro bajo tierra",
+      "body_html": "Széchenyi Bath's water comes from an artesian well that mining engineer Vilmos Zsigmondy drilled <b>970 meters</b> deep between 1868 and 1878. It reaches the surface at about <b>74°C</b>.",
+      "body_es": "El agua del Baño Széchenyi viene de un pozo artesiano que el ingeniero de minas Vilmos Zsigmondy perforó a <b>970 metros</b> de profundidad entre 1868 y 1878. Sale a la superficie a unos <b>74°C</b>.",
+      "hook": "Széchenyi Bath is fed by a 970-meter-deep well whose water reaches the surface at about 74°C.",
+      "hook_es": "El Baño Széchenyi se alimenta de un pozo de 970 metros cuya agua sale a la superficie a unos 74°C.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Budapest_Sz%C3%A9chenyi_Baths_R01.jpg",
+          "license": "CC BY 3.0",
+          "artist": "Marc Ryckaert (MJJR)",
+          "note": "matches — Széchenyi Bath outdoor pool and yellow facade"
+        }
+      ],
+      "suggested_queries": [
+        "Szechenyi thermal bath Budapest outdoor pool",
+        "Szechenyi Baths Budapest exterior"
+      ]
+    },
+    {
+      "slot": "fact7",
+      "headline": "Europe's largest synagogue seats nearly 3,000 people",
+      "headline_es": "La sinagoga más grande de Europa tiene casi 3 mil asientos",
+      "body_html": "Finished in <b>1859</b> in Moorish Revival style, Dohány Street Synagogue seats nearly <b>3,000 people</b>, making it the largest synagogue in Europe and one of the largest in the world.",
+      "body_es": "Terminada en <b>1859</b> en estilo neomorisco, la Sinagoga de la Calle Dohány tiene casi <b>3 mil asientos</b>: es la sinagoga más grande de Europa y una de las más grandes del mundo.",
+      "hook": "Dohány Street Synagogue, finished in 1859, seats nearly 3,000 people, making it the largest synagogue in Europe.",
+      "hook_es": "La Sinagoga de la Calle Dohány tiene casi 3 mil asientos: es la sinagoga más grande de Europa.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Dohany-Street-Synagogue-Budapest.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Acediscovery",
+          "note": "matches — Dohány Street Synagogue facade and onion-domed towers"
+        }
+      ],
+      "suggested_queries": [
+        "Dohany Street Synagogue exterior Budapest",
+        "Dohany Synagogue interior Moorish"
+      ]
+    }
+  ],
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sz%C3%A9chenyi_Chain_Bridge_in_Budapest_at_night.jpg",
+      "license": "CC0",
+      "artist": "Wilfredor",
+      "note": "matches — Chain Bridge and the Pest skyline (Parliament on the left) at night"
+    }
+  ],
+  "cover_suggested_queries": [
+    "Budapest Danube skyline Parliament aerial",
+    "Budapest Castle Hill Danube panorama"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+ "badge_num": 25,
+ "city": "BUDAPEST",
+ "flag": "🇭🇺",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Budapest secrets didn't you know? Comment the number 👇\n\n1. Hungarian Parliament\nThe Hungarian Parliament's main staircase has 96 steps and its dome is 96 meters tall — both a nod to 896, the year the Magyar tribes are traditionally said to have settled here. Its halls are decorated with about 40 kg of gold.\n\n2. Fisherman's Bastion\nDespite its turrets, Fisherman's Bastion was built between 1895 and 1902 as a lookout terrace, never a real fortification. It's said to be named after the fishermen's guild that defended this stretch of the old city wall, and its seven towers stand for the seven Magyar tribes.\n\n3. Chain Bridge lions\nLegend says sculptor János Marschalkó threw himself into the Danube after people mocked his Chain Bridge lions, installed in 1852, for having no tongues. In reality the lions do have tongues, just not visible from street level, and he lived for decades more.\n\n4. Hospital in the Rock\nCastle Hill sits on a roughly 10-kilometer network of caves and cellars. In 1944 part of it became the Hospital in the Rock, a secret emergency hospital packed with wounded during the siege of Budapest, and later a Cold War nuclear bunker.\n\n5. Shoes on the Danube Bank\nSixty pairs of cast-iron shoes line the Pest riverbank near Parliament. They mark where Arrow Cross militiamen made Jewish victims take off their shoes before shooting them into the Danube in 1944-45.\n\n6. Széchenyi Thermal Bath\nSzéchenyi Bath's water comes from an artesian well that mining engineer Vilmos Zsigmondy drilled 970 meters deep between 1868 and 1878. It reaches the surface at about 74°C.\n\n7. Dohány Street Synagogue\nFinished in 1859 in Moorish Revival style, Dohány Street Synagogue seats nearly 3,000 people, making it the largest synagogue in Europe and one of the largest in the world.\n\n.\n.\n.\n#Budapest #Hungary #HiddenGems #ChainBridge #UrbanTales",
+ "facts": [
+  {
+   "headline": "This staircase has exactly 96 steps — and that's not a coincidence",
+   "hook": "The Hungarian Parliament's main staircase has 96 steps, a nod to 896, the year the Magyar tribes settled here."
+  },
+  {
+   "headline": "This 'medieval' fortress was finished in 1902 — and never defended anything",
+   "hook": "Fisherman's Bastion looks medieval, but it was finished in 1902 and was never meant to defend anything."
+  },
+  {
+   "headline": "Legend says the sculptor drowned himself over these lions — he didn't",
+   "hook": "Legend says the Chain Bridge sculptor drowned himself because his lions had no tongues. They do, and he lived on."
+  },
+  {
+   "headline": "A secret hospital hides in the caves under this hill",
+   "hook": "In the caves under Castle Hill hides a secret hospital that treated the wounded through the 1944-45 siege."
+  },
+  {
+   "headline": "60 pairs of iron shoes mark where victims were made to take theirs off",
+   "hook": "Sixty pairs of iron shoes on the Danube mark where Arrow Cross militiamen shot Jews into the river in 1944-45."
+  },
+  {
+   "headline": "This bath is fed by water from almost a kilometer underground",
+   "hook": "Széchenyi Bath is fed by a 970-meter-deep well whose water reaches the surface at about 74°C."
+  },
+  {
+   "headline": "Europe's largest synagogue seats nearly 3,000 people",
+   "hook": "Dohány Street Synagogue, finished in 1859, seats nearly 3,000 people, making it the largest synagogue in Europe."
+  }
+ ]
+}
