@@ -1,0 +1,106 @@
+{
+ "slug": "london-westminster",
+ "landmark": "Palace of Westminster",
+ "city": "London",
+ "story": "Guy Fawkes was found in the cellar under the House of Lords with 36 barrels of gunpowder in November 1605, hours before the king opened Parliament; the Yeomen of the Guard still search the cellars before every State Opening.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/State_Opening_of_Parliament",
+  "https://en.wikipedia.org/wiki/Guy_Fawkes",
+  "https://www.historic-uk.com/CultureUK/The-Yeomen-Of-The-Guard",
+  "https://www.historyhit.com/facts-about-the-gunpowder-plot/"
+ ],
+ "week": "2026-W43",
+ "created": "2026-10-16T09:13",
+ "media_sha": "d25098e8c822fc07daffcc2be37e110b46ca999a",
+ "es": {
+  "video": "https://cdn.jsdelivr.net/gh/leandrofp8-pixel/urbantales-site@d25098e8c822fc07daffcc2be37e110b46ca999a/reels/london-westminster-es.mp4",
+  "caption": "A pocas horas de volar por los aires. ¿Qué monumento debería contar su historia? 👇\n\nEn noviembre de 1605 encontraron a Guy Fawkes en el sótano bajo la Cámara de los Lores, junto a 36 barriles de pólvora. El plan era matar al rey Jacobo I el día que abriera el Parlamento. Desde entonces, antes de cada apertura solemne, la guardia real revisa los sótanos del palacio.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#Londres #Westminster #GuyFawkes #historia #viajes"
+ },
+ "en": {
+  "video": "https://cdn.jsdelivr.net/gh/leandrofp8-pixel/urbantales-site@d25098e8c822fc07daffcc2be37e110b46ca999a/reels/london-westminster-en.mp4",
+  "caption": "Hours from being blown sky-high. Which landmark should tell its story next? 👇\n\nIn November 1605, Guy Fawkes was found in the cellar under the House of Lords, next to 36 barrels of gunpowder. The plan was to kill King James I as he opened Parliament. To this day, the Yeomen of the Guard search the palace cellars before every State Opening.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#London #Westminster #GuyFawkes #BonfireNight #history"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-37022791.mp4",
+   "url": "https://www.pexels.com/video/houses-of-parliament-by-the-thames-at-dusk-37022791/",
+   "author": "George Morina",
+   "w": 1260,
+   "h": 540,
+   "dur": 11,
+   "query": "Houses of Parliament London"
+  },
+  {
+   "file": "pexels-17859923.mp4",
+   "url": "https://www.pexels.com/video/westminster-17859923/",
+   "author": "Jack Todhunter",
+   "w": 1280,
+   "h": 720,
+   "dur": 46,
+   "query": "Houses of Parliament London"
+  },
+  {
+   "file": "pexels-5372948.mp4",
+   "url": "https://www.pexels.com/video/houses-of-parliament-view-from-across-the-river-5372948/",
+   "author": "George Morina",
+   "w": 1280,
+   "h": 720,
+   "dur": 17,
+   "query": "Houses of Parliament London"
+  },
+  {
+   "file": "pexels-5372946.mp4",
+   "url": "https://www.pexels.com/video/houses-of-parliament-view-from-across-the-river-5372946/",
+   "author": "George Morina",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Houses of Parliament London"
+  },
+  {
+   "file": "pexels-12695291.mp4",
+   "url": "https://www.pexels.com/video/palace-of-westminster-and-big-ben-london-england-uk-12695291/",
+   "author": "Martyn Day",
+   "w": 1280,
+   "h": 720,
+   "dur": 42,
+   "query": "Houses of Parliament London"
+  },
+  {
+   "file": "pexels-27602665.mp4",
+   "url": "https://www.pexels.com/video/the-big-ben-clock-tower-and-houses-of-parliament-in-london-27602665/",
+   "author": "Martyn Day",
+   "w": 1280,
+   "h": 720,
+   "dur": 26,
+   "query": "Big Ben Westminster Bridge"
+  },
+  {
+   "file": "pexels-29808462.mp4",
+   "url": "https://www.pexels.com/video/big-ben-at-sunset-in-london-29808462/",
+   "author": "Nature&Travel",
+   "w": 720,
+   "h": 1280,
+   "dur": 18,
+   "query": "Big Ben London"
+  },
+  {
+   "file": "pexels-29300154.mp4",
+   "url": "https://www.pexels.com/video/big-ben-westminster-tower-on-a-cloudy-day-29300154/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Big Ben London"
+  },
+  {
+   "file": "pexels-19787418.mp4",
+   "url": "https://www.pexels.com/video/a-van-is-parked-in-front-of-big-ben-19787418/",
+   "author": "Dan Voican",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Big Ben London"
+  }
+ ]
+}
