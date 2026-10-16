@@ -1,0 +1,97 @@
+{
+ "slug": "barcelona-sagrada-familia",
+ "landmark": "Sagrada Família",
+ "city": "Barcelona",
+ "story": "Gaudí's 1885 permit request was never answered, so the basilica was built for 137 years without a licence; nobody noticed until 2016, and Barcelona granted it in 2019 for 4.6 million euros.",
+ "sources": [
+  "https://www.smithsonianmag.com/smart-news/la-sagrada-familia-receives-building-permit-137-years-after-construction-began-180972390/",
+  "https://www.thelocal.es/20190608/barcelona-gives-sagrada-famlia-building-permit-after-137-years",
+  "https://catalannews.com/society-science/item/sagrada-familia-church-finally-gets-building-permit-after-137-years",
+  "https://www.designboom.com/architecture/gaudi-sagrada-familia-building-permit-after-137-years-06-10-2019/"
+ ],
+ "week": "2026-W43",
+ "created": "2026-10-16T09:13",
+ "media_sha": "d25098e8c822fc07daffcc2be37e110b46ca999a",
+ "es": {
+  "video": "https://cdn.jsdelivr.net/gh/leandrofp8-pixel/urbantales-site@d25098e8c822fc07daffcc2be37e110b46ca999a/reels/barcelona-sagrada-familia-es.mp4",
+  "caption": "137 años en obras sin permiso. ¿Qué monumento debería contar su historia ahora? 👇\n\nGaudí pidió la licencia de obra en 1885, pero el ayuntamiento de Sant Martí de Provençals nunca respondió. Nadie lo notó hasta 2016. En 2019 Barcelona por fin concedió el permiso, a cambio de 4,6 millones de euros.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#Barcelona #SagradaFamilia #Gaudi #historia #viajes"
+ },
+ "en": {
+  "video": "https://cdn.jsdelivr.net/gh/leandrofp8-pixel/urbantales-site@d25098e8c822fc07daffcc2be37e110b46ca999a/reels/barcelona-sagrada-familia-en.mp4",
+  "caption": "137 years without a building permit. Which landmark should tell its story next? 👇\n\nGaudí applied for a building permit in 1885, but the town council of Sant Martí de Provençals never answered. Nobody noticed until 2016. In 2019, Barcelona finally granted the permit, for 4.6 million euros.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#Barcelona #SagradaFamilia #Gaudi #history #travel"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-30016722.mp4",
+   "url": "https://www.pexels.com/video/majestic-view-of-basilica-de-la-sagrada-familia-30016722/",
+   "author": "Ifeyinka Adeyemo",
+   "w": 720,
+   "h": 1280,
+   "dur": 28,
+   "query": "Sagrada Familia"
+  },
+  {
+   "file": "pexels-27866560.mp4",
+   "url": "https://www.pexels.com/video/sagrada-familia-27866560/",
+   "author": "LUCIA CUELLAR*DEANDA",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Sagrada Familia"
+  },
+  {
+   "file": "pexels-39846627.mp4",
+   "url": "https://www.pexels.com/video/majestic-view-of-sagrada-familia-under-construction-39846627/",
+   "author": "Abhishek  Shekhawat",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Sagrada Familia"
+  },
+  {
+   "file": "pexels-15499203.mp4",
+   "url": "https://www.pexels.com/video/the-sagrada-familia-cathedral-in-barcelona-spain-15499203/",
+   "author": "Naoufel Bouazizi",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Sagrada Familia"
+  },
+  {
+   "file": "pexels-35134148.mp4",
+   "url": "https://www.pexels.com/video/stunning-view-of-sagrada-familia-in-barcelona-35134148/",
+   "author": "Stephan Leuzinger",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Sagrada Familia"
+  },
+  {
+   "file": "pexels-30306298.mp4",
+   "url": "https://www.pexels.com/video/sagrada-familia-s-iconic-architectural-towers-at-sunset-30306298/",
+   "author": "Nature&Travel",
+   "w": 720,
+   "h": 1280,
+   "dur": 3,
+   "query": "Sagrada Familia"
+  },
+  {
+   "file": "pexels-28159711.mp4",
+   "url": "https://www.pexels.com/video/various-shots-of-sagrada-familia-28159711/",
+   "author": "Steven HAuse",
+   "w": 1280,
+   "h": 720,
+   "dur": 53,
+   "query": "Sagrada Familia aerial Barcelona"
+  },
+  {
+   "file": "pexels-3143732.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-an-urban-city-3143732/",
+   "author": "Ricky Esquivel",
+   "w": 1282,
+   "h": 720,
+   "dur": 17,
+   "query": "Sagrada Familia aerial Barcelona"
+  }
+ ]
+}
