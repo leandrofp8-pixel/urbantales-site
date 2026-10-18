@@ -26,7 +26,7 @@ def call(method, path, **params):
     else:
         req = urllib.request.Request(url, data=data, method="POST")
     try:
-        return json.load(urllib.request.urlopen(req))
+        return json.load(urllib.request.urlopen(req, timeout=60))
     except urllib.error.HTTPError as e:
         sys.exit(f"{method} {path} failed: {e.read().decode()}")
 
@@ -51,7 +51,7 @@ def main():
     children = []
     for s in SLIDES:
         url = f"{BASE}/{slug}/slide-{s}{sfx}.png"
-        if urllib.request.urlopen(urllib.request.Request(url, method="HEAD")).status != 200:
+        if urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=30).status != 200:
             sys.exit(f"not live yet: {url}")
         cid = call("POST", f"{user}/media", image_url=url, is_carousel_item="true")["id"]
         children.append(cid)
