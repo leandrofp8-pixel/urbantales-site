@@ -1,0 +1,117 @@
+{
+  "badge_num": 26,
+  "city": "ATHENS",
+  "flag": "🇬🇷",
+  "cta_screenshot": "screen-generic-narration-style.png",
+  "cta_screenshot_note": "No Athens map screenshot in the repo (no screen-athens-*-map.png file and no athens.html page exists yet); using the generic app screen per GUIDELINES.md.",
+  "style": "minimal",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This run's environment network policy denied all outbound requests to commons.wikimedia.org, upload.wikimedia.org, en.wikipedia.org, and api.pexels.com (agent proxy returned connect_rejected/403 on every host). No candidate photos could be downloaded this run. suggested_queries are provided per slot below so photos can be sourced either by widening the environment's allowed domains and re-running the Commons search, or by Leandro sourcing them manually.",
+  "caption": "Which of these 7 Athens secrets would you have walked right past? 👇\n\nOne of them took 638 years to finish.\n\n1. The Parthenon\nUp close, the Parthenon's base curves upward about 6 centimeters in the middle and its columns lean slightly inward — refinements so subtle you'd never notice without a measuring tape, built over 2,400 years ago.\n\n2. Temple of Olympian Zeus\nStarted in the 6th century BC, the Temple of Olympian Zeus sat half-built for centuries until Roman emperor Hadrian finally completed it in 131 AD — 638 years after the first stone was laid.\n\n3. Panathenaic Stadium\nThe Panathenaic Stadium is the only stadium in the world built entirely of marble. Rebuilt in the 2nd century AD on the site of an ancient Greek stadium, it hosted the opening and closing ceremonies of the first modern Olympic Games in 1896.\n\n4. Tower of the Winds\nThe octagonal Tower of the Winds in the Roman Agora is often called the world's first weather station: built around the 1st century BC, it combined a sundial, a water clock, and a wind vane topped by a bronze Triton to track the forecast.\n\n5. Antikythera Mechanism\nRecovered from a Roman-era shipwreck in 1901, the Antikythera Mechanism's 37 bronze gears could predict eclipses and track the Moon and planets. It's considered the world's oldest known analog computer, and it now sits in the National Archaeological Museum.\n\n6. The Evzones Guard\nThe Evzones guards outside Syntagma Square wear a white kilt, the fustanella, made from 30 meters of cloth folded into 400 pleats — one for every year Greece is said to have lived under Ottoman rule.\n\n7. Plaka\nPlaka, the maze of lanes beneath the Acropolis, is Athens' oldest district — continuously inhabited since Neolithic times, with 19th-century houses still built directly over the ruins of the ancient Agora.\n\n.\n.\n.\n#Athens #Greece #HiddenGems #TempleOfZeus #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Atenas no conocías? Comenta el número 👇\n\nUno de ellos tardó 638 años en completarse.\n\n1. El Partenon\nDe cerca, la base del Partenón se curva hacia arriba unos 6 centímetros en el centro y sus columnas se inclinan levemente hacia adentro — ajustes tan sutiles que nadie los nota sin una cinta métrica, construidos hace más de 2,400 años.\n\n2. Templo de Zeus Olímpico\nComenzado en el siglo VI a.C., el Templo de Zeus Olímpico quedó a medio construir durante siglos hasta que el emperador romano Adriano lo terminó en el año 131 d.C. — 638 años después de colocarse la primera piedra.\n\n3. Estadio Panatenáico\nEl Estadio Panatenáico es el único estadio del mundo construido enteramente de mármol. Reconstruido en el siglo II d.C. sobre un antiguo estadio griego, fue sede de las ceremonias de apertura y clausura de los primeros Juegos Olímpicos modernos en 1896.\n\n4. Torre de los Vientos\nLa Torre de los Vientos, de forma octagonal, en el Ágora Romana suele llamarse la primera estación meteorológica del mundo: construida alrededor del siglo I a.C., combinaba un reloj de sol, un reloj de agua y una veleta coronada por un Tritón de bronce para seguir el clima.\n\n5. Mecanismo de Anticitera\nRescatado de un naufragio romano en 1901, el Mecanismo de Anticitera tiene 37 engranajes de bronce que predecían eclipses y seguían la Luna y los planetas. Se le considera la computadora analógica más antigua conocida, y hoy está en el Museo Arqueológico Nacional.\n\n6. La Guardia Evzones\nLos guardias Evzones frente a la Plaza Syntagma usan una falda blanca, la fustanela, hecha con 30 metros de tela plegada en 400 pliegues — uno por cada año que, según la tradición griega, duró la ocupación otomana.\n\n7. Plaka\nPlaka, el laberinto de callejuelas bajo la Acrópolis, es el barrio más antiguo de Atenas — habitado sin interrupción desde el Neolítico, con casas del siglo XIX construidas directamente sobre las ruinas de la antigua Ágora.\n\n.\n.\n.\n#Atenas #Grecia #DatosCuriosos #Viajes #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Nothing on the Parthenon is actually straight",
+      "headline_es": "Nada en el Partenón es realmente recto",
+      "body_html": "Up close, the Parthenon's base curves upward about <b>6 centimeters</b> in the middle and its columns lean slightly inward — refinements so subtle you'd never notice without a measuring tape, built over <b>2,400 years ago</b>.",
+      "body_es": "De cerca, la base del Partenón se curva hacia arriba unos <b>6 centímetros</b> en el centro y sus columnas se inclinan levemente hacia adentro — ajustes tan sutiles que nadie los nota sin una cinta métrica, construidos hace más de <b>2,400 años</b>.",
+      "hook": "The Parthenon's base curves upward about 6 centimeters in the middle and its columns lean slightly inward, a refinement invisible to the naked eye.",
+      "hook_es": "La base del Partenón se curva hacia arriba unos 6 centímetros en el centro y sus columnas se inclinan levemente hacia adentro, un detalle invisible a simple vista.",
+      "candidates": [],
+      "suggested_queries": [
+        "Parthenon Acropolis Athens columns",
+        "Parthenon west facade"
+      ]
+    },
+    {
+      "slot": "fact2",
+      "headline": "This temple took 638 years to finish",
+      "headline_es": "Este templo tardó 638 años en terminarse",
+      "body_html": "Started in the 6th century BC, the Temple of Olympian Zeus sat half-built for centuries until Roman emperor <b>Hadrian</b> finally completed it in 131 AD — <b>638 years</b> after the first stone was laid.",
+      "body_es": "Comenzado en el siglo VI a.C., el Templo de Zeus Olímpico quedó a medio construir durante siglos hasta que el emperador romano <b>Adriano</b> lo terminó en el año 131 d.C. — <b>638 años</b> después de colocarse la primera piedra.",
+      "hook": "Athens' Temple of Olympian Zeus sat half-finished for centuries until Emperor Hadrian completed it in 131 AD, 638 years after construction began.",
+      "hook_es": "El Templo de Zeus Olímpico en Atenas quedó a medio construir por siglos hasta que el emperador Adriano lo terminó en el año 131 d.C., 638 años después.",
+      "candidates": [],
+      "suggested_queries": [
+        "Temple of Olympian Zeus Athens columns",
+        "Olympieion Athens ruins"
+      ]
+    },
+    {
+      "slot": "fact3",
+      "headline": "The world's only all-marble stadium hosted the first modern Olympics",
+      "headline_es": "El único estadio de mármol del mundo fue sede de los primeros Juegos Olímpicos modernos",
+      "body_html": "The Panathenaic Stadium is the <b>only stadium in the world built entirely of marble</b>. Rebuilt in the 2nd century AD on the site of an ancient Greek stadium, it hosted the opening and closing ceremonies of the <b>first modern Olympic Games in 1896</b>.",
+      "body_es": "El Estadio Panatenáico es el <b>único estadio del mundo construido enteramente de mármol</b>. Reconstruido en el siglo II d.C. sobre un antiguo estadio griego, fue sede de las ceremonias de apertura y clausura de los <b>primeros Juegos Olímpicos modernos en 1896</b>.",
+      "hook": "The Panathenaic Stadium is the world's only stadium built entirely of marble, and it hosted the first modern Olympic Games back in 1896.",
+      "hook_es": "El Estadio Panatenáico es el único estadio del mundo hecho completamente de mármol, y fue sede de los primeros Juegos Olímpicos modernos en 1896.",
+      "candidates": [],
+      "suggested_queries": [
+        "Panathenaic Stadium Athens marble",
+        "Panathinaiko Stadium aerial"
+      ]
+    },
+    {
+      "slot": "fact4",
+      "headline": "This 2,000-year-old tower is considered the world's first weather station",
+      "headline_es": "Esta torre de 2 mil años es considerada la primera estación meteorológica del mundo",
+      "body_html": "The octagonal Tower of the Winds in the Roman Agora is often called the <b>world's first weather station</b>: built around the 1st century BC, it combined a sundial, a water clock, and a wind vane topped by a bronze Triton to track the forecast.",
+      "body_es": "La Torre de los Vientos, de forma octagonal, en el Ágora Romana suele llamarse la <b>primera estación meteorológica del mundo</b>: construida alrededor del siglo I a.C., combinaba un reloj de sol, un reloj de agua y una veleta coronada por un Tritón de bronce para seguir el clima.",
+      "hook": "Athens' 2,000-year-old Tower of the Winds combined a sundial, a water clock, and a wind vane, earning it the title of the world's first weather station.",
+      "hook_es": "La Torre de los Vientos de Atenas, de 2 mil años, combinaba reloj de sol, reloj de agua y veleta, por lo que se le considera la primera estación meteorológica del mundo.",
+      "candidates": [],
+      "suggested_queries": [
+        "Tower of the Winds Athens Roman Agora",
+        "Horologion of Andronikos Kyrrhestes"
+      ]
+    },
+    {
+      "slot": "fact5",
+      "headline": "Divers pulled the world's oldest known computer out of a shipwreck here",
+      "headline_es": "Aquí se rescató de un naufragio la computadora más antigua que se conoce",
+      "body_html": "Recovered from a <b>Roman-era shipwreck in 1901</b>, the Antikythera Mechanism's 37 bronze gears could predict eclipses and track the Moon and planets. It's considered the world's <b>oldest known analog computer</b>, and it now sits in the National Archaeological Museum.",
+      "body_es": "Rescatado de un <b>naufragio romano en 1901</b>, el Mecanismo de Anticitera tiene 37 engranajes de bronce que predecían eclipses y seguían la Luna y los planetas. Se le considera la <b>computadora analógica más antigua conocida</b>, y hoy está en el Museo Arqueológico Nacional.",
+      "hook": "Divers recovered the Antikythera Mechanism from a 1901 shipwreck, a 2,000-year-old bronze device considered the world's oldest known analog computer.",
+      "hook_es": "Buzos rescataron el Mecanismo de Anticitera de un naufragio en 1901, un dispositivo de bronce de 2 mil años considerado la computadora analógica más antigua conocida.",
+      "candidates": [],
+      "suggested_queries": [
+        "Antikythera mechanism National Archaeological Museum Athens",
+        "Antikythera mechanism fragment bronze gear"
+      ]
+    },
+    {
+      "slot": "fact6",
+      "headline": "Each pleat in this uniform stands for a year of occupation",
+      "headline_es": "Cada pliegue de este uniforme representa un año de ocupación",
+      "body_html": "The Evzones guards outside Syntagma Square wear a white kilt, the <b>fustanella</b>, made from 30 meters of cloth folded into <b>400 pleats</b> — one for every year Greece is said to have lived under Ottoman rule.",
+      "body_es": "Los guardias Evzones frente a la Plaza Syntagma usan una falda blanca, la <b>fustanela</b>, hecha con 30 metros de tela plegada en <b>400 pliegues</b> — uno por cada año que, según la tradición griega, duró la ocupación otomana.",
+      "hook": "The Evzones guards' white kilt is folded into 400 pleats, one for each year Greek tradition says the Ottomans occupied the country.",
+      "hook_es": "La falda blanca de los guardias Evzones tiene 400 pliegues, uno por cada año que, según la tradición, duró la ocupación otomana en Grecia.",
+      "candidates": [],
+      "suggested_queries": [
+        "Evzones guard Syntagma Square Athens",
+        "Evzones fustanella Tomb Unknown Soldier"
+      ]
+    },
+    {
+      "slot": "fact7",
+      "headline": "This neighborhood has never once been abandoned",
+      "headline_es": "Este barrio nunca ha estado abandonado",
+      "body_html": "Plaka, the maze of lanes beneath the Acropolis, is Athens' <b>oldest district</b> — continuously inhabited since Neolithic times, with 19th-century houses still built directly over the ruins of the ancient Agora.",
+      "body_es": "Plaka, el laberinto de callejuelas bajo la Acrópolis, es el <b>barrio más antiguo de Atenas</b> — habitado sin interrupción desde el Neolítico, con casas del siglo XIX construidas directamente sobre las ruinas de la antigua Ágora.",
+      "hook": "Plaka, the neighborhood beneath the Acropolis, has been continuously inhabited since Neolithic times, its houses still sitting atop the ancient Agora's ruins.",
+      "hook_es": "Plaka, el barrio bajo la Acrópolis, ha estado habitado sin interrupción desde el Neolítico, con casas que todavía se asientan sobre las ruinas de la antigua Ágora.",
+      "candidates": [],
+      "suggested_queries": [
+        "Plaka Athens neighborhood lanes",
+        "Anafiotika Athens houses"
+      ]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": [
+    "Athens skyline Acropolis sunset",
+    "Athens aerial view Acropolis Lycabettus"
+  ]
+}

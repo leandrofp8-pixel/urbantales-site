@@ -30,10 +30,11 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 23 | Kyoto |
 | 24 | Budapest |
 | 25 | Budapest |
+| 26 | Athens |
 
 ## Next batch
 
-**#26 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#27 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
 
