@@ -7,10 +7,10 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 
 | Date | Type | City | Post |
 |---|---|---|---|
+| 2026-10-19 | City Guide | Prague | [blog-prague-velvet-revolution-walk.html](blog-prague-velvet-revolution-walk.html) — A self-guided walk through Prague's Velvet Revolution |
 | 2026-10-16 | Hidden Story | London | [blog-tower-of-london-secret-history.html](blog-tower-of-london-secret-history.html) — The secret history of the Tower of London's 600-year zoo |
 | Hidden Story | Venice | Venice's Ghetto: the walled island that gave the world a word (Scout 15 Oct: The Jewish Museum reopens 22 Oct 2026 after six years, with three restored 16th-century synagogues.) |
 | City Guide | Buenos Aires | Noche de los Museos 2026: a self-guided walk through Monserrat and San Telmo (Scout 15 Oct: La Noche de los Museos, Sat 14 Nov 2026, 19:00–02:00, free entry.) |
-| City Guide | Prague | Walking the Velvet Revolution: from Národní třída to Wenceslas Square (Scout 15 Oct: 17 Nov 2026 anniversary; Korzo Národní street event and 17:11 minute of silence.) |
 | 2026-10-14 | City Guide | Chicago | [blog-chicago-millennium-park-willis-tower-walk.html](blog-chicago-millennium-park-willis-tower-walk.html) — A self-guided Chicago walking tour, from the Bean to the Skydeck |
 | 2026-10-12 | Hidden Story | Bangkok | [blog-wat-arun-wat-pho-rivalry.html](blog-wat-arun-wat-pho-rivalry.html) — The grudge behind Wat Arun and Wat Pho |
 | 2026-10-07 | City Guide | Marrakech | [blog-marrakech-jemaa-el-fnaa-evening-walk.html](blog-marrakech-jemaa-el-fnaa-evening-walk.html) — A self-guided Jemaa el-Fnaa walk timed for the moment it comes alive |
@@ -38,7 +38,7 @@ already in this repo, so the post's CTAs and internal links can point to it.
 | Type | City | Angle |
 |---|---|---|
 
-The formal Queue is now empty. The three "Scout" rows mis-filed at the top of the Published table above (Venice, Buenos Aires, Prague) are the de facto next candidates — each has a time-sensitive hook and no post written yet. The next writer should treat those as the queue. Since this run published a Hidden Story (London), the next post should be a City Guide — pick Buenos Aires or Prague (Prague's 17 Nov anniversary hook is the more time-sensitive of the two) — and move it properly into Published with a date/filename once it's written.
+The formal Queue is still empty. Two "Scout" rows remain mis-filed at the top of the Published table above (Venice, Buenos Aires) — each has a time-sensitive hook and no post written yet (Venice: Jewish Museum reopening 22 Oct 2026; Buenos Aires: La Noche de los Museos, 14 Nov 2026). The Prague scout row (Velvet Revolution walk) has now been written and properly filed above. Since this run published a City Guide (Prague), the next post should be a Hidden Story — Venice is the better fit for that type; its reopening hook is also more time-sensitive now (22 Oct 2026 vs. Buenos Aires's 14 Nov 2026).
 
 ## Adding new topics
 
