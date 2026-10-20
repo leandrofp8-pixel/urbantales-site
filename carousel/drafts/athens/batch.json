@@ -1,0 +1,38 @@
+{
+ "badge_num": 27,
+ "city": "ATHENS",
+ "flag": "🇬🇷",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Athens secrets didn't you know? Comment the number 👇\n\n1. The Parthenon\nThe Parthenon's base rises about 6 centimeters in the middle and its columns lean slightly inward: refinements too subtle to notice by eye, built some 2,400 years ago.\n\n2. Temple of Olympian Zeus\nWork on the Temple of Olympian Zeus began around 520 BC, then stalled for centuries. Roman emperor Hadrian finally completed it around 131 AD, some 650 years after the first stones were laid.\n\n3. Panathenaic Stadium\nThe Panathenaic Stadium is the only stadium in the world built entirely of marble. It stands on the site of an ancient Greek stadium and was restored to host the first modern Olympic Games in 1896.\n\n4. Tower of the Winds\nThe octagonal Tower of the Winds in the Roman Agora, over 2,000 years old, combined sundials, a water clock and a bronze Triton weather vane that pointed to the blowing wind. It's often called an ancient weather station.\n\n5. Antikythera Mechanism\nSponge divers pulled the Antikythera Mechanism from an ancient shipwreck in 1901. Its roughly 30 surviving bronze gears could predict eclipses and track the Moon. Often called the oldest known analog computer, it's now in Athens' National Archaeological Museum.\n\n6. The Evzones Guard\nThe Evzones guards at Syntagma Square wear the fustanella, a kilt made from about 30 meters of cloth and folded into 400 pleats. Tradition says there's one pleat for each year of Ottoman rule.\n\n7. Anafiotika\nIn the 1840s, builders from the island of Anafi came to work on King Otto's new Athens and put up homes on the Acropolis slopes. Legend says they built them overnight, using an old Ottoman-era rule that a house finished between sunset and sunrise could stay.\n.\n.\n.\n#Athens #Greece #TravelFacts #Parthenon #UrbanTales",
+ "facts": [
+  {
+   "headline": "Nothing on the Parthenon is actually straight",
+   "hook": "The Parthenon's base rises about 6 centimeters in the middle, and its columns lean slightly inward. Nothing is truly straight."
+  },
+  {
+   "headline": "This temple took about 650 years to finish",
+   "hook": "Work on the Temple of Olympian Zeus began around 520 BC. Emperor Hadrian finally finished it about 650 years later."
+  },
+  {
+   "headline": "The world's only all-marble stadium hosted the first modern Olympics",
+   "hook": "The Panathenaic Stadium is the only stadium in the world built entirely of marble, and it hosted the 1896 Olympics."
+  },
+  {
+   "headline": "This 2,000-year-old tower told the time and the wind",
+   "hook": "Athens' Tower of the Winds, over 2,000 years old, combined sundials, a water clock and a bronze weather vane."
+  },
+  {
+   "headline": "Sponge divers found the world's oldest known computer",
+   "hook": "Athens' archaeology museum holds the Antikythera Mechanism, a bronze gear device that predicted eclipses, often called the oldest known computer."
+  },
+  {
+   "headline": "Each pleat in this uniform stands for a year of occupation",
+   "hook": "The kilt worn by Athens' Evzones guards has 400 pleats. Tradition says there's one for each year of Ottoman rule."
+  },
+  {
+   "headline": "Legend says this neighborhood was built overnight",
+   "hook": "Legend says builders from Anafi raised these homes below the Acropolis overnight, so they could not be torn down."
+  }
+ ]
+}
