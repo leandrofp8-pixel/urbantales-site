@@ -1,0 +1,140 @@
+{
+  "badge_num": 27,
+  "city": "ATHENS",
+  "flag": "🇬🇷",
+  "cta_screenshot": "screen-generic-narration-style.png",
+  "cta_screenshot_note": "No Athens map screenshot in the repo (no screen-athens-*-map.png file and no athens.html page exists yet); using the generic app screen per GUIDELINES.md.",
+  "style": "minimal",
+  "photo_sourcing_blocked": false,
+  "caption": "Which of these 7 Athens secrets didn't you know? Comment the number 👇\n\n1. The Parthenon\nThe Parthenon's base rises about 6 centimeters in the middle and its columns lean slightly inward: refinements too subtle to notice by eye, built some 2,400 years ago.\n\n2. Temple of Olympian Zeus\nWork on the Temple of Olympian Zeus began around 520 BC, then stalled for centuries. Roman emperor Hadrian finally completed it around 131 AD, some 650 years after the first stones were laid.\n\n3. Panathenaic Stadium\nThe Panathenaic Stadium is the only stadium in the world built entirely of marble. It stands on the site of an ancient Greek stadium and was restored to host the first modern Olympic Games in 1896.\n\n4. Tower of the Winds\nThe octagonal Tower of the Winds in the Roman Agora, over 2,000 years old, combined sundials, a water clock and a bronze Triton weather vane that pointed to the blowing wind. It's often called an ancient weather station.\n\n5. Antikythera Mechanism\nSponge divers pulled the Antikythera Mechanism from an ancient shipwreck in 1901. Its roughly 30 surviving bronze gears could predict eclipses and track the Moon. Often called the oldest known analog computer, it's now in Athens' National Archaeological Museum.\n\n6. The Evzones Guard\nThe Evzones guards at Syntagma Square wear the fustanella, a kilt made from about 30 meters of cloth and folded into 400 pleats. Tradition says there's one pleat for each year of Ottoman rule.\n\n7. Anafiotika\nIn the 1840s, builders from the island of Anafi came to work on King Otto's new Athens and put up homes on the Acropolis slopes. Legend says they built them overnight, using an old Ottoman-era rule that a house finished between sunset and sunrise could stay.\n.\n.\n.\n#Athens #Greece #TravelFacts #Parthenon #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Atenas no conocías? Comenta el número 👇\n\n1. El Partenón\nLa base del Partenón se eleva unos 6 centímetros en el centro y sus columnas se inclinan levemente hacia adentro: ajustes tan sutiles que no se notan a simple vista, hechos hace unos 2,400 años.\n\n2. Templo de Zeus Olímpico\nLas obras del Templo de Zeus Olímpico empezaron hacia el 520 a.C. y se detuvieron durante siglos. El emperador romano Adriano por fin lo terminó hacia el 131 d.C., unos 650 años después de colocarse las primeras piedras.\n\n3. Estadio Panatenaico\nEl Estadio Panatenaico es el único estadio del mundo construido completamente de mármol. Está en el lugar de un antiguo estadio griego y fue restaurado para recibir los primeros Juegos Olímpicos modernos en 1896.\n\n4. Torre de los Vientos\nLa Torre de los Vientos, octagonal y con más de 2 mil años, en el Ágora Romana, combinaba relojes de sol, un reloj de agua y una veleta de bronce con forma de Tritón que señalaba el viento. Suele llamarse una estación meteorológica antigua.\n\n5. Mecanismo de Anticitera\nUnos buzos de esponjas sacaron el Mecanismo de Anticitera de un naufragio antiguo en 1901. Sus cerca de 30 engranajes de bronce que se conservan podían predecir eclipses y seguir la Luna. Se le considera la computadora analógica más antigua conocida y hoy está en el Museo Arqueológico Nacional de Atenas.\n\n6. La Guardia Evzones\nLos guardias Evzones de la Plaza Syntagma usan la fustanela, una falda hecha con unos 30 metros de tela y 400 pliegues. Según la tradición, hay un pliegue por cada año de dominio otomano.\n\n7. Anafiotika\nEn la década de 1840, constructores de la isla de Anafi llegaron a trabajar en la nueva Atenas del rey Otón y levantaron casas en las laderas de la Acrópolis. Cuenta la leyenda que las hacían de noche, por una vieja regla de la época otomana: una casa terminada entre el atardecer y el amanecer podía quedarse.\n.\n.\n.\n#Atenas #Grecia #DatosCuriosos #Viajes #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Nothing on the Parthenon is actually straight",
+      "headline_es": "Nada en el Partenón es realmente recto",
+      "body_html": "The Parthenon's base rises about 6 centimeters in the middle and its columns lean slightly inward: refinements too subtle to notice by eye, built some 2,400 years ago.",
+      "body_es": "La base del Partenón se eleva unos 6 centímetros en el centro y sus columnas se inclinan levemente hacia adentro: ajustes tan sutiles que no se notan a simple vista, hechos hace unos 2,400 años.",
+      "hook": "The Parthenon's base rises about 6 centimeters in the middle, and its columns lean slightly inward. Nothing is truly straight.",
+      "hook_es": "La base del Partenón sube unos 6 centímetros al centro y sus columnas se inclinan hacia adentro: nada es recto.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Parthenon_from_west.jpg",
+          "license": "Public domain",
+          "artist": "User:Mountain"
+        }
+      ]
+    },
+    {
+      "slot": "fact2",
+      "headline": "This temple took about 650 years to finish",
+      "headline_es": "Este templo tardó unos 650 años en terminarse",
+      "body_html": "Work on the Temple of Olympian Zeus began around 520 BC, then stalled for centuries. Roman emperor Hadrian finally completed it around 131 AD, some 650 years after the first stones were laid.",
+      "body_es": "Las obras del Templo de Zeus Olímpico empezaron hacia el 520 a.C. y se detuvieron durante siglos. El emperador romano Adriano por fin lo terminó hacia el 131 d.C., unos 650 años después de colocarse las primeras piedras.",
+      "hook": "Work on the Temple of Olympian Zeus began around 520 BC. Emperor Hadrian finally finished it about 650 years later.",
+      "hook_es": "El Templo de Zeus Olímpico se empezó hacia el 520 a.C. y Adriano lo terminó unos 650 años después.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Attica_06-13_Athens_25_Olympian_Zeus_Temple.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "A.Savin"
+        }
+      ]
+    },
+    {
+      "slot": "fact3",
+      "headline": "The world's only all-marble stadium hosted the first modern Olympics",
+      "headline_es": "El único estadio de mármol del mundo recibió los primeros Juegos Olímpicos modernos",
+      "body_html": "The Panathenaic Stadium is the only stadium in the world built entirely of marble. It stands on the site of an ancient Greek stadium and was restored to host the first modern Olympic Games in 1896.",
+      "body_es": "El Estadio Panatenaico es el único estadio del mundo construido completamente de mármol. Está en el lugar de un antiguo estadio griego y fue restaurado para recibir los primeros Juegos Olímpicos modernos en 1896.",
+      "hook": "The Panathenaic Stadium is the only stadium in the world built entirely of marble, and it hosted the 1896 Olympics.",
+      "hook_es": "El Estadio Panatenaico es el único estadio del mundo hecho completamente de mármol, y recibió los Juegos Olímpicos de 1896.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Panathenaic_Stadium,_Athens,_20240601_1007_0050.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Jakub Hałun"
+        }
+      ]
+    },
+    {
+      "slot": "fact4",
+      "headline": "This 2,000-year-old tower told the time and the wind",
+      "headline_es": "Esta torre de 2 mil años marcaba la hora y el viento",
+      "body_html": "The octagonal Tower of the Winds in the Roman Agora, over 2,000 years old, combined sundials, a water clock and a bronze Triton weather vane that pointed to the blowing wind. It's often called an ancient weather station.",
+      "body_es": "La Torre de los Vientos, octagonal y con más de 2 mil años, en el Ágora Romana, combinaba relojes de sol, un reloj de agua y una veleta de bronce con forma de Tritón que señalaba el viento. Suele llamarse una estación meteorológica antigua.",
+      "hook": "Athens' Tower of the Winds, over 2,000 years old, combined sundials, a water clock and a bronze weather vane.",
+      "hook_es": "La Torre de los Vientos, de más de 2 mil años, combinaba relojes de sol, reloj de agua y veleta.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Tower_of_the_Winds,_Athens,_20240531_0912_9419.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Jakub Hałun"
+        }
+      ]
+    },
+    {
+      "slot": "fact5",
+      "headline": "Sponge divers found the world's oldest known computer",
+      "headline_es": "Unos buzos encontraron la computadora más antigua que se conoce",
+      "body_html": "Sponge divers pulled the Antikythera Mechanism from an ancient shipwreck in 1901. Its roughly 30 surviving bronze gears could predict eclipses and track the Moon. Often called the oldest known analog computer, it's now in Athens' National Archaeological Museum.",
+      "body_es": "Unos buzos de esponjas sacaron el Mecanismo de Anticitera de un naufragio antiguo en 1901. Sus cerca de 30 engranajes de bronce que se conservan podían predecir eclipses y seguir la Luna. Se le considera la computadora analógica más antigua conocida y hoy está en el Museo Arqueológico Nacional de Atenas.",
+      "hook": "Athens' archaeology museum holds the Antikythera Mechanism, a bronze gear device that predicted eclipses, often called the oldest known computer.",
+      "hook_es": "Atenas guarda el Mecanismo de Anticitera, un aparato de engranajes que predecía eclipses: la computadora más antigua conocida.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Mechanism_of_Antikythera,_150-100_BC,_NAMA,_191435.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Zde"
+        }
+      ]
+    },
+    {
+      "slot": "fact6",
+      "headline": "Each pleat in this uniform stands for a year of occupation",
+      "headline_es": "Cada pliegue de este uniforme representa un año de ocupación",
+      "body_html": "The Evzones guards at Syntagma Square wear the fustanella, a kilt made from about 30 meters of cloth and folded into 400 pleats. Tradition says there's one pleat for each year of Ottoman rule.",
+      "body_es": "Los guardias Evzones de la Plaza Syntagma usan la fustanela, una falda hecha con unos 30 metros de tela y 400 pliegues. Según la tradición, hay un pliegue por cada año de dominio otomano.",
+      "hook": "The kilt worn by Athens' Evzones guards has 400 pleats. Tradition says there's one for each year of Ottoman rule.",
+      "hook_es": "La falda de los guardias Evzones tiene 400 pliegues: según la tradición, uno por cada año de dominio otomano.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Evzones,_Presidential_Guard_(27113037967).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Luc.T from Buggenhout, België"
+        }
+      ]
+    },
+    {
+      "slot": "fact7",
+      "headline": "Legend says this neighborhood was built overnight",
+      "headline_es": "Cuenta la leyenda que este barrio se construyó de noche",
+      "body_html": "In the 1840s, builders from the island of Anafi came to work on King Otto's new Athens and put up homes on the Acropolis slopes. Legend says they built them overnight, using an old Ottoman-era rule that a house finished between sunset and sunrise could stay.",
+      "body_es": "En la década de 1840, constructores de la isla de Anafi llegaron a trabajar en la nueva Atenas del rey Otón y levantaron casas en las laderas de la Acrópolis. Cuenta la leyenda que las hacían de noche, por una vieja regla de la época otomana: una casa terminada entre el atardecer y el amanecer podía quedarse.",
+      "hook": "Legend says builders from Anafi raised these homes below the Acropolis overnight, so they could not be torn down.",
+      "hook_es": "Según la leyenda, constructores de Anafi levantaron estas casas bajo la Acrópolis en una noche para que no las derribaran.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:%CE%91%CE%BD%CE%B1%CF%86%CE%B9%CF%8E%CF%84%CE%B9%CE%BA%CE%B1_3007.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "C messier"
+        }
+      ]
+    }
+  ],
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1029_Acropolis_of_Athens_in_Greece_at_night_Photo_by_Giles_Laurent.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Giles Laurent"
+    }
+  ]
+}

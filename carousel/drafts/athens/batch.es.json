@@ -1,0 +1,39 @@
+{
+ "badge_num": 27,
+ "city": "ATENAS",
+ "flag": "🇬🇷",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Atenas no conocías? Comenta el número 👇\n\n1. El Partenón\nLa base del Partenón se eleva unos 6 centímetros en el centro y sus columnas se inclinan levemente hacia adentro: ajustes tan sutiles que no se notan a simple vista, hechos hace unos 2,400 años.\n\n2. Templo de Zeus Olímpico\nLas obras del Templo de Zeus Olímpico empezaron hacia el 520 a.C. y se detuvieron durante siglos. El emperador romano Adriano por fin lo terminó hacia el 131 d.C., unos 650 años después de colocarse las primeras piedras.\n\n3. Estadio Panatenaico\nEl Estadio Panatenaico es el único estadio del mundo construido completamente de mármol. Está en el lugar de un antiguo estadio griego y fue restaurado para recibir los primeros Juegos Olímpicos modernos en 1896.\n\n4. Torre de los Vientos\nLa Torre de los Vientos, octagonal y con más de 2 mil años, en el Ágora Romana, combinaba relojes de sol, un reloj de agua y una veleta de bronce con forma de Tritón que señalaba el viento. Suele llamarse una estación meteorológica antigua.\n\n5. Mecanismo de Anticitera\nUnos buzos de esponjas sacaron el Mecanismo de Anticitera de un naufragio antiguo en 1901. Sus cerca de 30 engranajes de bronce que se conservan podían predecir eclipses y seguir la Luna. Se le considera la computadora analógica más antigua conocida y hoy está en el Museo Arqueológico Nacional de Atenas.\n\n6. La Guardia Evzones\nLos guardias Evzones de la Plaza Syntagma usan la fustanela, una falda hecha con unos 30 metros de tela y 400 pliegues. Según la tradición, hay un pliegue por cada año de dominio otomano.\n\n7. Anafiotika\nEn la década de 1840, constructores de la isla de Anafi llegaron a trabajar en la nueva Atenas del rey Otón y levantaron casas en las laderas de la Acrópolis. Cuenta la leyenda que las hacían de noche, por una vieja regla de la época otomana: una casa terminada entre el atardecer y el amanecer podía quedarse.\n.\n.\n.\n#Atenas #Grecia #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "Nada en el Partenón es realmente recto",
+   "hook": "La base del Partenón sube unos 6 centímetros al centro y sus columnas se inclinan hacia adentro: nada es recto."
+  },
+  {
+   "headline": "Este templo tardó unos 650 años en terminarse",
+   "hook": "El Templo de Zeus Olímpico se empezó hacia el 520 a.C. y Adriano lo terminó unos 650 años después."
+  },
+  {
+   "headline": "El único estadio de mármol del mundo recibió los primeros Juegos Olímpicos modernos",
+   "hook": "El Estadio Panatenaico es el único estadio del mundo hecho completamente de mármol, y recibió los Juegos Olímpicos de 1896."
+  },
+  {
+   "headline": "Esta torre de 2 mil años marcaba la hora y el viento",
+   "hook": "La Torre de los Vientos, de más de 2 mil años, combinaba relojes de sol, reloj de agua y veleta."
+  },
+  {
+   "headline": "Unos buzos encontraron la computadora más antigua que se conoce",
+   "hook": "Atenas guarda el Mecanismo de Anticitera, un aparato de engranajes que predecía eclipses: la computadora más antigua conocida."
+  },
+  {
+   "headline": "Cada pliegue de este uniforme representa un año de ocupación",
+   "hook": "La falda de los guardias Evzones tiene 400 pliegues: según la tradición, uno por cada año de dominio otomano."
+  },
+  {
+   "headline": "Cuenta la leyenda que este barrio se construyó de noche",
+   "hook": "Según la leyenda, constructores de Anafi levantaron estas casas bajo la Acrópolis en una noche para que no las derribaran."
+  }
+ ],
+ "lang": "es"
+}
