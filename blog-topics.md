@@ -7,9 +7,9 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 
 | Date | Type | City | Post |
 |---|---|---|---|
+| 2026-10-21 | Hidden Story | Venice | [blog-venice-ghetto-word-origin-history.html](blog-venice-ghetto-word-origin-history.html) — Where the word "ghetto" actually came from |
 | 2026-10-19 | City Guide | Prague | [blog-prague-velvet-revolution-walk.html](blog-prague-velvet-revolution-walk.html) — A self-guided walk through Prague's Velvet Revolution |
 | 2026-10-16 | Hidden Story | London | [blog-tower-of-london-secret-history.html](blog-tower-of-london-secret-history.html) — The secret history of the Tower of London's 600-year zoo |
-| Hidden Story | Venice | Venice's Ghetto: the walled island that gave the world a word (Scout 15 Oct: The Jewish Museum reopens 22 Oct 2026 after six years, with three restored 16th-century synagogues.) |
 | City Guide | Buenos Aires | Noche de los Museos 2026: a self-guided walk through Monserrat and San Telmo (Scout 15 Oct: La Noche de los Museos, Sat 14 Nov 2026, 19:00–02:00, free entry.) |
 | 2026-10-14 | City Guide | Chicago | [blog-chicago-millennium-park-willis-tower-walk.html](blog-chicago-millennium-park-willis-tower-walk.html) — A self-guided Chicago walking tour, from the Bean to the Skydeck |
 | 2026-10-12 | Hidden Story | Bangkok | [blog-wat-arun-wat-pho-rivalry.html](blog-wat-arun-wat-pho-rivalry.html) — The grudge behind Wat Arun and Wat Pho |
@@ -38,7 +38,7 @@ already in this repo, so the post's CTAs and internal links can point to it.
 | Type | City | Angle |
 |---|---|---|
 
-The formal Queue is still empty. Two "Scout" rows remain mis-filed at the top of the Published table above (Venice, Buenos Aires) — each has a time-sensitive hook and no post written yet (Venice: Jewish Museum reopening 22 Oct 2026; Buenos Aires: La Noche de los Museos, 14 Nov 2026). The Prague scout row (Velvet Revolution walk) has now been written and properly filed above. Since this run published a City Guide (Prague), the next post should be a Hidden Story — Venice is the better fit for that type; its reopening hook is also more time-sensitive now (22 Oct 2026 vs. Buenos Aires's 14 Nov 2026).
+The formal Queue is still empty. One "Scout" row remains mis-filed in the Published table above (Buenos Aires) — it has a time-sensitive hook and no post written yet (La Noche de los Museos, Sat 14 Nov 2026). The Venice scout row (Ghetto word-origin story, tied to the Jewish Museum's 22 Oct 2026 reopening) has now been written and properly filed above. Since this run published a Hidden Story (Venice), the next post should be a City Guide — Buenos Aires's Noche de los Museos row is the only queued item and fits that type, with a deadline (14 Nov 2026) that's getting close.
 
 ## Adding new topics
 
