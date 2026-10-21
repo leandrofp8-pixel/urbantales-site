@@ -1,24 +1,30 @@
 {
-  "badge_num": 28,
+  "badge_num": 29,
   "city": "SEVILLE",
   "flag": "🇪🇸",
   "cta_screenshot": "screen-generic-narration-style.png",
   "cta_screenshot_note": "No Seville map screenshot in the repo (no screen-seville-*-map.png file and no seville.html page exists yet); using the generic app screen per GUIDELINES.md.",
   "style": "minimal",
-  "photo_sourcing_blocked": true,
-  "photo_sourcing_note": "This run's environment network policy denied every outbound request to commons.wikimedia.org, upload.wikimedia.org, en.wikipedia.org, www.wikidata.org, api.pexels.com, and images.pexels.com (agent proxy returned connect_rejected/403 on every host, same as the Athens #26 batch). No candidate photos could be downloaded this run. suggested_queries are provided per slot below so photos can be sourced either by widening the environment's allowed domains and re-running the Commons search, or by Leandro sourcing them manually.",
-  "caption": "Which of these 7 Seville secrets didn't you know? Comment the number 👇\n\n1. Giralda Tower\nBuilt as the minaret of Seville's 12th-century Almohad mosque, the Giralda has no steps inside — just a spiral ramp of 35 gentle ramps, wide enough that the muezzin is said to have ridden a horse to the top five times a day to call prayer.\n\n2. Columbus's Tomb\nInside Seville Cathedral, the tomb of Christopher Columbus is held aloft by four life-size bronze statues representing the medieval kingdoms of Castile, León, Aragón and Navarra — though DNA tests suggest some of the bones inside may actually belong to his son.\n\n3. Real Alcázar\nThe Real Alcázar, begun as a Moorish fort in the 10th century, is Europe's oldest royal palace still in use today — the Spanish royal family still stays in its upper floors, and its gardens played the Water Gardens of Dorne in Game of Thrones.\n\n4. Plaza de España\nBuilt for the 1929 Ibero-American Exposition, the Plaza de España's half-moon building wraps a 500-meter canal crossed by four bridges, where visitors still rent rowboats — the same plaza later played the Naboo capital of Theed in Star Wars: Attack of the Clones.\n\n5. Torre del Oro\nThe 13th-century Torre del Oro once anchored a massive chain strung across the Guadalquivir to a matching tower on the far bank, blocking enemy ships from reaching the port — until Castilian forces broke through it in 1248 and captured the city.\n\n6. Seville's Orange Trees\nSeville plants its streets with roughly 20,000 bitter orange trees, too sour to eat raw; most of the harvest is shipped straight to Britain, where it becomes the marmalade on breakfast tables across the country.\n\n7. Metropol Parasol\nConstruction of the Metropol Parasol, now the world's largest wooden structure, was interrupted when workers uncovered Roman and Moorish ruins underneath the plaza — the ancient remains are now a museum in its basement, with the giant wooden parasols resting on just a few supporting pillars above.\n.\n.\n.\n#Seville #Spain #TravelFacts #Giralda #UrbanTales",
-  "caption_es": "¿Cuál de estos 7 secretos de Sevilla no conocías? Comenta el número 👇\n\n1. La Giralda\nConstruida como el minarete de la mezquita almohade de Sevilla en el siglo XII, la Giralda no tiene escalones por dentro, solo una rampa espiral de 35 tramos suaves, lo bastante ancha para que el almuecín subiera a caballo hasta la cima cinco veces al día a llamar a la oración.\n\n2. La Tumba de Colón\nDentro de la Catedral de Sevilla, la tumba de Cristóbal Colón es sostenida por cuatro estatuas de bronce de tamaño real que representan los reinos medievales de Castilla, León, Aragón y Navarra, aunque pruebas de ADN sugieren que algunos huesos podrían ser en realidad de su hijo.\n\n3. Real Alcázar\nEl Real Alcázar, iniciado como fortaleza morisca en el siglo X, es el palacio real más antiguo de Europa aún en uso: la familia real española se hospeda en sus pisos superiores, y sus jardines fueron los Jardines del Agua de Dorne en Game of Thrones.\n\n4. Plaza de España\nConstruida para la Exposición Iberoamericana de 1929, la Plaza de España envuelve con su edificio en media luna un canal de 500 metros cruzado por cuatro puentes, donde todavía se alquilan botes de remo; la misma plaza luego hizo de capital Theed de Naboo en Star Wars: El ataque de los clones.\n\n5. Torre del Oro\nLa Torre del Oro, del siglo XIII, sostenía el extremo de una enorme cadena tendida sobre el Guadalquivir hasta una torre gemela en la otra orilla para bloquear barcos enemigos, hasta que las tropas castellanas la rompieron en 1248 y tomaron la ciudad.\n\n6. Los Naranjos de Sevilla\nSevilla planta sus calles con unos 20 mil naranjos amargos, demasiado ácidos para comer crudos; casi toda la cosecha se envía a Gran Bretaña, donde se convierte en la mermelada de las mesas de desayuno de todo el país.\n\n7. Metropol Parasol\nLa construcción del Metropol Parasol, hoy la estructura de madera más grande del mundo, se interrumpió cuando los obreros descubrieron ruinas romanas y moriscas bajo la plaza; los restos antiguos ahora son un museo en su sótano, y las enormes sombrillas de madera descansan sobre solo unos cuantos pilares.\n.\n.\n.\n#Sevilla #España #DatosCuriosos #Giralda #UrbanTales",
+  "photo_sourcing_blocked": false,
+  "caption": "Which of these 7 Seville secrets didn't you know? Comment the number 👇\n\n1. Giralda Tower\nBuilt as the minaret of Seville's 12th-century Almohad mosque, the Giralda has no stairs inside, just more than 30 ramps, said to be wide enough for the muezzin to ride a horse to the top to call the prayer.\n\n2. Columbus's Tomb\nInside Seville Cathedral, Columbus's coffin rides on the shoulders of four bronze heralds representing the kingdoms of Castile, León, Aragón and Navarre. DNA studies say the bones inside are his, but the Dominican Republic still claims to hold the real remains.\n\n3. Real Alcázar\nThe Real Alcázar, begun as a Moorish fort in the 10th century, is often called Europe's oldest royal palace still in use: its upper rooms remain the royal family's residence in Seville, and its gardens played the Water Gardens of Dorne in Game of Thrones.\n\n4. Plaza de España\nBuilt for the 1929 Ibero-American Exposition, the Plaza de España's half-moon building wraps a canal of about 500 meters crossed by four bridges, where visitors still rent rowboats. The plaza later played the Naboo city of Theed in Star Wars: Attack of the Clones.\n\n5. Torre del Oro\nThe Almohads built the Torre del Oro around 1220 to guard the Guadalquivir, and tradition says a huge chain ran from it across the river to stop enemy ships. In 1248 a Castilian fleet smashed through Seville's river defenses, and the city surrendered months later.\n\n6. Seville's Orange Trees\nSeville's streets and squares are lined with tens of thousands of bitter orange trees. The fruit is too sour to eat raw, but it's the classic orange for British marmalade, which is why the British call bitter oranges \"Seville oranges\".\n\n7. Metropol Parasol\nPlans for an underground car park in Plaza de la Encarnación stalled in the 1990s when digging uncovered Roman and Moorish ruins. They're now the Antiquarium museum beneath the Metropol Parasol, billed as the world's largest wooden structure.\n.\n.\n.\n#Seville #Spain #TravelFacts #Giralda #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Sevilla no conocías? Comenta el número 👇\n\n1. La Giralda\nConstruida como minarete de la mezquita almohade de Sevilla en el siglo XII, la Giralda no tiene escalones por dentro, sino más de 30 rampas que, según se dice, eran lo bastante anchas para que el almuecín subiera a caballo a llamar a la oración.\n\n2. La tumba de Colón\nDentro de la Catedral de Sevilla, el ataúd de Colón va en hombros de cuatro heraldos de bronce que representan los reinos de Castilla, León, Aragón y Navarra. Estudios de ADN dicen que los huesos son suyos, pero República Dominicana sigue afirmando que tiene los verdaderos restos.\n\n3. Real Alcázar\nEl Real Alcázar, iniciado como fortaleza musulmana en el siglo X, suele llamarse el palacio real en uso más antiguo de Europa: sus salones altos siguen siendo la residencia de la familia real en Sevilla, y sus jardines fueron los Jardines del Agua de Dorne en Game of Thrones.\n\n4. Plaza de España\nConstruida para la Exposición Iberoamericana de 1929, la Plaza de España rodea con su edificio en media luna un canal de unos 500 metros cruzado por cuatro puentes, donde todavía se alquilan botes de remo. La plaza luego fue la ciudad de Theed, en Naboo, en Star Wars: El ataque de los clones.\n\n5. Torre del Oro\nLos almohades levantaron la Torre del Oro hacia 1220 para vigilar el Guadalquivir, y la tradición dice que una enorme cadena iba de ella al otro lado del río para frenar barcos enemigos. En 1248 una flota castellana rompió las defensas del río, y la ciudad se rindió meses después.\n\n6. Los naranjos de Sevilla\nLas calles y plazas de Sevilla están llenas de decenas de miles de naranjos amargos. Su fruta es demasiado ácida para comerla cruda, pero es la naranja clásica de la mermelada británica, y por eso en Gran Bretaña las naranjas amargas se llaman \"naranjas de Sevilla\".\n\n7. Metropol Parasol\nLos planes de un estacionamiento subterráneo en la Plaza de la Encarnación se frenaron en los años 90, cuando la excavación sacó a la luz ruinas romanas y musulmanas. Hoy son el museo Antiquarium, bajo el Metropol Parasol, presentado como la estructura de madera más grande del mundo.\n.\n.\n.\n#Sevilla #España #DatosCuriosos #Giralda #UrbanTales",
   "facts": [
     {
       "slot": "fact1",
       "headline": "The Giralda's 'staircase' is really a ramp you could ride a horse up",
       "headline_es": "La 'escalera' de la Giralda en realidad es una rampa para subir a caballo",
-      "body_html": "Built as the minaret of Seville's 12th-century Almohad mosque, the Giralda has no steps inside — just a spiral ramp of <b>35 gentle ramps</b>, wide enough that the muezzin is said to have ridden a horse to the top five times a day to call prayer.",
-      "body_es": "Construida como el minarete de la mezquita almohade de Sevilla en el siglo XII, la Giralda no tiene escalones por dentro, solo una rampa espiral de <b>35 tramos suaves</b>, lo bastante ancha para que el almuecín subiera a caballo hasta la cima cinco veces al día a llamar a la oración.",
-      "hook": "The Giralda's tower has no stairs inside, only a wide spiral ramp, built so the muezzin could ride a horse to the top for the call to prayer.",
-      "hook_es": "La torre de la Giralda no tiene escalones por dentro, solo una amplia rampa espiral construida para que el almuecín subiera a caballo hasta la cima a llamar a la oración.",
-      "candidates": [],
+      "body_html": "Built as the minaret of Seville's 12th-century Almohad mosque, the Giralda has no stairs inside, just <b>more than 30 ramps</b>, said to be wide enough for the muezzin to ride a horse to the top to call the prayer.",
+      "body_es": "Construida como minarete de la mezquita almohade de Sevilla en el siglo XII, la Giralda no tiene escalones por dentro, sino <b>más de 30 rampas</b> que, según se dice, eran lo bastante anchas para que el almuecín subiera a caballo a llamar a la oración.",
+      "hook": "The Giralda has no stairs inside, only ramps said to be wide enough to ride a horse to the top.",
+      "hook_es": "La Giralda no tiene escalones por dentro, solo rampas que, según se dice, permitían subir a caballo hasta arriba.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Giralda_from_orange_trees_courtyard_Seville_Spain.jpg",
+          "license": "CC0",
+          "artist": "Jebulon"
+        }
+      ],
       "suggested_queries": [
         "Giralda tower Seville Cathedral",
         "Giralda bell tower Seville exterior"
@@ -26,13 +32,20 @@
     },
     {
       "slot": "fact2",
-      "headline": "Four kings have been carrying Columbus's coffin since 1902",
-      "headline_es": "Cuatro reyes cargan el ataúd de Colón desde 1902",
-      "body_html": "Inside Seville Cathedral, the tomb of <b>Christopher Columbus</b> is held aloft by four life-size bronze statues representing the medieval kingdoms of Castile, León, Aragón and Navarra — though DNA tests suggest some of the bones inside may actually belong to his son.",
-      "body_es": "Dentro de la Catedral de Sevilla, la tumba de <b>Cristóbal Colón</b> es sostenida por cuatro estatuas de bronce de tamaño real que representan los reinos medievales de Castilla, León, Aragón y Navarra, aunque pruebas de ADN sugieren que algunos huesos podrían ser en realidad de su hijo.",
-      "hook": "Christopher Columbus's tomb in Seville Cathedral is carried by four bronze king statues representing Spain's medieval kingdoms, though DNA tests suggest some bones inside may be his son's.",
-      "hook_es": "La tumba de Cristóbal Colón en la Catedral de Sevilla es cargada por cuatro reyes de bronce que representan los reinos medievales de España, aunque el ADN sugiere que algunos huesos podrían ser de su hijo.",
-      "candidates": [],
+      "headline": "Two countries say they have Columbus's bones",
+      "headline_es": "Dos países dicen tener los huesos de Colón",
+      "body_html": "Inside Seville Cathedral, Columbus's coffin rides on the shoulders of <b>four bronze heralds</b> representing the kingdoms of Castile, León, Aragón and Navarre. DNA studies say the bones inside are his, but the Dominican Republic still claims to hold the real remains.",
+      "body_es": "Dentro de la Catedral de Sevilla, el ataúd de Colón va en hombros de <b>cuatro heraldos de bronce</b> que representan los reinos de Castilla, León, Aragón y Navarra. Estudios de ADN dicen que los huesos son suyos, pero República Dominicana sigue afirmando que tiene los verdaderos restos.",
+      "hook": "Four bronze heralds carry Columbus's coffin in Seville Cathedral, but the Dominican Republic still claims his real bones.",
+      "hook_es": "Cuatro heraldos de bronce cargan el ataúd de Colón en la Catedral, pero República Dominicana dice tener sus verdaderos restos.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Tomb_of_Christopher_Columbus,_Seville_Spain.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Ktg ktg"
+        }
+      ],
       "suggested_queries": [
         "Seville Cathedral Columbus tomb monument",
         "tumba Cristobal Colon Sevilla catedral"
@@ -40,13 +53,20 @@
     },
     {
       "slot": "fact3",
-      "headline": "Spain's royal family still uses Europe's oldest working palace",
-      "headline_es": "La familia real española todavía usa el palacio en funcionamiento más antiguo de Europa",
-      "body_html": "The <b>Real Alcázar</b>, begun as a Moorish fort in the 10th century, is Europe's oldest royal palace still in use today — the Spanish royal family still stays in its upper floors, and its gardens played the Water Gardens of Dorne in Game of Thrones.",
-      "body_es": "El <b>Real Alcázar</b>, iniciado como fortaleza morisca en el siglo X, es el palacio real más antiguo de Europa aún en uso: la familia real española se hospeda en sus pisos superiores, y sus jardines fueron los Jardines del Agua de Dorne en Game of Thrones.",
-      "hook": "The Real Alcazar began as a 10th-century Moorish fort and is now Europe's oldest royal palace still in use, with its gardens doubling as Dorne in Game of Thrones.",
-      "hook_es": "El Real Alcázar empezó como fortaleza morisca en el siglo X y hoy es el palacio real más antiguo de Europa en uso, con jardines que fueron Dorne en Game of Thrones.",
-      "candidates": [],
+      "headline": "Spain's royals still stay in this 10th-century palace",
+      "headline_es": "Los reyes de España todavía se hospedan en este palacio del siglo X",
+      "body_html": "The <b>Real Alcázar</b>, begun as a Moorish fort in the 10th century, is often called Europe's oldest royal palace still in use: its upper rooms remain the royal family's residence in Seville, and its gardens played the Water Gardens of Dorne in Game of Thrones.",
+      "body_es": "El <b>Real Alcázar</b>, iniciado como fortaleza musulmana en el siglo X, suele llamarse el palacio real en uso más antiguo de Europa: sus salones altos siguen siendo la residencia de la familia real en Sevilla, y sus jardines fueron los Jardines del Agua de Dorne en Game of Thrones.",
+      "hook": "Spain's royals still stay in the Real Alcázar, a 10th-century palace whose gardens played Dorne in Game of Thrones.",
+      "hook_es": "La realeza española usa el Real Alcázar, palacio del siglo X cuyos jardines fueron Dorne en Game of Thrones.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Puerta_del_Privilegio_real_alcazares_Seville_Spain.jpg",
+          "license": "CC0",
+          "artist": "Jebulon"
+        }
+      ],
       "suggested_queries": [
         "Real Alcazar Seville palace gardens",
         "Alcazar de Sevilla patio Game of Thrones"
@@ -56,11 +76,18 @@
       "slot": "fact4",
       "headline": "You can row a boat across this 1929 World's Fair plaza",
       "headline_es": "Puedes remar un bote por esta plaza de la Expo de 1929",
-      "body_html": "Built for the 1929 Ibero-American Exposition, the <b>Plaza de España</b>'s half-moon building wraps a 500-meter canal crossed by four bridges, where visitors still rent rowboats — the same plaza later played the Naboo capital of Theed in <b>Star Wars: Attack of the Clones</b>.",
-      "body_es": "Construida para la Exposición Iberoamericana de 1929, la <b>Plaza de España</b> envuelve con su edificio en media luna un canal de 500 metros cruzado por cuatro puentes, donde todavía se alquilan botes de remo; la misma plaza luego hizo de capital Theed de Naboo en <b>Star Wars: El ataque de los clones</b>.",
-      "hook": "Seville's Plaza de Espana, built for the 1929 World's Fair, wraps a 500-meter canal where you can still rent a rowboat, and it doubled as Naboo's capital in Star Wars: Attack of the Clones.",
-      "hook_es": "La Plaza de España de Sevilla, construida para la Expo de 1929, rodea un canal de 500 metros donde aún se alquilan botes de remo, y sirvió como la capital de Naboo en Star Wars: El ataque de los clones.",
-      "candidates": [],
+      "body_html": "Built for the 1929 Ibero-American Exposition, the <b>Plaza de España</b>'s half-moon building wraps a canal of about 500 meters crossed by four bridges, where visitors still rent rowboats. The plaza later played the Naboo city of Theed in <b>Star Wars: Attack of the Clones</b>.",
+      "body_es": "Construida para la Exposición Iberoamericana de 1929, la <b>Plaza de España</b> rodea con su edificio en media luna un canal de unos 500 metros cruzado por cuatro puentes, donde todavía se alquilan botes de remo. La plaza luego fue la ciudad de Theed, en Naboo, en <b>Star Wars: El ataque de los clones</b>.",
+      "hook": "Built for the 1929 World's Fair, Plaza de España has a canal for rowboats and played Naboo in Star Wars.",
+      "hook_es": "Construida para la Expo de 1929, la Plaza de España fue Naboo en Star Wars y tiene botes de remo.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Plaza_de_Espa%C3%B1a_(Sevilla)_-_01.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Carlos Delgado"
+        }
+      ],
       "suggested_queries": [
         "Plaza de Espana Seville canal bridges",
         "Plaza de Espana Sevilla aerial view"
@@ -68,13 +95,20 @@
     },
     {
       "slot": "fact5",
-      "headline": "A chain across the river once sealed off the entire port",
-      "headline_es": "Una cadena cruzaba el río y sellaba todo el puerto",
-      "body_html": "The 13th-century <b>Torre del Oro</b> once anchored a massive chain strung across the Guadalquivir to a matching tower on the far bank, blocking enemy ships from reaching the port — until Castilian forces broke through it in 1248 and captured the city.",
-      "body_es": "La <b>Torre del Oro</b>, del siglo XIII, sostenía el extremo de una enorme cadena tendida sobre el Guadalquivir hasta una torre gemela en la otra orilla para bloquear barcos enemigos, hasta que las tropas castellanas la rompieron en 1248 y tomaron la ciudad.",
-      "hook": "A giant chain once stretched from the Torre del Oro across the Guadalquivir River to block enemy ships from Seville's port, until Castilian forces broke through it in 1248.",
-      "hook_es": "Una enorme cadena iba de la Torre del Oro a través del Guadalquivir para bloquear barcos enemigos del puerto de Sevilla, hasta que las tropas castellanas la rompieron en 1248.",
-      "candidates": [],
+      "headline": "Tradition says a chain across the river sealed off the port",
+      "headline_es": "Dicen que una cadena cruzaba el río y cerraba el puerto",
+      "body_html": "The Almohads built the <b>Torre del Oro</b> around 1220 to guard the Guadalquivir, and tradition says a huge chain ran from it across the river to stop enemy ships. In <b>1248</b> a Castilian fleet smashed through Seville's river defenses, and the city surrendered months later.",
+      "body_es": "Los almohades levantaron la <b>Torre del Oro</b> hacia 1220 para vigilar el Guadalquivir, y la tradición dice que una enorme cadena iba de ella al otro lado del río para frenar barcos enemigos. En <b>1248</b> una flota castellana rompió las defensas del río, y la ciudad se rindió meses después.",
+      "hook": "Tradition says a chain ran from the Torre del Oro across the river, until Castilian ships smashed through in 1248.",
+      "hook_es": "Dicen que una cadena cerraba el río desde la Torre del Oro, hasta que barcos castellanos la rompieron en 1248.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Torre_del_oro_laurels_Seville_Andalusia_Spain.jpg",
+          "license": "CC0",
+          "artist": "Jebulon"
+        }
+      ],
       "suggested_queries": [
         "Torre del Oro Seville riverside",
         "Torre del Oro Guadalquivir tower"
@@ -82,13 +116,20 @@
     },
     {
       "slot": "fact6",
-      "headline": "20,000 bitter orange trees line the streets, and almost none get eaten here",
-      "headline_es": "20 mil naranjos amargos bordean las calles, y casi nadie se los come aquí",
-      "body_html": "Seville plants its streets with roughly <b>20,000 bitter orange trees</b>, too sour to eat raw; most of the harvest is shipped straight to Britain, where it becomes the marmalade on breakfast tables across the country.",
-      "body_es": "Sevilla planta sus calles con unos <b>20 mil naranjos amargos</b>, demasiado ácidos para comer crudos; casi toda la cosecha se envía a Gran Bretaña, donde se convierte en la mermelada de las mesas de desayuno de todo el país.",
-      "hook": "Seville lines its streets with roughly 20,000 bitter orange trees too sour to eat raw, and most of the fruit gets shipped straight to Britain to become marmalade.",
-      "hook_es": "Sevilla bordea sus calles con unos 20 mil naranjos amargos, demasiado ácidos para comer crudos, y casi toda la cosecha se envía a Gran Bretaña para volverse mermelada.",
-      "candidates": [],
+      "headline": "The oranges on Seville's streets are too bitter to eat",
+      "headline_es": "Las naranjas de las calles de Sevilla son demasiado amargas para comer",
+      "body_html": "Seville's streets and squares are lined with <b>tens of thousands of bitter orange trees</b>. The fruit is too sour to eat raw, but it's the classic orange for British marmalade, which is why the British call bitter oranges \"Seville oranges\".",
+      "body_es": "Las calles y plazas de Sevilla están llenas de <b>decenas de miles de naranjos amargos</b>. Su fruta es demasiado ácida para comerla cruda, pero es la naranja clásica de la mermelada británica, y por eso en Gran Bretaña las naranjas amargas se llaman \"naranjas de Sevilla\".",
+      "hook": "Seville's street orange trees grow fruit too bitter to eat raw, yet they're the classic oranges in British marmalade.",
+      "hook_es": "Los naranjos callejeros de Sevilla dan frutos demasiado amargos para comer, pero son la base de la mermelada británica.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Seville_La_Giralda_01_(5561445938).jpg",
+          "license": "CC BY-SA 2.0",
+          "artist": "michael clarke stuff"
+        }
+      ],
       "suggested_queries": [
         "Seville orange trees street bitter oranges",
         "naranjos calle Sevilla"
@@ -96,20 +137,34 @@
     },
     {
       "slot": "fact7",
-      "headline": "The world's largest wooden structure sits on top of Roman ruins",
-      "headline_es": "La estructura de madera más grande del mundo está sobre ruinas romanas",
-      "body_html": "Construction of the <b>Metropol Parasol</b>, now the world's largest wooden structure, was interrupted when workers uncovered Roman and Moorish ruins underneath the plaza — the ancient remains are now a museum in its basement, with the giant wooden parasols resting on just a few supporting pillars above.",
-      "body_es": "La construcción del <b>Metropol Parasol</b>, hoy la estructura de madera más grande del mundo, se interrumpió cuando los obreros descubrieron ruinas romanas y moriscas bajo la plaza; los restos antiguos ahora son un museo en su sótano, y las enormes sombrillas de madera descansan sobre solo unos cuantos pilares.",
-      "hook": "Building Seville's Metropol Parasol, now the world's largest wooden structure, was interrupted when workers found Roman and Moorish ruins underneath, now a museum in its basement.",
-      "hook_es": "La construcción del Metropol Parasol de Sevilla, hoy la estructura de madera más grande del mundo, se interrumpió al descubrir ruinas romanas y moriscas, que ahora son un museo en su sótano.",
-      "candidates": [],
+      "headline": "Roman ruins hide under a giant wooden canopy",
+      "headline_es": "Ruinas romanas escondidas bajo unas setas de madera gigantes",
+      "body_html": "Plans for an underground car park in Plaza de la Encarnación stalled in the 1990s when digging uncovered <b>Roman and Moorish ruins</b>. They're now the Antiquarium museum beneath the <b>Metropol Parasol</b>, billed as the world's largest wooden structure.",
+      "body_es": "Los planes de un estacionamiento subterráneo en la Plaza de la Encarnación se frenaron en los años 90, cuando la excavación sacó a la luz <b>ruinas romanas y musulmanas</b>. Hoy son el museo Antiquarium, bajo el <b>Metropol Parasol</b>, presentado como la estructura de madera más grande del mundo.",
+      "hook": "Roman ruins found while digging a car park now sit in a museum under the wooden Metropol Parasol.",
+      "hook_es": "Ruinas romanas halladas al excavar un estacionamiento hoy son un museo bajo las setas de madera del Metropol Parasol.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Metropol_Parasol_20180719-2.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Suicasmo"
+        }
+      ],
       "suggested_queries": [
         "Metropol Parasol Seville Las Setas",
         "Metropol Parasol Plaza Encarnacion"
       ]
     }
   ],
-  "cover_candidates": [],
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Plaza_Virgen_de_los_Reyes,_Seville,_Spain_-_Sep_2009.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Diliff"
+    }
+  ],
   "cover_suggested_queries": [
     "Seville skyline Giralda aerial",
     "Seville aerial view Guadalquivir river sunset"
