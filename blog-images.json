@@ -124,5 +124,12 @@
     "photographer": "Heinz Klier",
     "photographer_url": "https://www.pexels.com/@heinz-klier-261981",
     "pexels_url": "https://www.pexels.com/photo/stone-church-beside-buildings-1055234/"
+  },
+  "venice": {
+    "file": "blog-img-venice.jpg",
+    "query": "Cannaregio Venice canal",
+    "photographer": "Helena Jankovičová Kováčová",
+    "photographer_url": "https://www.pexels.com/@helen1",
+    "pexels_url": "https://www.pexels.com/photo/charming-venetian-canal-with-colorful-buildings-30990663/"
   }
 }
