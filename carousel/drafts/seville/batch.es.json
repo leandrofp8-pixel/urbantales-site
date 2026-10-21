@@ -1,0 +1,39 @@
+{
+ "badge_num": 29,
+ "flag": "🇪🇸",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "SEVILLA",
+ "lang": "es",
+ "caption": "¿Cuál de estos 7 secretos de Sevilla no conocías? Comenta el número 👇\n\n1. La Giralda\nConstruida como minarete de la mezquita almohade de Sevilla en el siglo XII, la Giralda no tiene escalones por dentro, sino más de 30 rampas que, según se dice, eran lo bastante anchas para que el almuecín subiera a caballo a llamar a la oración.\n\n2. La tumba de Colón\nDentro de la Catedral de Sevilla, el ataúd de Colón va en hombros de cuatro heraldos de bronce que representan los reinos de Castilla, León, Aragón y Navarra. Estudios de ADN dicen que los huesos son suyos, pero República Dominicana sigue afirmando que tiene los verdaderos restos.\n\n3. Real Alcázar\nEl Real Alcázar, iniciado como fortaleza musulmana en el siglo X, suele llamarse el palacio real en uso más antiguo de Europa: sus salones altos siguen siendo la residencia de la familia real en Sevilla, y sus jardines fueron los Jardines del Agua de Dorne en Game of Thrones.\n\n4. Plaza de España\nConstruida para la Exposición Iberoamericana de 1929, la Plaza de España rodea con su edificio en media luna un canal de unos 500 metros cruzado por cuatro puentes, donde todavía se alquilan botes de remo. La plaza luego fue la ciudad de Theed, en Naboo, en Star Wars: El ataque de los clones.\n\n5. Torre del Oro\nLos almohades levantaron la Torre del Oro hacia 1220 para vigilar el Guadalquivir, y la tradición dice que una enorme cadena iba de ella al otro lado del río para frenar barcos enemigos. En 1248 una flota castellana rompió las defensas del río, y la ciudad se rindió meses después.\n\n6. Los naranjos de Sevilla\nLas calles y plazas de Sevilla están llenas de decenas de miles de naranjos amargos. Su fruta es demasiado ácida para comerla cruda, pero es la naranja clásica de la mermelada británica, y por eso en Gran Bretaña las naranjas amargas se llaman \"naranjas de Sevilla\".\n\n7. Metropol Parasol\nLos planes de un estacionamiento subterráneo en la Plaza de la Encarnación se frenaron en los años 90, cuando la excavación sacó a la luz ruinas romanas y musulmanas. Hoy son el museo Antiquarium, bajo el Metropol Parasol, presentado como la estructura de madera más grande del mundo.\n.\n.\n.\n#Sevilla #España #DatosCuriosos #Giralda #UrbanTales",
+ "facts": [
+  {
+   "headline": "La 'escalera' de la Giralda en realidad es una rampa para subir a caballo",
+   "hook": "La Giralda no tiene escalones por dentro, solo rampas que, según se dice, permitían subir a caballo hasta arriba."
+  },
+  {
+   "headline": "Dos países dicen tener los huesos de Colón",
+   "hook": "Cuatro heraldos de bronce cargan el ataúd de Colón en la Catedral, pero República Dominicana dice tener sus verdaderos restos."
+  },
+  {
+   "headline": "Los reyes de España todavía se hospedan en este palacio del siglo X",
+   "hook": "La realeza española usa el Real Alcázar, palacio del siglo X cuyos jardines fueron Dorne en Game of Thrones."
+  },
+  {
+   "headline": "Puedes remar un bote por esta plaza de la Expo de 1929",
+   "hook": "Construida para la Expo de 1929, la Plaza de España fue Naboo en Star Wars y tiene botes de remo."
+  },
+  {
+   "headline": "Dicen que una cadena cruzaba el río y cerraba el puerto",
+   "hook": "Dicen que una cadena cerraba el río desde la Torre del Oro, hasta que barcos castellanos la rompieron en 1248."
+  },
+  {
+   "headline": "Las naranjas de las calles de Sevilla son demasiado amargas para comer",
+   "hook": "Los naranjos callejeros de Sevilla dan frutos demasiado amargos para comer, pero son la base de la mermelada británica."
+  },
+  {
+   "headline": "Ruinas romanas escondidas bajo unas setas de madera gigantes",
+   "hook": "Ruinas romanas halladas al excavar un estacionamiento hoy son un museo bajo las setas de madera del Metropol Parasol."
+  }
+ ]
+}

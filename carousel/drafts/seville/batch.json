@@ -1,0 +1,38 @@
+{
+ "badge_num": 29,
+ "flag": "🇪🇸",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "SEVILLE",
+ "caption": "Which of these 7 Seville secrets didn't you know? Comment the number 👇\n\n1. Giralda Tower\nBuilt as the minaret of Seville's 12th-century Almohad mosque, the Giralda has no stairs inside, just more than 30 ramps, said to be wide enough for the muezzin to ride a horse to the top to call the prayer.\n\n2. Columbus's Tomb\nInside Seville Cathedral, Columbus's coffin rides on the shoulders of four bronze heralds representing the kingdoms of Castile, León, Aragón and Navarre. DNA studies say the bones inside are his, but the Dominican Republic still claims to hold the real remains.\n\n3. Real Alcázar\nThe Real Alcázar, begun as a Moorish fort in the 10th century, is often called Europe's oldest royal palace still in use: its upper rooms remain the royal family's residence in Seville, and its gardens played the Water Gardens of Dorne in Game of Thrones.\n\n4. Plaza de España\nBuilt for the 1929 Ibero-American Exposition, the Plaza de España's half-moon building wraps a canal of about 500 meters crossed by four bridges, where visitors still rent rowboats. The plaza later played the Naboo city of Theed in Star Wars: Attack of the Clones.\n\n5. Torre del Oro\nThe Almohads built the Torre del Oro around 1220 to guard the Guadalquivir, and tradition says a huge chain ran from it across the river to stop enemy ships. In 1248 a Castilian fleet smashed through Seville's river defenses, and the city surrendered months later.\n\n6. Seville's Orange Trees\nSeville's streets and squares are lined with tens of thousands of bitter orange trees. The fruit is too sour to eat raw, but it's the classic orange for British marmalade, which is why the British call bitter oranges \"Seville oranges\".\n\n7. Metropol Parasol\nPlans for an underground car park in Plaza de la Encarnación stalled in the 1990s when digging uncovered Roman and Moorish ruins. They're now the Antiquarium museum beneath the Metropol Parasol, billed as the world's largest wooden structure.\n.\n.\n.\n#Seville #Spain #TravelFacts #Giralda #UrbanTales",
+ "facts": [
+  {
+   "headline": "The Giralda's 'staircase' is really a ramp you could ride a horse up",
+   "hook": "The Giralda has no stairs inside, only ramps said to be wide enough to ride a horse to the top."
+  },
+  {
+   "headline": "Two countries say they have Columbus's bones",
+   "hook": "Four bronze heralds carry Columbus's coffin in Seville Cathedral, but the Dominican Republic still claims his real bones."
+  },
+  {
+   "headline": "Spain's royals still stay in this 10th-century palace",
+   "hook": "Spain's royals still stay in the Real Alcázar, a 10th-century palace whose gardens played Dorne in Game of Thrones."
+  },
+  {
+   "headline": "You can row a boat across this 1929 World's Fair plaza",
+   "hook": "Built for the 1929 World's Fair, Plaza de España has a canal for rowboats and played Naboo in Star Wars."
+  },
+  {
+   "headline": "Tradition says a chain across the river sealed off the port",
+   "hook": "Tradition says a chain ran from the Torre del Oro across the river, until Castilian ships smashed through in 1248."
+  },
+  {
+   "headline": "The oranges on Seville's streets are too bitter to eat",
+   "hook": "Seville's street orange trees grow fruit too bitter to eat raw, yet they're the classic oranges in British marmalade."
+  },
+  {
+   "headline": "Roman ruins hide under a giant wooden canopy",
+   "hook": "Roman ruins found while digging a car park now sit in a museum under the wooden Metropol Parasol."
+  }
+ ]
+}
