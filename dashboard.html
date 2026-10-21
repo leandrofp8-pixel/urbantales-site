@@ -589,6 +589,40 @@
 
     <!-- ── FUNNEL ── -->
     <div class="tab-panel" id="panel-funnel">
+      <!-- ── TRIPS (travel-aware retention) ── -->
+      <div class="section-header" style="margin-bottom:12px">
+        <h2>Trips</h2>
+        <span style="font-size:0.8rem;color:var(--muted)">People use UrbanTales per trip, so retention is measured in trips, not months · <span id="tripMeta"></span></span>
+      </div>
+      <div id="tripKpis" class="grid-4" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-bottom:24px"><div class="loading">Loading…</div></div>
+      <div class="grid-2" style="margin-bottom:24px">
+        <div class="card">
+          <div class="card-title">Second-trip curve by sign-up month
+            <span class="gran-switch" id="tripRuleSwitch">
+              <button data-rule="either" class="active" onclick="setTripRule('either')">New city or 30+ days</button><button data-rule="city" onclick="setTripRule('city')">New city</button><button data-rule="gap" onclick="setTripRule('gap')">30+ days</button>
+            </span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--muted);margin:-8px 0 10px">Share of each month's new users (who heard at least one story) that used the app again on a second trip, by months since sign-up. It only goes up; compare cohorts at the same age. Only full months are shown.</div>
+          <div class="chart-wrap-lg"><canvas id="chartTripCurve"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Where users are now</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin:-8px 0 10px" id="tripStatesNote"></div>
+          <div id="tripStates"></div>
+          <div class="card-title" style="margin-top:18px;margin-bottom:6px">Time to second trip</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-bottom:8px">From the end of the first trip to the start of the second.</div>
+          <div class="chart-wrap" style="height:170px"><canvas id="chartTripGap"></canvas></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Second trips by sign-up month <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">same numbers as the curve · blank = cohort not old enough yet</span></div>
+        <div class="table-wrap"><table id="tripCohortTable"><tbody><tr><td class="loading">Loading…</td></tr></tbody></table></div>
+      </div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">During the trip <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">by week the trip started · back next day = listened again the following day in the same city</span></div>
+        <div class="chart-wrap"><canvas id="chartTripWeekly"></canvas></div>
+      </div>
+
       <div class="grid-2" style="margin-bottom:24px">
         <div class="card">
           <div class="card-title">Conversion Funnel — Period Cohort
@@ -625,16 +659,12 @@
             <div class="chart-wrap-lg"><canvas id="chartMAUMonthly"></canvas></div>
           </div>
         </div>
-        <div>
-          <div style="font-size:0.8rem;color:var(--muted);margin-bottom:8px">Monthly churn rate — % of previous month's MAUs who did not activate this month</div>
-          <div class="chart-wrap" style="height:180px"><canvas id="chartMAUChurn"></canvas></div>
-        </div>
       </div>
 
       <div class="card" style="margin-bottom:24px">
         <div class="section-header">
-          <h2>Monthly Cohort Retention — Last 6 Months</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">Compare how each month's signups progress through the funnel</span>
+          <h2>Conversion by Sign-up Month — Last 6 Months</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">How each month's sign-ups progress through the funnel (retention is in Trips above)</span>
         </div>
         <div class="table-wrap">
           <table id="cohortsTable">
@@ -2948,7 +2978,10 @@ async function saveConfigGroup(g) {
 function showTab(name) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(`panel-${name}`).classList.add('active');
+  const panel = document.getElementById(`panel-${name}`);
+  panel.classList.add('active');
+  // Charts drawn while their tab was hidden can stay 0×0; size them now it's visible.
+  requestAnimationFrame(() => Object.values(CHARTS).forEach(c => { try { if (panel.contains(c.canvas)) c.resize(); } catch (e) {} }));
   event.currentTarget.classList.add('active');
   if (name === 'platforms') {
     _platformTabLoaded = true;
@@ -3225,7 +3258,6 @@ function renderMAU(mau) {
     ${kpiCard('New', fmt(cur.new || 0), 'first-ever activation this month', null, '')}
     ${kpiCard('Engaged', fmt(cur.engaged || 0), 'also MAU last month', null, '')}
     ${kpiCard('Recovered', fmt(cur.recovered || 0), 'returning after ≥1 month gap', null, '')}
-    ${kpiCard('Churn rate', cur.churn_rate != null ? cur.churn_rate + '%' : '—', 'prev-month MAUs lost this month', null, '')}
   `;
 
   // Daily cumulative chart — current month + prev month comparison line
@@ -3268,13 +3300,138 @@ function renderMAU(mau) {
     { label: 'Engaged',   data: monthly.map(m => m.engaged),   color: C.blue,   stack: 'mau', backgroundColor: C.blue   + 'cc' },
     { label: 'Recovered', data: monthly.map(m => m.recovered), color: C.yellow, stack: 'mau', backgroundColor: C.yellow + 'cc' },
   ], { stacked: true });
+  // (Monthly churn rate removed: for a travel app most users aren't back next
+  // month by nature. See the Trips section: second-trip rate and user states.)
+}
 
-  // Churn rate line chart
-  const churnLabels = monthly.map(m => fmtMonth(m.month));
-  const churnData = monthly.map(m => m.churn_rate);
-  lineChart('chartMAUChurn', churnLabels, [
-    { label: 'Churn %', data: churnData, color: '#ef4444' }
-  ], { y: { ticks: { callback: v => v + '%' } } });
+// ══════════════════════════════════════════════
+// TRIPS — travel-aware retention (/analytics/kpi/trip-retention)
+// ══════════════════════════════════════════════
+let _tripData = null;
+let _tripRule = 'either';
+
+function _tripMonth(key) {
+  const [y, m] = key.split('-');
+  return new Date(+y, +m - 1, 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
+function _tripKpi(title, k, unit, sub) {
+  const v = k.current, p = k.previous;
+  const val = v == null ? '—' : (unit === '%' ? v + '%' : fmt(v));
+  let badge = null, cls = '';
+  if (v != null && p != null && p !== 0) {
+    const d = (v - p) / p * 100;
+    badge = `${Math.abs(d) < 1 ? '→' : d > 0 ? '↑' : '↓'} ${Math.abs(d).toFixed(1)}% vs prev period`;
+    cls = Math.abs(d) < 1 ? 'blue' : d > 0 ? 'green' : 'red';
+  }
+  const avg = k.avg3 == null ? '' : ` · 3-period avg ${unit === '%' ? k.avg3 + '%' : k.avg3}`;
+  return kpiCard(title, val, sub + avg, badge, cls);
+}
+
+function renderTripRetention(t) {
+  _tripData = t;
+  const kp = document.getElementById('tripKpis');
+  if (!t) { kp.innerHTML = '<span style="color:var(--muted);font-size:0.85rem">No trip data available.</span>'; return; }
+  const k = t.kpis, st = t.settings;
+  document.getElementById('tripMeta').textContent =
+    `last ${t.period_days} days vs the ${t.period_days} before · story events since ${t.first_event_date || '—'}`;
+  kp.innerHTML =
+    _tripKpi('Trips started', k.trips_started, '', 'first and returning trips') +
+    _tripKpi('Stories per trip', k.stories_per_trip, '', 'median') +
+    _tripKpi('Active days per trip', k.active_days_per_trip, '', 'median') +
+    _tripKpi('Second-trip rate', k.second_trip_rate, '%',
+      `users whose first trip is ${Math.round(st.churn_days / 30)}+ months old (${fmt(k.second_trip_rate.eligible || 0)})`);
+
+  // states
+  const s = t.states, tot = (s.active + s.between + s.churned) || 1;
+  const rows = [
+    ['Active', s.active, C.green, `last story within ${st.active_days} days`],
+    ['Between trips', s.between, C.blue, `${st.active_days} days to ${Math.round(st.churn_days / 30)} months quiet`],
+    ['Churned', s.churned, '#4a4a4a', `${Math.round(st.churn_days / 30)}+ months quiet`],
+  ];
+  document.getElementById('tripStatesNote').textContent =
+    `${fmt(t.users_with_trips)} users who have heard at least one story. Between trips = reachable for their next trip, not lost.`;
+  document.getElementById('tripStates').innerHTML =
+    `<div style="display:flex;height:30px;border-radius:8px;overflow:hidden;margin-bottom:12px">` +
+    rows.map(([n, c, col]) => c ? `<div title="${n}" style="flex:${c};background:${col};display:flex;align-items:center;padding:0 8px;font-size:0.75rem;font-weight:700;color:${n === 'Churned' ? '#ddd' : '#0f0f0f'};overflow:hidden;white-space:nowrap">${Math.round(c / tot * 100)}%</div>` : '').join('') +
+    `</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">` +
+    rows.map(([n, c, col, d]) => `<div style="border:1px solid var(--border);border-radius:10px;padding:8px 10px">
+      <div style="font-size:0.8rem"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${col};margin-right:6px"></span>${n}</div>
+      <div style="font-size:1.2rem;font-weight:700">${fmt(c)}</div><div style="font-size:0.72rem;color:var(--muted)">${d}</div></div>`).join('') + `</div>`;
+
+  // time to second trip
+  const h = t.time_to_second_trip || [];
+  barChart('chartTripGap', h.map(b => b.label), [{ label: '% of returning users', data: h.map(b => b.pct), color: C.primary }],
+    {});
+
+  // in-trip weekly
+  const w = t.weekly || [];
+  const wl = w.map(x => new Date(x.week + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+  destroyChart('chartTripWeekly');
+  CHARTS['chartTripWeekly'] = new Chart(document.getElementById('chartTripWeekly').getContext('2d'), {
+    type: 'line',
+    data: { labels: wl, datasets: [
+      { label: 'Stories per trip (median)', data: w.map(x => x.stories_per_trip), yAxisID: 'y', tension: 0.2, pointRadius: 3, borderWidth: 2,
+        borderColor: C.primary, pointBackgroundColor: C.primary, backgroundColor: C.primary + '18', fill: true },
+      { label: 'Back next day (% of trips)', data: w.map(x => x.back_next_day_pct), yAxisID: 'y1', tension: 0.2, pointRadius: 3, borderWidth: 2,
+        borderColor: C.blue, pointBackgroundColor: C.blue, borderDash: [5, 4], fill: false },
+    ]},
+    options: {
+      responsive: true, maintainAspectRatio: false, spanGaps: true,
+      plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+      scales: {
+        x: { ticks: { color: '#555', font: { size: 10 } }, grid: { color: '#1f1f1f' } },
+        y: { beginAtZero: true, ticks: { color: C.primary, font: { size: 10 } }, grid: { color: '#1f1f1f' } },
+        y1: { position: 'right', beginAtZero: true, max: 100, ticks: { color: C.blue, font: { size: 10 }, callback: v => v + '%' }, grid: { display: false } },
+      },
+    },
+  });
+  renderTripCurve();
+}
+
+function setTripRule(rule) {
+  _tripRule = rule;
+  document.querySelectorAll('#tripRuleSwitch button').forEach(b => b.classList.toggle('active', b.dataset.rule === rule));
+  renderTripCurve();
+}
+
+function renderTripCurve() {
+  const t = _tripData;
+  if (!t) return;
+  const cohorts = (t.curves[_tripRule] || []).filter(c => c.points.length);
+  const maxM = Math.max(0, ...cohorts.map(c => c.points.length));
+  const palette = ['#444', '#555', '#666', '#777', '#888', C.purple, C.yellow, C.blue, C.green, C.primary];
+  const labels = Array.from({ length: maxM }, (_, i) => 'M' + (i + 1));
+  lineChart('chartTripCurve', labels, cohorts.map((c, i) => {
+    const col = palette[Math.max(0, palette.length - cohorts.length + i)];
+    // straight segments: a smoothed line overshoots and makes a cumulative curve look like it dips
+    return { label: `${_tripMonth(c.cohort)} (${fmt(c.size)})`, data: c.points, color: col, fill: false, tension: 0,
+             borderWidth: i >= cohorts.length - 2 ? 2.5 : 1.5, pointRadius: 2 };
+  }), { y: { ticks: { callback: v => v + '%' } } });
+
+  // table
+  const all = t.curves[_tripRule] || [];
+  const cols = Math.max(1, ...all.map(c => c.points.length));
+  let html = '<thead><tr><th>Cohort</th><th>Users</th>' + Array.from({ length: cols }, (_, i) => `<th>M${i + 1}</th>`).join('') + '</tr></thead><tbody>';
+  html += all.map(c => {
+    let r = `<tr><td>${_tripMonth(c.cohort)}</td><td>${fmt(c.size)}</td>`;
+    for (let i = 0; i < cols; i++) {
+      const v = c.points[i];
+      if (v === undefined) { r += '<td style="color:#444;text-align:center">·</td>'; continue; }
+      const a = Math.min(0.85, 0.06 + v / 25);
+      r += `<td style="text-align:center;background:rgba(255,107,53,${a.toFixed(2)});color:${a > 0.45 ? '#0f0f0f' : 'var(--text)'}">${v}%</td>`;
+    }
+    return r + '</tr>';
+  }).join('') + '</tbody>';
+  document.getElementById('tripCohortTable').innerHTML = all.length ? html : '<tbody><tr><td class="loading">No cohorts yet.</td></tr></tbody>';
+}
+
+async function loadTripRetention(days) {
+  try {
+    renderTripRetention(await api(`/analytics/kpi/trip-retention?days=${Math.max(7, Math.min(365, days || 30))}`));
+  } catch (e) {
+    renderTripRetention(null);
+  }
 }
 
 // ══════════════════════════════════════════════
@@ -5285,6 +5442,12 @@ function renderSettings(data) {
     field('places_grid_size_meters', 'Location Grid Size (meters)', 'number', s.places_grid_size_meters ?? 500, 'min="100" max="2000" step="50"') +
     field('nearby_reuse_max_offset_m', 'Nearby Cache Reuse Distance (meters) — reuse a saved search only if made this close to the user; lower = better-centred map, more Google calls', 'number', s.nearby_reuse_max_offset_m ?? 200, 'min="0" max="1000" step="25"') +
 
+    `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">Retention (Funnel &amp; Retention → Trips)</div>` +
+    field('retention_active_days', 'Active = last story within (days)', 'number', s.retention_active_days ?? 14, 'min="1" max="90"') +
+    field('retention_churn_days', 'Churned = quiet for more than (days) — also the Users explorer', 'number', s.retention_churn_days ?? 180, 'min="30" max="730"') +
+    field('trip_max_gap_days', 'Quiet days allowed inside one trip', 'number', s.trip_max_gap_days ?? 3, 'min="0" max="14"') +
+    field('trip_new_after_days', 'Same city after this many quiet days = new trip', 'number', s.trip_new_after_days ?? 30, 'min="7" max="365"') +
+
     `<div style="grid-column:1/-1;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid var(--border);margin-top:12px">App</div>` +
     field('minimum_app_version', 'Minimum App Version (force-update gate)', 'text', s.minimum_app_version ?? '') +
 
@@ -5326,6 +5489,10 @@ async function saveSettings() {
     geocode_cache_ttl_days: parseInt(document.getElementById('s_geocode_cache_ttl_days').value),
     places_grid_size_meters: parseInt(document.getElementById('s_places_grid_size_meters').value),
     nearby_reuse_max_offset_m: parseInt(document.getElementById('s_nearby_reuse_max_offset_m').value),
+    retention_active_days: parseInt(document.getElementById('s_retention_active_days').value),
+    retention_churn_days: parseInt(document.getElementById('s_retention_churn_days').value),
+    trip_max_gap_days: parseInt(document.getElementById('s_trip_max_gap_days').value),
+    trip_new_after_days: parseInt(document.getElementById('s_trip_new_after_days').value),
     max_walking_speed_kmh: parseInt(document.getElementById('s_max_walking_speed_kmh').value),
   };
 
@@ -6604,6 +6771,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   loadStoreOverview(_storeSelected);  // independent: a failure elsewhere can't block it
+  loadTripRetention(days);  // independent too (reads every story event)
   try {
     const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth, storefrontExperiment] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
