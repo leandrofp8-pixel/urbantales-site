@@ -595,13 +595,13 @@
     <!-- ── FUNNEL ── -->
     <div class="tab-panel" id="panel-funnel">
       <div class="subtabs" role="tablist" aria-label="Funnel and retention sections">
-        <button class="subtab active" data-sub="conversion" role="tab" aria-selected="true" onclick="showFunnelSub('conversion')">Conversion Funnel</button>
-        <button class="subtab" data-sub="hotleads" role="tab" aria-selected="false" onclick="showFunnelSub('hotleads')">Hot Leads</button>
-        <button class="subtab" data-sub="retention" role="tab" aria-selected="false" onclick="showFunnelSub('retention')">Retention</button>
-        <button class="subtab" data-sub="coins" role="tab" aria-selected="false" onclick="showFunnelSub('coins')">Coin Economy</button>
+        <button class="subtab active" data-sub="conversion" role="tab" aria-selected="true" onclick="showSub('funnel','conversion')">Conversion Funnel</button>
+        <button class="subtab" data-sub="hotleads" role="tab" aria-selected="false" onclick="showSub('funnel','hotleads')">Hot Leads</button>
+        <button class="subtab" data-sub="retention" role="tab" aria-selected="false" onclick="showSub('funnel','retention')">Retention</button>
+        <button class="subtab" data-sub="coins" role="tab" aria-selected="false" onclick="showSub('funnel','coins')">Coin Economy</button>
       </div>
 
-      <div class="funnel-sub" data-sub="conversion">
+      <div class="panel-sub" data-sub="conversion">
 <div class="grid-2" style="margin-bottom:24px">
         <div class="card">
           <div class="card-title">Conversion Funnel — Period Cohort
@@ -674,7 +674,7 @@
       </div>
       </div>
 
-      <div class="funnel-sub" data-sub="hotleads" hidden>
+      <div class="panel-sub" data-sub="hotleads" hidden>
 <div class="card">
         <div class="section-header">
           <h2>Hot Leads — Free users likely to convert</h2>
@@ -700,7 +700,7 @@
       </div>
       </div>
 
-      <div class="funnel-sub" data-sub="retention" hidden>
+      <div class="panel-sub" data-sub="retention" hidden>
 <!-- ── TRIPS (travel-aware retention) ── -->
       <div class="section-header" style="margin-bottom:12px">
         <h2>Trips</h2>
@@ -770,7 +770,7 @@
       </div>
       </div>
 
-      <div class="funnel-sub" data-sub="coins" hidden>
+      <div class="panel-sub" data-sub="coins" hidden>
 <div class="card">
         <div class="section-header">
           <h2>🪙 Coin Economy Health</h2>
@@ -1175,41 +1175,15 @@
     <!-- ── ACQUISITION (MGM + Influencers) ── -->
     <div class="tab-panel" id="panel-acquisition">
 
-      <!-- ── App Store: Apple / Google Play reports joined to the app's own funnel ── -->
-      <div class="card" style="margin-bottom:24px">
-        <div class="card-title">App Store
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px" id="storeMeta">How people find and download the app</span>
-          <span class="store-switch" role="group" aria-label="Store">
-            <button type="button" data-store="ios" class="active" onclick="loadStoreOverview('ios')">iPhone</button>
-            <button type="button" data-store="android" onclick="loadStoreOverview('android')">Android</button>
-          </span>
-          <button id="storeBackfillBtn" onclick="backfillStoreHistory()" title="Re-read every month of App Store and Google Play reports (the daily import only reads recent ones). Safe to re-run." style="margin-left:8px;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Import full history</button>
-          <span id="storeBackfillStatus" style="font-size:0.75rem;color:var(--muted);margin-left:6px"></span>
-        </div>
-        <div class="grid-4" id="storeKpis"><div class="card"><div class="loading">Loading…</div></div></div>
-        <div style="font-weight:600;font-size:0.9rem">From App Store to paying user <span style="font-weight:400;color:var(--muted);font-size:0.78rem" id="storeFunnelNote"></span></div>
-        <div class="store-funnel" id="storeFunnel"></div>
-        <div class="card-title" style="margin-top:22px;font-size:0.9rem">Downloads, signups and page visits
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Bars: first-time downloads · orange: signups · blue: App Store page visits (right axis) · all history</span>
-          <span class="gran-switch" data-card="storeTrend"></span>
-        </div>
-        <div class="chart-wrap-lg"><canvas id="chartStoreTrend"></canvas></div>
-        <div class="grid-2" style="margin-top:20px;margin-bottom:8px">
-          <div>
-            <div style="font-weight:600;font-size:0.9rem">Where downloads come from</div>
-            <div style="font-size:0.75rem;color:var(--muted);margin:4px 0 8px">Search users often tap Get straight from the results, so search converts per impression; links convert per page visit.</div>
-            <div class="table-wrap"><table id="storeSources"></table></div>
-          </div>
-          <div>
-            <div style="font-weight:600;font-size:0.9rem">Countries</div>
-            <div style="font-size:0.75rem;color:var(--muted);margin:4px 0 8px">By first-time downloads in the period.</div>
-            <div class="table-wrap"><table id="storeCountries"></table></div>
-          </div>
-        </div>
-        <div style="font-size:0.75rem;color:var(--muted);line-height:1.6">First-time downloads are new devices; the stores' "installs" also count updates, so they aren't used. Store figures count devices and the app counts accounts, so the two halves of the funnel are approximate and can't be matched person by person. Apple leaves out very small numbers in some breakdowns, so deletions in particular undercount.</div>
+            <div class="subtabs" role="tablist" aria-label="Acquisition sections">
+        <button class="subtab active" data-sub="overview" role="tab" aria-selected="true" onclick="showSub('acquisition','overview')">Overview</button>
+        <button class="subtab" data-sub="stores" role="tab" aria-selected="false" onclick="showSub('acquisition','stores')">App Stores</button>
+        <button class="subtab" data-sub="referrals" role="tab" aria-selected="false" onclick="showSub('acquisition','referrals')">Referrals (MGM)</button>
+        <button class="subtab" data-sub="influencers" role="tab" aria-selected="false" onclick="showSub('acquisition','influencers')">Influencers</button>
       </div>
 
-      <!-- ── Acquisition Channels (Organic / Own Campaigns / MGM / Influencer) ── -->
+      <div class="panel-sub" data-sub="overview">
+<!-- ── Acquisition Channels (Organic / Own Campaigns / MGM / Influencer) ── -->
       <div class="card" style="margin-bottom:24px">
         <div class="card-title">Acquisition Channels
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">All-time user breakdown by source · monthly cohort chart</span>
@@ -1261,83 +1235,6 @@
         </div>
       </div>
 
-      <div class="grid-2" style="margin-top:24px">
-        <div class="card">
-          <div class="section-header"><h2>🏆 Top Influencers</h2></div>
-          <div class="table-wrap" style="max-height:340px;overflow-y:auto">
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Code</th>
-                  <th>Signups</th>
-                  <th>Activated</th>
-                  <th>Purchased</th>
-                  <th>Conv.</th>
-                  <th>Revenue</th>
-                </tr>
-              </thead>
-              <tbody id="topInfluencersBody">
-                <tr><td colspan="7" class="loading">Loading…</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card">
-          <div class="section-header">
-            <h2>Top MGM Users</h2>
-            <div style="display:flex;align-items:center;gap:8px">
-              <span id="mgmInviteeBackfillMsg" style="font-size:0.74rem;color:var(--muted)"></span>
-              <button onclick="runMgmInviteeBonusBackfill()" title="Updates every existing MGM referral code's invitee bonus to match the current 'MGM Invitee Signup Bonus' setting. The bonus is snapshotted onto each code at creation time, so lowering the setting alone only affects codes created from now on — run this to also apply it to codes already issued. Safe to re-run." style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">Apply invitee bonus to existing codes</button>
-              <span id="mgmBackfillMsg" style="font-size:0.74rem;color:var(--muted)"></span>
-              <button onclick="runMgmInviterBackfill()" title="Pays any inviter whose reward was missed — fixes a bug where consumable-purchase events (NON_RENEWING_PURCHASE) weren't recognized. Safe to re-run; only pays each referral once." style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">Pay missed inviter rewards</button>
-            </div>
-          </div>
-          <div class="table-wrap" style="max-height:340px;overflow-y:auto">
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Code</th>
-                  <th>Signups</th>
-                  <th>Activated</th>
-                  <th>Purchased</th>
-                  <th>Conv.</th>
-                  <th>Revenue</th>
-                </tr>
-              </thead>
-              <tbody id="topMgmBody">
-                <tr><td colspan="7" class="loading">Loading…</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:24px">
-        <div class="section-header">
-          <h2>📝 Recent Referrals</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">Latest 30 signups with a referral code</span>
-        </div>
-        <div class="table-wrap" style="max-height:400px;overflow-y:auto">
-          <table>
-            <thead>
-              <tr>
-                <th>Invitee</th>
-                <th>Promoter</th>
-                <th>Code</th>
-                <th>Channel</th>
-                <th>Status</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody id="recentReferralsBody">
-              <tr><td colspan="6" class="loading">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
       <div class="card" style="margin-top:24px">
         <div class="section-header">
           <h2>Acquisition Economics</h2>
@@ -1374,8 +1271,122 @@
           <div class="card"><div class="loading">…</div></div>
         </div>
       </div>
+      </div>
 
-      <!-- ── INFLUENCER ACCOUNTS ── -->
+      <div class="panel-sub" data-sub="stores" hidden>
+<!-- ── App Store: Apple / Google Play reports joined to the app's own funnel ── -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">App Store
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px" id="storeMeta">How people find and download the app</span>
+          <span class="store-switch" role="group" aria-label="Store">
+            <button type="button" data-store="ios" class="active" onclick="loadStoreOverview('ios')">iPhone</button>
+            <button type="button" data-store="android" onclick="loadStoreOverview('android')">Android</button>
+          </span>
+          <button id="storeBackfillBtn" onclick="backfillStoreHistory()" title="Re-read every month of App Store and Google Play reports (the daily import only reads recent ones). Safe to re-run." style="margin-left:8px;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Import full history</button>
+          <span id="storeBackfillStatus" style="font-size:0.75rem;color:var(--muted);margin-left:6px"></span>
+        </div>
+        <div class="grid-4" id="storeKpis"><div class="card"><div class="loading">Loading…</div></div></div>
+        <div style="font-weight:600;font-size:0.9rem">From App Store to paying user <span style="font-weight:400;color:var(--muted);font-size:0.78rem" id="storeFunnelNote"></span></div>
+        <div class="store-funnel" id="storeFunnel"></div>
+        <div class="card-title" style="margin-top:22px;font-size:0.9rem">Downloads, signups and page visits
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Bars: first-time downloads · orange: signups · blue: App Store page visits (right axis) · all history</span>
+          <span class="gran-switch" data-card="storeTrend"></span>
+        </div>
+        <div class="chart-wrap-lg"><canvas id="chartStoreTrend"></canvas></div>
+        <div class="grid-2" style="margin-top:20px;margin-bottom:8px">
+          <div>
+            <div style="font-weight:600;font-size:0.9rem">Where downloads come from</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin:4px 0 8px">Search users often tap Get straight from the results, so search converts per impression; links convert per page visit.</div>
+            <div class="table-wrap"><table id="storeSources"></table></div>
+          </div>
+          <div>
+            <div style="font-weight:600;font-size:0.9rem">Countries</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin:4px 0 8px">By first-time downloads in the period.</div>
+            <div class="table-wrap"><table id="storeCountries"></table></div>
+          </div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.6">First-time downloads are new devices; the stores' "installs" also count updates, so they aren't used. Store figures count devices and the app counts accounts, so the two halves of the funnel are approximate and can't be matched person by person. Apple leaves out very small numbers in some breakdowns, so deletions in particular undercount.</div>
+      </div>
+      </div>
+
+      <div class="panel-sub" data-sub="referrals" hidden>
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Top MGM Users</h2>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span id="mgmInviteeBackfillMsg" style="font-size:0.74rem;color:var(--muted)"></span>
+            <button onclick="runMgmInviteeBonusBackfill()" title="Updates every existing MGM referral code's invitee bonus to match the current 'MGM Invitee Signup Bonus' setting. The bonus is snapshotted onto each code at creation time, so lowering the setting alone only affects codes created from now on — run this to also apply it to codes already issued. Safe to re-run." style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">Apply invitee bonus to existing codes</button>
+            <span id="mgmBackfillMsg" style="font-size:0.74rem;color:var(--muted)"></span>
+            <button onclick="runMgmInviterBackfill()" title="Pays any inviter whose reward was missed — fixes a bug where consumable-purchase events (NON_RENEWING_PURCHASE) weren't recognized. Safe to re-run; only pays each referral once." style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">Pay missed inviter rewards</button>
+          </div>
+        </div>
+        <div class="table-wrap" style="max-height:340px;overflow-y:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Signups</th>
+                <th>Activated</th>
+                <th>Purchased</th>
+                <th>Conv.</th>
+                <th>Revenue</th>
+              </tr>
+            </thead>
+            <tbody id="topMgmBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+<div class="card" style="margin-top:24px">
+        <div class="section-header">
+          <h2>📝 Recent Referrals</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">Latest 30 signups with a referral code</span>
+        </div>
+        <div class="table-wrap" style="max-height:400px;overflow-y:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Invitee</th>
+                <th>Promoter</th>
+                <th>Code</th>
+                <th>Channel</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="recentReferralsBody">
+              <tr><td colspan="6" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+
+      <div class="panel-sub" data-sub="influencers" hidden>
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header"><h2>🏆 Top Influencers</h2></div>
+        <div class="table-wrap" style="max-height:340px;overflow-y:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Signups</th>
+                <th>Activated</th>
+                <th>Purchased</th>
+                <th>Conv.</th>
+                <th>Revenue</th>
+              </tr>
+            </thead>
+            <tbody id="topInfluencersBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+<!-- ── INFLUENCER ACCOUNTS ── -->
       <div class="card" style="margin-top:24px">
         <div class="section-header">
           <h2>⏳ Pending Affiliate Applications</h2>
@@ -1412,6 +1423,8 @@
           </table>
         </div>
       </div>
+      </div>
+
     </div><!-- /panel-acquisition -->
 
     <!-- ── LTV ── -->
@@ -3409,23 +3422,32 @@ function renderTripRetention(t) {
   renderTripCurve();
 }
 
-// Funnel & Retention subtabs. Remembers the last one; charts drawn while hidden
-// are resized when their subtab opens.
-function showFunnelSub(name) {
-  document.querySelectorAll('#panel-funnel .funnel-sub').forEach(el => { el.hidden = el.dataset.sub !== name; });
-  document.querySelectorAll('#panel-funnel .subtab').forEach(b => {
+// Subtabs inside a tab (Funnel & Retention, Acquisition). Remembers the last
+// one per tab; charts drawn while hidden are resized when their subtab opens.
+function showSub(panel, name) {
+  const root = document.getElementById(`panel-${panel}`);
+  if (!root) return;
+  root.querySelectorAll('.panel-sub').forEach(el => { el.hidden = el.dataset.sub !== name; });
+  root.querySelectorAll('.subtab').forEach(b => {
     const on = b.dataset.sub === name;
     b.classList.toggle('active', on);
     b.setAttribute('aria-selected', on ? 'true' : 'false');
   });
-  try { localStorage.setItem('ut_funnel_sub', name); } catch (e) {}
-  const sub = document.querySelector(`#panel-funnel .funnel-sub[data-sub="${name}"]`);
+  try { localStorage.setItem(`ut_sub_${panel}`, name); } catch (e) {}
+  const sub = root.querySelector(`.panel-sub[data-sub="${name}"]`);
   requestAnimationFrame(() => Object.values(CHARTS).forEach(c => { try { if (sub && sub.contains(c.canvas)) c.resize(); } catch (e) {} }));
 }
-(function restoreFunnelSub() {
-  let saved = null;
-  try { saved = localStorage.getItem('ut_funnel_sub'); } catch (e) {}
-  if (saved && saved !== 'conversion') document.addEventListener('DOMContentLoaded', () => showFunnelSub(saved));
+(function restoreSubs() {
+  const saved = {};
+  try {
+    saved.funnel = localStorage.getItem('ut_sub_funnel') || localStorage.getItem('ut_funnel_sub');
+    saved.acquisition = localStorage.getItem('ut_sub_acquisition');
+  } catch (e) {}
+  document.addEventListener('DOMContentLoaded', () => {
+    Object.entries(saved).forEach(([panel, name]) => {
+      if (name && document.querySelector(`#panel-${panel} .panel-sub[data-sub="${name}"]`)) showSub(panel, name);
+    });
+  });
 })();
 
 function setTripRule(rule) {
