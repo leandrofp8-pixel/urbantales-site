@@ -537,7 +537,6 @@
     <span class="tab-group">Tools</span>
     <button class="tab-btn" onclick="showTab('profiles')">👤 Profiles</button>
     <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
-    <button class="tab-btn" onclick="showTab('narration')">🎙️ Narration</button>
     <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
   </nav>
 
@@ -878,6 +877,74 @@
 
     <!-- ── CONTENT ── -->
     <div class="tab-panel" id="panel-content">
+      <div class="subtabs" role="tablist" aria-label="Content sections">
+        <button class="subtab active" data-sub="stories" role="tab" aria-selected="true" onclick="showSub('content','stories')">Stories</button>
+        <button class="subtab" data-sub="places" role="tab" aria-selected="false" onclick="showSub('content','places')">Places</button>
+        <button class="subtab" data-sub="tours" role="tab" aria-selected="false" onclick="showSub('content','tours')">Tours</button>
+        <button class="subtab" data-sub="narration" role="tab" aria-selected="false" onclick="showSub('content','narration')">Narration Config</button>
+      </div>
+
+      <div class="panel-sub" data-sub="stories">
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title"><span data-gran-word="narrations">Daily</span> Narrations<span class="gran-switch" data-card="narrations"></span></div>
+        <div class="chart-wrap-lg"><canvas id="chartNarrations"></canvas></div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:24px">
+        <div class="card">
+          <div class="card-title">Storytelling Styles</div>
+          <div class="chart-wrap"><canvas id="chartStyles"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Languages</div>
+          <div class="chart-wrap"><canvas id="chartLanguages"></canvas></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header"><h2>🎧 Audio Completion by Landmark Tier</h2></div>
+        <div class="grid-4" id="listenCompletionCards">
+          <div class="card"><div class="loading">Loading…</div></div>
+        </div>
+        <div style="margin-top:20px">
+          <h3 style="font-size:0.85rem;color:var(--muted);margin-bottom:8px"><span data-gran-word="lcTier">Monthly</span> trend — avg completion % by tier<span class="gran-switch" data-card="lcTier"></span></h3>
+          <div class="chart-wrap-lg"><canvas id="chartListenCompletionMonthly"></canvas></div>
+        </div>
+        <div style="margin-top:20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px">
+            <h3 style="font-size:0.85rem;color:var(--muted)" id="listenCompletionProviderTitle">Monthly trend — avg completion % by narration writer (OpenAI vs Gemini)</h3>
+            <span class="gran-switch" data-card="lcProvider" style="float:none;margin-left:auto"></span>
+            <button id="lcpBackfill" onclick="backfillListenProvider()" title="Best-effort match of past listen events to the narration they belonged to, to infer provider for history. Safe to re-run." style="flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Backfill history</button>
+          </div>
+          <div id="lcpBackfillStatus" style="font-size:0.78rem;color:var(--muted);margin-bottom:8px"></div>
+          <div class="chart-wrap-lg"><canvas id="chartListenCompletionProvider"></canvas></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header"><h2>Top Landmarks</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Landmark</th>
+                <th>City</th>
+                <th>Total Plays</th>
+                <th>Cache Hits</th>
+                <th>Cache Miss</th>
+                <th>Cache Rate</th>
+              </tr>
+            </thead>
+            <tbody id="landmarksBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+
+      <div class="panel-sub" data-sub="places" hidden>
       <div class="card" style="margin-bottom:24px">
         <div class="section-header" style="margin-bottom:6px">
           <h2>🌍 Countries Reached</h2>
@@ -903,21 +970,29 @@
       </div>
 
       <div class="card" style="margin-bottom:24px">
-        <div class="card-title"><span data-gran-word="narrations">Daily</span> Narrations<span class="gran-switch" data-card="narrations"></span></div>
-        <div class="chart-wrap-lg"><canvas id="chartNarrations"></canvas></div>
+        <div class="section-header"><h2>🌆 Top Cities</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>City</th>
+                <th>Landmarks</th>
+                <th>Total Plays</th>
+                <th>Cache Hits</th>
+                <th>Cache Miss</th>
+                <th>Cache Rate</th>
+              </tr>
+            </thead>
+            <tbody id="citiesBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       </div>
 
-      <div class="grid-2" style="margin-bottom:24px">
-        <div class="card">
-          <div class="card-title">Storytelling Styles</div>
-          <div class="chart-wrap"><canvas id="chartStyles"></canvas></div>
-        </div>
-        <div class="card">
-          <div class="card-title">Languages</div>
-          <div class="chart-wrap"><canvas id="chartLanguages"></canvas></div>
-        </div>
-      </div>
-
+      <div class="panel-sub" data-sub="tours" hidden>
       <div class="card" style="margin-bottom:24px">
         <div class="section-header">
           <h2>🗺️ Tour Activity</h2>
@@ -968,70 +1043,109 @@
           </div>
         </div>
       </div>
+      </div>
 
-      <div class="card" style="margin-bottom:24px">
-        <div class="section-header"><h2>🎧 Audio Completion by Landmark Tier</h2></div>
-        <div class="grid-4" id="listenCompletionCards">
-          <div class="card"><div class="loading">Loading…</div></div>
-        </div>
-        <div style="margin-top:20px">
-          <h3 style="font-size:0.85rem;color:var(--muted);margin-bottom:8px"><span data-gran-word="lcTier">Monthly</span> trend — avg completion % by tier<span class="gran-switch" data-card="lcTier"></span></h3>
-          <div class="chart-wrap-lg"><canvas id="chartListenCompletionMonthly"></canvas></div>
-        </div>
-        <div style="margin-top:20px">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px">
-            <h3 style="font-size:0.85rem;color:var(--muted)" id="listenCompletionProviderTitle">Monthly trend — avg completion % by narration writer (OpenAI vs Gemini)</h3>
-            <span class="gran-switch" data-card="lcProvider" style="float:none;margin-left:auto"></span>
-            <button id="lcpBackfill" onclick="backfillListenProvider()" title="Best-effort match of past listen events to the narration they belonged to, to infer provider for history. Safe to re-run." style="flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Backfill history</button>
+      <div class="panel-sub" data-sub="narration" hidden>
+      <div style="max-width:900px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+          <h2 style="font-size:1.1rem;font-weight:700">🎙️ Narration Config</h2>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span id="narrationSaveMsg" style="font-size:0.82rem"></span>
+            <button id="saveNarrationBtn" onclick="saveNarrationConfig()" style="padding:8px 18px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:0.88rem;font-weight:600;cursor:pointer">Save</button>
+            <button onclick="resetNarrationDefaults()" style="padding:8px 14px;background:#333;color:#aaa;border:none;border-radius:8px;font-size:0.82rem;cursor:pointer">Reset to defaults</button>
           </div>
-          <div id="lcpBackfillStatus" style="font-size:0.78rem;color:var(--muted);margin-bottom:8px"></div>
-          <div class="chart-wrap-lg"><canvas id="chartListenCompletionProvider"></canvas></div>
         </div>
+
+        <!-- Generation params -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">AI Generation</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;gap:12px">
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Provider
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Provider</b><br>Controls which AI model generates narrations on cache miss.<br><br><b>OpenAI only</b> — current default<br><b>Gemini only</b> — Google's model, more conversational<br><b>50/50 Random</b> — alternates at generation time; different landmarks get different "voices", creating natural variety across the catalog.<br><br>Requires GOOGLE_GEMINI_API_KEY set on Railway.</span></span>
+              </label>
+              <select id="nc_narration_provider" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+                <option value="openai">OpenAI only</option>
+                <option value="gemini">Gemini only</option>
+                <option value="random">50/50 Random</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">OpenAI model
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>OpenAI model</b><br>Only used when provider is OpenAI or Random.<br><br>gpt-4o-mini (current) ~$0.0004/narration<br>gpt-4o ~$0.007/narration (17× more)<br>gpt-4-turbo ~$0.023/narration (53× more)</span></span>
+              </label>
+              <select id="nc_openai_model" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+                <option value="gpt-4o-mini">gpt-4o-mini</option>
+                <option value="gpt-4o">gpt-4o</option>
+                <option value="gpt-4-turbo">gpt-4-turbo</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Temperature
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Temperature (0–2)</b><br>Controls output variety between runs.<br><br>0.5–0.65 → Historical / Fun Facts (consistent, factual)<br>0.65–0.85 → Cinematic / Legends (more personality)<br><br>Above 1.0 risks hallucinations and ignoring length rules.</span></span>
+              </label>
+              <input id="nc_temperature" type="number" min="0" max="2" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — MAJOR
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — MAJOR</b><br>Famous landmarks (Eiffel Tower, Colosseum).<br><br>250 ≈ 1.5–1.7 min &nbsp;|&nbsp; 350 ≈ 2–2.5 min<br><br>This is the real length control — the prompt tells the model to write approximately this many words.</span></span>
+              </label>
+              <input id="nc_target_words_major" type="number" min="50" max="1500" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — NOTABLE
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — NOTABLE</b><br>City landmarks with solid history.<br><br>175 ≈ 1–1.2 min &nbsp;|&nbsp; 250 ≈ 1.5–1.7 min<br><br>Should be shorter than MAJOR to reward landmark discovery.</span></span>
+              </label>
+              <input id="nc_target_words_notable" type="number" min="50" max="1500" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — LOCAL
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — LOCAL</b><br>Minor local points of interest.<br><br>100 ≈ 40–50 sec &nbsp;|&nbsp; 150 ≈ ~1 min<br><br>Keep these short — over-narrating minor places feels fake and kills user trust.</span></span>
+              </label>
+              <input id="nc_target_words_local" type="number" min="30" max="1500" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+          </div>
+        </div>
+
+        <!-- TTS params -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Google TTS</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:400px">
+            <div>
+              <span class="tip" style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Speaking rate (0.25–4.0)<span class="tip-icon">?</span><span class="tip-box">1.0 = normal speed.<br>0.85–0.95 = slower, contemplative feel.<br>1.05–1.15 = energetic, upbeat.<br><br>Practical sweet spot: <strong>0.85–1.15</strong>.<br>Beyond that starts sounding unnatural.</span></span>
+              <input id="nc_speaking_rate" type="number" min="0.25" max="4.0" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+            <div>
+              <span class="tip" style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Pitch (-20 to +20)<span class="tip-icon">?</span><span class="tip-box">0 = natural voice.<br>-2 to -4 = deeper, more authoritative.<br>+2 to +4 = brighter, lighter feel.<br><br>Practical sweet spot: <strong>-3 to +3</strong>.<br>Beyond ±5 sounds robotic.</span></span>
+              <input id="nc_pitch" type="number" min="-20" max="20" step="0.5" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+            </div>
+          </div>
+        </div>
+
+        <!-- Style prompts -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Style Prompts</div>
+          <div style="font-size:0.78rem;color:var(--yellow);margin-bottom:14px">⚠️ Keep all <code style="background:#222;padding:1px 4px;border-radius:3px">{landmark_name}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{city_name}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{country_str}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{neighborhood_str}</code> placeholders intact.</div>
+          <div style="margin-bottom:16px">
+            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Historical</label>
+            <textarea id="nc_prompt_historical" oninput="markPromptDirty('historical')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Fun Facts</label>
+            <textarea id="nc_prompt_fun_facts" oninput="markPromptDirty('fun_facts')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Cinematic</label>
+            <textarea id="nc_prompt_cinematic" oninput="markPromptDirty('cinematic')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+          </div>
+          <div>
+            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Legends</label>
+            <textarea id="nc_prompt_legends" oninput="markPromptDirty('legends')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
+          </div>
+        </div>
+      </div>
       </div>
 
-      <div class="card" style="margin-bottom:24px">
-        <div class="section-header"><h2>Top Landmarks</h2></div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Landmark</th>
-                <th>City</th>
-                <th>Total Plays</th>
-                <th>Cache Hits</th>
-                <th>Cache Miss</th>
-                <th>Cache Rate</th>
-              </tr>
-            </thead>
-            <tbody id="landmarksBody">
-              <tr><td colspan="7" class="loading">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="section-header"><h2>🌆 Top Cities</h2></div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>City</th>
-                <th>Landmarks</th>
-                <th>Total Plays</th>
-                <th>Cache Hits</th>
-                <th>Cache Miss</th>
-                <th>Cache Rate</th>
-              </tr>
-            </thead>
-            <tbody id="citiesBody">
-              <tr><td colspan="7" class="loading">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
 
     <!-- ── COSTS ── -->
@@ -2001,108 +2115,6 @@
     </div><!-- /panel-settings -->
 
     <!-- ── NARRATION CONFIG ── -->
-    <div class="tab-panel" id="panel-narration">
-      <div style="max-width:900px">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-          <h2 style="font-size:1.1rem;font-weight:700">🎙️ Narration Config</h2>
-          <div style="display:flex;gap:10px;align-items:center">
-            <span id="narrationSaveMsg" style="font-size:0.82rem"></span>
-            <button id="saveNarrationBtn" onclick="saveNarrationConfig()" style="padding:8px 18px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:0.88rem;font-weight:600;cursor:pointer">Save</button>
-            <button onclick="resetNarrationDefaults()" style="padding:8px 14px;background:#333;color:#aaa;border:none;border-radius:8px;font-size:0.82rem;cursor:pointer">Reset to defaults</button>
-          </div>
-        </div>
-
-        <!-- Generation params -->
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px">
-          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">AI Generation</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;gap:12px">
-            <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Provider
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Provider</b><br>Controls which AI model generates narrations on cache miss.<br><br><b>OpenAI only</b> — current default<br><b>Gemini only</b> — Google's model, more conversational<br><b>50/50 Random</b> — alternates at generation time; different landmarks get different "voices", creating natural variety across the catalog.<br><br>Requires GOOGLE_GEMINI_API_KEY set on Railway.</span></span>
-              </label>
-              <select id="nc_narration_provider" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
-                <option value="openai">OpenAI only</option>
-                <option value="gemini">Gemini only</option>
-                <option value="random">50/50 Random</option>
-              </select>
-            </div>
-            <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">OpenAI model
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>OpenAI model</b><br>Only used when provider is OpenAI or Random.<br><br>gpt-4o-mini (current) ~$0.0004/narration<br>gpt-4o ~$0.007/narration (17× more)<br>gpt-4-turbo ~$0.023/narration (53× more)</span></span>
-              </label>
-              <select id="nc_openai_model" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
-                <option value="gpt-4o-mini">gpt-4o-mini</option>
-                <option value="gpt-4o">gpt-4o</option>
-                <option value="gpt-4-turbo">gpt-4-turbo</option>
-              </select>
-            </div>
-            <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Temperature
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Temperature (0–2)</b><br>Controls output variety between runs.<br><br>0.5–0.65 → Historical / Fun Facts (consistent, factual)<br>0.65–0.85 → Cinematic / Legends (more personality)<br><br>Above 1.0 risks hallucinations and ignoring length rules.</span></span>
-              </label>
-              <input id="nc_temperature" type="number" min="0" max="2" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
-            </div>
-            <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — MAJOR
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — MAJOR</b><br>Famous landmarks (Eiffel Tower, Colosseum).<br><br>250 ≈ 1.5–1.7 min &nbsp;|&nbsp; 350 ≈ 2–2.5 min<br><br>This is the real length control — the prompt tells the model to write approximately this many words.</span></span>
-              </label>
-              <input id="nc_target_words_major" type="number" min="50" max="1500" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
-            </div>
-            <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — NOTABLE
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — NOTABLE</b><br>City landmarks with solid history.<br><br>175 ≈ 1–1.2 min &nbsp;|&nbsp; 250 ≈ 1.5–1.7 min<br><br>Should be shorter than MAJOR to reward landmark discovery.</span></span>
-              </label>
-              <input id="nc_target_words_notable" type="number" min="50" max="1500" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
-            </div>
-            <div>
-              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — LOCAL
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — LOCAL</b><br>Minor local points of interest.<br><br>100 ≈ 40–50 sec &nbsp;|&nbsp; 150 ≈ ~1 min<br><br>Keep these short — over-narrating minor places feels fake and kills user trust.</span></span>
-              </label>
-              <input id="nc_target_words_local" type="number" min="30" max="1500" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
-            </div>
-          </div>
-        </div>
-
-        <!-- TTS params -->
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px">
-          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Google TTS</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:400px">
-            <div>
-              <span class="tip" style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Speaking rate (0.25–4.0)<span class="tip-icon">?</span><span class="tip-box">1.0 = normal speed.<br>0.85–0.95 = slower, contemplative feel.<br>1.05–1.15 = energetic, upbeat.<br><br>Practical sweet spot: <strong>0.85–1.15</strong>.<br>Beyond that starts sounding unnatural.</span></span>
-              <input id="nc_speaking_rate" type="number" min="0.25" max="4.0" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
-            </div>
-            <div>
-              <span class="tip" style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">Pitch (-20 to +20)<span class="tip-icon">?</span><span class="tip-box">0 = natural voice.<br>-2 to -4 = deeper, more authoritative.<br>+2 to +4 = brighter, lighter feel.<br><br>Practical sweet spot: <strong>-3 to +3</strong>.<br>Beyond ±5 sounds robotic.</span></span>
-              <input id="nc_pitch" type="number" min="-20" max="20" step="0.5" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
-            </div>
-          </div>
-        </div>
-
-        <!-- Style prompts -->
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px">
-          <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Style Prompts</div>
-          <div style="font-size:0.78rem;color:var(--yellow);margin-bottom:14px">⚠️ Keep all <code style="background:#222;padding:1px 4px;border-radius:3px">{landmark_name}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{city_name}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{country_str}</code>, <code style="background:#222;padding:1px 4px;border-radius:3px">{neighborhood_str}</code> placeholders intact.</div>
-          <div style="margin-bottom:16px">
-            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Historical</label>
-            <textarea id="nc_prompt_historical" oninput="markPromptDirty('historical')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
-          </div>
-          <div style="margin-bottom:16px">
-            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Fun Facts</label>
-            <textarea id="nc_prompt_fun_facts" oninput="markPromptDirty('fun_facts')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
-          </div>
-          <div style="margin-bottom:16px">
-            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Cinematic</label>
-            <textarea id="nc_prompt_cinematic" oninput="markPromptDirty('cinematic')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
-          </div>
-          <div>
-            <label style="font-size:0.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:6px">Legends</label>
-            <textarea id="nc_prompt_legends" oninput="markPromptDirty('legends')" rows="8" style="width:100%;padding:10px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.8rem;font-family:monospace;resize:vertical"></textarea>
-          </div>
-        </div>
-      </div>
-    </div><!-- /panel-narration -->
-
-    <!-- ── PROFILES ── -->
     <div class="tab-panel" id="panel-playback">
       <div class="card" style="margin-bottom:20px">
         <div class="card-title">Auto-play engine rollout &amp; walking direction
@@ -3027,10 +3039,7 @@ function showTab(name) {
     _profilesTabLoaded = true;
     loadUserList('');
   }
-  if (name === 'content' && !_countriesMapLoaded) {
-    _countriesMapLoaded = true;
-    renderCountriesMap();
-  }
+  if (name === 'content') ensureCountriesMap();
   if (name === 'acquisition') ensureB2BLoaded();
 }
 
@@ -3418,6 +3427,16 @@ function renderTripRetention(t) {
 
 // Subtabs inside a tab (Funnel & Retention, Acquisition). Remembers the last
 // one per tab; charts drawn while hidden are resized when their subtab opens.
+// The countries map is drawn the first time the Content → Places subtab is
+// visible (drawn while hidden it would come out blank).
+function ensureCountriesMap() {
+  const tab = document.getElementById('panel-content');
+  const sub = document.querySelector('#panel-content .panel-sub[data-sub="places"]');
+  if (_countriesMapLoaded || !tab || !tab.classList.contains('active') || !sub || sub.hidden) return;
+  _countriesMapLoaded = true;
+  renderCountriesMap();
+}
+
 // B2B Partners (Trip Pass agencies) loads when its subtab is first opened.
 function ensureB2BLoaded() {
   const sub = document.querySelector('#panel-acquisition .panel-sub[data-sub="b2b"]');
@@ -3441,12 +3460,14 @@ function showSub(panel, name) {
   const sub = root.querySelector(`.panel-sub[data-sub="${name}"]`);
   requestAnimationFrame(() => Object.values(CHARTS).forEach(c => { try { if (sub && sub.contains(c.canvas)) c.resize(); } catch (e) {} }));
   if (panel === 'acquisition' && root.classList.contains('active')) ensureB2BLoaded();
+  if (panel === 'content') ensureCountriesMap();
 }
 (function restoreSubs() {
   const saved = {};
   try {
     saved.funnel = localStorage.getItem('ut_sub_funnel') || localStorage.getItem('ut_funnel_sub');
     saved.acquisition = localStorage.getItem('ut_sub_acquisition');
+    saved.content = localStorage.getItem('ut_sub_content');
   } catch (e) {}
   document.addEventListener('DOMContentLoaded', () => {
     Object.entries(saved).forEach(([panel, name]) => {
