@@ -537,7 +537,6 @@
     <span class="tab-group">Tools</span>
     <button class="tab-btn" onclick="showTab('profiles')">👤 Profiles</button>
     <button class="tab-btn" onclick="showTab('notifications')">📣 Notifications</button>
-    <button class="tab-btn" onclick="showTab('trippass')">🎟️ Trip Pass</button>
     <button class="tab-btn" onclick="showTab('narration')">🎙️ Narration</button>
     <button class="tab-btn" onclick="showTab('settings')">⚙️ Settings</button>
   </nav>
@@ -1180,6 +1179,7 @@
         <button class="subtab" data-sub="stores" role="tab" aria-selected="false" onclick="showSub('acquisition','stores')">App Stores</button>
         <button class="subtab" data-sub="referrals" role="tab" aria-selected="false" onclick="showSub('acquisition','referrals')">Referrals (MGM)</button>
         <button class="subtab" data-sub="influencers" role="tab" aria-selected="false" onclick="showSub('acquisition','influencers')">Influencers</button>
+        <button class="subtab" data-sub="b2b" role="tab" aria-selected="false" onclick="showSub('acquisition','b2b')">B2B Partners</button>
       </div>
 
       <div class="panel-sub" data-sub="overview">
@@ -1420,6 +1420,90 @@
             <tbody id="approvedInfluencersBody">
               <tr><td colspan="5" class="loading">Loading…</td></tr>
             </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+
+      <div class="panel-sub" data-sub="b2b" hidden>
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Agências</h2>
+          <button onclick="loadAgencies()" style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">↻ Atualizar</button>
+        </div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:14px">
+          Contas do portal <code>urbantales.net/agency.html</code>. Aprove para liberar a emissão pela própria agência.
+          Deixe a tarifa em branco para usar o padrão global.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Agência</th><th>Contato</th><th>Tarifa/dia</th><th>Status</th><th></th></tr></thead>
+            <tbody id="agencyBody"><tr><td colspan="5" class="loading">Carregando…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Fechamento Mensal — Agências</h2>
+          <input id="billingMonth" type="month" onchange="loadAgencyBilling()" style="background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 11px;font-family:inherit;font-size:0.85rem" />
+        </div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:14px">
+          O que cada agência deve, contando passes pela <b>data de início da viagem</b> (não a emissão) — passes cancelados até 1 dia antes da viagem não entram.
+          Cobrança real acontece fora do app; use o botão para registrar quando receber.
+        </div>
+        <div id="agencyBillingMsg" style="font-size:0.74rem;color:var(--muted);margin-bottom:10px"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Agência</th><th>Passes</th><th>Cancelados</th><th>Diárias</th><th>Valor devido</th><th>Status</th><th></th></tr></thead>
+            <tbody id="agencyBillingBody"><tr><td colspan="7" class="loading">Carregando…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Emitir Trip Pass</div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px">
+          Cada passe é um código único de uso único. Cobrado por passe emitido —
+          <b id="tpRateLabel">$1.00</b> por viajante/dia (editável abaixo). Cancelável até 1 dia antes da viagem, se não usado.
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end">
+          <label style="font-size:0.75rem;color:var(--muted)">Agência
+            <input id="tpAgency" placeholder="ex: viagens-abc" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">Viajante <span style="opacity:.6">(opcional)</span>
+            <input id="tpTraveler" placeholder="Nome do viajante" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">Início da viagem
+            <input id="tpStart" type="date" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">Dias
+            <input id="tpDays" type="number" min="1" max="60" value="7" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">Quantidade
+            <input id="tpQty" type="number" min="1" max="200" value="1" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <label style="font-size:0.75rem;color:var(--muted)">US$ / dia
+            <input id="tpRate" type="number" min="0" step="0.01" placeholder="1.00" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
+          </label>
+          <button onclick="issueTripPasses()" style="font:inherit;font-size:0.85rem;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid var(--primary);background:var(--primary);color:#160b06;cursor:pointer">Emitir</button>
+        </div>
+        <div id="tpIssueResult" style="margin-top:16px"></div>
+      </div>
+
+      <div class="card">
+        <div class="section-header">
+          <h2>Passes emitidos</h2>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="tpFilterMonth" type="month" onchange="loadTripPasses()" style="font:inherit;font-size:0.82rem;background:#141414;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 10px">
+            <button onclick="loadTripPasses()" style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">↻ Atualizar</button>
+          </div>
+        </div>
+        <div class="grid-3" id="tpStats" style="margin-bottom:16px"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Código</th><th>Agência</th><th>Viajante</th><th>Resgatado por</th><th>Viagem</th><th>Status</th><th>Valor</th><th></th></tr></thead>
+            <tbody id="tpTableBody"><tr><td colspan="7" class="loading">Carregando…</td></tr></tbody>
           </table>
         </div>
       </div>
@@ -2019,91 +2103,6 @@
     </div><!-- /panel-narration -->
 
     <!-- ── PROFILES ── -->
-    <div class="tab-panel" id="panel-trippass">
-      <div class="card" style="margin-bottom:24px">
-        <div class="section-header">
-          <h2>Agências</h2>
-          <button onclick="loadAgencies()" style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">↻ Atualizar</button>
-        </div>
-        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:14px">
-          Contas do portal <code>urbantales.net/agency.html</code>. Aprove para liberar a emissão pela própria agência.
-          Deixe a tarifa em branco para usar o padrão global.
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Agência</th><th>Contato</th><th>Tarifa/dia</th><th>Status</th><th></th></tr></thead>
-            <tbody id="agencyBody"><tr><td colspan="5" class="loading">Carregando…</td></tr></tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="card" style="margin-bottom:24px">
-        <div class="section-header">
-          <h2>Fechamento Mensal — Agências</h2>
-          <input id="billingMonth" type="month" onchange="loadAgencyBilling()" style="background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 11px;font-family:inherit;font-size:0.85rem" />
-        </div>
-        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:14px">
-          O que cada agência deve, contando passes pela <b>data de início da viagem</b> (não a emissão) — passes cancelados até 1 dia antes da viagem não entram.
-          Cobrança real acontece fora do app; use o botão para registrar quando receber.
-        </div>
-        <div id="agencyBillingMsg" style="font-size:0.74rem;color:var(--muted);margin-bottom:10px"></div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Agência</th><th>Passes</th><th>Cancelados</th><th>Diárias</th><th>Valor devido</th><th>Status</th><th></th></tr></thead>
-            <tbody id="agencyBillingBody"><tr><td colspan="7" class="loading">Carregando…</td></tr></tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="card" style="margin-bottom:24px">
-        <div class="card-title">Emitir Trip Pass</div>
-        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px">
-          Cada passe é um código único de uso único. Cobrado por passe emitido —
-          <b id="tpRateLabel">$1.00</b> por viajante/dia (editável abaixo). Cancelável até 1 dia antes da viagem, se não usado.
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end">
-          <label style="font-size:0.75rem;color:var(--muted)">Agência
-            <input id="tpAgency" placeholder="ex: viagens-abc" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
-          </label>
-          <label style="font-size:0.75rem;color:var(--muted)">Viajante <span style="opacity:.6">(opcional)</span>
-            <input id="tpTraveler" placeholder="Nome do viajante" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
-          </label>
-          <label style="font-size:0.75rem;color:var(--muted)">Início da viagem
-            <input id="tpStart" type="date" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
-          </label>
-          <label style="font-size:0.75rem;color:var(--muted)">Dias
-            <input id="tpDays" type="number" min="1" max="60" value="7" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
-          </label>
-          <label style="font-size:0.75rem;color:var(--muted)">Quantidade
-            <input id="tpQty" type="number" min="1" max="200" value="1" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
-          </label>
-          <label style="font-size:0.75rem;color:var(--muted)">US$ / dia
-            <input id="tpRate" type="number" min="0" step="0.01" placeholder="1.00" style="width:100%;margin-top:5px;padding:9px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem">
-          </label>
-          <button onclick="issueTripPasses()" style="font:inherit;font-size:0.85rem;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid var(--primary);background:var(--primary);color:#160b06;cursor:pointer">Emitir</button>
-        </div>
-        <div id="tpIssueResult" style="margin-top:16px"></div>
-      </div>
-
-      <div class="card">
-        <div class="section-header">
-          <h2>Passes emitidos</h2>
-          <div style="display:flex;gap:8px;align-items:center">
-            <input id="tpFilterMonth" type="month" onchange="loadTripPasses()" style="font:inherit;font-size:0.82rem;background:#141414;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 10px">
-            <button onclick="loadTripPasses()" style="font:inherit;font-size:0.82rem;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--border);background:#141414;color:var(--text);cursor:pointer">↻ Atualizar</button>
-          </div>
-        </div>
-        <div class="grid-3" id="tpStats" style="margin-bottom:16px"></div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Código</th><th>Agência</th><th>Viajante</th><th>Resgatado por</th><th>Viagem</th><th>Status</th><th>Valor</th><th></th></tr></thead>
-            <tbody id="tpTableBody"><tr><td colspan="7" class="loading">Carregando…</td></tr></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── PLAYBACK HEALTH ── -->
     <div class="tab-panel" id="panel-playback">
       <div class="card" style="margin-bottom:20px">
         <div class="card-title">Auto-play engine rollout &amp; walking direction
@@ -3032,12 +3031,7 @@ function showTab(name) {
     _countriesMapLoaded = true;
     renderCountriesMap();
   }
-  if (name === 'trippass' && !_tripPassTabLoaded) {
-    _tripPassTabLoaded = true;
-    loadTripPasses();
-    loadAgencies();
-    loadAgencyBilling();
-  }
+  if (name === 'acquisition') ensureB2BLoaded();
 }
 
 function onPeriodChange() {
@@ -3424,6 +3418,16 @@ function renderTripRetention(t) {
 
 // Subtabs inside a tab (Funnel & Retention, Acquisition). Remembers the last
 // one per tab; charts drawn while hidden are resized when their subtab opens.
+// B2B Partners (Trip Pass agencies) loads when its subtab is first opened.
+function ensureB2BLoaded() {
+  const sub = document.querySelector('#panel-acquisition .panel-sub[data-sub="b2b"]');
+  if (_tripPassTabLoaded || !sub || sub.hidden || !getToken()) return;
+  _tripPassTabLoaded = true;
+  loadTripPasses();
+  loadAgencies();
+  loadAgencyBilling();
+}
+
 function showSub(panel, name) {
   const root = document.getElementById(`panel-${panel}`);
   if (!root) return;
@@ -3436,6 +3440,7 @@ function showSub(panel, name) {
   try { localStorage.setItem(`ut_sub_${panel}`, name); } catch (e) {}
   const sub = root.querySelector(`.panel-sub[data-sub="${name}"]`);
   requestAnimationFrame(() => Object.values(CHARTS).forEach(c => { try { if (sub && sub.contains(c.canvas)) c.resize(); } catch (e) {} }));
+  if (panel === 'acquisition' && root.classList.contains('active')) ensureB2BLoaded();
 }
 (function restoreSubs() {
   const saved = {};
