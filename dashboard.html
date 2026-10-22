@@ -193,6 +193,14 @@
     .gran-switch button { font: inherit; font-size: 0.72rem; font-weight: 700; padding: 3px 9px; background: #141414; color: var(--muted); border: 0; cursor: pointer; }
     .gran-switch button + button { border-left: 1px solid var(--border); }
     .gran-switch button.active { background: #2a2a2a; color: #fff; }
+    .tour-note { font-size: 0.78rem; color: var(--muted); margin: -8px 0 14px; }
+    .tour-heat { border-collapse: separate; border-spacing: 3px; width: auto; }
+    .tour-heat td, .tour-heat th { text-align: center; padding: 6px 4px; font-size: 0.75rem; border: 0; border-radius: 4px; min-width: 34px; font-variant-numeric: tabular-nums; }
+    .tour-heat th { color: var(--muted); font-weight: 500; text-transform: none; letter-spacing: 0; }
+    .tour-heat td.city { text-align: left; padding-right: 12px; white-space: nowrap; }
+    .tour-heat td.spike { outline: 2px solid var(--yellow); outline-offset: -2px; }
+    .tour-trend-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+    .tour-trend-row small { color: var(--muted); margin-left: 6px; }
     .cfg-box { border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; background: #151515; }
     .cfg-box summary { cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
     .cfg-box[open] summary { margin-bottom: 12px; }
@@ -998,31 +1006,82 @@
       <div class="card" style="margin-bottom:24px">
         <div class="section-header">
           <h2>🗺️ Tour Activity</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">Tours created in the period</span>
+          <span style="font-size:0.8rem;color:var(--muted)">Tours created in the period · started = at least one stop done</span>
         </div>
-        <div class="grid-5" id="tourKpis">
+        <div class="grid-4" id="tourKpis" style="margin-bottom:0">
           <div class="card"><div class="loading">Loading…</div></div>
-          <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
           <div class="card"><div class="loading">…</div></div>
         </div>
       </div>
 
-      <div class="card" style="margin-bottom:24px">
-        <div class="section-header">
-          <h2>Tour Sharing Funnel</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">Sharing engagement in the period</span>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">From created to walked</div>
+          <div class="tour-note">Tours created in the period. A tour counts at a step once that share of its stops is done.</div>
+          <div class="funnel-wrap" id="tourUsageFunnel"><div class="loading">Loading…</div></div>
         </div>
-        <div class="funnel-wrap" id="tourSharingFunnel">
-          <div class="loading">Loading…</div>
+        <div class="card">
+          <div class="card-title">How much of each tour gets walked</div>
+          <div class="tour-note">Started tours by share of stops done.</div>
+          <div class="chart-wrap"><canvas id="chartTourDist"></canvas></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Tour Types <span style="font-size:0.75rem;color:var(--muted);font-weight:400">created in the period · each day of a multi-day trip counts as one tour</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Type</th><th>Created</th><th>Started</th><th>Avg completion</th><th>Completed</th></tr></thead>
+            <tbody id="tourTypesBody"><tr><td colspan="5" class="loading">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Created vs started<span class="gran-switch" data-tours="trend"></span></div>
+        <div class="tour-note">Started counts a tour on the day its first stop was done; completed on the day its last stop was done.</div>
+        <div class="chart-wrap"><canvas id="chartTourTrend"></canvas></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Repeat use <span style="font-size:0.75rem;color:var(--muted);font-weight:400" id="tourRepeatMeta"></span></div>
+          <div class="tour-note">Tours per user, all time.</div>
+          <div class="chart-wrap"><canvas id="chartTourRepeat"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Planned or on the spot</div>
+          <div class="tour-note">Time from creating a tour to its first stop, for tours started in the period. Same day = built while already in the city.</div>
+          <div class="chart-wrap"><canvas id="chartTourLead"></canvas></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Cities over time <span style="font-size:0.75rem;color:var(--muted);font-weight:400">tours created · top 8 cities</span><span class="gran-switch" data-tours="heat"></span></div>
+        <div class="tour-note">Darker = more tours. A yellow outline marks a spike: at least 3 tours and more than twice that city's usual level.</div>
+        <div class="table-wrap"><table class="tour-heat" id="tourHeat"><tr><td class="loading">Loading…</td></tr></table></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Trending cities <span style="font-size:0.75rem;color:var(--muted);font-weight:400">this period vs the previous one</span></div>
+          <div id="tourTrending"><div class="loading">Loading…</div></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Categories picked <span class="pill" style="color:var(--primary);border:1px solid rgba(255,107,53,.45)">NEW</span><span class="gran-switch" data-tours="cats"></span></div>
+          <div class="tour-note" id="tourCatsMeta">What people ask for when generating a tour. Recorded from 22 Oct 2026 on.</div>
+          <div class="chart-wrap"><canvas id="chartTourCats"></canvas></div>
         </div>
       </div>
 
       <div class="grid-2" style="margin-bottom:24px">
         <div class="card">
-          <div class="card-title">Tour Types Created</div>
-          <div class="chart-wrap"><canvas id="chartTourTypes"></canvas></div>
+          <div class="card-title">Tour Sharing <span style="font-size:0.75rem;color:var(--muted);font-weight:400">in the period</span></div>
+          <div class="funnel-wrap" id="tourSharingFunnel">
+            <div class="loading">Loading…</div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">Top Tour Cities</div>
@@ -3757,23 +3816,124 @@ async function backfillListenProvider() {
 // ══════════════════════════════════════════════
 // TOUR ACTIVITY
 // ══════════════════════════════════════════════
+// Tours subtab (see backend tours_analytics.py). Time-based cards have their
+// own D/W/M switch: the API returns every granularity pre-bucketed.
+let _toursInsights = null;
+const TOUR_GRAN_DEFAULT = { trend: 'W', heat: 'W', cats: 'W' };
+
+function _tourGran(card) {
+  try { return localStorage.getItem('ut_tour_gran_' + card) || TOUR_GRAN_DEFAULT[card]; } catch (e) { return TOUR_GRAN_DEFAULT[card]; }
+}
+function setTourGran(card, g) {
+  try { localStorage.setItem('ut_tour_gran_' + card, g); } catch (e) {}
+  renderTourGran(card);
+}
+function _tourLabel(iso, g) {
+  const d = new Date(iso + 'T00:00:00Z');
+  if (g === 'M') return d.toLocaleDateString('en-US', { month: 'short', year: '2-digit', timeZone: 'UTC' });
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+}
+function _esc(v) {
+  return String(v == null ? '' : v).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
+
+function renderTourGran(card) {
+  const ins = _toursInsights;
+  if (!ins) return;
+  const g = _tourGran(card);
+  document.querySelectorAll(`.gran-switch[data-tours="${card}"] button`).forEach(b => b.classList.toggle('active', b.dataset.g === g));
+  if (card === 'trend') {
+    const sr = ins.series[g];
+    lineChart('chartTourTrend', sr.labels.map(l => _tourLabel(l, g)), [
+      { label: 'Created', data: sr.created, color: '#888888', fill: false },
+      { label: 'Started', data: sr.started, color: C.primary },
+      { label: 'Completed', data: sr.completed, color: C.green, fill: false },
+    ], { y: { ticks: { color: '#555', font: { size: 10 }, precision: 0 } } });
+  } else if (card === 'heat') {
+    const h = ins.heatmap[g];
+    const el = document.getElementById('tourHeat');
+    if (!h.rows.length) { el.innerHTML = '<tr><td class="loading">No tours in this window.</td></tr>'; return; }
+    const max = Math.max(1, ...h.rows.flatMap(r => r.counts));
+    el.innerHTML = '<tr><th></th>' + h.labels.map(l => `<th>${_tourLabel(l, g)}</th>`).join('') + '</tr>' +
+      h.rows.map(r => '<tr><td class="city">' + _esc(r.city) + '</td>' + r.counts.map((v, i) => {
+        const a = v ? Math.min(0.9, 0.12 + v / max * 0.78) : 0.04;
+        const tip = `${r.city}: ${v} tour${v === 1 ? '' : 's'}${r.spikes[i] ? ' (spike)' : ''}`;
+        return `<td class="${r.spikes[i] ? 'spike' : ''}" title="${_esc(tip)}" style="background:rgba(255,107,53,${a.toFixed(2)});color:${a > 0.5 ? '#0f0f0f' : 'var(--text)'}">${v || ''}</td>`;
+      }).join('') + '</tr>').join('');
+  } else if (card === 'cats') {
+    const list = ins.categories[g] || [];
+    if (!list.length) {
+      destroyChart('chartTourCats');
+      const cv = document.getElementById('chartTourCats');
+      cv.getContext('2d').clearRect(0, 0, cv.width, cv.height);
+    } else {
+      barChart('chartTourCats', list.map(c => c.label), [{ label: 'Times picked', data: list.map(c => c.count), color: C.purple }], { horizontal: true });
+    }
+    document.getElementById('tourCatsMeta').textContent =
+      `What people ask for when generating a tour. Recorded from 22 Oct 2026 on · ${fmt(ins.categories.total_generations)} generations so far${list.length ? '' : ' · nothing in this window yet'}.`;
+  }
+}
+
 function renderTours(tours) {
+  const ins = tours.insights;
+  _toursInsights = ins || null;
+  if (ins) {
+    const k = ins.kpis;
+    document.getElementById('tourKpis').innerHTML =
+      _tripKpi('Tours created', k.created, '', 'in the period') +
+      _tripKpi('Started', k.started_pct, '%', `${fmt(k.started.current)} tours with ≥1 stop done`) +
+      _tripKpi('Avg completion', k.avg_completion_pct, '%', 'share of stops done, started tours') +
+      _tripKpi('Completed', k.completed_pct, '%', `${fmt(k.completed.current)} tours, every stop done`);
+
+    const f = ins.funnel, top = f[0].count || 0;
+    document.getElementById('tourUsageFunnel').innerHTML = f.map((step, i) => {
+      const pct = top ? +(step.count / top * 100).toFixed(1) : 0;
+      const color = i === 0 ? '#555' : i === f.length - 1 ? C.green : C.primary;
+      return `<div class="funnel-step">
+        <div class="funnel-label">${step.label}</div>
+        <div class="funnel-bar-outer"><div class="funnel-bar-inner" style="width:${Math.min(pct, 100)}%;background:${color}"></div></div>
+        <div class="funnel-count">${fmt(step.count)}</div>
+        <div class="funnel-pct">${pct}%</div>
+      </div>`;
+    }).join('');
+
+    barChart('chartTourDist', ins.distribution.map(d => d.label),
+      [{ label: 'Started tours', data: ins.distribution.map(d => d.count),
+         backgroundColor: ins.distribution.map((d, i) => (i === ins.distribution.length - 1 ? C.green : C.primary) + 'cc'), color: C.primary }]);
+
+    const pctCell = v => v == null ? '—' : `<span class="pill badge-${v >= 50 ? 'green' : v >= 25 ? 'yellow' : 'orange'}">${v}%</span>`;
+    document.getElementById('tourTypesBody').innerHTML = ins.types.length === 0
+      ? '<tr><td colspan="5" class="loading">No tours in the period.</td></tr>'
+      : ins.types.map(t => `<tr>
+          <td><strong>${_esc(t.label)}</strong></td>
+          <td>${fmt(t.created)}</td>
+          <td>${pctCell(t.started_pct)} <span style="color:var(--muted);font-size:0.75rem">${fmt(t.started)}</span></td>
+          <td>${pctCell(t.avg_completion_pct)}</td>
+          <td>${pctCell(t.completed_pct)} <span style="color:var(--muted);font-size:0.75rem">${fmt(t.completed)}</span></td>
+        </tr>`).join('');
+
+    document.getElementById('tourRepeatMeta').textContent = `${fmt(ins.repeat_users)} users with a tour`;
+    barChart('chartTourRepeat', ins.repeat.map(r => `${r.label} (${r.pct}%)`), [{ label: 'Users', data: ins.repeat.map(r => r.count), color: C.blue }]);
+    barChart('chartTourLead', ins.lead_time.map(r => `${r.label} (${r.pct}%)`), [{ label: 'Started tours', data: ins.lead_time.map(r => r.count), color: C.yellow }]);
+
+    document.getElementById('tourTrending').innerHTML = ins.trending.length === 0
+      ? '<div style="color:var(--muted);font-size:0.85rem">Not enough tours yet (a city needs 3+ across both periods).</div>'
+      : ins.trending.map(r => {
+          const d = r.current - r.previous;
+          const cls = d > 0 ? 'green' : d < 0 ? 'red' : 'blue';
+          const badge = r.change_pct == null ? 'new' : `${d > 0 ? '↑' : d < 0 ? '↓' : '→'} ${Math.abs(r.change_pct).toFixed(0)}%`;
+          return `<div class="tour-trend-row"><span>${_esc(r.city)}<small>${fmt(r.previous)} → ${fmt(r.current)} tours</small></span><span class="kpi-badge badge-${cls}" style="margin:0">${badge}</span></div>`;
+        }).join('');
+
+    document.querySelectorAll('.gran-switch[data-tours]').forEach(el => {
+      const card = el.dataset.tours;
+      el.innerHTML = ['D', 'W', 'M'].map(g =>
+        `<button type="button" data-g="${g}" onclick="setTourGran('${card}','${g}')" title="${{ D: 'Daily', W: 'Weekly', M: 'Monthly' }[g]}">${g}</button>`).join('');
+      renderTourGran(card);
+    });
+  }
+
   const s = tours.summary || {};
-  const completionClass = s.completion_rate >= 50 ? 'green' : s.completion_rate >= 25 ? 'yellow' : 'orange';
-  const avgPct = s.avg_landmark_completion_pct || 0;
-  const avgPctClass = avgPct >= 50 ? 'green' : avgPct >= 25 ? 'yellow' : 'orange';
-
-  document.getElementById('tourKpis').innerHTML =
-    kpiCard('Tours Created', fmt(s.tours_created), 'In the period', null, null) +
-    kpiCard('Tours Completed', fmt(s.tours_completed), 'All landmarks done', null, null) +
-    kpiCard('Completion Rate', fmtPct(s.completion_rate), 'Completed / Created',
-      s.completion_rate >= 50 ? '↑ Good' : s.completion_rate >= 25 ? '→ Average' : '↓ Low',
-      completionClass) +
-    kpiCard('Avg Landmark Completion', fmtPct(avgPct), 'Avg % of landmarks done, per tour',
-      avgPct >= 50 ? '↑ Good' : avgPct >= 25 ? '→ Average' : '↓ Low',
-      avgPctClass) +
-    kpiCard('Avg Landmarks/Tour', (s.avg_landmarks_per_tour || 0).toFixed(1), 'Per tour created', null, null);
-
   // ── Tour Sharing Funnel ──
   const created  = s.tours_created  || 0;
   const shared   = s.tours_shared   || 0;
@@ -3793,17 +3953,6 @@ function renderTours(tours) {
       <div class="funnel-pct">${step.pct}%</div>
     </div>
   `).join('');
-
-  // Tour Types bar chart
-  const types = tours.tour_types || [];
-  if (types.length > 0) {
-    barChart('chartTourTypes',
-      types.map(t => t.label || t.tour_type || 'Unknown'),
-      [{ label: 'Tours', data: types.map(t => t.count), color: C.primary }]
-    );
-  } else {
-    destroyChart('chartTourTypes');
-  }
 
   // Top Tour Cities table
   const cities = (tours.top_tour_cities || []).slice(0, 12);
