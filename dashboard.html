@@ -180,6 +180,8 @@
     .badge-red    { background: rgba(248,113,113,.15); color: var(--danger); }
 
     .card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
+    .acq-ch-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 12px; }
+    @media (max-width: 760px) { .acq-ch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .subtabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
     .subtab { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 7px 14px; border-radius: 8px; background: transparent; color: var(--muted); border: 1px solid transparent; cursor: pointer; }
     .subtab:hover { color: var(--text); background: #1f1f1f; }
@@ -1297,18 +1299,15 @@
       </div>
 
       <div class="panel-sub" data-sub="overview">
-<!-- ── Acquisition Channels (Organic / Own Campaigns / MGM / Influencer) ── -->
+<!-- ── Acquisition Channels (codes, Apple Search Ads, B2B, Organic / unattributed) ── -->
       <div class="card" style="margin-bottom:24px">
         <div class="card-title">Acquisition Channels
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">All-time user breakdown by source · monthly cohort chart</span>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px" id="acqChannelKpis">
+        <div class="acq-ch-grid" id="acqChannelKpis">
           <div class="card"><div class="loading">Loading…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-          <div class="card"><div class="loading">…</div></div>
         </div>
+        <div id="acqChannelNote" style="font-size:0.78rem;color:var(--muted);margin-bottom:16px;max-width:110ch"></div>
         <div class="chart-wrap" style="height:260px"><canvas id="chartAcqChannels"></canvas></div>
       </div>
 
@@ -1328,7 +1327,7 @@
         </div>
         <div class="card">
           <div class="card-title">User Base — Paid Acquisition vs Organic
-            <span title="Paid = user signed up with a promoter code (MGM or Influencer). Organic = signed up without any referral." style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+            <span title="Paid / attributed = signed up with a code (MGM, influencer, own campaign), redeemed an agency Trip Pass, or came from an Apple Search Ads click. Organic / unattributed = none of these; it also includes Meta and Google Ads installs, which those platforms only report as totals." style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
           </div>
           <div class="chart-wrap"><canvas id="chartAcqSource"></canvas></div>
         </div>
@@ -4307,13 +4306,23 @@ function renderAcquisitionChannels(ac) {
   const t = ac.totals || {};
   const total = ac.total || 1;
   const pct = n => ((n || 0) / total * 100).toFixed(1) + '%';
+  const paid = ac.paid != null ? ac.paid : total - (t.organic || 0);
 
   document.getElementById('acqChannelKpis').innerHTML =
-    kpiCard('Total Users', fmt(total), 'All non-admin accounts', null, 'blue') +
-    kpiCard('Organic', fmt(t.organic || 0), pct(t.organic) + ' of total', null, null) +
+    kpiCard('Total Users', fmt(ac.total || 0), 'All non-admin accounts', null, 'blue') +
+    kpiCard('Paid / attributed', fmt(paid), pct(paid) + ' of total', null, 'green') +
+    kpiCard('Organic / unattributed', fmt(t.organic || 0), pct(t.organic) + ' of total', null, null) +
+    kpiCard('Apple Search Ads', fmt(t.apple_search_ads || 0), pct(t.apple_search_ads) + ' of total', null, null) +
+    kpiCard('B2B (Trip Pass)', fmt(t.b2b || 0), pct(t.b2b) + ' of total', null, null) +
     kpiCard('Own Campaigns', fmt(t.own_campaigns || 0), pct(t.own_campaigns) + ' of total', null, 'purple') +
     kpiCard('MGM (Referral)', fmt(t.mgm || 0), pct(t.mgm) + ' of total', null, null) +
     kpiCard('Influencer', fmt(t.influencer || 0), pct(t.influencer) + ' of total', null, 'yellow');
+
+  const cov = ac.coverage || {};
+  document.getElementById('acqChannelNote').innerHTML =
+    `<b>Organic / unattributed</b> = no signup code, no agency Trip Pass and no Apple Search Ads click. ` +
+    `It also contains installs from <b>Meta and Google Ads</b>: those platforms only report totals, not which user came from an ad. ` +
+    (cov.ios_users ? `Apple Search Ads was checked for <b>${fmt(cov.asa_checked)} of ${fmt(cov.ios_users)}</b> iPhone users (older app versions didn't check).` : '');
 
   const series = ac.monthly_series || [];
   const labels = series.map(s => {
@@ -4322,10 +4331,12 @@ function renderAcquisitionChannels(ac) {
   });
 
   barChart('chartAcqChannels', labels, [
-    { label: 'Organic',       data: series.map(s => s.organic      || 0), color: '#475569' },
-    { label: 'Own Campaigns', data: series.map(s => s.own_campaigns || 0), color: C.purple  },
-    { label: 'MGM',           data: series.map(s => s.mgm           || 0), color: C.primary },
-    { label: 'Influencer',    data: series.map(s => s.influencer    || 0), color: C.yellow  },
+    { label: 'Organic / unattributed', data: series.map(s => s.organic || 0), color: '#475569' },
+    { label: 'Apple Search Ads', data: series.map(s => s.apple_search_ads || 0), color: C.green },
+    { label: 'B2B (Trip Pass)', data: series.map(s => s.b2b || 0), color: C.blue },
+    { label: 'Own Campaigns', data: series.map(s => s.own_campaigns || 0), color: C.purple },
+    { label: 'MGM', data: series.map(s => s.mgm || 0), color: C.primary },
+    { label: 'Influencer', data: series.map(s => s.influencer || 0), color: C.yellow },
   ], { stacked: true });
 }
 
@@ -4361,22 +4372,29 @@ function renderAcquisition(acq, freeUsers, acqChannels) {
     [C.blue, C.green]
   );
 
-  // ── Paid Acquisition vs Organic doughnut (needs freeUsers.summary.total_users) ──
-  const totalUsers = (freeUsers && freeUsers.summary && freeUsers.summary.total_users) || 0;
-  const paidAcq = s.total_referrals || 0;
-  const organic = Math.max(totalUsers - paidAcq, 0);
+  // ── Paid / attributed vs Organic / unattributed (from the channel breakdown) ──
+  const chTotals = (acqChannels && acqChannels.totals) || null;
+  let organic, paidAcq;
+  if (chTotals) {
+    organic = chTotals.organic || 0;
+    paidAcq = acqChannels.paid != null ? acqChannels.paid : (acqChannels.total || 0) - organic;
+  } else {
+    const totalUsers = (freeUsers && freeUsers.summary && freeUsers.summary.total_users) || 0;
+    paidAcq = s.total_referrals || 0;
+    organic = Math.max(totalUsers - paidAcq, 0);
+  }
   doughnutChart('chartAcqSource',
-    ['Organic signup', 'Paid acquisition (referred)'],
+    ['Organic / unattributed', 'Paid / attributed (codes, Apple Search Ads, B2B)'],
     [organic, paidAcq],
     ['#475569', C.primary]
   );
 
-  // ── Channel Split doughnut (all 4 channels from acqChannels) ──
+  // ── Channel Split doughnut (all channels from acqChannels) ──
   const acTotals = (acqChannels && acqChannels.totals) || {};
   doughnutChart('chartAcqChannel',
-    ['Organic', 'Own Campaigns', 'MGM user-driven', 'Influencer-driven'],
-    [acTotals.organic || 0, acTotals.own_campaigns || 0, acTotals.mgm || 0, acTotals.influencer || 0],
-    ['#475569', C.blue, C.primary, C.purple]
+    ['Organic / unattributed', 'Apple Search Ads', 'B2B (Trip Pass)', 'Own Campaigns', 'MGM user-driven', 'Influencer-driven'],
+    [acTotals.organic || 0, acTotals.apple_search_ads || 0, acTotals.b2b || 0, acTotals.own_campaigns || 0, acTotals.mgm || 0, acTotals.influencer || 0],
+    ['#475569', C.green, C.blue, C.purple, C.primary, C.yellow]
   );
 
   // ── Revenue by Channel doughnut (only referral channels have tracked revenue) ──
