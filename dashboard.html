@@ -1058,6 +1058,19 @@
         </div>
       </div>
 
+      <div class="card" style="margin-bottom:24px" id="tourCreatorsCard">
+        <div class="card-title">Who creates tours <span style="font-size:0.75rem;color:var(--muted);font-weight:400" id="tourCreatorsMeta"></span></div>
+        <div class="tour-note">Users who created a tour in the period, each counted once by their first tour in it. Started % = their tours with at least one stop done.</div>
+        <div class="grid-3" style="margin-bottom:16px">
+          <div><div class="tour-note" style="font-weight:600;color:var(--text)">Payment</div><div class="table-wrap"><table><thead><tr><th></th><th>Creators</th><th>Tours</th><th>Started</th></tr></thead><tbody id="tourCreatorsPay"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody></table></div></div>
+          <div><div class="tour-note" style="font-weight:600;color:var(--text)">Account age at first tour</div><div class="table-wrap"><table><thead><tr><th></th><th>Creators</th><th>Tours</th><th>Started</th></tr></thead><tbody id="tourCreatorsAge"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody></table></div></div>
+          <div><div class="tour-note" style="font-weight:600;color:var(--text)">Platform</div><div class="table-wrap"><table><thead><tr><th></th><th>Creators</th><th>Tours</th><th>Started</th></tr></thead><tbody id="tourCreatorsPlatform"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody></table></div></div>
+        </div>
+        <div class="tour-note" style="font-weight:600;color:var(--text)">Most tours in the period</div>
+        <div class="table-wrap"><table><thead><tr><th>User</th><th>Platform</th><th>Signed up</th><th>First purchase</th><th>Tours</th><th>Started</th><th>Cities</th></tr></thead>
+          <tbody id="tourCreatorsTop"><tr><td colspan="7" class="loading">Loading…</td></tr></tbody></table></div>
+      </div>
+
       <div class="card" style="margin-bottom:24px">
         <div class="card-title">Cities over time <span style="font-size:0.75rem;color:var(--muted);font-weight:400">tours created · top 8 cities</span><span class="gran-switch" data-tours="heat"></span></div>
         <div class="tour-note">Darker = more tours. A yellow outline marks a spike: at least 3 tours and more than twice that city's usual level.</div>
@@ -3915,6 +3928,34 @@ function renderTours(tours) {
     document.getElementById('tourRepeatMeta').textContent = `${fmt(ins.repeat_users)} users with a tour`;
     barChart('chartTourRepeat', ins.repeat.map(r => `${r.label} (${r.pct}%)`), [{ label: 'Users', data: ins.repeat.map(r => r.count), color: C.blue }]);
     barChart('chartTourLead', ins.lead_time.map(r => `${r.label} (${r.pct}%)`), [{ label: 'Started tours', data: ins.lead_time.map(r => r.count), color: C.yellow }]);
+
+    // Who creates tours (needs backend PR #39; older API → card says so)
+    const cr = ins.creators;
+    if (!cr) {
+      document.getElementById('tourCreatorsMeta').textContent = 'needs the latest backend';
+      ['tourCreatorsPay', 'tourCreatorsAge', 'tourCreatorsPlatform'].forEach(id => document.getElementById(id).innerHTML = '<tr><td colspan="4" class="loading">—</td></tr>');
+      document.getElementById('tourCreatorsTop').innerHTML = '<tr><td colspan="7" class="loading">—</td></tr>';
+    } else {
+      document.getElementById('tourCreatorsMeta').textContent = `${fmt(cr.creators)} creators · ${fmt(cr.only_copied)} only copied shared tours`;
+      const segRows = rows => rows.length === 0
+        ? '<tr><td colspan="4" class="loading">No tours in the period.</td></tr>'
+        : rows.map(r => `<tr><td><strong>${_esc(r.label)}</strong></td><td>${fmt(r.creators)}</td><td>${fmt(r.tours)}</td><td>${pctCell(r.started_pct)} <span style="color:var(--muted);font-size:0.75rem">${fmt(r.started)}</span></td></tr>`).join('');
+      document.getElementById('tourCreatorsPay').innerHTML = segRows(cr.payment);
+      document.getElementById('tourCreatorsAge').innerHTML = segRows(cr.age);
+      document.getElementById('tourCreatorsPlatform').innerHTML = segRows(cr.platform);
+      const plat = { ios: 'iOS', android: 'Android', unknown: '—' };
+      document.getElementById('tourCreatorsTop').innerHTML = cr.top.length === 0
+        ? '<tr><td colspan="7" class="loading">No tours in the period.</td></tr>'
+        : cr.top.map(u => `<tr>
+            <td>${_esc(u.email)}${u.only_copied ? ' <span class="pill badge-blue">copies only</span>' : ''}</td>
+            <td>${plat[u.platform] || '—'}</td>
+            <td>${u.signed_up || '—'}</td>
+            <td>${u.first_purchase ? `<span class="pill badge-green">${u.first_purchase}</span>` : '—'}</td>
+            <td>${fmt(u.tours)} <span style="color:var(--muted);font-size:0.75rem">${fmt(u.tours_all_time)} all time</span></td>
+            <td>${fmt(u.started)}</td>
+            <td>${_esc(u.cities.join(', '))}</td>
+          </tr>`).join('');
+    }
 
     document.getElementById('tourTrending').innerHTML = ins.trending.length === 0
       ? '<div style="color:var(--muted);font-size:0.85rem">Not enough tours yet (a city needs 3+ across both periods).</div>'
