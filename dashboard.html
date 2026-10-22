@@ -180,6 +180,11 @@
     .badge-red    { background: rgba(248,113,113,.15); color: var(--danger); }
 
     .card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
+    .subtabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    .subtab { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 7px 14px; border-radius: 8px; background: transparent; color: var(--muted); border: 1px solid transparent; cursor: pointer; }
+    .subtab:hover { color: var(--text); background: #1f1f1f; }
+    .subtab.active { color: #fff; background: #2a2a2a; border-color: #333; }
+    .subtab:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
     .chart-wrap { position: relative; height: 220px; }
     .chart-wrap-lg { position: relative; height: 280px; }
     .gran-switch { float: right; display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-left: 10px; }
@@ -589,7 +594,114 @@
 
     <!-- ── FUNNEL ── -->
     <div class="tab-panel" id="panel-funnel">
-      <!-- ── TRIPS (travel-aware retention) ── -->
+      <div class="subtabs" role="tablist" aria-label="Funnel and retention sections">
+        <button class="subtab active" data-sub="conversion" role="tab" aria-selected="true" onclick="showFunnelSub('conversion')">Conversion Funnel</button>
+        <button class="subtab" data-sub="hotleads" role="tab" aria-selected="false" onclick="showFunnelSub('hotleads')">Hot Leads</button>
+        <button class="subtab" data-sub="retention" role="tab" aria-selected="false" onclick="showFunnelSub('retention')">Retention</button>
+        <button class="subtab" data-sub="coins" role="tab" aria-selected="false" onclick="showFunnelSub('coins')">Coin Economy</button>
+      </div>
+
+      <div class="funnel-sub" data-sub="conversion">
+<div class="grid-2" style="margin-bottom:24px">
+        <div class="card">
+          <div class="card-title">Conversion Funnel — Period Cohort
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">(users who signed up in the period)</span>
+          </div>
+          <div class="funnel-wrap" id="funnelViz">
+            <div class="loading">Loading…</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span data-gran-word="funnelDaily">Daily</span> Acquisition &amp; Re-engagement
+            <span title="Recovered = users returning after 30+ days of inactivity" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span><span class="gran-switch" data-card="funnelDaily"></span>
+          </div>
+          <div class="chart-wrap-lg"><canvas id="chartFunnelDaily"></canvas></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-header">
+          <h2>Conversion by Sign-up Month — Last 6 Months</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">How each month's sign-ups progress through the funnel (retention is in the Retention subtab)</span>
+        </div>
+        <div class="table-wrap">
+          <table id="cohortsTable">
+            <thead>
+              <tr>
+                <th>Cohort</th>
+                <th>Signups</th>
+                <th>Activated</th>
+                <th>Hit Paywall</th>
+                <th>Viewed Shop</th>
+                <th>Converted</th>
+                <th>Conv. Rate</th>
+              </tr>
+            </thead>
+            <tbody id="cohortsBody">
+              <tr><td colspan="7" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h2 class="dash-section">Free users <span>engagement and time to conversion</span></h2>
+
+      <div class="grid-4" id="freeUserKpis">
+        <div class="card"><div class="loading">Loading…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+        <div class="card"><div class="loading">…</div></div>
+      </div>
+      <div class="grid-2" style="margin-top:24px">
+        <div class="card">
+          <div class="card-title">Free User Engagement
+            <span title="Mutually exclusive: each user lands in their highest-intent bucket only" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
+          </div>
+          <div class="chart-wrap"><canvas id="chartFreeEngagement"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Cohort Retention — Signups vs Conversions
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">% above each bar = cohort conversion rate</span>
+          </div>
+          <div class="chart-wrap"><canvas id="chartFreeCohorts"></canvas></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">Time to Conversion
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Days between signup and first purchase (paid users)</span>
+        </div>
+        <div class="chart-wrap-lg"><canvas id="chartTimeToConversion"></canvas></div>
+      </div>
+      </div>
+
+      <div class="funnel-sub" data-sub="hotleads" hidden>
+<div class="card">
+        <div class="section-header">
+          <h2>Hot Leads — Free users likely to convert</h2>
+          <span id="hotLeadsCount" style="font-size:0.8rem;color:var(--muted)"></span>
+        </div>
+        <div class="table-wrap">
+          <table id="hotLeadsTable">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Narrations</th>
+                <th>Shop Views</th>
+                <th>Paywall Hits</th>
+                <th>Last Active</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="hotLeadsBody">
+              <tr><td colspan="6" class="loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+
+      <div class="funnel-sub" data-sub="retention" hidden>
+<!-- ── TRIPS (travel-aware retention) ── -->
       <div class="section-header" style="margin-bottom:12px">
         <h2>Trips</h2>
         <span style="font-size:0.8rem;color:var(--muted)">People use UrbanTales per trip, so retention is measured in trips, not months · <span id="tripMeta"></span></span>
@@ -623,23 +735,6 @@
         <div class="chart-wrap"><canvas id="chartTripWeekly"></canvas></div>
       </div>
 
-      <div class="grid-2" style="margin-bottom:24px">
-        <div class="card">
-          <div class="card-title">Conversion Funnel — Period Cohort
-            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">(users who signed up in the period)</span>
-          </div>
-          <div class="funnel-wrap" id="funnelViz">
-            <div class="loading">Loading…</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title"><span data-gran-word="funnelDaily">Daily</span> Acquisition &amp; Re-engagement
-            <span title="Recovered = users returning after 30+ days of inactivity" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span><span class="gran-switch" data-card="funnelDaily"></span>
-          </div>
-          <div class="chart-wrap-lg"><canvas id="chartFunnelDaily"></canvas></div>
-        </div>
-      </div>
-
       <!-- ── MAU ── -->
       <div class="card" style="margin-bottom:24px">
         <div class="section-header">
@@ -661,85 +756,22 @@
         </div>
       </div>
 
-      <div class="card" style="margin-bottom:24px">
-        <div class="section-header">
-          <h2>Conversion by Sign-up Month — Last 6 Months</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">How each month's sign-ups progress through the funnel (retention is in Trips above)</span>
-        </div>
-        <div class="table-wrap">
-          <table id="cohortsTable">
-            <thead>
-              <tr>
-                <th>Cohort</th>
-                <th>Signups</th>
-                <th>Activated</th>
-                <th>Hit Paywall</th>
-                <th>Viewed Shop</th>
-                <th>Converted</th>
-                <th>Conv. Rate</th>
-              </tr>
-            </thead>
-            <tbody id="cohortsBody">
-              <tr><td colspan="7" class="loading">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="section-header">
-          <h2>Hot Leads — Free users likely to convert</h2>
-          <span id="hotLeadsCount" style="font-size:0.8rem;color:var(--muted)"></span>
-        </div>
-        <div class="table-wrap">
-          <table id="hotLeadsTable">
-            <thead>
-              <tr>
-                <th>Email</th>
-                <th>Narrations</th>
-                <th>Shop Views</th>
-                <th>Paywall Hits</th>
-                <th>Last Active</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody id="hotLeadsBody">
-              <tr><td colspan="6" class="loading">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    
-      <h2 class="dash-section">Free users <span>engagement, retention, time to conversion, coin economy</span></h2>
-
-      <div class="grid-4" id="freeUserKpis">
-        <div class="card"><div class="loading">Loading…</div></div>
-        <div class="card"><div class="loading">…</div></div>
-        <div class="card"><div class="loading">…</div></div>
-        <div class="card"><div class="loading">…</div></div>
-      </div>
-      <div class="grid-2" style="margin-top:24px">
-        <div class="card">
-          <div class="card-title">Free User Engagement
-            <span title="Mutually exclusive: each user lands in their highest-intent bucket only" style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px;cursor:help">ⓘ</span>
-          </div>
-          <div class="chart-wrap"><canvas id="chartFreeEngagement"></canvas></div>
-        </div>
-        <div class="card">
-          <div class="card-title">Cohort Retention — Signups vs Conversions
-            <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">% above each bar = cohort conversion rate</span>
-          </div>
-          <div class="chart-wrap"><canvas id="chartFreeCohorts"></canvas></div>
-        </div>
-      </div>
       <div class="card" style="margin-top:24px">
-        <div class="card-title">Time to Conversion
-          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Days between signup and first purchase (paid users)</span>
+        <div class="section-header">
+          <h2>Streak Health</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
         </div>
-        <div class="chart-wrap-lg"><canvas id="chartTimeToConversion"></canvas></div>
+        <div class="grid-4" id="streakHealthKpis">
+          <div class="card"><div class="loading">Loading…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+          <div class="card"><div class="loading">…</div></div>
+        </div>
+      </div>
       </div>
 
-      <div class="card" style="margin-top:24px">
+      <div class="funnel-sub" data-sub="coins" hidden>
+<div class="card">
         <div class="section-header">
           <h2>🪙 Coin Economy Health</h2>
           <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
@@ -770,18 +802,6 @@
           </div>
         </div>
       </div>
-
-      <div class="card" style="margin-top:24px">
-        <div class="section-header">
-          <h2>Streak Health</h2>
-          <span style="font-size:0.8rem;color:var(--muted)">All users · live snapshot</span>
-        </div>
-        <div class="grid-4" id="streakHealthKpis">
-          <div class="card"><div class="loading">Loading…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-          <div class="card"><div class="loading">…</div></div>
-        </div>
       </div>
 
     </div><!-- /panel-funnel -->
@@ -3388,6 +3408,25 @@ function renderTripRetention(t) {
   });
   renderTripCurve();
 }
+
+// Funnel & Retention subtabs. Remembers the last one; charts drawn while hidden
+// are resized when their subtab opens.
+function showFunnelSub(name) {
+  document.querySelectorAll('#panel-funnel .funnel-sub').forEach(el => { el.hidden = el.dataset.sub !== name; });
+  document.querySelectorAll('#panel-funnel .subtab').forEach(b => {
+    const on = b.dataset.sub === name;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+  try { localStorage.setItem('ut_funnel_sub', name); } catch (e) {}
+  const sub = document.querySelector(`#panel-funnel .funnel-sub[data-sub="${name}"]`);
+  requestAnimationFrame(() => Object.values(CHARTS).forEach(c => { try { if (sub && sub.contains(c.canvas)) c.resize(); } catch (e) {} }));
+}
+(function restoreFunnelSub() {
+  let saved = null;
+  try { saved = localStorage.getItem('ut_funnel_sub'); } catch (e) {}
+  if (saved && saved !== 'conversion') document.addEventListener('DOMContentLoaded', () => showFunnelSub(saved));
+})();
 
 function setTripRule(rule) {
   _tripRule = rule;
