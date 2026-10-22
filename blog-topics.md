@@ -7,6 +7,9 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 
 | Date | Type | City | Post |
 |---|---|---|---|
+| Hidden Story | Athens | Hidden Story: Athens' Panathenaic Stadium, where the marathon ends (Scout 22 Oct: The Athens Authentic Marathon finishes here on Nov 8.) |
+| City Guide | Budapest | Budapest Christmas market walk: from St. Stephen's Basilica to Vörösmarty Square (Scout 22 Oct: Both markets are reported to open Nov 13. The date is not officially confirmed yet.) |
+| Hidden Story | Venice | Venice's Festa della Salute: the plague church and the bridge built for one day (Scout 22 Oct: The festa is on Nov 21, the one day a pontoon bridge crosses the Grand Canal.) |
 | 2026-10-21 | Hidden Story | Venice | [blog-venice-ghetto-word-origin-history.html](blog-venice-ghetto-word-origin-history.html) — Where the word "ghetto" actually came from |
 | 2026-10-19 | City Guide | Prague | [blog-prague-velvet-revolution-walk.html](blog-prague-velvet-revolution-walk.html) — A self-guided walk through Prague's Velvet Revolution |
 | 2026-10-16 | Hidden Story | London | [blog-tower-of-london-secret-history.html](blog-tower-of-london-secret-history.html) — The secret history of the Tower of London's 600-year zoo |
