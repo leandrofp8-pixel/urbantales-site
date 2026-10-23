@@ -3237,11 +3237,7 @@ function renderOverview(funnel, freeUsers, revenue, themeBreakdown) {
       r.activation_rate > 60 ? 'green' : r.activation_rate > 30 ? 'yellow' : 'red') +
     kpiCard('Conversion Rate', fmtPct(r.conversion_rate), 'Free → paid',
       r.conversion_rate > 5 ? '↑ Strong' : r.conversion_rate > 2 ? '→ Average' : '↓ Low',
-      r.conversion_rate > 5 ? 'green' : r.conversion_rate > 2 ? 'yellow' : 'orange') +
-    (themeBreakdown ? kpiCard('Light Mode Adoption',
-      fmtPct(themeBreakdown.light_pct),
-      `${fmt(themeBreakdown.light)} of ${fmt(themeBreakdown.total)} users opted in · rest still on default dark`,
-      null, null) : '');
+      r.conversion_rate > 5 ? 'green' : r.conversion_rate > 2 ? 'yellow' : 'orange');
 
   const rows = funnelRows(funnel, _rangeStart(), _rangeEnd());
   const activeLabel = g => g === 'day' ? 'Active Users' : 'Avg daily active users';
@@ -7148,7 +7144,7 @@ async function loadAllData() {
     renderGrowthExperiment(growthExperiment);
     renderQuotaExperiment(quotaExperiment);
     renderStorefrontExperiment(storefrontExperiment);
-    renderThemeExperiment(themeExperiment);
+    renderThemeExperiment(themeExperiment, themeBreakdown);
     renderReviewPrompt(reviewPrompt);
     renderNarrationConfig(narrationConfigResp?.config || null);
   } catch (e) {
@@ -7376,13 +7372,20 @@ function renderStorefrontExperiment(data) {
     ${!rows.length ? '<p>No measured Store exposures yet. Release the supported mobile app and enable enrollment in Settings.</p>' : `<div class="table-wrap"><table><thead><tr><th>Segment</th><th>Layout</th><th>Exposed</th><th>Completed window</th><th>Paid buyers</th><th>Conversion</th><th>Coin buyers</th><th>Subscription buyers</th><th>Gross USD</th><th>USD / completed user</th><th>Unpriced purchases</th></tr></thead><tbody>${rows.map(r => `<tr><td>${escapeHtml(segment(r.segment))}</td><td>${escapeHtml(labels[r.variant] || r.variant)}</td><td>${fmt(r.exposed)}</td><td>${fmt(r.mature)}</td><td>${fmt(r.buyers)}</td><td>${pct(r.conversion_pct)}</td><td>${fmt(r.coin_buyers)}</td><td>${fmt(r.subscription_buyers)}</td><td>${money(r.gross_usd)}</td><td>${money(r.revenue_per_exposed_usd)}</td><td>${fmt(r.unpriced_purchases)}</td></tr>`).join('')}</tbody></table></div>`}`;
 }
 
-function renderThemeExperiment(data) {
+function renderThemeExperiment(data, adoption) {
   const el = document.getElementById('themeExperimentPanel');
   if (!el) return;
-  if (!data || !data.arms) { el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">Could not load results.</p>'; return; }
+  // Light mode adoption (moved here from Overview): everyone who picked light
+  // themselves in Profile, test or not.
+  const adoptionHtml = adoption ? `<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;background:#151515;border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:14px">
+      <span style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600">Light mode adoption</span>
+      <span style="font-size:1.25rem;font-weight:700">${fmtPct(adoption.light_pct)}</span>
+      <span style="font-size:0.8rem;color:var(--muted)">${fmt(adoption.light)} of ${fmt(adoption.total)} users chose light themselves in Profile · everyone else is on dark or their test arm</span>
+    </div>` : '';
+  if (!data || !data.arms) { el.innerHTML = adoptionHtml + '<p style="color:var(--muted);font-size:0.85rem">Could not load results.</p>'; return; }
   const L = data.arms.light, D = data.arms.dark, df = data.diffs, sm = data.sample;
   if (!L.users && !D.users) {
-    el.innerHTML = `<p style="color:var(--muted);font-size:0.85rem">No one assigned yet. The test starts with new accounts on the app version that supports it. ${fmt(data.not_in_test)} existing accounts are not in it.</p>`;
+    el.innerHTML = adoptionHtml + `<p style="color:var(--muted);font-size:0.85rem">No one assigned yet. The test starts with new accounts on the app version that supports it. ${fmt(data.not_in_test)} existing accounts are not in it.</p>`;
     return;
   }
   const pct = (v, n, extra = '') => v == null ? '—' : `${v}% <span style="color:var(--muted);font-weight:400">${extra || fmt(n)}</span>`;
@@ -7410,7 +7413,7 @@ function renderThemeExperiment(data) {
       <td style="text-align:right">${pct(a.switched_pct, a.switched, 'to ' + other)}</td>
     </tr>`;
   const bar = (have, need, color) => `<div style="height:10px;background:#222;border-radius:5px;overflow:hidden;margin:6px 0 4px"><i style="display:block;height:100%;width:${Math.min(100, need ? have / need * 100 : 0).toFixed(1)}%;background:${color}"></i></div>`;
-  el.innerHTML = `${verdict}
+  el.innerHTML = `${adoptionHtml}${verdict}
     <div class="table-wrap"><table style="width:100%;border-collapse:collapse">
       <thead><tr style="color:var(--muted);font-size:0.75rem">
         <th style="text-align:left;padding:6px 0">Arm</th><th style="text-align:right">Users</th><th style="text-align:right">Activated</th>
