@@ -10,10 +10,10 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 | Hidden Story | Athens | Hidden Story: Athens' Panathenaic Stadium, where the marathon ends (Scout 22 Oct: The Athens Authentic Marathon finishes here on Nov 8.) |
 | City Guide | Budapest | Budapest Christmas market walk: from St. Stephen's Basilica to Vörösmarty Square (Scout 22 Oct: Both markets are reported to open Nov 13. The date is not officially confirmed yet.) |
 | Hidden Story | Venice | Venice's Festa della Salute: the plague church and the bridge built for one day (Scout 22 Oct: The festa is on Nov 21, the one day a pontoon bridge crosses the Grand Canal.) |
+| 2026-10-23 | City Guide | Buenos Aires | [blog-monserrat-san-telmo-noche-museos-walk.html](blog-monserrat-san-telmo-noche-museos-walk.html) — A self-guided Monserrat and San Telmo walk, timed for La Noche de los Museos (Sat 14 Nov 2026) |
 | 2026-10-21 | Hidden Story | Venice | [blog-venice-ghetto-word-origin-history.html](blog-venice-ghetto-word-origin-history.html) — Where the word "ghetto" actually came from |
 | 2026-10-19 | City Guide | Prague | [blog-prague-velvet-revolution-walk.html](blog-prague-velvet-revolution-walk.html) — A self-guided walk through Prague's Velvet Revolution |
 | 2026-10-16 | Hidden Story | London | [blog-tower-of-london-secret-history.html](blog-tower-of-london-secret-history.html) — The secret history of the Tower of London's 600-year zoo |
-| City Guide | Buenos Aires | Noche de los Museos 2026: a self-guided walk through Monserrat and San Telmo (Scout 15 Oct: La Noche de los Museos, Sat 14 Nov 2026, 19:00–02:00, free entry.) |
 | 2026-10-14 | City Guide | Chicago | [blog-chicago-millennium-park-willis-tower-walk.html](blog-chicago-millennium-park-willis-tower-walk.html) — A self-guided Chicago walking tour, from the Bean to the Skydeck |
 | 2026-10-12 | Hidden Story | Bangkok | [blog-wat-arun-wat-pho-rivalry.html](blog-wat-arun-wat-pho-rivalry.html) — The grudge behind Wat Arun and Wat Pho |
 | 2026-10-07 | City Guide | Marrakech | [blog-marrakech-jemaa-el-fnaa-evening-walk.html](blog-marrakech-jemaa-el-fnaa-evening-walk.html) — A self-guided Jemaa el-Fnaa walk timed for the moment it comes alive |
@@ -41,7 +41,7 @@ already in this repo, so the post's CTAs and internal links can point to it.
 | Type | City | Angle |
 |---|---|---|
 
-The formal Queue is still empty. One "Scout" row remains mis-filed in the Published table above (Buenos Aires) — it has a time-sensitive hook and no post written yet (La Noche de los Museos, Sat 14 Nov 2026). The Venice scout row (Ghetto word-origin story, tied to the Jewish Museum's 22 Oct 2026 reopening) has now been written and properly filed above. Since this run published a Hidden Story (Venice), the next post should be a City Guide — Buenos Aires's Noche de los Museos row is the only queued item and fits that type, with a deadline (14 Nov 2026) that's getting close.
+The formal Queue is still empty. Two "Scout" rows remain mis-filed in the Published table above, both with no post written yet: Athens (Hidden Story — Panathenaic Stadium marathon finish, Nov 8 2026, deadline close) and Budapest (City Guide — Christmas market walk, dates not officially confirmed). The Buenos Aires scout row (Noche de los Museos, Sat 14 Nov 2026) has now been written and properly filed above. Since this run published a City Guide (Buenos Aires), the next post should be a Hidden Story — Athens is the only Hidden Story scout and has the tightest deadline, so it should be next.
 
 ## Adding new topics
 
