@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://urbantales.net"
 LANGS = {
     "es": {"name": "Español", "switch_title": "Leer en español", "play_hl": "es"},
+    "pt": {"name": "Português", "switch_title": "Ler em português", "play_hl": "pt-BR"},
 }
 EN_SWITCH = {"name": "English", "switch_title": "Read in English"}
 
@@ -126,6 +127,15 @@ def localize_url(url, lang, pages):
     return "/" + url  # shared asset or untranslated page at the site root
 
 
+LINKISH = re.compile(r"^(https?://|/|#|[\w./-]+\.(html|png|jpe?g|webp|svg|ico|js|css|json|xml|txt|md)([#?].*)?$)", re.I)
+
+
+def is_link(attr, value):
+    """href/src are always links; a content= attribute only when it looks like one (meta descriptions,
+    og:type, twitter:card etc. are text and must not get a leading slash)."""
+    return "content" not in attr.lower() or bool(LINKISH.match(value))
+
+
 def alternates_block(en_url, urls):
     lines = ["  <!-- i18n:alternates -->", f'  <link rel="alternate" hreflang="en" href="{en_url}" />']
     lines += [f'  <link rel="alternate" hreflang="{l}" href="{u}" />' for l, u in urls.items()]
@@ -147,11 +157,13 @@ def strip_i18n(html):
     return SWITCH_RE.sub("", html)
 
 
-def set_switch(html, href, label, hreflang, title):
-    a = (
+def set_switch(html, links):
+    """links: [(href, label, hreflang, title)], one pill per language."""
+    a = "".join(
         f'\n    <a href="{href}" class="lang-switch" data-i18n="switch" hreflang="{hreflang}" lang="{hreflang}" '
         f'title="{title}" style="border:1px solid rgba(255,255,255,0.25);border-radius:999px;'
         f'padding:5px 12px;font-size:12px;letter-spacing:0.04em">{label}</a>'
+        for href, label, hreflang, title in links
     )
     html = SWITCH_RE.sub("", html)
     if NAV_WRAP in html:
@@ -187,7 +199,7 @@ def build(lang):
             problems.append(f"{page}: {len(missing)} untranslated, e.g. {missing[0]!r}")
             continue
         out = out.replace('<html lang="en">', f'<html lang="{lang}">', 1)
-        out = URL_ATTRS.sub(lambda m: m.group(1) + localize_url(m.group(2), lang, pages) + m.group(3), out)
+        out = URL_ATTRS.sub(lambda m: m.group(1) + (localize_url(m.group(2), lang, pages) if is_link(m.group(1), m.group(2)) else m.group(2)) + m.group(3), out)
         out = LD_URLS.sub(lambda m: '"' + localize_url(m.group(1), lang, pages) + '"', out)
         out = out.replace(
             "play.google.com/store/apps/details?id=com.urbantales.app\"",
@@ -195,16 +207,22 @@ def build(lang):
         )
         en_url = canonical(src)
         loc_url = localize_url(en_url, lang, pages)
-        block = alternates_block(en_url, {lang: loc_url})
-        out = set_switch(set_alternates(out, block), en_url, "EN", "en", EN_SWITCH["switch_title"])
+        # Every language this page exists in, so building one language never drops another's links.
+        others = [l for l in LANGS if dict_path(l, page).exists()]
+        urls = {l: localize_url(en_url, l, translated_pages(l)) for l in others}
+        block = alternates_block(en_url, urls)
+        back = [(en_url, "EN", "en", EN_SWITCH["switch_title"])] + [
+            (urls[l], l.upper(), l, LANGS[l]["switch_title"]) for l in others if l != lang]
+        out = set_switch(set_alternates(out, block), back)
         (ROOT / lang).mkdir(exist_ok=True)
         (ROOT / lang / page).write_text(out, "utf-8")
 
-        en = set_switch(set_alternates(src, block), loc_url, lang.upper(), lang, cfg["switch_title"])
+        en = set_switch(set_alternates(src, block), [(urls[l], l.upper(), l, LANGS[l]["switch_title"]) for l in others])
         if en != original:
             (ROOT / page).write_text(en, "utf-8")
         print(f"built {lang}/{page}")
-    update_sitemap(lang, [p for p in pages if not any(x.startswith(p + ":") for x in problems)])
+    # Pages that failed this time keep their previously built file, so they stay in the sitemap.
+    update_sitemap(lang, [p for p in pages if (ROOT / lang / p).exists()])
     if problems:
         print("\nNOT BUILT:\n  " + "\n  ".join(problems))
         sys.exit(1)
@@ -231,6 +249,10 @@ def status(lang):
 
 if __name__ == "__main__":
     cmd, lang, *rest = sys.argv[1:]
+    if cmd == "build" and lang == "all":  # rebuild every language so each page lists all its translations
+        for l in LANGS:
+            build(l)
+        raise SystemExit(0)
     if lang not in LANGS:
         raise SystemExit(f"unknown language {lang}; add it to LANGS")
     {"extract": lambda: extract(lang, rest), "build": lambda: build(lang), "status": lambda: status(lang)}[cmd]()

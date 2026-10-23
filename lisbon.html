@@ -266,6 +266,11 @@
       .badge { writing-mode: horizontal-tb; }
     }
   </style>
+  <!-- i18n:alternates -->
+  <link rel="alternate" hreflang="en" href="https://urbantales.net/lisbon.html" />
+  <link rel="alternate" hreflang="pt" href="https://urbantales.net/pt/lisbon.html" />
+  <link rel="alternate" hreflang="x-default" href="https://urbantales.net/lisbon.html" />
+  <!-- /i18n:alternates -->
 </head>
 <body>
 
@@ -275,11 +280,12 @@
     <img src="https://urbantales.net/icon.png" alt="Urban Tales" />
     <div class="nav-brand">Urban Tales <span>Self-guided audio tours</span></div>
   </a>
-  <ul>
+  <div data-i18n="nav" style="display:flex;align-items:center;gap:28px"><ul>
     <li><a href="https://urbantales.net/index.html#how">How it works</a></li>
     <li><a href="https://urbantales.net/index.html#cities">Cities</a></li>
     <li><a href="https://urbantales.net/contact.html">Contact</a></li>
   </ul>
+    <a href="https://urbantales.net/pt/lisbon.html" class="lang-switch" data-i18n="switch" hreflang="pt" lang="pt" title="Ler em português" style="border:1px solid rgba(255,255,255,0.25);border-radius:999px;padding:5px 12px;font-size:12px;letter-spacing:0.04em">PT</a></div>
 </nav>
 
 <!-- HERO -->
@@ -384,7 +390,7 @@
       <div class="story-body">
         <p class="story-place">Lisbon Cathedral · Alfama</p>
         <h3>The city's coat of arms shows two ravens — because they guarded a saint's remains on a boat</h3>
-        <p>Lisbon's patron saint is São Vicente. According to legend, his remains were transported by boat from Valencia to Lisbon in 1173, accompanied by two ravens who perched on the bow and never moved throughout the entire journey. The ravens appear on the city's official coat of arms today. The cathedral itself was built immediately after the Christian conquest of the city in 1147, on the site of a mosque — which was itself built on a Visigothic church.</p>
+        <p>Lisbon's patron saint is São Vicente. According to legend, his remains were carried by boat from the Algarve to Lisbon in 1173, accompanied by two ravens who perched on the bow and never moved throughout the entire journey. The ravens appear on the city's official coat of arms today. The cathedral itself was built immediately after the Christian conquest of the city in 1147, on the site of a mosque — which was itself built on a Visigothic church.</p>
       </div>
     </div>
     <div class="story-item">
@@ -392,7 +398,7 @@
       <div class="story-body">
         <p class="story-place">Praça do Comércio · Baixa</p>
         <h3>The 1755 earthquake killed 30,000 people in minutes — and this square rose from the ruins</h3>
-        <p>On the morning of All Saints Day, 1755, an earthquake measuring an estimated magnitude 8.5 struck Lisbon. The shaking lasted ten minutes. The fires that followed burned for five days. The tsunami came next. Up to 40,000 people died. The Marquis of Pombal rebuilt the entire city centre from scratch in a rationalist grid — the first planned city rebuilt after an earthquake in European history. Praça do Comércio stands on the site of the old royal palace, which collapsed in the disaster.</p>
+        <p>On the morning of All Saints Day, 1755, an earthquake measuring an estimated magnitude 8.5 struck Lisbon. The shaking lasted ten minutes. The fires that followed burned for five days. The tsunami came next. Up to 40,000 people died. The Marquis of Pombal rebuilt the entire city centre from scratch in a rationalist grid — one of the first city centres in Europe rebuilt to a plan after an earthquake. Praça do Comércio stands on the site of the old royal palace, which collapsed in the disaster.</p>
       </div>
     </div>
     <div class="story-item">
@@ -400,15 +406,15 @@
       <div class="story-body">
         <p class="story-place">Aqueduct of Free Waters · Northern Lisbon</p>
         <h3>The most beautiful engineering feat in Lisbon was also used by a serial killer</h3>
-        <p>The Aqueduto das Águas Livres stretches 58 kilometres and was completed in 1748 to bring fresh water to Lisbon. A century after its completion, the 19th-century serial killer Diogo Alves used the isolated arches to ambush and murder travellers, throwing the bodies into the valley below. He killed at least 70 people. His preserved head is still stored at the Faculty of Medicine of Lisbon.</p>
+        <p>The Aqueduto das Águas Livres stretches 58 kilometres and was completed in 1748 to bring fresh water to Lisbon. A century after its completion, the 19th-century serial killer Diogo Alves used the isolated arches to ambush and murder travellers, throwing the bodies into the valley below. He is said to have killed dozens of people. His preserved head is still stored at the Faculty of Medicine of Lisbon.</p>
       </div>
     </div>
     <div class="story-item">
       <div class="story-badge"><span class="badge legend">Legend</span></div>
       <div class="story-body">
         <p class="story-place">Belém Tower · Tagus Estuary</p>
-        <h3>The tower stood in the middle of the river — until an earthquake shifted the shoreline</h3>
-        <p>Belém Tower was built between 1516 and 1521 as a fortress in the middle of the Tagus River, accessible only by boat. The 1755 earthquake gradually deposited enough sediment to connect it to the shore. It now appears to sit on the riverbank, but was designed as a water fortress. The rhinoceros carved above the entrance is one of the first realistic European sculptures of the animal — inspired by a rhino gifted to King Manuel I in 1515.</p>
+        <h3>The tower was built in the river — then the shoreline moved</h3>
+        <p>Belém Tower was built between 1516 and 1521 as a fortress on a rock in the Tagus River, reachable only by boat. Over the following centuries the riverbank moved out to meet it, and today it appears to sit on the shore, though it was designed as a fortress in the water. The rhinoceros carved above the entrance is one of the first realistic European sculptures of the animal — inspired by a rhino gifted to King Manuel I in 1515.</p>
       </div>
     </div>
     <div class="story-item">
@@ -443,7 +449,7 @@
     </div>
     <div class="nbhd-card">
       <div class="nbhd-name">Baixa & Chiado</div>
-      <p>The Pombaline grid rebuilt after the 1755 earthquake — perfectly rectangular streets that replaced a medieval city destroyed in minutes. The first planned earthquake-resistant urban design in history.</p>
+      <p>The Pombaline grid rebuilt after the 1755 earthquake — perfectly rectangular streets that replaced a medieval city destroyed in minutes. One of the earliest earthquake-resistant urban designs.</p>
     </div>
     <div class="nbhd-card">
       <div class="nbhd-name">Mouraria</div>

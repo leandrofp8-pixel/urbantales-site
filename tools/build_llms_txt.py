@@ -39,7 +39,7 @@ def meta(path):
 
 def main():
     urls = re.findall(r'<loc>(.*?)</loc>', (ROOT / 'sitemap.xml').read_text())
-    groups = {'Cities': [], 'Landmark guides': [], 'Blog (The Wander Log)': [], 'En español': []}
+    groups = {'Cities': [], 'Landmark guides': [], 'Blog (The Wander Log)': [], 'En español': [], 'Em português': []}
     for u in urls:
         p = u.replace(BASE, '')
         if p in ('', 'contact.html'):
@@ -50,6 +50,8 @@ def main():
         line = f'- [{title}]({u})' + (f': {desc}' if desc else '')
         if p.startswith('es/'):
             groups['En español'].append(line)
+        elif p.startswith('pt/'):
+            groups['Em português'].append(line)
         elif p.startswith('blog'):
             groups['Blog (The Wander Log)'].append(line)
         elif '/' in p:

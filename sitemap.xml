@@ -43,14 +43,6 @@
   <url><loc>https://urbantales.net/marrakech.html</loc><lastmod>2026-04-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/chicago.html</loc><lastmod>2026-04-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/contact.html</loc><lastmod>2026-04-23</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://urbantales.net/es/barcelona.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://urbantales.net/es/buenos-aires.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://urbantales.net/es/cities.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://urbantales.net/es/</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://urbantales.net/es/mexico-city.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://urbantales.net/es/new-york.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://urbantales.net/es/paris.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://urbantales.net/es/rome.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/rome/colosseum.html</loc><lastmod>2026-10-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://urbantales.net/rome/trevi-fountain.html</loc><lastmod>2026-10-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://urbantales.net/rome/pantheon.html</loc><lastmod>2026-10-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -104,4 +96,14 @@
   <url><loc>https://urbantales.net/berlin/bebelplatz.html</loc><lastmod>2026-10-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://urbantales.net/berlin/humboldt-forum.html</loc><lastmod>2026-10-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://urbantales.net/berlin/neue-wache.html</loc><lastmod>2026-10-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/es/barcelona.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/es/buenos-aires.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/es/cities.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/es/</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://urbantales.net/es/mexico-city.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/es/new-york.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/es/paris.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/es/rome.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/pt/lisbon.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/pt/rio-de-janeiro.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
