@@ -817,6 +817,19 @@
     <!-- ── EXPERIMENTS ── -->
     <div class="tab-panel" id="panel-experiments">
       <div class="kpi-sub" style="margin-bottom:12px">Every running A/B test in one place — each card: configuration, then results. The auto-play engine rollout is configured and measured in the <a href="#" onclick="showTab('playback');return false" style="color:var(--primary)">🎧 Playback</a> tab.</div>
+      <!-- A/B test: light vs dark theme for new accounts -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">A/B Test — Light vs Dark
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">New accounts start in light or dark. Anyone can still switch in Profile.</span>
+        </div>
+        <details class="cfg-box" id="cfgBox_theme">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_theme"></span></summary>
+          <div class="cfg-grid" id="cfg_theme"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('theme')" id="cfgSave_theme">Save</button><span id="cfgMsg_theme"></span></div>
+        </details>
+        <div id="themeExperimentPanel"><div class="loading">Loading…</div></div>
+      </div>
+
       <!-- A/B test: default tab -->
       <div class="card" style="margin-top:24px">
         <div class="card-title">A/B Test — Default Tab
@@ -2975,6 +2988,11 @@ function mixedChart(id, labels, datasets, opts = {}) {
 // Each group saves only its own keys; PUT /admin/settings ignores keys it isn't sent.
 // ══════════════════════════════════════════════
 const CONFIG_GROUPS = {
+  theme: { state: s => (s.theme_experiment_enabled ?? true) ? `Running · ${s.theme_experiment_light_pct ?? 50}% light` : 'Paused', fields: [
+    { note: 'New accounts are assigned once, at their first login on an app version that supports it. Changes apply to accounts assigned from now on; nobody already assigned is moved. Paused = new accounts start dark.' },
+    { key: 'theme_experiment_enabled', type: 'toggle', label: 'Assign new accounts', def: true },
+    { key: 'theme_experiment_light_pct', label: '% of new accounts starting in light (rest start dark)', def: 50, attrs: 'min="0" max="100"' },
+  ] },
   abTab: { state: s => (s.ab_default_tab_enabled ?? true) ? `Active · ${s.ab_default_tab_explore_pct ?? 50}% Explore` : 'Paused', fields: [
     { key: 'ab_default_tab_enabled', type: 'toggle', label: 'Experiment active', def: true },
     { key: 'ab_default_tab_explore_pct', label: 'Explore group % (0 = all Walk, 100 = all Explore)', def: 50, attrs: 'min="0" max="100"' },
@@ -7068,7 +7086,7 @@ async function loadAllData() {
   loadStoreOverview(_storeSelected);  // independent: a failure elsewhere can't block it
   loadTripRetention(days);  // independent too (reads every story event)
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth, storefrontExperiment] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth, storefrontExperiment, themeExperiment] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -7100,6 +7118,7 @@ async function loadAllData() {
       api(`/admin/analytics/revenue-breakdown`).catch(() => null),
       api(`/admin/analytics/playback-health?${_dateParams()}`).catch(() => null),
       api(`/admin/analytics/storefront-experiment`).catch(() => null),
+      api(`/admin/analytics/theme-experiment`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue, themeBreakdown);
@@ -7129,6 +7148,7 @@ async function loadAllData() {
     renderGrowthExperiment(growthExperiment);
     renderQuotaExperiment(quotaExperiment);
     renderStorefrontExperiment(storefrontExperiment);
+    renderThemeExperiment(themeExperiment);
     renderReviewPrompt(reviewPrompt);
     renderNarrationConfig(narrationConfigResp?.config || null);
   } catch (e) {
@@ -7354,6 +7374,87 @@ function renderStorefrontExperiment(data) {
   el.innerHTML = `<p>${data.enabled ? 'Enrolling' : 'Enrollment paused'} · ${Number(data.test_pct)}% coins first · ${Number(data.window_days)}-day conversion window</p>
     <p style="color:var(--muted);font-size:0.8rem">Conversion and revenue use only users whose full window has elapsed. Purchases must follow first exposure and fall within that window. Coin and subscription buyers can overlap. Sandbox, renewals and known zero-price trials are excluded. Revenue is recorded gross USD before fees/refunds; missing prices are disclosed. Small samples do not establish a winner.</p>
     ${!rows.length ? '<p>No measured Store exposures yet. Release the supported mobile app and enable enrollment in Settings.</p>' : `<div class="table-wrap"><table><thead><tr><th>Segment</th><th>Layout</th><th>Exposed</th><th>Completed window</th><th>Paid buyers</th><th>Conversion</th><th>Coin buyers</th><th>Subscription buyers</th><th>Gross USD</th><th>USD / completed user</th><th>Unpriced purchases</th></tr></thead><tbody>${rows.map(r => `<tr><td>${escapeHtml(segment(r.segment))}</td><td>${escapeHtml(labels[r.variant] || r.variant)}</td><td>${fmt(r.exposed)}</td><td>${fmt(r.mature)}</td><td>${fmt(r.buyers)}</td><td>${pct(r.conversion_pct)}</td><td>${fmt(r.coin_buyers)}</td><td>${fmt(r.subscription_buyers)}</td><td>${money(r.gross_usd)}</td><td>${money(r.revenue_per_exposed_usd)}</td><td>${fmt(r.unpriced_purchases)}</td></tr>`).join('')}</tbody></table></div>`}`;
+}
+
+function renderThemeExperiment(data) {
+  const el = document.getElementById('themeExperimentPanel');
+  if (!el) return;
+  if (!data || !data.arms) { el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">Could not load results.</p>'; return; }
+  const L = data.arms.light, D = data.arms.dark, df = data.diffs, sm = data.sample;
+  if (!L.users && !D.users) {
+    el.innerHTML = `<p style="color:var(--muted);font-size:0.85rem">No one assigned yet. The test starts with new accounts on the app version that supports it. ${fmt(data.not_in_test)} existing accounts are not in it.</p>`;
+    return;
+  }
+  const pct = (v, n, extra = '') => v == null ? '—' : `${v}% <span style="color:var(--muted);font-weight:400">${extra || fmt(n)}</span>`;
+  const chip = d => {
+    if (!d || d.diff_pts == null) return '<span style="color:var(--muted)">—</span>';
+    const sure = d.confidence ?? 0, sig = sure >= 95;
+    const cls = !sig ? 'blue' : d.diff_pts > 0 ? 'green' : 'red';
+    const sign = d.diff_pts > 0 ? '+' : '';
+    return `<span class="kpi-badge badge-${cls}" style="display:inline-block;margin:0">${sign}${d.diff_pts} pts · ${sure}% sure${sig ? ' ✓' : ''}</span>`;
+  };
+  const d7 = sm.d7;
+  let verdict;
+  if (df.d7.confidence != null && df.d7.confidence >= 95 && d7.have >= d7.need) {
+    verdict = `<div style="background:rgba(52,211,153,0.1);border:1px solid var(--green);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:0.84rem;color:var(--green)">✓ 7-day retention: ${df.d7.diff_pts > 0 ? 'light' : 'dark'} wins by ${Math.abs(df.d7.diff_pts)} points (${df.d7.confidence}% sure, full sample).</div>`;
+  } else {
+    const left = d7.days_left == null ? '' : ` · about ${fmt(d7.days_left)} more days at the current pace`;
+    verdict = `<div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,.45);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:0.84rem;color:var(--yellow)">⏳ Too early to call. 7-day retention needs about ${fmt(d7.need)} users per arm to detect a ${sm.min_detectable_pts}-point difference; each arm has ${fmt(d7.have)} that are 14+ days old${left}.</div>`;
+  }
+  const row = (label, swatch, a, other) => `<tr>
+      <td><span style="display:inline-flex;align-items:center;gap:8px;font-weight:700"><span style="width:14px;height:14px;border-radius:4px;border:1px solid #444;background:${swatch}"></span>${label}</span></td>
+      <td style="text-align:right">${fmt(a.users)}</td>
+      <td style="text-align:right">${pct(a.activated_pct, a.activated)}</td>
+      <td style="text-align:right">${pct(a.d7_pct, a.d7_eligible, 'n=' + fmt(a.d7_eligible))}</td>
+      <td style="text-align:right">${pct(a.paid_pct, a.paid)}</td>
+      <td style="text-align:right">${pct(a.switched_pct, a.switched, 'to ' + other)}</td>
+    </tr>`;
+  const bar = (have, need, color) => `<div style="height:10px;background:#222;border-radius:5px;overflow:hidden;margin:6px 0 4px"><i style="display:block;height:100%;width:${Math.min(100, need ? have / need * 100 : 0).toFixed(1)}%;background:${color}"></i></div>`;
+  el.innerHTML = `${verdict}
+    <div class="table-wrap"><table style="width:100%;border-collapse:collapse">
+      <thead><tr style="color:var(--muted);font-size:0.75rem">
+        <th style="text-align:left;padding:6px 0">Arm</th><th style="text-align:right">Users</th><th style="text-align:right">Activated</th>
+        <th style="text-align:right">7-day retention</th><th style="text-align:right">Paid</th><th style="text-align:right">Switched theme</th>
+      </tr></thead>
+      <tbody>
+        ${row('Light', '#f6f4ef', L, 'dark')}
+        ${row('Dark (control)', '#121212', D, 'light')}
+        <tr style="color:var(--muted);font-size:0.8rem"><td>Light vs dark</td><td></td>
+          <td style="text-align:right">${chip(df.activated)}</td><td style="text-align:right">${chip(df.d7)}</td><td style="text-align:right">${chip(df.paid)}</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid-2" style="margin-top:18px;margin-bottom:0">
+      <div style="background:#151515;border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+        <div style="font-size:0.82rem;font-weight:600;margin-bottom:8px">Sample collected</div>
+        <div style="font-size:0.75rem;color:var(--muted)">7-day retention (main metric)</div>
+        ${bar(d7.have, d7.need, C.blue)}
+        <div style="font-size:0.75rem;color:var(--muted)">${fmt(d7.have)} of ~${fmt(d7.need)} per arm</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:10px">Paid</div>
+        ${bar(sm.paid.have, sm.paid.need, C.purple)}
+        <div style="font-size:0.75rem;color:var(--muted)">${fmt(sm.paid.have)} of ~${fmt(sm.paid.need)} per arm to detect a 1-point difference. Paid is too rare to settle here; read it as a guard, not the goal.</div>
+      </div>
+      <div style="background:#151515;border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+        <div style="font-size:0.82rem;font-weight:600;margin-bottom:8px">7-day retention by signup week</div>
+        <div class="chart-wrap" style="height:170px"><canvas id="chartThemeWeekly"></canvas></div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-top:6px" id="themeWeeklyNote"></div>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:0.72rem;margin-top:12px">
+      Activated = heard a first story. 7-day retention = opened the app again 7–13 days after their first login (only users at least 14 days past it count). Paid = a real store purchase (sandbox excluded).
+      Switched theme = changed it in Profile away from the assigned one; a high rate in one arm means people there disliked it. They stay in their arm.
+      "% sure" is the chance the difference isn't noise; call a result at 95%. Admin and internal accounts are left out.
+      ${data.started_at ? 'Running since ' + fmtDate(data.started_at) + '. ' : ''}${fmt(data.not_in_test)} accounts are not in the test (signed up before it, or on an older app).
+    </p>`;
+  const wk = data.weekly || [];
+  if (wk.length) {
+    lineChart('chartThemeWeekly', wk.map(w => fmtDate(w.week + 'T00:00:00Z')), [
+      { label: 'Light', data: wk.map(w => w.light.pct), color: '#e8e4da', fill: false },
+      { label: 'Dark', data: wk.map(w => w.dark.pct), color: C.primary, fill: false },
+    ], { y: { ticks: { color: '#555', font: { size: 10 }, callback: v => v + '%' } } });
+    document.getElementById('themeWeeklyNote').textContent = 'Each point is one signup week, once all its users are 14+ days in.';
+  } else {
+    document.getElementById('themeWeeklyNote').textContent = 'The first point appears once a full signup week is 14+ days old.';
+  }
 }
 
 function renderQuotaExperiment(data) {
