@@ -2,7 +2,7 @@ name: IndexNow
 
 # Tells Bing (and other IndexNow engines) which public pages changed, so new and updated pages reach Bing's index
 # quickly. ChatGPT search draws on Bing. Only URLs listed in sitemap.xml (plus llms.txt and pricing.md) are sent.
-# Run it by hand ("Run workflow", all = true) to submit the whole sitemap. Key file: /3a2897144283404b7e1895d012a598ff.txt (public by design).
+# Run it by hand ("Run workflow", all = true) to submit the whole sitemap. Key file: /25e4033ee47db752efda3f35a01b4375.txt (public by design).
 
 on:
   push:
@@ -24,10 +24,10 @@ jobs:
           fetch-depth: 2
       - name: Wait for GitHub Pages to publish
         if: github.event_name == 'push'
-        run: sleep 120
+        run: sleep 300
       - name: Submit URLs
         env:
-          KEY: 3a2897144283404b7e1895d012a598ff
+          KEY: 25e4033ee47db752efda3f35a01b4375
           ALL: ${{ github.event_name == 'workflow_dispatch' && inputs.all }}
         run: |
           python3 - <<'PY'
