@@ -1,0 +1,9 @@
+Photos: Wikimedia Commons
+cover: Francisco Anzola — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Cairo_Skyline_(2347103621).jpg
+fact1: Jorge Láscar from Melbourne, Australia — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:The_Great_Pyramid_of_Giza_(Pyramid_of_Cheops_or_Khufu)_(14823042753).jpg
+fact2: Hamerani — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Great_Sphinx_of_Giza_(1).jpg
+fact3: Ahmedsantos — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Cairotower.jpg
+fact4: Silar — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:02010_05924_Clock_Tower_in_Great_Mosque_of_Muhammad_Ali_Pasha_at_Cairo_Citadel.jpg
+fact5: Mohammed Moussa — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Khan_el-Khalili_2019.jpg
+fact6: Daniel Mayer — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Cairo_-_Islamic_district_-_Al_Azhar_Mosque_and_University.JPG
+fact7: unknown author — CC BY 2.5 — https://commons.wikimedia.org/wiki/File:Cairo_metro.JPG

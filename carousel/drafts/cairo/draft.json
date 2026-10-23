@@ -1,93 +1,148 @@
 {
-  "badge_num": 30,
+  "badge_num": 31,
   "city": "CAIRO",
   "flag": "🇪🇬",
   "cta_screenshot": "screen-generic-narration-style.png",
   "cta_screenshot_note": "No Cairo map screenshot in the repo (no screen-cairo-*-map.png file and no cairo.html page exists yet); using the generic app screen per GUIDELINES.md.",
   "style": "minimal",
-  "photo_sourcing_blocked": true,
-  "photo_sourcing_note": "This session's network egress policy denies every wikimedia.org host (commons.wikimedia.org, upload.wikimedia.org, api.wikimedia.org, even en.wikipedia.org) — confirmed via curl -> 'CONNECT tunnel failed, response 403' and the agent-proxy status endpoint ($HTTPS_PROXY/__agentproxy/status), which logs it as a policy denial: 'gateway answered 403 to CONNECT'. No Pexels API key is available in this environment either. This is the same block noted in batches #8 (Amsterdam), #9 (Barcelona), #10 (Vienna), #11 (Berlin), #12 (London) and #13 (Prague) — those five/six runs hit it too, and batches #14 (Marrakech) through #29 (Seville) did not, so it looks like a per-session/per-environment network policy rather than a permanent one. No candidate photos could be downloaded this run. 'candidates' arrays are empty; 'suggested_queries' lists the Commons search terms to run from an environment with open network access, per GUIDELINES.md's instruction to note the gap rather than block the batch.",
-  "caption": "Napoleon didn't break the Sphinx's nose — so who did? Comment your guess 👇\nPyramids, pharaohs, and a clock that's never once told the right time.\n\n1. Great Pyramid of Giza\nBuilt around 2560 BC with only sightlines and shadows, the Great Pyramid of Giza is aligned to true north within about one-fifteenth of a degree — tighter than most buildings built with modern tools.\n\n2. Great Sphinx\nDrawings from 1737 already show the Great Sphinx missing its nose, decades before Napoleon's 1798 campaign. The most-cited account blames a 14th-century Sufi, Muhammad Sa'im al-Dahr, who defaced it in 1378.\n\n3. Egyptian Museum\nWhen Howard Carter opened the boy king's tomb in 1922, he found it nearly untouched after 3,000 years — including an innermost coffin made of 110 kg of solid gold, now held in Cairo's Egyptian Museum.\n\n4. Alabaster Mosque\nIn 1830, Egypt's ruler gave France the Luxor obelisk now standing in Paris's Place de la Concorde. France sent back a mechanical clock for the Alabaster Mosque's tower — it arrived damaged and has barely run since.\n\n5. Khan el-Khalili\nFounded around 1382 as a caravanserai by Jaharkas al-Khalili, the market was built on the site of the old Fatimid caliphs' burial ground. Today Khan el-Khalili is still Cairo's biggest bazaar, inside a UNESCO World Heritage district.\n\n6. Al-Azhar Mosque\nFounded in 970 CE, the same year Cairo itself was laid out, Al-Azhar grew from a mosque school into one of the oldest continuously operating universities on Earth — still teaching Islamic law and Arabic today.\n\n7. Cairo Metro\nWhen Line 1 opened in 1987, the Cairo Metro became Africa's first full metro system — and it stayed the only metro in the Middle East for more than two decades, until Dubai opened one in 2009.\n.\n.\n.\n#Cairo #Egypt #TravelFacts #Sphinx #UrbanTales",
-  "caption_es": "Napoleón no rompió la nariz de la Esfinge, ¿entonces quién? Comenta tu respuesta 👇\nPirámides, faraones y un reloj que nunca dio la hora correcta.\n\n1. Gran Pirámide de Guiza\nConstruida hacia el 2560 a.C. solo con líneas de visión y sombras, la Gran Pirámide de Guiza está alineada con el norte verdadero con un margen de apenas un quinceavo de grado, más precisa que muchos edificios hechos con herramientas modernas.\n\n2. Gran Esfinge\nDibujos de 1737 ya muestran a la Gran Esfinge sin nariz, décadas antes de la campaña de Napoleón en 1798. La versión más citada culpa a un sufí del siglo XIV, Muhammad Sa'im al-Dahr, quien la desfiguró en 1378.\n\n3. Museo Egipcio\nCuando Howard Carter abrió la tumba del joven faraón en 1922, la encontró casi intacta después de 3 mil años, incluido un ataúd interior hecho con 110 kilos de oro macizo, hoy en el Museo Egipcio de El Cairo.\n\n4. Mezquita de Alabastro\nEn 1830, el gobernante de Egipto regaló a Francia el obelisco de Luxor que hoy está en la Plaza de la Concordia de París. A cambio, Francia envió un reloj mecánico para la torre de la Mezquita de Alabastro: llegó dañado y casi nunca ha funcionado.\n\n5. Khan el-Jalili\nFundado hacia 1382 como caravasar por Jaharkas al-Jalili, el mercado se construyó sobre el antiguo cementerio de los califas fatimíes. Hoy Khan el-Jalili sigue siendo el bazar más grande de El Cairo, dentro de una zona Patrimonio de la Humanidad.\n\n6. Mezquita de Al-Azhar\nFundada en el año 970, el mismo año en que se trazó El Cairo, Al-Azhar pasó de ser una escuela religiosa a una de las universidades en funcionamiento continuo más antiguas del mundo, y hoy sigue enseñando derecho islámico y árabe.\n\n7. Metro de El Cairo\nCuando la Línea 1 abrió en 1987, el Metro de El Cairo se convirtió en el primer sistema de metro completo de África, y siguió siendo el único metro de Medio Oriente por más de dos décadas, hasta que Dubái abrió el suyo en 2009.\n.\n.\n.\n#ElCairo #Egipto #DatosCuriosos #Esfinge #UrbanTales",
+  "photo_sourcing_blocked": false,
+  "caption": "Which of these 7 Cairo secrets didn't you know? Comment the number 👇\n\n1. Great Pyramid of Giza\nBuilt around 2560 BC, the Great Pyramid of Giza is aligned to true north within about one-fifteenth of a degree, and nobody knows for sure how its builders managed it.\n\n2. Great Sphinx\nDrawings made by Frederic Norden in 1737 already show the Great Sphinx without its nose, six decades before Napoleon reached Egypt in 1798. The medieval historian al-Maqrizi blamed a Sufi named Muhammad Sa'im al-Dahr, who he said damaged the face in 1378.\n\n3. Cairo Tower\nThe 187-meter Cairo Tower, finished in 1961, is shaped like a lotus. According to a widely told story, Nasser paid for it with money the CIA had offered him as a bribe, turning it into a monument the whole city could see.\n\n4. Alabaster Mosque\nFrance sent the Citadel's Muhammad Ali Mosque a clock in 1845, often described as its thank-you for the Luxor obelisk now in Paris. It arrived damaged and barely worked for more than 170 years, until it was restored and restarted in 2021.\n\n5. Khan el-Khalili\nIn the 1380s, the Mamluk emir Jaharkas al-Khalili tore down the old royal cemetery of the Fatimid caliphs and built a caravanserai on the site. Khan el-Khalili grew up around it and is still trading more than 600 years later.\n\n6. Al-Azhar Mosque\nWork on Al-Azhar began in 970, a year after the Fatimids founded Cairo, and scholars were teaching there by 975. Today it is one of the oldest universities in the world still operating, and it still teaches Islamic law and Arabic.\n\n7. Cairo Metro\nWhen Line 1 opened in 1987, the Cairo Metro became the first metro system in Africa and the Arab world. Today its three lines carry millions of riders every day.\n\n.\n.\n.\n#Cairo #Egypt #TravelFacts #Sphinx #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de El Cairo no conocías? Comenta el número 👇\n\n1. Gran Pirámide de Guiza\nConstruida hacia el 2560 a.C., la Gran Pirámide de Guiza está alineada con el norte verdadero con un margen de apenas un quinceavo de grado, y nadie sabe con certeza cómo lo lograron sus constructores.\n\n2. Gran Esfinge\nLos dibujos que hizo Frederic Norden en 1737 ya muestran a la Gran Esfinge sin nariz, seis décadas antes de que Napoleón llegara a Egipto en 1798. El historiador medieval al-Maqrizi culpó a un sufí llamado Muhammad Sa'im al-Dahr, quien según él dañó el rostro en 1378.\n\n3. Torre de El Cairo\nLa Torre de El Cairo, de 187 metros y terminada en 1961, tiene forma de flor de loto. Según una historia muy contada, Nasser la pagó con el dinero que la CIA le había ofrecido como soborno, y lo convirtió en un monumento que toda la ciudad podía ver.\n\n4. Mezquita de Alabastro\nFrancia envió un reloj a la Mezquita de Muhammad Ali de la Ciudadela en 1845, que suele contarse como su agradecimiento por el obelisco de Luxor que hoy está en París. Llegó dañado y casi no funcionó durante más de 170 años, hasta que lo restauraron y volvió a andar en 2021.\n\n5. Khan el-Jalili\nEn la década de 1380, el emir mameluco Jaharkas al-Jalili derribó el antiguo cementerio real de los califas fatimíes y construyó un caravasar en ese lugar. El Khan el-Jalili creció a su alrededor y sigue comerciando más de 600 años después.\n\n6. Mezquita de Al-Azhar\nLa construcción de Al-Azhar empezó en 970, un año después de que los fatimíes fundaran El Cairo, y en 975 ya se daban clases ahí. Hoy es una de las universidades en funcionamiento más antiguas del mundo, y sigue enseñando derecho islámico y árabe.\n\n7. Metro de El Cairo\nCuando abrió la Línea 1 en 1987, el Metro de El Cairo se convirtió en el primer metro de África y del mundo árabe. Hoy sus tres líneas mueven a millones de pasajeros cada día.\n\n.\n.\n.\n#ElCairo #Egipto #DatosCuriosos #Viajes #UrbanTales",
   "facts": [
     {
       "slot": "fact1",
-      "headline": "The Great Pyramid lines up with true north almost perfectly — without a compass",
-      "headline_es": "La Gran Pirámide apunta casi perfecto al norte verdadero, sin brújula",
-      "body_html": "Built around 2560 BC with only sightlines and shadows, the <b>Great Pyramid of Giza</b> is aligned to true north within about <b>one-fifteenth of a degree</b> — tighter than most buildings built with modern tools.",
-      "body_es": "Construida hacia el 2560 a.C. solo con líneas de visión y sombras, la <b>Gran Pirámide de Guiza</b> está alineada con el norte verdadero con un margen de apenas <b>un quinceavo de grado</b>, más precisa que muchos edificios hechos con herramientas modernas.",
-      "hook": "Built roughly 4,500 years ago with no compass, the Great Pyramid of Giza is aligned to true north within about one-fifteenth of a degree.",
-      "hook_es": "Construida hace unos 4,500 años sin brújula, la Gran Pirámide de Guiza está alineada con el norte verdadero con un margen de apenas un quinceavo de grado.",
-      "candidates": [],
-      "suggested_queries": ["Great Pyramid of Giza", "Great Pyramid Giza exterior aerial"]
+      "headline": "The Great Pyramid points almost perfectly to true north",
+      "headline_es": "La Gran Pirámide apunta casi perfecto al norte verdadero",
+      "body_html": "Built around <b>2560 BC</b>, the <b>Great Pyramid of Giza</b> is aligned to true north within about <b>one-fifteenth of a degree</b>, and nobody knows for sure how its builders managed it.",
+      "body_es": "Construida hacia el <b>2560 a.C.</b>, la <b>Gran Pirámide de Guiza</b> está alineada con el norte verdadero con un margen de apenas <b>un quinceavo de grado</b>, y nadie sabe con certeza cómo lo lograron sus constructores.",
+      "hook": "Built about 4,500 years ago, the Great Pyramid of Giza points to true north within one-fifteenth of a degree.",
+      "hook_es": "Hecha hace unos 4,500 años, la Gran Pirámide de Guiza apunta al norte verdadero con un quinceavo de grado de error.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:The_Great_Pyramid_of_Giza_(Pyramid_of_Cheops_or_Khufu)_(14823042753).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Jorge Láscar from Melbourne, Australia",
+          "note": "Great Pyramid of Khufu, full view"
+        }
+      ]
     },
     {
       "slot": "fact2",
       "headline": "Napoleon didn't break the Sphinx's nose — it was already gone",
       "headline_es": "Napoleón no rompió la nariz de la Esfinge, ya le faltaba",
-      "body_html": "Drawings from 1737 already show the <b>Great Sphinx</b> missing its nose, decades before Napoleon's 1798 campaign. The most-cited account blames a 14th-century Sufi, <b>Muhammad Sa'im al-Dahr</b>, who defaced it in 1378.",
-      "body_es": "Dibujos de 1737 ya muestran a la <b>Gran Esfinge</b> sin nariz, décadas antes de la campaña de Napoleón en 1798. La versión más citada culpa a un sufí del siglo XIV, <b>Muhammad Sa'im al-Dahr</b>, quien la desfiguró en 1378.",
-      "hook": "The Great Sphinx's missing nose predates Napoleon by decades — blamed on a 14th-century Sufi who defaced the statue in 1378, not French cannon fire.",
-      "hook_es": "A la Gran Esfinge ya le faltaba la nariz décadas antes de Napoleón, por un sufí del siglo XIV que la desfiguró en 1378, no por cañonazos franceses.",
-      "candidates": [],
-      "suggested_queries": ["Great Sphinx of Giza", "Great Sphinx Giza face close up"]
+      "body_html": "Drawings made by Frederic Norden in <b>1737</b> already show the <b>Great Sphinx</b> without its nose, six decades before Napoleon reached Egypt in 1798. The medieval historian al-Maqrizi blamed a Sufi named <b>Muhammad Sa'im al-Dahr</b>, who he said damaged the face in 1378.",
+      "body_es": "Los dibujos que hizo Frederic Norden en <b>1737</b> ya muestran a la <b>Gran Esfinge</b> sin nariz, seis décadas antes de que Napoleón llegara a Egipto en 1798. El historiador medieval al-Maqrizi culpó a un sufí llamado <b>Muhammad Sa'im al-Dahr</b>, quien según él dañó el rostro en 1378.",
+      "hook": "Drawings from 1737 already show the Sphinx without its nose, decades before Napoleon's troops ever reached Egypt.",
+      "hook_es": "Unos dibujos de 1737 ya muestran a la Esfinge sin nariz, décadas antes de que las tropas de Napoleón llegaran a Egipto.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Great_Sphinx_of_Giza_(1).jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Hamerani",
+          "note": "Great Sphinx head in profile, missing nose visible"
+        }
+      ]
     },
     {
       "slot": "fact3",
-      "headline": "Tutankhamun's innermost coffin is 110 kilograms of solid gold",
-      "headline_es": "El ataúd interior de Tutankamón es de 110 kilos de oro macizo",
-      "body_html": "When Howard Carter opened the boy king's tomb in <b>1922</b>, he found it nearly untouched after 3,000 years — including an innermost coffin made of <b>110 kg of solid gold</b>, now held in Cairo's Egyptian Museum.",
-      "body_es": "Cuando Howard Carter abrió la tumba del joven faraón en <b>1922</b>, la encontró casi intacta después de 3 mil años, incluido un ataúd interior hecho con <b>110 kilos de oro macizo</b>, hoy en el Museo Egipcio de El Cairo.",
-      "hook": "Howard Carter's 1922 discovery of Tutankhamun's nearly intact tomb included an innermost coffin made of 110 kilograms of solid gold.",
-      "hook_es": "El hallazgo de Howard Carter en 1922, la tumba casi intacta de Tutankamón, incluía un ataúd interior hecho con 110 kilos de oro macizo.",
-      "candidates": [],
-      "suggested_queries": ["Tutankhamun golden mask", "Egyptian Museum Cairo Tahrir facade"]
+      "headline": "The story says the CIA paid for this tower",
+      "headline_es": "Según la historia, la CIA pagó esta torre",
+      "body_html": "The <b>187-meter Cairo Tower</b>, finished in 1961, is shaped like a lotus. According to a widely told story, Nasser paid for it with <b>money the CIA had offered him as a bribe</b>, turning it into a monument the whole city could see.",
+      "body_es": "La <b>Torre de El Cairo</b>, de <b>187 metros</b> y terminada en 1961, tiene forma de flor de loto. Según una historia muy contada, Nasser la pagó con <b>el dinero que la CIA le había ofrecido como soborno</b>, y lo convirtió en un monumento que toda la ciudad podía ver.",
+      "hook": "Cairo's 187-meter Tower, the story goes, was built with a bribe the CIA offered President Nasser in the 1950s.",
+      "hook_es": "Según la historia, la Torre de El Cairo se construyó con un soborno que la CIA le ofreció a Nasser.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Cairotower.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Ahmedsantos",
+          "note": "Cairo Tower at dusk, portrait"
+        }
+      ]
     },
     {
       "slot": "fact4",
-      "headline": "Egypt traded an obelisk for a clock that has never worked",
-      "headline_es": "Egipto cambió un obelisco por un reloj que nunca ha funcionado",
-      "body_html": "In 1830, Egypt's ruler gave France the <b>Luxor obelisk</b> now standing in Paris's Place de la Concorde. France sent back a mechanical clock for the <b>Alabaster Mosque's</b> tower — it arrived damaged and has barely run since.",
-      "body_es": "En 1830, el gobernante de Egipto regaló a Francia el <b>obelisco de Luxor</b> que hoy está en la Plaza de la Concordia de París. A cambio, Francia envió un reloj mecánico para la torre de la <b>Mezquita de Alabastro</b>: llegó dañado y casi nunca ha funcionado.",
-      "hook": "Egypt gave France the Luxor obelisk that now stands in Paris, and France's gift in return — a clock for the Alabaster Mosque — arrived broken and has barely worked since.",
-      "hook_es": "Egipto le regaló a Francia el obelisco de Luxor que hoy está en París, y el reloj que Francia envió a cambio llegó roto y casi nunca ha funcionado.",
-      "candidates": [],
-      "suggested_queries": ["Muhammad Ali Mosque Cairo Citadel", "Alabaster Mosque Cairo clock tower courtyard"]
+      "headline": "A gift clock that barely ran for over 170 years",
+      "headline_es": "Un reloj de regalo que casi no funcionó en más de 170 años",
+      "body_html": "France sent the Citadel's <b>Muhammad Ali Mosque</b> a clock in <b>1845</b>, often described as its thank-you for the Luxor obelisk now in Paris. It arrived damaged and barely worked for more than 170 years, until it was restored and <b>restarted in 2021</b>.",
+      "body_es": "Francia envió un reloj a la <b>Mezquita de Muhammad Ali</b> de la Ciudadela en <b>1845</b>, que suele contarse como su agradecimiento por el obelisco de Luxor que hoy está en París. Llegó dañado y casi no funcionó durante más de 170 años, hasta que lo restauraron y <b>volvió a andar en 2021</b>.",
+      "hook": "The French clock on Cairo's Alabaster Mosque arrived damaged in 1845 and barely ran until its 2021 restoration.",
+      "hook_es": "El reloj francés de la Mezquita de Alabastro llegó dañado en 1845 y casi no funcionó hasta su restauración en 2021.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:02010_05924_Clock_Tower_in_Great_Mosque_of_Muhammad_Ali_Pasha_at_Cairo_Citadel.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Silar",
+          "note": "clock tower of the Muhammad Ali (Alabaster) Mosque, clock face visible"
+        }
+      ]
     },
     {
       "slot": "fact5",
       "headline": "This bazaar was built over the tombs of medieval caliphs",
       "headline_es": "Este bazar se construyó sobre las tumbas de califas medievales",
-      "body_html": "Founded around <b>1382</b> as a caravanserai by Jaharkas al-Khalili, the market was built on the site of the old <b>Fatimid caliphs' burial ground</b>. Today Khan el-Khalili is still Cairo's biggest bazaar, inside a UNESCO World Heritage district.",
-      "body_es": "Fundado hacia <b>1382</b> como caravasar por Jaharkas al-Jalili, el mercado se construyó sobre el antiguo cementerio de los <b>califas fatimíes</b>. Hoy Khan el-Jalili sigue siendo el bazar más grande de El Cairo, dentro de una zona Patrimonio de la Humanidad.",
-      "hook": "Cairo's Khan el-Khalili bazaar, founded around 1382, was built directly over the burial ground of the medieval Fatimid caliphs.",
-      "hook_es": "El bazar Khan el-Jalili de El Cairo, fundado hacia 1382, se construyó justo sobre el cementerio de los califas fatimíes medievales.",
-      "candidates": [],
-      "suggested_queries": ["Khan el-Khalili bazaar Cairo", "Khan el-Khalili market alley Cairo"]
+      "body_html": "In the <b>1380s</b>, the Mamluk emir Jaharkas al-Khalili tore down the old <b>royal cemetery of the Fatimid caliphs</b> and built a caravanserai on the site. <b>Khan el-Khalili</b> grew up around it and is still trading more than 600 years later.",
+      "body_es": "En la década de <b>1380</b>, el emir mameluco Jaharkas al-Jalili derribó el antiguo <b>cementerio real de los califas fatimíes</b> y construyó un caravasar en ese lugar. El <b>Khan el-Jalili</b> creció a su alrededor y sigue comerciando más de 600 años después.",
+      "hook": "Cairo's Khan el-Khalili bazaar grew up in the 1380s on the site of the Fatimid caliphs' demolished royal cemetery.",
+      "hook_es": "El bazar Khan el-Jalili de El Cairo nació en la década de 1380 sobre el cementerio demolido de los califas fatimíes.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Khan_el-Khalili_2019.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Mohammed Moussa",
+          "note": "lantern stalls in Khan el-Khalili, no people"
+        }
+      ]
     },
     {
       "slot": "fact6",
       "headline": "This mosque has been teaching students for over 1,000 years",
-      "headline_es": "Esta mezquita lleva más de 1,000 años enseñando",
-      "body_html": "Founded in <b>970 CE</b>, the same year Cairo itself was laid out, <b>Al-Azhar</b> grew from a mosque school into one of the oldest continuously operating universities on Earth — still teaching Islamic law and Arabic today.",
-      "body_es": "Fundada en el año <b>970</b>, el mismo año en que se trazó El Cairo, <b>Al-Azhar</b> pasó de ser una escuela religiosa a una de las universidades en funcionamiento continuo más antiguas del mundo, y hoy sigue enseñando derecho islámico y árabe.",
-      "hook": "Al-Azhar was founded in 970 CE, the same year Cairo was founded, and has grown into one of the world's oldest continuously operating universities.",
-      "hook_es": "Al-Azhar se fundó en el año 970, el mismo año que El Cairo, y hoy es una de las universidades en funcionamiento continuo más antiguas del mundo.",
-      "candidates": [],
-      "suggested_queries": ["Al-Azhar Mosque Cairo courtyard", "Al-Azhar Mosque minarets exterior"]
+      "headline_es": "Esta mezquita lleva más de mil años enseñando",
+      "body_html": "Work on <b>Al-Azhar</b> began in <b>970</b>, a year after the Fatimids founded Cairo, and scholars were teaching there by 975. Today it is one of the <b>oldest universities in the world still operating</b>, and it still teaches Islamic law and Arabic.",
+      "body_es": "La construcción de <b>Al-Azhar</b> empezó en <b>970</b>, un año después de que los fatimíes fundaran El Cairo, y en 975 ya se daban clases ahí. Hoy es una de las <b>universidades en funcionamiento más antiguas del mundo</b>, y sigue enseñando derecho islámico y árabe.",
+      "hook": "Al-Azhar Mosque was begun in 970, a year after Cairo's founding, and is among the world's oldest working universities.",
+      "hook_es": "Al-Azhar se fundó en 970, un año después que El Cairo, y es una de las universidades activas más antiguas del mundo.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Cairo_-_Islamic_district_-_Al_Azhar_Mosque_and_University.JPG",
+          "license": "CC BY-SA 4.0",
+          "artist": "Daniel Mayer",
+          "note": "Al-Azhar Mosque minarets and domes"
+        }
+      ]
     },
     {
       "slot": "fact7",
-      "headline": "Africa's very first subway opened right here in 1987",
+      "headline": "Africa's very first metro opened right here in 1987",
       "headline_es": "El primer metro de África abrió aquí en 1987",
-      "body_html": "When Line 1 opened in <b>1987</b>, the Cairo Metro became <b>Africa's first full metro system</b> — and it stayed the only metro in the Middle East for more than two decades, until Dubai opened one in 2009.",
-      "body_es": "Cuando la Línea 1 abrió en <b>1987</b>, el <b>Metro de El Cairo</b> se convirtió en el primer sistema de metro completo de África, y siguió siendo el único metro de Medio Oriente por más de dos décadas, hasta que Dubái abrió el suyo en 2009.",
-      "hook": "The Cairo Metro opened in 1987 as Africa's first full subway system, and stayed the Middle East's only metro for over two decades until Dubai opened one in 2009.",
-      "hook_es": "El Metro de El Cairo abrió en 1987 como el primer metro completo de África, y fue el único metro de Medio Oriente por más de dos décadas, hasta Dubái en 2009.",
-      "candidates": [],
-      "suggested_queries": ["Cairo Metro station train", "Cairo Metro Line 1 platform"]
+      "body_html": "When Line 1 opened in <b>1987</b>, the <b>Cairo Metro</b> became the <b>first metro system in Africa and the Arab world</b>. Today its three lines carry millions of riders every day.",
+      "body_es": "Cuando abrió la Línea 1 en <b>1987</b>, el <b>Metro de El Cairo</b> se convirtió en el <b>primer metro de África y del mundo árabe</b>. Hoy sus tres líneas mueven a millones de pasajeros cada día.",
+      "hook": "When Line 1 opened in 1987, the Cairo Metro became the first metro system in Africa and the Arab world.",
+      "hook_es": "En 1987, el Metro de El Cairo se volvió el primer metro de África y del mundo árabe.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Cairo_metro.JPG",
+          "license": "CC BY 2.5",
+          "artist": "",
+          "note": "Cairo Metro station sign"
+        }
+      ]
     }
   ],
-  "cover_candidates": [],
-  "cover_suggested_queries": ["Cairo skyline Nile aerial view", "Cairo cityscape minarets sunset"]
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cairo_Skyline_(2347103621).jpg",
+      "license": "CC BY 2.0",
+      "artist": "Francisco Anzola",
+      "note": "rooftops of historic Cairo with the Citadel and Muhammad Ali Mosque on the skyline"
+    }
+  ]
 }
