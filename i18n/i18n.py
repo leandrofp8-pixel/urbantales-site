@@ -127,6 +127,15 @@ def localize_url(url, lang, pages):
     return "/" + url  # shared asset or untranslated page at the site root
 
 
+LINKISH = re.compile(r"^(https?://|/|#|[\w./-]+\.(html|png|jpe?g|webp|svg|ico|js|css|json|xml|txt|md)([#?].*)?$)", re.I)
+
+
+def is_link(attr, value):
+    """href/src are always links; a content= attribute only when it looks like one (meta descriptions,
+    og:type, twitter:card etc. are text and must not get a leading slash)."""
+    return "content" not in attr.lower() or bool(LINKISH.match(value))
+
+
 def alternates_block(en_url, urls):
     lines = ["  <!-- i18n:alternates -->", f'  <link rel="alternate" hreflang="en" href="{en_url}" />']
     lines += [f'  <link rel="alternate" hreflang="{l}" href="{u}" />' for l, u in urls.items()]
@@ -190,7 +199,7 @@ def build(lang):
             problems.append(f"{page}: {len(missing)} untranslated, e.g. {missing[0]!r}")
             continue
         out = out.replace('<html lang="en">', f'<html lang="{lang}">', 1)
-        out = URL_ATTRS.sub(lambda m: m.group(1) + localize_url(m.group(2), lang, pages) + m.group(3), out)
+        out = URL_ATTRS.sub(lambda m: m.group(1) + (localize_url(m.group(2), lang, pages) if is_link(m.group(1), m.group(2)) else m.group(2)) + m.group(3), out)
         out = LD_URLS.sub(lambda m: '"' + localize_url(m.group(1), lang, pages) + '"', out)
         out = out.replace(
             "play.google.com/store/apps/details?id=com.urbantales.app\"",
