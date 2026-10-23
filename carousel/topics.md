@@ -34,7 +34,6 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 27 | Athens |
 | 28 | Seville |
 | 29 | Seville |
-| 30 | Cairo |
 | 31 | Cairo |
 
 ## Next batch
@@ -47,3 +46,7 @@ Note (2026-10-14): Kyoto was drafted as #22; the finisher that sourced photos an
 bumped the badge to **#23** instead (reason not stated in its PR comment — no other PR claimed
 #22). Removed the stale duplicate #22 row this left in the table above. #22 is now an unused gap
 in the numbering; no action needed unless it's worth consolidating later.
+
+Note (2026-10-23): same thing happened with Cairo — drafted as #30, the finisher bumped it to
+**#31** (`batch.json`'s `badge_num`) and added its own Published row without removing the draft's
+#30 row. Removed the stale duplicate #30 row above. #30 is now an unused gap, same as #22.
