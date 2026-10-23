@@ -1,0 +1,51 @@
+name: IndexNow
+
+# Tells Bing (and other IndexNow engines) which public pages changed, so new and updated pages reach Bing's index
+# quickly. ChatGPT search draws on Bing. Only URLs listed in sitemap.xml (plus llms.txt and pricing.md) are sent.
+# Run it by hand ("Run workflow", all = true) to submit the whole sitemap. Key file: /3a2897144283404b7e1895d012a598ff.txt (public by design).
+
+on:
+  push:
+    branches: [main]
+    paths: ['**.html', 'llms.txt', 'pricing.md', 'sitemap.xml']
+  workflow_dispatch:
+    inputs:
+      all:
+        description: Submit every URL in sitemap.xml
+        type: boolean
+        default: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Wait for GitHub Pages to publish
+        if: github.event_name == 'push'
+        run: sleep 120
+      - name: Submit URLs
+        env:
+          KEY: 3a2897144283404b7e1895d012a598ff
+          ALL: ${{ github.event_name == 'workflow_dispatch' && inputs.all }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess, urllib.request
+          base = 'https://urbantales.net/'
+          public = set(re.findall(r'<loc>(.*?)</loc>', open('sitemap.xml').read())) | {base + 'llms.txt', base + 'pricing.md'}
+          if os.environ.get('ALL') == 'true':
+              urls = sorted(public)
+          else:
+              files = subprocess.run(['git', 'diff', '--name-only', '--diff-filter=AM', 'HEAD~1', 'HEAD'],
+                                     capture_output=True, text=True).stdout.split()
+              cand = {base + ('' if f == 'index.html' else f[:-len('index.html')] if f.endswith('/index.html') else f) for f in files}
+              urls = sorted(cand & public)
+          print('URLs to submit:', len(urls))
+          if urls:
+              body = json.dumps({'host': 'urbantales.net', 'key': os.environ['KEY'],
+                                 'keyLocation': base + os.environ['KEY'] + '.txt', 'urlList': urls[:10000]}).encode()
+              req = urllib.request.Request('https://api.indexnow.org/indexnow', data=body,
+                                           headers={'Content-Type': 'application/json; charset=utf-8'})
+              print('IndexNow:', urllib.request.urlopen(req, timeout=60).status)
+          PY

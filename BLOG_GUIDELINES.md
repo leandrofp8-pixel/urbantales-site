@@ -233,7 +233,8 @@ committed to the repo (`blog-img-{slug}.jpg`) plus its Pexels credit info (`phot
    `featured` card to a regular card (remove the `featured` class and restructure it as a standard
    card) and make the new post the `featured` one, OR keep the grid simple with all-equal cards once
    there are more than ~4 posts — use judgment, but newest always leads.
-6. Add the new post's URL to `sitemap.xml`.
+6. Add the new post's URL to `sitemap.xml`, then run `python3 tools/build_llms_txt.py` so `llms.txt` (the site
+   overview AI assistants read) lists the new post.
 7. Move the topic from **Queue** to **Published** in `blog-topics.md`, with the date and filename.
 
 ## Publishing workflow — approval is required
@@ -242,7 +243,7 @@ Do **not** push directly to `main`. Open the changes as a branch + pull request 
 
 ```
 git checkout -b blog/{slug}
-git add blog-{slug}.html blog.html sitemap.xml blog-topics.md
+git add blog-{slug}.html blog.html sitemap.xml blog-topics.md llms.txt
 git commit -m "Add blog post: {headline}"
 git push -u origin blog/{slug}
 gh pr create --title "Blog: {headline}" --body "New Wander Log post — ready for review. Merge to publish (GitHub Pages deploys straight from main, no build step)."
