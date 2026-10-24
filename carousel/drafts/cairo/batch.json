@@ -1,0 +1,38 @@
+{
+ "badge_num": 31,
+ "city": "CAIRO",
+ "flag": "🇪🇬",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Cairo secrets didn't you know? Comment the number 👇\n\n1. Great Pyramid of Giza\nBuilt around 2560 BC, the Great Pyramid of Giza is aligned to true north within about one-fifteenth of a degree, and nobody knows for sure how its builders managed it.\n\n2. Great Sphinx\nDrawings made by Frederic Norden in 1737 already show the Great Sphinx without its nose, six decades before Napoleon reached Egypt in 1798. The medieval historian al-Maqrizi blamed a Sufi named Muhammad Sa'im al-Dahr, who he said damaged the face in 1378.\n\n3. Cairo Tower\nThe 187-meter Cairo Tower, finished in 1961, is shaped like a lotus. According to a widely told story, Nasser paid for it with money the CIA had offered him as a bribe, turning it into a monument the whole city could see.\n\n4. Alabaster Mosque\nFrance sent the Citadel's Muhammad Ali Mosque a clock in 1845, often described as its thank-you for the Luxor obelisk now in Paris. It arrived damaged and barely worked for more than 170 years, until it was restored and restarted in 2021.\n\n5. Khan el-Khalili\nIn the 1380s, the Mamluk emir Jaharkas al-Khalili tore down the old royal cemetery of the Fatimid caliphs and built a caravanserai on the site. Khan el-Khalili grew up around it and is still trading more than 600 years later.\n\n6. Al-Azhar Mosque\nWork on Al-Azhar began in 970, a year after the Fatimids founded Cairo, and scholars were teaching there by 975. Today it is one of the oldest universities in the world still operating, and it still teaches Islamic law and Arabic.\n\n7. Cairo Metro\nWhen Line 1 opened in 1987, the Cairo Metro became the first metro system in Africa and the Arab world. Today its three lines carry millions of riders every day.\n\n.\n.\n.\n#Cairo #Egypt #TravelFacts #Sphinx #UrbanTales",
+ "facts": [
+  {
+   "headline": "The Great Pyramid points almost perfectly to true north",
+   "hook": "Built about 4,500 years ago, the Great Pyramid of Giza points to true north within one-fifteenth of a degree."
+  },
+  {
+   "headline": "Napoleon didn't break the Sphinx's nose — it was already gone",
+   "hook": "Drawings from 1737 already show the Sphinx without its nose, decades before Napoleon's troops ever reached Egypt."
+  },
+  {
+   "headline": "The story says the CIA paid for this tower",
+   "hook": "Cairo's 187-meter Tower, the story goes, was built with a bribe the CIA offered President Nasser in the 1950s."
+  },
+  {
+   "headline": "A gift clock that barely ran for over 170 years",
+   "hook": "The French clock on Cairo's Alabaster Mosque arrived damaged in 1845 and barely ran until its 2021 restoration."
+  },
+  {
+   "headline": "This bazaar was built over the tombs of medieval caliphs",
+   "hook": "Cairo's Khan el-Khalili bazaar grew up in the 1380s on the site of the Fatimid caliphs' demolished royal cemetery."
+  },
+  {
+   "headline": "This mosque has been teaching students for over 1,000 years",
+   "hook": "Al-Azhar Mosque was begun in 970, a year after Cairo's founding, and is among the world's oldest working universities."
+  },
+  {
+   "headline": "Africa's very first metro opened right here in 1987",
+   "hook": "When Line 1 opened in 1987, the Cairo Metro became the first metro system in Africa and the Arab world."
+  }
+ ]
+}
