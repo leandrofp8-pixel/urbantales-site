@@ -1,0 +1,95 @@
+{
+ "slug": "rome-colosseum",
+ "landmark": "Colosseum",
+ "city": "Rome",
+ "story": "The name Colosseum most likely comes from Nero's ~30 m bronze Colossus, later turned into the sun god and moved beside the amphitheatre by Hadrian with 24 elephants.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Colosseum",
+  "https://en.wikipedia.org/wiki/Colossus_of_Nero"
+ ],
+ "week": "2026-W44",
+ "created": "2026-10-25T10:12",
+ "media_sha": "22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4/reels/rome-colosseum-es.mp4",
+  "caption": "¿Me llamo así por una estatua? ¿Qué monumento debería contar su historia ahora? 👇\n\nEl nombre del Coliseo probablemente viene del Coloso de Nerón, una estatua de bronce de unos 30 metros. Según las crónicas, el emperador Adriano la movió junto al anfiteatro con 24 elefantes. La estatua desapareció, pero el nombre se quedó.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#Coliseo #Roma #Rome #HistoriaAntigua #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4/reels/rome-colosseum-en.mp4",
+  "caption": "Named after a statue? Which landmark should tell its story next? 👇\n\nThe Colosseum's name most likely comes from the Colossus of Nero, a bronze statue about 30 meters tall. Ancient sources say Emperor Hadrian moved it next to the amphitheater with 24 elephants. The statue is gone, but the name stuck.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#Colosseum #Rome #AncientRome #Italy #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-28001481.mp4",
+   "url": "https://www.pexels.com/video/colosseo-a-roma-28001481/",
+   "author": "C1 Superstar",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-36097843.mp4",
+   "url": "https://www.pexels.com/video/explore-the-historic-colosseum-interior-36097843/",
+   "author": "Magda Ehlers",
+   "w": 1280,
+   "h": 720,
+   "dur": 18,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-36395319.mp4",
+   "url": "https://www.pexels.com/video/explore-the-ancient-roman-colosseum-ruins-36395319/",
+   "author": "Sofie Slaninová",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-10718767.mp4",
+   "url": "https://www.pexels.com/video/flock-of-birds-flying-over-colosseum-10718767/",
+   "author": "Davide Giordani",
+   "w": 1280,
+   "h": 720,
+   "dur": 62,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-36635835.mp4",
+   "url": "https://www.pexels.com/video/colosseum-in-rome-during-a-sunny-day-36635835/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-20606535.mp4",
+   "url": "https://www.pexels.com/video/the-colossion-is-a-large-building-with-arches-20606535/",
+   "author": "K",
+   "w": 1280,
+   "h": 720,
+   "dur": 18,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-36524085.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-inside-the-roman-colosseum-36524085/",
+   "author": "Corina T",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-31791491.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-colosseum-at-sunset-in-rome-31791491/",
+   "author": "Nicoló Monterotondo",
+   "w": 720,
+   "h": 1280,
+   "dur": 12,
+   "query": "Colosseum Rome"
+  }
+ ]
+}
