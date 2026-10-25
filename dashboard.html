@@ -817,6 +817,19 @@
     <!-- ── EXPERIMENTS ── -->
     <div class="tab-panel" id="panel-experiments">
       <div class="kpi-sub" style="margin-bottom:12px">Every running A/B test in one place — each card: configuration, then results. The auto-play engine rollout is configured and measured in the <a href="#" onclick="showTab('playback');return false" style="color:var(--primary)">🎧 Playback</a> tab.</div>
+      <!-- A/B test: story model (newer, slower Gemini vs today's) -->
+      <div class="card" style="margin-top:24px">
+        <div class="card-title">A/B Test — Story Model
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Are better stories worth a longer wait? Each group only hears its own model's stories.</span>
+        </div>
+        <details class="cfg-box" id="cfgBox_model">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_model"></span></summary>
+          <div class="cfg-grid" id="cfg_model"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('model')" id="cfgSave_model">Save</button><span id="cfgMsg_model"></span></div>
+        </details>
+        <div id="modelExperimentPanel"><div class="loading">Loading…</div></div>
+      </div>
+
       <!-- A/B test: light vs dark theme for new accounts -->
       <div class="card" style="margin-top:24px">
         <div class="card-title">A/B Test — Light vs Dark
@@ -1159,9 +1172,10 @@
             </div>
             <div>
               <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">OpenAI model
-                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>OpenAI model</b><br>Only used when provider is OpenAI or Random.<br><br>gpt-4o-mini (current) ~$0.0004/narration<br>gpt-4o ~$0.007/narration (17× more)<br>gpt-4-turbo ~$0.023/narration (53× more)</span></span>
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>OpenAI model</b><br>Used when provider is OpenAI or Random, and as the fallback whenever Gemini fails.<br><br>gpt-5.4-mini ~$0.0025/narration, 2–3 s (newest, fastest)<br>gpt-4o-mini ~$0.0004/narration, 4–6 s<br>gpt-4o ~$0.007/narration (17× more)<br>gpt-4-turbo ~$0.023/narration (53× more)</span></span>
               </label>
               <select id="nc_openai_model" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+                <option value="gpt-5.4-mini">gpt-5.4-mini (recommended)</option>
                 <option value="gpt-4o-mini">gpt-4o-mini</option>
                 <option value="gpt-4o">gpt-4o</option>
                 <option value="gpt-4-turbo">gpt-4-turbo</option>
@@ -2988,6 +3002,12 @@ function mixedChart(id, labels, datasets, opts = {}) {
 // Each group saves only its own keys; PUT /admin/settings ignores keys it isn't sent.
 // ══════════════════════════════════════════════
 const CONFIG_GROUPS = {
+  model: { state: s => (s.model_experiment_enabled ?? true) ? `Running · ${s.model_experiment_pct ?? 50}% on ${s.model_experiment_model || 'gemini-3.8-flash'}` : 'Paused (no new assignments)', fields: [
+    { note: 'Everyone is assigned once, at their next story. The test group hears only the test model\'s stories (its own cache), so its cache starts empty and it waits more at first. Switching it off is the kill switch: nobody gets the test model and no one new is assigned; assignments are kept for the results.' },
+    { key: 'model_experiment_enabled', type: 'toggle', label: 'Test running (off = everyone back on today\'s model)', def: true },
+    { key: 'model_experiment_pct', label: '% of users in the test group', def: 50, attrs: 'min="0" max="100"' },
+    { key: 'model_experiment_model', type: 'text', label: 'Test model (Gemini model id)', def: 'gemini-3.8-flash' },
+  ] },
   theme: { state: s => (s.theme_experiment_enabled ?? true) ? `Running · ${s.theme_experiment_light_pct ?? 50}% light` : 'Paused', fields: [
     { note: 'New accounts are assigned once, at their first login on an app version that supports it. Changes apply to accounts assigned from now on; nobody already assigned is moved. Paused = new accounts start dark.' },
     { key: 'theme_experiment_enabled', type: 'toggle', label: 'Assign new accounts', def: true },
@@ -3062,7 +3082,7 @@ function _cfgFieldHtml(f, s) {
   const val = f.type === 'list' ? (v || []).join(', ') : v;
   return `<div>
       <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${escapeHtml(f.label)}</label>
-      <input id="s_${f.key}" type="${f.type === 'list' ? 'text' : 'number'}" value="${escapeHtml(String(val))}" ${f.attrs || ''}
+      <input id="s_${f.key}" type="${f.type === 'list' || f.type === 'text' ? 'text' : 'number'}" value="${escapeHtml(String(val))}" ${f.attrs || ''}
         style="width:100%;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:8px 10px;font-size:0.88rem;box-sizing:border-box">
     </div>`;
 }
@@ -3085,6 +3105,7 @@ async function saveConfigGroup(g) {
     const el = document.getElementById('s_' + f.key);
     if (f.type === 'toggle') body[f.key] = el.checked;
     else if (f.type === 'list') body[f.key] = el.value.split(',').map(e => e.trim()).filter(Boolean);
+    else if (f.type === 'text') body[f.key] = el.value.trim();
     else { const n = parseInt(el.value); body[f.key] = isNaN(n) ? (f.zeroIfEmpty ? 0 : null) : n; }
   });
   btn.disabled = true; btn.textContent = 'Saving…'; msg.textContent = '';
@@ -7082,7 +7103,7 @@ async function loadAllData() {
   loadStoreOverview(_storeSelected);  // independent: a failure elsewhere can't block it
   loadTripRetention(days);  // independent too (reads every story event)
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth, storefrontExperiment, themeExperiment] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth, storefrontExperiment, themeExperiment, modelExperiment] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -7115,6 +7136,7 @@ async function loadAllData() {
       api(`/admin/analytics/playback-health?${_dateParams()}`).catch(() => null),
       api(`/admin/analytics/storefront-experiment`).catch(() => null),
       api(`/admin/analytics/theme-experiment`).catch(() => null),
+      api(`/admin/analytics/model-experiment`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue, themeBreakdown);
@@ -7145,6 +7167,7 @@ async function loadAllData() {
     renderQuotaExperiment(quotaExperiment);
     renderStorefrontExperiment(storefrontExperiment);
     renderThemeExperiment(themeExperiment, themeBreakdown);
+    renderModelExperiment(modelExperiment);
     renderReviewPrompt(reviewPrompt);
     renderNarrationConfig(narrationConfigResp?.config || null);
   } catch (e) {
@@ -7156,7 +7179,7 @@ async function loadAllData() {
 // NARRATION CONFIG
 // ══════════════════════════════════════════════
 const _NARRATION_DEFAULTS = {
-  narration_provider: 'openai', openai_model: 'gpt-4o-mini', temperature: 0.6,
+  narration_provider: 'openai', openai_model: 'gpt-5.4-mini', temperature: 0.6,
   target_words_major: 250, target_words_notable: 175, target_words_local: 100,
   speaking_rate: 1.0, pitch: 0.0,
 };
@@ -7172,7 +7195,7 @@ function renderNarrationConfig(cfg) {
   const selProvider = document.getElementById('nc_narration_provider');
   if (selProvider) selProvider.value = c.narration_provider || 'openai';
   const sel = document.getElementById('nc_openai_model');
-  if (sel) sel.value = c.openai_model || 'gpt-4o-mini';
+  if (sel) sel.value = c.openai_model || 'gpt-5.4-mini';
   const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
   set('nc_temperature', c.temperature ?? 0.6);
   set('nc_target_words_major', c.target_words_major ?? 250);
@@ -7370,6 +7393,83 @@ function renderStorefrontExperiment(data) {
   el.innerHTML = `<p>${data.enabled ? 'Enrolling' : 'Enrollment paused'} · ${Number(data.test_pct)}% coins first · ${Number(data.window_days)}-day conversion window</p>
     <p style="color:var(--muted);font-size:0.8rem">Conversion and revenue use only users whose full window has elapsed. Purchases must follow first exposure and fall within that window. Coin and subscription buyers can overlap. Sandbox, renewals and known zero-price trials are excluded. Revenue is recorded gross USD before fees/refunds; missing prices are disclosed. Small samples do not establish a winner.</p>
     ${!rows.length ? '<p>No measured Store exposures yet. Release the supported mobile app and enable enrollment in Settings.</p>' : `<div class="table-wrap"><table><thead><tr><th>Segment</th><th>Layout</th><th>Exposed</th><th>Completed window</th><th>Paid buyers</th><th>Conversion</th><th>Coin buyers</th><th>Subscription buyers</th><th>Gross USD</th><th>USD / completed user</th><th>Unpriced purchases</th></tr></thead><tbody>${rows.map(r => `<tr><td>${escapeHtml(segment(r.segment))}</td><td>${escapeHtml(labels[r.variant] || r.variant)}</td><td>${fmt(r.exposed)}</td><td>${fmt(r.mature)}</td><td>${fmt(r.buyers)}</td><td>${pct(r.conversion_pct)}</td><td>${fmt(r.coin_buyers)}</td><td>${fmt(r.subscription_buyers)}</td><td>${money(r.gross_usd)}</td><td>${money(r.revenue_per_exposed_usd)}</td><td>${fmt(r.unpriced_purchases)}</td></tr>`).join('')}</tbody></table></div>`}`;
+}
+
+function renderModelExperiment(data) {
+  const el = document.getElementById('modelExperimentPanel');
+  if (!el) return;
+  if (!data || !data.arms) { el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">Could not load results.</p>'; return; }
+  const T = data.arms.test, Cn = data.arms.control, df = data.diffs, st = data.settings || {};
+  const tName = escapeHtml(st.model || 'test model'), cName = escapeHtml(st.control_model || 'today');
+  if (!T.users && !Cn.users) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No one assigned yet. Users join at their next story request.</p>';
+    return;
+  }
+  const muted = t => `<span style="color:var(--muted);font-weight:400">${t}</span>`;
+  const pct = (v, extra) => v == null ? '—' : `${v}% ${muted(extra)}`;
+  const chip = d => {
+    if (!d || d.diff_pts == null) return muted('—');
+    const sure = d.confidence ?? 0, sig = sure >= 95, cls = !sig ? 'blue' : d.diff_pts > 0 ? 'green' : 'red';
+    return `<span class="kpi-badge badge-${cls}" style="display:inline-block;margin:0">${d.diff_pts > 0 ? '+' : ''}${d.diff_pts} pts · ${sure}% sure${sig ? ' ✓' : ''}</span>`;
+  };
+  const sec = ms => ms == null ? '—' : (ms / 1000).toFixed(1) + ' s';
+  const tr = 'style="text-align:right"';
+  const metrics = [
+    ['Second story the same day', a => pct(a.second_story_pct, fmt(a.story_days) + ' days'), df.second_story],
+    ['Stories per active day', a => a.stories_per_day ?? '—', null],
+    ['Stories played to the end', a => pct(a.completed_pct, fmt(a.plays) + ' plays'), df.completed],
+    ['Votes that are 👍', a => pct(a.up_pct, fmt(a.votes) + ' votes'), df.up],
+    ['"Enjoying the app?" yes', a => pct(a.happy_pct, fmt(a.asked) + ' asked'), df.happy],
+    ['7-day retention (new accounts)', a => pct(a.d7_pct, 'n=' + fmt(a.d7_eligible)), df.d7],
+    ['Paid (new accounts)', a => pct(a.paid_pct, fmt(a.paid) + ' of ' + fmt(a.new_users)), df.paid],
+    ['Stories served from cache', a => pct(a.cache_hit_pct, fmt(a.stories) + ' stories'), null],
+    ['OpenAI fallback used', a => pct(a.fallback_pct, fmt(a.fallback) + ' of ' + fmt(a.generated)), null],
+    ['Generation cost per user', a => a.cost_per_user == null ? '—' : '$' + a.cost_per_user.toFixed(3), null],
+  ];
+  const ss = data.sample.second_story;
+  const verdict = (df.second_story.confidence ?? 0) >= 95 && ss.have >= ss.need
+    ? `<div style="background:rgba(52,211,153,0.1);border:1px solid var(--green);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:0.84rem;color:var(--green)">✓ Second story the same day: ${df.second_story.diff_pts > 0 ? tName : cName} wins by ${Math.abs(df.second_story.diff_pts)} points (${df.second_story.confidence}% sure).</div>`
+    : `<div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,.45);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:0.84rem;color:var(--yellow)">⏳ Too early to call. "Second story the same day" needs about ${fmt(ss.need)} ${ss.unit} per group to detect a 5-point difference; the smaller group has ${fmt(ss.have)}.</div>`;
+  const tierRows = ['MAJOR', 'NOTABLE', 'LOCAL', 'ALL'].map(t => {
+    const a = T.timing[t], c = Cn.timing[t];
+    const cell = (x, k) => `${sec(x[k].p50)} ${muted('p90 ' + sec(x[k].p90))}`;
+    return `<tr><td>${t === 'ALL' ? '<strong>All</strong>' : t.charAt(0) + t.slice(1).toLowerCase()}</td>
+      <td ${tr}>${cell(a, 'llm_ms')}</td><td ${tr}>${cell(c, 'llm_ms')}</td>
+      <td ${tr}>${cell(a, 'total_ms')}</td><td ${tr}>${cell(c, 'total_ms')}</td>
+      <td ${tr}>${muted(fmt(a.n) + ' / ' + fmt(c.n))}</td></tr>`;
+  }).join('');
+  el.innerHTML = `${verdict}
+    <div class="table-wrap"><table style="width:100%;border-collapse:collapse">
+      <thead><tr style="color:var(--muted);font-size:0.75rem"><th style="text-align:left;padding:6px 0">Metric</th>
+        <th ${tr}>${tName} (test)</th><th ${tr}>${cName} (control)</th><th ${tr}>Test vs control</th></tr></thead>
+      <tbody>
+        <tr><td>Users</td><td ${tr}>${fmt(T.users)} ${muted(fmt(T.new_users) + ' new')}</td><td ${tr}>${fmt(Cn.users)} ${muted(fmt(Cn.new_users) + ' new')}</td><td></td></tr>
+        ${metrics.map(([l, f, d]) => `<tr><td>${l}</td><td ${tr}>${f(T)}</td><td ${tr}>${f(Cn)}</td><td ${tr}>${d ? chip(d) : ''}</td></tr>`).join('')}
+      </tbody></table></div>
+    <div style="font-size:0.85rem;font-weight:600;margin:20px 0 8px">Waiting time for new stories <span style="font-size:0.75rem;color:var(--muted);font-weight:400">median · p90 = slowest 10% · cached stories excluded</span></div>
+    <div class="table-wrap"><table style="width:100%;border-collapse:collapse">
+      <thead><tr style="color:var(--muted);font-size:0.75rem"><th style="text-align:left;padding:6px 0">Landmark</th>
+        <th ${tr}>Writing · test</th><th ${tr}>Writing · control</th><th ${tr}>Whole request · test</th><th ${tr}>Whole request · control</th><th ${tr}>Stories (test / control)</th></tr></thead>
+      <tbody>${tierRows}</tbody></table></div>
+    <div class="grid-2" style="margin-top:18px;margin-bottom:0">
+      <div style="background:#151515;border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+        <div style="font-size:0.82rem;font-weight:600;margin-bottom:4px">Does waiting lose people?</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:8px">Second story the same day, by how long that day's first story took</div>
+        <div class="chart-wrap" style="height:190px"><canvas id="chartModelWait"></canvas></div>
+      </div>
+      <div style="background:#151515;border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:0.75rem;color:var(--muted)">
+        <div style="font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:8px">How to read this</div>
+        <p style="margin:0 0 8px">The test group's cache started empty, so early on it waits more than it will later. The "cached" share shows how far it has caught up.</p>
+        <p style="margin:0 0 8px">"Whole request" is the server's time: writing + voice + everything else. The phone adds download time on top.</p>
+        <p style="margin:0 0 8px">"% sure" is the chance a difference isn't noise; call a result at 95%. Retention and paid count only accounts that were new when assigned, so they fill slowly.</p>
+        <p style="margin:0">${data.started_at ? 'Running since ' + fmtDate(data.started_at) + '. ' : ''}Admin and internal accounts are left out.</p>
+      </div>
+    </div>`;
+  const labels = T.wait_buckets.map(b => b.label);
+  barChart('chartModelWait', labels, [
+    { label: `${st.model || 'test'} (test)`, data: T.wait_buckets.map(b => b.second_pct), color: C.primary },
+    { label: `${st.control_model || 'control'} (control)`, data: Cn.wait_buckets.map(b => b.second_pct), color: C.blue },
+  ], { y: { max: 100 } });
 }
 
 function renderThemeExperiment(data, adoption) {
