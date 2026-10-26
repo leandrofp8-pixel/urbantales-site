@@ -1,0 +1,98 @@
+{
+ "slug": "cdmx-zocalo",
+ "landmark": "Zócalo (Plaza de la Constitución)",
+ "city": "Mexico City",
+ "story": "Spectre (2015) filmed an invented Day of the Dead parade in the Zócalo with 1,500 extras; Mexico City staged a real one in 2016, and today the parade ends in the Zócalo.",
+ "sources": [
+  "https://gulfnews.com/amp/story/entertainment%2Fspectre-scene-inspires-mexico-to-hold-day-of-dead-parade-1.1917065",
+  "https://www.shortlist.com/news/shortlist-infiltrates-the-set-of-spectre",
+  "https://www.empireonline.com/movies/news/spectre-opening-sequence-will-biggest-bond-history",
+  "https://reuters.screenocean.com/record/901062",
+  "https://mexicocity.cdmx.gob.mx/tag/day-dead-parade-route/?lang=en"
+ ],
+ "week": "2026-W44",
+ "created": "2026-10-25T10:12",
+ "media_sha": "22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4/reels/cdmx-zocalo-es.mp4",
+  "caption": "Mi desfile viene de 007. ¿Qué monumento debería contar su historia ahora? 👇\n\nEn 2015, la película Spectre de James Bond filmó en el Zócalo un desfile de Día de Muertos que no existía. Al año siguiente, la Ciudad de México lo hizo realidad, y hoy termina en su plancha.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#DiaDeMuertos #CDMX #Zocalo #JamesBond #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4/reels/cdmx-zocalo-en.mp4",
+  "caption": "My parade came from 007. Which landmark should tell its story next? 👇\n\nIn 2015, the James Bond film Spectre shot a Day of the Dead parade in Mexico City's Zócalo that didn't exist. The next year the city made it real, and today it ends in the square.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#DayOfTheDead #MexicoCity #Zocalo #JamesBond #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-32622092.mp4",
+   "url": "https://www.pexels.com/video/mexican-flag-and-metropolitan-cathedral-in-zocalo-32622092/",
+   "author": "Raul Luna",
+   "w": 720,
+   "h": 1280,
+   "dur": 17,
+   "query": "Zocalo Mexico City"
+  },
+  {
+   "file": "pexels-32058674.mp4",
+   "url": "https://www.pexels.com/video/mexican-flag-in-zocalo-mexico-city-32058674/",
+   "author": "Luis Ariza",
+   "w": 720,
+   "h": 1280,
+   "dur": 14,
+   "query": "Zocalo Mexico City"
+  },
+  {
+   "file": "pexels-4566586.mp4",
+   "url": "https://www.pexels.com/video/people-walking-on-the-street-4566586/",
+   "author": "Sosa Films",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Zocalo Mexico City"
+  },
+  {
+   "file": "pexels-20539466.mp4",
+   "url": "https://www.pexels.com/video/a-large-flag-is-flying-in-front-of-a-cathedral-20539466/",
+   "author": "Israyosoy S.",
+   "w": 720,
+   "h": 1280,
+   "dur": 120,
+   "query": "Zocalo Mexico City"
+  },
+  {
+   "file": "pexels-3562633.mp4",
+   "url": "https://www.pexels.com/video/view-of-a-cathedral-3562633/",
+   "author": "Bhargava Marripati",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Zocalo Mexico City"
+  },
+  {
+   "file": "pexels-29277057.mp4",
+   "url": "https://www.pexels.com/video/vibrant-day-of-the-dead-parade-in-mexico-city-29277057/",
+   "author": "Anya  Juárez Tenorio",
+   "w": 1280,
+   "h": 720,
+   "dur": 5,
+   "query": "Day of the Dead parade Mexico City"
+  },
+  {
+   "file": "pexels-29277058.mp4",
+   "url": "https://www.pexels.com/video/vibrant-day-of-the-dead-parade-float-29277058/",
+   "author": "Anya  Juárez Tenorio",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Day of the Dead parade Mexico City"
+  },
+  {
+   "file": "pexels-4601846.mp4",
+   "url": "https://www.pexels.com/video/people-gathered-and-watching-the-parade-4601846/",
+   "author": "Sosa Films",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Day of the Dead parade Mexico City"
+  }
+ ]
+}

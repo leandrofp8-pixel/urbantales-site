@@ -1,0 +1,96 @@
+{
+ "slug": "venice-salute",
+ "landmark": "Santa Maria della Salute",
+ "city": "Venice",
+ "story": "Venice's Senate vowed the church to the Virgin in 1630 after a plague killed nearly a third of the city; it stands on about a million wooden piles, and every Nov 21 a pontoon bridge crosses the Grand Canal to it.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Santa_Maria_della_Salute",
+  "https://en.wikipedia.org/wiki/Festa_della_Salute",
+  "https://www.venicewelcome.com/info/events_of_venice/festa-madonna-della-salute.htm"
+ ],
+ "week": "2026-W44",
+ "created": "2026-10-25T10:12",
+ "media_sha": "22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4/reels/venice-salute-es.mp4",
+  "caption": "Nací por una peste. ¿Qué monumento debería contar su historia ahora? 👇\n\nEn 1630 la peste mató a casi un tercio de Venecia, y el Senado prometió una iglesia a la Virgen. Santa María della Salute se levantó sobre un millón de pilotes de madera, y cada 21 de noviembre un puente flotante cruza el Gran Canal hasta su puerta.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#Venecia #Venice #SantaMariaDellaSalute #Italia #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4/reels/venice-salute-en.mp4",
+  "caption": "A plague is why I exist. Which landmark should tell its story next? 👇\n\nIn 1630 a plague killed nearly a third of Venice, and the Senate vowed a church to the Virgin Mary. Santa Maria della Salute rose on a million wooden piles, and every November 21 a floating bridge crosses the Grand Canal to its door.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#Venice #SantaMariaDellaSalute #GrandCanal #Italy #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-36675411.mp4",
+   "url": "https://www.pexels.com/video/venetian-gondolas-at-santa-maria-della-salute-36675411/",
+   "author": "V Marin",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Santa Maria della Salute Venice"
+  },
+  {
+   "file": "pexels-38837929.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-basilica-in-venice-38837929/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Santa Maria della Salute Venice"
+  },
+  {
+   "file": "pexels-32521459.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-venetian-architecture-and-canal-32521459/",
+   "author": "Alberto Escalona",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Santa Maria della Salute Venice"
+  },
+  {
+   "file": "pexels-38097237.mp4",
+   "url": "https://www.pexels.com/video/serene-venice-canal-with-gondolas-and-historic-architecture-38097237/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Santa Maria della Salute Venice"
+  },
+  {
+   "file": "pexels-30196691.mp4",
+   "url": "https://www.pexels.com/video/serene-canal-cruise-in-venice-italy-30196691/",
+   "author": "Perizat Khalibek",
+   "w": 720,
+   "h": 1280,
+   "dur": 17,
+   "query": "Santa Maria della Salute Venice"
+  },
+  {
+   "file": "pexels-38076115.mp4",
+   "url": "https://www.pexels.com/video/boats-glide-through-venice-grand-canal-view-38076115/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Grand Canal Venice"
+  },
+  {
+   "file": "pexels-36398876.mp4",
+   "url": "https://www.pexels.com/video/scenic-sunrise-over-venice-s-grand-canal-36398876/",
+   "author": "Travel with  Lenses",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Grand Canal Venice"
+  },
+  {
+   "file": "pexels-38837906.mp4",
+   "url": "https://www.pexels.com/video/venice-grand-canal-with-gondolas-in-motion-38837906/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Grand Canal Venice"
+  }
+ ]
+}

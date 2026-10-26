@@ -1,0 +1,97 @@
+{
+ "slug": "newyork-statue-liberty",
+ "landmark": "Statue of Liberty",
+ "city": "New York",
+ "story": "Dedicated Oct 28, 1886, the statue was run by the U.S. Lighthouse Board as an electric lighthouse until 1902, but its torch was too dim to be much use to ships.",
+ "sources": [
+  "https://lighthousefriends.com/light.asp?ID=581",
+  "https://www.nps.gov/articles/000/stli-liberty-island-650003.htm",
+  "https://www.nps.gov/stli/learn/historyculture/liberty-island-a-chronology.htm",
+  "https://history.uscg.mil/Browse-by-Topic/Assets/Land/All/Article/1991126/statue-of-liberty-light"
+ ],
+ "week": "2026-W44",
+ "created": "2026-10-25T10:12",
+ "media_sha": "22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4/reels/newyork-statue-liberty-es.mp4",
+  "caption": "Durante 15 años fui un faro. ¿Qué monumento debería contar su historia ahora? 👇\n\nLa Estatua de la Libertad se inauguró el 28 de octubre de 1886 y su antorcha se encendió con lámparas eléctricas para guiar barcos. La Junta de Faros de Estados Unidos la administró hasta 1902, pero su luz nunca fue lo bastante fuerte.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#EstatuaDeLaLibertad #NuevaYork #NewYork #Historia #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/22d675a611c1df7cd80423dd94c0cc0f0cc8dfa4/reels/newyork-statue-liberty-en.mp4",
+  "caption": "I was once a lighthouse. Which landmark should tell its story next? 👇\n\nThe Statue of Liberty was dedicated on October 28, 1886, and electric lamps in her torch were meant to guide ships. The U.S. Lighthouse Board ran her until 1902, but the light was never strong enough.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#StatueOfLiberty #NewYork #NYC #History #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-35194304.mp4",
+   "url": "https://www.pexels.com/video/statue-of-liberty-in-new-york-city-skyline-35194304/",
+   "author": "Jose Luis Araya Picado",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Statue of Liberty"
+  },
+  {
+   "file": "pexels-4453276.mp4",
+   "url": "https://www.pexels.com/video/the-statue-of-liberty-4453276/",
+   "author": "Matthis Volquardsen",
+   "w": 1280,
+   "h": 720,
+   "dur": 24,
+   "query": "Statue of Liberty"
+  },
+  {
+   "file": "pexels-27275146.mp4",
+   "url": "https://www.pexels.com/video/the-statue-of-liberty-27275146/",
+   "author": "Emilia Flores Hossain",
+   "w": 720,
+   "h": 1280,
+   "dur": 13,
+   "query": "Statue of Liberty"
+  },
+  {
+   "file": "pexels-18314831.mp4",
+   "url": "https://www.pexels.com/video/the-view-from-the-deck-of-a-ferry-boat-18314831/",
+   "author": "Teju",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Statue of Liberty"
+  },
+  {
+   "file": "pexels-20262690.mp4",
+   "url": "https://www.pexels.com/video/the-statue-of-liberty-is-seen-from-above-20262690/",
+   "author": "Yura Forrat",
+   "w": 720,
+   "h": 1280,
+   "dur": 3,
+   "query": "Statue of Liberty"
+  },
+  {
+   "file": "pexels-39104007.mp4",
+   "url": "https://www.pexels.com/video/iconic-statue-of-liberty-in-scenic-view-39104007/",
+   "author": "AP Vibes",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Statue of Liberty aerial drone"
+  },
+  {
+   "file": "pexels-28962716.mp4",
+   "url": "https://www.pexels.com/video/breathtaking-view-of-the-statue-of-liberty-28962716/",
+   "author": "Vincent Rivaud",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Statue of Liberty aerial drone"
+  },
+  {
+   "file": "pexels-39104008.mp4",
+   "url": "https://www.pexels.com/video/dramatic-view-of-the-statue-of-liberty-39104008/",
+   "author": "AP Vibes",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "Statue of Liberty torch night"
+  }
+ ]
+}
