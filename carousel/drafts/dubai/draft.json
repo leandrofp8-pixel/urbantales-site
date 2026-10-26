@@ -1,93 +1,148 @@
 {
-  "badge_num": 32,
+  "badge_num": 33,
   "city": "DUBAI",
   "flag": "🇦🇪",
   "cta_screenshot": "screen-generic-narration-style.png",
-  "cta_screenshot_note": "No Dubai map screenshot in the repo (no screen-dubai-*-map.png file and no dubai.html page exists yet); using the generic app screen per GUIDELINES.md.",
   "style": "minimal",
-  "photo_sourcing_blocked": true,
-  "photo_sourcing_note": "This session's outbound network policy rejected every image-source host tried (commons.wikimedia.org, upload.wikimedia.org, en.wikipedia.org, www.wikidata.org, api.pexels.com, images.pexels.com — all returned 403/connect_rejected from the egress proxy, confirmed via both Bash curl and the WebFetch tool). This is a full network-policy block, not a 'no results for this query' situation, so it affects all 8 slots, not just one. No candidate photos could be downloaded this run. Facts, captions, and draft structure are complete; Leandro (or a future run with commons.wikimedia.org allowed in the environment's Allowed domains) needs to source photos for cover, fact1-fact7 before this can move to render.",
-  "caption": "Which of these 7 Dubai secrets would surprise you most? Comment the number 👇\n\n1. Burj Khalifa\nThe 828-meter Burj Khalifa, the world's tallest building since 2010, is built on a triple-lobed footprint styled after the Hymenocallis, a desert flower native to the region — not just aerodynamics.\n\n2. Palm Jumeirah\nPalm Jumeirah, built from dredged sand between 2001 and 2006, is shaped like a palm tree with a 2-kilometer trunk and 17 fronds — a shape NASA's satellites photographed taking form year by year.\n\n3. Dubai Fountain\nThe Dubai Fountain, built by the designers of the Bellagio fountains, sits on a 12-hectare lake and is widely called the world's largest choreographed fountain — its jets can shoot water roughly 50 stories high.\n\n4. Museum of the Future\nDubai's Museum of the Future has no straight windows — its stainless-steel shell is cut with Arabic calligraphy spelling out verses written by the UAE's own ruler, Sheikh Mohammed bin Rashid.\n\n5. Dubai Frame\nThe 150-meter Dubai Frame holds a Guinness World Record as the largest building shaped like a picture frame, and from its viewing deck you can see Old Dubai and New Dubai in the same shot.\n\n6. Dubai Gold Souk\nWhen Japan's cultured pearls crashed the Gulf pearl trade in the 1930s, Dubai's merchants turned to gold instead — today an estimated 20% of the world's gold is said to pass through the city's souks each year.\n\n7. Dubai Creek\nDecades before oil was discovered in 1966, Dubai was a small fishing, pearling and trading settlement built around Dubai Creek, where wooden abra boats still ferry passengers across the water exactly as they did then.\n\n.\n.\n.\n#Dubai #UAE #TravelFacts #BurjKhalifa #UrbanTales",
-  "caption_es": "¿Cuál de estos 7 secretos de Dubái te sorprendería más? Comenta el número 👇\n\n1. Burj Khalifa\nEl Burj Khalifa, de 828 metros y el edificio más alto del mundo desde 2010, tiene una base de tres lóbulos inspirada en la Hymenocallis, una flor del desierto de la región, no solo en la aerodinámica.\n\n2. Palm Jumeirah\nLa Palm Jumeirah, construida con arena dragada entre 2001 y 2006, tiene forma de palmera con un tronco de 2 kilómetros y 17 hojas, una forma que los satélites de la NASA fotografiaron mientras tomaba forma año tras año.\n\n3. Fuente de Dubái\nLa Fuente de Dubái, construida por los mismos diseñadores de las fuentes del Bellagio, está sobre un lago de 12 hectáreas y se considera la fuente coreografiada más grande del mundo; sus chorros pueden llegar a la altura de unos 50 pisos.\n\n4. Museo del Futuro\nEl Museo del Futuro de Dubái no tiene ventanas comunes: su estructura de acero inoxidable está cortada con caligrafía árabe que forma versos escritos por el propio gobernante de los Emiratos, el jeque Mohammed bin Rashid.\n\n5. Dubai Frame\nEl Dubai Frame, de 150 metros, tiene un Récord Guinness como el edificio más grande con forma de marco de fotos, y desde su mirador se puede ver el Dubái Viejo y el Dubái Nuevo en la misma imagen.\n\n6. Zoco del Oro de Dubái\nCuando las perlas cultivadas de Japón hundieron el comercio de perlas del Golfo en la década de 1930, los comerciantes de Dubái pasaron al oro: hoy se dice que un 20% del oro del mundo pasa por sus zocos cada año.\n\n7. Dubai Creek\nDécadas antes de que se descubriera petróleo en 1966, Dubái era un pequeño pueblo de pesca, perlas y comercio alrededor del Dubai Creek, donde los botes de madera llamados abra todavía cruzan el agua igual que entonces.\n\n.\n.\n.\n#Dubai #EmiratosArabes #DatosCuriosos #BurjKhalifa #UrbanTales",
-  "cover_candidates": [],
-  "cover_candidates_note": "No candidates sourced — Commons API unreachable this run (see photo_sourcing_note). Needed: a skyline/aerial shot of Dubai (e.g. Dubai Marina or Downtown Dubai skyline).",
+  "photo_sourcing_blocked": false,
+  "caption": "Which of these 7 Dubai secrets didn't you know? Comment the number 👇\n\n1. Burj Khalifa\nThe 828-meter Burj Khalifa, the world's tallest building since it opened in 2010, stands on a three-lobed footprint its architects modeled on the Hymenocallis, a spider lily.\n\n2. Palm Jumeirah\nPalm Jumeirah was built from sand dredged from the seabed starting in 2001, sprayed into the shape of a palm with a trunk and 17 fronds. NASA satellites tracked it taking form year by year.\n\n3. Dubai Fountain\nThe Dubai Fountain was designed by the same company behind the Bellagio fountains in Las Vegas. It sits on a 12-hectare lake and its jets shoot water up to about 150 meters, roughly the height of a 50-story building.\n\n4. Museum of the Future\nThe windows of Dubai's Museum of the Future are its writing: the steel shell is cut with Arabic calligraphy quoting Sheikh Mohammed bin Rashid, ruler of Dubai, on the future. At night the letters glow.\n\n5. Dubai Frame\nThe Dubai Frame, about 150 meters tall, holds the Guinness record for the largest building shaped like a picture frame. Its sky bridge has a glass floor, and its windows show Old Dubai on one side and New Dubai on the other.\n\n6. Dubai Gold Souk\nDubai lived off pearl diving until the 1930s, when cheap Japanese cultured pearls and the Great Depression sank the trade. The city turned to trading gold, and Deira's Gold Souk is still lined with jewelers, shop after shop.\n\n7. Dubai Creek\nBefore oil was found offshore in 1966, Dubai was a small fishing, pearling and trading town built around Dubai Creek. Wooden abra boats still ferry people across it, and a ride costs one dirham.\n\n.\n.\n.\n#Dubai #UAE #TravelFacts #BurjKhalifa #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Dubái no conocías? Comenta el número 👇\n\n1. Burj Khalifa\nEl Burj Khalifa, de 828 metros y el edificio más alto del mundo desde su apertura en 2010, se levanta sobre una base de tres lóbulos que sus arquitectos inspiraron en la Hymenocallis, un lirio araña.\n\n2. Palm Jumeirah\nLa Palm Jumeirah se construyó desde 2001 con arena dragada del fondo del mar, rociada hasta formar una palmera con tronco y 17 hojas. Los satélites de la NASA la vieron tomar forma año tras año.\n\n3. Fuente de Dubái\nLa Fuente de Dubái la diseñó la misma empresa que creó las fuentes del Bellagio en Las Vegas. Está sobre un lago de 12 hectáreas y sus chorros lanzan agua hasta unos 150 metros, como un edificio de 50 pisos.\n\n4. Museo del Futuro\nLas ventanas del Museo del Futuro de Dubái son su propia escritura: la estructura de acero está recortada con caligrafía árabe que cita frases del jeque Mohammed bin Rashid, gobernante de Dubái, sobre el futuro. De noche, las letras se iluminan.\n\n5. Dubai Frame\nEl Dubai Frame, de unos 150 metros, tiene el récord Guinness como el edificio con forma de marco de fotos más grande del mundo. Su puente superior tiene piso de vidrio, y desde sus ventanas se ve el Dubái Viejo de un lado y el Nuevo del otro.\n\n6. Zoco del Oro\nDubái vivía de la pesca de perlas hasta los años 30, cuando las perlas cultivadas de Japón y la Gran Depresión hundieron el negocio. La ciudad pasó a comerciar oro, y el Zoco del Oro de Deira sigue lleno de joyerías, una tras otra.\n\n7. Dubai Creek\nAntes de que se descubriera petróleo en el mar en 1966, Dubái era un pequeño pueblo de pesca, perlas y comercio alrededor del Dubai Creek. Los botes de madera llamados abra todavía lo cruzan, y el viaje cuesta un dírham.\n\n.\n.\n.\n#Dubai #EmiratosArabes #DatosCuriosos #BurjKhalifa #UrbanTales",
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dubai_skyline_2015_(crop).jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Tim.Reckmann",
+      "note": "Downtown Dubai aerial with Burj Khalifa; cropped to the right side so the tower stays in frame"
+    }
+  ],
   "facts": [
     {
       "slot": "fact1",
-      "headline": "Its shape comes from a desert flower, not just wind engineering",
-      "headline_es": "Su forma viene de una flor del desierto, no solo de ingeniería",
-      "body_html": "The <b>828-meter Burj Khalifa</b>, the world's tallest building since 2010, is built on a triple-lobed footprint styled after the <b>Hymenocallis</b>, a desert flower native to the region — not just aerodynamics.",
-      "body_es": "El <b>Burj Khalifa</b>, de <b>828 metros</b> y el edificio más alto del mundo desde 2010, tiene una base de tres lóbulos inspirada en la <b>Hymenocallis</b>, una flor del desierto de la región, no solo en la aerodinámica.",
-      "hook": "At 828 meters, the world's tallest building is shaped like a desert flower, not just wind-smart engineering.",
-      "hook_es": "Con 828 metros, el edificio más alto del mundo tiene forma de flor del desierto, no solo ingeniería contra el viento.",
-      "candidates": [],
-      "candidates_note": "No candidates sourced — Commons API unreachable this run (see photo_sourcing_note). Needed: Burj Khalifa full-height or dome/spire shot."
+      "headline": "Its footprint was modeled on a flower",
+      "headline_es": "Su base se inspiró en una flor",
+      "body_html": "The <b>828-meter Burj Khalifa</b>, the world's tallest building since it opened in 2010, stands on a three-lobed footprint its architects modeled on the <b>Hymenocallis</b>, a spider lily.",
+      "body_es": "El <b>Burj Khalifa</b>, de <b>828 metros</b> y el edificio más alto del mundo desde su apertura en 2010, se levanta sobre una base de tres lóbulos que sus arquitectos inspiraron en la <b>Hymenocallis</b>, un lirio araña.",
+      "hook": "The 828-meter Burj Khalifa, the world's tallest building, stands on a three-lobed footprint modeled on a spider lily flower.",
+      "hook_es": "El Burj Khalifa, el edificio más alto del mundo con 828 metros, tiene una base inspirada en una flor.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Burj_Khalifa_(16260269606).jpg",
+          "license": "CC BY-SA 2.0",
+          "artist": "Laika ac",
+          "note": "Burj Khalifa full height, centered"
+        }
+      ]
     },
     {
       "slot": "fact2",
-      "headline": "An island so big you can see its shape from space",
-      "headline_es": "Una isla tan grande que se ve su forma desde el espacio",
-      "body_html": "<b>Palm Jumeirah</b>, built from dredged sand between 2001 and 2006, is shaped like a palm tree with a 2-kilometer trunk and <b>17 fronds</b> — a shape NASA's satellites photographed taking form year by year.",
-      "body_es": "La <b>Palm Jumeirah</b>, construida con arena dragada entre 2001 y 2006, tiene forma de palmera con un tronco de 2 kilómetros y <b>17 hojas</b>, una forma que los satélites de la NASA fotografiaron mientras tomaba forma año tras año.",
-      "hook": "Built from dredged sand in 2001, Palm Jumeirah's palm-tree shape is clear enough that satellites still photograph it from orbit.",
-      "hook_es": "Construida con arena dragada desde 2001, la forma de palmera de Palm Jumeirah es tan clara que los satélites aún la fotografían desde órbita.",
-      "candidates": [],
-      "candidates_note": "No candidates sourced — Commons API unreachable this run (see photo_sourcing_note). Needed: aerial/drone shot of Palm Jumeirah showing the frond shape."
+      "headline": "An island sprayed into shape, visible from space",
+      "headline_es": "Una isla rociada con arena, visible desde el espacio",
+      "body_html": "<b>Palm Jumeirah</b> was built from sand dredged from the seabed starting in 2001, sprayed into the shape of a palm with a trunk and <b>17 fronds</b>. NASA satellites tracked it taking form year by year.",
+      "body_es": "La <b>Palm Jumeirah</b> se construyó desde 2001 con arena dragada del fondo del mar, rociada hasta formar una palmera con tronco y <b>17 hojas</b>. Los satélites de la NASA la vieron tomar forma año tras año.",
+      "hook": "Starting in 2001, seabed sand was sprayed into a palm-tree island so big it's photographed from space.",
+      "hook_es": "Desde 2001, arena dragada del fondo del mar formó una isla con forma de palmera visible desde el espacio.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Palm_Island_Resort.jpg",
+          "license": "Public domain",
+          "artist": "Commander Leroy Chiao",
+          "note": "Astronaut photo of Palm Jumeirah from the ISS, public domain"
+        }
+      ]
     },
     {
       "slot": "fact3",
-      "headline": "Jets shoot water as high as a 50-story building",
-      "headline_es": "Los chorros lanzan agua tan alto como un edificio de 50 pisos",
-      "body_html": "The <b>Dubai Fountain</b>, built by the designers of the Bellagio fountains, sits on a 12-hectare lake and is widely called the world's <b>largest choreographed fountain</b> — its jets can shoot water roughly <b>50 stories high</b>.",
-      "body_es": "La <b>Fuente de Dubái</b>, construida por los mismos diseñadores de las fuentes del Bellagio, está sobre un lago de 12 hectáreas y se considera la <b>fuente coreografiada más grande del mundo</b>; sus chorros pueden llegar a la altura de unos <b>50 pisos</b>.",
-      "hook": "Built by the Bellagio fountain's designers, the Dubai Fountain's jets can shoot water roughly fifty stories into the air.",
-      "hook_es": "Construida por los diseñadores de las fuentes del Bellagio, los chorros de la Fuente de Dubái pueden llegar a la altura de cincuenta pisos.",
-      "candidates": [],
-      "candidates_note": "No candidates sourced — Commons API unreachable this run (see photo_sourcing_note). Needed: Dubai Fountain mid-show, water jets visible against the Burj Khalifa."
+      "headline": "Jets as high as a 50-story building",
+      "headline_es": "Chorros tan altos como un edificio de 50 pisos",
+      "body_html": "The <b>Dubai Fountain</b> was designed by the same company behind the Bellagio fountains in Las Vegas. It sits on a 12-hectare lake and its jets shoot water up to about <b>150 meters</b>, roughly the height of a 50-story building.",
+      "body_es": "La <b>Fuente de Dubái</b> la diseñó la misma empresa que creó las fuentes del Bellagio en Las Vegas. Está sobre un lago de 12 hectáreas y sus chorros lanzan agua hasta unos <b>150 metros</b>, como un edificio de 50 pisos.",
+      "hook": "Built by the Bellagio fountain designers, the Dubai Fountain shoots water up to 150 meters, about a 50-story building.",
+      "hook_es": "Creada por los diseñadores de las fuentes del Bellagio, la Fuente de Dubái lanza agua hasta 150 metros de altura.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Dubai_Fountain_7.JPG",
+          "license": "CC BY-SA 3.0",
+          "artist": "Nealt",
+          "note": "Dubai Fountain jets with Burj Khalifa behind; cropped to keep both"
+        }
+      ]
     },
     {
       "slot": "fact4",
-      "headline": "Its entire facade is a poem, not decoration",
-      "headline_es": "Toda su fachada es un poema, no una decoración",
-      "body_html": "Dubai's <b>Museum of the Future</b> has no straight windows — its stainless-steel shell is cut with <b>Arabic calligraphy</b> spelling out verses written by the UAE's own ruler, Sheikh Mohammed bin Rashid.",
-      "body_es": "El <b>Museo del Futuro</b> de Dubái no tiene ventanas comunes: su estructura de acero inoxidable está cortada con <b>caligrafía árabe</b> que forma versos escritos por el propio gobernante de los Emiratos, el jeque Mohammed bin Rashid.",
-      "hook": "Dubai's torus-shaped Museum of the Future has no ordinary windows — its whole facade is Arabic calligraphy quoting the ruler's poetry.",
-      "hook_es": "El Museo del Futuro de Dubái, con forma de toroide, no tiene ventanas comunes: toda su fachada es caligrafía árabe con la poesía del gobernante.",
-      "candidates": [],
-      "candidates_note": "No candidates sourced — Commons API unreachable this run (see photo_sourcing_note). Needed: exterior shot of the Museum of the Future showing the calligraphy-cut facade."
+      "headline": "Its windows are made of words",
+      "headline_es": "Sus ventanas están hechas de palabras",
+      "body_html": "The windows of Dubai's <b>Museum of the Future</b> are its writing: the steel shell is cut with <b>Arabic calligraphy</b> quoting Sheikh Mohammed bin Rashid, ruler of Dubai, on the future. At night the letters glow.",
+      "body_es": "Las ventanas del <b>Museo del Futuro</b> de Dubái son su propia escritura: la estructura de acero está recortada con <b>caligrafía árabe</b> que cita frases del jeque Mohammed bin Rashid, gobernante de Dubái, sobre el futuro. De noche, las letras se iluminan.",
+      "hook": "The Museum of the Future's windows are Arabic calligraphy cut into its steel shell, quoting Dubai's ruler on the future.",
+      "hook_es": "Las ventanas del Museo del Futuro son caligrafía árabe: frases del gobernante de Dubái sobre el futuro, recortadas en acero.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Museum_of_the_Future.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Александр Сигачёв",
+          "note": "Museum of the Future at night, calligraphy facade lit"
+        }
+      ]
     },
     {
       "slot": "fact5",
-      "headline": "One frame, two very different versions of the same city",
-      "headline_es": "Un solo marco, dos versiones muy distintas de la misma ciudad",
-      "body_html": "The <b>150-meter Dubai Frame</b> holds a Guinness World Record as the largest building shaped like a picture frame, and from its viewing deck you can see <b>Old Dubai and New Dubai</b> in the same shot.",
-      "body_es": "El <b>Dubai Frame</b>, de 150 metros, tiene un Récord Guinness como el edificio más grande con forma de marco de fotos, y desde su mirador se puede ver el <b>Dubái Viejo y el Dubái Nuevo</b> en la misma imagen.",
-      "hook": "The 150-meter Dubai Frame set a Guinness World Record, and from its deck you can see Old and New Dubai.",
-      "hook_es": "El Dubai Frame, de 150 metros, logró un Récord Guinness, y desde su mirador se ve el Dubái Viejo y el Nuevo.",
-      "candidates": [],
-      "candidates_note": "No candidates sourced — Commons API unreachable this run (see photo_sourcing_note). Needed: Dubai Frame exterior, ideally with both Old and New Dubai visible in frame."
+      "headline": "A record-breaking picture frame with a glass floor",
+      "headline_es": "Un marco de récord con piso de vidrio",
+      "body_html": "The <b>Dubai Frame</b>, about 150 meters tall, holds the Guinness record for the largest building shaped like a picture frame. Its sky bridge has a <b>glass floor</b>, and its windows show Old Dubai on one side and New Dubai on the other.",
+      "body_es": "El <b>Dubai Frame</b>, de unos 150 metros, tiene el récord Guinness como el edificio con forma de marco de fotos más grande del mundo. Su puente superior tiene <b>piso de vidrio</b>, y desde sus ventanas se ve el Dubái Viejo de un lado y el Nuevo del otro.",
+      "hook": "Inside the world's largest picture-frame building, a glass floor lets you look straight down the Dubai Frame's golden walls.",
+      "hook_es": "En el edificio con forma de marco más grande del mundo, un piso de vidrio te deja mirar al vacío.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Dubai_Frame_Glass_Floor-Dubai_UAE-Andres_Larin.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Saaremees",
+          "note": "Glass floor of the Dubai Frame sky bridge looking down the gold leg (only feet visible)"
+        }
+      ]
     },
     {
       "slot": "fact6",
-      "headline": "A gold market born when the pearl trade collapsed",
-      "headline_es": "Un mercado de oro que nació cuando cayó el comercio de perlas",
-      "body_html": "When Japan's cultured pearls crashed the Gulf pearl trade in the <b>1930s</b>, Dubai's merchants turned to gold instead — today an estimated <b>20% of the world's gold</b> is said to pass through the city's souks each year.",
-      "body_es": "Cuando las perlas cultivadas de Japón hundieron el comercio de perlas del Golfo en la década de <b>1930</b>, los comerciantes de Dubái pasaron al oro — hoy se dice que un <b>20% del oro del mundo</b> pasa por sus zocos cada año.",
-      "hook": "When Japan's cultured pearls crashed the pearl trade in the 1930s, Dubai's merchants pivoted to gold instead.",
-      "hook_es": "Cuando las perlas cultivadas de Japón hundieron el comercio de perlas en la década de 1930, los comerciantes de Dubái pasaron al oro.",
-      "candidates": [],
-      "candidates_note": "No candidates sourced — Commons API unreachable this run (see photo_sourcing_note). Needed: Dubai Gold Souk interior/storefronts, Deira."
+      "headline": "Gold took over when the pearls ran out",
+      "headline_es": "El oro llegó cuando se acabaron las perlas",
+      "body_html": "Dubai lived off pearl diving until the <b>1930s</b>, when cheap Japanese cultured pearls and the Great Depression sank the trade. The city turned to trading gold, and Deira's <b>Gold Souk</b> is still lined with jewelers, shop after shop.",
+      "body_es": "Dubái vivía de la pesca de perlas hasta los <b>años 30</b>, cuando las perlas cultivadas de Japón y la Gran Depresión hundieron el negocio. La ciudad pasó a comerciar oro, y el <b>Zoco del Oro</b> de Deira sigue lleno de joyerías, una tras otra.",
+      "hook": "When cultured pearls from Japan sank Dubai's pearl-diving economy in the 1930s, its traders turned to gold instead.",
+      "hook_es": "Cuando las perlas cultivadas de Japón hundieron su pesca de perlas en los años 30, Dubái pasó al oro.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Dubai_Gold_Souk_(8668422526).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Rob Young from United Kingdom",
+          "note": "Gold Souk covered lane in Deira, shoppers small and distant"
+        }
+      ]
     },
     {
       "slot": "fact7",
-      "headline": "Before the oil, this creek was the whole economy",
-      "headline_es": "Antes del petróleo, este canal era toda la economía",
-      "body_html": "Decades before oil was discovered in <b>1966</b>, Dubai was a small fishing, pearling and trading settlement built around <b>Dubai Creek</b>, where wooden abra boats still ferry passengers across the water exactly as they did then.",
-      "body_es": "Décadas antes de que se descubriera petróleo en <b>1966</b>, Dubái era un pequeño pueblo de pesca, perlas y comercio alrededor del <b>Dubai Creek</b>, donde los botes de madera llamados abra todavía cruzan el agua igual que entonces.",
-      "hook": "Oil wasn't discovered in Dubai until 1966 — before that, this creek was home to a small fishing and pearling town.",
-      "hook_es": "El petróleo no se descubrió en Dubái hasta 1966 — antes de eso, este canal era un pequeño pueblo de pesca y perlas.",
-      "candidates": [],
-      "candidates_note": "No candidates sourced — Commons API unreachable this run (see photo_sourcing_note). Needed: Dubai Creek with traditional wooden abra boats, Deira/Bur Dubai waterfront."
+      "headline": "Before oil, the whole city lived on this creek",
+      "headline_es": "Antes del petróleo, la ciudad vivía de este canal",
+      "body_html": "Before oil was found offshore in <b>1966</b>, Dubai was a small fishing, pearling and trading town built around <b>Dubai Creek</b>. Wooden abra boats still ferry people across it, and a ride costs <b>one dirham</b>.",
+      "body_es": "Antes de que se descubriera petróleo en el mar en <b>1966</b>, Dubái era un pequeño pueblo de pesca, perlas y comercio alrededor del <b>Dubai Creek</b>. Los botes de madera llamados abra todavía lo cruzan, y el viaje cuesta <b>un dírham</b>.",
+      "hook": "Before oil was found in 1966, Dubai lived around this creek, where wooden abras still cross for one dirham.",
+      "hook_es": "Antes del petróleo de 1966, Dubái vivía de este canal, que los botes de madera aún cruzan por un dírham.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Dubai_Creek_from_an_abra_3.jpg",
+          "license": "Public domain",
+          "artist": "CT Cooper",
+          "note": "Wooden abra crossing Dubai Creek; cropped around the boat"
+        }
+      ]
     }
-  ]
+  ],
+  "cta_screenshot_note": "No Dubai map screenshot in the repo; using the generic app screen per GUIDELINES.md."
 }
