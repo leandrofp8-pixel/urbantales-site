@@ -1992,6 +1992,41 @@
 
     <!-- ── NOTIFICATIONS ── -->
     <div class="tab-panel" id="panel-notifications">
+      <!-- Push performance: sent / delivered / opened / converted per type -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">How notifications perform
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px" id="notifPerfMeta">selected period vs the one before</span>
+        </div>
+        <div style="font-size:0.8rem;color:var(--muted);margin:-8px 0 14px;max-width:95ch">Every push is logged with its type. Delivered = accepted by Apple/Google (Expo receipts). Opened = tapped (app 3.4.5+), or for older app versions "opened the app within 1 hour". Converted = did what that notification is for.</div>
+        <details class="cfg-box" id="cfgBox_notif">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_notif"></span></summary>
+          <div class="cfg-grid" id="cfg_notif"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('notif')" id="cfgSave_notif">Save</button><span id="cfgMsg_notif"></span></div>
+        </details>
+        <div class="grid-4" id="notifPerfKpis"><div class="card"><div class="loading">Loading…</div></div></div>
+        <div class="table-wrap">
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr style="color:var(--muted);font-size:0.75rem">
+              <th style="text-align:left;padding:6px 0">Notification</th><th style="text-align:right">Sent</th><th style="text-align:right">Delivered</th>
+              <th style="text-align:right">Opened</th><th style="text-align:right">Converted</th><th style="text-align:right">No-push group</th><th style="text-align:right">Push effect</th>
+            </tr></thead>
+            <tbody id="notifPerfRows"><tr><td colspan="7" class="loading">Loading…</td></tr></tbody>
+          </table>
+        </div>
+        <div class="grid-2" style="margin-top:18px;margin-bottom:0">
+          <div style="background:#151515;border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+            <div style="font-size:0.85rem;font-weight:600;margin-bottom:8px">Sent, opened and converted<span class="gran-switch" data-notif="trend"></span></div>
+            <div class="chart-wrap" style="height:200px"><canvas id="chartNotifTrend"></canvas></div>
+          </div>
+          <div style="background:#151515;border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+            <div style="font-size:0.85rem;font-weight:600;margin-bottom:4px">Do the automatic pushes actually help?</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin-bottom:10px" id="notifHoldoutLede">A share of eligible users get no push. Comparing them with everyone else shows what the push itself adds, beyond people who would have come back anyway.</div>
+            <div id="notifHoldout"></div>
+          </div>
+        </div>
+        <div style="font-size:0.74rem;color:var(--muted);margin-top:14px" id="notifPerfNote"></div>
+      </div>
+
       <div class="notif-form">
 
         <!-- SEGMENT -->
@@ -3002,6 +3037,10 @@ function mixedChart(id, labels, datasets, opts = {}) {
 // Each group saves only its own keys; PUT /admin/settings ignores keys it isn't sent.
 // ══════════════════════════════════════════════
 const CONFIG_GROUPS = {
+  notif: { state: s => (s.notif_holdout_pct ?? 10) > 0 ? `No-push group ${s.notif_holdout_pct ?? 10}%` : 'No holdout (everyone gets the nudges)', fields: [
+    { note: 'Applies to the two automatic 24 h nudges (first story, come back). The no-push group gets nothing, so the dashboard can show what the push itself adds. 0 = everyone gets them.' },
+    { key: 'notif_holdout_pct', label: '% of eligible users in the no-push group', def: 10, attrs: 'min="0" max="50"' },
+  ] },
   model: { state: s => (s.model_experiment_enabled ?? true) ? `Running · ${s.model_experiment_pct ?? 50}% on ${s.model_experiment_model || 'gemini-3.8-flash'}` : 'Paused (no new assignments)', fields: [
     { note: 'Everyone is assigned once, at their next story. The test group hears only the test model\'s stories (its own cache), so its cache starts empty and it waits more at first. Switching it off is the kill switch: nobody gets the test model and no one new is assigned; assignments are kept for the results.' },
     { key: 'model_experiment_enabled', type: 'toggle', label: 'Test running (off = everyone back on today\'s model)', def: true },
@@ -7103,7 +7142,7 @@ async function loadAllData() {
   loadStoreOverview(_storeSelected);  // independent: a failure elsewhere can't block it
   loadTripRetention(days);  // independent too (reads every story event)
   try {
-    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth, storefrontExperiment, themeExperiment, modelExperiment] = await Promise.all([
+    const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth, storefrontExperiment, themeExperiment, modelExperiment, notifPerf] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
       api(`/analytics/kpi/funnel-cohort?${_dateParams()}`),
       api(`/analytics/kpi/cohorts-monthly?months=6`),
@@ -7137,6 +7176,7 @@ async function loadAllData() {
       api(`/admin/analytics/storefront-experiment`).catch(() => null),
       api(`/admin/analytics/theme-experiment`).catch(() => null),
       api(`/admin/analytics/model-experiment`).catch(() => null),
+      api(`/admin/analytics/notifications?days=${days}`).catch(() => null),
     ]);
 
     renderOverview(funnel, freeUsers, revenue, themeBreakdown);
@@ -7168,6 +7208,7 @@ async function loadAllData() {
     renderStorefrontExperiment(storefrontExperiment);
     renderThemeExperiment(themeExperiment, themeBreakdown);
     renderModelExperiment(modelExperiment);
+    renderNotifPerformance(notifPerf);
     renderReviewPrompt(reviewPrompt);
     renderNarrationConfig(narrationConfigResp?.config || null);
   } catch (e) {
@@ -7393,6 +7434,86 @@ function renderStorefrontExperiment(data) {
   el.innerHTML = `<p>${data.enabled ? 'Enrolling' : 'Enrollment paused'} · ${Number(data.test_pct)}% coins first · ${Number(data.window_days)}-day conversion window</p>
     <p style="color:var(--muted);font-size:0.8rem">Conversion and revenue use only users whose full window has elapsed. Purchases must follow first exposure and fall within that window. Coin and subscription buyers can overlap. Sandbox, renewals and known zero-price trials are excluded. Revenue is recorded gross USD before fees/refunds; missing prices are disclosed. Small samples do not establish a winner.</p>
     ${!rows.length ? '<p>No measured Store exposures yet. Release the supported mobile app and enable enrollment in Settings.</p>' : `<div class="table-wrap"><table><thead><tr><th>Segment</th><th>Layout</th><th>Exposed</th><th>Completed window</th><th>Paid buyers</th><th>Conversion</th><th>Coin buyers</th><th>Subscription buyers</th><th>Gross USD</th><th>USD / completed user</th><th>Unpriced purchases</th></tr></thead><tbody>${rows.map(r => `<tr><td>${escapeHtml(segment(r.segment))}</td><td>${escapeHtml(labels[r.variant] || r.variant)}</td><td>${fmt(r.exposed)}</td><td>${fmt(r.mature)}</td><td>${fmt(r.buyers)}</td><td>${pct(r.conversion_pct)}</td><td>${fmt(r.coin_buyers)}</td><td>${fmt(r.subscription_buyers)}</td><td>${money(r.gross_usd)}</td><td>${money(r.revenue_per_exposed_usd)}</td><td>${fmt(r.unpriced_purchases)}</td></tr>`).join('')}</tbody></table></div>`}`;
+}
+
+let _notifPerf = null;
+function renderNotifPerformance(data) {
+  _notifPerf = data;
+  const rowsEl = document.getElementById('notifPerfRows');
+  if (!rowsEl) return;
+  if (!data || !data.kpis) {
+    document.getElementById('notifPerfKpis').innerHTML = '';
+    rowsEl.innerHTML = '<tr><td colspan="7" class="loading">Could not load notification results.</td></tr>';
+    return;
+  }
+  const k = data.kpis;
+  document.getElementById('notifPerfMeta').textContent = `last ${data.period_days} days vs the ${data.period_days} before`;
+  document.getElementById('notifPerfKpis').innerHTML =
+    _tripKpi('Sent', k.sent, '', 'pushes, all types') +
+    _tripKpi('Delivered', k.delivered_pct, '%', `${fmt(k.dead_devices)} to devices that no longer exist (removed)`) +
+    _tripKpi('Opened', k.opened_pct, '%', 'of delivered') +
+    _tripKpi('Converted', k.converted_pct, '%', 'did what the push was for');
+  const muted = t => `<span style="color:var(--muted);font-weight:400">${t}</span>`;
+  const pctOr = v => v == null ? '—' : v + '%';
+  const chip = d => {
+    if (!d || d.diff_pts == null) return '';
+    const sure = d.confidence ?? 0, sig = sure >= 95, cls = !sig ? 'blue' : d.diff_pts > 0 ? 'green' : 'red';
+    return `<span class="kpi-badge badge-${cls}" style="display:inline-block;margin:0;white-space:nowrap">${d.diff_pts > 0 ? '+' : ''}${d.diff_pts} pts · ${sure}% sure${sig ? ' ✓' : ''}</span>`;
+  };
+  const tr = 'style="text-align:right"';
+  rowsEl.innerHTML = !data.table.length
+    ? '<tr><td colspan="7" class="loading">No pushes logged in this period yet.</td></tr>'
+    : data.table.map(r => `<tr>
+        <td><strong>${escapeHtml(r.label)}</strong> <span class="pill" style="border:1px solid ${r.auto ? 'rgba(96,165,250,.45)' : '#3a3a3a'};color:${r.auto ? 'var(--blue)' : 'var(--muted)'}">${r.auto ? 'AUTO' : 'MANUAL'}</span>
+          <div style="font-size:0.72rem;color:var(--muted);white-space:normal">${escapeHtml(r.when)} · goal: ${escapeHtml(r.goal)}</div></td>
+        <td ${tr}>${fmt(r.sent)}</td>
+        <td ${tr}>${pctOr(r.delivered_pct)}</td>
+        <td ${tr}>${pctOr(r.opened_pct)} ${muted(r.tapped ? fmt(r.tapped) + (r.tapped === 1 ? ' tap' : ' taps') : '')}</td>
+        <td ${tr}><strong>${pctOr(r.converted_pct)}</strong> ${muted(fmt(r.converted))}</td>
+        <td ${tr}>${r.holdout ? pctOr(r.holdout.converted_pct) + ' ' + muted('n=' + fmt(r.holdout.n)) : muted('—')}</td>
+        <td ${tr}>${r.holdout ? chip(r.holdout.effect) : ''}</td>
+      </tr>`).join('');
+  const held = data.table.filter(r => r.holdout);
+  document.getElementById('notifHoldoutLede').textContent =
+    `${data.settings?.holdout_pct ?? 10}% of eligible users get no push. Comparing them with everyone else shows what the push itself adds, beyond people who would have come back anyway.`;
+  document.getElementById('notifHoldout').innerHTML = !held.length
+    ? '<div style="color:var(--muted);font-size:0.8rem">No automatic nudges in this period yet.</div>'
+    : held.map(r => {
+        const a = r.converted_pct ?? 0, b = r.holdout.converted_pct ?? 0, mx = Math.max(a, b, 1);
+        return `<div style="border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:10px">
+          <div style="font-weight:600;font-size:0.82rem;margin-bottom:6px">${escapeHtml(r.label)}</div>
+          <div style="display:grid;grid-template-columns:90px 1fr 52px;gap:6px 10px;align-items:center;font-size:0.78rem">
+            <span>With push</span><div style="height:10px;background:#222;border-radius:5px;overflow:hidden"><i style="display:block;height:100%;width:${a / mx * 100}%;background:${C.primary}"></i></div><span>${pctOr(r.converted_pct)}</span>
+            <span>No push</span><div style="height:10px;background:#222;border-radius:5px;overflow:hidden"><i style="display:block;height:100%;width:${b / mx * 100}%;background:${C.blue}"></i></div><span>${pctOr(r.holdout.converted_pct)}</span>
+          </div>
+          <div style="font-size:0.74rem;color:var(--muted);margin-top:6px">${chip(r.holdout.effect)} n = ${fmt(r.sent)} / ${fmt(r.holdout.n)}</div>
+        </div>`;
+      }).join('');
+  document.getElementById('notifPerfNote').textContent = (data.tracking_since
+    ? `Tracking since ${fmtDate(data.tracking_since)}; earlier pushes weren't logged. `
+    : 'Tracking starts with the first push after this ships; earlier pushes weren\'t logged. ')
+    + 'Devices Apple/Google report as gone are removed from our list automatically. "% sure" = chance the difference isn\'t noise; call it at 95%. Admin and internal accounts are left out.';
+  document.querySelectorAll('.gran-switch[data-notif]').forEach(el => {
+    el.innerHTML = ['D', 'W', 'M'].map(g => `<button type="button" data-g="${g}" onclick="setNotifGran('${g}')" title="${{ D: 'Daily', W: 'Weekly', M: 'Monthly' }[g]}">${g}</button>`).join('');
+  });
+  renderNotifTrend();
+}
+function setNotifGran(g) {
+  try { localStorage.setItem('ut_notif_gran', g); } catch (e) {}
+  renderNotifTrend();
+}
+function renderNotifTrend() {
+  if (!_notifPerf) return;
+  let g = 'D';
+  try { g = localStorage.getItem('ut_notif_gran') || 'D'; } catch (e) {}
+  document.querySelectorAll('.gran-switch[data-notif] button').forEach(b => b.classList.toggle('active', b.dataset.g === g));
+  const sr = _notifPerf.series[g];
+  const lab = iso => { const d = new Date(iso + 'T00:00:00Z'); return g === 'M' ? d.toLocaleDateString('en-US', { month: 'short', year: '2-digit', timeZone: 'UTC' }) : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }); };
+  lineChart('chartNotifTrend', sr.labels.map(lab), [
+    { label: 'Sent', data: sr.sent, color: '#888888', fill: false },
+    { label: 'Opened', data: sr.opened, color: C.primary },
+    { label: 'Converted', data: sr.converted, color: C.green, fill: false },
+  ], { y: { ticks: { color: '#555', font: { size: 10 }, precision: 0 } } });
 }
 
 function renderModelExperiment(data) {
