@@ -7,7 +7,7 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 
 | Date | Type | City | Post |
 |---|---|---|---|
-| Hidden Story | Athens | Hidden Story: Athens' Panathenaic Stadium, where the marathon ends (Scout 22 Oct: The Athens Authentic Marathon finishes here on Nov 8.) |
+| 2026-10-26 | Hidden Story | Athens | [blog-athens-panathenaic-stadium-secret-history.html](blog-athens-panathenaic-stadium-secret-history.html) — A shipping fortune rebuilt a buried, 2,400-year-old marble stadium in time for the first modern marathon's finish line (tied to the Athens Authentic Marathon, Nov 8 2026) |
 | City Guide | Budapest | Budapest Christmas market walk: from St. Stephen's Basilica to Vörösmarty Square (Scout 22 Oct: Both markets are reported to open Nov 13. The date is not officially confirmed yet.) |
 | Hidden Story | Venice | Venice's Festa della Salute: the plague church and the bridge built for one day (Scout 22 Oct: The festa is on Nov 21, the one day a pontoon bridge crosses the Grand Canal.) |
 | 2026-10-23 | City Guide | Buenos Aires | [blog-monserrat-san-telmo-noche-museos-walk.html](blog-monserrat-san-telmo-noche-museos-walk.html) — A self-guided Monserrat and San Telmo walk, timed for La Noche de los Museos (Sat 14 Nov 2026) |
@@ -41,7 +41,7 @@ already in this repo, so the post's CTAs and internal links can point to it.
 | Type | City | Angle |
 |---|---|---|
 
-The formal Queue is still empty. Two "Scout" rows remain mis-filed in the Published table above, both with no post written yet: Athens (Hidden Story — Panathenaic Stadium marathon finish, Nov 8 2026, deadline close) and Budapest (City Guide — Christmas market walk, dates not officially confirmed). The Buenos Aires scout row (Noche de los Museos, Sat 14 Nov 2026) has now been written and properly filed above. Since this run published a City Guide (Buenos Aires), the next post should be a Hidden Story — Athens is the only Hidden Story scout and has the tightest deadline, so it should be next.
+The formal Queue is still empty. One "Scout" row remains mis-filed in the Published table above, with no post written yet: Budapest (City Guide — Christmas market walk, dates not officially confirmed). The Athens scout row (Panathenaic Stadium marathon finish, Nov 8 2026) has now been written and properly filed above, and the Venice Festa della Salute scout row (Nov 21 2026) is still open as a Hidden Story option. Since this run published a Hidden Story (Athens), the next post should be a City Guide — Budapest is the only City Guide scout, but its dates aren't confirmed yet, so double-check that before writing it, or pick a fresh City Guide topic per "Adding new topics" below if the Budapest dates still haven't firmed up.
 
 ## Adding new topics
 
