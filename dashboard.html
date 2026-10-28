@@ -1188,6 +1188,15 @@
               <input id="nc_temperature" type="number" min="0" max="2" step="0.05" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
             </div>
             <div>
+              <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Wikipedia facts
+                <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Wikipedia facts</b><br>On: before writing a new story, the model gets the landmark's Wikipedia article (only an article whose title matches and whose map location is within 30 km).<br><br>Off: stories come from the model's own knowledge only. Takes effect on the next new story; stories already saved don't change.</span></span>
+              </label>
+              <select id="nc_wikipedia_grounding" style="width:100%;padding:8px;background:#111;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem">
+                <option value="true">On</option>
+                <option value="false">Off</option>
+              </select>
+            </div>
+            <div>
               <label style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:4px">Words — MAJOR
                 <span class="tip"><span class="tip-icon">?</span><span class="tip-box"><b>Target words — MAJOR</b><br>Famous landmarks (Eiffel Tower, Colosseum).<br><br>250 ≈ 1.5–1.7 min &nbsp;|&nbsp; 350 ≈ 2–2.5 min<br><br>This is the real length control — the prompt tells the model to write approximately this many words.</span></span>
               </label>
@@ -7220,7 +7229,7 @@ async function loadAllData() {
 // NARRATION CONFIG
 // ══════════════════════════════════════════════
 const _NARRATION_DEFAULTS = {
-  narration_provider: 'openai', openai_model: 'gpt-5.4-mini', temperature: 0.6,
+  narration_provider: 'openai', openai_model: 'gpt-5.4-mini', temperature: 0.6, wikipedia_grounding: true,
   target_words_major: 250, target_words_notable: 175, target_words_local: 100,
   speaking_rate: 1.0, pitch: 0.0,
 };
@@ -7239,6 +7248,7 @@ function renderNarrationConfig(cfg) {
   if (sel) sel.value = c.openai_model || 'gpt-5.4-mini';
   const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
   set('nc_temperature', c.temperature ?? 0.6);
+  set('nc_wikipedia_grounding', String(c.wikipedia_grounding ?? true));
   set('nc_target_words_major', c.target_words_major ?? 250);
   set('nc_target_words_notable', c.target_words_notable ?? 175);
   set('nc_target_words_local', c.target_words_local ?? 100);
@@ -7266,6 +7276,7 @@ async function saveNarrationConfig() {
     narration_provider: document.getElementById('nc_narration_provider').value,
     openai_model: document.getElementById('nc_openai_model').value,
     temperature: parseFloat(document.getElementById('nc_temperature').value),
+    wikipedia_grounding: document.getElementById('nc_wikipedia_grounding').value === 'true',
     target_words_major: parseInt(document.getElementById('nc_target_words_major').value),
     target_words_notable: parseInt(document.getElementById('nc_target_words_notable').value),
     target_words_local: parseInt(document.getElementById('nc_target_words_local').value),
