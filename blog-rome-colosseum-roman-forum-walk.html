@@ -205,7 +205,10 @@
     </div>
   </div>
 
-  <!-- WALK-POINTER -->
+  <div class="walk-pointer">
+    <span class="pin">→</span>
+    <span>This walk is in the app as a free 6-stop route through ancient Rome, from the Colosseum to Capitoline Hill. <a href="#walk">See it ↓</a></span>
+  </div>
 
   <p class="lede">The Colosseum could hold as many as 80,000 people, and the floor they stood above hid more than 60 wooden lifts that could make a bear appear to rise out of solid ground on cue. This self-guided Colosseum and Roman Forum walk starts there and ends six stops later, at a balcony no plaque bothers to point out — about 2.3 km, roughly 30 minutes of actual walking if you don't go inside anything along the way.</p>
 
@@ -242,25 +245,36 @@
 
   <p>Via del Corso runs north from here toward the Pantheon and, a few streets further, the <a href="https://urbantales.net/blog-trevi-fountain-secret-history.html">Trevi Fountain</a> — close enough to fold into the same afternoon. Urban Tales narrates this whole stretch of central Rome automatically as you walk it; see the full <a href="https://urbantales.net/rome.html">Rome guide</a> for everything else the app covers nearby, or browse <a href="https://urbantales.net/blog.html">more self-guided walks and hidden histories</a> on The Wander Log.</p>
 
-  <!-- WALK-CARD -->
-  <script type="application/json" id="walk-spec">
-  {
-    "name": "Ancient Rome on foot: Colosseum to Capitoline Hill",
-    "city": "Rome, Italy",
-    "mode": "walk",
-    "story": null,
-    "pointer": "This walk is in the app as a free 6-stop route through ancient Rome, from the Colosseum to Capitoline Hill.",
-    "stops": [
-      {"query": "Colosseum Rome", "name": "Colosseum", "hook": "The underground lift system that made animals appear to rise out of nowhere"},
-      {"query": "Arch of Constantine Rome", "name": "Arch of Constantine", "hook": "Carved mostly from monuments built for three earlier emperors"},
-      {"query": "Roman Forum", "name": "Roman Forum", "hook": "The Temple of Caesar, still getting fresh flowers on the cremation site"},
-      {"query": "Palatine Hill Rome", "name": "Palatine Hill", "hook": "Augustus's private study, painted to fake a view it never had"},
-      {"query": "Piazza del Campidoglio Rome", "name": "Piazza del Campidoglio", "hook": "Michelangelo's optical trick on a square that isn't square"},
-      {"query": "Piazza Venezia Rome", "name": "Piazza Venezia", "hook": "The unmarked balcony Mussolini spoke from for two decades"}
-    ]
-  }
-  </script>
-</article>
+  <section class="walk" id="walk" aria-labelledby="walk-title">
+    <div class="walk-head">
+      <span class="walk-label">Walk this route</span>
+      <h3 id="walk-title">Ancient Rome on foot: Colosseum to Capitoline Hill</h3>
+      <div class="walk-facts"><span><b>6 stops</b></span><span><b>3.2 km</b></span><span>about <b>45 min</b> of walking, plus time at each stop</span><span>a story at every stop</span></div>
+    </div>
+    <ol class="stops">
+      <li class="stop"><span class="n">1</span><div><div class="name">Colosseum</div><div class="hook">The underground lift system that made animals appear to rise out of nowhere</div></div></li>
+      <li class="stop"><span class="n">2</span><div><div class="name">Arch of Constantine</div><div class="hook">Carved mostly from monuments built for three earlier emperors</div></div></li>
+      <li class="stop"><span class="n">3</span><div><div class="name">Roman Forum</div><div class="hook">The Temple of Caesar, still getting fresh flowers on the cremation site</div></div></li>
+      <li class="stop"><span class="n">4</span><div><div class="name">Palatine Hill</div><div class="hook">Augustus&#x27;s private study, painted to fake a view it never had</div></div></li>
+      <li class="stop"><span class="n">5</span><div><div class="name">Piazza del Campidoglio</div><div class="hook">Michelangelo&#x27;s optical trick on a square that isn&#x27;t square</div></div></li>
+      <li class="stop"><span class="n">6</span><div><div class="name">Piazza Venezia</div><div class="hook">The unmarked balcony Mussolini spoke from for two decades</div></div></li>
+    </ol>
+    <div class="walk-actions">
+      <a class="open-walk" href="https://urbantales.net/tour.html?id=6ae2118244ec94eb4558b693&amp;utm_source=blog&amp;utm_campaign=rome-colosseum-roman-forum-walk"><img src="icon.png" alt="">Open this walk in Urban Tales</a>
+      <p class="walk-sub">Free to start. No app yet? The link opens the walk's page with a story preview and download links.</p>
+      <div class="app-cta-badges">
+        <a href="https://apps.apple.com/app/id6760130598" class="store-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span><small>Download on the</small><strong>App Store</strong></span>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.urbantales.app" class="store-badge">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76c.3.16.64.2.98.1l11.53-11.53L12 8.64 3.18 23.76z" fill="#EA4335"/><path d="M20.58 10.42l-2.8-1.6-3.27 3.27 3.27 3.27 2.82-1.61a1.6 1.6 0 000-2.8l-.02-.03z" fill="#FBBC04"/><path d="M3.18 23.76L12 8.64l-8.82-5.12A1.6 1.6 0 001.6 5v14a1.6 1.6 0 001.58 1.76z" fill="#34A853"/><path d="M3.18.24A1.6 1.6 0 001.6 2v.24L12 8.64l2.78-2.78L3.18.24z" fill="#4285F4"/></svg>
+          <span><small>Get it on</small><strong>Google Play</strong></span>
+        </a>
+      </div>
+    </div>
+  </section>
+  </article>
 
 <div class="article-footer">
   <p style="font-size:11.5px;color:var(--ink-faint);margin:0 0 4px;">Photo: <a href="https://www.pexels.com/@magda-ehlers-pexels" target="_blank" rel="noopener" style="color:var(--ink-faint);">Magda Ehlers</a> / <a href="https://www.pexels.com/photo/iconic-trevi-fountain-in-rome-at-daytime-36132782/" target="_blank" rel="noopener" style="color:var(--ink-faint);">Pexels</a></p>
