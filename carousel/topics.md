@@ -36,7 +36,6 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 29 | Seville |
 | 31 | Cairo |
 | 33 | Dubai |
-| 34 | Edinburgh |
 | 35 | Edinburgh |
 
 ## Next batch
@@ -44,6 +43,11 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 **#36 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
+
+Note (2026-10-28): same thing happened with Edinburgh — drafted as #34, the finisher bumped it to
+**#35** (`batch.json`'s `badge_num`) and added its own Published row without removing the draft's
+#34 row. Removed the stale duplicate #34 row above. #34 is now an unused gap, same as #22, #30 and
+#32.
 
 Note (2026-10-14): Kyoto was drafted as #22; the finisher that sourced photos and rendered it
 bumped the badge to **#23** instead (reason not stated in its PR comment — no other PR claimed
