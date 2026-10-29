@@ -1,0 +1,172 @@
+{
+  "badge_num": 35,
+  "city": "EDINBURGH",
+  "flag": "🇬🇧",
+  "cta_screenshot": "screen-generic-narration-style.png",
+  "cta_screenshot_note": "No Edinburgh map screenshot in the repo (no screen-edinburgh-*-map.png file and no edinburgh.html page exists yet); using the generic app screen per GUIDELINES.md.",
+  "style": "minimal",
+  "photo_sourcing_blocked": false,
+  "caption": "Which of these 7 Edinburgh secrets didn't you know? Comment the number 👇\n\n1. Castle Rock\nEdinburgh Castle sits on Castle Rock, the plug of hard volcanic rock left from a volcano that erupted around 340 million years ago. Glaciers later scraped away the softer rock around it, leaving the crag standing tall.\n\n2. Mary King's Close\nThis cramped Old Town street was partly demolished from 1753 so the Royal Exchange (today's City Chambers) could be built on top. Its lower floors survived underground as the building's foundations, and opened to visitors in 2003.\n\n3. Greyfriars Bobby\nAs the story goes, after his owner died in 1858, a Skye Terrier named Bobby kept returning to the grave in Greyfriars Kirkyard for 14 years, until his own death in 1872. In 1867 the Lord Provost paid for his dog licence and gave him a collar, now in the Museum of Edinburgh.\n\n4. The One O'Clock Gun\nEdinburgh Castle has fired the One O'Clock Gun every day except Sundays, Good Friday and Christmas Day since 1861. It began as a time signal so ships on the Firth of Forth could set their chronometers, even on days too foggy to see the time ball on Calton Hill.\n\n5. Scott Monument\nThis Gothic spire on Princes Street, finished in the 1840s to honor novelist Sir Walter Scott, rises 61 meters and has 287 steps to the top. It's the second-largest monument to a writer in the world, after the José Martí memorial in Havana.\n\n6. New Town\nIn 1766, Edinburgh's council ran a competition to plan a new Georgian district beyond the crowded Old Town. The winner was James Craig, a little-known architect in his twenties. His grid of streets and squares is now part of a UNESCO World Heritage Site.\n\n7. Edinburgh Festival Fringe\nIn 1947, eight theater companies turned up uninvited to the first Edinburgh International Festival and put on their own shows in spare venues. That gatecrash became the Edinburgh Festival Fringe, now billed as the world's largest performing arts festival.\n\n.\n.\n.\n#Edinburgh #Scotland #TravelFacts #EdinburghCastle #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Edimburgo no conocías? Comenta el número 👇\n\n1. Castle Rock\nEl Castillo de Edimburgo está sobre Castle Rock, el tapón de roca volcánica que dejó un volcán que hizo erupción hace unos 340 millones de años. Después, los glaciares arrastraron la roca más blanda de alrededor y dejaron el peñasco en alto.\n\n2. Mary King's Close\nEsta calle estrecha del Casco Antiguo fue demolida en parte desde 1753 para construir encima el Royal Exchange (hoy la sede del ayuntamiento). Sus pisos bajos sobrevivieron bajo tierra como cimientos del edificio y abrieron al público en 2003.\n\n3. Greyfriars Bobby\nSegún la historia, tras la muerte de su dueño en 1858, un terrier Skye llamado Bobby volvió a su tumba en el cementerio de Greyfriars durante 14 años, hasta su propia muerte en 1872. En 1867 el alcalde de la ciudad le pagó la licencia y le regaló un collar, hoy en el Museo de Edimburgo.\n\n4. El Cañón de la Una\nEl Castillo de Edimburgo dispara el Cañón de la Una todos los días desde 1861, salvo domingos, Viernes Santo y Navidad. Nació como señal horaria para que los barcos del Firth of Forth ajustaran sus cronómetros, incluso en días con tanta niebla que no se veía la bola horaria de Calton Hill.\n\n5. Scott Monument\nEsta aguja gótica en Princes Street, terminada en la década de 1840 en honor al novelista Sir Walter Scott, mide 61 metros y tiene 287 escalones hasta la cima. Es el segundo monumento más grande del mundo dedicado a un escritor, después del memorial a José Martí en La Habana.\n\n6. New Town\nEn 1766, el ayuntamiento de Edimburgo organizó un concurso para trazar un nuevo barrio georgiano fuera del abarrotado Casco Antiguo. Lo ganó James Craig, un arquitecto poco conocido de veintitantos años. Su cuadrícula de calles y plazas hoy es Patrimonio de la Humanidad.\n\n7. Edinburgh Festival Fringe\nEn 1947, ocho compañías de teatro llegaron sin invitación al primer Festival Internacional de Edimburgo y montaron sus propias funciones en salas libres. Esa colada se convirtió en el Edinburgh Festival Fringe, hoy considerado el festival de artes escénicas más grande del mundo.\n\n.\n.\n.\n#Edimburgo #Escocia #DatosCuriosos #Viajes #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Edinburgh Castle sits on an extinct volcano",
+      "headline_es": "El castillo de Edimburgo está sobre un volcán extinto",
+      "body_html": "Edinburgh Castle sits on Castle Rock, the plug of hard volcanic rock left from a volcano that erupted around 340 million years ago. Glaciers later scraped away the softer rock around it, leaving the crag standing tall.",
+      "body_es": "El Castillo de Edimburgo está sobre Castle Rock, el tapón de roca volcánica que dejó un volcán que hizo erupción hace unos 340 millones de años. Después, los glaciares arrastraron la roca más blanda de alrededor y dejaron el peñasco en alto.",
+      "hook": "Edinburgh Castle stands on Castle Rock, the hard plug of a volcano that erupted around 340 million years ago.",
+      "hook_es": "El Castillo de Edimburgo está sobre Castle Rock, tapón de un volcán activo hace unos 340 millones de años.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Castle_Rock_Edinburgh.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Scglossop1"
+        }
+      ],
+      "suggested_queries": [
+        "Edinburgh Castle Castle Rock",
+        "Edinburgh Castle from Grassmarket"
+      ]
+    },
+    {
+      "slot": "fact2",
+      "headline": "A whole street was buried under a new building",
+      "headline_es": "Enterraron una calle entera bajo un edificio nuevo",
+      "body_html": "This cramped Old Town street was partly demolished from 1753 so the Royal Exchange (today's City Chambers) could be built on top. Its lower floors survived underground as the building's foundations, and opened to visitors in 2003.",
+      "body_es": "Esta calle estrecha del Casco Antiguo fue demolida en parte desde 1753 para construir encima el Royal Exchange (hoy la sede del ayuntamiento). Sus pisos bajos sobrevivieron bajo tierra como cimientos del edificio y abrieron al público en 2003.",
+      "hook": "In the 1750s, Mary King's Close was built over by the Royal Exchange. Its lower floors still survive underground.",
+      "hook_es": "En la década de 1750, Mary King's Close quedó enterrada bajo el Royal Exchange. Sus pisos bajos siguen bajo tierra.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Mary_King%27s_Close_(Mario_RM)_-_Flickr.jpg",
+          "license": "CC BY-SA 2.0",
+          "artist": "Mario RM from Madrid, Spain"
+        }
+      ],
+      "suggested_queries": [
+        "Mary King's Close Edinburgh",
+        "Real Mary King's Close underground street"
+      ]
+    },
+    {
+      "slot": "fact3",
+      "headline": "A dog guarded this grave for 14 years",
+      "headline_es": "Un perro vigiló esta tumba durante 14 años",
+      "body_html": "As the story goes, after his owner died in 1858, a Skye Terrier named Bobby kept returning to the grave in Greyfriars Kirkyard for 14 years, until his own death in 1872. In 1867 the Lord Provost paid for his dog licence and gave him a collar, now in the Museum of Edinburgh.",
+      "body_es": "Según la historia, tras la muerte de su dueño en 1858, un terrier Skye llamado Bobby volvió a su tumba en el cementerio de Greyfriars durante 14 años, hasta su propia muerte en 1872. En 1867 el alcalde de la ciudad le pagó la licencia y le regaló un collar, hoy en el Museo de Edimburgo.",
+      "hook": "As the story goes, the terrier Greyfriars Bobby guarded his owner's grave for 14 years, from 1858 to 1872.",
+      "hook_es": "Según la historia, el terrier Greyfriars Bobby cuidó la tumba de su dueño durante 14 años, de 1858 a 1872.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Greyfriars_Bobby_statue_on_a_rainy_day_in_Edinburgh.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Drkirstyross"
+        }
+      ],
+      "suggested_queries": [
+        "Greyfriars Bobby statue",
+        "Greyfriars Bobby grave Edinburgh"
+      ]
+    },
+    {
+      "slot": "fact4",
+      "headline": "A cannon still fires every day to tell the time",
+      "headline_es": "Un cañón sigue disparando cada día para dar la hora",
+      "body_html": "Edinburgh Castle has fired the One O'Clock Gun every day except Sundays, Good Friday and Christmas Day since 1861. It began as a time signal so ships on the Firth of Forth could set their chronometers, even on days too foggy to see the time ball on Calton Hill.",
+      "body_es": "El Castillo de Edimburgo dispara el Cañón de la Una todos los días desde 1861, salvo domingos, Viernes Santo y Navidad. Nació como señal horaria para que los barcos del Firth of Forth ajustaran sus cronómetros, incluso en días con tanta niebla que no se veía la bola horaria de Calton Hill.",
+      "hook": "Since 1861, Edinburgh Castle has fired a gun at 1 p.m. so ships offshore could set their clocks.",
+      "hook_es": "Desde 1861, el Castillo de Edimburgo dispara un cañón a la una para que los barcos ajustaran sus relojes.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:One_OClock_Gun.JPG",
+          "license": "Public domain",
+          "artist": "User:Jcfrye"
+        }
+      ],
+      "suggested_queries": [
+        "One O'Clock Gun Edinburgh Castle",
+        "Edinburgh Castle Half Moon Battery cannon"
+      ]
+    },
+    {
+      "slot": "fact5",
+      "headline": "The world's second-largest monument to a writer",
+      "headline_es": "El segundo monumento más grande del mundo dedicado a un escritor",
+      "body_html": "This Gothic spire on Princes Street, finished in the 1840s to honor novelist Sir Walter Scott, rises 61 meters and has 287 steps to the top. It's the second-largest monument to a writer in the world, after the José Martí memorial in Havana.",
+      "body_es": "Esta aguja gótica en Princes Street, terminada en la década de 1840 en honor al novelista Sir Walter Scott, mide 61 metros y tiene 287 escalones hasta la cima. Es el segundo monumento más grande del mundo dedicado a un escritor, después del memorial a José Martí en La Habana.",
+      "hook": "At 61 meters and 287 steps, the Scott Monument is the world's second-largest monument to a writer.",
+      "hook_es": "Con 61 metros y 287 escalones, el Scott Monument es el segundo mayor monumento del mundo a un escritor.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:The_Scott_Monument_from_The_Mound.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Enrohm1963"
+        }
+      ],
+      "suggested_queries": [
+        "Scott Monument Edinburgh",
+        "Scott Monument Princes Street Gardens"
+      ]
+    },
+    {
+      "slot": "fact6",
+      "headline": "A little-known architect in his twenties designed this district",
+      "headline_es": "Un arquitecto poco conocido, de unos 20 años, diseñó este barrio",
+      "body_html": "In 1766, Edinburgh's council ran a competition to plan a new Georgian district beyond the crowded Old Town. The winner was James Craig, a little-known architect in his twenties. His grid of streets and squares is now part of a UNESCO World Heritage Site.",
+      "body_es": "En 1766, el ayuntamiento de Edimburgo organizó un concurso para trazar un nuevo barrio georgiano fuera del abarrotado Casco Antiguo. Lo ganó James Craig, un arquitecto poco conocido de veintitantos años. Su cuadrícula de calles y plazas hoy es Patrimonio de la Humanidad.",
+      "hook": "In 1766, James Craig, a little-known architect in his twenties, won the competition to plan Edinburgh's Georgian New Town.",
+      "hook_es": "En 1766, James Craig, un arquitecto poco conocido de veintitantos años, ganó el concurso para trazar el New Town.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:New_Town,_Edinburgh,_Scotland.jpg",
+          "license": "CC BY 2.0",
+          "artist": "rboed*"
+        }
+      ],
+      "suggested_queries": [
+        "Edinburgh New Town Princes Street Georgian",
+        "Edinburgh New Town aerial Georgian grid"
+      ]
+    },
+    {
+      "slot": "fact7",
+      "headline": "The world's biggest performing arts festival started as a gatecrash",
+      "headline_es": "El festival de artes escénicas más grande del mundo nació de una colada",
+      "body_html": "In 1947, eight theater companies turned up uninvited to the first Edinburgh International Festival and put on their own shows in spare venues. That gatecrash became the Edinburgh Festival Fringe, now billed as the world's largest performing arts festival.",
+      "body_es": "En 1947, ocho compañías de teatro llegaron sin invitación al primer Festival Internacional de Edimburgo y montaron sus propias funciones en salas libres. Esa colada se convirtió en el Edinburgh Festival Fringe, hoy considerado el festival de artes escénicas más grande del mundo.",
+      "hook": "In 1947, eight theater companies showed up uninvited to Edinburgh's new festival. That gatecrash grew into the famous Fringe.",
+      "hook_es": "En 1947, ocho compañías de teatro llegaron sin invitación al nuevo festival de Edimburgo. Así nació el Fringe.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Fringe_2021_on_the_Royal_Mile_(51366709675).jpg",
+          "license": "CC BY-SA 2.0",
+          "artist": "Magnus Hagdorn from UK"
+        }
+      ],
+      "suggested_queries": [
+        "Edinburgh Festival Fringe Royal Mile performers",
+        "Edinburgh Fringe street performers High Street"
+      ]
+    }
+  ],
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Edinburgh_skyline_from_Calton_Hill_-_geograph.org.uk_-_7467002.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Jim Barton"
+    }
+  ],
+  "cover_suggested_queries": [
+    "Edinburgh skyline from Calton Hill",
+    "Edinburgh cityscape Castle aerial"
+  ]
+}
