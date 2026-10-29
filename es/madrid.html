@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audioguía de Madrid – Historias ocultas y tours a pie autoguiados | Urban Tales</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="description" content="Explora Madrid como nunca. Urban Tales es una app de audioguía GPS que narra las historias del Palacio Real, la Plaza Mayor, la Puerta del Sol y los lugares menos conocidos de Madrid mientras caminas. Sin grupo de tour. Sin horarios fijos." />
+  <meta name="keywords" content="audioguía Madrid, tour a pie autoguiado Madrid, tour GPS Madrid, app de viaje Madrid, qué hacer en Madrid, recorrer Madrid a pie, historia oculta de Madrid" />
+  <link rel="canonical" href="https://urbantales.net/es/madrid.html" />
+  <meta property="og:title" content="Audioguía de Madrid – Historias ocultas mientras caminas | Urban Tales" />
+  <meta property="og:description" content="Historias en audio activadas por GPS sobre el Palacio Real, la Plaza Mayor, la Puerta del Sol, el Templo de Debod y la historia menos conocida de Madrid, a tu ritmo." />
+  <meta property="og:url" content="https://urbantales.net/es/madrid.html" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MobileApplication",
+        "name": "Urban Tales",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "TravelApplication",
+        "description": "App de audioguía activada por GPS para explorar ciudades por tu cuenta.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": "https://urbantales.net",
+        "downloadUrl": [
+          "https://apps.apple.com/app/id6760130598",
+          "https://play.google.com/store/apps/details?id=com.urbantales.app&amp;hl=es"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Urban Tales funciona en Madrid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Urban Tales funciona en todo Madrid, del Palacio Real y la Plaza Mayor al Barrio de las Letras, La Latina y Malasaña."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué historias cuenta Urban Tales en Madrid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Datos históricos, leyendas locales, historias de cine y curiosidades de los lugares de Madrid, que suenan solas mientras caminas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Necesito un guía o un tour reservado?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Urban Tales es completamente autoguiado. Camina a tu ritmo y la app reproduce el audio automáticamente al acercarte a cada lugar."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://urbantales.net/es/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Ciudades",
+            "item": "https://urbantales.net/es/#cities"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Madrid",
+            "item": "https://urbantales.net/es/madrid.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #111110;
+      --dark2: #1a1918;
+      --cream: #f2ede6;
+      --cream2: #e8e0d4;
+      --orange: #d4541a;
+      --text-dark: #1c1b19;
+      --text-mid: #6b5e52;
+      --text-light: #9a8878;
+      --border-dark: #2a2825;
+      --border-light: #d4cbc0;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; background: var(--dark); color: var(--cream); }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(17,17,16,0.95); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 0 6vw; height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--cream); }
+    .nav-logo img { width: 26px; height: 26px; border-radius: 6px; }
+    .nav-brand { font-size: 14px; font-weight: 500; }
+    .nav-brand span { display: block; font-size: 9px; font-weight: 300; color: var(--text-light); letter-spacing: 0.14em; text-transform: uppercase; }
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav a { color: var(--text-light); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    nav a:hover { color: var(--cream); }
+
+    /* HERO */
+    .hero { background: var(--dark); padding: 96px 6vw 88px; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 65% 75% at 80% 45%, rgba(212,84,26,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 640px; }
+    .eyebrow {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--orange); display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+    }
+    .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--orange); }
+
+    h1 {
+      font-family: var(--font-serif); font-size: clamp(44px, 6.5vw, 80px);
+      font-weight: 900; line-height: 1.05; letter-spacing: -0.025em; color: var(--cream); margin-bottom: 28px;
+    }
+    h1 em { font-style: italic; color: var(--orange); }
+    .hero-sub { font-size: 18px; line-height: 1.7; color: var(--text-light); max-width: 500px; font-weight: 300; margin-bottom: 48px; }
+
+    /* STORE BADGES */
+    .store-badges { display: flex; gap: 14px; flex-wrap: wrap; }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; color: #000; text-decoration: none;
+      padding: 10px 20px; border-radius: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .store-badge svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .badge-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .badge-text small { font-size: 9px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.65; }
+    .badge-text strong { font-size: 15px; font-weight: 700; }
+
+    /* DIVIDERS */
+    hr { border: none; height: 1px; background: var(--border-dark); }
+    hr.light { background: var(--border-light); }
+
+    /* SECTIONS */
+    section { padding: 88px 6vw; }
+    section.on-cream { background: var(--cream); color: var(--text-dark); }
+    section.on-dark2 { background: var(--dark2); }
+
+    .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+
+    h2 {
+      font-family: var(--font-serif); font-size: clamp(28px, 3.8vw, 46px);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 18px;
+    }
+    h2 em { font-style: italic; color: var(--orange); }
+    section.on-cream h2 { color: var(--text-dark); }
+    section.on-cream h2 em { color: var(--orange); }
+
+    h3 { font-family: var(--font-serif); font-size: 20px; font-weight: 700; line-height: 1.3; color: var(--cream); margin-bottom: 8px; }
+    section.on-cream h3 { color: var(--text-dark); }
+
+    p { color: var(--text-light); font-weight: 300; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    section.on-cream p { color: var(--text-mid); }
+
+    /* SCREENSHOTS */
+    .screens-intro { max-width: 560px; margin-bottom: 60px; }
+    .screens-intro p { font-size: 17px; color: var(--text-light); }
+
+    .screens-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+      max-width: 720px;
+    }
+    .screen-col { display: flex; flex-direction: column; gap: 24px; }
+    .screen-col.offset { padding-top: 52px; }
+
+    .screen-card {
+      border-radius: 22px; overflow: hidden;
+      border: 1px solid var(--border-dark);
+      background: #090908;
+      max-width: 320px;
+    }
+    .screen-card img { width: 100%; display: block; }
+    .screen-label {
+      padding: 14px 18px;
+      border-top: 1px solid var(--border-dark);
+    }
+    .screen-label p { font-size: 13px; color: var(--text-light); margin: 0; font-weight: 400; }
+    .screen-label strong { color: var(--cream); font-weight: 500; }
+
+    /* STEPS */
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 52px; }
+    .step-num { font-family: var(--font-serif); font-size: 64px; font-weight: 900; line-height: 1; margin-bottom: 18px; letter-spacing: -0.04em; color: var(--border-light); }
+    .step h3 { font-size: 18px; margin-bottom: 8px; }
+    .step p { font-size: 15px; }
+
+    /* STORIES */
+    .story-list { display: flex; flex-direction: column; border: 1px solid var(--border-dark); margin-top: 52px; }
+    .story-item { display: grid; grid-template-columns: 86px 1fr; border-bottom: 1px solid var(--border-dark); transition: background 0.2s; }
+    .story-item:last-child { border-bottom: none; }
+    .story-item:hover { background: rgba(212,84,26,0.04); }
+    .story-badge { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-dark); padding: 24px 10px; }
+    .badge { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 9px; border-radius: 2px; writing-mode: vertical-rl; }
+    .badge.legend { color: #a89fcc; border: 1px solid #3a3260; }
+    .badge.history { color: var(--orange); border: 1px solid #5a2a10; }
+    .badge.fun { color: #7dbfa0; border: 1px solid #284838; }
+    .badge.cinematic { color: #c8906a; border: 1px solid #583520; }
+    .story-body { padding: 28px 30px; }
+    .story-place { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; font-weight: 400; }
+    .story-body h3 { font-size: 18px; margin-bottom: 10px; }
+    .story-body p { font-size: 15px; line-height: 1.7; }
+
+    /* NEIGHBORHOODS */
+    .neighborhoods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-light); border: 1px solid var(--border-light); margin-top: 52px; }
+    .nbhd-card { background: var(--cream); padding: 30px 26px; transition: background 0.2s; }
+    .nbhd-card:hover { background: var(--cream2); }
+    .nbhd-name { font-family: var(--font-serif); font-size: 19px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .nbhd-card p { font-size: 14px; line-height: 1.65; }
+
+    /* STYLES */
+    .styles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); margin-top: 52px; }
+    .style-card { background: var(--dark2); padding: 30px 24px; transition: background 0.2s; }
+    .style-card:hover { background: #201e1c; }
+    .style-name { font-family: var(--font-serif); font-size: 19px; font-weight: 700; color: var(--orange); margin-bottom: 10px; }
+    .style-card p { font-size: 14px; line-height: 1.65; }
+
+    /* FAQ */
+    .faq-list { max-width: 700px; margin-top: 48px; }
+    .faq-item { border-bottom: 1px solid var(--border-light); padding: 26px 0; }
+    .faq-item:first-child { border-top: 1px solid var(--border-light); }
+    .faq-q { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .faq-a { font-size: 15px; line-height: 1.75; }
+
+    /* CTA BAND */
+    .cta-band { background: var(--dark); border-top: 1px solid var(--border-dark); padding: 80px 6vw; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .cta-band h2 { font-family: var(--font-serif); font-size: clamp(24px, 3vw, 38px); font-weight: 700; line-height: 1.2; color: var(--cream); margin-bottom: 10px; }
+    .cta-band h2 em { font-style: italic; color: var(--orange); }
+    .cta-band p { font-size: 15px; color: var(--text-light); margin: 0; font-weight: 300; }
+    .cta-right { display: flex; flex-direction: column; gap: 12px; }
+
+    /* CITIES */
+    .cities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); margin-top: 40px; }
+    .city-tile { background: var(--dark2); padding: 36px 32px; text-decoration: none; display: flex; align-items: center; justify-content: space-between; transition: background 0.2s; }
+    .city-tile:hover { background: #201e1c; }
+    .city-tile-name { font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--cream); }
+    .city-tile-desc { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+    .city-arrow { font-size: 22px; color: var(--orange); transition: transform 0.2s; }
+    .city-tile:hover .city-arrow { transform: translateX(5px); }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 36px 6vw; border-top: 1px solid var(--border-dark); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer p { font-size: 12px; color: var(--text-light); margin: 0; font-weight: 300; }
+    footer nav ul { display: flex; gap: 20px; list-style: none; }
+    footer nav a { color: var(--text-light); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+    footer nav a:hover { color: var(--cream); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .screens-grid { grid-template-columns: 1fr; }
+      .screen-col.offset { padding-top: 0; }
+      .steps-grid { grid-template-columns: 1fr; gap: 36px; }
+      .neighborhoods-grid { grid-template-columns: 1fr 1fr; }
+      .styles-grid { grid-template-columns: 1fr 1fr; }
+      .cities-grid { grid-template-columns: 1fr; }
+      .cta-band { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 560px) {
+      nav ul { display: none; }
+      .neighborhoods-grid { grid-template-columns: 1fr; }
+      .styles-grid { grid-template-columns: 1fr; }
+      .story-item { grid-template-columns: 1fr; }
+      .story-badge { border-right: none; border-bottom: 1px solid var(--border-dark); padding: 14px 20px; justify-content: flex-start; }
+      .badge { writing-mode: horizontal-tb; }
+    }
+  </style>
+  <!-- i18n:alternates -->
+  <link rel="alternate" hreflang="en" href="https://urbantales.net/madrid.html" />
+  <link rel="alternate" hreflang="es" href="https://urbantales.net/es/madrid.html" />
+  <link rel="alternate" hreflang="x-default" href="https://urbantales.net/madrid.html" />
+  <!-- /i18n:alternates -->
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://urbantales.net/es/" class="nav-logo">
+    <img src="https://urbantales.net/icon.png" alt="Urban Tales" />
+    <div class="nav-brand">Urban Tales <span>Audioguías autoguiadas</span></div>
+  </a>
+  <div data-i18n="nav" style="display:flex;align-items:center;gap:28px"><ul>
+    <li><a href="https://urbantales.net/es/#how">Cómo funciona</a></li>
+    <li><a href="https://urbantales.net/es/#cities">Ciudades</a></li>
+    <li><a href="https://urbantales.net/contact.html">Contacto</a></li>
+  </ul>
+    <a href="https://urbantales.net/madrid.html" class="lang-switch" data-i18n="switch" hreflang="en" lang="en" title="Read in English" style="border:1px solid rgba(255,255,255,0.25);border-radius:999px;padding:5px 12px;font-size:12px;letter-spacing:0.04em">EN</a></div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Madrid, España</p>
+    <h1>Un palacio real,<br>un templo del Nilo<br><em>y las historias<br>de en medio.</em></h1>
+    <p class="hero-sub">Urban Tales es una app de audioguía GPS que narra la historia oculta, las leyendas y los secretos de Madrid automáticamente mientras caminas, a tu ritmo y sin grupo de tour.</p>
+    <div class="store-badges">
+      <a href="https://apps.apple.com/app/id6760130598" class="store-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="badge-text"><small>Descárgala en el</small><strong>App Store</strong></div>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.urbantales.app&amp;hl=es" class="store-badge">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76c.3.16.64.2.98.1l11.53-11.53L12 8.64 3.18 23.76z" fill="#EA4335"/><path d="M20.58 10.42l-2.8-1.6-3.27 3.27 3.27 3.27 2.82-1.61a1.6 1.6 0 000-2.8l-.02-.03z" fill="#FBBC04"/><path d="M3.18 23.76L12 8.64l-8.82-5.12A1.6 1.6 0 001.6 5v14a1.6 1.6 0 001.58 1.76z" fill="#34A853"/><path d="M3.18.24A1.6 1.6 0 001.6 2v.24L12 8.64l2.78-2.78L3.18.24z" fill="#4285F4"/></svg>
+        <div class="badge-text"><small>Disponible en</small><strong>Google Play</strong></div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<hr />
+
+<!-- APP IN ACTION -->
+<section class="on-dark2">
+  <div class="screens-intro">
+    <p class="section-label">La app en acción</p>
+    <h2>Acércate a un lugar.<br><em>La historia comienza.</em></h2>
+    <p>Sin tocar. Sin buscar. Urban Tales detecta tu posición GPS y reproduce el audio automáticamente en cuanto estás lo bastante cerca. Guarda el teléfono en el bolsillo: solo camina y escucha. (Pantallas: la app en Roma.)</p>
+  </div>
+
+  <div class="screens-grid">
+    <div class="screen-col">
+      <div class="screen-card">
+        <img src="/img/app-rome-nowplaying.jpg" alt="Urban Tales en Roma: mapa de lugares cercanos con una historia sonando" loading="lazy" />
+        <div class="screen-label"><p><strong>Activada por GPS.</strong> El audio empieza en cuanto llegas a un lugar.</p></div>
+      </div>
+      <div class="screen-card">
+        <img src="/img/app-rome-notif.jpg" alt="Urban Tales en Roma: aviso de que hay un lugar imperdible cerca" loading="lazy" />
+        <div class="screen-label"><p><strong>Camina libremente.</strong> Cada lugar a tu alrededor tiene una historia lista.</p></div>
+      </div>
+    </div>
+    <div class="screen-col offset">
+      <div class="screen-card">
+        <img src="/img/app-rome-story.jpg" alt="Urban Tales en Roma: la historia de la Fontana di Trevi con foto y texto" loading="lazy" />
+        <div class="screen-label"><p><strong>Historias completas.</strong> Historia, leyendas y contexto de cada lugar.</p></div>
+      </div>
+      <div class="screen-card">
+        <img src="/img/app-rome-trevi-card.jpg" alt="Urban Tales en Roma: la ficha de la Fontana di Trevi con Escuchar y Cómo llegar" loading="lazy" />
+        <div class="screen-label"><p><strong>4 estilos de narración.</strong> Histórico, Leyendas, Datos curiosos y Cinematográfico.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- HOW IT WORKS -->
+<section class="on-cream">
+  <p class="section-label">Cómo funciona</p>
+  <h2>Abre la app.<br><em>Empieza a caminar.</em></h2>
+  <p style="max-width:500px; font-size:17px;">Sin preparación, sin ruta reservada, sin grupo al que seguirle el paso. Urban Tales funciona en cuanto sales a la calle.</p>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Descarga la app y abre el mapa</h3>
+      <p>La app te muestra los lugares que te rodean en cuanto la abres. Funciona en cualquier parte de Madrid, del Palacio Real a una calle tranquila de La Latina.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Camina hacia lo que te llame la atención</h3>
+      <p>Al acercarte a un lugar, el audio empieza solo. Guarda el teléfono en el bolsillo y solo camina y escucha.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Arma una ruta o explora libremente</h3>
+      <p>Crea una ruta de medio día, un itinerario de día completo, un tour de 7 maravillas o un camino a tu medida. O ignora todo eso y deambula: la app te sigue el paso.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="light" />
+
+<!-- STORIES -->
+<section>
+  <p class="section-label">Lo que vas a escuchar</p>
+  <h2>El Madrid que la mayoría<br>nunca <em>llega a conocer.</em></h2>
+  <p style="max-width:520px;">Estas son el tipo de historias que Urban Tales narra mientras caminas. Cada una se activa automáticamente cuando estás parado en el lugar correcto.</p>
+  <div class="story-list">
+    <div class="story-item">
+      <div class="story-badge"><span class="badge history">Historia</span></div>
+      <div class="story-body">
+        <p class="story-place">Palacio Real · Madrid de los Austrias</p>
+        <h3>El palacio real más grande de Europa existe porque el anterior ardió en Nochebuena</h3>
+        <p>El Real Alcázar, una fortaleza levantada por el emir de Córdoba en el siglo IX, ardió en la Nochebuena de 1734. Los nuevos reyes Borbones lo sustituyeron por un palacio de 3.418 salas, construido casi todo en piedra entre 1738 y 1755. Carlos III fue el primer rey que vivió en él.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge fun">Dato curioso</span></div>
+      <div class="story-body">
+        <p class="story-place">Templo de Debod · Parque del Oeste</p>
+        <h3>Un templo egipcio de 2.200 años está en una colina de Madrid, y fue un regalo de agradecimiento</h3>
+        <p>Cuando la presa de Asuán amenazó con inundar los templos de Nubia, España ayudó a la UNESCO a salvarlos. En 1968 Egipto regaló a España el Templo de Debod, que se desmontó, se envió y se reconstruyó piedra a piedra. Abrió en 1972, orientado de este a oeste como en el Nilo.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge history">Historia</span></div>
+      <div class="story-body">
+        <p class="story-place">Plaza Mayor · Centro</p>
+        <h3>La gran plaza de la ciudad ardió tres veces, y la que ves es la reconstrucción</h3>
+        <p>Terminada en 1619 donde había un antiguo mercado, la Plaza Mayor acogió mercados, corridas de toros y ceremonias reales. Tras el peor de sus tres incendios, en 1790, el arquitecto Juan de Villanueva rebajó los edificios de cinco a tres plantas y abrió los arcos de las esquinas.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge fun">Dato curioso</span></div>
+      <div class="story-body">
+        <p class="story-place">Puerta del Sol · Centro</p>
+        <h3>Toda España empieza el año comiendo doce uvas al ritmo de este reloj</h3>
+        <p>El reloj de la Real Casa de Correos, donado en 1866, da las campanadas de Año Nuevo en la televisión nacional, y los españoles comen una uva por cada una de las doce. Una placa en la acera marca el Kilómetro Cero, desde donde se miden las carreteras principales de España.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge history">Historia</span></div>
+      <div class="story-body">
+        <p class="story-place">Palacio de Cristal · Parque del Retiro</p>
+        <h3>Un presidente de España fue elegido dentro de un invernadero</h3>
+        <p>El Palacio de Cristal, de hierro y vidrio, se construyó en 1887 para albergar plantas tropicales de Filipinas. En 1936 la asamblea que eligió a Manuel Azaña presidente de la Segunda República se reunió aquí, porque el Congreso era demasiado pequeño.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <div class="story-badge"><span class="badge legend">Leyenda</span></div>
+      <div class="story-body">
+        <p class="story-place">Catedral de la Almudena · Madrid de los Austrias</p>
+        <h3>Una Virgen escondida en la muralla y una catedral de 110 años de obra</h3>
+        <p>Según la tradición, la imagen de la patrona de Madrid se escondió en la muralla durante la conquista musulmana y se halló siglos después; su nombre viene del árabe al-mudayna, la ciudadela. La catedral dedicada a ella se empezó en 1883 y no se consagró hasta 1993, por el papa Juan Pablo II.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- NEIGHBORHOODS -->
+<section class="on-cream">
+  <p class="section-label">Por dónde caminar</p>
+  <h2>Los barrios de Madrid,<br><em>contados a través de historias.</em></h2>
+  <p style="max-width:500px;">Urban Tales cubre toda la ciudad. Estas son las zonas donde las historias son más densas.</p>
+  <div class="neighborhoods-grid">
+    <div class="nbhd-card">
+      <div class="nbhd-name">Madrid de los Austrias</div>
+      <p>La parte más antigua de la ciudad, alrededor de la Plaza Mayor y el Palacio Real: las calles de la capital de los Austrias, la Catedral de la Almudena y el Mercado de San Miguel.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">La Latina</div>
+      <p>Calles estrechas, el Rastro de los domingos y los bares de tapas de la Cava Baja, en uno de los barrios más antiguos de Madrid.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">Barrio de las Letras</div>
+      <p>El barrio de los escritores, donde vivió Lope de Vega y está enterrado Cervantes, con versos de sus obras en el suelo.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">Paseo del Prado y Retiro</div>
+      <p>El Prado, el Reina Sofía y el Thyssen en un mismo paseo, junto al Parque del Retiro y su Palacio de Cristal. Patrimonio Mundial de la UNESCO desde 2021.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">Malasaña</div>
+      <p>El corazón de la Movida madrileña de los años 80, la explosión cultural tras el fin de la dictadura, y todavía el barrio más bohemio de la ciudad.</p>
+    </div>
+    <div class="nbhd-card">
+      <div class="nbhd-name">Gran Vía</div>
+      <p>La gran avenida de Madrid, abierta a través del casco antiguo desde 1910, con los primeros rascacielos, teatros y el Edificio Metrópolis al comienzo.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="light" />
+
+<!-- STORYTELLING STYLES -->
+<section>
+  <p class="section-label">Estilos de narración</p>
+  <h2>Elige cómo te habla<br><em>Madrid.</em></h2>
+  <p style="max-width:500px;">El mismo lugar suena completamente distinto en cada modo. Cambia de estilo cuando quieras durante tu caminata.</p>
+
+  <div class="styles-grid">
+    <div class="style-card">
+      <div class="style-name">Histórico</div>
+      <p>Contexto, fechas, política, imperios. Lo que pasó aquí y por qué importó. Para quienes quieren irse de Madrid sabiendo de verdad.</p>
+    </div>
+    <div class="style-card">
+      <div class="style-name">Leyendas</div>
+      <p>Mitos, maldiciones, fantasmas y viejas supersticiones. Las historias que los madrileños se contaban antes de los libros de historia.</p>
+    </div>
+    <div class="style-card">
+      <div class="style-name">Datos curiosos</div>
+      <p>Lo absurdo, lo sorprendente y lo francamente raro. Perfecto para mantener la energía en una caminata larga o para explorar con niños.</p>
+    </div>
+    <div class="style-card">
+      <div class="style-name">Cinematográfico</div>
+      <p>Películas rodadas aquí y escenas ambientadas aquí: Almodóvar lleva cuatro décadas filmando Madrid. Madrid a través del cine.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<section>
+  <h2>Los lugares de Madrid,<br><em>una historia a la vez.</em></h2>
+  <ul style="list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 28px;line-height:1.5"><li><a href="/madrid/royal-palace.html" style="color:inherit">Palacio Real de Madrid</a> <span style="opacity:.7">· Construido sobre las cenizas de una fortaleza</span></li><li><a href="/madrid/prado-museum.html" style="color:inherit">Museo del Prado</a> <span style="opacity:.7">· Un museo de ciencias que acabó siendo de arte</span></li><li><a href="/madrid/plaza-mayor.html" style="color:inherit">Plaza Mayor</a> <span style="opacity:.7">· Un mercado convertido en escenario</span></li><li><a href="/madrid/puerta-del-sol.html" style="color:inherit">Puerta del Sol</a> <span style="opacity:.7">· Donde España cuenta las campanadas</span></li><li><a href="/madrid/temple-of-debod.html" style="color:inherit">Templo de Debod</a> <span style="opacity:.7">· Un regalo de Egipto</span></li><li><a href="/madrid/palacio-de-cristal.html" style="color:inherit">Palacio de Cristal</a> <span style="opacity:.7">· Un invernadero para un imperio</span></li><li><a href="/madrid/almudena-cathedral.html" style="color:inherit">Catedral de la Almudena</a> <span style="opacity:.7">· 110 años de obra</span></li><li><a href="/madrid/puerta-de-alcala.html" style="color:inherit">Puerta de Alcalá</a> <span style="opacity:.7">· Una puerta con dos caras distintas</span></li><li><a href="/madrid/mercado-de-san-miguel.html" style="color:inherit">Mercado de San Miguel</a> <span style="opacity:.7">· Un mercado de hierro renacido</span></li><li><a href="/madrid/plaza-de-cibeles.html" style="color:inherit">Plaza de Cibeles</a> <span style="opacity:.7">· La diosa y sus leones</span></li></ul>
+</section>
+
+<hr />
+
+<!-- FAQ -->
+<section class="on-cream">
+  <p class="section-label">Preguntas frecuentes</p>
+  <h2>Preguntas frecuentes sobre<br>Urban Tales <em>en Madrid.</em></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <p class="faq-q">¿Urban Tales cubre el Palacio Real y el Prado?</p>
+      <p class="faq-a">Sí. Las historias suenan al llegar al Palacio Real, el Prado, la Plaza Mayor y los demás lugares a tu alrededor. La app cuenta la historia desde fuera; las entradas a los interiores van aparte.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Vale la pena Urban Tales si ya estuve en Madrid?</p>
+      <p class="faq-a">Sobre todo entonces. Los modos Leyendas y Curiosidades convierten lugares que ya conoces, como la Puerta del Sol o la Plaza Mayor, en historias nuevas.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Cómo funcionan los precios en Madrid?</p>
+      <p class="faq-a">Puedes empezar gratis. El Pase de día desbloquea todas las ciudades durante un día, o puedes desbloquear Madrid para siempre. Sin suscripción.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿En qué idiomas está la audioguía de Madrid?</p>
+      <p class="faq-a">Español, inglés, portugués de Brasil, francés y alemán. Elige tu idioma la primera vez que abras la app.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Puedo usar Urban Tales para una visita de medio día o de día completo a Madrid?</p>
+      <p class="faq-a">Sí. Usa el creador de tours para una ruta de medio día, de día completo o de 7 Maravillas, o simplemente camina y deja que las historias te encuentren.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div>
+    <h2>Madrid te espera.<br><em>Las historias empiezan en cuanto llegas.</em></h2>
+    <p>Descarga gratis. Sin grupo de tour. Sin horarios fijos.</p>
+  </div>
+  <div class="cta-right">
+    <a href="https://apps.apple.com/app/id6760130598" class="store-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <div class="badge-text"><small>Descárgala en el</small><strong>App Store</strong></div>
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.urbantales.app&amp;hl=es" class="store-badge">
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3.18 23.76c.3.16.64.2.98.1l11.53-11.53L12 8.64 3.18 23.76z" fill="#EA4335"/><path d="M20.58 10.42l-2.8-1.6-3.27 3.27 3.27 3.27 2.82-1.61a1.6 1.6 0 000-2.8l-.02-.03z" fill="#FBBC04"/><path d="M3.18 23.76L12 8.64l-8.82-5.12A1.6 1.6 0 001.6 5v14a1.6 1.6 0 001.58 1.76z" fill="#34A853"/><path d="M3.18.24A1.6 1.6 0 001.6 2v.24L12 8.64l2.78-2.78L3.18.24z" fill="#4285F4"/></svg>
+      <div class="badge-text"><small>Disponible en</small><strong>Google Play</strong></div>
+    </a>
+  </div>
+</div>
+
+<!-- OTHER CITIES -->
+<section>
+  <p class="section-label">Explora más</p>
+  <h2>Urban Tales funciona<br><em>adondequiera que viajes.</em></h2>
+  <p style="max-width:500px;">Estas son nuestras guías de ciudad más profundas e investigadas &mdash; pero Urban Tales genera historias nuevas para cualquier ciudad o pueblo del planeta en cuanto llegas.</p>
+  <div style="margin-top:32px;">
+    <a href="https://urbantales.net/es/cities.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;font-family:var(--font-sans);font-size:14px;font-weight:500;letter-spacing:0.03em;text-decoration:none;padding:14px 28px;border-radius:4px;transition:background 0.2s;" onmouseover="this.style.background='#b84415'" onmouseout="this.style.background='var(--orange)'">
+      Ver todas las ciudades →
+    </a>
+    <a href="https://urbantales.net/es/best-audio-tour-apps.html" style="display:inline-flex;align-items:center;gap:10px;margin:12px 0 0 12px;color:var(--cream);border:1px solid rgba(255,255,255,0.3);font-family:var(--font-sans);font-size:14px;font-weight:500;letter-spacing:0.03em;text-decoration:none;padding:13px 26px;border-radius:4px">Cómo nos comparamos con otras apps de audioguía →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Urban Tales · Hecha para viajeros que quieren más que una foto.</p>
+  <nav>
+    <ul>
+      <li><a href="https://urbantales.net/contact.html">Contacto</a></li>
+      <li><a href="https://urbantales.net/privacy.html">Política de privacidad</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "884cbcf6aa1245eb8c9201ec24135338"}'></script><!-- End Cloudflare Web Analytics -->
+<script src="/store-links.js" defer></script>
+</body>
+</html>

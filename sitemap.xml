@@ -31,6 +31,17 @@
   <url><loc>https://urbantales.net/paris.html</loc><lastmod>2026-04-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/mexico-city.html</loc><lastmod>2026-04-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/barcelona.html</loc><lastmod>2026-04-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/madrid.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://urbantales.net/madrid/royal-palace.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/madrid/prado-museum.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/madrid/plaza-mayor.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/madrid/puerta-del-sol.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/madrid/temple-of-debod.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/madrid/palacio-de-cristal.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/madrid/almudena-cathedral.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/madrid/puerta-de-alcala.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/madrid/mercado-de-san-miguel.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://urbantales.net/madrid/plaza-de-cibeles.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://urbantales.net/barcelona/sagrada-familia.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://urbantales.net/barcelona/park-guell.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://urbantales.net/barcelona/casa-batllo.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -159,6 +170,7 @@
   <url><loc>https://urbantales.net/es/buenos-aires.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/es/cities.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/es/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://urbantales.net/es/madrid.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/es/mexico-city.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/es/new-york.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://urbantales.net/es/paris.html</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
