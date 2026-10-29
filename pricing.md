@@ -5,7 +5,7 @@ Prices are in US dollars; the App Store and Google Play show the local price in 
 
 ## Free
 - Price: $0
-- 3 free stories a day, in any city.
+- 3 free stories, in any city.
 - Includes the live map of nearby landmarks and all 5 languages (English, Spanish, Portuguese, French, German).
 
 ## Day Pass
