@@ -1265,7 +1265,7 @@
           <input type="checkbox" id="quotaAwareToggle" onchange="onQuotaAwareToggle()">
           <span class="toggle-slider"></span>
         </label>
-        <span style="font-size:0.88rem">Net of Google Maps free quota (overall + per client)</span>
+        <span style="font-size:0.88rem">Net of Google free tiers (overall + per client)</span>
         <span id="quotaAwareState" style="font-size:0.78rem;color:var(--muted)">OFF — recorded list-price estimates; provider credits and non-Maps allowances excluded</span>
         <button id="geocodeBackfillBtn" onclick="backfillNarrationGeocode()" title="Every cache-miss narration fired an untracked, uncached Geocoding call before af4243d — reconstructs one google_geocode record per historical narration. Idempotent, safe to re-run." style="margin-left:auto;flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Backfill geocode calls</button>
         <button id="geminiCostFixBtn" onclick="backfillGeminiCosts()" title="Gemini calls were recorded at $0 before gemini_flash_input/output had a rate — recompute their cost from the token counts already stored. Safe to re-run." style="flex-shrink:0;font:inherit;font-size:0.78rem;font-weight:600;border-radius:9px;padding:6px 11px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">⟳ Fix Gemini costs</button>
@@ -1283,7 +1283,7 @@
       </div>
       <div class="card" style="margin-bottom:24px">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-          <div class="card-title" style="margin-bottom:0">Google Maps Platform — free quota</div>
+          <div class="card-title" style="margin-bottom:0">Google free tiers</div>
           <div style="display:flex;align-items:center;gap:8px">
             <button onclick="navigateQuotaMonth(-1)" title="Previous month" style="font:inherit;font-size:0.85rem;font-weight:600;border-radius:7px;width:28px;height:28px;cursor:pointer;border:1px solid var(--border);background:#141414;color:var(--muted)">‹</button>
             <span id="quotaMonthLabel" style="font-size:0.85rem;font-weight:600;min-width:110px;text-align:center">—</span>
@@ -1897,7 +1897,7 @@
               <input type="checkbox" id="ltvQuotaAwareToggle" onchange="_ltvAssumptions.quotaAware=this.checked; applyLTVFilters()">
               <span class="toggle-slider"></span>
             </label>
-            <span style="font-size:0.82rem">Net of Google Maps free quota</span>
+            <span style="font-size:0.82rem">Net of Google free tiers</span>
           </div>
           <div style="display:flex;align-items:center;gap:10px;padding-left:20px;border-left:1px solid var(--border)">
             <label class="toggle-switch">
@@ -4109,6 +4109,7 @@ const GOOGLE_SKU_LABELS = {
   google_place_details_atmosphere: 'Place Details — Enterprise + Atmosphere',
   google_geocode: 'Geocoding API',
   google_streetview: 'Street View Static',
+  google_tts_neural2: 'Text-to-Speech — Neural2',
 };
 
 let _quotaMonth = null; // 'YYYY-MM' currently displayed
@@ -4138,17 +4139,18 @@ function renderGoogleMapsQuota(data) {
 
   el.innerHTML = data.skus.map(s => {
     const pct = s.pct_used;
+    const unit = s.unit || 'calls';
     const barColor = s.over_quota ? 'var(--danger)' : s.projected_over_quota ? C.yellow : C.green;
     const paceVerb = data.is_current_month ? 'on pace for' : 'ended the month with';
     const note = s.over_quota
-      ? `<span style="color:var(--danger)">${fmt(s.billable_calls_so_far)} calls over quota — ${data.is_current_month ? 'being billed' : 'was billed'}</span>`
+      ? `<span style="color:var(--danger)">${fmt(s.billable_calls_so_far)} ${unit} over quota — ${data.is_current_month ? 'being billed' : 'was billed'}</span>`
       : s.projected_over_quota
         ? `<span style="color:${C.yellow}">${paceVerb} ~${fmt(s.projected_month_end)} — would exceed the ${fmt(s.free_quota)} free quota</span>`
         : `<span style="color:var(--muted)">${paceVerb} ~${fmt(s.projected_month_end)} — within free quota</span>`;
     return `<div style="margin-bottom:14px">
       <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px">
         <span>${GOOGLE_SKU_LABELS[s.api_type] || s.api_type}</span>
-        <span style="font-variant-numeric:tabular-nums">${fmt(s.calls_this_month)} / ${fmt(s.free_quota)} free calls (${pct}%)</span>
+        <span style="font-variant-numeric:tabular-nums">${fmt(s.calls_this_month)} / ${fmt(s.free_quota)} free ${unit} (${pct}%)</span>
       </div>
       <div style="height:6px;border-radius:3px;background:#1f1f1f;overflow:hidden">
         <div style="height:100%;width:${Math.min(pct,100)}%;background:${barColor};border-radius:3px"></div>
