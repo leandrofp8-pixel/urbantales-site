@@ -8,6 +8,9 @@ never repeats a city/landmark too soon. Alternate Hidden Story / City Guide with
 | Date | Type | City | Post |
 |---|---|---|---|
 | 2026-10-30 | Hidden Story | Venice | [blog-venice-festa-della-salute-plague-bridge.html](blog-venice-festa-della-salute-plague-bridge.html) — The 1631 plague vow behind Santa Maria della Salute, and the pontoon bridge Venice still builds across the Grand Canal every November 21 |
+| City Guide | Edinburgh | Edinburgh at Christmas: a self-guided walk from the Scott Monument to the Castle (Scout 29 Oct: Edinburgh's Christmas runs Nov 14, 2026 to Jan 3, 2027, with the market at the foot of the Scott Monument.) |
+| City Guide | New York | The 100th Macy's Parade: a walk along the route and the stories behind it (Scout 29 Oct: The 100th parade is on Thu Nov 26, 2026.) |
+| City Guide | Lyon | Lyon's Fête des Lumières: the 1852 storm behind the candles, and a walk up to Fourvière (Scout 29 Oct: The festival runs Dec 5–8, 2026.) |
 | 2026-10-28 | City Guide | Rome | [blog-rome-colosseum-roman-forum-walk.html](blog-rome-colosseum-roman-forum-walk.html) — A self-guided walk through ancient Rome, from the Colosseum's underground lift system to the unmarked balcony Mussolini spoke from at Piazza Venezia |
 | 2026-10-26 | Hidden Story | Athens | [blog-athens-panathenaic-stadium-secret-history.html](blog-athens-panathenaic-stadium-secret-history.html) — A shipping fortune rebuilt a buried, 2,400-year-old marble stadium in time for the first modern marathon's finish line (tied to the Athens Authentic Marathon, Nov 8 2026) |
 | City Guide | Budapest | Budapest Christmas market walk: from St. Stephen's Basilica to Vörösmarty Square (Scout 22 Oct: Both markets are reported to open Nov 13. The date is not officially confirmed yet.) |
