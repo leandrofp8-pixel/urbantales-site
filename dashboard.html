@@ -1029,6 +1029,17 @@
       </div>
 
       <div class="panel-sub" data-sub="tours" hidden>
+      <!-- Tour planner: which rules + model build new tours (backend tour_planner.py) -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Tour Planner
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Which rules and model build each new tour. Applies to the next tour created; existing tours don't change.</span>
+        </div>
+        <details class="cfg-box" id="cfgBox_planner">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_planner"></span></summary>
+          <div class="cfg-grid" id="cfg_planner"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('planner')" id="cfgSave_planner">Save</button><span id="cfgMsg_planner"></span></div>
+        </details>
+      </div>
       <div class="card" style="margin-bottom:24px">
         <div class="section-header">
           <h2>🗺️ Tour Activity</h2>
@@ -3112,6 +3123,11 @@ const CONFIG_GROUPS = {
     { key: 'review_prompt_min_sessions', label: 'Ask on app-open count', def: 3, attrs: 'min="1"' },
     { key: 'review_prompt_min_narrations', label: 'Minimum narrations heard first', def: 1, attrs: 'min="0"' },
   ] },
+  planner: { state: s => (s.tour_planner_version || 'v1') === 'v2' ? `v2 · ${s.tour_planner_model || 'gpt-5.4-mini'}` : 'v1 (original planner)', fields: [
+    { note: 'v2 ranks places by popularity, drops shops and duplicate parts of one landmark, fits the stops to the time budget and orders the walk. The model only applies to v2: gpt-… runs on OpenAI, gemini-… on Gemini. Switch back to v1 to undo.' },
+    { key: 'tour_planner_version', type: 'select', label: 'Planner', def: 'v1', options: [['v1', 'v1: original'], ['v2', 'v2: new rules']] },
+    { key: 'tour_planner_model', type: 'text', label: 'Model (v2 only), e.g. gemini-3.8-flash or gpt-5.4-mini', def: 'gpt-5.4-mini' },
+  ] },
   playback: { state: s => `Unified engine: ${s.unified_engine_rollout_pct ?? 0}% + testers`, fields: [
     { heading: 'Diagnostics' },
     { note: "Auto-play diagnostics shown in this tab. Turning this off makes the app stop sending them (takes effect on each phone's next send)." },
@@ -3151,6 +3167,12 @@ function _cfgFieldHtml(f, s) {
       <span style="font-size:0.88rem">${escapeHtml(f.label)}</span>
       <span style="font-size:0.78rem;color:var(--muted)">${v ? 'ON' : 'OFF'}</span>
     </div>`;
+  if (f.type === 'select') return `<div>
+      <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${escapeHtml(f.label)}</label>
+      <select id="s_${f.key}" style="width:100%;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:8px 10px;font-size:0.88rem;box-sizing:border-box">
+        ${f.options.map(([ov, ol]) => `<option value="${escapeHtml(ov)}" ${ov === v ? 'selected' : ''}>${escapeHtml(ol)}</option>`).join('')}
+      </select>
+    </div>`;
   const val = f.type === 'list' ? (v || []).join(', ') : v;
   return `<div>
       <label style="font-size:0.78rem;color:var(--muted);display:block;margin-bottom:4px">${escapeHtml(f.label)}</label>
@@ -3177,7 +3199,7 @@ async function saveConfigGroup(g) {
     const el = document.getElementById('s_' + f.key);
     if (f.type === 'toggle') body[f.key] = el.checked;
     else if (f.type === 'list') body[f.key] = el.value.split(',').map(e => e.trim()).filter(Boolean);
-    else if (f.type === 'text') body[f.key] = el.value.trim();
+    else if (f.type === 'text' || f.type === 'select') body[f.key] = el.value.trim();
     else { const n = parseInt(el.value); body[f.key] = isNaN(n) ? (f.zeroIfEmpty ? 0 : null) : n; }
   });
   btn.disabled = true; btn.textContent = 'Saving…'; msg.textContent = '';
