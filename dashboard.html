@@ -1097,6 +1097,30 @@
           <tbody id="tourCreatorsTop"><tr><td colspan="7" class="loading">Loading…</td></tr></tbody></table></div>
       </div>
 
+      <div class="card" style="margin-bottom:24px" id="offlineCard">
+        <div class="section-header">
+          <h2>📥 Offline tours</h2>
+          <span style="font-size:0.8rem;color:var(--muted)">Premium downloads · vs the previous period of the same length</span>
+        </div>
+        <div id="offlineEmpty" class="tour-note" hidden></div>
+        <div class="tour-note" style="font-weight:600;color:var(--text);margin-top:0">Use</div>
+        <div class="grid-4" id="offlineUse"><div class="card"><div class="loading">Loading…</div></div></div>
+        <div class="tour-note" style="font-weight:600;color:var(--text)">Downloads</div>
+        <div class="grid-4" id="offlineDownloads"><div class="card"><div class="loading">…</div></div></div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">Weekly <span style="font-size:0.75rem;color:var(--muted);font-weight:400">downloaders vs offline listeners · 12 weeks</span></div>
+            <div class="chart-wrap"><canvas id="chartOfflineWeekly"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Who downloads <span style="font-size:0.75rem;color:var(--muted);font-weight:400">plan at download time</span></div>
+            <div id="offlinePlans"><div class="loading">Loading…</div></div>
+          </div>
+        </div>
+        <div class="tour-note" style="font-weight:600;color:var(--text)">Upsell and Day Pass</div>
+        <div class="grid-4" id="offlineUpsell" style="margin-bottom:0"><div class="card"><div class="loading">…</div></div></div>
+      </div>
+
       <div class="card" style="margin-bottom:24px">
         <div class="card-title">Cities over time <span style="font-size:0.75rem;color:var(--muted);font-weight:400">tours created · top 8 cities</span><span class="gran-switch" data-tours="heat"></span></div>
         <div class="tour-note">Darker = more tours. A yellow outline marks a spike: at least 3 tours and more than twice that city's usual level.</div>
@@ -3968,6 +3992,74 @@ function renderTourGran(card) {
     document.getElementById('tourCatsMeta').textContent =
       `What people ask for when generating a tour. Recorded from 22 Oct 2026 on · ${fmt(ins.categories.total_generations)} generations so far${list.length ? '' : ' · nothing in this window yet'}.`;
   }
+}
+
+// ══════════════════════════════════════════════
+// OFFLINE TOURS (Content › Tours)
+// ══════════════════════════════════════════════
+const _OFFLINE_PLANS = { unlimited: ['Unlimited', '#FF6B35'], day_pass: ['Day Pass', '#fbbf24'],
+  day_pass_ready: ['Day Pass (not started)', '#f59e0b'], city_unlock: ['City Unlock', '#34d399'], trip_pass: ['Trip Pass', '#a78bfa'] };
+
+async function loadOfflineAnalytics() {
+  try {
+    renderOfflineAnalytics(await api(`/analytics/offline?${_dateParams()}`));
+  } catch (e) {
+    renderOfflineAnalytics(null);
+  }
+}
+
+function renderOfflineAnalytics(d) {
+  const empty = document.getElementById('offlineEmpty');
+  if (!d || !d.current) {
+    empty.hidden = false;
+    empty.textContent = 'Offline numbers need the latest backend (offline analytics).';
+    ['offlineUse', 'offlineDownloads', 'offlineUpsell'].forEach(id => { document.getElementById(id).innerHTML = ''; });
+    document.getElementById('offlinePlans').innerHTML = '';
+    return;
+  }
+  const c = d.current, p = d.previous;
+  const k = key => ({ current: c[key], previous: p[key] });
+  empty.hidden = c.download_starts > 0 || c.upsell_viewers > 0;
+  empty.textContent = 'No offline activity in this period yet — numbers start with app 3.5.0.';
+
+  document.getElementById('offlineUse').innerHTML =
+    _tripKpi('Downloaders who listened offline', k('downloaders_who_listened_offline_pct'), '%', 'the number that matters') +
+    _tripKpi('Offline listens', k('offline_listens'), '', 'stories heard with no connection') +
+    _tripKpi('Offline listeners', k('offline_listeners'), '', 'people') +
+    kpiCard('Sync delay (median)', c.sync_delay_median_hours == null ? '—' : c.sync_delay_median_hours + ' h', 'offline listen → back online');
+
+  document.getElementById('offlineDownloads').innerHTML =
+    _tripKpi('Downloaders', k('downloaders'), '', 'people who started a download') +
+    kpiCard('Started → completed', `${fmt(c.download_starts)} → ${fmt(c.downloads_completed)}`,
+      `${c.completion_rate == null ? '—' : c.completion_rate + '%'} complete · ${fmt(c.downloads_failed)} failed`) +
+    _tripKpi('New stories for downloads', k('stories_created'), '', 'the rest came from cache');
+
+  const w = d.weekly || [];
+  lineChart('chartOfflineWeekly', w.map(x => x.week.slice(5)), [
+    { label: 'Downloaders', data: w.map(x => x.downloaders), color: '#FF6B35' },
+    { label: 'Offline listeners', data: w.map(x => x.offline_listeners), color: '#60a5fa' },
+  ], { y: { ticks: { color: '#555', precision: 0 } } });
+
+  const plans = Object.entries(c.plans || {});
+  const total = plans.reduce((sum, [, n]) => sum + n, 0);
+  document.getElementById('offlinePlans').innerHTML = !total
+    ? '<div class="tour-note" style="margin:0">No downloads in this period.</div>'
+    : plans.sort((a, b) => b[1] - a[1]).map(([plan, n]) => {
+      const [label, color] = _OFFLINE_PLANS[plan] || [plan, '#888'];
+      const pct = Math.round(n / total * 100);
+      return `<div class="funnel-step">
+        <div class="funnel-label">${label}</div>
+        <div class="funnel-bar-outer"><div class="funnel-bar-inner" style="width:${pct}%;background:${color}"></div></div>
+        <div class="funnel-count">${fmt(n)}</div>
+        <div class="funnel-pct">${pct}%</div>
+      </div>`;
+    }).join('');
+
+  document.getElementById('offlineUpsell').innerHTML =
+    _tripKpi('Free users who saw the offline perk', k('upsell_viewers'), '', 'opened a tour with the locked Download') +
+    _tripKpi('First purchase within 7 days', k('upsell_conversion_pct'), '%', `${fmt(c.upsell_converted_7d)} of ${fmt(c.upsell_viewers)}`) +
+    _tripKpi('Day Passes bought to start later', k('day_passes_bought_for_later'), '', 'starts at the first story') +
+    _tripKpi('Day Passes started offline', k('day_passes_started_offline'), '', 'started from a downloaded tour');
 }
 
 function renderTours(tours) {
@@ -7152,6 +7244,7 @@ function downloadCountriesMap(square) {
 async function loadAllData() {
   loadStoreOverview(_storeSelected);  // independent: a failure elsewhere can't block it
   loadTripRetention(days);  // independent too (reads every story event)
+  loadOfflineAnalytics();   // independent: an older backend just shows a note
   try {
     const [funnel, cohortFunnel, cohortsMonthly, mau, freeUsers, daily, costs, content, tours, acquisition, listenCompletion, viator, revenue, coinEconomy, streakHealth, influencerAccounts, acqChannels, settings, promoCodes, abTest, narrationConfigResp, googleQuota, growthExperiment, quotaExperiment, reviewPrompt, themeBreakdown, ltv, costTrends, revenueBreakdown, playbackHealth, storefrontExperiment, themeExperiment, modelExperiment, notifPerf] = await Promise.all([
       api(`/analytics/kpi/funnel?${_dateParams()}`),
