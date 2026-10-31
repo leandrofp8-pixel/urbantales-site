@@ -3123,10 +3123,13 @@ const CONFIG_GROUPS = {
     { key: 'review_prompt_min_sessions', label: 'Ask on app-open count', def: 3, attrs: 'min="1"' },
     { key: 'review_prompt_min_narrations', label: 'Minimum narrations heard first', def: 1, attrs: 'min="0"' },
   ] },
-  planner: { state: s => (s.tour_planner_version || 'v1') === 'v2' ? `v2 · ${s.tour_planner_model || 'gpt-5.4-mini'}` : 'v1 (original planner)', fields: [
+  planner: { state: s => ((s.tour_planner_version || 'v1') === 'v2' ? `v2 · ${s.tour_planner_model || 'gpt-5.4-mini'}` : 'v1 (original planner)') + (s.tour_interest_hidden_enabled ? ' · off-the-beaten-path on' : ''), fields: [
     { note: 'v2 ranks places by popularity, drops shops and duplicate parts of one landmark, fits the stops to the time budget and orders the walk. The model only applies to v2: gpt-… runs on OpenAI, gemini-… on Gemini. Switch back to v1 to undo.' },
     { key: 'tour_planner_version', type: 'select', label: 'Planner', def: 'v1', options: [['v1', 'v1: original'], ['v2', 'v2: new rules']] },
     { key: 'tour_planner_model', type: 'select', label: 'Model (v2 only)', def: 'gpt-5.4-mini', options: [['gemini-3.8-flash', 'Gemini 3.8 Flash (best in tests)'], ['gpt-5.4-mini', 'GPT-5.4 mini (OpenAI, fastest)'], ['gemini-2.5-flash', 'Gemini 2.5 Flash']] },
+    { heading: 'Plan sheet (app 3.5.1+)' },
+    { note: 'Shows the "Off the beaten path" interest in the app. It leaves out the city\'s 8 best-known places and picks spots locals love. Off = hidden from everyone. Takes effect the next time the Tours tab loads.' },
+    { key: 'tour_interest_hidden_enabled', type: 'toggle', label: 'Show "Off the beaten path"', def: false },
   ] },
   playback: { state: s => `Unified engine: ${s.unified_engine_rollout_pct ?? 0}% + testers`, fields: [
     { heading: 'Diagnostics' },
