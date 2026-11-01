@@ -17,18 +17,27 @@ GRAPH = os.environ.get("IG_GRAPH", "https://graph.instagram.com/v21.0")
 BASE = "https://urbantales.net/carousel/drafts"
 SLIDES = ["1-cover"] + [f"{i+1}-fact{i}" for i in range(1, 8)] + ["9-cta"]
 
-def call(method, path, **params):
+def call(method, path, tries=3, **params):
+    """Graph API call. Instagram fetches each slide image while answering, so a slow answer is common:
+    2026-10-18/24/31 a single 60 s read timeout cancelled the whole carousel. Retries cover timeouts and
+    dropped connections; a fresh container is harmless (only media_publish posts anything)."""
     params["access_token"] = os.environ["IG_ACCESS_TOKEN"]
     data = urllib.parse.urlencode(params).encode()
     url = f"{GRAPH}/{path}"
-    if method == "GET":
-        req = urllib.request.Request(f"{url}?{data.decode()}")
-    else:
-        req = urllib.request.Request(url, data=data, method="POST")
-    try:
-        return json.load(urllib.request.urlopen(req, timeout=60))
-    except urllib.error.HTTPError as e:
-        sys.exit(f"{method} {path} failed: {e.read().decode()}")
+    for attempt in range(1, tries + 1):
+        if method == "GET":
+            req = urllib.request.Request(f"{url}?{data.decode()}")
+        else:
+            req = urllib.request.Request(url, data=data, method="POST")
+        try:
+            return json.load(urllib.request.urlopen(req, timeout=120))
+        except urllib.error.HTTPError as e:
+            sys.exit(f"{method} {path} failed: {e.read().decode()}")
+        except (TimeoutError, OSError) as e:  # socket.timeout, connection reset, URLError
+            if attempt == tries:
+                raise
+            print(f"{method} {path}: {e!r}, retrying ({attempt}/{tries - 1})", flush=True)
+            time.sleep(10 * attempt)
 
 def wait_ready(container_id):
     for _ in range(30):
@@ -62,7 +71,21 @@ def main():
     carousel = call("POST", f"{user}/media", media_type="CAROUSEL",
                     children=",".join(children), caption=spec["caption"])["id"]
     wait_ready(carousel)
-    media_id = call("POST", f"{user}/media_publish", creation_id=carousel)["id"]
+    # Never retry the publish call itself: it may have gone out without an answer (seen with a Reel
+    # on 2026-10-20). Ask the container instead, so a lost answer is not reported as a failure.
+    try:
+        media_id = call("POST", f"{user}/media_publish", tries=1, creation_id=carousel)["id"]
+    except (TimeoutError, OSError):
+        for _ in range(12):
+            time.sleep(10)
+            try:
+                if call("GET", carousel, fields="status_code").get("status_code") == "PUBLISHED":
+                    link = call("GET", f"{user}/media", fields="permalink", limit=1)["data"][0]["permalink"]
+                    print(f"published: {link} (publish call timed out, but the container is PUBLISHED)")
+                    return
+            except (TimeoutError, OSError):
+                pass
+        raise
     link = call("GET", media_id, fields="permalink")["permalink"]
     print(f"published: {link}")
 
