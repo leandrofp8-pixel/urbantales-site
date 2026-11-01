@@ -1,0 +1,77 @@
+{
+ "slug": "newyork-rockefeller-tree",
+ "landmark": "Rockefeller Center Christmas Tree",
+ "city": "New York",
+ "story": "The first tree (Christmas Eve 1931, during the Depression) was a 20-foot fir that construction workers paid for themselves and decorated with cranberries, paper garlands and tin cans; the first official tree came in 1933.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Rockefeller_Center_Christmas_Tree",
+  "https://untappedcities.com/2016/12/15/throw-back-thursday-1931-first-rockefeller-center-christmas-tree-started-by-site-construction-workers/"
+ ],
+ "week": "2026-W45",
+ "created": "2026-11-01T10:39",
+ "media_sha": "80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc/reels/newyork-rockefeller-tree-es.mp4",
+  "caption": "Me pagaron los obreros. ¿Qué monumento debería contar su historia ahora? 👇\n\nEn la Nochebuena de 1931, en plena Gran Depresión, los obreros que construían el Rockefeller Center juntaron dinero para un abeto de seis metros. Lo decoraron con arándanos, guirnaldas de papel y latas. El primer árbol oficial llegó en 1933.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#NuevaYork #RockefellerCenter #Navidad #historia #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc/reels/newyork-rockefeller-tree-en.mp4",
+  "caption": "Paid for by workers. Which landmark should tell its story next? 👇\n\nOn Christmas Eve 1931, deep in the Great Depression, the men building Rockefeller Center pooled their money for a twenty-foot fir. They decorated it with cranberries, paper garlands and tin cans. The first official tree followed in 1933.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#NewYork #RockefellerCenter #Christmas #history #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-35419220.mp4",
+   "url": "https://www.pexels.com/video/festive-holiday-scene-at-rockefeller-center-35419220/",
+   "author": "CAPTKHO kho",
+   "w": 720,
+   "h": 1280,
+   "dur": 20,
+   "query": "Rockefeller Center Christmas tree"
+  },
+  {
+   "file": "pexels-5825809.mp4",
+   "url": "https://www.pexels.com/video/video-of-a-building-5825809/",
+   "author": "Charles Parker",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Rockefeller Center Christmas tree"
+  },
+  {
+   "file": "pexels-5825804.mp4",
+   "url": "https://www.pexels.com/video/video-of-a-building-5825804/",
+   "author": "Charles Parker",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Rockefeller Center Christmas tree"
+  },
+  {
+   "file": "pexels-5825800.mp4",
+   "url": "https://www.pexels.com/video/view-of-the-rockefeller-plaza-5825800/",
+   "author": "Charles Parker",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Rockefeller Center Christmas tree"
+  },
+  {
+   "file": "pexels-6230321.mp4",
+   "url": "https://www.pexels.com/video/ice-skate-rink-6230321/",
+   "author": "Victor  Hernandez",
+   "w": 1280,
+   "h": 720,
+   "dur": 36,
+   "query": "Rockefeller Center Christmas tree"
+  },
+  {
+   "file": "pexels-6230314.mp4",
+   "url": "https://www.pexels.com/video/a-huge-christmas-tree-at-rockefeller-center-6230314/",
+   "author": "Victor  Hernandez",
+   "w": 1280,
+   "h": 720,
+   "dur": 27,
+   "query": "New York Christmas tree ice rink"
+  }
+ ]
+}
