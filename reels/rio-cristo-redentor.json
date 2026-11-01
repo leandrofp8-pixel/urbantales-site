@@ -1,0 +1,87 @@
+{
+ "slug": "rio-cristo-redentor",
+ "landmark": "Christ the Redeemer",
+ "city": "Rio de Janeiro",
+ "story": "The statue is covered in millions of small soapstone tiles; according to accounts, the volunteers who glued them (many of them women from Rio's parishes) wrote prayers and loved ones' names on the back. The script presents this as 'the story goes'.",
+ "sources": [
+  "https://www.mentalfloss.com/article/84546/11-facts-about-rios-christ-redeemer-statue",
+  "https://www.theportugalnews.com/news/2026-05-04/christ-the-redeemer-the-colossus-of-corcovado-and-rio-de-janeiros-mighty-sentinel-of-the-summit/1014295",
+  "https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)"
+ ],
+ "week": "2026-W45",
+ "created": "2026-11-01T10:39",
+ "media_sha": "80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc/reels/rio-cristo-redentor-es.mp4",
+  "caption": "Mensajes secretos en mi piel. ¿Qué monumento debería contar su historia ahora? 👇\n\nEstoy cubierto por millones de pequeñas piezas de piedra jabón. Cuentan que las voluntarias que las pegaban, muchas de las parroquias de Río, escribían detrás oraciones y nombres de sus seres queridos. Desde 1931 esas palabras miran la ciudad conmigo.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#RioDeJaneiro #CristoRedentor #historia #viajes #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc/reels/rio-cristo-redentor-en.mp4",
+  "caption": "My skin hides secret messages. Which landmark should tell its story next? 👇\n\nI'm covered in millions of small soapstone tiles. The story goes that the volunteers who glued them, many from Rio's parishes, wrote prayers and loved ones' names on the back. Since 1931, those words have looked out over the city with me.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#RioDeJaneiro #ChristTheRedeemer #history #travel #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-2829278.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-christ-the-redeemer-statue-2829278/",
+   "author": "Athena Sandrini",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Christ the Redeemer"
+  },
+  {
+   "file": "pexels-2828876.mp4",
+   "url": "https://www.pexels.com/video/the-backside-of-jesus-the-redeemer-statue-2828876/",
+   "author": "Athena Sandrini",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Cristo Redentor Rio"
+  },
+  {
+   "file": "pexels-16023860.mp4",
+   "url": "https://www.pexels.com/video/cristo-redentor-16023860/",
+   "author": "Rodrigo Tavares",
+   "w": 1280,
+   "h": 720,
+   "dur": 26,
+   "query": "Corcovado Rio de Janeiro"
+  },
+  {
+   "file": "pexels-35933207.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-christ-the-redeemer-at-sunset-35933207/",
+   "author": "Carlos Leandro Ramos",
+   "w": 1280,
+   "h": 720,
+   "dur": 38,
+   "query": "Corcovado Rio de Janeiro"
+  },
+  {
+   "file": "pexels-40383470.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-rio-de-janeiro-with-sugarloaf-mountain-40383470/",
+   "author": "Bráulio jardim",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Corcovado Rio de Janeiro"
+  },
+  {
+   "file": "pexels-40383469.mp4",
+   "url": "https://www.pexels.com/video/christ-the-redeemer-statue-with-tourists-40383469/",
+   "author": "Bráulio jardim",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Rio de Janeiro aerial statue"
+  },
+  {
+   "file": "pexels-40007837.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-rio-de-janeiro-with-sugarloaf-40007837/",
+   "author": "Bráulio jardim",
+   "w": 1280,
+   "h": 720,
+   "dur": 31,
+   "query": "Rio de Janeiro aerial statue"
+  }
+ ]
+}
