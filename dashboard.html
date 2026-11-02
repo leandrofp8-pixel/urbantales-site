@@ -7913,7 +7913,39 @@ function renderReviewPrompt(data) {
     <p style="color:var(--muted);font-size:0.72rem;margin-top:10px">
       Asked once a user reaches ${data.settings?.min_sessions} app opens and ${data.settings?.min_narrations}+ narration(s) heard, and never again after they answer.
       This is the group who'd have left a low store rating — their reasons are the most actionable thing here.
-    </p>`;
+    </p>
+    <div id="reviewAskBox" style="margin-top:16px;padding:12px 14px;border:1px solid var(--border);border-radius:10px">
+      <strong style="font-size:0.9rem">Rating email to people who said "Love it"</strong>
+      <p style="color:var(--muted);font-size:0.78rem;margin:4px 0 10px">The stores don't tell us whether their rating window appeared, so this sends each of them one email from you, in their language, with a direct review link for their store. Nobody gets it twice.</p>
+      <div id="reviewAskStatus" style="font-size:0.85rem">Loading…</div>
+    </div>`;
+  loadReviewAsk();
+}
+
+async function loadReviewAsk() {
+  const el = document.getElementById('reviewAskStatus');
+  if (!el) return;
+  const d = await api('/admin/review-ask').catch(() => null);
+  if (!d) { el.innerHTML = '<span style="color:var(--muted)">Not available yet.</span>'; return; }
+  const langs = Object.entries(d.by_language || {}).map(([k, v]) => `${k} ${v}`).join(' · ') || '—';
+  const plats = Object.entries(d.by_platform || {}).map(([k, v]) => `${k} ${v}`).join(' · ') || '—';
+  el.innerHTML = d.to_send
+    ? `<b>${fmt(d.to_send)}</b> to send (${langs}; ${plats}; ${fmt(d.private_relay)} Apple private-relay address(es) may not deliver). Already sent: ${fmt(d.already_sent)}.
+       <button class="btn-send" style="margin-left:8px" onclick="sendReviewAsk(${d.to_send})">Send ${fmt(d.to_send)} emails</button>`
+    : `Nobody new to email. Already sent: ${fmt(d.already_sent)}.`;
+}
+
+async function sendReviewAsk(n) {
+  if (!confirm(`Send the rating email to ${n} people? This can't be undone.`)) return;
+  const el = document.getElementById('reviewAskStatus');
+  el.textContent = 'Sending…';
+  try {
+    const res = await fetch(`${API}/admin/review-ask`, { method: 'POST', headers: { 'Authorization': `Bearer ${getToken()}` } });
+    const d = await res.json();
+    el.textContent = res.ok ? `Sent ${d.sent}${d.failed ? `, ${d.failed} failed` : ''}.` : `Error: ${d.detail || res.status}`;
+  } catch (e) {
+    el.textContent = `Error: ${e.message}`;
+  }
 }
 
 // ══════════════════════════════════════════════
