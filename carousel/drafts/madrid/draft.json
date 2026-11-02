@@ -1,93 +1,140 @@
 {
-  "badge_num": 36,
-  "city": "MADRID",
-  "flag": "🇪🇸",
-  "cta_screenshot": "screen-generic-narration-style.png",
-  "cta_screenshot_note": "No Madrid map screenshot in the repo (no screen-madrid-*-map.png file, though madrid.html does exist as a landing page); using the generic app screen per GUIDELINES.md.",
-  "style": "minimal",
-  "photo_sourcing_blocked": true,
-  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org, upload.wikimedia.org, and en.wikipedia.org (confirmed via curl -> agent-proxy status logging 'gateway answered 403 to CONNECT' for commons.wikimedia.org, and via WebFetch -> 'getaddrinfo ENOTFOUND' / 'outside the session's allowed network domains' for all three hosts). This is the same recurring block that hit batches #8 (Amsterdam), #9 (Barcelona), #10 (Vienna), #11 (Berlin), #12 (London) and #13 (Prague) — the cloud session still has no working path to Wikimedia Commons for photo sourcing. No candidate photos could be downloaded this run, so every 'candidates' array below is empty. 'suggested_queries' lists the exact Commons search terms to run once network access is open, or to search manually at commons.wikimedia.org (the usual fallback per those past batches: Leandro sources photos on his Mac after this PR). Facts themselves were fully researched and verified via WebSearch, which is not subject to this block.",
-  "caption": "Which of these 7 Madrid secrets didn't you know? Comment the number 👇\n\n1. Royal Palace\nThe Royal Palace of Madrid was built after the old Alcázar burned down on Christmas Eve, 1734. Its replacement, finished in 1755, was built from stone and brick instead of wood — on purpose, so fire could never destroy it again. Today it's the largest royal palace in Western Europe, with 3,418 rooms.\n\n2. Temple of Debod\nEgypt gifted Spain this 2,200-year-old temple in 1968 to thank it for helping save ancient monuments, including Abu Simbel, before the Aswan High Dam flooded them. It was dismantled stone by stone and rebuilt piece by piece in a Madrid park.\n\n3. Plaza Mayor\nMadrid's Plaza Mayor has burned down three times — in 1631, 1672, and 1790. After the last fire, architect Juan de Villanueva rebuilt it using more stone, cutting it from five floors to three, so fire could never spread through it that easily again.\n\n4. Puerta del Sol Clock\nAt midnight on New Year's Eve, the clock atop Madrid's old Royal Post Office building rings 12 chimes — the signal for people across Spain to eat 12 grapes, one per chime, for good luck. The tradition has been broadcast live nationwide since 1962.\n\n5. Palacio de Cristal\nBuilt in 1887 as a greenhouse for a flower exhibition, the Palacio de Cristal in Retiro Park hosted the inauguration of Manuel Azaña as president of Spain's Second Republic in 1936 — because the actual parliament building was too small to fit everyone.\n\n6. Almudena Cathedral\nMadrid's Almudena Cathedral took 110 years to build, from 1883 until its consecration in 1993. Legend says its patron Virgin had been hidden inside the old Arab city wall for centuries before a collapse revealed her, candles still burning beside her.\n\n7. El Oso y el Madroño\nThe bronze statue in Puerta del Sol shows a bear eating from a strawberry tree — Madrid's medieval coat of arms. Records from the Middle Ages actually describe the bear as female, 'la osa,' but the name shortened to the easier 'el oso y el madroño.'\n\n.\n.\n.\n#Madrid #Spain #TravelFacts #RoyalPalace #UrbanTales",
-  "caption_es": "¿Cuál de estos 7 secretos de Madrid no conocías? Comenta el número 👇\n\n1. Palacio Real\nEl Palacio Real de Madrid se construyó después de que el antiguo Alcázar ardiera en la Nochebuena de 1734. Su reemplazo, terminado en 1755, se hizo de piedra y ladrillo en vez de madera — a propósito, para que el fuego nunca pudiera destruirlo otra vez. Hoy es el palacio real más grande de Europa Occidental, con 3,418 habitaciones.\n\n2. Templo de Debod\nEgipto regaló a España este templo de 2,200 años en 1968, en agradecimiento por ayudar a salvar monumentos como Abu Simbel antes de que la presa de Asuán los inundara. Lo desmontaron piedra por piedra y lo reconstruyeron en un parque de Madrid.\n\n3. Plaza Mayor\nLa Plaza Mayor de Madrid se ha incendiado tres veces — en 1631, 1672 y 1790. Tras el último incendio, el arquitecto Juan de Villanueva la reconstruyó con más piedra, bajándola de cinco pisos a tres, para que el fuego no volviera a propagarse tan fácil.\n\n4. Reloj de la Puerta del Sol\nA medianoche en Nochevieja, el reloj sobre el antiguo edificio de Correos en Madrid suena 12 campanadas — la señal para que toda España coma 12 uvas, una por campanada, para la buena suerte. La tradición se transmite en vivo a todo el país desde 1962.\n\n5. Palacio de Cristal\nConstruido en 1887 como invernadero para una exposición floral, el Palacio de Cristal del Retiro fue sede de la investidura de Manuel Azaña como presidente de la Segunda República en 1936 — porque el edificio del parlamento era demasiado pequeño para todos.\n\n6. Catedral de la Almudena\nLa Catedral de la Almudena de Madrid tardó 110 años en construirse, de 1883 hasta su consagración en 1993. La leyenda dice que su Virgen patrona estuvo escondida siglos dentro de la antigua muralla árabe, hasta que un derrumbe la reveló con velas todavía encendidas.\n\n7. El Oso y el Madroño\nLa estatua de bronce en la Puerta del Sol muestra un oso comiendo de un madroño — el escudo medieval de Madrid. Los registros de la Edad Media describen al oso como hembra, 'la osa,' pero el nombre se acortó a 'el oso y el madroño.'\n\n.\n.\n.\n#Madrid #España #DatosCuriosos #PalacioReal #UrbanTales",
-  "facts": [
+ "badge_num": 37,
+ "city": "MADRID",
+ "flag": "🇪🇸",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "cta_screenshot_note": "No Madrid map screenshot in the repo (no screen-madrid-*-map.png file, though madrid.html does exist as a landing page); using the generic app screen per GUIDELINES.md.",
+ "style": "minimal",
+ "photo_sourcing_blocked": false,
+ "caption": "Which of these 7 Madrid secrets didn't you know? Comment the number 👇\n\n1. Royal Palace\nThe Royal Palace of Madrid stands where the old Alcázar burned down on Christmas Eve, 1734. Its replacement, begun in 1738, was vaulted in stone and brick with almost no wood, so fire could never destroy it again. With 3,418 rooms, it's the largest royal palace in Western Europe.\n\n2. Temple of Debod\nEgypt gifted Spain this 2,200-year-old temple in 1968 to thank it for helping save ancient monuments, including Abu Simbel, before the Aswan High Dam flooded them. It was dismantled stone by stone and rebuilt in a Madrid park.\n\n3. Plaza Mayor\nMadrid's Plaza Mayor has burned down three times: in 1631, 1672 and 1790. After the last fire, architect Juan de Villanueva rebuilt it with lower buildings and closed its corners with grand arches, giving us the square you walk through today.\n\n4. Puerta del Sol Clock\nAt midnight on New Year's Eve, the clock atop Madrid's old Royal Post Office building rings 12 chimes, the signal for people across Spain to eat 12 grapes, one per chime, for good luck. The moment has been broadcast live nationwide since 1962.\n\n5. Palacio de Cristal\nBuilt in 1887 as a greenhouse for plants at the Philippine Islands Exhibition, the Palacio de Cristal in Retiro Park hosted the election of Manuel Azaña as president of Spain's Second Republic in May 1936, because Parliament was too small for the assembly of deputies and electors.\n\n6. Almudena Cathedral\nMadrid's Almudena Cathedral took 110 years to build, from 1883 until its consecration in 1993. Legend says its patron Virgin had been hidden inside the old city wall for centuries before a collapse revealed her, candles still burning beside her.\n\n7. El Oso y el Madroño\nThe bronze statue in Puerta del Sol shows a bear eating from a strawberry tree, Madrid's symbol since the Middle Ages. Some historians argue that medieval records show a she-bear, 'la osa', and in 2007 a city women's council campaigned under the slogan 'Soy una osa'.\n\n.\n.\n.\n#Madrid #Spain #TravelFacts #RoyalPalace #UrbanTales",
+ "caption_es": "¿Cuál de estos 7 secretos de Madrid no conocías? Comenta el número 👇\n\n1. Palacio Real\nEl Palacio Real de Madrid ocupa el lugar del antiguo Alcázar, que ardió en la Nochebuena de 1734. Su reemplazo, iniciado en 1738, se abovedó en piedra y ladrillo casi sin madera, para que el fuego nunca pudiera destruirlo otra vez. Con 3,418 habitaciones, es el palacio real más grande de Europa Occidental.\n\n2. Templo de Debod\nEgipto regaló a España este templo de 2,200 años en 1968, en agradecimiento por ayudar a salvar monumentos como Abu Simbel antes de que la presa de Asuán los inundara. Lo desmontaron piedra por piedra y lo reconstruyeron en un parque de Madrid.\n\n3. Plaza Mayor\nLa Plaza Mayor de Madrid se ha incendiado tres veces: en 1631, 1672 y 1790. Tras el último incendio, el arquitecto Juan de Villanueva la reconstruyó con edificios más bajos y cerró sus esquinas con grandes arcos, dándole la forma que tiene hoy.\n\n4. Reloj de la Puerta del Sol\nA medianoche en Nochevieja, el reloj sobre el antiguo edificio de Correos de Madrid da 12 campanadas, la señal para que toda España coma 12 uvas, una por campanada, para la buena suerte. El momento se transmite en vivo a todo el país desde 1962.\n\n5. Palacio de Cristal\nConstruido en 1887 como invernadero para las plantas de la Exposición de Filipinas, el Palacio de Cristal del Retiro fue sede de la elección de Manuel Azaña como presidente de la Segunda República en mayo de 1936, porque el Congreso era demasiado pequeño para la asamblea de diputados y compromisarios.\n\n6. Catedral de la Almudena\nLa Catedral de la Almudena de Madrid tardó 110 años en construirse, de 1883 hasta su consagración en 1993. La leyenda dice que su Virgen patrona estuvo escondida siglos dentro de la antigua muralla, hasta que un derrumbe la reveló con las velas todavía encendidas.\n\n7. El Oso y el Madroño\nLa estatua de bronce de la Puerta del Sol muestra un oso comiendo de un madroño, símbolo de Madrid desde la Edad Media. Algunos historiadores sostienen que los registros medievales hablan de una osa, y en 2007 el Consejo de las Mujeres de Madrid hizo campaña con el lema 'Soy una osa'.\n\n.\n.\n.\n#Madrid #España #DatosCuriosos #PalacioReal #UrbanTales",
+ "facts": [
+  {
+   "slot": "fact1",
+   "headline": "Spain's largest palace exists because of a fire",
+   "headline_es": "El palacio más grande de España nació de un incendio",
+   "body_html": "The Royal Palace of Madrid stands where the old Alcázar burned down on <b>Christmas Eve, 1734</b>. Its replacement, begun in 1738, was vaulted in stone and brick with almost no wood, so fire could never destroy it again. With <b>3,418 rooms</b>, it's the largest royal palace in Western Europe.",
+   "body_es": "El Palacio Real de Madrid ocupa el lugar del antiguo Alcázar, que ardió en la <b>Nochebuena de 1734</b>. Su reemplazo, iniciado en 1738, se abovedó en piedra y ladrillo casi sin madera, para que el fuego nunca pudiera destruirlo otra vez. Con <b>3,418 habitaciones</b>, es el palacio real más grande de Europa Occidental.",
+   "hook": "Madrid's Royal Palace was built of stone and brick, not wood, after fire destroyed its predecessor on Christmas Eve 1734.",
+   "hook_es": "El Palacio Real se construyó en piedra y ladrillo, no madera, tras un incendio en la Nochebuena de 1734.",
+   "candidates": [
     {
-      "slot": "fact1",
-      "headline": "Spain's largest palace exists because of a fire",
-      "headline_es": "El palacio más grande de España nació de un incendio",
-      "body_html": "The Royal Palace of Madrid was built after the old Alcázar burned down on <b>Christmas Eve, 1734</b>. Its replacement, finished in 1755, was built from stone and brick instead of wood — on purpose, so fire could never destroy it again. Today it's the largest royal palace in Western Europe, with <b>3,418 rooms</b>.",
-      "body_es": "El Palacio Real de Madrid se construyó después de que el antiguo Alcázar ardiera en la <b>Nochebuena de 1734</b>. Su reemplazo, terminado en 1755, se hizo de piedra y ladrillo en vez de madera — a propósito, para que el fuego nunca pudiera destruirlo otra vez. Hoy es el palacio real más grande de Europa Occidental, con <b>3,418 habitaciones</b>.",
-      "hook": "Madrid's Royal Palace was built of stone and brick, not wood, after fire destroyed the old one on Christmas Eve 1734.",
-      "hook_es": "El Palacio Real de Madrid se construyó en piedra y ladrillo, no madera, tras un incendio en la Nochebuena de 1734.",
-      "candidates": [],
-      "suggested_queries": ["Royal Palace of Madrid facade", "Palacio Real Madrid aerial view"]
-    },
-    {
-      "slot": "fact2",
-      "headline": "An Egyptian temple saved from a flooding dam",
-      "headline_es": "Un templo egipcio salvado de una presa",
-      "body_html": "Egypt gifted Spain this <b>2,200-year-old temple</b> in 1968 to thank it for helping save ancient monuments, including Abu Simbel, before the Aswan High Dam flooded them. It was dismantled stone by stone and rebuilt piece by piece in a Madrid park.",
-      "body_es": "Egipto regaló a España este <b>templo de 2,200 años</b> en 1968, en agradecimiento por ayudar a salvar monumentos como Abu Simbel antes de que la presa de Asuán los inundara. Lo desmontaron piedra por piedra y lo reconstruyeron en un parque de Madrid.",
-      "hook": "Egypt gave Madrid this 2,200-year-old temple in 1968 for helping save monuments the Aswan Dam would have flooded.",
-      "hook_es": "Egipto regaló a Madrid este templo de 2,200 años en 1968, por ayudar a salvar monumentos que inundaría la presa de Asuán.",
-      "candidates": [],
-      "suggested_queries": ["Temple of Debod Madrid", "Templo de Debod sunset Madrid"]
-    },
-    {
-      "slot": "fact3",
-      "headline": "Madrid's grand square has burned down three times",
-      "headline_es": "La gran plaza de Madrid se incendió tres veces",
-      "body_html": "Madrid's Plaza Mayor has burned down <b>three times</b> — in 1631, 1672, and 1790. After the last fire, architect Juan de Villanueva rebuilt it using more stone, cutting it from five floors to three, so fire could never spread through it that easily again.",
-      "body_es": "La Plaza Mayor de Madrid se ha incendiado <b>tres veces</b> — en 1631, 1672 y 1790. Tras el último incendio, el arquitecto Juan de Villanueva la reconstruyó con más piedra, bajándola de cinco pisos a tres, para que el fuego no volviera a propagarse tan fácil.",
-      "hook": "Madrid's Plaza Mayor burned down three times; after 1790, the final rebuild was made lower and built from stone.",
-      "hook_es": "La Plaza Mayor de Madrid ardió tres veces; tras 1790, la reconstrucción final se hizo más baja y de piedra.",
-      "candidates": [],
-      "suggested_queries": ["Plaza Mayor Madrid", "Plaza Mayor Madrid Casa de la Panaderia"]
-    },
-    {
-      "slot": "fact4",
-      "headline": "One clock tells all of Spain when to eat grapes",
-      "headline_es": "Un reloj le dice a toda España cuándo comer uvas",
-      "body_html": "At midnight on New Year's Eve, the clock atop Madrid's old Royal Post Office building rings <b>12 chimes</b> — the signal for people across Spain to eat 12 grapes, one per chime, for good luck. The tradition has been broadcast live nationwide since 1962.",
-      "body_es": "A medianoche en Nochevieja, el reloj sobre el antiguo edificio de Correos en Madrid suena <b>12 campanadas</b> — la señal para que toda España coma 12 uvas, una por campanada, para la buena suerte. La tradición se transmite en vivo a todo el país desde 1962.",
-      "hook": "At midnight, one clock in Madrid's Puerta del Sol rings 12 chimes that tell all of Spain to eat grapes.",
-      "hook_es": "A medianoche, un reloj en la Puerta del Sol de Madrid suena 12 campanadas que le dicen a España que coma uvas.",
-      "candidates": [],
-      "suggested_queries": ["Real Casa de Correos Puerta del Sol clock", "Puerta del Sol Madrid clock tower"]
-    },
-    {
-      "slot": "fact5",
-      "headline": "A greenhouse once swore in Spain's president",
-      "headline_es": "Un invernadero fue sede de la jura de un presidente",
-      "body_html": "Built in 1887 as a <b>greenhouse</b> for a flower exhibition, the Palacio de Cristal in Retiro Park hosted the inauguration of Manuel Azaña as president of Spain's Second Republic in 1936 — because the actual parliament building was too small to fit everyone.",
-      "body_es": "Construido en 1887 como <b>invernadero</b> para una exposición floral, el Palacio de Cristal del Retiro fue sede de la investidura de Manuel Azaña como presidente de la Segunda República en 1936 — porque el edificio del parlamento era demasiado pequeño para todos.",
-      "hook": "Built as a flower greenhouse in 1887, Madrid's Palacio de Cristal hosted a Spanish president's inauguration in 1936.",
-      "hook_es": "Construido como invernadero floral en 1887, el Palacio de Cristal de Madrid fue sede de la investidura de un presidente en 1936.",
-      "candidates": [],
-      "suggested_queries": ["Palacio de Cristal Retiro Madrid", "Palacio de Cristal Madrid interior glass"]
-    },
-    {
-      "slot": "fact6",
-      "headline": "A cathedral that took 110 years to finish",
-      "headline_es": "Una catedral que tardó 110 años en terminarse",
-      "body_html": "Madrid's Almudena Cathedral took <b>110 years</b> to build, from 1883 until its consecration in 1993. Legend says its patron Virgin had been hidden inside the old Arab city wall for centuries before a collapse revealed her, candles still burning beside her.",
-      "body_es": "La Catedral de la Almudena de Madrid tardó <b>110 años</b> en construirse, de 1883 hasta su consagración en 1993. La leyenda dice que su Virgen patrona estuvo escondida siglos dentro de la antigua muralla árabe, hasta que un derrumbe la reveló con velas todavía encendidas.",
-      "hook": "Madrid's Almudena Cathedral took 110 years to build, and legend says its Virgin statue was hidden inside the old city wall.",
-      "hook_es": "La Catedral de la Almudena tardó 110 años en construirse, y la leyenda dice que su Virgen estuvo oculta en la muralla.",
-      "candidates": [],
-      "suggested_queries": ["Almudena Cathedral Madrid exterior", "Catedral de la Almudena Madrid facade"]
-    },
-    {
-      "slot": "fact7",
-      "headline": "Madrid's symbol used to be a female bear",
-      "headline_es": "El símbolo de Madrid era originalmente una osa",
-      "body_html": "The bronze statue in Puerta del Sol shows a bear eating from a strawberry tree — Madrid's medieval coat of arms. Records from the Middle Ages actually describe the bear as female, <b>'la osa,'</b> but the name shortened to the easier 'el oso y el madroño.'",
-      "body_es": "La estatua de bronce en la Puerta del Sol muestra un oso comiendo de un madroño — el escudo medieval de Madrid. Los registros de la Edad Media describen al oso como hembra, <b>'la osa,'</b> pero el nombre se acortó a 'el oso y el madroño.'",
-      "hook": "Madrid's famous bear statue was originally a female bear in medieval records, before the name shortened to the masculine form.",
-      "hook_es": "La famosa estatua del oso de Madrid era originalmente una osa hembra en los registros medievales, antes de acortarse el nombre.",
-      "candidates": [],
-      "suggested_queries": ["El Oso y el Madrono statue Puerta del Sol", "Statue of the Bear and the Strawberry Tree Madrid"]
+     "file": "fact1.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Palacio_Real_de_Madrid_-_15.jpg",
+     "license": "CC BY-SA 3.0",
+     "artist": "Carlos Delgado"
     }
-  ],
-  "cover_candidates": [],
-  "cover_suggested_queries": ["Madrid skyline aerial", "Madrid cityscape sunset Gran Via"]
+   ]
+  },
+  {
+   "slot": "fact2",
+   "headline": "An Egyptian temple saved from a flooding dam",
+   "headline_es": "Un templo egipcio salvado de una presa",
+   "body_html": "Egypt gifted Spain this <b>2,200-year-old temple</b> in 1968 to thank it for helping save ancient monuments, including Abu Simbel, before the Aswan High Dam flooded them. It was dismantled stone by stone and rebuilt in a Madrid park.",
+   "body_es": "Egipto regaló a España este <b>templo de 2,200 años</b> en 1968, en agradecimiento por ayudar a salvar monumentos como Abu Simbel antes de que la presa de Asuán los inundara. Lo desmontaron piedra por piedra y lo reconstruyeron en un parque de Madrid.",
+   "hook": "Egypt gave Madrid this 2,200-year-old temple in 1968 for helping save monuments the Aswan Dam would have flooded.",
+   "hook_es": "Egipto regaló este templo de 2,200 años en 1968 por ayudar a salvar monumentos de la presa de Asuán.",
+   "candidates": [
+    {
+     "file": "fact2.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Templo_de_Debod_-_01.jpg",
+     "license": "CC BY-SA 3.0",
+     "artist": "Carlos Delgado"
+    }
+   ]
+  },
+  {
+   "slot": "fact3",
+   "headline": "Madrid's grand square has burned down three times",
+   "headline_es": "La gran plaza de Madrid se incendió tres veces",
+   "body_html": "Madrid's Plaza Mayor has burned down <b>three times</b>: in 1631, 1672 and 1790. After the last fire, architect Juan de Villanueva rebuilt it with <b>lower buildings</b> and closed its corners with grand arches, giving us the square you walk through today.",
+   "body_es": "La Plaza Mayor de Madrid se ha incendiado <b>tres veces</b>: en 1631, 1672 y 1790. Tras el último incendio, el arquitecto Juan de Villanueva la reconstruyó con <b>edificios más bajos</b> y cerró sus esquinas con grandes arcos, dándole la forma que tiene hoy.",
+   "hook": "Madrid's Plaza Mayor burned three times; after the 1790 fire it was rebuilt lower, into the square you see today.",
+   "hook_es": "La Plaza Mayor ardió tres veces; tras el incendio de 1790 la reconstruyeron más baja, como la ves hoy.",
+   "candidates": [
+    {
+     "file": "fact3.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Plaza_Mayor,_Madrid,_Espa%C3%B1a,_2023-01-03,_DD_78.jpg",
+     "license": "CC BY-SA 4.0",
+     "artist": "Diego Delso"
+    }
+   ]
+  },
+  {
+   "slot": "fact4",
+   "headline": "One clock tells all of Spain when to eat grapes",
+   "headline_es": "Un reloj le dice a toda España cuándo comer uvas",
+   "body_html": "At midnight on New Year's Eve, the clock atop Madrid's old Royal Post Office building rings <b>12 chimes</b>, the signal for people across Spain to eat 12 grapes, one per chime, for good luck. The moment has been broadcast live nationwide since 1962.",
+   "body_es": "A medianoche en Nochevieja, el reloj sobre el antiguo edificio de Correos de Madrid da <b>12 campanadas</b>, la señal para que toda España coma 12 uvas, una por campanada, para la buena suerte. El momento se transmite en vivo a todo el país desde 1962.",
+   "hook": "At midnight, one clock in Madrid's Puerta del Sol rings 12 chimes that tell all of Spain to eat grapes.",
+   "hook_es": "A medianoche, el reloj de la Puerta del Sol da 12 campanadas y toda España come una uva por campanada.",
+   "candidates": [
+    {
+     "file": "fact4.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Real_Casa_de_Correos,_Plaza_del_Sol,_Madrid,_Espa%C3%B1a,_2017-05-18,_DD_01.jpg",
+     "license": "CC BY-SA 4.0",
+     "artist": "Diego Delso"
+    }
+   ]
+  },
+  {
+   "slot": "fact5",
+   "headline": "A greenhouse once chose Spain's president",
+   "headline_es": "Un invernadero eligió al presidente de España",
+   "body_html": "Built in 1887 as a <b>greenhouse</b> for plants at the Philippine Islands Exhibition, the Palacio de Cristal in Retiro Park hosted the election of Manuel Azaña as president of Spain's Second Republic in May 1936, because Parliament was too small for the assembly of deputies and electors.",
+   "body_es": "Construido en 1887 como <b>invernadero</b> para las plantas de la Exposición de Filipinas, el Palacio de Cristal del Retiro fue sede de la elección de Manuel Azaña como presidente de la Segunda República en mayo de 1936, porque el Congreso era demasiado pequeño para la asamblea de diputados y compromisarios.",
+   "hook": "Built as a greenhouse in 1887, Madrid's Palacio de Cristal hosted the election of Spain's president in 1936.",
+   "hook_es": "Construido como invernadero en 1887, el Palacio de Cristal fue sede de la elección del presidente de España en 1936.",
+   "candidates": [
+    {
+     "file": "fact5.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Palacio_de_Cristal_-_01.jpg",
+     "license": "CC BY-SA 3.0",
+     "artist": "Carlos Delgado"
+    }
+   ]
+  },
+  {
+   "slot": "fact6",
+   "headline": "A cathedral that took 110 years to finish",
+   "headline_es": "Una catedral que tardó 110 años en terminarse",
+   "body_html": "Madrid's Almudena Cathedral took <b>110 years</b> to build, from 1883 until its consecration in 1993. Legend says its patron Virgin had been hidden inside the old city wall for centuries before a collapse revealed her, candles still burning beside her.",
+   "body_es": "La Catedral de la Almudena de Madrid tardó <b>110 años</b> en construirse, de 1883 hasta su consagración en 1993. La leyenda dice que su Virgen patrona estuvo escondida siglos dentro de la antigua muralla, hasta que un derrumbe la reveló con las velas todavía encendidas.",
+   "hook": "Almudena Cathedral took 110 years to build, and legend says its Virgin statue was hidden inside Madrid's old city wall.",
+   "hook_es": "La Almudena tardó 110 años en construirse, y la leyenda dice que su Virgen estuvo oculta en la muralla.",
+   "candidates": [
+    {
+     "file": "fact6.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Catedral_de_la_Almudena_-_130826_211731.jpg",
+     "license": "CC BY-SA 3.0",
+     "artist": "Barcex"
+    }
+   ]
+  },
+  {
+   "slot": "fact7",
+   "headline": "Madrid's bear may actually be a she-bear",
+   "headline_es": "El oso de Madrid podría ser en realidad una osa",
+   "body_html": "The bronze statue in Puerta del Sol shows a bear eating from a strawberry tree, Madrid's symbol since the Middle Ages. Some historians argue that medieval records show <b>a she-bear</b>, 'la osa', and in 2007 a city women's council campaigned under the slogan 'Soy una osa'.",
+   "body_es": "La estatua de bronce de la Puerta del Sol muestra un oso comiendo de un madroño, símbolo de Madrid desde la Edad Media. Algunos historiadores sostienen que los registros medievales hablan de <b>una osa</b>, y en 2007 el Consejo de las Mujeres de Madrid hizo campaña con el lema 'Soy una osa'.",
+   "hook": "Some historians say the bear on Madrid's coat of arms, eating from a strawberry tree, was originally a female.",
+   "hook_es": "Algunos historiadores dicen que el oso del escudo de Madrid, que come de un madroño, era en realidad una osa.",
+   "candidates": [
+    {
+     "file": "fact7.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:El_oso_y_el_madro%C3%B1o_-_02.jpg",
+     "license": "CC BY-SA 3.0",
+     "artist": "Carlos Delgado"
+    }
+   ]
+  }
+ ],
+ "cover_candidates": [
+  {
+   "file": "cover.jpg",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Gran_V%C3%ADa_-_01.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Carlos Delgado"
+  }
+ ]
 }

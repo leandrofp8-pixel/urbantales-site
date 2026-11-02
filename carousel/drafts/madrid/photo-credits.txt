@@ -1,0 +1,9 @@
+Photos: Wikimedia Commons
+cover: Carlos Delgado — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Gran_V%C3%ADa_-_01.jpg
+fact1: Carlos Delgado — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Palacio_Real_de_Madrid_-_15.jpg
+fact2: Carlos Delgado — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Templo_de_Debod_-_01.jpg
+fact3: Diego Delso — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Plaza_Mayor,_Madrid,_Espa%C3%B1a,_2023-01-03,_DD_78.jpg
+fact4: Diego Delso — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Real_Casa_de_Correos,_Plaza_del_Sol,_Madrid,_Espa%C3%B1a,_2017-05-18,_DD_01.jpg
+fact5: Carlos Delgado — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Palacio_de_Cristal_-_01.jpg
+fact6: Barcex — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Catedral_de_la_Almudena_-_130826_211731.jpg
+fact7: Carlos Delgado — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:El_oso_y_el_madro%C3%B1o_-_02.jpg

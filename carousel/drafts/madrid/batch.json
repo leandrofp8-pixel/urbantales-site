@@ -1,0 +1,38 @@
+{
+ "badge_num": 37,
+ "city": "MADRID",
+ "flag": "🇪🇸",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Madrid secrets didn't you know? Comment the number 👇\n\n1. Royal Palace\nThe Royal Palace of Madrid stands where the old Alcázar burned down on Christmas Eve, 1734. Its replacement, begun in 1738, was vaulted in stone and brick with almost no wood, so fire could never destroy it again. With 3,418 rooms, it's the largest royal palace in Western Europe.\n\n2. Temple of Debod\nEgypt gifted Spain this 2,200-year-old temple in 1968 to thank it for helping save ancient monuments, including Abu Simbel, before the Aswan High Dam flooded them. It was dismantled stone by stone and rebuilt in a Madrid park.\n\n3. Plaza Mayor\nMadrid's Plaza Mayor has burned down three times: in 1631, 1672 and 1790. After the last fire, architect Juan de Villanueva rebuilt it with lower buildings and closed its corners with grand arches, giving us the square you walk through today.\n\n4. Puerta del Sol Clock\nAt midnight on New Year's Eve, the clock atop Madrid's old Royal Post Office building rings 12 chimes, the signal for people across Spain to eat 12 grapes, one per chime, for good luck. The moment has been broadcast live nationwide since 1962.\n\n5. Palacio de Cristal\nBuilt in 1887 as a greenhouse for plants at the Philippine Islands Exhibition, the Palacio de Cristal in Retiro Park hosted the election of Manuel Azaña as president of Spain's Second Republic in May 1936, because Parliament was too small for the assembly of deputies and electors.\n\n6. Almudena Cathedral\nMadrid's Almudena Cathedral took 110 years to build, from 1883 until its consecration in 1993. Legend says its patron Virgin had been hidden inside the old city wall for centuries before a collapse revealed her, candles still burning beside her.\n\n7. El Oso y el Madroño\nThe bronze statue in Puerta del Sol shows a bear eating from a strawberry tree, Madrid's symbol since the Middle Ages. Some historians argue that medieval records show a she-bear, 'la osa', and in 2007 a city women's council campaigned under the slogan 'Soy una osa'.\n\n.\n.\n.\n#Madrid #Spain #TravelFacts #RoyalPalace #UrbanTales",
+ "facts": [
+  {
+   "headline": "Spain's largest palace exists because of a fire",
+   "hook": "Madrid's Royal Palace was built of stone and brick, not wood, after fire destroyed its predecessor on Christmas Eve 1734."
+  },
+  {
+   "headline": "An Egyptian temple saved from a flooding dam",
+   "hook": "Egypt gave Madrid this 2,200-year-old temple in 1968 for helping save monuments the Aswan Dam would have flooded."
+  },
+  {
+   "headline": "Madrid's grand square has burned down three times",
+   "hook": "Madrid's Plaza Mayor burned three times; after the 1790 fire it was rebuilt lower, into the square you see today."
+  },
+  {
+   "headline": "One clock tells all of Spain when to eat grapes",
+   "hook": "At midnight, one clock in Madrid's Puerta del Sol rings 12 chimes that tell all of Spain to eat grapes."
+  },
+  {
+   "headline": "A greenhouse once chose Spain's president",
+   "hook": "Built as a greenhouse in 1887, Madrid's Palacio de Cristal hosted the election of Spain's president in 1936."
+  },
+  {
+   "headline": "A cathedral that took 110 years to finish",
+   "hook": "Almudena Cathedral took 110 years to build, and legend says its Virgin statue was hidden inside Madrid's old city wall."
+  },
+  {
+   "headline": "Madrid's bear may actually be a she-bear",
+   "hook": "Some historians say the bear on Madrid's coat of arms, eating from a strawberry tree, was originally a female."
+  }
+ ]
+}
