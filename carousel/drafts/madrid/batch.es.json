@@ -1,0 +1,39 @@
+{
+ "badge_num": 37,
+ "city": "MADRID",
+ "flag": "🇪🇸",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "lang": "es",
+ "caption": "¿Cuál de estos 7 secretos de Madrid no conocías? Comenta el número 👇\n\n1. Palacio Real\nEl Palacio Real de Madrid ocupa el lugar del antiguo Alcázar, que ardió en la Nochebuena de 1734. Su reemplazo, iniciado en 1738, se abovedó en piedra y ladrillo casi sin madera, para que el fuego nunca pudiera destruirlo otra vez. Con 3,418 habitaciones, es el palacio real más grande de Europa Occidental.\n\n2. Templo de Debod\nEgipto regaló a España este templo de 2,200 años en 1968, en agradecimiento por ayudar a salvar monumentos como Abu Simbel antes de que la presa de Asuán los inundara. Lo desmontaron piedra por piedra y lo reconstruyeron en un parque de Madrid.\n\n3. Plaza Mayor\nLa Plaza Mayor de Madrid se ha incendiado tres veces: en 1631, 1672 y 1790. Tras el último incendio, el arquitecto Juan de Villanueva la reconstruyó con edificios más bajos y cerró sus esquinas con grandes arcos, dándole la forma que tiene hoy.\n\n4. Reloj de la Puerta del Sol\nA medianoche en Nochevieja, el reloj sobre el antiguo edificio de Correos de Madrid da 12 campanadas, la señal para que toda España coma 12 uvas, una por campanada, para la buena suerte. El momento se transmite en vivo a todo el país desde 1962.\n\n5. Palacio de Cristal\nConstruido en 1887 como invernadero para las plantas de la Exposición de Filipinas, el Palacio de Cristal del Retiro fue sede de la elección de Manuel Azaña como presidente de la Segunda República en mayo de 1936, porque el Congreso era demasiado pequeño para la asamblea de diputados y compromisarios.\n\n6. Catedral de la Almudena\nLa Catedral de la Almudena de Madrid tardó 110 años en construirse, de 1883 hasta su consagración en 1993. La leyenda dice que su Virgen patrona estuvo escondida siglos dentro de la antigua muralla, hasta que un derrumbe la reveló con las velas todavía encendidas.\n\n7. El Oso y el Madroño\nLa estatua de bronce de la Puerta del Sol muestra un oso comiendo de un madroño, símbolo de Madrid desde la Edad Media. Algunos historiadores sostienen que los registros medievales hablan de una osa, y en 2007 el Consejo de las Mujeres de Madrid hizo campaña con el lema 'Soy una osa'.\n\n.\n.\n.\n#Madrid #España #DatosCuriosos #PalacioReal #UrbanTales",
+ "facts": [
+  {
+   "headline": "El palacio más grande de España nació de un incendio",
+   "hook": "El Palacio Real se construyó en piedra y ladrillo, no madera, tras un incendio en la Nochebuena de 1734."
+  },
+  {
+   "headline": "Un templo egipcio salvado de una presa",
+   "hook": "Egipto regaló este templo de 2,200 años en 1968 por ayudar a salvar monumentos de la presa de Asuán."
+  },
+  {
+   "headline": "La gran plaza de Madrid se incendió tres veces",
+   "hook": "La Plaza Mayor ardió tres veces; tras el incendio de 1790 la reconstruyeron más baja, como la ves hoy."
+  },
+  {
+   "headline": "Un reloj le dice a toda España cuándo comer uvas",
+   "hook": "A medianoche, el reloj de la Puerta del Sol da 12 campanadas y toda España come una uva por campanada."
+  },
+  {
+   "headline": "Un invernadero eligió al presidente de España",
+   "hook": "Construido como invernadero en 1887, el Palacio de Cristal fue sede de la elección del presidente de España en 1936."
+  },
+  {
+   "headline": "Una catedral que tardó 110 años en terminarse",
+   "hook": "La Almudena tardó 110 años en construirse, y la leyenda dice que su Virgen estuvo oculta en la muralla."
+  },
+  {
+   "headline": "El oso de Madrid podría ser en realidad una osa",
+   "hook": "Algunos historiadores dicen que el oso del escudo de Madrid, que come de un madroño, era en realidad una osa."
+  }
+ ]
+}
