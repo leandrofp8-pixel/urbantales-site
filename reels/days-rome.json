@@ -1,0 +1,269 @@
+{
+ "slug": "days-rome",
+ "landmark": "Rome · 4 days",
+ "city": "Rome",
+ "series": "days",
+ "story": "Rome · 4 days: day-by-day route in the order that beats the crowds",
+ "sources": [
+  "https://www.turismoroma.it/en/news/trevi-fountain-new-entry-fee-one-romes-symbols",
+  "https://www.museivaticani.va/content/museivaticani/en/link-utili.html",
+  "https://www.gotokyo.org/en/story/guide/tsukijioutermarket/",
+  "https://www.luzern.com/en/the-city/sights/top-sights/musegg-wall"
+ ],
+ "week": "days-1",
+ "created": "2026-11-02T22:47",
+ "media_sha": "2003725c7ca24d02dab4efb61e8a107f65536e3f",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/2003725c7ca24d02dab4efb61e8a107f65536e3f/reels/days-rome-en.mp4",
+  "caption": "Most people see Rome in the wrong order. Which day would you swap? 👇\n\nFour days that beat the crowds: the Colosseum at opening, the Vatican's first slot (never on a Sunday), Trevi before 8 when it's empty and still free, and the Borghese booked ahead.\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#rome #romeitinerary #italytravel #traveltips #urbantales"
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/2003725c7ca24d02dab4efb61e8a107f65536e3f/reels/days-rome-es.mp4",
+  "caption": "La mayoría recorre Roma en el orden equivocado. ¿Qué día cambiarías? 👇\n\nCuatro días para ganarle a las multitudes: el Coliseo a la apertura, el primer horario del Vaticano (nunca en domingo), la Fontana di Trevi antes de las 8, vacía y gratis, y la Borghese con reserva.\n\n¿Lo quieres para tus fechas y tu ritmo? Urban Tales te planea el viaje en un minuto y te cuenta la historia de cada lugar mientras caminas. Link en la bio.\n.\n.\n.\n#roma #viajeaitalia #tipsdeviaje #itinerario #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-28001481.mp4",
+   "url": "https://www.pexels.com/video/colosseo-a-roma-28001481/",
+   "author": "C1 Superstar",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-36097843.mp4",
+   "url": "https://www.pexels.com/video/explore-the-historic-colosseum-interior-36097843/",
+   "author": "Magda Ehlers",
+   "w": 1280,
+   "h": 720,
+   "dur": 18,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-36395319.mp4",
+   "url": "https://www.pexels.com/video/explore-the-ancient-roman-colosseum-ruins-36395319/",
+   "author": "Sofie Slaninová",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Colosseum Rome"
+  },
+  {
+   "file": "pexels-4840514.mp4",
+   "url": "https://www.pexels.com/video/a-time-lapse-of-the-roman-forum-4840514/",
+   "author": "Super Lunar",
+   "w": 1280,
+   "h": 720,
+   "dur": 12,
+   "query": "Roman Forum"
+  },
+  {
+   "file": "pexels-5912469.mp4",
+   "url": "https://www.pexels.com/video/aerial-footage-of-a-historical-site-5912469/",
+   "author": "Stefano Barbieri",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Roman Forum"
+  },
+  {
+   "file": "pexels-5912505.mp4",
+   "url": "https://www.pexels.com/video/a-video-footage-of-a-tourist-attraction-5912505/",
+   "author": "Stefano Barbieri",
+   "w": 1280,
+   "h": 720,
+   "dur": 18,
+   "query": "Roman Forum"
+  },
+  {
+   "file": "pexels-26754964.mp4",
+   "url": "https://www.pexels.com/video/art-landmark-summer-painting-26754964/",
+   "author": "Florian Delée",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "St Peter's Basilica"
+  },
+  {
+   "file": "pexels-8395224.mp4",
+   "url": "https://www.pexels.com/video/the-footage-of-a-dome-inside-st-peter-s-basilica-8395224/",
+   "author": "Domènico Riccèlli",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "St Peter's Basilica"
+  },
+  {
+   "file": "pexels-20156161.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-the-city-20156161/",
+   "author": "K",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "St Peter's Basilica"
+  },
+  {
+   "file": "pexels-36018501.mp4",
+   "url": "https://www.pexels.com/video/crowd-at-castel-sant-angelo-in-rome-36018501/",
+   "author": "Via Terra",
+   "w": 1080,
+   "h": 1444,
+   "dur": 13,
+   "query": "Castel Sant'Angelo"
+  },
+  {
+   "file": "pexels-32175562.mp4",
+   "url": "https://www.pexels.com/video/majestic-castle-sant-angelo-in-rome-32175562/",
+   "author": "Alberto Escalona",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Castel Sant'Angelo"
+  },
+  {
+   "file": "pexels-36576956.mp4",
+   "url": "https://www.pexels.com/video/iconic-trevi-fountain-in-rome-italy-36576956/",
+   "author": "C1 Superstar",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Trevi Fountain"
+  },
+  {
+   "file": "pexels-15199954.mp4",
+   "url": "https://www.pexels.com/video/a-concrete-building-near-the-trevi-fountain-15199954/",
+   "author": "Stefano Barbieri",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Trevi Fountain"
+  },
+  {
+   "file": "pexels-38405576.mp4",
+   "url": "https://www.pexels.com/video/iconic-trevi-fountain-in-rome-italy-38405576/",
+   "author": "Ch  Jawad",
+   "w": 1278,
+   "h": 720,
+   "dur": 8,
+   "query": "Trevi Fountain"
+  },
+  {
+   "file": "pexels-39903952.mp4",
+   "url": "https://www.pexels.com/video/majestic-pantheon-exterior-showing-detail-39903952/",
+   "author": "C1 Superstar",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Pantheon Rome"
+  },
+  {
+   "file": "pexels-39247144.mp4",
+   "url": "https://www.pexels.com/video/exploring-pantheon-rome-with-tourists-39247144/",
+   "author": "Ben Prater",
+   "w": 720,
+   "h": 1280,
+   "dur": 17,
+   "query": "Pantheon Rome"
+  },
+  {
+   "file": "pexels-19805026.mp4",
+   "url": "https://www.pexels.com/video/the-cathedral-is-seen-in-this-photo-19805026/",
+   "author": "Jussi Grönvall",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Piazza Navona"
+  },
+  {
+   "file": "pexels-36584199.mp4",
+   "url": "https://www.pexels.com/video/exploring-historic-piazza-navona-in-rome-36584199/",
+   "author": "Aniestla✨ ‎",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Piazza Navona"
+  },
+  {
+   "file": "pexels-34709571.mp4",
+   "url": "https://www.pexels.com/video/charming-night-scene-in-roman-trastevere-34709571/",
+   "author": "Chris Zhou",
+   "w": 720,
+   "h": 1280,
+   "dur": 14,
+   "query": "Trastevere"
+  },
+  {
+   "file": "pexels-39426949.mp4",
+   "url": "https://www.pexels.com/video/charming-italian-street-with-people-walking-39426949/",
+   "author": "Yuliya Duzhaya",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Trastevere"
+  },
+  {
+   "file": "pexels-11919901.mp4",
+   "url": "https://www.pexels.com/video/people-by-fountain-in-rome-11919901/",
+   "author": "Stefano Barbieri",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Spanish Steps Rome"
+  },
+  {
+   "file": "pexels-38405561.mp4",
+   "url": "https://www.pexels.com/video/bustling-day-at-the-spanish-steps-rome-38405561/",
+   "author": "Ch  Jawad",
+   "w": 720,
+   "h": 1278,
+   "dur": 6,
+   "query": "Spanish Steps Rome"
+  },
+  {
+   "file": "pexels-4248773.mp4",
+   "url": "https://www.pexels.com/video/people-in-front-of-buildings-4248773/",
+   "author": "Alessandro Milo",
+   "w": 1280,
+   "h": 720,
+   "dur": 26,
+   "query": "Piazza del Popolo"
+  },
+  {
+   "file": "pexels-37293731.mp4",
+   "url": "https://www.pexels.com/video/crowds-at-piazza-del-popolo-rome-37293731/",
+   "author": "Brendon Spring",
+   "w": 1280,
+   "h": 720,
+   "dur": 30,
+   "query": "Piazza del Popolo"
+  },
+  {
+   "file": "pexels-36633822.mp4",
+   "url": "https://www.pexels.com/video/sunset-aerial-view-of-rome-s-cityscape-36633822/",
+   "author": "Nicoló Monterotondo",
+   "w": 720,
+   "h": 1280,
+   "dur": 13,
+   "query": "Rome rooftops aerial"
+  },
+  {
+   "file": "pexels-36419581.mp4",
+   "url": "https://www.pexels.com/video/awe-inspiring-vatican-dome-fresco-view-36419581/",
+   "author": "Florian Delée",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "Vatican Museums"
+  },
+  {
+   "file": "pexels-36490323.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-vatican-gardens-36490323/",
+   "author": "Hanna M",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Vatican Museums"
+  }
+ ]
+}

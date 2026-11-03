@@ -1,0 +1,166 @@
+{
+ "slug": "days-lucerne",
+ "landmark": "Lucerne · 1 day",
+ "city": "Lucerne",
+ "series": "days",
+ "story": "Lucerne · 1 day: day-by-day route in the order that beats the crowds",
+ "sources": [
+  "https://www.turismoroma.it/en/news/trevi-fountain-new-entry-fee-one-romes-symbols",
+  "https://www.museivaticani.va/content/museivaticani/en/link-utili.html",
+  "https://www.gotokyo.org/en/story/guide/tsukijioutermarket/",
+  "https://www.luzern.com/en/the-city/sights/top-sights/musegg-wall"
+ ],
+ "week": "days-1",
+ "created": "2026-11-02T22:51",
+ "media_sha": "2003725c7ca24d02dab4efb61e8a107f65536e3f",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/2003725c7ca24d02dab4efb61e8a107f65536e3f/reels/days-lucerne-en.mp4",
+  "caption": "Most people see Lucerne in the wrong order. Pilatus or Rigi? 👇\n\nOne day that beats the crowds: the Chapel Bridge at 8, before the day-trippers, the old town and the Lion Monument, Mount Pilatus by cable car (the cogwheel railway only runs in summer), and the Spreuer Bridge at sunset.\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#lucerne #switzerland #swisstravel #traveltips #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-37779794.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-chapel-bridge-at-sunset-37779794/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Chapel Bridge Lucerne"
+  },
+  {
+   "file": "pexels-28847119.mp4",
+   "url": "https://www.pexels.com/video/captivating-view-of-chapel-bridge-in-lucerne-28847119/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Chapel Bridge Lucerne"
+  },
+  {
+   "file": "pexels-28847122.mp4",
+   "url": "https://www.pexels.com/video/chapel-bridge-over-reuss-river-in-lucerne-28847122/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Chapel Bridge Lucerne"
+  },
+  {
+   "file": "pexels-37800270.mp4",
+   "url": "https://www.pexels.com/video/charming-evening-in-historic-european-town-37800270/",
+   "author": "Marlon Castor",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Lucerne old town"
+  },
+  {
+   "file": "pexels-37983692.mp4",
+   "url": "https://www.pexels.com/video/charming-evening-view-of-historic-swiss-architecture-37983692/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Lucerne old town"
+  },
+  {
+   "file": "pexels-37792348.mp4",
+   "url": "https://www.pexels.com/video/charming-evening-view-of-swiss-lakefront-37792348/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Lucerne old town"
+  },
+  {
+   "file": "pexels-14147294.mp4",
+   "url": "https://www.pexels.com/video/lion-sculpture-under-building-with-french-flag-14147294/",
+   "author": "Edward Rode",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Lion Monument Lucerne"
+  },
+  {
+   "file": "pexels-37983675.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-lucerne-bridge-and-waterfront-37983675/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Lion Monument Lucerne"
+  },
+  {
+   "file": "pexels-29003576.mp4",
+   "url": "https://www.pexels.com/video/breathtaking-aerial-view-of-swiss-mountain-range-29003576/",
+   "author": "Flex Journey",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Mount Pilatus"
+  },
+  {
+   "file": "pexels-29003611.mp4",
+   "url": "https://www.pexels.com/video/breathtaking-view-of-lake-lucerne-in-summer-29003611/",
+   "author": "Flex Journey",
+   "w": 1280,
+   "h": 720,
+   "dur": 27,
+   "query": "Mount Pilatus"
+  },
+  {
+   "file": "pexels-36741982.mp4",
+   "url": "https://www.pexels.com/video/red-funicular-ascending-scenic-hillside-track-36741982/",
+   "author": "Tripatpal Singh",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Mount Pilatus"
+  },
+  {
+   "file": "pexels-38047126.mp4",
+   "url": "https://www.pexels.com/video/serene-view-of-lake-lucerne-and-mount-pilatus-38047126/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Lake Lucerne"
+  },
+  {
+   "file": "pexels-38047068.mp4",
+   "url": "https://www.pexels.com/video/scenic-swiss-lake-view-with-sailboats-38047068/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Lake Lucerne"
+  },
+  {
+   "file": "pexels-37776095.mp4",
+   "url": "https://www.pexels.com/video/chapel-bridge-at-sunrise-in-lucerne-37776095/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Lake Lucerne"
+  },
+  {
+   "file": "pexels-37779913.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-lucerne-with-reuss-river-37779913/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Lucerne sunset"
+  },
+  {
+   "file": "pexels-37983693.mp4",
+   "url": "https://www.pexels.com/video/charming-view-of-chapel-bridge-in-lucerne-37983693/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Lucerne sunset"
+  }
+ ]
+}
