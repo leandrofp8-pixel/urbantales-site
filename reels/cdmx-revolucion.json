@@ -1,0 +1,105 @@
+{
+ "slug": "cdmx-revolucion",
+ "landmark": "Monumento a la Revolución",
+ "city": "Mexico City",
+ "story": "Built as Porfirio Díaz's Legislative Palace (first stone 1910), left as an abandoned iron frame after the Revolution, turned into a monument in the 1930s; Madero, Carranza and Pancho Villa are buried there.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Monumento_a_la_Revoluci%C3%B3n",
+  "https://es.wikipedia.org/wiki/Monumento_a_la_Revoluci%C3%B3n_(M%C3%A9xico)",
+  "https://mexicocity.cdmx.gob.mx/venues/monument-to-the-revolution/"
+ ],
+ "week": "2026-W45",
+ "created": "2026-11-01T10:39",
+ "media_sha": "80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc/reels/cdmx-revolucion-es.mp4",
+  "caption": "Nací para ser otra cosa. ¿Qué monumento debería contar su historia ahora? 👇\n\nPorfirio Díaz puso mi primera piedra en 1910 para un nuevo Palacio Legislativo. Meses después estalló la Revolución, y mi estructura de hierro quedó abandonada unos veinte años. En los años treinta me convirtieron en monumento, y hoy aquí descansan Madero, Carranza y Pancho Villa.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#CiudadDeMexico #MonumentoALaRevolucion #historia #viajes #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc/reels/cdmx-revolucion-en.mp4",
+  "caption": "Born to be something else. Which landmark should tell its story next? 👇\n\nPorfirio Díaz laid my first stone in 1910 for a new Legislative Palace. Months later the Revolution broke out, and my iron frame sat abandoned for about twenty years. In the 1930s I became a monument, and today Madero, Carranza and Pancho Villa rest here.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#MexicoCity #history #travel #landmarks #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-4285104.mp4",
+   "url": "https://www.pexels.com/video/mexico-mexico-city-mexico-landmark-4285104/",
+   "author": "Jorge Flores",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Monumento a la Revolucion Mexico City"
+  },
+  {
+   "file": "pexels-32135086.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-mexico-city-monument-32135086/",
+   "author": "ERHART",
+   "w": 1280,
+   "h": 720,
+   "dur": 12,
+   "query": "Monumento a la Revolucion Mexico City"
+  },
+  {
+   "file": "pexels-32087561.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-monument-in-mexico-city-32087561/",
+   "author": "Adancituu Martinez",
+   "w": 1280,
+   "h": 720,
+   "dur": 50,
+   "query": "Monumento a la Revolucion Mexico City"
+  },
+  {
+   "file": "pexels-31986207.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-monument-in-mexico-city-skyline-31986207/",
+   "author": "Adancituu Martinez",
+   "w": 1280,
+   "h": 720,
+   "dur": 68,
+   "query": "Monumento a la Revolucion Mexico City"
+  },
+  {
+   "file": "pexels-17544327.mp4",
+   "url": "https://www.pexels.com/video/monumento-a-la-revolucion-17544327/",
+   "author": "Fernando  Paleta",
+   "w": 1280,
+   "h": 720,
+   "dur": 42,
+   "query": "Monument to the Revolution Mexico"
+  },
+  {
+   "file": "pexels-32135084.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-monumento-a-la-revolucion-in-mexico-city-32135084/",
+   "author": "ERHART",
+   "w": 1280,
+   "h": 720,
+   "dur": 20,
+   "query": "Monument to the Revolution Mexico"
+  },
+  {
+   "file": "pexels-15806462.mp4",
+   "url": "https://www.pexels.com/video/revolucion-15806462/",
+   "author": "Fernando  Paleta",
+   "w": 720,
+   "h": 1280,
+   "dur": 36,
+   "query": "Monument to the Revolution Mexico"
+  },
+  {
+   "file": "pexels-6943027.mp4",
+   "url": "https://www.pexels.com/video/aerial-shot-of-a-city-6943027/",
+   "author": "Mikhail Nilov",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Monument to the Revolution Mexico"
+  },
+  {
+   "file": "pexels-6943287.mp4",
+   "url": "https://www.pexels.com/video/aerial-shot-of-a-city-6943287/",
+   "author": "Mikhail Nilov",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Monument to the Revolution Mexico"
+  }
+ ]
+}

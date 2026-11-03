@@ -1,0 +1,86 @@
+{
+ "slug": "paris-eiffel",
+ "landmark": "Eiffel Tower",
+ "city": "Paris",
+ "story": "Built for the 1889 World's Fair on a 20-year permit that ran out in 1909; Eiffel made it useful for science and wireless radio, the army took it up, and Paris renewed the permit in 1910 for 70 years.",
+ "sources": [
+  "https://www.toureiffel.paris/en/news/130-years/how-did-radio-save-tower",
+  "https://www.snexplores.org/article/how-science-saved-eiffel-tower"
+ ],
+ "week": "2026-W45",
+ "created": "2026-11-01T10:39",
+ "media_sha": "80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc/reels/paris-eiffel-es.mp4",
+  "caption": "Nací con fecha de caducidad. ¿Qué monumento debería contar su historia ahora? 👇\n\nMe construyeron para la Exposición Universal de 1889 con un permiso de solo veinte años, y en 1909 podían desmontarme. Gustave Eiffel me volvió útil para la ciencia y la radio, y en 1910 París renovó mi permiso por setenta años.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#Paris #TorreEiffel #historia #viajes #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/80144d4b5f7d7e7dfe1dc7d77ba5c1a1015ea8bc/reels/paris-eiffel-en.mp4",
+  "caption": "I came with an expiration date. Which landmark should tell its story next? 👇\n\nI was built for the 1889 World's Fair on a twenty-year permit, and in 1909 I could have been torn down. Gustave Eiffel made me useful for science and radio, and in 1910 Paris renewed my permit for seventy years.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#Paris #EiffelTower #history #travel #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-7197893.mp4",
+   "url": "https://www.pexels.com/video/people-in-the-champ-de-mars-park-7197893/",
+   "author": "Giang",
+   "w": 1280,
+   "h": 720,
+   "dur": 23,
+   "query": "Eiffel Tower"
+  },
+  {
+   "file": "pexels-36154964.mp4",
+   "url": "https://www.pexels.com/video/eiffel-tower-view-of-paris-skyline-36154964/",
+   "author": "Melike",
+   "w": 720,
+   "h": 1280,
+   "dur": 26,
+   "query": "Eiffel Tower"
+  },
+  {
+   "file": "pexels-31513525.mp4",
+   "url": "https://www.pexels.com/video/eiffel-tower-scenic-view-on-a-sunny-day-31513525/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Eiffel Tower"
+  },
+  {
+   "file": "pexels-37243132.mp4",
+   "url": "https://www.pexels.com/video/iconic-eiffel-tower-view-with-clear-sky-37243132/",
+   "author": "Memory Lane",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Eiffel Tower"
+  },
+  {
+   "file": "pexels-32495414.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-paris-with-eiffel-tower-32495414/",
+   "author": "Travel with  Lenses",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Eiffel Tower aerial"
+  },
+  {
+   "file": "pexels-28675233.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-a-cloudy-city-skyline-28675233/",
+   "author": "BAE  JUN",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Eiffel Tower aerial"
+  },
+  {
+   "file": "pexels-31669722.mp4",
+   "url": "https://www.pexels.com/video/stunning-aerial-view-of-eiffel-tower-paris-31669722/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Eiffel Tower aerial"
+  }
+ ]
+}
