@@ -1,0 +1,202 @@
+{
+ "slug": "days-cdmx",
+ "landmark": "CDMX · 3 días",
+ "city": "Mexico City",
+ "series": "days",
+ "story": "CDMX · 3 días: day-by-day route in the order that beats the crowds",
+ "sources": [
+  "https://www.turismoroma.it/en/news/trevi-fountain-new-entry-fee-one-romes-symbols",
+  "https://www.museivaticani.va/content/museivaticani/en/link-utili.html",
+  "https://www.gotokyo.org/en/story/guide/tsukijioutermarket/",
+  "https://www.luzern.com/en/the-city/sights/top-sights/musegg-wall"
+ ],
+ "week": "days-1",
+ "created": "2026-11-02T22:49",
+ "media_sha": "2003725c7ca24d02dab4efb61e8a107f65536e3f",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/2003725c7ca24d02dab4efb61e8a107f65536e3f/reels/days-cdmx-es.mp4",
+  "caption": "La mayoría recorre la CDMX en el orden equivocado. ¿Tú qué agregarías? 👇\n\nTres días para ganarle a las multitudes: el Centro Histórico (el Templo Mayor cierra los lunes), Chapultepec nunca en lunes, y Teotihuacan saliendo antes de las 7, antes del calor.\n\n¿Lo quieres para tus fechas y tu ritmo? Urban Tales te planea el viaje en un minuto y te cuenta la historia de cada lugar mientras caminas. Link en la bio.\n.\n.\n.\n#cdmx #ciudaddemexico #teotihuacan #tipsdeviaje #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-32622092.mp4",
+   "url": "https://www.pexels.com/video/mexican-flag-and-metropolitan-cathedral-in-zocalo-32622092/",
+   "author": "Raul Luna",
+   "w": 720,
+   "h": 1280,
+   "dur": 17,
+   "query": "Zocalo Mexico City"
+  },
+  {
+   "file": "pexels-32058674.mp4",
+   "url": "https://www.pexels.com/video/mexican-flag-in-zocalo-mexico-city-32058674/",
+   "author": "Luis Ariza",
+   "w": 720,
+   "h": 1280,
+   "dur": 14,
+   "query": "Zocalo Mexico City"
+  },
+  {
+   "file": "pexels-20539466.mp4",
+   "url": "https://www.pexels.com/video/a-large-flag-is-flying-in-front-of-a-cathedral-20539466/",
+   "author": "Israyosoy S.",
+   "w": 720,
+   "h": 1280,
+   "dur": 120,
+   "query": "Mexico City Cathedral"
+  },
+  {
+   "file": "pexels-3562633.mp4",
+   "url": "https://www.pexels.com/video/view-of-a-cathedral-3562633/",
+   "author": "Bhargava Marripati",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Mexico City Cathedral"
+  },
+  {
+   "file": "pexels-30138495.mp4",
+   "url": "https://www.pexels.com/video/bustling-street-scene-at-bellas-artes-mexico-city-30138495/",
+   "author": "Israyosoy S.",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "Palacio de Bellas Artes"
+  },
+  {
+   "file": "pexels-30138494.mp4",
+   "url": "https://www.pexels.com/video/busy-street-scene-at-palacio-de-bellas-artes-mexico-city-30138494/",
+   "author": "Israyosoy S.",
+   "w": 1280,
+   "h": 720,
+   "dur": 119,
+   "query": "Palacio de Bellas Artes"
+  },
+  {
+   "file": "pexels-28584268.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-torre-latinoamericana-mexico-city-28584268/",
+   "author": "Kuiyibo Campos",
+   "w": 720,
+   "h": 1280,
+   "dur": 27,
+   "query": "Torre Latinoamericana"
+  },
+  {
+   "file": "pexels-29148918.mp4",
+   "url": "https://www.pexels.com/video/busy-street-scene-with-landmark-tower-view-29148918/",
+   "author": "Julio Lopez",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Torre Latinoamericana"
+  },
+  {
+   "file": "pexels-6942866.mp4",
+   "url": "https://www.pexels.com/video/aerial-shot-of-a-city-6942866/",
+   "author": "Mikhail Nilov",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Torre Latinoamericana"
+  },
+  {
+   "file": "pexels-30914554.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-chapultepec-castle-in-mexico-city-30914554/",
+   "author": "ERHART",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Chapultepec Castle"
+  },
+  {
+   "file": "pexels-36900154.mp4",
+   "url": "https://www.pexels.com/video/majestic-aerial-view-of-chapultepec-castle-36900154/",
+   "author": "Anton Lukin",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Chapultepec Castle"
+  },
+  {
+   "file": "pexels-36900150.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-chapultepec-castle-and-landmark-36900150/",
+   "author": "Anton Lukin",
+   "w": 1280,
+   "h": 720,
+   "dur": 29,
+   "query": "Chapultepec Castle"
+  },
+  {
+   "file": "pexels-13153395.mp4",
+   "url": "https://www.pexels.com/video/museum-in-monterrey-13153395/",
+   "author": "Alex García",
+   "w": 1280,
+   "h": 720,
+   "dur": 12,
+   "query": "Museo Nacional de Antropologia"
+  },
+  {
+   "file": "pexels-12542755.mp4",
+   "url": "https://www.pexels.com/video/gold-angel-statue-in-a-city-with-skyscrapers-mexico-city-mexico-12542755/",
+   "author": "Fernando  Paleta",
+   "w": 1280,
+   "h": 720,
+   "dur": 28,
+   "query": "Angel de la Independencia"
+  },
+  {
+   "file": "pexels-31088331.mp4",
+   "url": "https://www.pexels.com/video/iconic-angel-of-independence-in-mexico-city-31088331/",
+   "author": "Israyosoy S.",
+   "w": 720,
+   "h": 1280,
+   "dur": 32,
+   "query": "Angel de la Independencia"
+  },
+  {
+   "file": "pexels-12333782.mp4",
+   "url": "https://www.pexels.com/video/pyramids-in-egypt-12333782/",
+   "author": "William Velazquez",
+   "w": 720,
+   "h": 1280,
+   "dur": 20,
+   "query": "Teotihuacan pyramid"
+  },
+  {
+   "file": "pexels-31579288.mp4",
+   "url": "https://www.pexels.com/video/walking-tour-of-teotihuacan-s-pyramid-of-the-sun-31579288/",
+   "author": "Israyosoy S.",
+   "w": 720,
+   "h": 1280,
+   "dur": 25,
+   "query": "Teotihuacan pyramid"
+  },
+  {
+   "file": "pexels-40676476.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-teotihuacan-pyramids-in-mexico-40676476/",
+   "author": "Jorge Pantaleon",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Teotihuacan pyramid"
+  },
+  {
+   "file": "pexels-34849951.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-mexico-city-skyline-34849951/",
+   "author": "Hazael Corona",
+   "w": 1280,
+   "h": 720,
+   "dur": 54,
+   "query": "Mexico City aerial"
+  },
+  {
+   "file": "pexels-35529014.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-mexico-city-at-sunset-35529014/",
+   "author": "Aero Drone",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Mexico City aerial"
+  }
+ ]
+}

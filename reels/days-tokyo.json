@@ -1,0 +1,256 @@
+{
+ "slug": "days-tokyo",
+ "landmark": "Tokyo · 4 days",
+ "city": "Tokyo",
+ "series": "days",
+ "story": "Tokyo · 4 days: day-by-day route in the order that beats the crowds",
+ "sources": [
+  "https://www.turismoroma.it/en/news/trevi-fountain-new-entry-fee-one-romes-symbols",
+  "https://www.museivaticani.va/content/museivaticani/en/link-utili.html",
+  "https://www.gotokyo.org/en/story/guide/tsukijioutermarket/",
+  "https://www.luzern.com/en/the-city/sights/top-sights/musegg-wall"
+ ],
+ "week": "days-1",
+ "created": "2026-11-02T22:50",
+ "media_sha": "2003725c7ca24d02dab4efb61e8a107f65536e3f",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/2003725c7ca24d02dab4efb61e8a107f65536e3f/reels/days-tokyo-en.mp4",
+  "caption": "Most people see Tokyo in the wrong order. Which day is your favourite? 👇\n\nFour days that beat the crowds: Senso-ji at 7, Shibuya at sunset, Tsukiji at 9 for breakfast (not after lunch, never on a Sunday), and Shinjuku's free view from the Metropolitan Government Building.\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#tokyo #japantravel #tokyoitinerary #traveltips #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-34183482.mp4",
+   "url": "https://www.pexels.com/video/crowds-at-senso-ji-temple-in-tokyo-34183482/",
+   "author": "Tatsuo Nakamura",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "Senso-ji Asakusa"
+  },
+  {
+   "file": "pexels-34183479.mp4",
+   "url": "https://www.pexels.com/video/busy-nakamise-shopping-street-at-senso-ji-temple-34183479/",
+   "author": "Tatsuo Nakamura",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "Senso-ji Asakusa"
+  },
+  {
+   "file": "pexels-25947717.mp4",
+   "url": "https://www.pexels.com/video/people-walking-through-a-crowded-market-area-25947717/",
+   "author": "Huu Huynh",
+   "w": 1280,
+   "h": 720,
+   "dur": 28,
+   "query": "Senso-ji Asakusa"
+  },
+  {
+   "file": "pexels-31013035.mp4",
+   "url": "https://www.pexels.com/video/tokyo-skytree-illuminated-against-night-sky-31013035/",
+   "author": "Lin Cadmus",
+   "w": 720,
+   "h": 1280,
+   "dur": 40,
+   "query": "Tokyo Skytree"
+  },
+  {
+   "file": "pexels-34987892.mp4",
+   "url": "https://www.pexels.com/video/tokyo-skytree-tower-viewing-at-sunset-34987892/",
+   "author": "Miltan Monjib",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Tokyo Skytree"
+  },
+  {
+   "file": "pexels-30383467.mp4",
+   "url": "https://www.pexels.com/video/bustling-night-scene-in-tokyo-market-street-30383467/",
+   "author": "Bobby Brown",
+   "w": 1280,
+   "h": 720,
+   "dur": 5,
+   "query": "Ameyoko Ueno"
+  },
+  {
+   "file": "pexels-35302624.mp4",
+   "url": "https://www.pexels.com/video/exploring-vibrant-ameyoko-market-in-tokyo-35302624/",
+   "author": "Miltan Monjib",
+   "w": 720,
+   "h": 1280,
+   "dur": 20,
+   "query": "Ameyoko Ueno"
+  },
+  {
+   "file": "pexels-5890079.mp4",
+   "url": "https://www.pexels.com/video/japanese-shrine-in-a-sunny-day-5890079/",
+   "author": "Taka Soyama",
+   "w": 1280,
+   "h": 720,
+   "dur": 212,
+   "query": "Meiji Jingu"
+  },
+  {
+   "file": "pexels-34697868.mp4",
+   "url": "https://www.pexels.com/video/crowd-at-traditional-japanese-temple-entrance-34697868/",
+   "author": "Dr. Mohammad  Hoque",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Meiji Jingu"
+  },
+  {
+   "file": "pexels-35513025.mp4",
+   "url": "https://www.pexels.com/video/crowded-takeshita-street-view-in-tokyo-35513025/",
+   "author": "yuki kiki",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Takeshita Street Harajuku"
+  },
+  {
+   "file": "pexels-34756610.mp4",
+   "url": "https://www.pexels.com/video/busy-street-scene-in-asian-district-34756610/",
+   "author": "Daniel Maurício Bertoli",
+   "w": 720,
+   "h": 1280,
+   "dur": 16,
+   "query": "Takeshita Street Harajuku"
+  },
+  {
+   "file": "pexels-6574285.mp4",
+   "url": "https://www.pexels.com/video/the-busy-shibuya-crossing-6574285/",
+   "author": "Hugh Mitton",
+   "w": 1280,
+   "h": 720,
+   "dur": 25,
+   "query": "Shibuya crossing"
+  },
+  {
+   "file": "pexels-18624151.mp4",
+   "url": "https://www.pexels.com/video/walking-across-shibuya-crossing-18624151/",
+   "author": "Simo Herold",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "Shibuya crossing"
+  },
+  {
+   "file": "pexels-35291926.mp4",
+   "url": "https://www.pexels.com/video/vibrant-nightlife-in-tokyo-s-shibuya-crossing-35291926/",
+   "author": "yuki kiki",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Shibuya crossing"
+  },
+  {
+   "file": "pexels-26233701.mp4",
+   "url": "https://www.pexels.com/video/siem-reap-market-26233701/",
+   "author": "Adventist Asia",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Tsukiji market"
+  },
+  {
+   "file": "pexels-37227237.mp4",
+   "url": "https://www.pexels.com/video/bustling-marketplace-with-fresh-produce-stalls-37227237/",
+   "author": "Image Hunter",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Tsukiji market"
+  },
+  {
+   "file": "pexels-29162597.mp4",
+   "url": "https://www.pexels.com/video/vibrant-asian-night-market-scene-29162597/",
+   "author": "LayG Traveller",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Tsukiji market"
+  },
+  {
+   "file": "pexels-35516588.mp4",
+   "url": "https://www.pexels.com/video/vibrant-tokyo-night-traffic-in-ginza-35516588/",
+   "author": "Michael Solo",
+   "w": 720,
+   "h": 1280,
+   "dur": 36,
+   "query": "Ginza Tokyo"
+  },
+  {
+   "file": "pexels-6020940.mp4",
+   "url": "https://www.pexels.com/video/traditional-historic-carriages-6020940/",
+   "author": "Taka Soyama",
+   "w": 1280,
+   "h": 720,
+   "dur": 139,
+   "query": "Imperial Palace Tokyo"
+  },
+  {
+   "file": "pexels-5890076.mp4",
+   "url": "https://www.pexels.com/video/motor-vehicles-passing-on-the-road-5890076/",
+   "author": "Taka Soyama",
+   "w": 720,
+   "h": 1280,
+   "dur": 30,
+   "query": "Imperial Palace Tokyo"
+  },
+  {
+   "file": "pexels-34700530.mp4",
+   "url": "https://www.pexels.com/video/serene-japanese-garden-with-reflective-pond-34700530/",
+   "author": "Tatsuo Nakamura",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Shinjuku Gyoen"
+  },
+  {
+   "file": "pexels-37472930.mp4",
+   "url": "https://www.pexels.com/video/serene-walk-on-japanese-garden-bridge-37472930/",
+   "author": "Giuseppe Paoletti",
+   "w": 1280,
+   "h": 720,
+   "dur": 22,
+   "query": "Shinjuku Gyoen"
+  },
+  {
+   "file": "pexels-853948.mp4",
+   "url": "https://www.pexels.com/video/beautiful-nature-view-853948/",
+   "author": "Coverr",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Shinjuku Gyoen"
+  },
+  {
+   "file": "pexels-17418596.mp4",
+   "url": "https://www.pexels.com/video/a-street-in-tokyo-with-people-walking-down-it-17418596/",
+   "author": "Huu Huynh",
+   "w": 1280,
+   "h": 720,
+   "dur": 34,
+   "query": "Omoide Yokocho"
+  },
+  {
+   "file": "pexels-17422348.mp4",
+   "url": "https://www.pexels.com/video/people-walking-down-a-street-at-night-17422348/",
+   "author": "Huu Huynh",
+   "w": 1280,
+   "h": 720,
+   "dur": 90,
+   "query": "Omoide Yokocho"
+  },
+  {
+   "file": "pexels-31310968.mp4",
+   "url": "https://www.pexels.com/video/aerial-night-view-of-tokyo-city-skyline-31310968/",
+   "author": "Софья Шабанова",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Tokyo night aerial"
+  }
+ ]
+}

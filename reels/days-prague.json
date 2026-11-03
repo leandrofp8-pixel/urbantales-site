@@ -1,0 +1,211 @@
+{
+ "slug": "days-prague",
+ "landmark": "Prague · 2 days",
+ "city": "Prague",
+ "series": "days",
+ "story": "Prague · 2 days: day-by-day route in the order that beats the crowds",
+ "sources": [
+  "https://www.turismoroma.it/en/news/trevi-fountain-new-entry-fee-one-romes-symbols",
+  "https://www.museivaticani.va/content/museivaticani/en/link-utili.html",
+  "https://www.gotokyo.org/en/story/guide/tsukijioutermarket/",
+  "https://www.luzern.com/en/the-city/sights/top-sights/musegg-wall"
+ ],
+ "week": "days-1",
+ "created": "2026-11-02T22:48",
+ "media_sha": "2003725c7ca24d02dab4efb61e8a107f65536e3f",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/2003725c7ca24d02dab4efb61e8a107f65536e3f/reels/days-prague-en.mp4",
+  "caption": "Most people see Prague in the wrong order. Would you add a third day? 👇\n\nTwo days that beat the crowds: Charles Bridge at sunrise, the castle before the groups, and the astronomical clock early (it strikes every hour from 9, so skip the 11 o'clock crush).\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#prague #praguetravel #europetravel #traveltips #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-20181655.mp4",
+   "url": "https://www.pexels.com/video/the-charles-bridge-in-prague-czech-republic-20181655/",
+   "author": "Book Hut",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Charles Bridge Prague"
+  },
+  {
+   "file": "pexels-34653159.mp4",
+   "url": "https://www.pexels.com/video/scenic-charles-bridge-in-prague-at-sunset-34653159/",
+   "author": "Cagatay Kozan",
+   "w": 720,
+   "h": 1280,
+   "dur": 20,
+   "query": "Charles Bridge Prague"
+  },
+  {
+   "file": "pexels-855961.mp4",
+   "url": "https://www.pexels.com/video/city-view-855961/",
+   "author": "Pixabay",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Prague Castle"
+  },
+  {
+   "file": "pexels-34914799.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-prague-skyline-with-vltava-river-34914799/",
+   "author": "Airam Dato-on",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Prague Castle"
+  },
+  {
+   "file": "pexels-17533280.mp4",
+   "url": "https://www.pexels.com/video/a-city-skyline-with-a-bridge-and-a-castle-17533280/",
+   "author": "Matthias Groeneveld",
+   "w": 720,
+   "h": 1280,
+   "dur": 43,
+   "query": "Prague Castle"
+  },
+  {
+   "file": "pexels-34653081.mp4",
+   "url": "https://www.pexels.com/video/stunning-architectural-detail-of-gothic-cathedral-34653081/",
+   "author": "Cagatay Kozan",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "St Vitus Cathedral"
+  },
+  {
+   "file": "pexels-29976759.mp4",
+   "url": "https://www.pexels.com/video/st-vitus-cathedral-historic-gothic-architecture-29976759/",
+   "author": "Petra Mészáros",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "St Vitus Cathedral"
+  },
+  {
+   "file": "pexels-34203436.mp4",
+   "url": "https://www.pexels.com/video/majestic-view-of-prague-s-st-vitus-cathedral-34203436/",
+   "author": "Claudia  Solano",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "St Vitus Cathedral"
+  },
+  {
+   "file": "pexels-35998794.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-charles-bridge-in-prague-35998794/",
+   "author": "Nicoló Monterotondo",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Lesser Town Prague"
+  },
+  {
+   "file": "pexels-6158421.mp4",
+   "url": "https://www.pexels.com/video/old-street-view-6158421/",
+   "author": "Igor Gertsev",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Lesser Town Prague"
+  },
+  {
+   "file": "pexels-37585468.mp4",
+   "url": "https://www.pexels.com/video/historic-red-trams-in-old-european-city-37585468/",
+   "author": "Kakha Mchedlidze",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "Lesser Town Prague"
+  },
+  {
+   "file": "pexels-35895059.mp4",
+   "url": "https://www.pexels.com/video/historic-prague-astronomical-clock-in-motion-35895059/",
+   "author": "Talha Aytan",
+   "w": 720,
+   "h": 1280,
+   "dur": 25,
+   "query": "Prague astronomical clock"
+  },
+  {
+   "file": "pexels-34900970.mp4",
+   "url": "https://www.pexels.com/video/tourists-gather-at-prague-astronomical-clock-34900970/",
+   "author": "Airam Dato-on",
+   "w": 1280,
+   "h": 720,
+   "dur": 18,
+   "query": "Prague astronomical clock"
+  },
+  {
+   "file": "pexels-34650944.mp4",
+   "url": "https://www.pexels.com/video/prague-astronomical-clock-tower-in-daylight-34650944/",
+   "author": "Jovana De Obaldia",
+   "w": 720,
+   "h": 1280,
+   "dur": 14,
+   "query": "Prague astronomical clock"
+  },
+  {
+   "file": "pexels-20640019.mp4",
+   "url": "https://www.pexels.com/video/old-town-square-prague-20640019/",
+   "author": "Samuel Burai",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Old Town Square Prague"
+  },
+  {
+   "file": "pexels-34650781.mp4",
+   "url": "https://www.pexels.com/video/historic-prague-old-town-square-with-clock-tower-34650781/",
+   "author": "Jovana De Obaldia",
+   "w": 720,
+   "h": 1280,
+   "dur": 14,
+   "query": "Old Town Square Prague"
+  },
+  {
+   "file": "pexels-34900975.mp4",
+   "url": "https://www.pexels.com/video/tourists-exploring-old-town-square-in-prague-city-34900975/",
+   "author": "Airam Dato-on",
+   "w": 720,
+   "h": 1280,
+   "dur": 12,
+   "query": "Old Town Square Prague"
+  },
+  {
+   "file": "pexels-12496745.mp4",
+   "url": "https://www.pexels.com/video/panoramic-view-of-prague-and-the-vltava-river-from-charles-bridge-12496745/",
+   "author": "Zheltenko Oleksandr",
+   "w": 1280,
+   "h": 720,
+   "dur": 42,
+   "query": "Prague river Vltava"
+  },
+  {
+   "file": "pexels-34918618.mp4",
+   "url": "https://www.pexels.com/video/scenic-vltava-river-view-with-prague-architecture-34918618/",
+   "author": "Airam Dato-on",
+   "w": 1280,
+   "h": 720,
+   "dur": 20,
+   "query": "Prague river Vltava"
+  },
+  {
+   "file": "pexels-34918719.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-prague-s-scenic-skyline-34918719/",
+   "author": "Airam Dato-on",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Prague aerial"
+  },
+  {
+   "file": "pexels-20640178.mp4",
+   "url": "https://www.pexels.com/video/astronomical-clock-tower-20640178/",
+   "author": "Samuel Burai",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Prague aerial"
+  }
+ ]
+}
