@@ -29,3 +29,8 @@ Prices are in US dollars; the App Store and Google Play show the local price in 
 No subscription is needed for the Day Pass or City Unlock.
 
 Download: https://apps.apple.com/app/id6760130598 · https://play.google.com/store/apps/details?id=com.urbantales.app
+
+## Included with paid access
+- Pocket Mode plays landmark stories with your phone locked.
+- Download tours and their audio beforehand to listen offline, within your plan’s places and validity period.
+- Connect to discover additional landmarks or refresh practical information.

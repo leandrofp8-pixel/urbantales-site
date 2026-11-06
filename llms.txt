@@ -7,8 +7,10 @@
 - How it works: open the app and walk. Nearby landmarks appear on the map and their stories play as you get close
   (Pocket Mode keeps playing with the phone locked in your pocket). You can also build a walking tour of a city in
   seconds (7 Wonders, half day, full day or several days) and follow it with turn-by-turn directions.
-- Free to start: 3 free stories a day. Unlimited listening with a Day Pass, a City Unlock or the annual Unlimited
+- Free to start: 3 free landmarks. Unlimited listening with a Day Pass, a City Unlock or the annual Unlimited
   plan. Prices: https://urbantales.net/pricing.md
+- Offline: download tours and their audio beforehand with paid access covering the tour. Listen offline with
+  Pocket Mode and a locked phone. Connect for additional landmarks and refreshed practical information.
 - Download: App Store https://apps.apple.com/app/id6760130598 · Google Play
   https://play.google.com/store/apps/details?id=com.urbantales.app
 - Made by Urban Tales (urbantales.net). Instagram and TikTok: @urbantalesapp. Contact: https://urbantales.net/contact.html
@@ -35,7 +37,7 @@
 - [Bangkok Audio Guide App – Hidden Stories & Self-Guided Walking Tours | Urban Tales](https://urbantales.net/bangkok.html): Explore Bangkok like never before. Urban Tales is a GPS audio guide app that narrates the hidden stories behind Bangkok's most iconic landmarks as you walk. No tour group. No fixed schedule.
 - [Marrakech Audio Guide App – Hidden Stories & Self-Guided Walking Tours | Urban Tales](https://urbantales.net/marrakech.html): Explore Marrakech like never before. Urban Tales is a GPS audio guide app that narrates the hidden stories behind Marrakech's most iconic landmarks as you walk. No tour group. No fixed schedule.
 - [Chicago Audio Guide App – Hidden Stories & Self-Guided Walking Tours | Urban Tales](https://urbantales.net/chicago.html): Explore Chicago like never before. Urban Tales is a GPS audio guide app that narrates the hidden stories behind Chicago's most iconic landmarks as you walk. No tour group. No fixed schedule.
-- [Best Audio Tour Apps in 2026: 6 Apps Compared (Including Ours) | Urban Tales](https://urbantales.net/best-audio-tour-apps.html): VoiceMap, izi.TRAVEL, Rick Steves Audio Europe, SmartGuide, GPSmyCity and Urban Tales compared on what a Rome trip costs, which languages tours really come in, offline use and practical info. Written by the Urban Tales team, checked October 2026.
+- [Best Audio Tour Apps in 2026: 6 Apps Compared (Including Ours) | Urban Tales](https://urbantales.net/best-audio-tour-apps.html): VoiceMap, izi.TRAVEL, Rick Steves Audio Europe, SmartGuide, GPSmyCity and Urban Tales compared on what a Rome trip costs, which languages tours really come in, offline use and practical info. Written by the Urban Tales team. Comparison checked October 2026; Urban Tales updated November 2026.
 - [Athens Audio Guide App – Hidden Stories & Self-Guided Walking Tours | Urban Tales](https://urbantales.net/athens.html): Explore Athens like never before. Urban Tales is a GPS audio guide app that narrates the stories behind the Acropolis, the Agora and Plaka as you walk. No tour group. No fixed schedule.
 
 ## Landmark guides
@@ -187,7 +189,7 @@
 ## En español
 
 - [Audioguía de Barcelona – Historias ocultas y tours a pie autoguiados | Urban Tales](https://urbantales.net/es/barcelona.html): Explora Barcelona como nunca. Urban Tales es una app de audioguía GPS que narra las historias ocultas de la Sagrada Família, el Park Güell, el Barrio Gótico y los rincones secretos de Barcelona mientras caminas. Sin grupo de tour. Sin horarios fijos.
-- [Las mejores apps de audioguía en 2026: 6 apps comparadas (incluida la nuestra) | Urban Tales](https://urbantales.net/es/best-audio-tour-apps.html): VoiceMap, izi.TRAVEL, Rick Steves Audio Europe, SmartGuide, GPSmyCity y Urban Tales comparadas: cuánto cuesta un viaje a Roma, en qué idiomas existen de verdad los tours, uso sin conexión e información práctica. Escrito por el equipo de Urban Tales, revisado en octubre de 2026.
+- [Las mejores apps de audioguía en 2026: 6 apps comparadas (incluida la nuestra) | Urban Tales](https://urbantales.net/es/best-audio-tour-apps.html): VoiceMap, izi.TRAVEL, Rick Steves Audio Europe, SmartGuide, GPSmyCity y Urban Tales: precios en Roma, idiomas, uso sin conexión e información práctica. Comparación de octubre de 2026; Urban Tales actualizado en noviembre de 2026.
 - [Audioguía de Buenos Aires – Historias ocultas y tours a pie autoguiados | Urban Tales](https://urbantales.net/es/buenos-aires.html): Explora Buenos Aires como nunca. Urban Tales es una app de audioguía GPS que narra las historias ocultas detrás de los lugares más icónicos de Buenos Aires mientras caminas. Sin grupo de tour. Sin horarios fijos.
 - [Audioguías autoguiadas para ciudades de todo el mundo | Urban Tales](https://urbantales.net/es/cities.html): Urban Tales es una app de audioguía GPS con tours a pie autoguiados para ciudades de todo el mundo. Descubre historias ocultas, leyendas e historia en Roma, París, Ciudad de México y más, a tu propio ritmo.
 - [Urban Tales – Audioguías GPS para recorrer ciudades a tu ritmo](https://urbantales.net/es/): Urban Tales es una app gratuita de audioguía GPS que narra historias ocultas, leyendas e historia mientras caminas por la ciudad. Sin grupo de tour. Sin horarios fijos. Disponible para iOS y Android.
@@ -199,6 +201,6 @@
 
 ## Em português
 
-- [Os melhores apps de audioguia em 2026: 6 apps comparados (incluindo o nosso) | Urban Tales](https://urbantales.net/pt/best-audio-tour-apps.html): VoiceMap, izi.TRAVEL, Rick Steves Audio Europe, SmartGuide, GPSmyCity e Urban Tales comparados: quanto custa uma viagem a Roma, em que idiomas os tours existem de verdade, uso offline e informações práticas. Escrito pela equipe do Urban Tales, revisado em outubro de 2026.
+- [Os melhores apps de audioguia em 2026: 6 apps comparados (incluindo o nosso) | Urban Tales](https://urbantales.net/pt/best-audio-tour-apps.html): VoiceMap, izi.TRAVEL, Rick Steves Audio Europe, SmartGuide, GPSmyCity e Urban Tales: preços em Roma, idiomas, uso offline e informações práticas. Comparação de outubro de 2026; Urban Tales atualizado em novembro de 2026.
 - [App de audioguia de Lisboa – Histórias escondidas e passeios a pé por conta própria | Urban Tales](https://urbantales.net/pt/lisbon.html): Conheça Lisboa como nunca. O Urban Tales é um app de audioguia com GPS que narra as histórias escondidas dos lugares mais icônicos de Lisboa enquanto você caminha. Sem grupo de turismo. Sem horário fixo.
 - [App de audioguia do Rio de Janeiro – Histórias escondidas e passeios a pé por conta própria | Urban Tales](https://urbantales.net/pt/rio-de-janeiro.html): Conheça o Rio de Janeiro como nunca. O Urban Tales é um app de audioguia com GPS que narra as histórias escondidas dos lugares mais icônicos do Rio enquanto você caminha. Sem grupo de turismo. Sem horário fixo.

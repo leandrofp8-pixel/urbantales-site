@@ -16,8 +16,10 @@ HEADER = """# Urban Tales
 - How it works: open the app and walk. Nearby landmarks appear on the map and their stories play as you get close
   (Pocket Mode keeps playing with the phone locked in your pocket). You can also build a walking tour of a city in
   seconds (7 Wonders, half day, full day or several days) and follow it with turn-by-turn directions.
-- Free to start: 3 free stories a day. Unlimited listening with a Day Pass, a City Unlock or the annual Unlimited
+- Free to start: 3 free landmarks. Unlimited listening with a Day Pass, a City Unlock or the annual Unlimited
   plan. Prices: https://urbantales.net/pricing.md
+- Offline: download tours and their audio beforehand with paid access covering the tour. Listen offline with
+  Pocket Mode and a locked phone. Connect for additional landmarks and refreshed practical information.
 - Download: App Store https://apps.apple.com/app/id6760130598 · Google Play
   https://play.google.com/store/apps/details?id=com.urbantales.app
 - Made by Urban Tales (urbantales.net). Instagram and TikTok: @urbantalesapp. Contact: https://urbantales.net/contact.html
