@@ -251,3 +251,6 @@ gh pr create --title "Blog: {headline}" --body "New Wander Log post — ready fo
 
 The PR *is* the draft for review. Leandro reviews and merges it himself (or asks for changes) — that
 merge is what makes it live. Never merge your own PR. Never push straight to `main`.
+
+### Offline tours in walk cards
+After the Open this walk link, include: “Save this tour in the app and download it for offline listening with a paid plan covering the tour.” Offline is for downloaded tours; do not promise offline discovery of additional landmarks or unrestricted offline maps. Free allowance copy is “3 free landmarks”, without a daily or weekly renewal promise.
