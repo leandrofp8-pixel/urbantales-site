@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Free trip planner · Urban Tales</title>
+  <meta name="description" content="Plan your days in a city in a minute: the right order, opening hours and closing days, lunch in the right place and local tips. Free, for your dates and your pace.">
+  <link rel="canonical" href="https://urbantales.net/plan.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Urban Tales">
+  <meta property="og:title" content="Free trip planner · Urban Tales">
+  <meta property="og:description" content="Your days in the city, in the right order. Opening hours, closing days, lunch and local tips.">
+  <meta property="og:url" content="https://urbantales.net/plan.html">
+  <meta property="og:image" content="https://urbantales.net/banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <!-- 2026-11-07 web tour planner (mockup "Web Planner", approved by Leandro): one free custom plan per visitor,
+       made by the app's planner (backend web_planner.py); the plan opens on tour.html?from=webplan, whose button
+       opens it in the app. Every step is logged for the dashboard funnel (POST /api/public/web-plan/event). -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg: #FAF7F3; --surface: #FFFFFF; --ink: #221F1C; --muted: #5A524A; --faint: #6B6259; --line: #EDE7DE; --field: #DDD5CB;
+      --accent: #E8661C; --accent-ink: #B4470F; --accent-soft: #FBE6D8; --chip: #F0EBE3; --danger-soft: #FBE3E0; --danger-ink: #8A2A1C;
+    }
+    html, body { margin: 0; background: var(--bg); color: var(--ink);
+      font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    a { color: var(--accent-ink); }
+    [hidden] { display: none !important; }
+    .wrap { max-width: 560px; margin: 0 auto; padding-bottom: 40px; }
+    header.bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+    header.bar .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; }
+    header.bar .get { font-weight: 700; font-size: 14px; text-decoration: none; }
+    main { padding: 24px 20px; display: flex; flex-direction: column; gap: 18px; }
+    .kicker { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
+    h1 { margin: 6px 0 8px; font-size: 30px; line-height: 1.12; font-weight: 800; text-wrap: balance; }
+    .lead { margin: 0; font-size: 15px; color: var(--muted); }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+    label, .label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 700; color: var(--muted); }
+    input, select { font: inherit; font-size: 16px; padding: 12px; border: 1px solid var(--field); border-radius: 10px; color: var(--ink); background: var(--surface); width: 100%; min-width: 0; }
+    input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+    .two { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 10px; }
+    .city { position: relative; }
+    .sugg { position: absolute; z-index: 5; left: 0; right: 0; top: 100%; margin-top: 4px; background: var(--surface); border: 1px solid var(--field); border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,.08); overflow: hidden; }
+    .sugg button { display: block; width: 100%; text-align: left; padding: 11px 12px; border: 0; background: none; font: inherit; font-size: 15px; color: var(--ink); cursor: pointer; }
+    .sugg button span { color: var(--faint); font-size: 13px; }
+    .sugg button:hover, .sugg button:focus { background: var(--chip); outline: none; }
+    .seg { display: flex; gap: 8px; }
+    .seg button, .chips button { font: inherit; cursor: pointer; border: 1px solid var(--field); background: var(--surface); color: var(--ink); }
+    .seg button { flex: 1; padding: 11px 0; border-radius: 999px; font-size: 14px; font-weight: 600; }
+    .seg button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); font-weight: 700; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips button { padding: 8px 13px; border-radius: 999px; font-size: 14px; }
+    .chips button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
+    .go { padding: 15px; border-radius: 12px; border: 0; background: var(--accent); color: #fff; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer; }
+    .go:disabled { opacity: .55; cursor: default; }
+    .go:focus-visible, .seg button:focus-visible, .chips button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+    .small { font-size: 12px; color: var(--faint); text-align: center; }
+    .err { background: var(--danger-soft); color: var(--danger-ink); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+    .loading { text-align: center; padding: 50px 10px; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+    .spinner { width: 42px; height: 42px; border-radius: 50%; border: 4px solid var(--accent-soft); border-top-color: var(--accent); animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+    .loading b { font-size: 18px; }
+    .loading span { color: var(--muted); font-size: 15px; min-height: 1.5em; }
+    .plancard { display: flex; justify-content: space-between; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; text-decoration: none; color: var(--ink); }
+    .plancard b { display: block; font-size: 15px; }
+    .plancard small { font-size: 13px; color: var(--faint); }
+    .plancard em { font-style: normal; font-weight: 700; color: var(--accent-ink); font-size: 14px; }
+    .btn { display: block; text-align: center; padding: 15px; border-radius: 12px; background: var(--accent); color: #fff; font-size: 16px; font-weight: 800; text-decoration: none; }
+    .why { display: grid; gap: 12px; }
+    .why div { display: flex; gap: 10px; font-size: 14px; color: var(--muted); line-height: 1.45; }
+    .why svg { flex: none; width: 20px; height: 20px; margin-top: 1px; }
+    footer { text-align: center; font-size: 12px; color: var(--faint); padding: 10px 20px 0; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <a class="brand" href="https://urbantales.net">Urban Tales</a>
+    <a class="get" id="getApp" href="https://apps.apple.com/app/id6760130598">Get the app</a>
+  </header>
+
+  <main>
+    <!-- Form -->
+    <section id="formView" hidden>
+      <div>
+        <div class="kicker" data-s="kicker"></div>
+        <h1 data-s="title"></h1>
+        <p class="lead" data-s="lead"></p>
+      </div>
+      <form class="card" id="form" novalidate>
+        <div class="city">
+          <label for="city"><span data-s="where"></span>
+            <input id="city" name="city" type="text" autocomplete="off" required aria-autocomplete="list" aria-controls="sugg">
+          </label>
+          <div class="sugg" id="sugg" role="listbox" hidden></div>
+        </div>
+        <div class="two">
+          <label for="date"><span data-s="arriving"></span><input id="date" name="date" type="date"></label>
+          <label for="days"><span data-s="days"></span>
+            <select id="days" name="days"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
+          </label>
+        </div>
+        <div class="label"><span data-s="pace"></span>
+          <div class="seg" id="pace">
+            <button type="button" data-v="relaxed" aria-pressed="false" data-s="relaxed"></button>
+            <button type="button" data-v="balanced" aria-pressed="true" data-s="balanced"></button>
+            <button type="button" data-v="packed" aria-pressed="false" data-s="packed"></button>
+          </div>
+        </div>
+        <div class="label"><span data-s="love"></span>
+          <div class="chips" id="interests">
+            <button type="button" data-v="history" aria-pressed="false" data-s="i_history"></button>
+            <button type="button" data-v="art" aria-pressed="false" data-s="i_art"></button>
+            <button type="button" data-v="architecture" aria-pressed="false" data-s="i_architecture"></button>
+            <button type="button" data-v="parks" aria-pressed="false" data-s="i_parks"></button>
+            <button type="button" data-v="food" aria-pressed="false" data-s="i_food"></button>
+            <button type="button" data-v="hidden" aria-pressed="false" data-s="i_hidden"></button>
+          </div>
+        </div>
+        <div class="err" id="err" role="alert" hidden></div>
+        <button class="go" id="go" type="submit" data-s="make"></button>
+        <div class="small" data-s="once"></div>
+      </form>
+      <div class="why">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="#B4470F" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-s="why1"></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="#B4470F" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span data-s="why2"></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="#B4470F" stroke-width="2" aria-hidden="true"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><span data-s="why3"></span></div>
+      </div>
+    </section>
+
+    <!-- Making -->
+    <section id="loadingView" class="loading" hidden aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <b data-s="making"></b>
+      <span id="step"></span>
+    </section>
+
+    <!-- Already made -->
+    <section id="usedView" hidden>
+      <div>
+        <div class="kicker" data-s="usedKicker"></div>
+        <h1 data-s="usedTitle"></h1>
+        <p class="lead" data-s="usedLead"></p>
+      </div>
+      <a class="plancard" id="usedPlan" href="#"><span><b id="usedName"></b><small id="usedDate"></small></span><em data-s="view"></em></a>
+      <a class="btn" id="usedApp" href="#" data-s="usedCta"></a>
+      <div class="small" data-s="free"></div>
+    </section>
+
+    <!-- Planner switched off -->
+    <section id="offView" hidden>
+      <div>
+        <div class="kicker" data-s="kicker"></div>
+        <h1 data-s="offTitle"></h1>
+        <p class="lead" data-s="offLead"></p>
+      </div>
+      <a class="btn" id="offApp" href="#" data-s="offCta"></a>
+    </section>
+  </main>
+  <footer>© 2026 Urban Tales · <a href="https://urbantales.net">urbantales.net</a> · <a href="https://urbantales.net/privacy">Privacy</a></footer>
+</div>
+
+<script>
+const API = 'https://friendly-fulfillment-production.up.railway.app/api';
+const IOS = 'https://apps.apple.com/app/id6760130598';
+const ANDROID = 'https://play.google.com/store/apps/details?id=com.urbantales.app';
+const q = new URLSearchParams(location.search);
+
+const STR = {
+  en: { kicker: 'Free trip planner', title: 'Your days in the city, in the right order',
+        lead: 'Opening hours, closing days, lunch in the right place and local tips. Made for your dates and your pace.',
+        where: 'Where are you going?', arriving: 'Arriving', days: 'Days', pace: 'Pace', relaxed: 'Relaxed', balanced: 'Balanced', packed: 'Packed',
+        love: 'What do you love? (optional)', i_history: 'History', i_art: 'Art', i_architecture: 'Architecture', i_parks: 'Parks', i_food: 'Food', i_hidden: 'Hidden gems',
+        make: 'Make my plan', once: 'One free custom plan per visitor. More plans in the app.',
+        why1: 'Checks opening hours and moves places that are closed on your days.',
+        why2: 'Puts the stops in walking order, with a lunch break near the route.',
+        why3: 'In the app, every stop has its story, told as you arrive.',
+        making: 'Making your plan…', steps: ['Finding the places worth your time', 'Checking opening hours for your dates', 'Putting them in walking order', 'Adding lunch and local tips'],
+        needCity: 'Choose a city from the list, or type its full name.',
+        errBusy: 'Too many plans from your network today. Try again tomorrow, or plan it in the app.',
+        errCap: 'The planner is very busy today. Try again tomorrow, or plan it in the app.',
+        errGeneric: 'We couldn\'t make that plan right now. Try again in a minute.',
+        usedKicker: 'Planning another trip?', usedTitle: 'You\'ve made your free web plan',
+        usedLead: 'Your plan is still here. Every new plan, and every change to this one, is made in the app, where your trips are saved.',
+        view: 'View', usedCta: 'Plan the next trip in the app', free: 'Free to start · iPhone and Android',
+        offTitle: 'The web planner is resting', offLead: 'You can plan any city in the app, with your dates, your pace and the story of every stop.',
+        offCta: 'Plan it in the app', inDays: '{city} · {n} days', inDay: '{city} · 1 day', getApp: 'Get the app' },
+  es: { kicker: 'Planificador de viajes gratis', title: 'Tus días en la ciudad, en el orden correcto',
+        lead: 'Horarios, días de cierre, la comida en el lugar justo y datos locales. Para tus fechas y tu ritmo.',
+        where: '¿A dónde vas?', arriving: 'Llegas', days: 'Días', pace: 'Ritmo', relaxed: 'Tranquilo', balanced: 'Equilibrado', packed: 'Intenso',
+        love: '¿Qué te gusta? (opcional)', i_history: 'Historia', i_art: 'Arte', i_architecture: 'Arquitectura', i_parks: 'Parques', i_food: 'Comida', i_hidden: 'Joyas ocultas',
+        make: 'Armar mi plan', once: 'Un plan personalizado gratis por visitante. Más planes en la app.',
+        why1: 'Revisa los horarios y mueve los lugares que cierran en tus días.',
+        why2: 'Ordena las paradas para caminar, con una pausa para comer cerca del recorrido.',
+        why3: 'En la app, cada parada tiene su historia, contada al llegar.',
+        making: 'Armando tu plan…', steps: ['Buscando los lugares que valen la pena', 'Revisando horarios para tus fechas', 'Ordenándolos para caminar', 'Sumando la comida y datos locales'],
+        needCity: 'Elige una ciudad de la lista o escribe su nombre completo.',
+        errBusy: 'Demasiados planes desde tu red hoy. Prueba mañana o ármalo en la app.',
+        errCap: 'El planificador está muy ocupado hoy. Prueba mañana o ármalo en la app.',
+        errGeneric: 'No pudimos armar ese plan ahora. Prueba en un minuto.',
+        usedKicker: '¿Planeas otro viaje?', usedTitle: 'Ya hiciste tu plan web gratis',
+        usedLead: 'Tu plan sigue aquí. Cada plan nuevo, y cada cambio a este, se hace en la app, donde se guardan tus viajes.',
+        view: 'Ver', usedCta: 'Planea el próximo viaje en la app', free: 'Gratis para empezar · iPhone y Android',
+        offTitle: 'El planificador web está descansando', offLead: 'Puedes planear cualquier ciudad en la app, con tus fechas, tu ritmo y la historia de cada parada.',
+        offCta: 'Planéalo en la app', inDays: '{city} · {n} días', inDay: '{city} · 1 día', getApp: 'Descargar la app' },
+  'pt-BR': { kicker: 'Planejador de viagens grátis', title: 'Seus dias na cidade, na ordem certa',
+        lead: 'Horários, dias fechados, o almoço no lugar certo e dicas locais. Para as suas datas e o seu ritmo.',
+        where: 'Para onde você vai?', arriving: 'Chegada', days: 'Dias', pace: 'Ritmo', relaxed: 'Tranquilo', balanced: 'Equilibrado', packed: 'Intenso',
+        love: 'Do que você gosta? (opcional)', i_history: 'História', i_art: 'Arte', i_architecture: 'Arquitetura', i_parks: 'Parques', i_food: 'Comida', i_hidden: 'Lugares escondidos',
+        make: 'Montar meu plano', once: 'Um plano personalizado grátis por visitante. Mais planos no app.',
+        why1: 'Confere os horários e muda os lugares que fecham nos seus dias.',
+        why2: 'Coloca as paradas na ordem da caminhada, com uma pausa para o almoço perto do trajeto.',
+        why3: 'No app, cada parada tem sua história, contada quando você chega.',
+        making: 'Montando seu plano…', steps: ['Procurando os lugares que valem a pena', 'Conferindo os horários das suas datas', 'Colocando na ordem da caminhada', 'Incluindo o almoço e dicas locais'],
+        needCity: 'Escolha uma cidade da lista ou digite o nome completo.',
+        errBusy: 'Muitos planos da sua rede hoje. Tente amanhã ou monte no app.',
+        errCap: 'O planejador está muito ocupado hoje. Tente amanhã ou monte no app.',
+        errGeneric: 'Não conseguimos montar esse plano agora. Tente em um minuto.',
+        usedKicker: 'Planejando outra viagem?', usedTitle: 'Você já fez seu plano grátis na web',
+        usedLead: 'Seu plano continua aqui. Cada plano novo, e cada mudança neste, é feito no app, onde suas viagens ficam salvas.',
+        view: 'Ver', usedCta: 'Planeje a próxima viagem no app', free: 'Grátis para começar · iPhone e Android',
+        offTitle: 'O planejador web está descansando', offLead: 'Você pode planejar qualquer cidade no app, com suas datas, seu ritmo e a história de cada parada.',
+        offCta: 'Planeje no app', inDays: '{city} · {n} dias', inDay: '{city} · 1 dia', getApp: 'Baixar o app' },
+  fr: { kicker: 'Planificateur de voyage gratuit', title: 'Vos journées en ville, dans le bon ordre',
+        lead: 'Horaires, jours de fermeture, le déjeuner au bon endroit et des conseils locaux. Pour vos dates et votre rythme.',
+        where: 'Où allez-vous ?', arriving: 'Arrivée', days: 'Jours', pace: 'Rythme', relaxed: 'Tranquille', balanced: 'Équilibré', packed: 'Intense',
+        love: 'Ce que vous aimez (facultatif)', i_history: 'Histoire', i_art: 'Art', i_architecture: 'Architecture', i_parks: 'Parcs', i_food: 'Cuisine', i_hidden: 'Pépites cachées',
+        make: 'Créer mon plan', once: 'Un plan personnalisé gratuit par visiteur. D\'autres plans dans l\'app.',
+        why1: 'Vérifie les horaires et déplace les lieux fermés ces jours-là.',
+        why2: 'Met les étapes dans l\'ordre de la marche, avec une pause déjeuner près du parcours.',
+        why3: 'Dans l\'app, chaque étape a son histoire, racontée à votre arrivée.',
+        making: 'Création de votre plan…', steps: ['Recherche des lieux qui valent le détour', 'Vérification des horaires pour vos dates', 'Mise en ordre pour la marche', 'Ajout du déjeuner et des conseils locaux'],
+        needCity: 'Choisissez une ville dans la liste ou tapez son nom complet.',
+        errBusy: 'Trop de plans depuis votre réseau aujourd\'hui. Réessayez demain ou créez-le dans l\'app.',
+        errCap: 'Le planificateur est très sollicité aujourd\'hui. Réessayez demain ou créez-le dans l\'app.',
+        errGeneric: 'Impossible de créer ce plan pour l\'instant. Réessayez dans une minute.',
+        usedKicker: 'Un autre voyage en vue ?', usedTitle: 'Vous avez créé votre plan web gratuit',
+        usedLead: 'Votre plan est toujours là. Chaque nouveau plan, et chaque modification de celui-ci, se fait dans l\'app, où vos voyages sont enregistrés.',
+        view: 'Voir', usedCta: 'Planifier le prochain voyage dans l\'app', free: 'Gratuit pour commencer · iPhone et Android',
+        offTitle: 'Le planificateur web fait une pause', offLead: 'Vous pouvez planifier n\'importe quelle ville dans l\'app, avec vos dates, votre rythme et l\'histoire de chaque étape.',
+        offCta: 'Planifier dans l\'app', inDays: '{city} · {n} jours', inDay: '{city} · 1 jour', getApp: 'Télécharger l\'app' },
+  de: { kicker: 'Kostenloser Reiseplaner', title: 'Deine Tage in der Stadt, in der richtigen Reihenfolge',
+        lead: 'Öffnungszeiten, Ruhetage, Mittagessen am richtigen Ort und lokale Tipps. Für deine Daten und dein Tempo.',
+        where: 'Wohin geht die Reise?', arriving: 'Ankunft', days: 'Tage', pace: 'Tempo', relaxed: 'Entspannt', balanced: 'Ausgewogen', packed: 'Voll',
+        love: 'Was magst du? (optional)', i_history: 'Geschichte', i_art: 'Kunst', i_architecture: 'Architektur', i_parks: 'Parks', i_food: 'Essen', i_hidden: 'Geheimtipps',
+        make: 'Meinen Plan erstellen', once: 'Ein kostenloser persönlicher Plan pro Besucher. Weitere Pläne in der App.',
+        why1: 'Prüft Öffnungszeiten und verschiebt Orte, die an deinen Tagen geschlossen sind.',
+        why2: 'Bringt die Stopps in Laufreihenfolge, mit einer Mittagspause nahe der Route.',
+        why3: 'In der App hat jeder Stopp seine Geschichte, erzählt, wenn du ankommst.',
+        making: 'Dein Plan entsteht…', steps: ['Suche die Orte, die sich lohnen', 'Prüfe die Öffnungszeiten für deine Daten', 'Bringe sie in Laufreihenfolge', 'Füge Mittagessen und lokale Tipps hinzu'],
+        needCity: 'Wähle eine Stadt aus der Liste oder gib ihren vollen Namen ein.',
+        errBusy: 'Heute zu viele Pläne aus deinem Netzwerk. Versuch es morgen oder plane in der App.',
+        errCap: 'Der Planer ist heute sehr gefragt. Versuch es morgen oder plane in der App.',
+        errGeneric: 'Wir konnten den Plan gerade nicht erstellen. Versuch es in einer Minute.',
+        usedKicker: 'Noch eine Reise geplant?', usedTitle: 'Du hast deinen kostenlosen Web-Plan erstellt',
+        usedLead: 'Dein Plan ist noch hier. Jeder neue Plan und jede Änderung daran entsteht in der App, wo deine Reisen gespeichert sind.',
+        view: 'Ansehen', usedCta: 'Die nächste Reise in der App planen', free: 'Kostenlos starten · iPhone und Android',
+        offTitle: 'Der Web-Planer macht Pause', offLead: 'In der App kannst du jede Stadt planen, mit deinen Daten, deinem Tempo und der Geschichte jedes Stopps.',
+        offCta: 'In der App planen', inDays: '{city} · {n} Tage', inDay: '{city} · 1 Tag', getApp: 'App laden' },
+};
+function pickLang() {
+  const p = q.get('lang'); if (STR[p]) return p;
+  const n = navigator.language || 'en';
+  return Object.keys(STR).find(k => k.toLowerCase() === n.toLowerCase())
+    || Object.keys(STR).find(k => k.slice(0, 2) === n.slice(0, 2).toLowerCase()) || 'en';
+}
+const LANG = pickLang(); const S = STR[LANG];
+const f = (s, v) => s.replace(/\{(\w+)\}/g, (_, k) => v[k] ?? '');
+document.documentElement.lang = LANG;
+document.querySelectorAll('[data-s]').forEach(el => { const v = S[el.dataset.s]; if (typeof v === 'string') el.textContent = v; });
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const store = isIOS ? IOS : (/Android/i.test(navigator.userAgent) ? ANDROID : IOS);
+const getApp = document.getElementById('getApp'); getApp.textContent = S.getApp; getApp.href = store;
+
+// A random id kept on this browser: one free plan per visitor, and the funnel counts visitors, not page loads.
+function visitorId() {
+  try {
+    let v = localStorage.getItem('ut_web_visitor');
+    if (!v || !/^[A-Za-z0-9_-]{16,64}$/.test(v)) {
+      v = (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36)).replace(/[^A-Za-z0-9]/g, '');
+      localStorage.setItem('ut_web_visitor', v);
+    }
+    return v;
+  } catch (e) { return 'nostorage' + Math.random().toString(36).slice(2, 14); }
+}
+const VISITOR = visitorId();
+function track(event, props) {
+  try {
+    fetch(`${API}/public/web-plan/event`, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ visitor_id: VISITOR, event, props: { lang: LANG, ...(props || {}) } }) }).catch(() => {});
+  } catch (e) {}
+}
+const planUrl = (bundle) => `tour.html?bundle=${encodeURIComponent(bundle)}&from=webplan&lang=${encodeURIComponent(LANG)}`;
+function storeLink(el, where) {
+  el.href = store;
+  el.addEventListener('click', () => track('store_click', { where, store: store === IOS ? 'ios' : 'android' }));
+}
+storeLink(getApp, 'header');
+
+function show(id) { ['formView', 'loadingView', 'usedView', 'offView'].forEach(v => { document.getElementById(v).hidden = v !== id; }); }
+
+// ── City field: suggestions from the same city search as the app ──
+const cityInput = document.getElementById('city'), sugg = document.getElementById('sugg');
+let chosen = null, timer = null, started = false;
+cityInput.addEventListener('input', () => {
+  chosen = null;
+  if (!started) { started = true; track('form_start'); }
+  clearTimeout(timer);
+  const v = cityInput.value.trim();
+  if (v.length < 3) { sugg.hidden = true; return; }
+  timer = setTimeout(async () => {
+    try {
+      const r = await fetch(`${API}/public/web-plan/cities?q=${encodeURIComponent(v)}`);
+      const { cities } = await r.json();
+      if (!cities || !cities.length || cityInput.value.trim() !== v) { sugg.hidden = true; return; }
+      sugg.innerHTML = '';
+      cities.forEach(c => {
+        const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'option');
+        b.textContent = c.name + ' ';
+        const s = document.createElement('span'); s.textContent = c.country; b.appendChild(s);
+        b.addEventListener('click', () => { chosen = c; cityInput.value = c.name; sugg.hidden = true; cityInput.focus(); });
+        sugg.appendChild(b);
+      });
+      sugg.hidden = false;
+    } catch (e) { sugg.hidden = true; }
+  }, 350);
+});
+document.addEventListener('click', (e) => { if (!e.target.closest('.city')) sugg.hidden = true; });
+
+// ── Pace and interests ──
+document.querySelectorAll('#pace button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#pace button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+}));
+document.querySelectorAll('#interests button').forEach(b => b.addEventListener('click', () => {
+  b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
+}));
+const dateInput = document.getElementById('date');
+const today = new Date(); const iso = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+dateInput.min = iso(today); dateInput.value = iso(new Date(today.getTime() + 7 * 86400000));
+
+const errEl = document.getElementById('err');
+function fail(msg) { show('formView'); errEl.textContent = msg; errEl.hidden = false; document.getElementById('go').disabled = false; }
+
+document.getElementById('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errEl.hidden = true;
+  const city = cityInput.value.trim();
+  if (city.length < 2) { errEl.textContent = S.needCity; errEl.hidden = false; cityInput.focus(); return; }
+  document.getElementById('go').disabled = true;
+  show('loadingView');
+  const step = document.getElementById('step'); let i = 0; step.textContent = S.steps[0];
+  const tick = setInterval(() => { i = Math.min(i + 1, S.steps.length - 1); step.textContent = S.steps[i]; }, 6000);
+  try {
+    const r = await fetch(`${API}/public/web-plan`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+      visitor_id: VISITOR, city: chosen ? chosen.name : city, country: chosen ? chosen.country : '',
+      date: dateInput.value || null, days: Number(document.getElementById('days').value),
+      pace: document.querySelector('#pace [aria-pressed="true"]').dataset.v,
+      interests: [...document.querySelectorAll('#interests [aria-pressed="true"]')].map(b => b.dataset.v), lang: LANG }) });
+    const body = await r.json().catch(() => ({}));
+    clearInterval(tick);
+    if (r.ok && body.bundle) { location.href = planUrl(body.bundle); return; }
+    if (r.status === 429 && body.detail === 'visitor') return init();
+    if (r.status === 429) return fail(body.detail === 'daily_cap' ? S.errCap : S.errBusy);
+    if (r.status === 503) return show('offView');
+    fail(r.status === 400 || r.status === 422 ? (body.detail || S.errGeneric) : S.errGeneric);
+  } catch (err) { clearInterval(tick); fail(S.errGeneric); }
+});
+
+async function init() {
+  storeLink(document.getElementById('usedApp'), 'used');
+  storeLink(document.getElementById('offApp'), 'off');
+  try {
+    const r = await fetch(`${API}/public/web-plan/status?visitor=${encodeURIComponent(VISITOR)}`);
+    const st = await r.json();
+    if (st.plan) {
+      const p = st.plan;
+      document.getElementById('usedName').textContent = p.days > 1 ? f(S.inDays, { city: p.city, n: p.days }) : f(S.inDay, { city: p.city });
+      document.getElementById('usedDate').textContent = p.date ? new Date(p.date + 'T12:00:00').toLocaleDateString(LANG, { weekday: 'short', day: 'numeric', month: 'short' }) : '';
+      document.getElementById('usedPlan').href = planUrl(p.bundle);
+      show('usedView'); track('used_view'); return;
+    }
+    if (!st.enabled) { show('offView'); track('page_view', { plan: 'off' }); return; }
+  } catch (e) { /* show the form; the plan request reports its own errors */ }
+  show('formView');
+  track('page_view', { ref: (document.referrer || '').replace(/^https?:\/\//, '').split('/')[0].slice(0, 60) });
+}
+init();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "884cbcf6aa1245eb8c9201ec24135338"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
