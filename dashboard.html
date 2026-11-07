@@ -889,6 +889,7 @@
           <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('growth')" id="cfgSave_growth">Save</button><span id="cfgMsg_growth"></span></div>
         </details>
         <div id="growthExperimentRound2"><div class="loading">Loading…</div></div>
+        <div id="offerTiming" style="margin-top:18px"></div>
         <details style="margin-top:18px">
           <summary style="cursor:pointer;color:var(--muted);font-size:0.82rem">Round 1 (closed): bonus offer vs. nothing at the first story</summary>
           <div id="growthExperimentPanel" style="margin-top:12px"><div class="loading">Loading…</div></div>
@@ -1063,7 +1064,7 @@
         </details>
         <div class="grid-4" id="wpKpis"><div class="card"><div class="loading">Loading…</div></div></div>
         <div style="font-weight:600;font-size:0.9rem">From the web page to paying user</div>
-        <div class="store-funnel" id="wpFunnel"></div>
+        <div class="table-wrap"><table id="wpFunnel"></table></div>
         <div class="card-title" style="margin-top:22px;font-size:0.9rem">Visitors and plans per day
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Bars: plans · lines: visitors and its 7-day average</span>
         </div>
@@ -3756,19 +3757,18 @@ async function loadWebPlanner() {
     ['Tapped Open in the app', 'app_clicks'], ['Followed it in the app', 'app_follows'], ['New app users', 'new_app_users'],
     ['Heard a first story', 'first_story'], ['Paid', 'paid']];
   const pctTxt = (a, b) => { if (!b) return '—'; const v = a / b * 100; return v.toFixed(v < 10 ? 1 : 0) + '%'; };
-  const lowerFirst = t => t.replace(/^[A-Z](?=[a-z])/, ch => ch.toLowerCase());
-  document.getElementById('wpFunnel').innerHTML = '<div class="fsrc apple">urbantales.net</div><div class="fsrc ut">Urban Tales app</div>' +
+  document.getElementById('wpFunnel').innerHTML = `<thead><tr><th>Step</th><th style="text-align:right">Now</th><th style="text-align:right">Of the step before</th><th style="text-align:right">Before</th><th style="text-align:right">Change</th></tr></thead><tbody>` +
     steps.map(([name, key], i) => {
       const c = cur[key] || 0, pr = prev[key] || 0, before = steps[i - 1];
-      const conv = before ? `<strong>${pctTxt(c, cur[before[1]])}</strong> of ${lowerFirst(before[0])} <span style="color:var(--muted)">(prev. ${pctTxt(pr, prev[before[1]])})</span>`
-        : '<span style="color:var(--muted)">Start of funnel</span>';
       const [b, cls] = trend(c, pr);
-      const width = Math.max(2, Math.round(Math.log10(c + 1) / Math.log10((cur.visitors || 1) + 1) * 100));
-      return `<div class="fstep${i ? '' : ' first'}"><span class="fl">${name}</span><span class="fv">${fmt(c)}</span>
-        <div class="meter"><i style="width:${Math.min(width, 100)}%"></i></div><span class="fc">${conv}</span>
-        <span class="fs">prev. ${fmt(pr)} ${b ? `<span class="kpi-badge badge-${cls}" style="display:inline-block;margin:0 0 0 4px">${b}</span>` : ''}</span>
-        ${key === 'app_clicks' ? `<span class="fs">Store buttons: ${fmt(cur.store_clicks)} (prev. ${fmt(prev.store_clicks)})</span>` : ''}</div>`;
-    }).join('');
+      const where = i === 0 ? '<span style="color:var(--muted);font-size:0.72rem;margin-left:6px">urbantales.net</span>'
+        : key === 'app_follows' ? '<span style="color:var(--muted);font-size:0.72rem;margin-left:6px">in the app</span>' : '';
+      return `<tr><td>${name}${where}${key === 'app_clicks' ? `<div style="color:var(--muted);font-size:0.72rem">Store buttons: ${fmt(cur.store_clicks)} (before ${fmt(prev.store_clicks)})</div>` : ''}</td>
+        <td style="text-align:right;font-weight:700">${fmt(c)}</td>
+        <td style="text-align:right">${before ? pctTxt(c, cur[before[1]]) + ` <span style="color:var(--muted)">(${pctTxt(pr, prev[before[1]])})</span>` : '—'}</td>
+        <td style="text-align:right;color:var(--muted)">${fmt(pr)}</td>
+        <td style="text-align:right">${b ? `<span class="kpi-badge badge-${cls}" style="display:inline-block;margin:0">${b}</span>` : ''}</td></tr>`;
+    }).join('') + '</tbody>';
   const d = r.daily || [];
   const avg = d.map((_, i) => { const w = d.slice(Math.max(0, i - 6), i + 1); return +(w.reduce((n, x) => n + x.visitors, 0) / w.length).toFixed(1); });
   destroyChart('chartWebPlanner');
@@ -7415,6 +7415,7 @@ function downloadCountriesMap(square) {
 async function loadAllData() {
   loadStoreOverview(_storeSelected);  // independent: a failure elsewhere can't block it
   loadWebPlanner();  // independent too
+  loadOfferTiming();
   loadTripRetention(days);  // independent too (reads every story event)
   loadOfflineAnalytics();   // independent: an older backend just shows a note
   try {
@@ -7601,6 +7602,43 @@ function renderAbTest(data) {
       <tbody>${rows}</tbody>
     </table>
     <p style="color:var(--muted);font-size:0.75rem;margin-top:12px">${fmt(data.unassigned_users)} users signed up before the experiment.</p>`;
+}
+
+// Offer timing test (backend offer_timing.py), crossed with the bonus-offer vs perks split above: inside each
+// timing arm the card is still 50/50, so the table above stays fair; this one compares WHEN the card shows.
+async function loadOfferTiming() {
+  const el = document.getElementById('offerTiming');
+  if (!el) return;
+  const r = await api('/admin/analytics/offer-timing').catch(() => null);
+  if (!r) { el.innerHTML = ''; return; }
+  const g1 = r.groups.story1, g2 = r.groups.story2;
+  const pct = (v) => v === null || v === undefined ? '—' : `${v}%`;
+  const head = `<div style="font-weight:600;font-size:0.9rem;margin-bottom:6px">Offer timing test: card after story 1 vs after story 2
+    <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:6px">${r.enabled ? `On · ${r.story2_pct}% after story 2` : 'Off'}${r.started_at ? ' · started ' + new Date(r.started_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : ''}</span></div>`;
+  if (!g1.users && !g2.users) {
+    el.innerHTML = head + '<p style="color:var(--muted);font-size:0.8rem;margin:0">No one assigned yet. Turn it on in Configuration above; it assigns new users at their first story.</p>';
+    return;
+  }
+  const row = (label, g, sub) => `<tr${sub ? ' style="color:var(--muted)"' : ''}>
+      <td style="padding:6px 0${sub ? ';padding-left:18px' : ''}">${sub ? label : '<strong>' + label + '</strong>'}</td>
+      <td style="text-align:right">${fmt(g.users)}</td>
+      <td style="text-align:right">${pct(g.reached_story2_rate)}</td>
+      <td style="text-align:right">${fmt(g.d7_cohort)}</td>
+      <td style="text-align:right">${fmt(g.paid_7d)}</td>
+      <td style="text-align:right${sub ? '' : ';font-weight:700;color:var(--green)'}">${pct(g.paid_7d_rate)}</td>
+      <td style="text-align:right">${pct(g.paid_rate)}</td></tr>`;
+  const arm = (label, g) => row(label, g) + row('ℹ️ perks card', g.by_card.perks_control, true) + row('🎁 bonus offer', g.by_card.purchase_offer, true);
+  const small = Math.min(g1.d7_cohort || 0, g2.d7_cohort || 0) < 100;
+  el.innerHTML = head + `<div class="table-wrap"><table style="width:100%;border-collapse:collapse">
+      <thead><tr style="color:var(--muted);font-size:0.75rem">
+        <th style="text-align:left;padding:6px 0">Group</th><th style="text-align:right">Users</th>
+        <th style="text-align:right">Reached story 2</th><th style="text-align:right">7+ days in</th>
+        <th style="text-align:right">Paid within 7 days</th><th style="text-align:right">7-day conversion</th><th style="text-align:right">Paid ever</th>
+      </tr></thead>
+      <tbody>${arm('After story 1 (control)', g1)}${arm('After story 2', g2)}</tbody></table></div>
+    <p style="color:var(--muted);font-size:0.72rem;margin-top:10px">"Reached story 2" (stories heard before paying) shows a difference within weeks; paid needs many more users.
+      ${small ? '<strong style="color:var(--yellow)">Under 100 matured users in an arm: too early to call a winner.</strong>' : ''}
+      The table above (perks vs bonus offer) still holds: each timing arm keeps that 50/50 split.</p>`;
 }
 
 function renderGrowthExperimentRound2(data) {
