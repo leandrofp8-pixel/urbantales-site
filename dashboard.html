@@ -1051,6 +1051,29 @@
       </div>
 
       <div class="panel-sub" data-sub="tours" hidden>
+<!-- ── Web trip planner (urbantales.net/plan.html; backend web_planner.py) ── -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Web trip planner
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px" id="wpMeta">One free plan per visitor on urbantales.net/plan.html, then the app</span>
+        </div>
+        <details class="cfg-box" id="cfgBox_webplanner">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_webplanner"></span></summary>
+          <div class="cfg-grid" id="cfg_webplanner"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('webplanner')" id="cfgSave_webplanner">Save</button><span id="cfgMsg_webplanner"></span></div>
+        </details>
+        <div class="grid-4" id="wpKpis"><div class="card"><div class="loading">Loading…</div></div></div>
+        <div style="font-weight:600;font-size:0.9rem">From the web page to paying user</div>
+        <div class="store-funnel" id="wpFunnel"></div>
+        <div class="card-title" style="margin-top:22px;font-size:0.9rem">Visitors and plans per day
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Bars: plans · lines: visitors and its 7-day average</span>
+        </div>
+        <div class="chart-wrap"><canvas id="chartWebPlanner"></canvas></div>
+        <div class="grid-2" style="margin-top:20px">
+          <div><div style="font-weight:600;font-size:0.9rem;margin-bottom:8px">Cities planned</div><div class="table-wrap"><table id="wpCities"></table></div></div>
+          <div><div style="font-weight:600;font-size:0.9rem;margin-bottom:8px">Limits and errors</div><div class="table-wrap"><table id="wpLimits"></table></div></div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.6;margin-top:12px">Visitors are browsers (a random id the page keeps), counted once per step. App follows = accounts that followed a web plan in the app; new app users = those whose account was created at most a day before that follow. Store-button clicks can't be tied to an install.</div>
+      </div>
       <!-- Tour planner: which rules + model build new tours (backend tour_planner.py) -->
       <div class="card" style="margin-bottom:24px">
         <div class="card-title">Tour Planner
@@ -1585,6 +1608,7 @@
         </div>
         <div style="font-size:0.75rem;color:var(--muted);line-height:1.6">First-time downloads are new devices; the stores' "installs" also count updates, so they aren't used. Store figures count devices and the app counts accounts, so the two halves of the funnel are approximate and can't be matched person by person. Apple leaves out very small numbers in some breakdowns, so deletions in particular undercount.</div>
       </div>
+
       </div>
 
       <div class="panel-sub" data-sub="referrals" hidden>
@@ -3153,12 +3177,22 @@ const CONFIG_GROUPS = {
     { key: 'ab_default_tab_enabled', type: 'toggle', label: 'Experiment active', def: true },
     { key: 'ab_default_tab_explore_pct', label: 'Explore group % (0 = all Walk, 100 = all Explore)', def: 50, attrs: 'min="0" max="100"' },
   ] },
+  webplanner: { state: s => (s.web_planner_enabled ?? false) ? `On · ${s.web_planner_plans_per_visitor ?? 1} plan per visitor` : 'Off', fields: [
+    { note: 'urbantales.net/plan.html. Off: the page says the planner is resting and points to the app. Every plan uses the app planner (Places + the story model), so the caps limit cost.' },
+    { key: 'web_planner_enabled', type: 'toggle', label: 'Planner on', def: false },
+    { key: 'web_planner_plans_per_visitor', label: 'Free plans per visitor', def: 1, attrs: 'min="0" max="10"' },
+    { key: 'web_planner_plans_per_ip_per_day', label: 'Plans per network per day', def: 3, attrs: 'min="0" max="50"' },
+    { key: 'web_planner_daily_cap', label: 'Plans per day, everyone', def: 200, attrs: 'min="0" max="5000"' },
+  ] },
   growth: { state: s => (s.first_purchase_offer_enabled ?? true) ? `Active · ${s.first_purchase_offer_test_pct ?? 50}% bonus offer` : 'Paused', fields: [
     { key: 'first_purchase_offer_enabled', type: 'toggle', label: 'Experiment active', def: true },
     { key: 'first_purchase_offer_test_pct', label: 'Bonus offer group % (rest see the perks card)', def: 50, attrs: 'min="0" max="100"' },
     { key: 'first_purchase_offer_bonus_pct', label: 'Bonus coins % on qualifying purchase', def: 50, attrs: 'min="0" max="200"' },
     { key: 'first_purchase_offer_window_hours', label: 'Offer window (hours)', def: 24, attrs: 'min="1" max="168"' },
     { key: 'first_purchase_offer_min_pack_coins', label: 'Min pack size to qualify (coins) — keeps the bonus crossing a 500/1000 redemption threshold', def: 1000, attrs: 'min="0" step="100"' },
+    { note: 'Offer timing test: the story2 group sees the offer or perks card after their second story instead of the first (results: /admin/analytics/offer-timing).' },
+    { key: 'offer_timing_test_enabled', type: 'toggle', label: 'Offer timing test on', def: false },
+    { key: 'offer_timing_story2_pct', label: '% shown after story 2 (rest after story 1)', def: 50, attrs: 'min="0" max="100"' },
   ] },
   storefront: { state: s => (s.storefront_experiment_enabled ?? false) ? `Enrolling · ${s.storefront_experiment_pct ?? 50}% coins first` : 'Not enrolling', fields: [
     { note: 'All never-paid users on supported apps. Pausing stops new enrollment; existing assignments stay fixed. Percentage changes affect new assignments only. The conversion window locks once enrollment starts.' },
@@ -3695,6 +3729,64 @@ function ensureCountriesMap() {
 }
 
 // B2B Partners (Trip Pass agencies) loads when its subtab is first opened.
+// Web trip planner funnel (GET /admin/analytics/web-planner): this period vs the previous one of the same length.
+async function loadWebPlanner() {
+  const kpis = document.getElementById('wpKpis');
+  if (!kpis) return;
+  const r = await api(`/admin/analytics/web-planner?days=${days}`).catch(() => null);
+  if (!r) {
+    kpis.innerHTML = '<div class="card" style="grid-column:1/-1"><div style="color:var(--muted);font-size:0.85rem">Could not load the web planner numbers (the backend may not have it yet).</div></div>';
+    return;
+  }
+  const cur = r.current.steps, prev = r.previous.steps;
+  document.getElementById('wpMeta').textContent = `${r.enabled ? 'On' : 'Off (Settings › web planner)'} · last ${r.days} days vs the ${r.days} before`;
+  const trend = (c, pr, lowerIsBetter) => {
+    if (!pr) return [c ? 'new' : null, 'yellow'];
+    const ch = (c - pr) / pr * 100;
+    if (Math.abs(ch) < 5) return ['→ ' + ch.toFixed(0) + '%', 'yellow'];
+    return [(ch > 0 ? '↑ ' : '↓ ') + Math.abs(ch).toFixed(0) + '%', (ch > 0) !== !!lowerIsBetter ? 'green' : 'red'];
+  };
+  const rate = v => v == null ? '—' : v + '%';
+  const kpi = (title, key, sub) => { const [b, c] = trend(cur[key], prev[key]); return kpiCard(title, fmt(cur[key]), `prev. ${fmt(prev[key])} · ${(cur[key] / r.days).toFixed(1)}/day<br>${sub}`, b, c); };
+  kpis.innerHTML = kpi('Visitors', 'visitors', 'Opened the planner page') +
+    kpi('Plans made', 'plans', `${rate(cur.plan_rate)} of visitors (prev. ${rate(prev.plan_rate)})`) +
+    kpi('Followed in the app', 'app_follows', `${rate(cur.follow_rate)} of plans (prev. ${rate(prev.follow_rate)})`) +
+    kpi('New app users', 'new_app_users', `${fmt(cur.first_story)} heard a story · ${fmt(cur.paid)} paid`);
+  const steps = [['Visitors', 'visitors'], ['Started the form', 'started'], ['Made a plan', 'plans'], ['Looked at the plan', 'viewed'],
+    ['Tapped Open in the app', 'app_clicks'], ['Followed it in the app', 'app_follows'], ['New app users', 'new_app_users'],
+    ['Heard a first story', 'first_story'], ['Paid', 'paid']];
+  const pctTxt = (a, b) => { if (!b) return '—'; const v = a / b * 100; return v.toFixed(v < 10 ? 1 : 0) + '%'; };
+  const lowerFirst = t => t.replace(/^[A-Z](?=[a-z])/, ch => ch.toLowerCase());
+  document.getElementById('wpFunnel').innerHTML = '<div class="fsrc apple">urbantales.net</div><div class="fsrc ut">Urban Tales app</div>' +
+    steps.map(([name, key], i) => {
+      const c = cur[key] || 0, pr = prev[key] || 0, before = steps[i - 1];
+      const conv = before ? `<strong>${pctTxt(c, cur[before[1]])}</strong> of ${lowerFirst(before[0])} <span style="color:var(--muted)">(prev. ${pctTxt(pr, prev[before[1]])})</span>`
+        : '<span style="color:var(--muted)">Start of funnel</span>';
+      const [b, cls] = trend(c, pr);
+      const width = Math.max(2, Math.round(Math.log10(c + 1) / Math.log10((cur.visitors || 1) + 1) * 100));
+      return `<div class="fstep${i ? '' : ' first'}"><span class="fl">${name}</span><span class="fv">${fmt(c)}</span>
+        <div class="meter"><i style="width:${Math.min(width, 100)}%"></i></div><span class="fc">${conv}</span>
+        <span class="fs">prev. ${fmt(pr)} ${b ? `<span class="kpi-badge badge-${cls}" style="display:inline-block;margin:0 0 0 4px">${b}</span>` : ''}</span>
+        ${key === 'app_clicks' ? `<span class="fs">Store buttons: ${fmt(cur.store_clicks)} (prev. ${fmt(prev.store_clicks)})</span>` : ''}</div>`;
+    }).join('');
+  const d = r.daily || [];
+  const avg = d.map((_, i) => { const w = d.slice(Math.max(0, i - 6), i + 1); return +(w.reduce((n, x) => n + x.visitors, 0) / w.length).toFixed(1); });
+  destroyChart('chartWebPlanner');
+  CHARTS.chartWebPlanner = new Chart(document.getElementById('chartWebPlanner').getContext('2d'), {
+    data: { labels: d.map(x => x.date.slice(5)), datasets: [
+      { type: 'bar', label: 'Plans', data: d.map(x => x.plans), backgroundColor: C.green + 'cc', yAxisID: 'y' },
+      { type: 'line', label: 'Visitors', data: d.map(x => x.visitors), borderColor: C.blue, backgroundColor: C.blue + '18', tension: .3, pointRadius: 2, yAxisID: 'y' },
+      { type: 'line', label: 'Visitors, 7-day average', data: avg, borderColor: C.primary, borderDash: [5, 4], pointRadius: 0, tension: .3, yAxisID: 'y' } ] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#aaa' } } },
+      scales: { x: { ticks: { color: '#888' }, grid: { color: '#222' } }, y: { beginAtZero: true, ticks: { color: '#888', precision: 0 }, grid: { color: '#222' } } } },
+  });
+  const rows = (pairs, empty) => pairs.length ? pairs.map(([k, v]) => `<tr><td>${escapeHtml(k)}</td><td style="text-align:right">${fmt(v)}</td></tr>`).join('') : `<tr><td style="color:var(--muted)">${empty}</td></tr>`;
+  document.getElementById('wpCities').innerHTML = rows(r.current.top_cities, 'No plans yet');
+  const why = { visitor: 'Already had their free plan', network: 'Network limit (3 a day)', daily_cap: 'Daily cap reached' };
+  document.getElementById('wpLimits').innerHTML = rows(Object.entries(r.current.limit_hits).map(([k, v]) => [why[k] || k, v])
+    .concat(r.current.errors ? [['Plan failed (error or empty city)', r.current.errors]] : []), 'None');
+}
+
 function ensureB2BLoaded() {
   const sub = document.querySelector('#panel-acquisition .panel-sub[data-sub="b2b"]');
   if (_tripPassTabLoaded || !sub || sub.hidden || !getToken()) return;
@@ -7322,6 +7414,7 @@ function downloadCountriesMap(square) {
 // ══════════════════════════════════════════════
 async function loadAllData() {
   loadStoreOverview(_storeSelected);  // independent: a failure elsewhere can't block it
+  loadWebPlanner();  // independent too
   loadTripRetention(days);  // independent too (reads every story event)
   loadOfflineAnalytics();   // independent: an older backend just shows a note
   try {

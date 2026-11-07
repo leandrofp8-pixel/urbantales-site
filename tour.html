@@ -99,33 +99,45 @@ const API_BASE = 'https://friendly-fulfillment-production.up.railway.app';
 const IOS = 'https://apps.apple.com/app/id6760130598';
 const ANDROID = 'https://play.google.com/store/apps/details?id=com.urbantales.app';
 const q = new URLSearchParams(location.search);
+// A plan made on plan.html (web tour planner): "Your plan is ready", and its steps go to the planner funnel.
+const WEBPLAN = q.get('from') === 'webplan';
+let WEB_VISITOR = null;
+try { WEB_VISITOR = localStorage.getItem('ut_web_visitor'); } catch (e) {}
+function webTrack(event, props) {
+  if (!WEBPLAN || !WEB_VISITOR) return;
+  try {
+    fetch('https://friendly-fulfillment-production.up.railway.app/api/public/web-plan/event', { method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ visitor_id: WEB_VISITOR, event, props: { ...(props || {}), bundle: q.get('bundle') || '' } }) }).catch(() => {});
+  } catch (e) {}
+}
 
 const STR = {
-  en: { sharedBy: 'A trip shared by {name}', shared: 'A shared trip', inDays: '{city} in {n} days', stops: '{n} stops', day: 'Day {n}',
+  en: { ready: 'Your plan is ready', openPlan: 'Open this plan in the app', sharedBy: 'A trip shared by {name}', shared: 'A shared trip', inDays: '{city} in {n} days', stops: '{n} stops', day: 'Day {n}',
         min: '{n} min', hear: 'Hear the first stop: {name}', hearSub: 'A short preview · every stop has its story in the app',
         dates: 'Going on other dates? The app checks opening days and moves places that are closed on yours.',
         inappT: 'On the day, the app does the rest', inappS: "With paid access covering this trip, download the tour and its audio in the app before you go. Listen offline with Pocket Mode and your phone locked.",
         follow: 'Follow this trip in the app', followSub: 'Free to start · iPhone and Android', notFound: 'This trip is no longer shared', notFoundS: 'It may have been removed or made private.',
         error: 'Something went wrong', errorS: 'Please try again in a moment.', route: 'Route of the day', getApp: 'Get the app' },
-  es: { sharedBy: 'Un viaje compartido por {name}', shared: 'Un viaje compartido', inDays: '{city} en {n} días', stops: '{n} paradas', day: 'Día {n}',
+  es: { ready: 'Tu plan está listo', openPlan: 'Abrir este plan en la app', sharedBy: 'Un viaje compartido por {name}', shared: 'Un viaje compartido', inDays: '{city} en {n} días', stops: '{n} paradas', day: 'Día {n}',
         min: '{n} min', hear: 'Escucha la primera parada: {name}', hearSub: 'Una muestra · cada parada tiene su historia en la app',
         dates: '¿Vas en otras fechas? La app revisa los horarios y mueve los lugares que cierran en tus días.',
         inappT: 'El día del paseo, la app hace el resto', inappS: "Con un plan de pago que cubra este viaje, descarga el tour y sus audios en la app antes de salir. Escucha sin conexión con el Modo Bolsillo y el teléfono bloqueado.",
         follow: 'Seguir este viaje en la app', followSub: 'Gratis para empezar · iPhone y Android', notFound: 'Este viaje ya no está compartido', notFoundS: 'Puede que lo hayan borrado o hecho privado.',
         error: 'Algo salió mal', errorS: 'Inténtalo de nuevo en un momento.', route: 'Recorrido del día', getApp: 'Descargar la app' },
-  'pt-BR': { sharedBy: 'Uma viagem compartilhada por {name}', shared: 'Uma viagem compartilhada', inDays: '{city} em {n} dias', stops: '{n} paradas', day: 'Dia {n}',
+  'pt-BR': { ready: 'Seu plano está pronto', openPlan: 'Abrir este plano no app', sharedBy: 'Uma viagem compartilhada por {name}', shared: 'Uma viagem compartilhada', inDays: '{city} em {n} dias', stops: '{n} paradas', day: 'Dia {n}',
         min: '{n} min', hear: 'Ouça a primeira parada: {name}', hearSub: 'Uma amostra · cada parada tem sua história no app',
         dates: 'Vai em outras datas? O app confere os horários e muda os lugares que fecham nos seus dias.',
         inappT: 'No dia, o app faz o resto', inappS: "Com um plano pago que cubra esta viagem, baixe o tour e os áudios no app antes de sair. Ouça offline com o Modo Bolso e o celular bloqueado.",
         follow: 'Seguir esta viagem no app', followSub: 'Grátis para começar · iPhone e Android', notFound: 'Esta viagem não está mais compartilhada', notFoundS: 'Ela pode ter sido apagada ou ficado privada.',
         error: 'Algo deu errado', errorS: 'Tente de novo em instantes.', route: 'Trajeto do dia', getApp: 'Baixar o app' },
-  fr: { sharedBy: 'Un voyage partagé par {name}', shared: 'Un voyage partagé', inDays: '{city} en {n} jours', stops: '{n} étapes', day: 'Jour {n}',
+  fr: { ready: 'Votre plan est prêt', openPlan: 'Ouvrir ce plan dans l\'app', sharedBy: 'Un voyage partagé par {name}', shared: 'Un voyage partagé', inDays: '{city} en {n} jours', stops: '{n} étapes', day: 'Jour {n}',
         min: '{n} min', hear: 'Écoutez la première étape : {name}', hearSub: 'Un aperçu · chaque étape a son histoire dans l\'app',
         dates: 'D\'autres dates ? L\'app vérifie les horaires et déplace les lieux fermés ces jours-là.',
         inappT: 'Le jour venu, l\'app fait le reste', inappS: "Avec une formule payante couvrant ce voyage, téléchargez le parcours et ses audios dans l’application avant de partir. Écoutez hors ligne avec le Mode Poche et le téléphone verrouillé.",
         follow: 'Suivre ce voyage dans l\'app', followSub: 'Gratuit pour commencer · iPhone et Android', notFound: 'Ce voyage n\'est plus partagé', notFoundS: 'Il a peut-être été supprimé ou rendu privé.',
         error: 'Un problème est survenu', errorS: 'Réessayez dans un instant.', route: 'Itinéraire du jour', getApp: 'Télécharger l\'app' },
-  de: { sharedBy: 'Eine Reise, geteilt von {name}', shared: 'Eine geteilte Reise', inDays: '{city} in {n} Tagen', stops: '{n} Stopps', day: 'Tag {n}',
+  de: { ready: 'Dein Plan ist fertig', openPlan: 'Diesen Plan in der App öffnen', sharedBy: 'Eine Reise, geteilt von {name}', shared: 'Eine geteilte Reise', inDays: '{city} in {n} Tagen', stops: '{n} Stopps', day: 'Tag {n}',
         min: '{n} Min.', hear: 'Hör den ersten Stopp: {name}', hearSub: 'Eine Hörprobe · jeder Stopp hat seine Geschichte in der App',
         dates: 'Andere Daten? Die App prüft die Öffnungszeiten und verschiebt Orte, die an deinen Tagen geschlossen sind.',
         inappT: 'Am Tag selbst macht die App den Rest', inappS: "Mit einem kostenpflichtigen Zugang für diese Reise lädst du die Tour und ihre Audios vorab in der App herunter. Höre offline mit dem Taschenmodus und gesperrtem Handy.",
@@ -198,7 +210,7 @@ function render({ days, city, title, creator, deepLink, audio }) {
   const first = days[0].stops[0];
   document.getElementById('root').innerHTML = `
     <div>
-      <div class="kicker">${esc(creator ? f(S.sharedBy, { name: creator }) : S.shared)}</div>
+      <div class="kicker">${esc(WEBPLAN ? S.ready : (creator ? f(S.sharedBy, { name: creator }) : S.shared))}</div>
       <h1>${esc(heading)}</h1>
       <div class="meta">${esc(city)} · ${esc(f(S.stops, { n: total }))}</div>
     </div>
@@ -208,7 +220,7 @@ function render({ days, city, title, creator, deepLink, audio }) {
     <div id="day"></div>
     <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="#B4470F" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>${esc(S.dates)}</span></div>
     <div class="inapp"><b>${esc(S.inappT)}</b><span>${esc(S.inappS)}</span></div>
-    <div class="badges"><a href="${IOS}"><img src="badges/apple.svg" alt="Download on the App Store" height="48"></a><a href="${ANDROID}"><img src="badges/google-${LANG}.png" alt="Get it on Google Play" height="48"></a></div>`;
+    <div class="badges"><a href="${IOS}" data-store="ios"><img src="badges/apple.svg" alt="Download on the App Store" height="48"></a><a href="${ANDROID}" data-store="android"><img src="badges/google-${LANG}.png" alt="Get it on Google Play" height="48"></a></div>`;
   const showDay = (i) => {
     document.getElementById('day').innerHTML = `<div class="route" id="map" role="img" aria-label="${esc(S.route)}"></div>` + stopsHtml(days[i].stops);
     const draw = () => showMap(days[i].stops);
@@ -220,9 +232,12 @@ function render({ days, city, title, creator, deepLink, audio }) {
   setupAudio(audio);
   // Open in the app when installed, else the store (the app stores the id and offers the trip after sign-in).
   const open = document.getElementById('openBtn');
-  open.textContent = S.follow; document.getElementById('ctaSub').textContent = S.followSub;
+  open.textContent = WEBPLAN ? S.openPlan : S.follow; document.getElementById('ctaSub').textContent = S.followSub;
+  document.querySelectorAll('.badges a').forEach(a => a.addEventListener('click', () => webTrack('store_click', { where: 'badges', store: a.dataset.store })));
+  webTrack('plan_view');
   open.addEventListener('click', (e) => {
     e.preventDefault();
+    webTrack('cta_app', { where: 'sticky' });
     const t = setTimeout(() => { location.href = store; }, 1400);
     window.addEventListener('pagehide', () => clearTimeout(t), { once: true });
     location.href = deepLink;
