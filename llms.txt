@@ -5,8 +5,10 @@
 > French or German. It works in any city worldwide, with no tour group, schedule or ticket.
 
 - How it works: open the app and walk. Nearby landmarks appear on the map and their stories play as you get close
-  (Pocket Mode keeps playing with the phone locked in your pocket). You can also build a walking tour of a city in
-  seconds (7 Wonders, half day, full day or several days) and follow it with turn-by-turn directions.
+  (Pocket Mode keeps playing with the phone locked in your pocket).
+- Trip planner (free): pick a city, your dates and your pace, and get every day in the right order, with opening
+  hours and closing days checked, a lunch break near the route and a local tip at each stop. Share a trip and
+  friends follow it in the app on their own dates. Try one plan free in the browser: https://urbantales.net/plan.html
 - Free to start: 3 free landmarks. Unlimited listening with a Day Pass, a City Unlock or the annual Unlimited
   plan. Prices: https://urbantales.net/pricing.md
 - Offline: download tours and their audio beforehand with paid access covering the tour. Listen offline with

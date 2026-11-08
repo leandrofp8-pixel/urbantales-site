@@ -265,6 +265,9 @@ const STR = {
 };
 function pickLang() {
   const p = q.get('lang'); if (STR[p]) return p;
+  // Arrived from a translated page of the site (/es/rome.html, /pt/lisbon.html): keep its language.
+  const from = (document.referrer || '').match(/urbantales\.net\/(es|pt)\//);
+  if (from) return from[1] === 'pt' ? 'pt-BR' : 'es';
   const n = navigator.language || 'en';
   return Object.keys(STR).find(k => k.toLowerCase() === n.toLowerCase())
     || Object.keys(STR).find(k => k.slice(0, 2) === n.slice(0, 2).toLowerCase()) || 'en';
@@ -306,6 +309,8 @@ function show(id) { ['formView', 'loadingView', 'usedView', 'offView'].forEach(v
 
 // ── City field: suggestions from the same city search as the app ──
 const cityInput = document.getElementById('city'), sugg = document.getElementById('sugg');
+const CITY_FROM_PAGE = (q.get('city') || '').trim().slice(0, 60);  // "Plan my Rome trip" links on the city pages
+if (CITY_FROM_PAGE) cityInput.value = CITY_FROM_PAGE;
 let chosen = null, timer = null, started = false;
 cityInput.addEventListener('input', () => {
   chosen = null;
@@ -387,7 +392,7 @@ async function init() {
     if (!st.enabled) { show('offView'); track('page_view', { plan: 'off' }); return; }
   } catch (e) { /* show the form; the plan request reports its own errors */ }
   show('formView');
-  track('page_view', { ref: (document.referrer || '').replace(/^https?:\/\//, '').split('/')[0].slice(0, 60) });
+  track('page_view', { ref: (document.referrer || '').replace(/^https?:\/\//, '').split('/')[0].slice(0, 60), city: CITY_FROM_PAGE });
 }
 init();
 </script>
