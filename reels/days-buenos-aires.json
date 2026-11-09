@@ -1,0 +1,138 @@
+{
+ "slug": "days-buenos-aires",
+ "landmark": "Buenos Aires · 3 días",
+ "city": "Buenos Aires",
+ "series": "days",
+ "story": "Buenos Aires en 3 días según el plan real de la app: casco histórico con la feria de San Telmo, Congreso a Recoleta, Palermo (Evita cierra lunes, Malba martes)",
+ "sources": [
+  "https://malba.org.ar/en/visitar",
+  "https://turismo.buenosaires.gob.ar/es/otros-establecimientos/cementerio-de-la-recoleta",
+  "https://museoevita.org.ar/"
+ ],
+ "week": "2026-W47",
+ "created": "2026-11-08T19:21",
+ "media_sha": "07738a5f545ccdd0972ad21bbcba945ea30ca512",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/07738a5f545ccdd0972ad21bbcba945ea30ca512/reels/days-buenos-aires-es.mp4",
+  "caption": "La mayoría recorre Buenos Aires en el orden equivocado. ¿Qué día cambiarías? 👇\n\nTres días para ganarle a las multitudes: la feria de San Telmo los domingos de 10 a 5, el Cementerio de la Recoleta de 9 a 5 para turistas, y Palermo sin lunes ni martes.\n\n¿Lo quieres para tus fechas y tu ritmo? Urban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas. Link en la bio.\n.\n.\n.\n#buenosaires #argentina #santelmo #tipsdeviaje #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-36422291.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-buenos-aires-at-sunset-36422291/",
+   "author": "Andres Idda Bianchi",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Buenos Aires city aerial"
+  },
+  {
+   "file": "pexels-34665243.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-urban-skyline-with-park-34665243/",
+   "author": "Andres Idda Bianchi",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Buenos Aires city aerial"
+  },
+  {
+   "file": "pexels-19596479.mp4",
+   "url": "https://www.pexels.com/video/buenos-aires-recoleta-facultad-de-derecho-19596479/",
+   "author": "Jovana De Obaldia",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Buenos Aires street"
+  },
+  {
+   "file": "pexels-28671359.mp4",
+   "url": "https://www.pexels.com/video/the-building-is-lit-up-at-night-and-has-a-large-clock-on-it-28671359/",
+   "author": "Sergey Guk",
+   "w": 1280,
+   "h": 720,
+   "dur": 30,
+   "query": "Casa Rosada Buenos Aires"
+  },
+  {
+   "file": "pexels-14907581.mp4",
+   "url": "https://www.pexels.com/video/high-angle-view-of-9-de-julio-avenue-and-the-obelisk-in-buenos-aires-city-argentina-14907581/",
+   "author": "Myhaylo K",
+   "w": 1280,
+   "h": 720,
+   "dur": 20,
+   "query": "Plaza de Mayo Buenos Aires"
+  },
+  {
+   "file": "pexels-16484767.mp4",
+   "url": "https://www.pexels.com/video/argentine-congress-16484767/",
+   "author": "Jovana De Obaldia",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Buenos Aires Metropolitan Cathedral"
+  },
+  {
+   "file": "pexels-17432317.mp4",
+   "url": "https://www.pexels.com/video/centro-cultural-kirchner-cck-17432317/",
+   "author": "Leandro Binetti",
+   "w": 1280,
+   "h": 720,
+   "dur": 30,
+   "query": "Cabildo Buenos Aires"
+  },
+  {
+   "file": "pexels-19909620.mp4",
+   "url": "https://www.pexels.com/video/buenos-aires-aerial-19909620/",
+   "author": "Aaron Hairston",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Cabildo Buenos Aires"
+  },
+  {
+   "file": "pexels-38383350.mp4",
+   "url": "https://www.pexels.com/video/explore-vibrant-san-telmo-antique-market-38383350/",
+   "author": "doctor on travel",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Mercado San Telmo Buenos Aires"
+  },
+  {
+   "file": "pexels-35565808.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-buenos-aires-planetarium-park-35565808/",
+   "author": "Andres Idda Bianchi",
+   "w": 1280,
+   "h": 720,
+   "dur": 20,
+   "query": "Rosedal Palermo Buenos Aires"
+  },
+  {
+   "file": "pexels-35808788.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-buenos-aires-planetarium-park-35808788/",
+   "author": "Andres Idda Bianchi",
+   "w": 1280,
+   "h": 720,
+   "dur": 22,
+   "query": "Bosques de Palermo Buenos Aires"
+  },
+  {
+   "file": "pexels-13521639.mp4",
+   "url": "https://www.pexels.com/video/dancing-tango-on-city-street-13521639/",
+   "author": "Sol Pinto",
+   "w": 720,
+   "h": 1280,
+   "dur": 26,
+   "query": "San Telmo Buenos Aires"
+  },
+  {
+   "file": "pexels-35759845.mp4",
+   "url": "https://www.pexels.com/video/couple-strolling-in-scenic-argentina-park-35759845/",
+   "author": "Gian Tripodoro",
+   "w": 720,
+   "h": 1280,
+   "dur": 12,
+   "query": "Palermo Buenos Aires park"
+  }
+ ]
+}
