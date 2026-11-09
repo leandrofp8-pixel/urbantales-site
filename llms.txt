@@ -5,10 +5,8 @@
 > French or German. It works in any city worldwide, with no tour group, schedule or ticket.
 
 - How it works: open the app and walk. Nearby landmarks appear on the map and their stories play as you get close
-  (Pocket Mode keeps playing with the phone locked in your pocket).
-- Trip planner (free): pick a city, your dates and your pace, and get every day in the right order, with opening
-  hours and closing days checked, a lunch break near the route and a local tip at each stop. Share a trip and
-  friends follow it in the app on their own dates. Try one plan free in the browser: https://urbantales.net/plan.html
+  (Pocket Mode keeps playing with the phone locked in your pocket). You can also build a walking tour of a city in
+  seconds (7 Wonders, half day, full day or several days) and follow it with turn-by-turn directions.
 - Free to start: 3 free landmarks. Unlimited listening with a Day Pass, a City Unlock or the annual Unlimited
   plan. Prices: https://urbantales.net/pricing.md
 - Offline: download tours and their audio beforehand with paid access covering the tour. Listen offline with
@@ -41,6 +39,7 @@
 - [Chicago Audio Guide App – Hidden Stories & Self-Guided Walking Tours | Urban Tales](https://urbantales.net/chicago.html): Explore Chicago like never before. Urban Tales is a GPS audio guide app that narrates the hidden stories behind Chicago's most iconic landmarks as you walk. No tour group. No fixed schedule.
 - [Best Audio Tour Apps in 2026: 6 Apps Compared (Including Ours) | Urban Tales](https://urbantales.net/best-audio-tour-apps.html): VoiceMap, izi.TRAVEL, Rick Steves Audio Europe, SmartGuide, GPSmyCity and Urban Tales compared on what a Rome trip costs, which languages tours really come in, offline use and practical info. Written by the Urban Tales team. Comparison checked October 2026; Urban Tales updated November 2026.
 - [Athens Audio Guide App – Hidden Stories & Self-Guided Walking Tours | Urban Tales](https://urbantales.net/athens.html): Explore Athens like never before. Urban Tales is a GPS audio guide app that narrates the stories behind the Acropolis, the Agora and Plaka as you walk. No tour group. No fixed schedule.
+- [Free trip planner · Urban Tales](https://urbantales.net/plan.html): Plan your days in a city in a minute: the right order, opening hours and closing days, lunch in the right place and local tips. Free, for your dates and your pace.
 
 ## Landmark guides
 
@@ -164,6 +163,7 @@
 - [A Self-Guided Colosseum and Roman Forum Walk | The Wander Log](https://urbantales.net/blog-rome-colosseum-roman-forum-walk.html): A self-guided Colosseum and Roman Forum walk through ancient Rome — six stops, the hidden lifts under the arena floor, and an unmarked balcony.
 - [Festa della Salute: Venice's Plague-Bridge Festival | The Wander Log](https://urbantales.net/blog-venice-festa-della-salute-plague-bridge.html): Every November 21, Venice lays a bridge of boats across the Grand Canal to keep a 1631 vow that ended a plague. The real story behind the Festa della Salute.
 - [The Macy's Parade Route, Walked Early | The Wander Log](https://urbantales.net/blog-macys-thanksgiving-parade-route-walk.html): A walk along the real Macy's Thanksgiving Day Parade route for the 100th parade — from the balloon inflation site on the Upper West Side to Herald Square.
+- [Why Eva Perón's Body Was Hidden for 16 Years | The Wander Log](https://urbantales.net/blog-eva-peron-body-recoleta-cemetery-history.html): Eva Perón died in 1952. Her embalmed body then vanished for 16 years — smuggled to Italy under a false name before finally resting at Recoleta Cemetery.
 - [The Secret History of Athens's Panathenaic Stadium | The Wander Log](https://urbantales.net/blog-athens-panathenaic-stadium-secret-history.html): Athens's Panathenaic Stadium sat buried for centuries before a shipping fortune rebuilt it in marble — and gave the first modern marathon its finish line.
 - [A Self-Guided Monserrat & San Telmo Walk | The Wander Log](https://urbantales.net/blog-monserrat-san-telmo-noche-museos-walk.html): A self-guided walk through Monserrat and San Telmo, Buenos Aires's oldest blocks — and the one night a year every door there opens for free.
 - [Where the Word "Ghetto" Actually Came From | The Wander Log](https://urbantales.net/blog-venice-ghetto-word-origin-history.html): The word 'ghetto' wasn't a slur to start — it was Venetian dialect for a foundry. Here's the Venice Ghetto history behind the island that coined it in 1516.
