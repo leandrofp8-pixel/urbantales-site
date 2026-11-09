@@ -2083,6 +2083,25 @@
 
     <!-- ── NOTIFICATIONS ── -->
     <div class="tab-panel" id="panel-notifications">
+      <!-- Email campaign "Tours, rebuilt" (backend campaigns.py; full admins only) -->
+      <div class="card" style="margin-bottom:24px" id="campaignCard">
+        <div class="card-title">Email: Tours, rebuilt
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">news email to everyone who can receive it, in their language; each person once</span>
+        </div>
+        <div id="campaignBody"><div class="loading">Loading…</div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center">
+          <button class="ta-btn" type="button" onclick="loadCampaign()">Refresh</button>
+          <button class="ta-btn" type="button" onclick="campaignTest()">Send me a test (5 languages)</button>
+          <label style="font-size:13px;color:var(--muted)">Batch <input id="campaignMax" type="number" min="1" max="5000" value="90" style="width:70px;background:#111;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:5px 6px"></label>
+          <button class="btn-primary ta-btn" type="button" onclick="campaignAskSend()">Send next batch</button>
+          <span id="campaignMsg" style="font-size:13px"></span>
+        </div>
+        <div id="campaignConfirm" class="ta-confirm" hidden>
+          <span id="campaignConfirmText"></span>
+          <span class="ta-actions"><button class="ta-btn" type="button" onclick="document.getElementById('campaignConfirm').hidden=true">Cancel</button><button class="btn-primary ta-btn" type="button" onclick="campaignSend()">Send</button></span>
+        </div>
+        <div class="kpi-sub" style="margin-top:10px">Resend's free plan sends 100 emails a day: send a batch of 90 each day until "still to send" is 0. Push for the same launch: the form below (audience All, opens the Tours tab, one text per language).</div>
+      </div>
       <!-- Push performance: sent / delivered / opened / converted per type -->
       <div class="card" style="margin-bottom:24px">
         <div class="card-title">How notifications perform
@@ -3336,6 +3355,7 @@ function showTab(name) {
   }
   if (name === 'content') ensureCountriesMap();
   if (name === 'testers') loadTesters();
+  if (name === 'notifications') loadCampaign();
   if (name === 'acquisition') ensureB2BLoaded();
 }
 
@@ -8055,6 +8075,58 @@ function renderQuotaExperiment(data) {
 }
 
 // Encode data for HTML text/attributes; handler arguments also need JS encoding.
+// ══════════════════════════════════════════════
+// EMAIL CAMPAIGN "Tours, rebuilt" (backend campaigns.py)
+// ══════════════════════════════════════════════
+const CAMPAIGN = '/admin/campaigns/tours-rebuilt';
+let _campaignTodo = 0;
+async function loadCampaign() {
+  const body = document.getElementById('campaignBody');
+  if (!body) return;
+  try {
+    const r = await api(CAMPAIGN);
+    _campaignTodo = r.still_to_send;
+    const why = { admin_or_test: 'Admins and test accounts', unsubscribed: 'Unsubscribed', email_not_verified: 'Never verified their email',
+                  apple_hidden_email: 'Apple "Hide My Email" address', no_email: 'No email' };
+    const langs = Object.entries(r.by_language).map(([l, n]) => `${l.toUpperCase()} ${fmt(n)}`).join(' · ') || '—';
+    const st = r.state || {};
+    const when = st.finished_at ? new Date(st.finished_at + (st.finished_at.endsWith('Z') ? '' : 'Z')).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : null;
+    body.innerHTML = `<div class="grid-4" style="margin-bottom:12px">
+        ${kpiCard('Can receive it', fmt(r.recipients), langs)}
+        ${kpiCard('Sent', fmt(r.already_sent), st.running ? 'sending now…' : (when ? `last batch ${when}: ${fmt(st.last_batch_sent)} sent, ${fmt(st.last_batch_failed)} failed` : 'not started'))}
+        ${kpiCard('Still to send', fmt(r.still_to_send), r.still_to_send ? 'send the next batch' : 'everyone has it')}
+        ${kpiCard('Left out', fmt(Object.values(r.left_out).reduce((a, b) => a + b, 0)), Object.entries(r.left_out).map(([k, n]) => `${why[k] || k}: ${fmt(n)}`).join('<br>'))}
+      </div>${st.stopped_reason && !st.running ? `<div class="kpi-sub">Last batch stopped: ${escapeHtml(st.stopped_reason)}</div>` : ''}`;
+    if (st.running) setTimeout(loadCampaign, 5000);
+  } catch (e) {
+    body.innerHTML = `<div class="kpi-sub">Could not load the campaign (${escapeHtml(e.message)}). Only full admins can use it, and the backend needs PR #90.</div>`;
+  }
+}
+async function campaignTest() {
+  const msg = document.getElementById('campaignMsg'); msg.textContent = 'Sending 5 test emails…'; msg.style.color = 'var(--muted)';
+  try {
+    const r = await taPost(CAMPAIGN + '/test', {});
+    const failed = Object.entries(r.result).filter(([, v]) => v !== 'sent');
+    msg.textContent = failed.length ? `Some failed: ${failed.map(([l, e]) => l + ': ' + e).join('; ')}` : `5 test emails sent to ${r.to}`;
+    msg.style.color = failed.length ? 'var(--danger)' : '#34d399';
+  } catch (e) { msg.textContent = e.message; msg.style.color = 'var(--danger)'; }
+}
+function campaignAskSend() {
+  const n = Math.min(Number(document.getElementById('campaignMax').value) || 90, _campaignTodo || 0);
+  document.getElementById('campaignConfirmText').textContent = n
+    ? `Send the email to the next ${n} people now? Nobody gets it twice.` : 'Nobody is left to send to.';
+  document.getElementById('campaignConfirm').hidden = false;
+}
+async function campaignSend() {
+  document.getElementById('campaignConfirm').hidden = true;
+  const msg = document.getElementById('campaignMsg');
+  try {
+    await taPost(CAMPAIGN + '/send', { max: Number(document.getElementById('campaignMax').value) || 90 });
+    msg.textContent = 'Sending… this card updates every few seconds.'; msg.style.color = '#34d399';
+    setTimeout(loadCampaign, 3000);
+  } catch (e) { msg.textContent = e.message; msg.style.color = 'var(--danger)'; }
+}
+
 // ══════════════════════════════════════════════
 // TEST ACCOUNTS (backend testers.py): left out of analytics; reset onboarding
 // ══════════════════════════════════════════════
