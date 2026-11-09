@@ -38,12 +38,19 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 33 | Dubai |
 | 35 | Edinburgh |
 | 37 | Madrid |
+| 38 | Seoul |
 
 ## Next batch
 
-**#38 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#39 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
+
+Note (2026-11-09): Seoul (#38) has no `seoul.html` page in the main site repo and no
+`screen-seoul-*-map.png` screenshot — the generic app screen was used for its CTA slide per
+GUIDELINES.md. Photo candidates could not be sourced this run — commons.wikimedia.org is denied
+by this cloud session's network policy (see `photo_sourcing_note` in `carousel/drafts/seoul/draft.json`),
+the same recurring block as batches #8-#13, #28/#29, #30, #34 and #36.
 
 Note (2026-11-02): same thing happened with Madrid — drafted as #36, the finisher bumped it to
 **#37** (`batch.json`'s `badge_num`) and added its own Published row without removing the draft's
