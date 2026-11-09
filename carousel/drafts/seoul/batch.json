@@ -1,0 +1,38 @@
+{
+ "badge_num": 39,
+ "city": "SEOUL",
+ "flag": "🇰🇷",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Seoul secrets didn't you know? Comment the number 👇\n\n1. Gyeongbokgung Palace\nBuilt in 1395 as the main palace of the new Joseon dynasty, Gyeongbokgung burned down during a Japanese invasion in 1592. It lay in ruins for 273 years, until King Gojong's regent began rebuilding it in 1865.\n\n2. Bukchon Hanok Village\nSet between Gyeongbokgung and Changdeokgung palaces, Bukchon was home to high-ranking Joseon officials for centuries. Many of its hanok are younger than they look, dating from as recently as the 1930s, and people still live in them today.\n\n3. N Seoul Tower\nSince the mid-2000s, couples have climbed Namsan mountain to clip padlocks onto the fences around N Seoul Tower as a symbol of lasting love. So many piled up that staff told The Korea Times the fences were starting to bend under the weight.\n\n4. Dongdaemun Design Plaza\nIn 2008, crews clearing the old Dongdaemun Stadium to build the curving Dongdaemun Design Plaza struck something far older: remains of Seoul's 1396 city wall. They are now preserved in the park beside the plaza.\n\n5. Cheonggyecheon Stream\nFor decades, central Seoul's Cheonggyecheon stream lay buried under a concrete deck and an elevated highway finished in 1976. In 2003 the city tore the highway down instead of repairing it, and by 2005 the stream was back as a walkable park that now draws millions of visitors a year.\n\n6. Jongmyo Shrine\nJongmyo Shrine holds the memorial tablets of Joseon kings and queens. Every May it still hosts Jongmyo Jerye, a royal ancestral ritual with music and dance that go back to the 15th century, recognized by UNESCO as intangible heritage in 2001.\n\n7. Banpo Bridge\nBanpo Bridge's Moonlight Rainbow Fountain pumps water straight out of the Han River and sprays it back from both sides of the bridge. At 1,140 meters, it holds the Guinness World Record for the longest bridge fountain.\n\n.\n.\n.\n#Seoul #SouthKorea #TravelFacts #Gyeongbokgung #UrbanTales",
+ "facts": [
+  {
+   "headline": "Seoul's grandest palace lay in ruins for 273 years",
+   "hook": "Gyeongbokgung, Seoul's largest royal palace, burned in 1592 and lay in ruins for 273 years before rebuilding began."
+  },
+  {
+   "headline": "This old noble quarter is younger than it looks",
+   "hook": "Joseon nobles lived in Bukchon for centuries, but many of its hanok homes date from as recently as the 1930s."
+  },
+  {
+   "headline": "So many love locks that the fences started to bend",
+   "hook": "Couples have clipped so many love locks at N Seoul Tower since the mid-2000s that staff said fences began bending."
+  },
+  {
+   "headline": "A futuristic plaza rose over a 600-year-old wall",
+   "hook": "Crews razing a stadium for Dongdaemun Design Plaza uncovered Seoul's 1396 city wall, now preserved in the park beside it."
+  },
+  {
+   "headline": "A downtown highway was torn out to bring back a stream",
+   "hook": "Seoul tore down a downtown elevated highway in 2003 to uncover and restore the buried Cheonggyecheon stream beneath it."
+  },
+  {
+   "headline": "A royal ritual with 15th-century music still happens every year",
+   "hook": "Jongmyo Shrine still holds a royal ritual each May, with court music composed in the 15th century."
+  },
+  {
+   "headline": "A bridge pulls water from the river just to spray it back",
+   "hook": "Banpo Bridge pumps water straight from the Han River and sprays it back along 1,140 meters: a Guinness record."
+  }
+ ]
+}

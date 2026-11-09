@@ -1,0 +1,39 @@
+{
+ "badge_num": 39,
+ "city": "SEÚL",
+ "flag": "🇰🇷",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Seúl no conocías? Comenta el número 👇\n\n1. Palacio Gyeongbokgung\nConstruido en 1395 como palacio principal de la nueva dinastía Joseon, Gyeongbokgung se incendió durante una invasión japonesa en 1592. Quedó en ruinas 273 años, hasta que el regente del rey Gojong empezó a reconstruirlo en 1865.\n\n2. Aldea Bukchon Hanok\nEntre los palacios Gyeongbokgung y Changdeokgung, Bukchon fue durante siglos el hogar de altos funcionarios de la dinastía Joseon. Muchas de sus casas hanok son más jóvenes de lo que parecen, algunas apenas de los años 1930, y todavía hay gente viviendo en ellas.\n\n3. Torre N Seoul\nDesde mediados de los 2000, las parejas suben la montaña Namsan para colgar candados en las rejas alrededor de la Torre N Seoul como símbolo de amor duradero. Se acumularon tantos que el personal le dijo a The Korea Times que las rejas empezaban a doblarse por el peso.\n\n4. Dongdaemun Design Plaza\nEn 2008, los obreros que demolían el viejo Estadio Dongdaemun para construir el curvo Dongdaemun Design Plaza encontraron algo mucho más antiguo: restos de la muralla de Seúl de 1396. Hoy se conservan en el parque junto a la plaza.\n\n5. Arroyo Cheonggyecheon\nDurante décadas, el arroyo Cheonggyecheon, en el centro de Seúl, estuvo enterrado bajo una losa de concreto y una autopista elevada terminada en 1976. En 2003, la ciudad derribó la autopista en vez de repararla, y para 2005 el arroyo volvió como un parque peatonal que hoy recibe millones de visitantes al año.\n\n6. Santuario de Jongmyo\nEl Santuario de Jongmyo guarda las tablillas de los reyes y reinas de Joseon. Cada mayo sigue celebrando el Jongmyo Jerye, un ritual real con música y danza que se remontan al siglo XV, reconocido por la UNESCO como patrimonio intangible en 2001.\n\n7. Puente Banpo\nLa Fuente Arcoíris Lunar del puente Banpo bombea agua directo del río Han y la rocía de vuelta desde ambos lados del puente. Con 1,140 metros, tiene el récord Guinness a la fuente de puente más larga del mundo.\n\n.\n.\n.\n#Seul #CoreaDelSur #DatosCuriosos #Gyeongbokgung #UrbanTales",
+ "facts": [
+  {
+   "headline": "El palacio más grande de Seúl estuvo en ruinas 273 años",
+   "hook": "Gyeongbokgung, el palacio real más grande de Seúl, ardió en 1592 y quedó en ruinas 273 años hasta su reconstrucción."
+  },
+  {
+   "headline": "Este antiguo barrio noble es más joven de lo que parece",
+   "hook": "Los nobles de Joseon vivieron siglos en Bukchon, pero muchas de sus casas hanok son apenas de los años 1930."
+  },
+  {
+   "headline": "Tantos candados de amor que las rejas empezaron a doblarse",
+   "hook": "Las parejas han colgado tantos candados en la Torre N Seoul que, según el personal, las rejas empezaron a doblarse."
+  },
+  {
+   "headline": "Una plaza futurista surgió sobre una muralla de 600 años",
+   "hook": "Al demoler un estadio para el Dongdaemun Design Plaza, hallaron la muralla de Seúl de 1396, conservada en el parque."
+  },
+  {
+   "headline": "Derribaron una autopista en pleno centro para recuperar un arroyo",
+   "hook": "Seúl derribó en 2003 una autopista elevada en pleno centro para destapar y restaurar el arroyo Cheonggyecheon que corría debajo."
+  },
+  {
+   "headline": "Un ritual real con música del siglo XV se sigue haciendo cada año",
+   "hook": "El Santuario de Jongmyo sigue celebrando cada mayo un ritual real, con música de corte compuesta en el siglo XV."
+  },
+  {
+   "headline": "Un puente saca agua del río solo para volver a rociarla",
+   "hook": "El puente Banpo bombea agua directo del río Han y la rocía a lo largo de 1,140 metros: récord Guinness."
+  }
+ ],
+ "lang": "es"
+}
