@@ -39,10 +39,11 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 35 | Edinburgh |
 | 37 | Madrid |
 | 38 | Seoul |
+| 39 | Seoul |
 
 ## Next batch
 
-**#39 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#40 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
 
