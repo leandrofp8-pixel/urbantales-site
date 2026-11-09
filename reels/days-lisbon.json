@@ -1,0 +1,201 @@
+{
+ "slug": "days-lisbon",
+ "landmark": "Lisbon · 3 days",
+ "city": "Lisbon",
+ "series": "days",
+ "story": "Lisbon in 3 days from the app's real plan: Belém (Jerónimos is closed Mondays), the castle at opening, Chiado and the river (Carmo is closed Sundays)",
+ "sources": [
+  "https://museuarqueologicodocarmo.pt/mac/folhetoMAC_PT.pdf",
+  "https://www.visitlisboa.com/en/places/jeronimos-monastery",
+  "https://castelodesaojorge.pt/en/plan-your-visit/"
+ ],
+ "week": "2026-W47",
+ "created": "2026-11-08T19:21",
+ "media_sha": "07738a5f545ccdd0972ad21bbcba945ea30ca512",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/07738a5f545ccdd0972ad21bbcba945ea30ca512/reels/days-lisbon-en.mp4",
+  "caption": "Most people see Lisbon in the wrong order. Which day would you swap? 👇\n\nThree days that beat the crowds: Jerónimos any day but Monday, São Jorge Castle at 9 when it opens, and the Carmo museum any day but Sunday.\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#lisbon #lisbonitinerary #portugaltravel #traveltips #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-31682899.mp4",
+   "url": "https://www.pexels.com/video/tram-passing-by-lisbon-s-historic-cathedral-31682899/",
+   "author": "Rafael  Rodrigues",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Lisbon tram street"
+  },
+  {
+   "file": "pexels-34588330.mp4",
+   "url": "https://www.pexels.com/video/majestic-jeronimos-monastery-in-lisbon-portugal-34588330/",
+   "author": "Logan Voss",
+   "w": 1280,
+   "h": 720,
+   "dur": 28,
+   "query": "Jeronimos Monastery Lisbon"
+  },
+  {
+   "file": "pexels-35594524.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-belem-tower-in-lisbon-portugal-35594524/",
+   "author": "Bia Lucas",
+   "w": 1280,
+   "h": 720,
+   "dur": 17,
+   "query": "Belem Tower Lisbon"
+  },
+  {
+   "file": "pexels-34168413.mp4",
+   "url": "https://www.pexels.com/video/monument-with-astronomical-sphere-in-lisbon-34168413/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 12,
+   "query": "Monument to the Discoveries Lisbon"
+  },
+  {
+   "file": "pexels-35679097.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-maat-in-lisbon-portugal-35679097/",
+   "author": "Efrem  Efre",
+   "w": 1280,
+   "h": 720,
+   "dur": 17,
+   "query": "MAAT Lisbon"
+  },
+  {
+   "file": "pexels-27910900.mp4",
+   "url": "https://www.pexels.com/video/lisbon-riverside-27910900/",
+   "author": "Henrique Baldy",
+   "w": 1280,
+   "h": 720,
+   "dur": 21,
+   "query": "MAAT Lisbon"
+  },
+  {
+   "file": "pexels-27404886.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-the-city-of-lisbon-27404886/",
+   "author": "Musko io",
+   "w": 1280,
+   "h": 720,
+   "dur": 28,
+   "query": "LX Factory Lisbon"
+  },
+  {
+   "file": "pexels-35258811.mp4",
+   "url": "https://www.pexels.com/video/panoramic-view-of-lisbon-castle-and-cityscape-35258811/",
+   "author": "Alyona Nagel",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Sao Jorge Castle Lisbon"
+  },
+  {
+   "file": "pexels-30322206.mp4",
+   "url": "https://www.pexels.com/video/stunning-lisbon-cityscape-panorama-view-30322206/",
+   "author": "Jussi Grönvall",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "Sao Jorge Castle Lisbon"
+  },
+  {
+   "file": "pexels-4823566.mp4",
+   "url": "https://www.pexels.com/video/different-aerial-footages-of-lisbon-and-sintra-in-portugal-4823566/",
+   "author": "Mylo Kaye",
+   "w": 1280,
+   "h": 720,
+   "dur": 202,
+   "query": "Sao Jorge Castle Lisbon"
+  },
+  {
+   "file": "pexels-31366911.mp4",
+   "url": "https://www.pexels.com/video/exploring-lisbon-s-iconic-rua-augusta-arch-31366911/",
+   "author": "Maurice Supple",
+   "w": 1280,
+   "h": 720,
+   "dur": 50,
+   "query": "Rua Augusta Arch Lisbon"
+  },
+  {
+   "file": "pexels-16549912.mp4",
+   "url": "https://www.pexels.com/video/the-city-square-in-lisbon-portugal-16549912/",
+   "author": "Masood Aslami",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Praca do Comercio Lisbon"
+  },
+  {
+   "file": "pexels-27404866.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-the-cathedral-27404866/",
+   "author": "Musko io",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Carmo Convent Lisbon"
+  },
+  {
+   "file": "pexels-27952781.mp4",
+   "url": "https://www.pexels.com/video/lisbon-27952781/",
+   "author": "Viсtoria Smirnova",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Sao Pedro de Alcantara viewpoint Lisbon"
+  },
+  {
+   "file": "pexels-28962464.mp4",
+   "url": "https://www.pexels.com/video/picturesque-view-of-lisbon-with-red-rooftops-28962464/",
+   "author": "Vincent Rivaud",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Alfama viewpoint Lisbon"
+  },
+  {
+   "file": "pexels-28222957.mp4",
+   "url": "https://www.pexels.com/video/the-sun-sets-over-the-rooftops-of-a-city-28222957/",
+   "author": "Rick Gurrola",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Alfama viewpoint Lisbon"
+  },
+  {
+   "file": "pexels-35742602.mp4",
+   "url": "https://www.pexels.com/video/scenic-lisbon-rooftops-overlooking-the-ocean-35742602/",
+   "author": "Alyona Nagel",
+   "w": 720,
+   "h": 1280,
+   "dur": 23,
+   "query": "Alfama viewpoint Lisbon"
+  },
+  {
+   "file": "pexels-34214653.mp4",
+   "url": "https://www.pexels.com/video/modern-architectural-building-by-waterfront-34214653/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Lisbon Oceanarium Parque das Nacoes"
+  },
+  {
+   "file": "pexels-35551190.mp4",
+   "url": "https://www.pexels.com/video/charming-pedestrian-street-in-historic-lisbon-35551190/",
+   "author": "Alyona Nagel",
+   "w": 720,
+   "h": 1280,
+   "dur": 17,
+   "query": "Chiado Lisbon"
+  },
+  {
+   "file": "pexels-33900587.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-lisbon-s-cais-do-sodre-dock-area-33900587/",
+   "author": "Leandro Barreto",
+   "w": 1280,
+   "h": 720,
+   "dur": 17,
+   "query": "Pink Street Cais do Sodre"
+  }
+ ]
+}

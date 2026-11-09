@@ -1,0 +1,137 @@
+{
+ "slug": "days-vienna",
+ "landmark": "Vienna · 2 days",
+ "city": "Vienna",
+ "series": "days",
+ "story": "Vienna in 2 days from the app's real plan: the Inner City (St Stephen's tourist visits start at 13:00 on Sundays), then the Prater, Hundertwasser House and the Belvedere",
+ "sources": [
+  "https://www.stephanskirche.at/en/visit/opening-hours/",
+  "https://www.hundertwasser-haus.info/en/"
+ ],
+ "week": "2026-W47",
+ "created": "2026-11-08T19:21",
+ "media_sha": "07738a5f545ccdd0972ad21bbcba945ea30ca512",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/07738a5f545ccdd0972ad21bbcba945ea30ca512/reels/days-vienna-en.mp4",
+  "caption": "Most people see Vienna in the wrong order. Which day would you swap? 👇\n\nTwo days that beat the crowds: St. Stephen's at 9 (on Sundays, sightseeing inside only starts at 1) and the Hundertwasser House from the street, because people live there.\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#vienna #viennaitinerary #austriatravel #traveltips #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-34141521.mp4",
+   "url": "https://www.pexels.com/video/st-stephen-s-cathedral-in-vienna-skyline-view-34141521/",
+   "author": "Airam Dato-on",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "St Stephen's Cathedral Vienna"
+  },
+  {
+   "file": "pexels-34550523.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-vienna-s-historic-architecture-34550523/",
+   "author": "Austria by Öffis",
+   "w": 1280,
+   "h": 720,
+   "dur": 60,
+   "query": "Stephansdom"
+  },
+  {
+   "file": "pexels-34141285.mp4",
+   "url": "https://www.pexels.com/video/evening-stroll-at-vienna-s-plague-column-34141285/",
+   "author": "Airam Dato-on",
+   "w": 1280,
+   "h": 720,
+   "dur": 20,
+   "query": "Pestsaule Vienna Graben"
+  },
+  {
+   "file": "pexels-40125502.mp4",
+   "url": "https://www.pexels.com/video/hofburg-palace-vienna-historical-architecture-40125502/",
+   "author": "Anh Nguyen",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Hofburg Vienna"
+  },
+  {
+   "file": "pexels-38659131.mp4",
+   "url": "https://www.pexels.com/video/vienna-s-majestic-historic-building-38659131/",
+   "author": "kirpiklipencere",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Burggarten Vienna"
+  },
+  {
+   "file": "pexels-34550525.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-vienna-s-historic-ringstrasse-34550525/",
+   "author": "Austria by Öffis",
+   "w": 1280,
+   "h": 720,
+   "dur": 40,
+   "query": "Burggarten Vienna"
+  },
+  {
+   "file": "pexels-34585837.mp4",
+   "url": "https://www.pexels.com/video/vienna-state-opera-at-dusk-34585837/",
+   "author": "Cagatay Kozan",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Vienna State Opera"
+  },
+  {
+   "file": "pexels-38718998.mp4",
+   "url": "https://www.pexels.com/video/vienna-ferris-wheel-and-water-ride-fun-38718998/",
+   "author": "Heinz Reisenhofer",
+   "w": 1280,
+   "h": 720,
+   "dur": 96,
+   "query": "Wiener Riesenrad"
+  },
+  {
+   "file": "pexels-34141450.mp4",
+   "url": "https://www.pexels.com/video/majestic-ferris-wheel-at-twilight-34141450/",
+   "author": "Airam Dato-on",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Vienna Ferris Wheel Prater"
+  },
+  {
+   "file": "pexels-37655419.mp4",
+   "url": "https://www.pexels.com/video/vibrant-architecture-of-hundertwasserhaus-37655419/",
+   "author": "Eleonora Vokueva",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Hundertwasserhaus Vienna"
+  },
+  {
+   "file": "pexels-38374274.mp4",
+   "url": "https://www.pexels.com/video/stunning-view-of-upper-belvedere-palace-38374274/",
+   "author": "Ch  Jawad",
+   "w": 1278,
+   "h": 720,
+   "dur": 10,
+   "query": "Belvedere Palace Vienna"
+  },
+  {
+   "file": "pexels-10811685.mp4",
+   "url": "https://www.pexels.com/video/time-lapse-of-moving-clouds-over-the-belvedere-palace-10811685/",
+   "author": "Chris Margaritis",
+   "w": 1082,
+   "h": 720,
+   "dur": 10,
+   "query": "Belvedere Palace Vienna"
+  },
+  {
+   "file": "pexels-35994132.mp4",
+   "url": "https://www.pexels.com/video/tram-passing-by-hundertwasser-house-in-vienna-35994132/",
+   "author": "ᴷᴱᴵ ᶠᴮ",
+   "w": 1280,
+   "h": 720,
+   "dur": 12,
+   "query": "Hundertwasser house"
+  }
+ ]
+}
