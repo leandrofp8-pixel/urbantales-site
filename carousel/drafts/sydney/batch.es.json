@@ -1,0 +1,39 @@
+{
+ "badge_num": 41,
+ "flag": "🇦🇺",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "SÍDNEY",
+ "caption": "¿Cuál de estos 7 secretos de Sídney no conocías? Comenta el número 👇\n\n1. Ópera de Sídney\nSegún la leyenda, el jurado Eero Saarinen llegó tarde, encontró la propuesta de Jørn Utzon entre los diseños rechazados y la llevó al primer lugar. No hay registro de la deliberación, así que sigue siendo una historia.\n\n2. Puente de la Bahía de Sídney\nAntes de ser Cocodrilo Dundee, Paul Hogan trabajaba en las alturas del puente, al que en Sídney llaman 'el gancho de ropa'. Sus compañeros lo convencieron de entrar al concurso de TV New Faces en 1971, y ahí empezó su carrera.\n\n3. Icebergs de Bondi\nEl club de natación de invierno Icebergs de Bondi existe desde 1929. Su histórica Regla 15B exige nadar tres de cada cuatro domingos durante el invierno, por cinco años, para ganarse la membresía.\n\n4. Argyle Cut\nEn 1843, cuadrillas de presidiarios empezaron a abrir la calle Argyle a través de una loma de arenisca en The Rocks con picos y herramientas manuales. La roca era demasiado dura; la obra se detuvo y años después los explosivos la terminaron.\n\n5. Queen Victoria Building\nEn 1986 la reina Isabel II escribió una carta a los habitantes de Sídney, guardada en una vitrina en una zona restringida en lo alto del edificio. El alcalde deberá abrirla un día de 2085; nadie sabe qué dice.\n\n6. Luna Park\nLuna Park abrió en 1935 con una cara gigante sonriente como entrada. El aire salado obligó a repararla una y otra vez, y cada arreglo le cambió la expresión. Toda la entrada fue demolida en 1988; la cara actual se terminó en 1995.\n\n7. Silla de la Señora Macquarie\nEn 1810 los presidiarios tallaron a mano una roca de arenisca como banco para Elizabeth Macquarie, esposa del gobernador. Se cuenta que se sentaba aquí a esperar los barcos que llegaban de Gran Bretaña.\n\n.\n.\n.\n#Sidney #Australia #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "Según la leyenda, un jurado tardío rescató este diseño",
+   "hook": "Según la leyenda, un jurado que llegó tarde rescató el diseño de Utzon de los rechazados y lo hizo ganador."
+  },
+  {
+   "headline": "Cocodrilo Dundee trabajaba en este puente",
+   "hook": "Antes de Cocodrilo Dundee, Paul Hogan trabajaba en las alturas del Puente de la Bahía de Sídney."
+  },
+  {
+   "headline": "Entrar a este club de natación toma cinco inviernos",
+   "hook": "Para ser socio de Icebergs en Bondi, hay que nadar tres de cada cuatro domingos de invierno durante cinco años."
+  },
+  {
+   "headline": "Presidiarios empezaron este paso a mano",
+   "hook": "En 1843, presidiarios empezaron a abrir el Argyle Cut en la arenisca con herramientas manuales; hubo que terminarlo con explosivos."
+  },
+  {
+   "headline": "Una carta real aquí sigue sellada hasta 2085",
+   "hook": "El Queen Victoria Building guarda una carta de Isabel II para Sídney que no podrá abrirse hasta 2085."
+  },
+  {
+   "headline": "Esta cara gigante no deja de cambiar de expresión",
+   "hook": "La cara gigante de Luna Park ha cambiado de expresión con sus reparaciones desde 1935; la actual data de 1995."
+  },
+  {
+   "headline": "Presidiarios tallaron este banco para la esposa del gobernador",
+   "hook": "Presidiarios tallaron este banco de arenisca en 1810 para la esposa del gobernador, que según se cuenta esperaba barcos británicos."
+  }
+ ],
+ "lang": "es"
+}

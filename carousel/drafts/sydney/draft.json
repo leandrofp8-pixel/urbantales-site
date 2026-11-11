@@ -1,93 +1,141 @@
 {
-  "badge_num": 40,
-  "city": "SYDNEY",
-  "flag": "🇦🇺",
-  "cta_screenshot": "screen-generic-narration-style.png",
-  "cta_screenshot_note": "No Sydney map screenshot in the repo (no screen-sydney-*-map.png file, and no sydney.html landing page either); using the generic app screen per GUIDELINES.md.",
-  "style": "minimal",
-  "photo_sourcing_blocked": true,
-  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> HTTP 000 / timeout, and the agent-proxy status endpoint logging a recentRelayFailure: 'gateway answered 403 to CONNECT (policy denial or other refusal)' for commons.wikimedia.org:443). This is the same recurring block that hit batches #8-#13, #28/#29 (Seville), #30 (Cairo), #34 (Edinburgh), #36 (Madrid) and #38 (Seoul) -- this cloud session still has no working path to Wikimedia Commons for photo sourcing. This run additionally tried requesting a dedicated environment with commons.wikimedia.org/upload.wikimedia.org allowed via create_environment, but that call needs a live person's approval and this is an unattended scheduled run, so it was refused automatically with no one to approve it. No candidate photos could be downloaded this run, so every 'candidates' array below is empty. 'suggested_queries' lists the exact Commons search terms to run once network access is open, or to search manually at commons.wikimedia.org (the usual fallback per those past batches: Leandro sources photos on his Mac after this PR, or a future run with a fixed network policy completes it, same as happened for Seoul). Facts themselves were fully researched and verified via WebSearch, which is not subject to this block.",
-  "caption": "Which of these 7 Sydney secrets would you have walked right past? 👇\n\n1. Sydney Opera House\nAs the story goes, three of the four judges in the 1956 design competition passed over Jorn Utzon's entry for the Sydney Opera House -- until judge Eero Saarinen, arriving late, pulled it from the reject pile and declared it the winner.\n\n2. Sydney Harbour Bridge\nSydneysiders call the Harbour Bridge the 'Coat Hanger' for its curved arch. It's grey only because that was the one paint colour available in the huge quantities needed, left over from World War I.\n\n3. Bondi Icebergs\nBondi's Icebergs winter swimming club has met since 1929. To become a full member, you must swim three Sundays out of four through winter -- for five years straight.\n\n4. The Argyle Cut\nIn 1843, convict work gangs began hacking a tunnel through solid sandstone at The Rocks using only picks and shovels. They gave up after two and a half years; explosives finished the job in 1857.\n\n5. Queen Victoria Building\nQueen Elizabeth II wrote a letter to the people of Sydney and sealed it inside the Queen Victoria Building's time capsule -- not to be opened until 2085.\n\n6. Luna Park\nLuna Park's giant laughing-face entrance first opened in 1935. Repairs and redesigns kept changing its expression, and the whole entrance was demolished and rebuilt as recently as 1995.\n\n7. Mrs Macquarie's Chair\nIn 1810, convicts hand-carved a sandstone rock ledge into a bench for Elizabeth Macquarie, wife of the Governor of New South Wales, so she could sit and watch for ships arriving in the harbour.\n\n.\n.\n.\n#Sydney #Australia #TravelFacts #OperaHouse #UrbanTales",
-  "caption_es": "¿Cuál de estos 7 secretos de Sídney no conocías? Comenta el número 👇\n\n1. Ópera de Sídney\nSegún la leyenda, tres de los cuatro jueces del concurso de 1956 rechazaron la propuesta de Jorn Utzon para la Ópera de Sídney -- hasta que el jurado Eero Saarinen, que llegó tarde, la sacó de la pila de rechazados y la declaró ganadora.\n\n2. Puente de la Bahía de Sídney\nLos habitantes de Sídney llaman al puente de la bahía el 'Coat Hanger' (gancho de ropa) por su arco curvo. Es gris solo porque ese fue el único color disponible en la cantidad necesaria, sobrante de la Primera Guerra Mundial.\n\n3. Bondi Icebergs\nEl club de natación de invierno Icebergs de Bondi se reúne desde 1929. Para ser miembro de pleno derecho hay que nadar tres de cada cuatro domingos durante el invierno -- por cinco años seguidos.\n\n4. El Argyle Cut\nEn 1843, cuadrillas de presidiarios empezaron a abrir un túnel en la roca de arenisca de The Rocks usando solo picos y palas. Se rindieron después de dos años y medio; los explosivos terminaron el trabajo en 1857.\n\n5. Queen Victoria Building\nLa reina Isabel II escribió una carta para los habitantes de Sídney y la selló dentro de la cápsula del tiempo del Queen Victoria Building -- que no se abrirá hasta 2085.\n\n6. Luna Park\nLa icónica entrada con cara sonriente de Luna Park abrió por primera vez en 1935. Reparaciones y rediseños le cambiaron la expresión varias veces, y toda la entrada fue demolida y reconstruida tan recientemente como 1995.\n\n7. La Silla de Mrs Macquarie\nEn 1810, los presidiarios tallaron a mano una roca de arenisca para convertirla en un asiento para Elizabeth Macquarie, esposa del gobernador de Nueva Gales del Sur, para que pudiera sentarse a vigilar la llegada de los barcos al puerto.\n\n.\n.\n.\n#Sidney #Australia #DatosCuriosos #OperaHouse #UrbanTales",
-  "facts": [
+ "badge_num": 41,
+ "city": "SYDNEY",
+ "flag": "🇦🇺",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "cta_screenshot_note": "No Sydney map screenshot in the repo (no screen-sydney-*-map.png file, and no sydney.html landing page either); using the generic app screen per GUIDELINES.md.",
+ "style": "minimal",
+ "photo_sourcing_blocked": false,
+ "photo_sourcing_note": "Photos sourced from Wikimedia Commons on the finisher Mac (2026-11-11); see photo-credits.txt.",
+ "caption": "Which of these 7 Sydney secrets didn't you know? Comment the number 👇\n\n1. Sydney Opera House\nLegend says judge Eero Saarinen arrived late, found Jørn Utzon's entry among the rejected designs and pushed it to first place. No record of the judging survives, so it remains a story.\n\n2. Sydney Harbour Bridge\nBefore he was Crocodile Dundee, Paul Hogan worked as a rigger on the 'Coat Hanger'. His workmates talked him into the TV talent show New Faces in 1971, and that launched his career.\n\n3. Bondi Icebergs\nThe Bondi Icebergs winter swimming club dates from 1929. Its historic Rule 15B says new swimmers must race three Sundays out of four through winter, for five years, to earn membership.\n\n4. Argyle Cut\nIn 1843, convict gangs began cutting Argyle Street through a sandstone ridge in The Rocks with picks and hand tools. The rock was too hard; work stalled, and years later explosives finished the cut.\n\n5. Queen Victoria Building\nIn 1986 Queen Elizabeth II wrote a letter to the people of Sydney, kept in a glass case in a restricted area high inside the building. The Lord Mayor is to open it on a day of their choosing in 2085; nobody knows what it says.\n\n6. Luna Park\nLuna Park opened in 1935 with a giant laughing face as its entrance. Salt air kept forcing repairs, and each rebuild changed its expression. The whole entrance was demolished in 1988; today's face was completed in 1995.\n\n7. Mrs Macquarie's Chair\nIn 1810 convicts hand-carved a sandstone ledge into a bench for Elizabeth Macquarie, the Governor's wife. The story goes she sat here to watch for ships arriving from Britain.\n\n.\n.\n.\n#Sydney #Australia #TravelFacts #SydneyOperaHouse #UrbanTales",
+ "caption_es": "¿Cuál de estos 7 secretos de Sídney no conocías? Comenta el número 👇\n\n1. Ópera de Sídney\nSegún la leyenda, el jurado Eero Saarinen llegó tarde, encontró la propuesta de Jørn Utzon entre los diseños rechazados y la llevó al primer lugar. No hay registro de la deliberación, así que sigue siendo una historia.\n\n2. Puente de la Bahía de Sídney\nAntes de ser Cocodrilo Dundee, Paul Hogan trabajaba en las alturas del puente, al que en Sídney llaman 'el gancho de ropa'. Sus compañeros lo convencieron de entrar al concurso de TV New Faces en 1971, y ahí empezó su carrera.\n\n3. Icebergs de Bondi\nEl club de natación de invierno Icebergs de Bondi existe desde 1929. Su histórica Regla 15B exige nadar tres de cada cuatro domingos durante el invierno, por cinco años, para ganarse la membresía.\n\n4. Argyle Cut\nEn 1843, cuadrillas de presidiarios empezaron a abrir la calle Argyle a través de una loma de arenisca en The Rocks con picos y herramientas manuales. La roca era demasiado dura; la obra se detuvo y años después los explosivos la terminaron.\n\n5. Queen Victoria Building\nEn 1986 la reina Isabel II escribió una carta a los habitantes de Sídney, guardada en una vitrina en una zona restringida en lo alto del edificio. El alcalde deberá abrirla un día de 2085; nadie sabe qué dice.\n\n6. Luna Park\nLuna Park abrió en 1935 con una cara gigante sonriente como entrada. El aire salado obligó a repararla una y otra vez, y cada arreglo le cambió la expresión. Toda la entrada fue demolida en 1988; la cara actual se terminó en 1995.\n\n7. Silla de la Señora Macquarie\nEn 1810 los presidiarios tallaron a mano una roca de arenisca como banco para Elizabeth Macquarie, esposa del gobernador. Se cuenta que se sentaba aquí a esperar los barcos que llegaban de Gran Bretaña.\n\n.\n.\n.\n#Sidney #Australia #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "slot": "fact1",
+   "headline": "Legend says a late judge rescued this design from the rejects",
+   "headline_es": "Según la leyenda, un jurado tardío rescató este diseño",
+   "body_html": "Legend says judge <b>Eero Saarinen</b> arrived late, found Jørn Utzon's entry among the rejected designs and pushed it to first place. No record of the judging survives, so it remains a story.",
+   "body_es": "Según la leyenda, el jurado <b>Eero Saarinen</b> llegó tarde, encontró la propuesta de Jørn Utzon entre los diseños rechazados y la llevó al primer lugar. No hay registro de la deliberación, así que sigue siendo una historia.",
+   "hook": "Legend says a late-arriving judge pulled Jørn Utzon's Opera House design from the reject pile and made it the winner.",
+   "hook_es": "Según la leyenda, un jurado que llegó tarde rescató el diseño de Utzon de los rechazados y lo hizo ganador.",
+   "candidates": [
     {
-      "slot": "fact1",
-      "headline": "A late judge saved this icon from the reject pile",
-      "headline_es": "Un jurado que llegó tarde salvó este ícono de los rechazados",
-      "body_html": "As the story goes, three of the four 1956 design-competition judges passed over Jørn Utzon's entry — until judge <b>Eero Saarinen</b>, arriving late, pulled it from the reject pile and declared it the winner.",
-      "body_es": "Según la leyenda, tres de los cuatro jueces del concurso de diseño de 1956 rechazaron la propuesta de Jørn Utzon — hasta que el jurado <b>Eero Saarinen</b>, que llegó tarde, la sacó de la pila de rechazados y la declaró ganadora.",
-      "hook": "As the story goes, a late-arriving judge pulled Utzon's design from the reject pile and declared it the winner.",
-      "hook_es": "Según la leyenda, un jurado que llegó tarde sacó el diseño de Utzon de la pila de rechazados y lo declaró ganador.",
-      "candidates": [],
-      "suggested_queries": ["Sydney Opera House sails exterior", "Sydney Opera House aerial roof"]
-    },
-    {
-      "slot": "fact2",
-      "headline": "The 'Coat Hanger' is grey because of leftover WWI paint",
-      "headline_es": "El 'Coat Hanger' es gris por pintura sobrante de la Primera Guerra",
-      "body_html": "Sydneysiders call the Harbour Bridge the '<b>Coat Hanger</b>' for its curved arch. It's grey only because that was the one paint colour available in the huge quantities needed, left over from World War I.",
-      "body_es": "Los habitantes de Sídney llaman al puente de la bahía el '<b>Coat Hanger</b>' (gancho de ropa) por su arco curvo. Es gris solo porque ese fue el único color disponible en la cantidad necesaria, sobrante de la Primera Guerra Mundial.",
-      "hook": "Sydney's Harbour Bridge is grey only because that was the one paint colour available in bulk after World War I.",
-      "hook_es": "El puente de la bahía de Sídney es gris solo porque ese fue el único color disponible en grandes cantidades tras la Primera Guerra Mundial.",
-      "candidates": [],
-      "suggested_queries": ["Sydney Harbour Bridge grey arch", "Sydney Harbour Bridge pylon climb"]
-    },
-    {
-      "slot": "fact3",
-      "headline": "Joining this winter swim club takes a 5-year commitment",
-      "headline_es": "Entrar a este club de natación de invierno exige 5 años",
-      "body_html": "Bondi's <b>Icebergs</b> winter swimming club has met since 1929. To become a full member, you must swim three Sundays out of four through winter — for <b>five years straight</b>.",
-      "body_es": "El club de natación de invierno <b>Icebergs</b> de Bondi se reúne desde 1929. Para ser miembro de pleno derecho hay que nadar tres de cada cuatro domingos durante el invierno — por <b>cinco años seguidos</b>.",
-      "hook": "Bondi's Icebergs winter swimming club, meeting since 1929, only grants full membership after five straight years of winter swimming.",
-      "hook_es": "El club de natación de invierno Icebergs de Bondi, activo desde 1929, solo da membresía plena tras cinco años seguidos de nadar en invierno.",
-      "candidates": [],
-      "suggested_queries": ["Bondi Icebergs pool ocean", "Bondi Beach icebergs pool aerial"]
-    },
-    {
-      "slot": "fact4",
-      "headline": "Convicts hand-carved this tunnel before explosives finished it",
-      "headline_es": "Presidiarios tallaron este túnel a mano antes de terminarlo con explosivos",
-      "body_html": "In 1843, convict work gangs began hacking a tunnel through solid sandstone at The Rocks using only picks and shovels. They gave up after <b>two and a half years</b>; explosives finished the job in 1857.",
-      "body_es": "En 1843, cuadrillas de presidiarios empezaron a abrir un túnel en la roca de arenisca de The Rocks usando solo picos y palas. Se rindieron después de <b>dos años y medio</b>; los explosivos terminaron el trabajo en 1857.",
-      "hook": "Convict gangs spent two and a half years hand-carving a sandstone tunnel at The Rocks before giving up on it.",
-      "hook_es": "Cuadrillas de presidiarios pasaron dos años y medio tallando a mano un túnel de arenisca en The Rocks antes de rendirse.",
-      "candidates": [],
-      "suggested_queries": ["Argyle Cut The Rocks Sydney sandstone tunnel", "The Rocks Sydney sandstone cutting street"]
-    },
-    {
-      "slot": "fact5",
-      "headline": "A letter inside this building stays sealed until 2085",
-      "headline_es": "Una carta dentro de este edificio seguirá sellada hasta 2085",
-      "body_html": "Queen Elizabeth II wrote a letter to the people of Sydney and sealed it inside the <b>Queen Victoria Building</b>'s time capsule — not to be opened until <b>2085</b>.",
-      "body_es": "La reina Isabel II escribió una carta para los habitantes de Sídney y la selló dentro de la cápsula del tiempo del <b>Queen Victoria Building</b> — que no se abrirá hasta <b>2085</b>.",
-      "hook": "Queen Elizabeth II sealed a letter to Sydney inside the Queen Victoria Building's time capsule, not to be opened until 2085.",
-      "hook_es": "La reina Isabel II selló una carta para Sídney dentro de la cápsula del tiempo del Queen Victoria Building, que no se abrirá hasta 2085.",
-      "candidates": [],
-      "suggested_queries": ["Queen Victoria Building Sydney interior dome", "Queen Victoria Building Sydney exterior facade"]
-    },
-    {
-      "slot": "fact6",
-      "headline": "This laughing face has been torn down and rebuilt for decades",
-      "headline_es": "Esta cara sonriente ha sido derribada y reconstruida por décadas",
-      "body_html": "Luna Park's giant laughing-face entrance first opened in 1935. Repairs and redesigns kept changing its expression, and the whole entrance was <b>demolished and rebuilt</b> as recently as 1995.",
-      "body_es": "La icónica entrada con cara sonriente de Luna Park abrió por primera vez en 1935. Reparaciones y rediseños le cambiaron la expresión varias veces, y toda la entrada fue <b>demolida y reconstruida</b> tan recientemente como 1995.",
-      "hook": "Luna Park's laughing-face entrance, open since 1935, has been redesigned repeatedly and was demolished and rebuilt as recently as 1995.",
-      "hook_es": "La entrada con cara sonriente de Luna Park, abierta desde 1935, ha sido rediseñada varias veces y reconstruida tan reciente como 1995.",
-      "candidates": [],
-      "suggested_queries": ["Luna Park Sydney face entrance", "Luna Park Sydney entrance towers night"]
-    },
-    {
-      "slot": "fact7",
-      "headline": "Convicts carved this bench so the Governor's wife could watch for ships",
-      "headline_es": "Presidiarios tallaron este asiento para que la esposa del gobernador vigilara los barcos",
-      "body_html": "In 1810, convicts hand-carved a sandstone rock ledge into a bench for <b>Elizabeth Macquarie</b>, wife of the Governor of New South Wales, so she could sit and watch for ships arriving in the harbour.",
-      "body_es": "En 1810, los presidiarios tallaron a mano una roca de arenisca para convertirla en un asiento para <b>Elizabeth Macquarie</b>, esposa del gobernador de Nueva Gales del Sur, para que pudiera vigilar la llegada de los barcos al puerto.",
-      "hook": "In 1810, convicts carved a sandstone rock into a bench so the Governor's wife could watch for ships arriving in the harbour.",
-      "hook_es": "En 1810, los presidiarios tallaron una roca de arenisca en un asiento para que la esposa del gobernador vigilara la llegada de los barcos.",
-      "candidates": [],
-      "suggested_queries": ["Mrs Macquaries Chair Sydney harbour", "Mrs Macquaries Point Sydney sandstone"]
+     "file": "fact1.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_-_Dec_2008.jpg",
+     "license": "CC BY-SA 3.0",
+     "artist": "Diliff"
     }
-  ],
-  "cover_candidates": [],
-  "cover_suggested_queries": ["Sydney skyline Opera House Harbour Bridge dusk", "Sydney Harbour aerial skyline"]
+   ]
+  },
+  {
+   "slot": "fact2",
+   "headline": "Crocodile Dundee used to work on this bridge",
+   "headline_es": "Cocodrilo Dundee trabajaba en este puente",
+   "body_html": "Before he was Crocodile Dundee, <b>Paul Hogan</b> worked as a rigger on the 'Coat Hanger'. His workmates talked him into the TV talent show <b>New Faces</b> in 1971, and that launched his career.",
+   "body_es": "Antes de ser Cocodrilo Dundee, <b>Paul Hogan</b> trabajaba en las alturas del puente, al que en Sídney llaman 'el gancho de ropa'. Sus compañeros lo convencieron de entrar al concurso de TV <b>New Faces</b> en 1971, y ahí empezó su carrera.",
+   "hook": "Before Crocodile Dundee, Paul Hogan was a rigger on the Harbour Bridge until workmates pushed him onto TV.",
+   "hook_es": "Antes de Cocodrilo Dundee, Paul Hogan trabajaba en las alturas del Puente de la Bahía de Sídney.",
+   "candidates": [
+    {
+     "file": "fact2.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Sydney_Harbour_Bridge,_New_South_Wales_(483406)_(9440272559).jpg",
+     "license": "CC BY 2.0",
+     "artist": "Robert Linsdell from St. Andrews, Canada"
+    }
+   ]
+  },
+  {
+   "slot": "fact3",
+   "headline": "Joining this swim club takes five winters",
+   "headline_es": "Entrar a este club de natación toma cinco inviernos",
+   "body_html": "The <b>Bondi Icebergs</b> winter swimming club dates from 1929. Its historic Rule 15B says new swimmers must race three Sundays out of four through winter, for <b>five years</b>, to earn membership.",
+   "body_es": "El club de natación de invierno <b>Icebergs de Bondi</b> existe desde 1929. Su histórica Regla 15B exige nadar tres de cada cuatro domingos durante el invierno, por <b>cinco años</b>, para ganarse la membresía.",
+   "hook": "For full membership of Bondi's Icebergs club, you must swim three winter Sundays out of four for five years.",
+   "hook_es": "Para ser socio de Icebergs en Bondi, hay que nadar tres de cada cuatro domingos de invierno durante cinco años.",
+   "candidates": [
+    {
+     "file": "fact3.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Bondi_Icebergs_pools.jpg",
+     "license": "CC BY-SA 2.0",
+     "artist": "Kristina D.C. Hoeppner"
+    }
+   ]
+  },
+  {
+   "slot": "fact4",
+   "headline": "Convicts started this tunnel by hand",
+   "headline_es": "Presidiarios empezaron este paso a mano",
+   "body_html": "In 1843, convict gangs began cutting Argyle Street through a sandstone ridge in The Rocks with <b>picks and hand tools</b>. The rock was too hard; work stalled, and years later <b>explosives</b> finished the cut.",
+   "body_es": "En 1843, cuadrillas de presidiarios empezaron a abrir la calle Argyle a través de una loma de arenisca en The Rocks con <b>picos y herramientas manuales</b>. La roca era demasiado dura; la obra se detuvo y años después los <b>explosivos</b> la terminaron.",
+   "hook": "In 1843, convicts began hacking the Argyle Cut through solid sandstone with hand tools; explosives finally had to finish it.",
+   "hook_es": "En 1843, presidiarios empezaron a abrir el Argyle Cut en la arenisca con herramientas manuales; hubo que terminarlo con explosivos.",
+   "candidates": [
+    {
+     "file": "fact4.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Argyle_Cut_001.jpg",
+     "license": "CC BY-SA 4.0",
+     "artist": "Sardaka"
+    }
+   ]
+  },
+  {
+   "slot": "fact5",
+   "headline": "A royal letter here stays sealed until 2085",
+   "headline_es": "Una carta real aquí sigue sellada hasta 2085",
+   "body_html": "In 1986 <b>Queen Elizabeth II</b> wrote a letter to the people of Sydney, kept in a glass case in a restricted area high inside the building. The Lord Mayor is to open it on a day of their choosing in <b>2085</b>; nobody knows what it says.",
+   "body_es": "En 1986 la reina <b>Isabel II</b> escribió una carta a los habitantes de Sídney, guardada en una vitrina en una zona restringida en lo alto del edificio. El alcalde deberá abrirla un día de <b>2085</b>; nadie sabe qué dice.",
+   "hook": "The Queen Victoria Building holds a 1986 letter from Queen Elizabeth II to Sydney that can't be opened until 2085.",
+   "hook_es": "El Queen Victoria Building guarda una carta de Isabel II para Sídney que no podrá abrirse hasta 2085.",
+   "candidates": [
+    {
+     "file": "fact5.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Sydney_(AU),_Queen_Victoria_Building_--_2019_--_3580.jpg",
+     "license": "CC BY-SA 4.0",
+     "artist": "Dietmar Rabich"
+    }
+   ]
+  },
+  {
+   "slot": "fact6",
+   "headline": "This giant face keeps changing its expression",
+   "headline_es": "Esta cara gigante no deja de cambiar de expresión",
+   "body_html": "Luna Park opened in 1935 with a giant laughing face as its entrance. Salt air kept forcing repairs, and each rebuild <b>changed its expression</b>. The whole entrance was demolished in 1988; today's face was completed in <b>1995</b>.",
+   "body_es": "Luna Park abrió en 1935 con una cara gigante sonriente como entrada. El aire salado obligó a repararla una y otra vez, y cada arreglo <b>le cambió la expresión</b>. Toda la entrada fue demolida en 1988; la cara actual se terminó en <b>1995</b>.",
+   "hook": "Luna Park's giant face has changed expression with repairs since 1935; the whole entrance was demolished in 1988 and rebuilt.",
+   "hook_es": "La cara gigante de Luna Park ha cambiado de expresión con sus reparaciones desde 1935; la actual data de 1995.",
+   "candidates": [
+    {
+     "file": "fact6.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Sunny_Face_(6619532585).jpg",
+     "license": "CC BY 2.0",
+     "artist": "Alex Proimos from Sydney, Australia"
+    }
+   ]
+  },
+  {
+   "slot": "fact7",
+   "headline": "Convicts carved this bench for the Governor's wife",
+   "headline_es": "Presidiarios tallaron este banco para la esposa del gobernador",
+   "body_html": "In 1810 convicts hand-carved a sandstone ledge into a bench for <b>Elizabeth Macquarie</b>, the Governor's wife. The story goes she sat here to <b>watch for ships</b> arriving from Britain.",
+   "body_es": "En 1810 los presidiarios tallaron a mano una roca de arenisca como banco para <b>Elizabeth Macquarie</b>, esposa del gobernador. Se cuenta que se sentaba aquí a <b>esperar los barcos</b> que llegaban de Gran Bretaña.",
+   "hook": "Convicts carved this sandstone bench in 1810 for the Governor's wife, who reportedly sat here watching for ships from Britain.",
+   "hook_es": "Presidiarios tallaron este banco de arenisca en 1810 para la esposa del gobernador, que según se cuenta esperaba barcos británicos.",
+   "candidates": [
+    {
+     "file": "fact7.jpg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Mrs_Macquarie%27s_Chair_2013.jpg",
+     "license": "CC BY-SA 3.0",
+     "artist": "Mitch Ames"
+    }
+   ]
+  }
+ ],
+ "cover_candidates": [
+  {
+   "file": "cover.jpg",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Sydney_Harbour_(aerial_view).JPG",
+   "license": "CC BY-SA 4.0",
+   "artist": "Whiteghost.ink"
+  }
+ ]
 }

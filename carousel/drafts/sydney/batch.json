@@ -1,0 +1,38 @@
+{
+ "badge_num": 41,
+ "flag": "🇦🇺",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "SYDNEY",
+ "caption": "Which of these 7 Sydney secrets didn't you know? Comment the number 👇\n\n1. Sydney Opera House\nLegend says judge Eero Saarinen arrived late, found Jørn Utzon's entry among the rejected designs and pushed it to first place. No record of the judging survives, so it remains a story.\n\n2. Sydney Harbour Bridge\nBefore he was Crocodile Dundee, Paul Hogan worked as a rigger on the 'Coat Hanger'. His workmates talked him into the TV talent show New Faces in 1971, and that launched his career.\n\n3. Bondi Icebergs\nThe Bondi Icebergs winter swimming club dates from 1929. Its historic Rule 15B says new swimmers must race three Sundays out of four through winter, for five years, to earn membership.\n\n4. Argyle Cut\nIn 1843, convict gangs began cutting Argyle Street through a sandstone ridge in The Rocks with picks and hand tools. The rock was too hard; work stalled, and years later explosives finished the cut.\n\n5. Queen Victoria Building\nIn 1986 Queen Elizabeth II wrote a letter to the people of Sydney, kept in a glass case in a restricted area high inside the building. The Lord Mayor is to open it on a day of their choosing in 2085; nobody knows what it says.\n\n6. Luna Park\nLuna Park opened in 1935 with a giant laughing face as its entrance. Salt air kept forcing repairs, and each rebuild changed its expression. The whole entrance was demolished in 1988; today's face was completed in 1995.\n\n7. Mrs Macquarie's Chair\nIn 1810 convicts hand-carved a sandstone ledge into a bench for Elizabeth Macquarie, the Governor's wife. The story goes she sat here to watch for ships arriving from Britain.\n\n.\n.\n.\n#Sydney #Australia #TravelFacts #SydneyOperaHouse #UrbanTales",
+ "facts": [
+  {
+   "headline": "Legend says a late judge rescued this design from the rejects",
+   "hook": "Legend says a late-arriving judge pulled Jørn Utzon's Opera House design from the reject pile and made it the winner."
+  },
+  {
+   "headline": "Crocodile Dundee used to work on this bridge",
+   "hook": "Before Crocodile Dundee, Paul Hogan was a rigger on the Harbour Bridge until workmates pushed him onto TV."
+  },
+  {
+   "headline": "Joining this swim club takes five winters",
+   "hook": "For full membership of Bondi's Icebergs club, you must swim three winter Sundays out of four for five years."
+  },
+  {
+   "headline": "Convicts started this tunnel by hand",
+   "hook": "In 1843, convicts began hacking the Argyle Cut through solid sandstone with hand tools; explosives finally had to finish it."
+  },
+  {
+   "headline": "A royal letter here stays sealed until 2085",
+   "hook": "The Queen Victoria Building holds a 1986 letter from Queen Elizabeth II to Sydney that can't be opened until 2085."
+  },
+  {
+   "headline": "This giant face keeps changing its expression",
+   "hook": "Luna Park's giant face has changed expression with repairs since 1935; the whole entrance was demolished in 1988 and rebuilt."
+  },
+  {
+   "headline": "Convicts carved this bench for the Governor's wife",
+   "hook": "Convicts carved this sandstone bench in 1810 for the Governor's wife, who reportedly sat here watching for ships from Britain."
+  }
+ ]
+}
