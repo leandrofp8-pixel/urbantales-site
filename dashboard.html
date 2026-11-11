@@ -626,6 +626,7 @@
     <div class="tab-panel" id="panel-funnel">
       <div class="subtabs" role="tablist" aria-label="Funnel and retention sections">
         <button class="subtab active" data-sub="conversion" role="tab" aria-selected="true" onclick="showSub('funnel','conversion')">Conversion Funnel</button>
+        <button class="subtab" data-sub="signup" role="tab" aria-selected="false" onclick="showSub('funnel','signup')">Sign-up</button>
         <button class="subtab" data-sub="hotleads" role="tab" aria-selected="false" onclick="showSub('funnel','hotleads')">Hot Leads</button>
         <button class="subtab" data-sub="retention" role="tab" aria-selected="false" onclick="showSub('funnel','retention')">Retention</button>
         <button class="subtab" data-sub="coins" role="tab" aria-selected="false" onclick="showSub('funnel','coins')">Coin Economy</button>
@@ -701,6 +702,38 @@
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Days between signup and first purchase (paid users)</span>
         </div>
         <div class="chart-wrap-lg"><canvas id="chartTimeToConversion"></canvas></div>
+      </div>
+      </div>
+
+      <!-- Sign-up funnel (GET /admin/analytics/signup-funnel; app 3.5.2+ sends the steps, accounts cover every version) -->
+      <div class="panel-sub" data-sub="signup" hidden>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">Sign-up
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px" id="suMeta">From the sign-up screen to a verified account</span>
+        </div>
+        <details class="cfg-box" id="cfgBox_signup">
+          <summary>⚙ Configuration <span class="cfg-state" id="cfgState_signup"></span></summary>
+          <div class="cfg-grid" id="cfg_signup"><div class="loading">Loading…</div></div>
+          <div class="cfg-actions"><button type="button" onclick="saveConfigGroup('signup')" id="cfgSave_signup">Save</button><span id="cfgMsg_signup"></span></div>
+        </details>
+        <div class="grid-4" id="suKpis"><div class="card"><div class="loading">Loading…</div></div></div>
+        <div class="grid-2" id="suPlatforms" style="margin-bottom:0"></div>
+      </div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">Accounts created vs verified, per day
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400">Bars: created · line: verified, 7-day average · all app versions</span>
+          <span class="store-switch" id="suChartSwitch">
+            <button type="button" class="active" data-p="all" onclick="setSignupChart('all')">All</button><button type="button" data-p="android" onclick="setSignupChart('android')">Android</button><button type="button" data-p="ios" onclick="setSignupChart('ios')">iPhone</button>
+          </span>
+        </div>
+        <div class="chart-wrap"><canvas id="chartSignupDaily"></canvas></div>
+      </div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-title">By app version
+          <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Phones per step, to see whether a release changes the funnel</span>
+        </div>
+        <div class="table-wrap"><table id="suVersions"></table></div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.6;margin-top:12px">Steps are counted per phone (a random id the app keeps, nothing personal), once per step, from app 3.5.2. Older versions send no steps and appear only in the account numbers. Accounts = new accounts in the period by sign-up platform; verified = email confirmed (Google and Apple accounts are verified from the start). Test accounts and the phones they signed up on are left out.</div>
       </div>
       </div>
 
@@ -3226,9 +3259,15 @@ const CONFIG_GROUPS = {
     { key: 'weekly_quota_experiment_pct', label: '7-day-quota group % (rest keep the daily limit)', def: 30, attrs: 'min="0" max="100"' },
     { key: 'weekly_free_landmark_limit', label: 'Free landmarks per rolling 7 days (test group)', def: 3, attrs: 'min="0"' },
   ] },
-  review: { state: s => `Ask on app open #${s.review_prompt_min_sessions ?? 3}`, fields: [
+  review: { state: s => `Ask on app open #${s.review_prompt_min_sessions ?? 3} or after story #${s.review_prompt_story_end_min_narrations ?? 2}`, fields: [
     { key: 'review_prompt_min_sessions', label: 'Ask on app-open count', def: 3, attrs: 'min="1"' },
     { key: 'review_prompt_min_narrations', label: 'Minimum narrations heard first', def: 1, attrs: 'min="0"' },
+    { note: 'App 3.5.2+ also asks right after a story finishes; whichever comes first takes the one ask.' },
+    { key: 'review_prompt_story_end_min_narrations', label: 'Ask after a story, from story number', def: 2, attrs: 'min="1"' },
+  ] },
+  signup: { state: s => (s.device_free_limit_enabled ?? true) ? 'Free stories counted per phone too' : 'Free stories per account only', fields: [
+    { note: 'App 3.5.2+ sends a phone id, so a new account on the same phone continues the free-story count instead of starting over. Admin and test accounts are never counted. Off = per account only, as in older apps.' },
+    { key: 'device_free_limit_enabled', type: 'toggle', label: 'Count free stories per phone', def: true },
   ] },
   planner: { state: s => ((s.tour_planner_version || 'v1') === 'v2' ? `v2 · ${s.tour_planner_model || 'gpt-5.4-mini'}` : 'v1 (original planner)') + (s.tour_interest_hidden_enabled ? ' · off-the-beaten-path on' : ''), fields: [
     { note: 'v2 ranks places by popularity, drops shops and duplicate parts of one landmark, fits the stops to the time budget and orders the walk. The model only applies to v2: gpt-… runs on OpenAI, gemini-… on Gemini. Switch back to v1 to undo.' },
@@ -3805,6 +3844,97 @@ async function loadWebPlanner() {
   const why = { visitor: 'Already had their free plan', network: 'Network limit (3 a day)', daily_cap: 'Daily cap reached' };
   document.getElementById('wpLimits').innerHTML = rows(Object.entries(r.current.limit_hits).map(([k, v]) => [why[k] || k, v])
     .concat(r.current.errors ? [['Plan failed (error or empty city)', r.current.errors]] : []), 'None');
+}
+
+// Sign-up funnel (GET /admin/analytics/signup-funnel): this period vs the previous one of the same length.
+let _signup = null, _signupChartP = 'all';
+async function loadSignupFunnel() {
+  const kpis = document.getElementById('suKpis');
+  if (!kpis) return;
+  const r = await api(`/admin/analytics/signup-funnel?days=${days}`).catch(() => null);
+  _signup = r;
+  if (!r) {
+    kpis.innerHTML = '<div class="card" style="grid-column:1/-1"><div style="color:var(--muted);font-size:0.85rem">Could not load the sign-up numbers (the backend may not have them yet).</div></div>';
+    document.getElementById('suPlatforms').innerHTML = '';
+    return;
+  }
+  document.getElementById('suMeta').textContent = `Last ${r.days} days vs the ${r.days} before`;
+  const ca = r.current.accounts.all, pa = r.previous.accounts.all;
+  const trend = (c, pr) => {
+    if (c == null || pr == null) return [null, 'yellow'];
+    if (!pr) return [c ? 'new' : null, 'yellow'];
+    const ch = (c - pr) / pr * 100;
+    if (Math.abs(ch) < 5) return ['→ ' + ch.toFixed(0) + '%', 'yellow'];
+    return [(ch > 0 ? '↑ ' : '↓ ') + Math.abs(ch).toFixed(0) + '%', ch > 0 ? 'green' : 'red'];
+  };
+  const pts = (c, pr) => {
+    if (c == null || pr == null) return [null, 'yellow'];
+    const d = c - pr;
+    return Math.abs(d) < 1 ? ['→ ' + d.toFixed(1) + ' pts', 'yellow'] : [(d > 0 ? '↑ ' : '↓ ') + Math.abs(d).toFixed(1) + ' pts', d > 0 ? 'green' : 'red'];
+  };
+  const pct = (a, b) => b ? +(a / b * 100).toFixed(1) : null;
+  const rate = v => v == null ? '—' : v + '%';
+  const social = a => a.google + a.apple;
+  const cv = r.current.platforms.all, pv = r.previous.platforms.all;
+  const viewToAcc = c => pct(c.verified + c.social_done, c.view);
+  const [b1, c1] = trend(ca.created, pa.created);
+  const [b2, c2] = pts(ca.email_verified_pct, pa.email_verified_pct);
+  const [b3, c3] = pts(pct(social(ca), ca.created), pct(social(pa), pa.created));
+  const [b4, c4] = pts(viewToAcc(cv), viewToAcc(pv));
+  kpis.innerHTML =
+    kpiCard('Accounts created', fmt(ca.created), `prev. ${fmt(pa.created)} · ${(ca.created / r.days).toFixed(1)}/day<br>Android ${fmt(r.current.accounts.android.created)} · iPhone ${fmt(r.current.accounts.ios.created)}`, b1, c1) +
+    kpiCard('Email sign-ups verified', rate(ca.email_verified_pct), `${fmt(ca.email_verified)} of ${fmt(ca.email_created)} · prev. ${rate(pa.email_verified_pct)}<br>Android ${rate(r.current.accounts.android.email_verified_pct)} · iPhone ${rate(r.current.accounts.ios.email_verified_pct)}`, b2, c2) +
+    kpiCard('Google / Apple sign-ups', rate(pct(social(ca), ca.created)), `${fmt(social(ca))} of ${fmt(ca.created)} · Google ${fmt(ca.google)}, Apple ${fmt(ca.apple)}<br>prev. ${rate(pct(social(pa), pa.created))}`, b3, c3) +
+    kpiCard('Sign-up screen → account', rate(viewToAcc(cv)), cv.view ? `${fmt(cv.verified + cv.social_done)} of ${fmt(cv.view)} phones (app 3.5.2+)<br>prev. ${rate(viewToAcc(pv))}` : 'Waiting for app 3.5.2 phones', b4, c4);
+  const names = { view: 'Saw sign-up', submit: 'Tapped Create', code_sent: 'Code sent', verified: 'Verified' };
+  const colors = { android: C.green, ios: C.blue };
+  document.getElementById('suPlatforms').innerHTML = ['android', 'ios'].map(p => {
+    const c = r.current.platforms[p], pr = r.previous.platforms[p], f = c.funnel;
+    let worst = null;
+    f.forEach((st, i) => { if (i && f[i - 1].installs) { const lost = f[i - 1].installs - st.installs; if (!worst || lost > worst.lost) worst = { lost, from: f[i - 1], to: st }; } });
+    const rows = f.map(st => `<div class="funnel-step" style="padding:10px 12px;gap:10px">
+        <div class="funnel-label" style="min-width:92px">${names[st.step]}</div>
+        <div class="funnel-bar-outer"><div class="funnel-bar-inner" style="width:${st.pct_of_view ?? 0}%;background:${colors[p]}"></div></div>
+        <div class="funnel-count">${fmt(st.installs)}</div>
+        <div class="funnel-pct">${st.pct_of_view == null ? '—' : st.pct_of_view + '%'}<div style="font-size:0.68rem">prev. ${fmt(pr[st.step])}</div></div>
+      </div>`).join('');
+    const lossTxt = worst && worst.lost > 0
+      ? `<div style="color:#f87171;font-size:0.78rem;margin:2px 0 10px">Biggest loss: ${names[worst.from.step].toLowerCase()} → ${names[worst.to.step].toLowerCase()} (${fmt(worst.lost)} phones, ${pct(worst.lost, worst.from.installs)}%)</div>` : '';
+    const sm = c.social_done_by_method;
+    const side = [['Closed code screen', c.code_closed], ['Reopened', c.code_reopen], ['Resend', c.resend], ['Google', sm.google], ['Apple', sm.apple]]
+      .map(([k, v]) => `<span>${k} <b style="color:var(--text)">${fmt(v)}</b></span>`).join('');
+    return `<div class="card"><div class="card-title" style="display:flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:${colors[p]}"></span>${p === 'ios' ? 'iPhone' : 'Android'}
+        <span style="font-size:0.75rem;color:var(--muted);font-weight:400">phones per step · % of those who saw sign-up</span></div>
+      ${c.view ? rows + lossTxt : '<div style="color:var(--muted);font-size:0.85rem;margin-bottom:10px">No steps yet: they start with app 3.5.2.</div>'}
+      <div style="display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;color:var(--muted);font-size:0.78rem">${side}</div></div>`;
+  }).join('');
+  const vs = r.by_version || [];
+  document.getElementById('suVersions').innerHTML = `<thead><tr><th>Version</th><th style="text-align:right">Saw sign-up</th><th style="text-align:right">Tapped Create</th><th style="text-align:right">Code sent</th><th style="text-align:right">Verified</th><th style="text-align:right">Verified / saw</th></tr></thead><tbody>` +
+    (vs.length ? vs.map(v => `<tr><td>${escapeHtml(v.app_version)}</td><td style="text-align:right">${fmt(v.view)}</td><td style="text-align:right">${fmt(v.submit)}</td><td style="text-align:right">${fmt(v.code_sent)}</td><td style="text-align:right">${fmt(v.verified)}</td><td style="text-align:right">${rate(pct(v.verified, v.view))}</td></tr>`).join('')
+      : '<tr><td colspan="6" style="color:var(--muted)">No steps yet: they start with app 3.5.2.</td></tr>') + '</tbody>';
+  drawSignupChart();
+}
+
+function setSignupChart(p) {
+  _signupChartP = p;
+  document.querySelectorAll('#suChartSwitch button').forEach(b => b.classList.toggle('active', b.dataset.p === p));
+  drawSignupChart();
+}
+
+function drawSignupChart() {
+  if (!_signup) return;
+  const d = _signup.daily || [], p = _signupChartP;
+  const ver = d.map(x => x[p].verified);
+  const avg = ver.map((_, i) => { const w = ver.slice(Math.max(0, i - 6), i + 1); return +(w.reduce((n, v) => n + v, 0) / w.length).toFixed(1); });
+  destroyChart('chartSignupDaily');
+  CHARTS.chartSignupDaily = new Chart(document.getElementById('chartSignupDaily').getContext('2d'), {
+    data: { labels: d.map(x => x.date.slice(5)), datasets: [
+      { type: 'bar', label: 'Created', data: d.map(x => x[p].created), backgroundColor: C.primary + 'bb', yAxisID: 'y' },
+      { type: 'line', label: 'Verified', data: ver, borderColor: C.green + '66', backgroundColor: 'transparent', tension: .3, pointRadius: 2, yAxisID: 'y' },
+      { type: 'line', label: 'Verified, 7-day average', data: avg, borderColor: C.green, borderWidth: 2.5, pointRadius: 0, tension: .3, yAxisID: 'y' } ] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#aaa' } } },
+      scales: { x: { ticks: { color: '#888' }, grid: { color: '#222' } }, y: { beginAtZero: true, ticks: { color: '#888', precision: 0 }, grid: { color: '#222' } } } },
+  });
 }
 
 function ensureB2BLoaded() {
@@ -7435,6 +7565,7 @@ function downloadCountriesMap(square) {
 async function loadAllData() {
   loadStoreOverview(_storeSelected);  // independent: a failure elsewhere can't block it
   loadWebPlanner();  // independent too
+  loadSignupFunnel();  // independent: an older backend just shows a note
   loadOfferTiming();
   loadTripRetention(days);  // independent too (reads every story event)
   loadOfflineAnalytics();   // independent: an older backend just shows a note
