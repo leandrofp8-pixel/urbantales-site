@@ -733,7 +733,7 @@
           <span style="font-size:0.75rem;color:var(--muted);font-weight:400;margin-left:8px">Phones per step, to see whether a release changes the funnel</span>
         </div>
         <div class="table-wrap"><table id="suVersions"></table></div>
-        <div style="font-size:0.75rem;color:var(--muted);line-height:1.6;margin-top:12px">Steps are counted per phone (a random id the app keeps, nothing personal), once per step, from app 3.5.2. Older versions send no steps and appear only in the account numbers. Accounts = new accounts in the period by sign-up platform; verified = email confirmed (Google and Apple accounts are verified from the start). Test accounts and the phones they signed up on are left out.</div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.6;margin-top:12px">Steps are counted per phone (a random id the app keeps, nothing personal), once per step, from app 3.5.2. Older versions send no steps and appear only in the account numbers. Accounts = new accounts in the period by sign-up platform; verified = email confirmed (Google and Apple accounts are verified from the start). Test accounts and their phones are left out (a phone counts as a test phone once a test account opens the app on it).</div>
       </div>
       </div>
 
@@ -3876,7 +3876,8 @@ async function loadSignupFunnel() {
   const rate = v => v == null ? '—' : v + '%';
   const social = a => a.google + a.apple;
   const cv = r.current.platforms.all, pv = r.previous.platforms.all;
-  const viewToAcc = c => pct(c.verified + c.social_done, c.view);
+  const gotIn = c => c.account ?? (c.verified + c.social_done);
+  const viewToAcc = c => pct(gotIn(c), c.view);
   const [b1, c1] = trend(ca.created, pa.created);
   const [b2, c2] = pts(ca.email_verified_pct, pa.email_verified_pct);
   const [b3, c3] = pts(pct(social(ca), ca.created), pct(social(pa), pa.created));
@@ -3885,21 +3886,20 @@ async function loadSignupFunnel() {
     kpiCard('Accounts created', fmt(ca.created), `prev. ${fmt(pa.created)} · ${(ca.created / r.days).toFixed(1)}/day<br>Android ${fmt(r.current.accounts.android.created)} · iPhone ${fmt(r.current.accounts.ios.created)}`, b1, c1) +
     kpiCard('Email sign-ups verified', rate(ca.email_verified_pct), `${fmt(ca.email_verified)} of ${fmt(ca.email_created)} · prev. ${rate(pa.email_verified_pct)}<br>Android ${rate(r.current.accounts.android.email_verified_pct)} · iPhone ${rate(r.current.accounts.ios.email_verified_pct)}`, b2, c2) +
     kpiCard('Google / Apple sign-ups', rate(pct(social(ca), ca.created)), `${fmt(social(ca))} of ${fmt(ca.created)} · Google ${fmt(ca.google)}, Apple ${fmt(ca.apple)}<br>prev. ${rate(pct(social(pa), pa.created))}`, b3, c3) +
-    kpiCard('Sign-up screen → account', rate(viewToAcc(cv)), cv.view ? `${fmt(cv.verified + cv.social_done)} of ${fmt(cv.view)} phones (app 3.5.2+)<br>prev. ${rate(viewToAcc(pv))}` : 'Waiting for app 3.5.2 phones', b4, c4);
-  const names = { view: 'Saw sign-up', submit: 'Tapped Create', code_sent: 'Code sent', verified: 'Verified' };
+    kpiCard('Sign-up screen → account', rate(viewToAcc(cv)), cv.view ? `${fmt(gotIn(cv))} of ${fmt(cv.view)} phones (app 3.5.2+)<br>prev. ${rate(viewToAcc(pv))}` : 'Waiting for app 3.5.2 phones', b4, c4);
+  const names = { view: 'Saw sign-up', social_done: 'Google / Apple', submit: 'Email: Create', code_sent: 'Email: code sent', verified: 'Email: verified', account: 'Account created' };
   const colors = { android: C.green, ios: C.blue };
   document.getElementById('suPlatforms').innerHTML = ['android', 'ios'].map(p => {
     const c = r.current.platforms[p], pr = r.previous.platforms[p], f = c.funnel;
-    let worst = null;
-    f.forEach((st, i) => { if (i && f[i - 1].installs) { const lost = f[i - 1].installs - st.installs; if (!worst || lost > worst.lost) worst = { lost, from: f[i - 1], to: st }; } });
     const rows = f.map(st => `<div class="funnel-step" style="padding:10px 12px;gap:10px">
-        <div class="funnel-label" style="min-width:92px">${names[st.step]}</div>
+        <div class="funnel-label" style="min-width:118px${st.step === 'account' ? ';font-weight:700' : ''}">${names[st.step]}</div>
         <div class="funnel-bar-outer"><div class="funnel-bar-inner" style="width:${st.pct_of_view ?? 0}%;background:${colors[p]}"></div></div>
         <div class="funnel-count">${fmt(st.installs)}</div>
         <div class="funnel-pct">${st.pct_of_view == null ? '—' : st.pct_of_view + '%'}<div style="font-size:0.68rem">prev. ${fmt(pr[st.step])}</div></div>
       </div>`).join('');
-    const lossTxt = worst && worst.lost > 0
-      ? `<div style="color:#f87171;font-size:0.78rem;margin:2px 0 10px">Biggest loss: ${names[worst.from.step].toLowerCase()} → ${names[worst.to.step].toLowerCase()} (${fmt(worst.lost)} phones, ${pct(worst.lost, worst.from.installs)}%)</div>` : '';
+    const notIn = c.view - gotIn(c), emailLost = c.submit - c.verified;
+    const lossTxt = c.view
+      ? `<div style="font-size:0.78rem;margin:2px 0 10px"><span style="color:#f87171">${fmt(Math.max(0, notIn))} of ${fmt(c.view)} phones saw sign-up and didn't get in (${pct(Math.max(0, notIn), c.view) ?? 0}%).</span>${c.submit ? ` <span style="color:var(--muted)">Email: ${fmt(Math.max(0, emailLost))} of ${fmt(c.submit)} who tapped Create didn't verify.</span>` : ''}</div>` : '';
     const sm = c.social_done_by_method;
     const side = [['Closed code screen', c.code_closed], ['Reopened', c.code_reopen], ['Resend', c.resend], ['Google', sm.google], ['Apple', sm.apple]]
       .map(([k, v]) => `<span>${k} <b style="color:var(--text)">${fmt(v)}</b></span>`).join('');
@@ -3909,9 +3909,11 @@ async function loadSignupFunnel() {
       <div style="display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;color:var(--muted);font-size:0.78rem">${side}</div></div>`;
   }).join('');
   const vs = r.by_version || [];
-  document.getElementById('suVersions').innerHTML = `<thead><tr><th>Version</th><th style="text-align:right">Saw sign-up</th><th style="text-align:right">Tapped Create</th><th style="text-align:right">Code sent</th><th style="text-align:right">Verified</th><th style="text-align:right">Verified / saw</th></tr></thead><tbody>` +
-    (vs.length ? vs.map(v => `<tr><td>${escapeHtml(v.app_version)}</td><td style="text-align:right">${fmt(v.view)}</td><td style="text-align:right">${fmt(v.submit)}</td><td style="text-align:right">${fmt(v.code_sent)}</td><td style="text-align:right">${fmt(v.verified)}</td><td style="text-align:right">${rate(pct(v.verified, v.view))}</td></tr>`).join('')
-      : '<tr><td colspan="6" style="color:var(--muted)">No steps yet: they start with app 3.5.2.</td></tr>') + '</tbody>';
+  const th = t => `<th style="text-align:right">${t}</th>`, td = (v, b) => `<td style="text-align:right${b ? ';font-weight:700' : ''}">${v}</td>`;
+  document.getElementById('suVersions').innerHTML = `<thead><tr><th>Version</th>${th('Saw sign-up')}${th('Google / Apple')}${th('Email: Create')}${th('Email: code sent')}${th('Email: verified')}${th('Account created')}${th('Got in / saw')}</tr></thead><tbody>` +
+    (vs.length ? vs.map(v => { const acc = v.account ?? ((v.verified || 0) + (v.social_done || 0));
+      return `<tr><td>${escapeHtml(v.app_version)}</td>${td(fmt(v.view))}${td(fmt(v.social_done))}${td(fmt(v.submit))}${td(fmt(v.code_sent))}${td(fmt(v.verified))}${td(fmt(acc), 1)}${td(rate(pct(acc, v.view)))}</tr>`; }).join('')
+      : '<tr><td colspan="8" style="color:var(--muted)">No steps yet: they start with app 3.5.2.</td></tr>') + '</tbody>';
   drawSignupChart();
 }
 
