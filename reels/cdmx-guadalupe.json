@@ -1,0 +1,61 @@
+{
+ "slug": "cdmx-guadalupe",
+ "landmark": "Basílica de Guadalupe",
+ "city": "Mexico City",
+ "story": "On Nov 14, 1921 a bomb hidden in a flower arrangement exploded by the altar of the old basilica; the altar was wrecked but the image and its glass were unharmed, and a bent metal crucifix is kept today as the 'Santo Cristo del Atentado'.",
+ "sources": [
+  "https://www.excelsior.com.mx/nacional/el-cristo-que-protegio-a-la-virgen-de-guadalupe-se-cumplen-hoy-100-anos-del-atentado",
+  "https://www.aciprensa.com/noticias/90890/hace-100-anos-cristo-protegio-a-la-virgen-de-guadalupe-en-atentado-con-bomba",
+  "https://www.adn40.mx/mexico/guadalupe-atentado-dinamita-me-especial",
+  "https://en.wikipedia.org/wiki/Basilica_of_Our_Lady_of_Guadalupe"
+ ],
+ "week": "2026-W47",
+ "created": "2026-11-15T13:05",
+ "media_sha": "6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89/reels/cdmx-guadalupe-es.mp4",
+  "caption": "En 1921 alguien puso una bomba frente a la Virgen. ¿Qué monumento debería hablar ahora? 👇\n\nEl 14 de noviembre de 1921, un hombre escondió dinamita en un arreglo de flores junto al altar de la antigua Basílica. La explosión destrozó el altar, pero la imagen y su vidrio quedaron intactos. Un crucifijo de metal quedó doblado y hoy se conserva como el Santo Cristo del Atentado.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#BasílicaDeGuadalupe #CDMX #México #historia #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89/reels/cdmx-guadalupe-en.mp4",
+  "caption": "In 1921, a bomb exploded in front of the Virgin. Which landmark should speak next? 👇\n\nOn November 14, 1921, a man hid dynamite in a flower arrangement by the altar of the old Basilica. The blast wrecked the altar, but the image and its glass were untouched. A metal crucifix was bent, and it is kept today as the Holy Christ of the Attack.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#BasilicaOfGuadalupe #MexicoCity #Mexico #history #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-10490099.mp4",
+   "url": "https://www.pexels.com/video/time-lapse-of-plaza-in-front-of-basilica-de-guadalupe-10490099/",
+   "author": "Enrique  Cruz G.",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Basilica of Guadalupe Mexico City"
+  },
+  {
+   "file": "pexels-34795249.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-basilica-in-mexico-city-34795249/",
+   "author": "Armando Isita",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Basilica of Guadalupe Mexico City"
+  },
+  {
+   "file": "pexels-34795263.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-basilica-and-surroundings-34795263/",
+   "author": "Armando Isita",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Basilica of Guadalupe Mexico City"
+  },
+  {
+   "file": "pexels-10490098.mp4",
+   "url": "https://www.pexels.com/video/people-waiting-to-enter-basilica-de-guadalupe-in-mexico-10490098/",
+   "author": "Enrique  Cruz G.",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Basilica Guadalupe pilgrims"
+  }
+ ]
+}

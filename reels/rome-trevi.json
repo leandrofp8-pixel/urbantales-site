@@ -1,0 +1,88 @@
+{
+ "slug": "rome-trevi",
+ "landmark": "Trevi Fountain",
+ "city": "Rome",
+ "story": "Legend (told by Frontinus) says a young girl showed thirsty Roman soldiers the spring that Agrippa's Aqua Virgo aqueduct (19 BC) brought to Rome; that aqueduct still feeds the fountain, and a relief on the facade shows her pointing the way.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Aqua_Virgo",
+  "https://penelope.uchicago.edu/encyclopaedia_romana/romanforum/aquavirgo.html",
+  "https://www.italyguides.it/en/lazio/rome/squares-and-fountains/trevi-fountain",
+  "https://www.romeing.it/10-things-you-didnt-know-about-the-trevi-fountain/"
+ ],
+ "week": "2026-W47",
+ "created": "2026-11-15T13:05",
+ "media_sha": "6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89/reels/rome-trevi-es.mp4",
+  "caption": "Según la leyenda, una niña descubrió mi agua. ¿Qué monumento debería hablar ahora? 👇\n\nHace dos mil años, unos soldados romanos sedientos le pidieron agua a una niña y ella los llevó a un manantial. Agripa trajo esa agua a Roma con el acueducto Aqua Virgo, que todavía alimenta a la Fontana de Trevi. En la fachada, un relieve muestra a la niña señalando el camino.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#FontanaDeTrevi #Roma #Italia #historia #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89/reels/rome-trevi-en.mp4",
+  "caption": "Legend says a young girl found my water. Which landmark should tell its story next? 👇\n\nTwo thousand years ago, thirsty Roman soldiers asked a girl for water, and she led them to a spring. Agrippa brought that water to Rome through the Aqua Virgo aqueduct, which still feeds the Trevi Fountain. A relief on the facade shows her pointing the way.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#TreviFountain #Rome #Italy #history #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-36576956.mp4",
+   "url": "https://www.pexels.com/video/iconic-trevi-fountain-in-rome-italy-36576956/",
+   "author": "C1 Superstar",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Trevi Fountain"
+  },
+  {
+   "file": "pexels-15199954.mp4",
+   "url": "https://www.pexels.com/video/a-concrete-building-near-the-trevi-fountain-15199954/",
+   "author": "Stefano Barbieri",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Trevi Fountain"
+  },
+  {
+   "file": "pexels-38405576.mp4",
+   "url": "https://www.pexels.com/video/iconic-trevi-fountain-in-rome-italy-38405576/",
+   "author": "Ch  Jawad",
+   "w": 1278,
+   "h": 720,
+   "dur": 8,
+   "query": "Trevi Fountain"
+  },
+  {
+   "file": "pexels-32175566.mp4",
+   "url": "https://www.pexels.com/video/majestic-view-of-trevi-fountain-in-rome-32175566/",
+   "author": "Alberto Escalona",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Trevi Fountain"
+  },
+  {
+   "file": "pexels-40426730.mp4",
+   "url": "https://www.pexels.com/video/iconic-trevi-fountain-in-rome-italy-40426730/",
+   "author": "C1 Superstar",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Trevi Fountain"
+  },
+  {
+   "file": "pexels-36395311.mp4",
+   "url": "https://www.pexels.com/video/iconic-trevi-fountain-in-rome-travel-footage-36395311/",
+   "author": "Sofie Slaninová",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Trevi Fountain"
+  },
+  {
+   "file": "pexels-31524076.mp4",
+   "url": "https://www.pexels.com/video/captivating-view-of-trevi-fountain-in-rome-31524076/",
+   "author": "Maurice Supple",
+   "w": 1280,
+   "h": 720,
+   "dur": 31,
+   "query": "Trevi Fountain"
+  }
+ ]
+}

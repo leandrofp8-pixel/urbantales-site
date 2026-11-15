@@ -1,0 +1,52 @@
+{
+ "slug": "tokyo-sensoji",
+ "landmark": "Sensō-ji",
+ "city": "Tokyo",
+ "story": "By tradition, in 628 two fishermen brothers pulled a small Kannon statue from the Sumida River and the village chief turned his home into a temple; the statue is a hidden image (hibutsu) that is never shown to the public.",
+ "sources": [
+  "https://senso-ji.jp/english/",
+  "https://www.mlit.go.jp/tagengo-db/en/R1-01371.html",
+  "https://temples.org/temples/japan/sensoji-temple",
+  "https://www.japan-experience.com/all-about-japan/tokyo/temples-shrines/tokyo-top-10-temples-shrines"
+ ],
+ "week": "2026-W47",
+ "created": "2026-11-15T13:05",
+ "media_sha": "6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89/reels/tokyo-sensoji-es.mp4",
+  "caption": "Nací de una red de pesca. ¿Qué monumento debería contar su historia ahora? 👇\n\nCuenta la leyenda que en el año 628, dos hermanos pescadores encontraron en el río Sumida una pequeña estatua de Kannon. El jefe de su aldea la reconoció como sagrada y convirtió su casa en un templo. Esa estatua sigue guardada en Sensoji, pero nunca se muestra al público.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#Sensoji #Asakusa #Tokio #Japón #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89/reels/tokyo-sensoji-en.mp4",
+  "caption": "I was born in a fishing net. Which landmark should tell its story next? 👇\n\nLegend says that in 628, two fishermen brothers pulled a small statue of Kannon from the Sumida River. Their village chief saw it was sacred and turned his home into a temple. The statue is still kept at Sensoji, but it is never shown to the public.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#Sensoji #Asakusa #Tokyo #Japan #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-18688462.mp4",
+   "url": "https://www.pexels.com/video/night-walk-at-the-asakusa-sensoji-temple-18688462/",
+   "author": "Dr. Rogelio Varela Jr.",
+   "w": 720,
+   "h": 1280,
+   "dur": 20,
+   "query": "Sensoji temple"
+  },
+  {
+   "file": "pexels-5846296.mp4",
+   "url": "https://www.pexels.com/video/pedestrians-in-front-of-an-eastern-temple-5846296/",
+   "author": "The Instagrapher",
+   "w": 1366,
+   "h": 720,
+   "dur": 5,
+   "query": "Sensoji temple"
+  },
+  {
+   "file": "pexels-34183484.mp4",
+   "url": "https://www.pexels.com/video/crowded-scene-at-sensoji-temple-in-tokyo-34183484/",
+   "author": "Tatsuo Nakamura",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Sensoji temple"
+  }
+ ]
+}
