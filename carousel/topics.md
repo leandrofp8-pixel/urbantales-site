@@ -42,12 +42,23 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 39 | Seoul |
 | 40 | Sydney |
 | 41 | Sydney |
+| 42 | Singapore |
 
 ## Next batch
 
-**#42 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#43 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
+
+Note (2026-11-16): Singapore (#42) has no `singapore.html` page in the main site repo and no
+`screen-singapore-*-map.png` screenshot — the generic app screen was used for its CTA slide per
+GUIDELINES.md. Photo candidates could not be sourced this run — commons.wikimedia.org is denied
+by this cloud session's network policy (see `photo_sourcing_note` in `carousel/drafts/singapore/draft.json`),
+the same recurring block as batches #8-#13, #28/#29, #30, #34, #36, #38 and #40/#41. This run also
+tried requesting commons.wikimedia.org/upload.wikimedia.org be added to the environment's allowed
+hosts via `update_environment`, but that needs a live person's approval and this is an unattended
+scheduled run, so it was auto-refused — a future run with a person present (or Leandro himself) can
+approve it, or just source the photos by hand as happened for Seoul and Sydney.
 
 Note (2026-11-11): Sydney (#40) has no `sydney.html` page in the main site repo and no
 `screen-sydney-*-map.png` screenshot — the generic app screen was used for its CTA slide per
