@@ -1,0 +1,96 @@
+{
+ "slug": "venice-rialto",
+ "landmark": "Rialto Bridge",
+ "city": "Venice",
+ "story": "The wooden bridge before it collapsed in 1444 under crowds watching a wedding procession; when the single-arch stone bridge was built (1588-1591), architect Vincenzo Scamozzi predicted it would fail. It still stands, and until 1854 it was the only bridge across the Grand Canal.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Rialto_Bridge",
+  "https://mcid.mcah.columbia.edu/art-atlas/venice-and-its-lagoon/rialto-bridge",
+  "https://structurae.net/en/structures/rialto-bridge"
+ ],
+ "week": "2026-W47",
+ "created": "2026-11-15T13:05",
+ "media_sha": "6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89/reels/venice-rialto-es.mp4",
+  "caption": "Dijeron que me caería. ¿Qué monumento debería contar su historia ahora? 👇\n\nEn 1444, el puente de madera que había antes se derrumbó bajo la gente que miraba un cortejo nupcial. Cuando me construyeron en piedra, en 1588, el arquitecto Vincenzo Scamozzi aseguró que un solo arco no aguantaría. Sigo en pie desde 1591, y hasta 1854 fui el único puente sobre el Gran Canal.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas. Link en la bio.\n.\n.\n.\n#PuenteDeRialto #Venecia #Italia #historia #UrbanTales"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6ca70288e6a315ed2c575e7c6b67a78a9e3c3d89/reels/venice-rialto-en.mp4",
+  "caption": "They said I would collapse. Which landmark should tell its story next? 👇\n\nIn 1444, the wooden bridge before me gave way under crowds watching a wedding procession. When I was rebuilt in stone in 1588, architect Vincenzo Scamozzi warned a single arch would never hold. I've stood since 1591, and until 1854 I was the only bridge across the Grand Canal.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past. Link in bio.\n.\n.\n.\n#RialtoBridge #Venice #Italy #history #UrbanTales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-20127543.mp4",
+   "url": "https://www.pexels.com/video/venice-italy-rialto-bridge-20127543/",
+   "author": "Nuray",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Rialto Bridge Venice"
+  },
+  {
+   "file": "pexels-19844641.mp4",
+   "url": "https://www.pexels.com/video/a-gondola-is-floating-under-a-bridge-19844641/",
+   "author": "Andrey Denin",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Rialto Bridge Venice"
+  },
+  {
+   "file": "pexels-29913628.mp4",
+   "url": "https://www.pexels.com/video/exploring-venice-s-iconic-rialto-bridge-29913628/",
+   "author": "Magda Ehlers",
+   "w": 1280,
+   "h": 720,
+   "dur": 53,
+   "query": "Rialto Bridge Venice"
+  },
+  {
+   "file": "pexels-29908683.mp4",
+   "url": "https://www.pexels.com/video/charming-venice-canal-sunset-view-29908683/",
+   "author": "Duc Tinh Ngo",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Rialto Bridge Venice"
+  },
+  {
+   "file": "pexels-36328563.mp4",
+   "url": "https://www.pexels.com/video/scenic-venice-canal-with-iconic-rialto-bridge-36328563/",
+   "author": "Dominik Gryzbon",
+   "w": 1280,
+   "h": 720,
+   "dur": 52,
+   "query": "Rialto Bridge Venice"
+  },
+  {
+   "file": "pexels-9362134.mp4",
+   "url": "https://www.pexels.com/video/the-rialto-bridge-during-daytime-9362134/",
+   "author": "Kmeel.com Videos",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Rialto Bridge Venice"
+  },
+  {
+   "file": "pexels-30892846.mp4",
+   "url": "https://www.pexels.com/video/gondolas-beneath-venice-s-iconic-rialto-bridge-30892846/",
+   "author": "Marius Nacu",
+   "w": 720,
+   "h": 1280,
+   "dur": 12,
+   "query": "Rialto Bridge Venice"
+  },
+  {
+   "file": "pexels-19844640.mp4",
+   "url": "https://www.pexels.com/video/venice-italy-gondola-ride-on-the-grand-canal-19844640/",
+   "author": "Andrey Denin",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Rialto Bridge Venice"
+  }
+ ]
+}
