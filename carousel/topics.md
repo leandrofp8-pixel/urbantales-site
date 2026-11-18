@@ -42,7 +42,6 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 39 | Seoul |
 | 40 | Sydney |
 | 41 | Sydney |
-| 42 | Singapore |
 | 43 | Singapore |
 
 ## Next batch
@@ -50,6 +49,11 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 **#44 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
+
+Note (2026-11-18): same thing happened with Singapore — drafted as #42, the finisher sourced
+Commons photos, rendered both EN/ES sets and bumped it to **#43** (`batch.json`'s `badge_num`),
+adding its own Published row without removing the draft's #42 row. Removed the stale duplicate
+#42 row above. #42 is now an unused gap, same as #22, #30, #32, #34 and #36.
 
 Note (2026-11-16): Singapore (#42) has no `singapore.html` page in the main site repo and no
 `screen-singapore-*-map.png` screenshot — the generic app screen was used for its CTA slide per
