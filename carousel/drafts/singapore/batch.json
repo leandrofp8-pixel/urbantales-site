@@ -1,0 +1,38 @@
+{
+ "badge_num": 43,
+ "flag": "🇸🇬",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "SINGAPORE",
+ "caption": "Which of these 7 Singapore secrets didn't you know? Comment the number 👇\n\n1. Merlion\nLee Kuan Yew unveiled the half-lion, half-fish Merlion in 1972 at the mouth of the Singapore River. When the Esplanade Bridge blocked views of it in 1997, cranes lifted the 70-tonne statue over the bridge and a barge floated it to its current spot, 120 metres away, in 2002.\n\n2. Gardens by the Bay Supertrees\nGardens by the Bay's 18 Supertrees, 25 to 50 metres tall, carry solar cells and work as air intakes and exhausts for the cooling systems of the park's two giant greenhouses. The OCBC Skyway, a 128-metre walkway, links two of them 22 metres up.\n\n3. Buddha Tooth Relic Temple\nSingapore's Buddha Tooth Relic Temple in Chinatown was built in Tang-dynasty style and completed in 2007 to house a tooth believed to be the Buddha's. It sits inside a giant gold stupa on the fourth floor.\n\n4. Raffles Hotel\nRaffles Hotel credits its Long Bar bartender Ngiam Tong Boon with creating the Singapore Sling around 1915. The story goes that women couldn't be seen drinking alcohol in public, so he made a pink gin cocktail that looked like fruit juice.\n\n5. Haw Par Villa\nTiger Balm tycoon Aw Boon Haw began Haw Par Villa in 1937, naming it after himself and his brother Boon Par. Its 1,000+ statues include the famous Ten Courts of Hell, which show the gruesome punishments awaiting sinners in Chinese folklore.\n\n6. Jewel Changi Airport\nJewel Changi Airport's Rain Vortex, opened in 2019, drops recirculated rainwater 40 metres from an opening in the glass roof, ringed by a terraced indoor forest. It's the world's tallest indoor waterfall.\n\n7. Chewing gum ban\nSince 1992 Singapore has banned the sale and import of chewing gum. A key trigger: vandals had stuck gum on the door sensors of the new MRT trains, stopping doors from closing and delaying service.\n\n.\n.\n.\n#Singapore #SingaporeTravel #TravelFacts #Merlion #UrbanTales",
+ "facts": [
+  {
+   "headline": "A new bridge forced this icon to move",
+   "hook": "When a 1997 bridge hid it from view, the 70-tonne Merlion was moved 120 metres by barge in 2002."
+  },
+  {
+   "headline": "These giant trees are made of steel and run on sunlight",
+   "hook": "Gardens by the Bay's 18 Supertrees carry solar panels and double as air vents for the giant greenhouses next door."
+  },
+  {
+   "headline": "This Chinatown temple was built around a single tooth",
+   "hook": "Chinatown's Buddha Tooth Relic Temple, finished in 2007, keeps a tooth believed to be the Buddha's in a golden stupa."
+  },
+  {
+   "headline": "The story says this pink cocktail was disguised as juice",
+   "hook": "Raffles Hotel says its bartender created the pink Singapore Sling around 1915 so women could drink alcohol disguised as juice."
+  },
+  {
+   "headline": "A Tiger Balm fortune built a park full of hell",
+   "hook": "Built with the Tiger Balm fortune in 1937, Haw Par Villa shows sinners' punishments in its Ten Courts of Hell."
+  },
+  {
+   "headline": "The world's tallest indoor waterfall is inside an airport",
+   "hook": "Jewel Changi Airport's Rain Vortex pours recycled rainwater 40 metres down inside the airport: the world's tallest indoor waterfall."
+  },
+  {
+   "headline": "Gum on train doors got chewing gum banned here",
+   "hook": "Singapore banned selling chewing gum in 1992, after vandals stuck gum on MRT train door sensors and caused delays."
+  }
+ ]
+}

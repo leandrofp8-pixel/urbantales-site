@@ -1,93 +1,180 @@
 {
-  "badge_num": 42,
+  "badge_num": 43,
   "city": "SINGAPORE",
   "flag": "🇸🇬",
   "cta_screenshot": "screen-generic-narration-style.png",
   "cta_screenshot_note": "No Singapore map screenshot in the repo (no screen-singapore-*-map.png file, and no singapore.html landing page either); using the generic app screen per GUIDELINES.md.",
   "style": "minimal",
-  "photo_sourcing_blocked": true,
-  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> CONNECT tunnel failed, HTTP 403, and the agent-proxy status endpoint logging a recentRelayFailure: 'gateway answered 403 to CONNECT (policy denial or other refusal)' for commons.wikimedia.org:443). This is the same recurring block that hit batches #8-#13, #28/#29 (Seville), #30 (Cairo), #34 (Edinburgh), #36 (Madrid), #38 (Seoul) and #40/#41 (Sydney) -- this cloud session still has no working path to Wikimedia Commons for photo sourcing. This run also tried requesting commons.wikimedia.org/upload.wikimedia.org be added to the environment's allowed hosts via update_environment, but that call needs a live person's approval and this is an unattended scheduled run, so it was auto-refused with no one to approve it. No candidate photos could be downloaded this run, so every 'candidates' array below is empty. 'suggested_queries' lists the exact Commons search terms to run once network access is open, or to search manually at commons.wikimedia.org (the usual fallback: Leandro sources photos on his Mac after this PR, or a future run completes it once the block is lifted or approved). Facts themselves were fully researched and verified via WebSearch, which is not subject to this block.",
-  "caption": "Which of these 7 Singapore secrets would you have walked right past? 👇\n\n1. Merlion\nSingapore's half-lion, half-fish Merlion was unveiled by Lee Kuan Yew in 1972 at the mouth of the Singapore River. When the Esplanade Bridge opened in 1997, it blocked the statue's view of the bay it once watched over.\n\n2. Gardens by the Bay Supertrees\nEleven of Gardens by the Bay's 18 Supertrees are fitted with solar panels or secretly vent exhaust from a biomass boiler. A skywalk, the OCBC Skyway, links two of the trees 42 metres up.\n\n3. Buddha Tooth Relic Temple\nSingapore's Buddha Tooth Relic Temple in Chinatown was built in Tang-dynasty style and completed in 2007, purpose-built to house a tooth believed to belong to the Buddha, enshrined on its top floor.\n\n4. Raffles Hotel\nIn 1915, Raffles Hotel bartender Ngiam Tong Boon invented the Singapore Sling as a pink gin cocktail that let women drink in public looking like they were sipping fruit juice. The Long Bar now pours 800 to 1,200 a day.\n\n5. Haw Par Villa\nBuilt in 1937 with the Tiger Balm fortune, Haw Par Villa's Ten Courts of Hell packs over 1,000 statues and dioramas of gruesome underworld punishments — graphic enough that parents once used them to scare children straight.\n\n6. Jewel Changi Airport\nJewel Changi Airport's Rain Vortex, opened in 2019, sends recirculated rainwater crashing 40 metres through the middle of the terminal — the world's tallest indoor waterfall, ringed by a terraced forest.\n\n7. Chewing gum ban\nSince 1992, Singapore has banned the sale and import of ordinary chewing gum — not over litter, but because commuters kept jamming the doors of brand-new MRT trains with discarded gum.\n\n.\n.\n.\n#Singapore #SingaporeTravel #TravelFacts #Merlion #UrbanTales",
-  "caption_es": "¿Cuál de estos 7 secretos de Singapur no conocías? Comenta el número 👇\n\n1. Merlion\nEl Merlion de Singapur, mitad león y mitad pez, fue develado por Lee Kuan Yew en 1972 en la desembocadura del río Singapur. Cuando el puente Esplanade abrió en 1997, le bloqueó la vista de la bahía que antes vigilaba.\n\n2. Superárboles de Gardens by the Bay\nOnce de los 18 Superárboles de Gardens by the Bay tienen paneles solares o ventilan en secreto los gases de una caldera de biomasa. Una pasarela, el OCBC Skyway, conecta dos de los árboles a 42 metros de altura.\n\n3. Templo de la Reliquia del Diente de Buda\nEl Templo de la Reliquia del Diente de Buda en el Chinatown de Singapur se construyó en estilo de la dinastía Tang y se terminó en 2007, pensado para albergar un diente que se cree que perteneció a Buda, guardado en el último piso.\n\n4. Hotel Raffles\nEn 1915, el bartender del Hotel Raffles Ngiam Tong Boon inventó el Singapore Sling, un cóctel rosa de gin que dejaba a las mujeres beber en público pareciendo que tomaban jugo de frutas. El Long Bar hoy sirve entre 800 y 1,200 al día.\n\n5. Haw Par Villa\nConstruido en 1937 con la fortuna de Tiger Balm, los Diez Tribunales del Infierno de Haw Par Villa reúnen más de 1,000 estatuas y dioramas de castigos del inframundo, tan gráficos que los padres los usaban para asustar a los niños.\n\n6. Aeropuerto Jewel Changi\nEl Rain Vortex del aeropuerto Jewel Changi, abierto en 2019, hace caer agua de lluvia reciclada 40 metros por el centro de la terminal — la cascada interior más alta del mundo, rodeada de un bosque en terrazas.\n\n7. Prohibición del chicle\nDesde 1992, Singapur prohíbe la venta e importación de chicle común — no por la basura, sino porque los pasajeros atascaban las puertas de los trenes MRT nuevos con chicle desechado.\n\n.\n.\n.\n#Singapur #Asia #DatosCuriosos #Merlion #UrbanTales",
+  "photo_sourcing_blocked": false,
+  "caption": "Which of these 7 Singapore secrets didn't you know? Comment the number 👇\n\n1. Merlion\nLee Kuan Yew unveiled the half-lion, half-fish Merlion in 1972 at the mouth of the Singapore River. When the Esplanade Bridge blocked views of it in 1997, cranes lifted the 70-tonne statue over the bridge and a barge floated it to its current spot, 120 metres away, in 2002.\n\n2. Gardens by the Bay Supertrees\nGardens by the Bay's 18 Supertrees, 25 to 50 metres tall, carry solar cells and work as air intakes and exhausts for the cooling systems of the park's two giant greenhouses. The OCBC Skyway, a 128-metre walkway, links two of them 22 metres up.\n\n3. Buddha Tooth Relic Temple\nSingapore's Buddha Tooth Relic Temple in Chinatown was built in Tang-dynasty style and completed in 2007 to house a tooth believed to be the Buddha's. It sits inside a giant gold stupa on the fourth floor.\n\n4. Raffles Hotel\nRaffles Hotel credits its Long Bar bartender Ngiam Tong Boon with creating the Singapore Sling around 1915. The story goes that women couldn't be seen drinking alcohol in public, so he made a pink gin cocktail that looked like fruit juice.\n\n5. Haw Par Villa\nTiger Balm tycoon Aw Boon Haw began Haw Par Villa in 1937, naming it after himself and his brother Boon Par. Its 1,000+ statues include the famous Ten Courts of Hell, which show the gruesome punishments awaiting sinners in Chinese folklore.\n\n6. Jewel Changi Airport\nJewel Changi Airport's Rain Vortex, opened in 2019, drops recirculated rainwater 40 metres from an opening in the glass roof, ringed by a terraced indoor forest. It's the world's tallest indoor waterfall.\n\n7. Chewing gum ban\nSince 1992 Singapore has banned the sale and import of chewing gum. A key trigger: vandals had stuck gum on the door sensors of the new MRT trains, stopping doors from closing and delaying service.\n\n.\n.\n.\n#Singapore #SingaporeTravel #TravelFacts #Merlion #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Singapur no conocías? Comenta el número 👇\n\n1. Merlion\nLee Kuan Yew develó el Merlion, mitad león y mitad pez, en 1972 en la desembocadura del río Singapur. Cuando el puente Esplanade lo tapó en 1997, unas grúas levantaron la estatua de 70 toneladas por encima del puente y una barcaza la llevó a su sitio actual, a 120 metros, en 2002.\n\n2. Superárboles de Gardens by the Bay\nLos 18 Superárboles de Gardens by the Bay, de 25 a 50 metros de alto, tienen celdas solares y funcionan como tomas y salidas de aire para el sistema de enfriamiento de los dos invernaderos gigantes del parque. El OCBC Skyway, una pasarela de 128 metros, une dos de ellos a 22 metros de altura.\n\n3. Templo de la Reliquia del Diente de Buda\nEl Templo de la Reliquia del Diente de Buda, en el Chinatown de Singapur, se construyó en estilo de la dinastía Tang y se terminó en 2007 para guardar un diente que se atribuye a Buda. Está dentro de una enorme estupa de oro en el cuarto piso.\n\n4. Hotel Raffles\nEl Hotel Raffles atribuye a Ngiam Tong Boon, bartender de su Long Bar, la creación del Singapore Sling hacia 1915. Según la historia, las mujeres no podían beber alcohol en público, así que preparó un cóctel rosa de gin que parecía jugo de frutas.\n\n5. Haw Par Villa\nEl magnate del Tiger Balm Aw Boon Haw empezó Haw Par Villa en 1937 y la nombró por él y su hermano Boon Par. Entre sus más de 1,000 estatuas están los famosos Diez Tribunales del Infierno, que muestran los castigos que esperan a los pecadores según el folclor chino.\n\n6. Aeropuerto Jewel Changi\nEl Rain Vortex de Jewel Changi, abierto en 2019, deja caer agua de lluvia reciclada 40 metros desde una abertura en el techo de vidrio, rodeado de un bosque interior en terrazas. Es la cascada interior más alta del mundo.\n\n7. Prohibición del chicle\nDesde 1992 Singapur prohíbe la venta e importación de chicle. Un detonante clave: unos vándalos pegaron chicle en los sensores de las puertas de los trenes nuevos del MRT, que no cerraban y retrasaban el servicio.\n\n.\n.\n.\n#Singapur #Asia #DatosCuriosos #Viajes #UrbanTales",
   "facts": [
     {
       "slot": "fact1",
-      "headline": "A bridge accidentally blocked this icon's view of the bay",
-      "headline_es": "Un puente le bloqueó la vista a este ícono por accidente",
-      "body_html": "Singapore's <b>half-lion, half-fish</b> Merlion was unveiled by Lee Kuan Yew in <b>1972</b> at the mouth of the Singapore River. When the Esplanade Bridge opened in 1997, it blocked the statue's view of the bay it once watched over.",
-      "body_es": "El Merlion de Singapur, mitad león y mitad pez, fue develado por Lee Kuan Yew en <b>1972</b> en la desembocadura del río Singapur. Cuando el puente Esplanade abrió en 1997, le bloqueó la vista de la bahía que antes vigilaba.",
-      "hook": "Lee Kuan Yew unveiled the half-lion, half-fish Merlion in 1972, and a bridge built in 1997 blocked its view of the bay.",
-      "hook_es": "Lee Kuan Yew develó el Merlion, mitad león y mitad pez, en 1972, y un puente construido en 1997 le bloqueó la vista de la bahía.",
-      "candidates": [],
-      "suggested_queries": ["Merlion Park Singapore statue", "Merlion Singapore Marina Bay"]
+      "headline": "A new bridge forced this icon to move",
+      "headline_es": "Un puente nuevo obligó a mudar a este ícono",
+      "body_html": "Lee Kuan Yew unveiled the half-lion, half-fish <b>Merlion</b> in <b>1972</b> at the mouth of the Singapore River. When the Esplanade Bridge blocked views of it in 1997, cranes lifted the <b>70-tonne</b> statue over the bridge and a barge floated it to its current spot, 120 metres away, in <b>2002</b>.",
+      "body_es": "Lee Kuan Yew develó el <b>Merlion</b>, mitad león y mitad pez, en <b>1972</b> en la desembocadura del río Singapur. Cuando el puente Esplanade lo tapó en 1997, unas grúas levantaron la estatua de <b>70 toneladas</b> por encima del puente y una barcaza la llevó a su sitio actual, a 120 metros, en <b>2002</b>.",
+      "hook": "When a 1997 bridge hid it from view, the 70-tonne Merlion was moved 120 metres by barge in 2002.",
+      "hook_es": "Cuando un puente de 1997 lo tapó, el Merlion de 70 toneladas viajó en barcaza a otro sitio en 2002.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Singapore_Merlion_BCT.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Bjørn Christian Tørrissen",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Merlion Park Singapore statue",
+        "Merlion Singapore Marina Bay"
+      ]
     },
     {
       "slot": "fact2",
-      "headline": "Eleven of these 'Supertrees' double as solar panels or chimneys",
-      "headline_es": "Once de estos 'Superárboles' son paneles solares o chimeneas",
-      "body_html": "Eleven of Gardens by the Bay's <b>18 Supertrees</b> are fitted with solar panels or secretly vent exhaust from a biomass boiler. A skywalk, the <b>OCBC Skyway</b>, links two of the trees 42 metres up.",
-      "body_es": "Once de los <b>18 Superárboles</b> de Gardens by the Bay tienen paneles solares o ventilan en secreto los gases de una caldera de biomasa. Una pasarela, el <b>OCBC Skyway</b>, conecta dos de los árboles a 42 metros de altura.",
-      "hook": "Eleven of Gardens by the Bay's 18 'Supertrees' hide solar panels or boiler exhaust vents, and a skywalk links two of them 42 metres up.",
-      "hook_es": "Once de los 18 'Superárboles' de Gardens by the Bay esconden paneles solares o ventilan gases de una caldera, y una pasarela conecta dos a 42 metros.",
-      "candidates": [],
-      "suggested_queries": ["Supertree Grove Gardens by the Bay", "OCBC Skyway Singapore Supertrees"]
+      "headline": "These giant trees are made of steel and run on sunlight",
+      "headline_es": "Estos árboles gigantes son de acero y funcionan con sol",
+      "body_html": "Gardens by the Bay's <b>18 Supertrees</b>, 25 to 50 metres tall, carry solar cells and work as air intakes and exhausts for the cooling systems of the park's two giant greenhouses. The <b>OCBC Skyway</b>, a 128-metre walkway, links two of them 22 metres up.",
+      "body_es": "Los <b>18 Superárboles</b> de Gardens by the Bay, de 25 a 50 metros de alto, tienen celdas solares y funcionan como tomas y salidas de aire para el sistema de enfriamiento de los dos invernaderos gigantes del parque. El <b>OCBC Skyway</b>, una pasarela de 128 metros, une dos de ellos a 22 metros de altura.",
+      "hook": "Gardens by the Bay's 18 Supertrees carry solar panels and double as air vents for the giant greenhouses next door.",
+      "hook_es": "Los 18 Superárboles de Gardens by the Bay tienen celdas solares y sirven de ventilación para los invernaderos gigantes vecinos.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_Gardens_By_The_Bay_--_2019_--_4831.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Dietmar Rabich",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Supertree Grove Gardens by the Bay",
+        "OCBC Skyway Singapore Supertrees"
+      ]
     },
     {
       "slot": "fact3",
       "headline": "This Chinatown temple was built around a single tooth",
       "headline_es": "Este templo en Chinatown se construyó alrededor de un solo diente",
-      "body_html": "Singapore's <b>Buddha Tooth Relic Temple</b> in Chinatown was built in Tang-dynasty style and completed in <b>2007</b>, purpose-built to house a tooth believed to belong to the Buddha, enshrined on its top floor.",
-      "body_es": "El <b>Templo de la Reliquia del Diente de Buda</b> en el Chinatown de Singapur se construyó en estilo de la dinastía Tang y se terminó en <b>2007</b>, pensado para albergar un diente que se cree que perteneció a Buda, guardado en el último piso.",
-      "hook": "Chinatown's Buddha Tooth Relic Temple, finished in 2007 in Tang-dynasty style, was purpose-built to enshrine a tooth believed to be the Buddha's own.",
-      "hook_es": "El Templo de la Reliquia del Diente de Buda en Chinatown, terminado en 2007 en estilo Tang, se construyó para guardar un diente que se cree de Buda.",
-      "candidates": [],
-      "suggested_queries": ["Buddha Tooth Relic Temple Singapore exterior", "Buddha Tooth Relic Temple Chinatown Singapore"]
+      "body_html": "Singapore's <b>Buddha Tooth Relic Temple</b> in Chinatown was built in Tang-dynasty style and completed in <b>2007</b> to house a tooth believed to be the Buddha's. It sits inside a giant <b>gold stupa</b> on the fourth floor.",
+      "body_es": "El <b>Templo de la Reliquia del Diente de Buda</b>, en el Chinatown de Singapur, se construyó en estilo de la dinastía Tang y se terminó en <b>2007</b> para guardar un diente que se atribuye a Buda. Está dentro de una enorme <b>estupa de oro</b> en el cuarto piso.",
+      "hook": "Chinatown's Buddha Tooth Relic Temple, finished in 2007, keeps a tooth believed to be the Buddha's in a golden stupa.",
+      "hook_es": "Este templo de Chinatown, terminado en 2007, guarda en una estupa de oro un diente que se atribuye a Buda.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Buddha_Tooth_Relic_Temple,_Singapore,_20240122_0832_2927.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Jakub Hałun",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Buddha Tooth Relic Temple Singapore exterior",
+        "Buddha Tooth Relic Temple Chinatown Singapore"
+      ]
     },
     {
       "slot": "fact4",
-      "headline": "This pink cocktail let women drink in public, disguised as juice",
-      "headline_es": "Este cóctel rosa dejaba beber en público a las mujeres, disfrazado de jugo",
-      "body_html": "In <b>1915</b>, Raffles Hotel bartender <b>Ngiam Tong Boon</b> invented the Singapore Sling as a pink gin cocktail that let women drink in public looking like they were sipping fruit juice. The Long Bar now pours <b>800 to 1,200</b> a day.",
-      "body_es": "En <b>1915</b>, el bartender del Hotel Raffles <b>Ngiam Tong Boon</b> inventó el Singapore Sling, un cóctel rosa de gin que dejaba a las mujeres beber en público pareciendo que tomaban jugo de frutas. El Long Bar hoy sirve entre <b>800 y 1,200</b> al día.",
-      "hook": "In 1915 a Raffles Hotel bartender invented the pink Singapore Sling so women could drink in public disguised as fruit juice.",
-      "hook_es": "En 1915 un bartender del Hotel Raffles inventó el Singapore Sling rosa para que las mujeres bebieran en público disfrazado de jugo de frutas.",
-      "candidates": [],
-      "suggested_queries": ["Raffles Hotel Singapore facade", "Raffles Hotel Long Bar Singapore"]
+      "headline": "The story says this pink cocktail was disguised as juice",
+      "headline_es": "Dicen que este cóctel rosa se disfrazaba de jugo",
+      "body_html": "Raffles Hotel credits its Long Bar bartender <b>Ngiam Tong Boon</b> with creating the <b>Singapore Sling</b> around <b>1915</b>. The story goes that women couldn't be seen drinking alcohol in public, so he made a pink gin cocktail that looked like fruit juice.",
+      "body_es": "El Hotel Raffles atribuye a <b>Ngiam Tong Boon</b>, bartender de su Long Bar, la creación del <b>Singapore Sling</b> hacia <b>1915</b>. Según la historia, las mujeres no podían beber alcohol en público, así que preparó un cóctel rosa de gin que parecía jugo de frutas.",
+      "hook": "Raffles Hotel says its bartender created the pink Singapore Sling around 1915 so women could drink alcohol disguised as juice.",
+      "hook_es": "Según el Hotel Raffles, el Singapore Sling nació hacia 1915 para que las mujeres tomaran alcohol como si fuera jugo.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Raffles_Hotel_Long_Bar_Eintritt.JPG",
+          "license": "CC BY 3.0",
+          "artist": "Hajotthu",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Raffles Hotel Singapore facade",
+        "Raffles Hotel Long Bar Singapore"
+      ]
     },
     {
       "slot": "fact5",
-      "headline": "A Tiger Balm fortune built 1,000+ statues of the afterlife",
-      "headline_es": "Una fortuna de Tiger Balm construyó más de 1,000 estatuas del más allá",
-      "body_html": "Built in <b>1937</b> with the Tiger Balm fortune, Haw Par Villa's <b>Ten Courts of Hell</b> packs over <b>1,000 statues and dioramas</b> of gruesome underworld punishments — graphic enough that parents once used them to scare children straight.",
-      "body_es": "Construido en <b>1937</b> con la fortuna de Tiger Balm, los <b>Diez Tribunales del Infierno</b> de Haw Par Villa reúnen más de <b>1,000 estatuas y dioramas</b> de castigos del inframundo, tan gráficos que los padres los usaban para asustar a los niños.",
-      "hook": "Built in 1937 with the Tiger Balm fortune, Haw Par Villa's Ten Courts of Hell uses over 1,000 statues to depict gruesome afterlife punishments.",
-      "hook_es": "Construido en 1937 con la fortuna de Tiger Balm, Haw Par Villa usa más de 1,000 estatuas para mostrar castigos del más allá.",
-      "candidates": [],
-      "suggested_queries": ["Haw Par Villa Ten Courts of Hell", "Haw Par Villa Singapore statues"]
+      "headline": "A Tiger Balm fortune built a park full of hell",
+      "headline_es": "La fortuna del Tiger Balm construyó un parque lleno de infierno",
+      "body_html": "Tiger Balm tycoon <b>Aw Boon Haw</b> began Haw Par Villa in <b>1937</b>, naming it after himself and his brother Boon Par. Its <b>1,000+ statues</b> include the famous <b>Ten Courts of Hell</b>, which show the gruesome punishments awaiting sinners in Chinese folklore.",
+      "body_es": "El magnate del Tiger Balm <b>Aw Boon Haw</b> empezó Haw Par Villa en <b>1937</b> y la nombró por él y su hermano Boon Par. Entre sus <b>más de 1,000 estatuas</b> están los famosos <b>Diez Tribunales del Infierno</b>, que muestran los castigos que esperan a los pecadores según el folclor chino.",
+      "hook": "Built with the Tiger Balm fortune in 1937, Haw Par Villa shows sinners' punishments in its Ten Courts of Hell.",
+      "hook_es": "Construido en 1937 con la fortuna del Tiger Balm, Haw Par Villa muestra castigos en sus Diez Tribunales del Infierno.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Ten_Courts_of_Hell_5_(31754475940).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Tony Hisgett from Birmingham, UK",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Haw Par Villa Ten Courts of Hell",
+        "Haw Par Villa Singapore statues"
+      ]
     },
     {
       "slot": "fact6",
       "headline": "The world's tallest indoor waterfall is inside an airport",
       "headline_es": "La cascada interior más alta del mundo está dentro de un aeropuerto",
-      "body_html": "Jewel Changi Airport's <b>Rain Vortex</b>, opened in <b>2019</b>, sends recirculated rainwater crashing <b>40 metres</b> through the middle of the terminal — the world's tallest indoor waterfall, ringed by a terraced forest.",
-      "body_es": "El <b>Rain Vortex</b> del aeropuerto Jewel Changi, abierto en <b>2019</b>, hace caer agua de lluvia reciclada <b>40 metros</b> por el centro de la terminal — la cascada interior más alta del mundo, rodeada de un bosque en terrazas.",
-      "hook": "Jewel Changi Airport's Rain Vortex drops recirculated rainwater 40 metres through the terminal — the world's tallest indoor waterfall, inside an airport.",
-      "hook_es": "El Rain Vortex del aeropuerto Jewel Changi deja caer agua de lluvia reciclada 40 metros por la terminal — la cascada interior más alta del mundo.",
-      "candidates": [],
-      "suggested_queries": ["Jewel Changi Airport Rain Vortex", "Jewel Changi Airport waterfall interior"]
+      "body_html": "Jewel Changi Airport's <b>Rain Vortex</b>, opened in <b>2019</b>, drops recirculated rainwater <b>40 metres</b> from an opening in the glass roof, ringed by a terraced indoor forest. It's the world's tallest indoor waterfall.",
+      "body_es": "El <b>Rain Vortex</b> de Jewel Changi, abierto en <b>2019</b>, deja caer agua de lluvia reciclada <b>40 metros</b> desde una abertura en el techo de vidrio, rodeado de un bosque interior en terrazas. Es la cascada interior más alta del mundo.",
+      "hook": "Jewel Changi Airport's Rain Vortex pours recycled rainwater 40 metres down inside the airport: the world's tallest indoor waterfall.",
+      "hook_es": "El Rain Vortex del aeropuerto de Changi deja caer lluvia reciclada 40 metros: la cascada interior más alta del mundo.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:At_Jewel_Changi,_Singapore_2023_37.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Photograph by Mike Peel (www.mikepeel.net).",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Jewel Changi Airport Rain Vortex",
+        "Jewel Changi Airport waterfall interior"
+      ]
     },
     {
       "slot": "fact7",
-      "headline": "Chewing gum got banned here because of train doors, not litter",
-      "headline_es": "Aquí prohibieron el chicle por las puertas del tren, no por la basura",
-      "body_html": "Since <b>1992</b>, Singapore has banned the sale and import of ordinary chewing gum — not over litter, but because commuters kept jamming the doors of brand-new <b>MRT trains</b> with discarded gum.",
-      "body_es": "Desde <b>1992</b>, Singapur prohíbe la venta e importación de chicle común — no por la basura, sino porque los pasajeros atascaban las puertas de los trenes <b>MRT</b> nuevos con chicle desechado.",
-      "hook": "Since 1992 Singapore has banned selling or importing ordinary chewing gum, after commuters kept jamming brand-new MRT train doors with discarded gum.",
-      "hook_es": "Desde 1992 Singapur prohíbe vender o importar chicle común, después de que los pasajeros atascaran las puertas de trenes MRT nuevos con chicle.",
-      "candidates": [],
-      "suggested_queries": ["Singapore MRT train platform", "Singapore fine city sign chewing gum"]
+      "headline": "Gum on train doors got chewing gum banned here",
+      "headline_es": "El chicle en las puertas del metro hizo que lo prohibieran",
+      "body_html": "Since <b>1992</b> Singapore has banned the sale and import of chewing gum. A key trigger: vandals had stuck gum on the door sensors of the new <b>MRT trains</b>, stopping doors from closing and delaying service.",
+      "body_es": "Desde <b>1992</b> Singapur prohíbe la venta e importación de chicle. Un detonante clave: unos vándalos pegaron chicle en los sensores de las puertas de los trenes nuevos del <b>MRT</b>, que no cerraban y retrasaban el servicio.",
+      "hook": "Singapore banned selling chewing gum in 1992, after vandals stuck gum on MRT train door sensors and caused delays.",
+      "hook_es": "Singapur prohibió vender chicle en 1992, después de que vándalos lo pegaran en los sensores de las puertas del metro.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:SMRT_KHI_C151_0625.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "33Loading",
+          "note": "chosen"
+        }
+      ],
+      "suggested_queries": [
+        "Singapore MRT train platform",
+        "Singapore fine city sign chewing gum"
+      ]
     }
   ],
-  "cover_candidates": [],
-  "cover_suggested_queries": ["Singapore skyline Marina Bay dusk", "Singapore Marina Bay Sands aerial"]
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Skylines_of_the_Central_Business_District,_Singapore_at_dusk.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Basile Morin",
+      "note": "chosen"
+    }
+  ],
+  "cover_suggested_queries": [
+    "Singapore skyline Marina Bay dusk",
+    "Singapore Marina Bay Sands aerial"
+  ]
 }
