@@ -43,12 +43,22 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 40 | Sydney |
 | 41 | Sydney |
 | 43 | Singapore |
+| 44 | Hong Kong |
 
 ## Next batch
 
-**#44 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#45 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
+
+Note (2026-11-18, Hong Kong batch): drafted as #44 (no hong-kong.html page, no screen-hongkong-*
+screenshot — generic app screen used, flagged in draft.json). Photo candidates could not be
+sourced this run — commons.wikimedia.org is denied by this cloud session's network policy (see
+`photo_sourcing_note` in `carousel/drafts/hong-kong/draft.json`), the same recurring block as
+batches #8-#13, #28/#29, #30, #34, #36, #38 and #40/#41/#42/#43. All 7 facts were still verified
+via web search before writing. A future run with a person present (or Leandro himself) can approve
+Commons access via `update_environment`, or just source the photos by hand as happened for
+Seoul/Sydney/Singapore.
 
 Note (2026-11-18): same thing happened with Singapore — drafted as #42, the finisher sourced
 Commons photos, rendered both EN/ES sets and bumped it to **#43** (`batch.json`'s `badge_num`),
