@@ -44,10 +44,11 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 41 | Sydney |
 | 43 | Singapore |
 | 44 | Hong Kong |
+| 45 | Hong Kong |
 
 ## Next batch
 
-**#45 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#46 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
 

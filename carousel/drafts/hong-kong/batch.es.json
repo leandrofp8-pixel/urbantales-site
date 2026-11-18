@@ -1,0 +1,39 @@
+{
+ "badge_num": 45,
+ "city": "HONG KONG",
+ "flag": "🇭🇰",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "¿Cuál de estos 7 secretos de Hong Kong no conocías? Comenta el número 👇\n\n1. Peak Tram\nInaugurado en 1888, el Peak Tram fue el primer funicular de Asia y funcionó con una máquina de vapor hasta 1926. La subida a Victoria Peak es tan empinada que los rascacielos de afuera parecen inclinarse, una ilusión óptica que han estudiado científicos.\n\n2. Star Ferry\nEl Star Ferry cruza la bahía de Victoria desde la década de 1880, y National Geographic Traveler incluyó el viaje entre sus 50 lugares imperdibles, por una tarifa de apenas unas monedas.\n\n3. Buda Tian Tan\nTerminado en 1993, el Buda Tian Tan, de bronce y 34 metros, se alza en la isla de Lantau sobre una base inspirada en el Templo del Cielo de Beijing. Para llegar hay que subir 268 escalones.\n\n4. Escaleras mecánicas Central-Mid-Levels\nLas escaleras mecánicas Central-Mid-Levels de Hong Kong recorren más de 800 metros cuesta arriba: uno de los sistemas de escaleras cubiertas al aire libre más largos del mundo. Funcionan hacia abajo en la hora pico de la mañana y luego cambian para llevar a todos hacia arriba hasta la medianoche.\n\n5. Convento Chi Lin\nReconstruido en los años 90 con estilo de la dinastía Tang, el convento Chi Lin sostiene sus salones de madera con ensambles entrelazados tallados en la madera, sin un solo clavo.\n\n6. Templo Man Mo\nConstruido en la década de 1840 para los dioses de la literatura y la guerra, el templo Man Mo cuelga del techo enormes espirales de incienso, y cada una puede seguir ardiendo durante semanas.\n\n7. Puente Hong Kong-Zhuhai-Macao\nInaugurado en 2018, el puente Hong Kong-Zhuhai-Macao recorre 55 kilómetros sobre el delta del río de las Perlas, con un túnel de 6.7 kilómetros bajo el mar para que los barcos sigan pasando por arriba.\n\n.\n.\n.\n#HongKong #Asia #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "En este tranvía, los rascacielos parecen inclinarse",
+   "hook": "En el primer funicular de Asia, inaugurado en 1888, la subida es tan empinada que los rascacielos parecen inclinarse."
+  },
+  {
+   "headline": "Unas monedas pagan uno de los 50 lugares imperdibles del mundo",
+   "hook": "Activo desde la década de 1880, el Star Ferry figura entre los 50 lugares imperdibles de National Geographic Traveler."
+  },
+  {
+   "headline": "268 escalones llevan hasta este gigante de bronce en Lantau",
+   "hook": "El Buda Tian Tan de Lantau, de bronce y 34 metros, espera en lo alto de 268 escalones desde 1993."
+  },
+  {
+   "headline": "Esta escalera mecánica de 800 metros cambia de sentido cada mañana",
+   "hook": "Las escaleras de Mid-Levels, de 800 metros, bajan en la hora pico matutina y después cambian de sentido para subir."
+  },
+  {
+   "headline": "Este complejo de estilo Tang no usa un solo clavo",
+   "hook": "Reconstruido con estilo Tang en los años 90, el convento Chi Lin sostiene salones de madera sin un solo clavo."
+  },
+  {
+   "headline": "Enormes espirales de incienso arden por semanas sobre los fieles",
+   "hook": "Desde la década de 1840, el templo Man Mo cuelga del techo espirales de incienso que arden durante semanas."
+  },
+  {
+   "headline": "Un puente de 55 kilómetros se sumerge en un túnel submarino",
+   "hook": "El puente Hong Kong-Zhuhai-Macao, de 55 kilómetros, se sumerge en un túnel submarino de 6.7 kilómetros para dejar pasar barcos."
+  }
+ ],
+ "lang": "es"
+}
