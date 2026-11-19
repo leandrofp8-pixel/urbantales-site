@@ -1,0 +1,176 @@
+{
+ "slug": "days-madrid",
+ "landmark": "Madrid · 2 days",
+ "city": "Madrid",
+ "series": "days",
+ "story": "Madrid in 2 days from the app's real plan: royal Madrid from San Ginés to the Royal Palace, ending at sunset at the Temple of Debod, then Retiro, the Prado and the Reina Sofía (closed Tuesdays)",
+ "sources": [
+  "https://museoreinasofia.es/en/visit/opening-times/",
+  "https://www.lonelyplanet.com/spain/madrid/attractions/templo-de-debod/a/poi-sig/1094863/360770",
+  "https://theculturetrip.com/spain/articles/awe-inspiring-places-in-madrid-to-watch-the-sunset",
+  "https://www.pexels.com/video/gran-via-traffic-scene-in-madrid-39417077/",
+  "https://www.pexels.com/video/gran-via-s-iconic-metropolis-building-scene-39417079/",
+  "https://www.pexels.com/video/video-of-building-facade-4243921/",
+  "https://www.pexels.com/video/bustling-plaza-mayor-in-madrid-spain-34653197/",
+  "https://www.pexels.com/video/madrid-palace-in-summer-27650881/",
+  "https://www.pexels.com/video/video-of-people-walking-in-front-of-a-building-4243912/",
+  "https://www.pexels.com/video/madrid-4243914/",
+  "https://www.pexels.com/video/aerial-footage-of-a-big-city-7069320/",
+  "https://www.pexels.com/video/cloud-over-pond-in-retiro-park-10808458/",
+  "https://www.pexels.com/video/architecture-of-retiro-park-in-madrid-10808460/",
+  "https://www.pexels.com/video/time-lapse-of-madrid-s-puerta-de-alcala-29732320/",
+  "https://www.pexels.com/video/traffic-around-puerta-de-alcala-in-madrid-37592771/",
+  "https://www.pexels.com/video/elegant-architecture-of-museo-del-prado-gardens-34649061/",
+  "https://www.pexels.com/video/madrid-park-timelapse-with-pedestrian-activity-37673244/",
+  "https://www.pexels.com/video/statue-surrounded-by-blooming-flowers-in-autumn-41047896/"
+ ],
+ "week": "2026-11-18",
+ "created": "2026-11-19T03:48",
+ "media_sha": "b179b567f5ea604d15a506c390bf998071e0c8e4",
+ "ig_lang": "es",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/b179b567f5ea604d15a506c390bf998071e0c8e4/reels/days-madrid-en.mp4",
+  "caption": "Most people see Madrid in the wrong order. Which day would you swap? 👇\n\nTwo days that beat the crowds: the old royal centre ending at sunset at the Temple of Debod, then Retiro, the Prado and the Reina Sofía (never on a Tuesday, when it's closed).\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#madrid #madriditinerary #spaintravel #traveltips #urbantales"
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/beef9baaa94bdf255bc7427674fa2bb32a7bc5d1/reels/days-madrid-es.mp4",
+  "caption": "La mayoría recorre Madrid en el orden equivocado. ¿Qué día cambiarías? 👇\n\nDos días para ganarle a las multitudes: el centro real hasta el atardecer en el Templo de Debod, y luego el Retiro, el Prado y el Reina Sofía (nunca en martes, porque cierra).\n\n¿Lo quieres para tus fechas y tu ritmo? Urban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas. Link en la bio.\n.\n.\n.\n#madrid #viajeaespaña #tipsdeviaje #itinerario #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-7069320.mp4",
+   "url": "https://www.pexels.com/video/aerial-footage-of-a-big-city-7069320/",
+   "author": "Oleg Khudyakov",
+   "w": 1366,
+   "h": 720,
+   "dur": 10,
+   "query": "Madrid aerial city"
+  },
+  {
+   "file": "pexels-34653197.mp4",
+   "url": "https://www.pexels.com/video/bustling-plaza-mayor-in-madrid-spain-34653197/",
+   "author": "Jovana De Obaldia",
+   "w": 720,
+   "h": 1280,
+   "dur": 42,
+   "query": "Plaza Mayor Madrid"
+  },
+  {
+   "file": "pexels-4243921.mp4",
+   "url": "https://www.pexels.com/video/video-of-building-facade-4243921/",
+   "author": "Philippe WEICKMANN",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Plaza Mayor Madrid"
+  },
+  {
+   "file": "pexels-27650881.mp4",
+   "url": "https://www.pexels.com/video/madrid-palace-in-summer-27650881/",
+   "author": "Steven HAuse",
+   "w": 1280,
+   "h": 720,
+   "dur": 60,
+   "query": "Almudena Cathedral"
+  },
+  {
+   "file": "pexels-4243912.mp4",
+   "url": "https://www.pexels.com/video/video-of-people-walking-in-front-of-a-building-4243912/",
+   "author": "Philippe WEICKMANN",
+   "w": 1280,
+   "h": 720,
+   "dur": 36,
+   "query": "Royal Palace Madrid"
+  },
+  {
+   "file": "pexels-4243914.mp4",
+   "url": "https://www.pexels.com/video/madrid-4243914/",
+   "author": "Philippe WEICKMANN",
+   "w": 1280,
+   "h": 720,
+   "dur": 23,
+   "query": "Royal Palace Madrid"
+  },
+  {
+   "file": "pexels-10808458.mp4",
+   "url": "https://www.pexels.com/video/cloud-over-pond-in-retiro-park-10808458/",
+   "author": "Lazar Krstić",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Retiro Park Madrid"
+  },
+  {
+   "file": "pexels-41047896.mp4",
+   "url": "https://www.pexels.com/video/statue-surrounded-by-blooming-flowers-in-autumn-41047896/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 5,
+   "query": "Retiro Park Madrid"
+  },
+  {
+   "file": "pexels-10808460.mp4",
+   "url": "https://www.pexels.com/video/architecture-of-retiro-park-in-madrid-10808460/",
+   "author": "Lazar Krstić",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "Retiro Park Madrid"
+  },
+  {
+   "file": "pexels-37592771.mp4",
+   "url": "https://www.pexels.com/video/traffic-around-puerta-de-alcala-in-madrid-37592771/",
+   "author": "Paul Bredt",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Puerta de Alcala"
+  },
+  {
+   "file": "pexels-29732320.mp4",
+   "url": "https://www.pexels.com/video/time-lapse-of-madrid-s-puerta-de-alcala-29732320/",
+   "author": "La Doncella Audiovisual",
+   "w": 1280,
+   "h": 720,
+   "dur": 4,
+   "query": "Puerta de Alcala"
+  },
+  {
+   "file": "pexels-34649061.mp4",
+   "url": "https://www.pexels.com/video/elegant-architecture-of-museo-del-prado-gardens-34649061/",
+   "author": "Jovana De Obaldia",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Prado Museum Madrid"
+  },
+  {
+   "file": "pexels-37673244.mp4",
+   "url": "https://www.pexels.com/video/madrid-park-timelapse-with-pedestrian-activity-37673244/",
+   "author": "Rob Gonzalez",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Prado Museum Madrid"
+  },
+  {
+   "file": "pexels-39417079.mp4",
+   "url": "https://www.pexels.com/video/gran-via-s-iconic-metropolis-building-scene-39417079/",
+   "author": "Narli's Journey Book",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Gran Via Madrid"
+  },
+  {
+   "file": "pexels-39417077.mp4",
+   "url": "https://www.pexels.com/video/gran-via-traffic-scene-in-madrid-39417077/",
+   "author": "Narli's Journey Book",
+   "w": 720,
+   "h": 1280,
+   "dur": 22,
+   "query": "Gran Via Madrid"
+  }
+ ]
+}

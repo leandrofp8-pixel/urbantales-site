@@ -2,7 +2,7 @@
 
 > Urban Tales is a GPS audio guide app for iPhone and Android. As you walk through a city, it plays the hidden
 > stories, history and legends of the landmarks around you, automatically, in English, Spanish, Portuguese,
-> French or German. It works in any city worldwide, with no tour group, schedule or ticket.
+> French, German, Italian, Japanese or Korean. It works in any city worldwide, with no tour group, schedule or ticket.
 
 - How it works: open the app and walk. Nearby landmarks appear on the map and their stories play as you get close
   (Pocket Mode keeps playing with the phone locked in your pocket). You can also build a walking tour of a city in
@@ -166,6 +166,7 @@
 - [Why Eva Perón's Body Was Hidden for 16 Years | The Wander Log](https://urbantales.net/blog-eva-peron-body-recoleta-cemetery-history.html): Eva Perón died in 1952. Her embalmed body then vanished for 16 years — smuggled to Italy under a false name before finally resting at Recoleta Cemetery.
 - [A Self-Guided Edinburgh Christmas Walk | The Wander Log](https://urbantales.net/blog-edinburgh-christmas-market-castle-walk.html): Edinburgh's Christmas market opens this week in Princes Street Gardens. A self-guided Edinburgh Christmas walk from the Scott Monument up through the market to the Castle gates.
 - [Sagrada Família's 136 Years Without a Permit | The Wander Log](https://urbantales.net/blog-sagrada-familia-building-permit-history.html): Sagrada Família's tower reached its final height in February 2026 — 136 of its 144 years under construction passed without a building permit.
+- [A Self-Guided Lyon Walk for the Fête des Lumières | The Wander Log](https://urbantales.net/blog-lyon-fete-des-lumieres-fourviere-walk.html): Lyon's Fête des Lumières runs December 5–8, 2026. A self-guided Lyon walk from Vieux Lyon's hidden traboules up to Fourvière, where the candle tradition began in 1852.
 - [The Secret History of Athens's Panathenaic Stadium | The Wander Log](https://urbantales.net/blog-athens-panathenaic-stadium-secret-history.html): Athens's Panathenaic Stadium sat buried for centuries before a shipping fortune rebuilt it in marble — and gave the first modern marathon its finish line.
 - [A Self-Guided Monserrat & San Telmo Walk | The Wander Log](https://urbantales.net/blog-monserrat-san-telmo-noche-museos-walk.html): A self-guided walk through Monserrat and San Telmo, Buenos Aires's oldest blocks — and the one night a year every door there opens for free.
 - [Where the Word "Ghetto" Actually Came From | The Wander Log](https://urbantales.net/blog-venice-ghetto-word-origin-history.html): The word 'ghetto' wasn't a slur to start — it was Venetian dialect for a foundry. Here's the Venice Ghetto history behind the island that coined it in 1516.

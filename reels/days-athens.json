@@ -1,0 +1,207 @@
+{
+ "slug": "days-athens",
+ "landmark": "Athens · 2 days",
+ "city": "Athens",
+ "series": "days",
+ "story": "Athens in 2 days from the app's real plan: the Acropolis on the 8 a.m. timed slot before the cruise groups, then the museum, Olympian Zeus and the marble Panathenaic Stadium; day two the Agora, Monastiraki and Philopappos Hill at sunset",
+ "sources": [
+  "https://www.frommers.com/blogs/passportable/acropolis-tickets-athens-landmark-joins-list-of-attractions-you-must-prebook/",
+  "https://www.earthtrekkers.com/how-to-visit-the-acropolis-parthenon-in-athens/",
+  "https://www.lonelyplanet.com/articles/acropolis-visitor-cap",
+  "https://thirdeyetraveller.com/filopappou-hill-philopappos-athens/",
+  "https://www.pexels.com/video/stunning-aerial-footage-of-athens-acropolis-32388963/",
+  "https://www.pexels.com/video/aerial-view-of-athens-cityscape-with-hills-37903918/",
+  "https://www.pexels.com/video/athens-greece-acropolis-drone-footage-19772913/",
+  "https://www.pexels.com/video/parthenon-of-athens-27374638/",
+  "https://www.pexels.com/video/ancient-parthenon-columns-under-sunny-sky-38045858/",
+  "https://www.pexels.com/video/tourists-exploring-the-ancient-parthenon-37250903/",
+  "https://www.pexels.com/video/explore-the-ancient-ruins-of-athens-37902213/",
+  "https://www.pexels.com/video/elegant-view-of-the-parthenon-in-athens-38087404/",
+  "https://www.pexels.com/video/aerial-view-of-athens-with-acropolis-37903900/",
+  "https://www.pexels.com/video/drone-footage-of-ancient-building-on-mounta-11615359/",
+  "https://www.pexels.com/video/aerial-view-of-iconic-panathenaic-stadium-in-athens-29852114/",
+  "https://www.pexels.com/video/aerial-view-of-athens-cityscape-and-landmarks-29852116/",
+  "https://www.pexels.com/video/aerial-view-of-temple-of-hephaestus-in-athens-29852115/",
+  "https://www.pexels.com/video/traveling-travel-traveler-adventure-14385573/",
+  "https://www.pexels.com/video/athens-aerial-view-with-acropolis-37897345/",
+  "https://www.pexels.com/video/sunny-plaza-with-birds-and-historic-architecture-37807400/",
+  "https://www.pexels.com/video/aerial-view-of-athens-cityscape-on-a-sunny-day-37903889/",
+  "https://www.pexels.com/video/drone-footage-of-the-acropolis-of-athens-15171884/"
+ ],
+ "week": "2026-11-19",
+ "created": "2026-11-19T04:33",
+ "media_sha": "fbbc6c3a460d840231c7aec3ae80aab79cb5dc1d",
+ "ig_lang": "en",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/fbbc6c3a460d840231c7aec3ae80aab79cb5dc1d/reels/days-athens-en.mp4",
+  "caption": "Most people see Athens in the wrong order. Which day would you swap? 👇\n\nTwo days that beat the crowds: the Acropolis on the 8 a.m. timed slot, before the cruise groups, and Philopappos Hill at sunset for one of the best views of it.\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#athens #athensitinerary #greecetravel #traveltips #urbantales"
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/fbbc6c3a460d840231c7aec3ae80aab79cb5dc1d/reels/days-athens-es.mp4",
+  "caption": "La mayoría recorre Atenas en el orden equivocado. ¿Qué día cambiarías? 👇\n\nDos días para ganarle a las multitudes: la Acrópolis en el horario de las 8, antes de los grupos de cruceros, y la colina de Filopapo al atardecer, con una de las mejores vistas de la Acrópolis.\n\n¿Lo quieres para tus fechas y tu ritmo? Urban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas. Link en la bio.\n.\n.\n.\n#atenas #viajeagrecia #tipsdeviaje #itinerario #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-37903889.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-athens-cityscape-on-a-sunny-day-37903889/",
+   "author": "K",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Athens aerial city"
+  },
+  {
+   "file": "pexels-32388963.mp4",
+   "url": "https://www.pexels.com/video/stunning-aerial-footage-of-athens-acropolis-32388963/",
+   "author": "Ekaterina Rodina",
+   "w": 1280,
+   "h": 720,
+   "dur": 64,
+   "query": "Athens aerial city"
+  },
+  {
+   "file": "pexels-37903918.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-athens-cityscape-with-hills-37903918/",
+   "author": "K",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Athens aerial city"
+  },
+  {
+   "file": "pexels-27374638.mp4",
+   "url": "https://www.pexels.com/video/parthenon-of-athens-27374638/",
+   "author": "Aaron Hairston",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Acropolis Parthenon"
+  },
+  {
+   "file": "pexels-37250903.mp4",
+   "url": "https://www.pexels.com/video/tourists-exploring-the-ancient-parthenon-37250903/",
+   "author": "Olga Kobylko",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Acropolis Parthenon"
+  },
+  {
+   "file": "pexels-19772913.mp4",
+   "url": "https://www.pexels.com/video/athens-greece-acropolis-drone-footage-19772913/",
+   "author": "Cam Savalan",
+   "w": 1280,
+   "h": 720,
+   "dur": 27,
+   "query": "Acropolis Museum"
+  },
+  {
+   "file": "pexels-37902213.mp4",
+   "url": "https://www.pexels.com/video/explore-the-ancient-ruins-of-athens-37902213/",
+   "author": "Angie Angela",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Acropolis Museum"
+  },
+  {
+   "file": "pexels-29852114.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-iconic-panathenaic-stadium-in-athens-29852114/",
+   "author": "Jack Mulhern",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Panathenaic Stadium"
+  },
+  {
+   "file": "pexels-37903900.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-athens-with-acropolis-37903900/",
+   "author": "K",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Panathenaic Stadium"
+  },
+  {
+   "file": "pexels-38087404.mp4",
+   "url": "https://www.pexels.com/video/elegant-view-of-the-parthenon-in-athens-38087404/",
+   "author": "K",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Temple of Hephaestus"
+  },
+  {
+   "file": "pexels-14385573.mp4",
+   "url": "https://www.pexels.com/video/traveling-travel-traveler-adventure-14385573/",
+   "author": "Airam Dato-on",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Ancient Agora Athens"
+  },
+  {
+   "file": "pexels-11615359.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-ancient-building-on-mounta-11615359/",
+   "author": "Alex pantazis",
+   "w": 1280,
+   "h": 720,
+   "dur": 52,
+   "query": "Ancient Agora Athens"
+  },
+  {
+   "file": "pexels-29852115.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-temple-of-hephaestus-in-athens-29852115/",
+   "author": "Jack Mulhern",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Ancient Agora Athens"
+  },
+  {
+   "file": "pexels-37807400.mp4",
+   "url": "https://www.pexels.com/video/sunny-plaza-with-birds-and-historic-architecture-37807400/",
+   "author": "Doğan Alpaslan  Demir",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Monastiraki Square"
+  },
+  {
+   "file": "pexels-37897345.mp4",
+   "url": "https://www.pexels.com/video/athens-aerial-view-with-acropolis-37897345/",
+   "author": "Angie Angela",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Monastiraki Square"
+  },
+  {
+   "file": "pexels-29852116.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-athens-cityscape-and-landmarks-29852116/",
+   "author": "Jack Mulhern",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "Philopappos Hill"
+  },
+  {
+   "file": "pexels-38045858.mp4",
+   "url": "https://www.pexels.com/video/ancient-parthenon-columns-under-sunny-sky-38045858/",
+   "author": "K",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "Olympieion Athens"
+  },
+  {
+   "file": "pexels-15171884.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-the-acropolis-of-athens-15171884/",
+   "author": "Matheus Bertelli",
+   "w": 1280,
+   "h": 720,
+   "dur": 49,
+   "query": "Acropolis sunset view"
+  }
+ ]
+}
