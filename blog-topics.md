@@ -48,6 +48,9 @@ already in this repo, so the post's CTAs and internal links can point to it.
 
 | Type | City | Angle |
 |---|---|---|
+| City Guide | Prague | Prague Christmas markets walk: from Old Town Square's astronomical clock to Wenceslas Square (Scout 19 Nov: The main markets open Nov 28 and run until Jan 6 (https://www.expats.cz/czech-news/article/prague-christmas-markets-2026-when-they-open-and-where-to-go).) |
+| City Guide | Seoul | Seoul Lantern Festival: the story of Cheonggyecheon, the stream that replaced a highway, and a walk from Cheonggye Plaza (Scout 19 Nov: The festival runs Dec 11–Jan 31 along the stream (https://koreaexperience.com/blog/seoul-lantern-festival-2026-planning-guide).) |
+| Hidden Story | Madrid | Las 12 uvas de la Puerta del Sol: la historia del reloj de Madrid y un paseo de Nochevieja de Cibeles a Sol (Scout 19 Nov: The Christmas lights are on from Nov 21, Cibeles restoration visits run until Dec 13 (https://www.libertaddigital.com/madrid/2026-11-10/como-visitar-desde-dentro-la-restauracion-de-la-fuente-de-cibeles-7488868/), and the grapes are on Dec 31.) |
 
 The formal Queue is still empty. One "Scout" row remains mis-filed above, with no post written yet: Lyon (City Guide — Fête des Lumières walk, Dec 5–8, 2026). Budapest (City Guide — Christmas market walk) was dropped from the list after sitting unconfirmed for two runs; as of 2026-10-28, independent sources mostly converged on a mid-November open (several cite Nov 13, one Nov 15) through Dec 31/Jan 1 for both Vörösmarty Square and the St. Stephen's Basilica market, but the two official sites (vorosmartyclassicxmas.hu, adventbazilika.hu) weren't cited as confirming an exact date — if it comes up again, either wait for official confirmation or use vaguer "mid-November" phrasing.
 
