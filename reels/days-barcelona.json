@@ -1,0 +1,226 @@
+{
+ "slug": "days-barcelona",
+ "landmark": "Barcelona · 3 days",
+ "city": "Barcelona",
+ "series": "days",
+ "story": "Barcelona in 3 days from the app's real plan: Gaudí in the centre (Sagrada Família tickets online only, timed), the northern hills with Park Güell (timed ticket) and the Turó de la Rovira bunkers, then Montjuïc (not Monday: Miró Foundation closed)",
+ "sources": [
+  "https://sagradafamilia.org/en/faqs",
+  "https://parkguell.barcelona/en/buy-tickets",
+  "https://fmirobcn.org/en/accessibility",
+  "https://www.pexels.com/video/aerial-shot-of-city-3143827/",
+  "https://www.pexels.com/video/barcelona-15431566/",
+  "https://www.pexels.com/video/sagrada-familia-27866560/",
+  "https://www.pexels.com/video/majestic-view-of-basilica-de-la-sagrada-familia-30016722/",
+  "https://www.pexels.com/video/the-sagrada-familia-cathedral-in-barcelona-spain-15499203/",
+  "https://www.pexels.com/video/la-pedrera-barcelona-19996641/",
+  "https://www.pexels.com/video/house-exterior-decorated-with-flowers-7809665/",
+  "https://www.pexels.com/video/barcelona-20066592/",
+  "https://www.pexels.com/video/exploring-barcelona-cathedral-s-vibrant-courtyard-30249661/",
+  "https://www.pexels.com/video/drone-footage-of-buildings-occupying-blocks-of-properties-in-a-city-3143890/",
+  "https://www.pexels.com/video/view-of-park-guell-in-barcelona-spain-35117583/",
+  "https://www.pexels.com/video/park-guell-s-iconic-stone-structures-35103099/",
+  "https://www.pexels.com/video/aerial-view-of-barcelona-s-park-guell-at-sunset-35117564/",
+  "https://www.pexels.com/video/people-on-the-mountain-view-deck-overlooking-the-city-7293146/",
+  "https://www.pexels.com/video/scenic-view-of-barcelona-cityscape-36690392/",
+  "https://www.pexels.com/video/exploring-montjuic-castle-views-in-barcelona-30054848/",
+  "https://www.pexels.com/video/vertical-video-of-museu-nacional-d-art-de-catalunya-sunset-20204265/",
+  "https://www.pexels.com/video/stunning-exterior-of-national-art-museum-barcelona-36690389/",
+  "https://www.pexels.com/video/majestic-view-of-montjuic-steps-in-barcelona-36690387/",
+  "https://www.pexels.com/video/fountains-on-plaza-in-city-13698302/"
+ ],
+ "week": "2026-11-18",
+ "created": "2026-11-19T03:48",
+ "media_sha": "b179b567f5ea604d15a506c390bf998071e0c8e4",
+ "ig_lang": "es",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/b179b567f5ea604d15a506c390bf998071e0c8e4/reels/days-barcelona-en.mp4",
+  "caption": "Most people see Barcelona in the wrong order. Which day would you swap? 👇\n\nThree days that beat the crowds: Sagrada Família booked ahead (tickets are online only, with timed entry), Park Güell's monumental zone on a timed ticket, and Montjuïc on any day but Monday, when the Miró Foundation is closed.\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#barcelona #barcelonaitinerary #spaintravel #traveltips #urbantales"
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/b179b567f5ea604d15a506c390bf998071e0c8e4/reels/days-barcelona-es.mp4",
+  "caption": "La mayoría recorre Barcelona en el orden equivocado. ¿Qué día cambiarías? 👇\n\nTres días para ganarle a las multitudes: la Sagrada Familia con reserva (las entradas solo se venden en línea y con horario), el Park Güell con boleto con horario, y Montjuïc cualquier día menos el lunes, cuando cierra la Fundación Miró.\n\n¿Lo quieres para tus fechas y tu ritmo? Urban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas. Link en la bio.\n.\n.\n.\n#barcelona #viajeaespaña #tipsdeviaje #itinerario #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-3143890.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-buildings-occupying-blocks-of-properties-in-a-city-3143890/",
+   "author": "Ricky Esquivel",
+   "w": 1282,
+   "h": 720,
+   "dur": 26,
+   "query": "Barcelona aerial city"
+  },
+  {
+   "file": "pexels-15431566.mp4",
+   "url": "https://www.pexels.com/video/barcelona-15431566/",
+   "author": "Mylo Kaye",
+   "w": 1280,
+   "h": 720,
+   "dur": 18,
+   "query": "Barcelona aerial city"
+  },
+  {
+   "file": "pexels-3143827.mp4",
+   "url": "https://www.pexels.com/video/aerial-shot-of-city-3143827/",
+   "author": "Ricky Esquivel",
+   "w": 1282,
+   "h": 720,
+   "dur": 51,
+   "query": "Barcelona aerial city"
+  },
+  {
+   "file": "pexels-30016722.mp4",
+   "url": "https://www.pexels.com/video/majestic-view-of-basilica-de-la-sagrada-familia-30016722/",
+   "author": "Ifeyinka Adeyemo",
+   "w": 720,
+   "h": 1280,
+   "dur": 28,
+   "query": "Sagrada Familia"
+  },
+  {
+   "file": "pexels-27866560.mp4",
+   "url": "https://www.pexels.com/video/sagrada-familia-27866560/",
+   "author": "LUCIA CUELLAR*DEANDA",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Sagrada Familia"
+  },
+  {
+   "file": "pexels-15499203.mp4",
+   "url": "https://www.pexels.com/video/the-sagrada-familia-cathedral-in-barcelona-spain-15499203/",
+   "author": "Naoufel Bouazizi",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Sagrada Familia"
+  },
+  {
+   "file": "pexels-19996641.mp4",
+   "url": "https://www.pexels.com/video/la-pedrera-barcelona-19996641/",
+   "author": "La Doncella Audiovisual",
+   "w": 1280,
+   "h": 720,
+   "dur": 20,
+   "query": "Casa Mila La Pedrera"
+  },
+  {
+   "file": "pexels-7809665.mp4",
+   "url": "https://www.pexels.com/video/house-exterior-decorated-with-flowers-7809665/",
+   "author": "Dario Fernandez Ruz",
+   "w": 720,
+   "h": 1280,
+   "dur": 29,
+   "query": "Casa Batllo"
+  },
+  {
+   "file": "pexels-20066592.mp4",
+   "url": "https://www.pexels.com/video/barcelona-20066592/",
+   "author": "Rasmus Almqvist",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Placa de Catalunya"
+  },
+  {
+   "file": "pexels-30249661.mp4",
+   "url": "https://www.pexels.com/video/exploring-barcelona-cathedral-s-vibrant-courtyard-30249661/",
+   "author": "Tamas Babai",
+   "w": 1280,
+   "h": 720,
+   "dur": 17,
+   "query": "Barcelona Cathedral Gothic Quarter"
+  },
+  {
+   "file": "pexels-35117564.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-barcelona-s-park-guell-at-sunset-35117564/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Park Guell"
+  },
+  {
+   "file": "pexels-35117583.mp4",
+   "url": "https://www.pexels.com/video/view-of-park-guell-in-barcelona-spain-35117583/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Park Guell"
+  },
+  {
+   "file": "pexels-35103099.mp4",
+   "url": "https://www.pexels.com/video/park-guell-s-iconic-stone-structures-35103099/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Park Guell"
+  },
+  {
+   "file": "pexels-7293146.mp4",
+   "url": "https://www.pexels.com/video/people-on-the-mountain-view-deck-overlooking-the-city-7293146/",
+   "author": "Rubén Sey",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Bunkers del Carmel Barcelona"
+  },
+  {
+   "file": "pexels-36690389.mp4",
+   "url": "https://www.pexels.com/video/stunning-exterior-of-national-art-museum-barcelona-36690389/",
+   "author": "Marc Barcelona",
+   "w": 720,
+   "h": 1280,
+   "dur": 30,
+   "query": "Montjuic castle"
+  },
+  {
+   "file": "pexels-36690387.mp4",
+   "url": "https://www.pexels.com/video/majestic-view-of-montjuic-steps-in-barcelona-36690387/",
+   "author": "Marc Barcelona",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Montjuic castle"
+  },
+  {
+   "file": "pexels-20204265.mp4",
+   "url": "https://www.pexels.com/video/vertical-video-of-museu-nacional-d-art-de-catalunya-sunset-20204265/",
+   "author": "ed1toR ㅤ",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "MNAC Barcelona"
+  },
+  {
+   "file": "pexels-13698302.mp4",
+   "url": "https://www.pexels.com/video/fountains-on-plaza-in-city-13698302/",
+   "author": "Eng Ibrahim Wetti",
+   "w": 1280,
+   "h": 720,
+   "dur": 100,
+   "query": "Magic Fountain Montjuic"
+  },
+  {
+   "file": "pexels-36690392.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-barcelona-cityscape-36690392/",
+   "author": "Marc Barcelona",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Montjuic Barcelona"
+  },
+  {
+   "file": "pexels-30054848.mp4",
+   "url": "https://www.pexels.com/video/exploring-montjuic-castle-views-in-barcelona-30054848/",
+   "author": "Tamas Babai",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Montjuic Barcelona"
+  }
+ ]
+}
