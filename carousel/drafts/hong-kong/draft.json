@@ -1,0 +1,148 @@
+{
+  "badge_num": 45,
+  "city": "HONG KONG",
+  "flag": "🇭🇰",
+  "cta_screenshot": "screen-generic-narration-style.png",
+  "cta_screenshot_note": "No Hong Kong map screenshot in the repo (no screen-hongkong-*-map.png file, and no hong-kong.html landing page either); using the generic app screen per GUIDELINES.md.",
+  "style": "minimal",
+  "photo_sourcing_blocked": false,
+  "caption": "Which of these 7 Hong Kong secrets didn't you know? Comment the number 👇\n\n1. Peak Tram\nOpened in 1888, the Peak Tram was Asia's first funicular, hauled by a steam engine until 1926. The climb to Victoria Peak is so steep that the skyscrapers outside seem to lean sideways, an optical illusion scientists have studied.\n\n2. Star Ferry\nThe Star Ferry has crossed Victoria Harbour since the 1880s, and National Geographic Traveler named the ride one of its 50 places of a lifetime, for a fare of just a few coins.\n\n3. Tian Tan Buddha\nCompleted in 1993, the 34-metre bronze Tian Tan Buddha sits atop Lantau Island on a base modeled on Beijing's Temple of Heaven. Reaching it means climbing 268 steps.\n\n4. Central-Mid-Levels Escalator\nHong Kong's Central-Mid-Levels Escalator runs over 800 metres up the hillside, one of the longest outdoor covered escalator systems in the world. It runs downhill during the morning rush hour, then switches to carry everyone uphill until midnight.\n\n5. Chi Lin Nunnery\nRebuilt in the 1990s in Tang-dynasty style, Chi Lin Nunnery's wooden halls are held together by interlocking joints cut into the timber, without a single nail.\n\n6. Man Mo Temple\nBuilt in the 1840s for the gods of literature and war, Man Mo Temple hangs giant spiral incense coils from its ceiling, and each one can keep burning for weeks.\n\n7. Hong Kong-Zhuhai-Macau Bridge\nOpened in 2018, the Hong Kong-Zhuhai-Macau Bridge stretches 55 kilometres across the Pearl River Delta, including a 6.7-kilometre tunnel under the sea so ships can still pass overhead.\n\n.\n.\n.\n#HongKong #HongKongTravel #TravelFacts #PeakTram #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Hong Kong no conocías? Comenta el número 👇\n\n1. Peak Tram\nInaugurado en 1888, el Peak Tram fue el primer funicular de Asia y funcionó con una máquina de vapor hasta 1926. La subida a Victoria Peak es tan empinada que los rascacielos de afuera parecen inclinarse, una ilusión óptica que han estudiado científicos.\n\n2. Star Ferry\nEl Star Ferry cruza la bahía de Victoria desde la década de 1880, y National Geographic Traveler incluyó el viaje entre sus 50 lugares imperdibles, por una tarifa de apenas unas monedas.\n\n3. Buda Tian Tan\nTerminado en 1993, el Buda Tian Tan, de bronce y 34 metros, se alza en la isla de Lantau sobre una base inspirada en el Templo del Cielo de Beijing. Para llegar hay que subir 268 escalones.\n\n4. Escaleras mecánicas Central-Mid-Levels\nLas escaleras mecánicas Central-Mid-Levels de Hong Kong recorren más de 800 metros cuesta arriba: uno de los sistemas de escaleras cubiertas al aire libre más largos del mundo. Funcionan hacia abajo en la hora pico de la mañana y luego cambian para llevar a todos hacia arriba hasta la medianoche.\n\n5. Convento Chi Lin\nReconstruido en los años 90 con estilo de la dinastía Tang, el convento Chi Lin sostiene sus salones de madera con ensambles entrelazados tallados en la madera, sin un solo clavo.\n\n6. Templo Man Mo\nConstruido en la década de 1840 para los dioses de la literatura y la guerra, el templo Man Mo cuelga del techo enormes espirales de incienso, y cada una puede seguir ardiendo durante semanas.\n\n7. Puente Hong Kong-Zhuhai-Macao\nInaugurado en 2018, el puente Hong Kong-Zhuhai-Macao recorre 55 kilómetros sobre el delta del río de las Perlas, con un túnel de 6.7 kilómetros bajo el mar para que los barcos sigan pasando por arriba.\n\n.\n.\n.\n#HongKong #Asia #DatosCuriosos #Viajes #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Ride this tram and the skyscrapers seem to lean",
+      "headline_es": "En este tranvía, los rascacielos parecen inclinarse",
+      "body_html": "Opened in <b>1888</b>, the Peak Tram was <b>Asia's first funicular</b>, hauled by a steam engine until 1926. The climb to Victoria Peak is so steep that the skyscrapers outside seem to <b>lean sideways</b>, an optical illusion scientists have studied.",
+      "body_es": "Inaugurado en <b>1888</b>, el Peak Tram fue el <b>primer funicular de Asia</b> y funcionó con una máquina de vapor hasta 1926. La subida a Victoria Peak es tan empinada que los rascacielos de afuera parecen <b>inclinarse</b>, una ilusión óptica que han estudiado científicos.",
+      "hook": "On Asia's first funicular, opened in 1888, the climb is so steep that skyscrapers outside seem to lean.",
+      "hook_es": "En el primer funicular de Asia, inaugurado en 1888, la subida es tan empinada que los rascacielos parecen inclinarse.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Peak_Tram(Green_light)_10-09-2022(2).jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "LN9267",
+          "note": "chosen — green Peak Tram car on the steep track"
+        }
+      ]
+    },
+    {
+      "slot": "fact2",
+      "headline": "A few coins buy one of the world's 50 places of a lifetime",
+      "headline_es": "Unas monedas pagan uno de los 50 lugares imperdibles del mundo",
+      "body_html": "The Star Ferry has crossed <b>Victoria Harbour</b> since the <b>1880s</b>, and National Geographic Traveler named the ride one of its <b>50 places of a lifetime</b>, for a fare of just a few coins.",
+      "body_es": "El Star Ferry cruza <b>la bahía de Victoria</b> desde la <b>década de 1880</b>, y National Geographic Traveler incluyó el viaje entre sus <b>50 lugares imperdibles</b>, por una tarifa de apenas unas monedas.",
+      "hook": "Crossing Victoria Harbour since the 1880s, the Star Ferry made National Geographic Traveler's list of 50 places of a lifetime.",
+      "hook_es": "Activo desde la década de 1880, el Star Ferry figura entre los 50 lugares imperdibles de National Geographic Traveler.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:2024-12-27_A_Star_Ferry_crosses_Victoria_Harbour_2.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Alexkom000",
+          "note": "chosen — Star Ferry crossing Victoria Harbour; cropped to portrait so the boat sits above the hook text"
+        }
+      ]
+    },
+    {
+      "slot": "fact3",
+      "headline": "268 steps lead up to this bronze giant on Lantau",
+      "headline_es": "268 escalones llevan hasta este gigante de bronce en Lantau",
+      "body_html": "Completed in <b>1993</b>, the 34-metre bronze <b>Tian Tan Buddha</b> sits atop Lantau Island on a base modeled on Beijing's Temple of Heaven. Reaching it means climbing <b>268 steps</b>.",
+      "body_es": "Terminado en <b>1993</b>, el <b>Buda Tian Tan</b>, de bronce y 34 metros, se alza en la isla de Lantau sobre una base inspirada en el Templo del Cielo de Beijing. Para llegar hay que subir <b>268 escalones</b>.",
+      "hook": "Lantau's 34-metre bronze Tian Tan Buddha, finished in 1993, waits at the top of 268 steps.",
+      "hook_es": "El Buda Tian Tan de Lantau, de bronce y 34 metros, espera en lo alto de 268 escalones desde 1993.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Tian_Tan_Buddha_2023081302.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Huangdan2060",
+          "note": "chosen — Tian Tan Buddha on its Temple of Heaven-style base, steps visible"
+        }
+      ]
+    },
+    {
+      "slot": "fact4",
+      "headline": "This 800-metre escalator changes direction every morning",
+      "headline_es": "Esta escalera mecánica de 800 metros cambia de sentido cada mañana",
+      "body_html": "Hong Kong's <b>Central-Mid-Levels Escalator</b> runs over <b>800 metres</b> up the hillside, one of the longest outdoor covered escalator systems in the world. It runs <b>downhill</b> during the morning rush hour, then switches to carry everyone <b>uphill</b> until midnight.",
+      "body_es": "Las <b>escaleras mecánicas Central-Mid-Levels</b> de Hong Kong recorren más de <b>800 metros</b> cuesta arriba: uno de los sistemas de escaleras cubiertas al aire libre más largos del mundo. Funcionan <b>hacia abajo</b> en la hora pico de la mañana y luego cambian para llevar a todos <b>hacia arriba</b> hasta la medianoche.",
+      "hook": "Hong Kong's 800-metre Mid-Levels Escalator runs downhill every morning rush hour, then switches direction to carry everyone uphill.",
+      "hook_es": "Las escaleras de Mid-Levels, de 800 metros, bajan en la hora pico matutina y después cambian de sentido para subir.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Inside_the_Central-Mid-Levels_escalators.jpg",
+          "license": "CC0",
+          "artist": "Mx. Granger",
+          "note": "chosen — inside the covered Central-Mid-Levels escalator"
+        }
+      ]
+    },
+    {
+      "slot": "fact5",
+      "headline": "This Tang-dynasty style complex uses not a single nail",
+      "headline_es": "Este complejo de estilo Tang no usa un solo clavo",
+      "body_html": "Rebuilt in the <b>1990s</b> in Tang-dynasty style, <b>Chi Lin Nunnery</b>'s wooden halls are held together by <b>interlocking joints</b> cut into the timber, without a single nail.",
+      "body_es": "Reconstruido en los <b>años 90</b> con estilo de la dinastía Tang, el <b>convento Chi Lin</b> sostiene sus salones de madera con <b>ensambles entrelazados</b> tallados en la madera, sin un solo clavo.",
+      "hook": "Rebuilt in Tang-dynasty style in the 1990s, Chi Lin Nunnery's wooden halls are held together without a single nail.",
+      "hook_es": "Reconstruido con estilo Tang en los años 90, el convento Chi Lin sostiene salones de madera sin un solo clavo.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Chi_Lin_Nunnery_(2037672635).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Rob Young from United Kingdom",
+          "note": "chosen — Chi Lin Nunnery wooden halls from the courtyard"
+        }
+      ]
+    },
+    {
+      "slot": "fact6",
+      "headline": "Giant incense coils burn for weeks above worshippers' heads",
+      "headline_es": "Enormes espirales de incienso arden por semanas sobre los fieles",
+      "body_html": "Built in the <b>1840s</b> for the gods of literature and war, <b>Man Mo Temple</b> hangs giant spiral <b>incense coils</b> from its ceiling, and each one can keep burning for weeks.",
+      "body_es": "Construido en la década de <b>1840</b> para los dioses de la literatura y la guerra, el <b>templo Man Mo</b> cuelga del techo enormes espirales de <b>incienso</b>, y cada una puede seguir ardiendo durante semanas.",
+      "hook": "Built in the 1840s, Man Mo Temple hangs giant spiral incense coils from its ceiling that can burn for weeks.",
+      "hook_es": "Desde la década de 1840, el templo Man Mo cuelga del techo espirales de incienso que arden durante semanas.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Burning_incense_coils_in_the_Man_Mo_temple_(Hong_Kong).jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Aethelfirth",
+          "note": "chosen — incense coils hanging from Man Mo Temple ceiling"
+        }
+      ]
+    },
+    {
+      "slot": "fact7",
+      "headline": "A 55-kilometre bridge dives into an undersea tunnel for ships",
+      "headline_es": "Un puente de 55 kilómetros se sumerge en un túnel submarino",
+      "body_html": "Opened in <b>2018</b>, the <b>Hong Kong-Zhuhai-Macau Bridge</b> stretches <b>55 kilometres</b> across the Pearl River Delta, including a <b>6.7-kilometre tunnel</b> under the sea so ships can still pass overhead.",
+      "body_es": "Inaugurado en <b>2018</b>, el <b>puente Hong Kong-Zhuhai-Macao</b> recorre <b>55 kilómetros</b> sobre el delta del río de las Perlas, con un <b>túnel de 6.7 kilómetros</b> bajo el mar para que los barcos sigan pasando por arriba.",
+      "hook": "The 55-kilometre Hong Kong-Zhuhai-Macau Bridge, opened in 2018, dives into a 6.7-kilometre undersea tunnel so ships can pass.",
+      "hook_es": "El puente Hong Kong-Zhuhai-Macao, de 55 kilómetros, se sumerge en un túnel submarino de 6.7 kilómetros para dejar pasar barcos.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:West_section_of_Hong_Kong-Zhuhai-Macau_Bridge_(20180902174105).jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "N509FZ",
+          "note": "chosen — Hong Kong-Zhuhai-Macau Bridge across the sea"
+        }
+      ]
+    }
+  ],
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hong_Kong_skyscrapers_in_a_night_of_typhoon.jpg",
+      "license": "CC0",
+      "artist": "Wilfredor",
+      "note": "chosen — Central skyline with IFC tower from the harbour at night"
+    }
+  ]
+}

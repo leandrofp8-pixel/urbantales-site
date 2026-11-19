@@ -1,0 +1,38 @@
+{
+ "badge_num": 45,
+ "city": "HONG KONG",
+ "flag": "🇭🇰",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "caption": "Which of these 7 Hong Kong secrets didn't you know? Comment the number 👇\n\n1. Peak Tram\nOpened in 1888, the Peak Tram was Asia's first funicular, hauled by a steam engine until 1926. The climb to Victoria Peak is so steep that the skyscrapers outside seem to lean sideways, an optical illusion scientists have studied.\n\n2. Star Ferry\nThe Star Ferry has crossed Victoria Harbour since the 1880s, and National Geographic Traveler named the ride one of its 50 places of a lifetime, for a fare of just a few coins.\n\n3. Tian Tan Buddha\nCompleted in 1993, the 34-metre bronze Tian Tan Buddha sits atop Lantau Island on a base modeled on Beijing's Temple of Heaven. Reaching it means climbing 268 steps.\n\n4. Central-Mid-Levels Escalator\nHong Kong's Central-Mid-Levels Escalator runs over 800 metres up the hillside, one of the longest outdoor covered escalator systems in the world. It runs downhill during the morning rush hour, then switches to carry everyone uphill until midnight.\n\n5. Chi Lin Nunnery\nRebuilt in the 1990s in Tang-dynasty style, Chi Lin Nunnery's wooden halls are held together by interlocking joints cut into the timber, without a single nail.\n\n6. Man Mo Temple\nBuilt in the 1840s for the gods of literature and war, Man Mo Temple hangs giant spiral incense coils from its ceiling, and each one can keep burning for weeks.\n\n7. Hong Kong-Zhuhai-Macau Bridge\nOpened in 2018, the Hong Kong-Zhuhai-Macau Bridge stretches 55 kilometres across the Pearl River Delta, including a 6.7-kilometre tunnel under the sea so ships can still pass overhead.\n\n.\n.\n.\n#HongKong #HongKongTravel #TravelFacts #PeakTram #UrbanTales",
+ "facts": [
+  {
+   "headline": "Ride this tram and the skyscrapers seem to lean",
+   "hook": "On Asia's first funicular, opened in 1888, the climb is so steep that skyscrapers outside seem to lean."
+  },
+  {
+   "headline": "A few coins buy one of the world's 50 places of a lifetime",
+   "hook": "Crossing Victoria Harbour since the 1880s, the Star Ferry made National Geographic Traveler's list of 50 places of a lifetime."
+  },
+  {
+   "headline": "268 steps lead up to this bronze giant on Lantau",
+   "hook": "Lantau's 34-metre bronze Tian Tan Buddha, finished in 1993, waits at the top of 268 steps."
+  },
+  {
+   "headline": "This 800-metre escalator changes direction every morning",
+   "hook": "Hong Kong's 800-metre Mid-Levels Escalator runs downhill every morning rush hour, then switches direction to carry everyone uphill."
+  },
+  {
+   "headline": "This Tang-dynasty style complex uses not a single nail",
+   "hook": "Rebuilt in Tang-dynasty style in the 1990s, Chi Lin Nunnery's wooden halls are held together without a single nail."
+  },
+  {
+   "headline": "Giant incense coils burn for weeks above worshippers' heads",
+   "hook": "Built in the 1840s, Man Mo Temple hangs giant spiral incense coils from its ceiling that can burn for weeks."
+  },
+  {
+   "headline": "A 55-kilometre bridge dives into an undersea tunnel for ships",
+   "hook": "The 55-kilometre Hong Kong-Zhuhai-Macau Bridge, opened in 2018, dives into a 6.7-kilometre undersea tunnel so ships can pass."
+  }
+ ]
+}
