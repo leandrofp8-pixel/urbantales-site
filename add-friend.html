@@ -100,6 +100,25 @@
         openBtn: 'In Urban Tales öffnen',
         divider: 'Noch keine App?',
       },
+      it: {
+        title: (name) => name ? `${name} vuole essere tuo amico!` : 'Qualcuno vuole essere tuo amico!',
+        sub:   (name) => name ? `Apri Urban Tales per accettare la richiesta di amicizia di ${name} e sfidarvi in classifica.` : 'Apri Urban Tales per accettare la richiesta di amicizia e confrontare le tue esplorazioni in classifica.',
+       "openBtn": "Apri in Urban Tales",
+       "divider": "Non hai ancora l'app?"
+      },
+      ja: {
+        title: (name) => name ? `${name}さんから友だち申請が届きました！` : '友だち申請が届きました！',
+        sub:   (name) => name ? `Urban Tales を開いて${name}さんの友だち申請を承認し、ランキングで競い合いましょう。` : 'Urban Tales を開いて友だち申請を承認し、街歩きの記録をランキングで比べましょう。',
+       "openBtn": "Urban Tales で開く",
+       "divider": "まだアプリをお持ちでない方は"
+      },
+      ko: {
+        title: (name) => name ? `${name}님이 친구가 되고 싶어 해요!` : '누군가 친구가 되고 싶어 해요!',
+        sub:   (name) => name ? `Urban Tales를 열어 ${name}님의 친구 요청을 수락하고 순위표에서 겨뤄 보세요.` : 'Urban Tales를 열어 친구 요청을 수락하고 도시 탐험 기록을 순위표에서 비교해 보세요.',
+       "openBtn": "Urban Tales에서 열기",
+       "divider": "아직 앱이 없으신가요?"
+      },
+
     };
 
     function detectLang() {
