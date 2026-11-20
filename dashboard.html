@@ -2124,7 +2124,7 @@
         <div id="campaignBody"><div class="loading">Loading…</div></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center">
           <button class="ta-btn" type="button" onclick="loadCampaign()">Refresh</button>
-          <button class="ta-btn" type="button" onclick="campaignTest()">Send me a test (5 languages)</button>
+          <button class="ta-btn" type="button" onclick="campaignTest()">Send me a test (8 languages)</button>
           <label style="font-size:13px;color:var(--muted)">Batch <input id="campaignMax" type="number" min="1" max="5000" value="90" style="width:70px;background:#111;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:5px 6px"></label>
           <button class="btn-primary ta-btn" type="button" onclick="campaignAskSend()">Send next batch</button>
           <span id="campaignMsg" style="font-size:13px"></span>
@@ -2227,7 +2227,7 @@
           </div>
 
           <div class="notif-row" style="margin-bottom:16px">
-            <button class="btn-translate" id="btnTranslate" onclick="autoTranslate()">🌐 Auto-translate to all 5 languages</button>
+            <button class="btn-translate" id="btnTranslate" onclick="autoTranslate()">🌐 Auto-translate to all 8 languages</button>
             <span style="font-size:0.8rem;color:var(--muted);align-self:center">Write in any language, then click to generate the rest.</span>
           </div>
 
@@ -2237,6 +2237,9 @@
             <button class="lang-tab-btn" onclick="showLangTab('es',this)">ES</button>
             <button class="lang-tab-btn" onclick="showLangTab('fr',this)">FR</button>
             <button class="lang-tab-btn" onclick="showLangTab('de',this)">DE</button>
+            <button class="lang-tab-btn" onclick="showLangTab('it',this)">IT</button>
+            <button class="lang-tab-btn" onclick="showLangTab('ja',this)">JA</button>
+            <button class="lang-tab-btn" onclick="showLangTab('ko',this)">KO</button>
           </div>
 
           <div id="lang-en" class="lang-panel active">
@@ -2258,6 +2261,18 @@
           <div id="lang-de" class="lang-panel">
             <div class="notif-field"><label>Title</label><input class="notif-input" id="title-de" placeholder="Titel…" /></div>
             <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-de" placeholder="Nachricht…"></textarea></div>
+          </div>
+          <div id="lang-it" class="lang-panel">
+            <div class="notif-field"><label>Title</label><input class="notif-input" id="title-it" placeholder="Titolo…" /></div>
+            <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-it" placeholder="Messaggio…"></textarea></div>
+          </div>
+          <div id="lang-ja" class="lang-panel">
+            <div class="notif-field"><label>Title</label><input class="notif-input" id="title-ja" placeholder="タイトル…" /></div>
+            <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-ja" placeholder="メッセージ…"></textarea></div>
+          </div>
+          <div id="lang-ko" class="lang-panel">
+            <div class="notif-field"><label>Title</label><input class="notif-input" id="title-ko" placeholder="제목…" /></div>
+            <div class="notif-field"><label>Body</label><textarea class="notif-textarea" id="body-ko" placeholder="메시지…"></textarea></div>
           </div>
         </div>
 
@@ -4073,7 +4088,7 @@ const TOUR_TYPE_LABELS = {
   'custom':    'Custom',
 };
 const LANG_LABELS = {
-  en: 'English', es: 'Spanish', pt: 'Portuguese', fr: 'French', de: 'German'
+  en: 'English', es: 'Spanish', pt: 'Portuguese', fr: 'French', de: 'German', it: 'Italian', ja: 'Japanese', ko: 'Korean'
 };
 const STYLE_LABELS = {
   historical: 'Historical', legends: 'Legends', funfacts: 'Fun Facts',
@@ -5720,7 +5735,7 @@ function renderPlaybackHealth(d) {
 // ══════════════════════════════════════════════
 // NOTIFICATIONS TAB
 // ══════════════════════════════════════════════
-const LANGS = ['en', 'pt-BR', 'es', 'fr', 'de'];
+const LANGS = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'ja', 'ko'];
 let notifTemplates = [];
 let currentAudienceCount = null;
 
@@ -5866,10 +5881,10 @@ async function autoTranslate() {
       }
     });
     btn.textContent = '✓ Translated!';
-    setTimeout(() => { btn.disabled = false; btn.textContent = '🌐 Auto-translate to all 5 languages'; }, 2000);
+    setTimeout(() => { btn.disabled = false; btn.textContent = '🌐 Auto-translate to all 8 languages'; }, 2000);
   } catch(e) {
     btn.textContent = '✗ Failed';
-    setTimeout(() => { btn.disabled = false; btn.textContent = '🌐 Auto-translate to all 5 languages'; }, 2000);
+    setTimeout(() => { btn.disabled = false; btn.textContent = '🌐 Auto-translate to all 8 languages'; }, 2000);
   }
 }
 
@@ -5928,7 +5943,7 @@ function openSendModal() {
   document.getElementById('modalDesc').innerHTML =
     `You're about to send notifications to <strong id="modalCount2">${currentAudienceCount !== null ? `~${fmt(currentAudienceCount)}` : '?'}</strong> users in their preferred language.` +
     (screen ? ` <span style="color:var(--primary)">→ Opens: ${screenNames[screen] || screen}</span>` : '');
-  const langLabels = { en:'English', 'pt-BR':'Portuguese', es:'Spanish', fr:'French', de:'German' };
+  const langLabels = { en:'English', 'pt-BR':'Portuguese', es:'Spanish', fr:'French', de:'German', it:'Italian', ja:'Japanese', ko:'Korean' };
   const preview = document.getElementById('modalPreview');
   preview.innerHTML = LANGS.map(lang => {
     const t = translations[lang];
