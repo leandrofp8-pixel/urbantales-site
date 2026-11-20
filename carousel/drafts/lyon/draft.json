@@ -1,0 +1,117 @@
+{
+  "badge_num": 46,
+  "city": "LYON",
+  "flag": "🇫🇷",
+  "cta_screenshot": "screen-generic-narration-style.png",
+  "cta_screenshot_note": "No Lyon map screenshot in the repo (no screen-lyon-*-map.png file, and no lyon.html landing page either — the only existing Lyon page is the blog post blog-lyon-fete-des-lumieres-fourviere-walk.html); using the generic app screen per GUIDELINES.md.",
+  "style": "minimal",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This session's network egress policy denies commons.wikimedia.org (confirmed via curl -> agent proxy returning 'HTTP/1.1 403 Forbidden (agent proxy: no rule or network setting allows this host)' on the CONNECT tunnel). This is the same recurring block that has hit batches #8-#13, #28/#29, #30, #32, #34, #36, #38, #40/#41 and #42/#43/#44/#45 — every run so far has found Commons unreachable from this unattended scheduled session (update_environment/create_environment network changes need a live person's approval, which isn't available here). No candidate photos could be downloaded this run, so every 'candidates' array below is empty. 'suggested_queries' lists the exact Commons search terms to run once network access is open, or to search manually at commons.wikimedia.org — the usual fallback per past batches: Leandro sources photos on his Mac after this PR, same as Seoul/Sydney/Singapore/Hong Kong. Facts themselves were fully researched and verified via WebSearch (not subject to this block): the blog post blog-lyon-fete-des-lumieres-fourviere-walk.html (published 2026-11-18) already verified the Fourvière/traboules/Fête des Lumières/Roman theatre facts; the Lumière brothers, Croix-Rousse canuts and Lyon gastronomy facts were freshly verified this run.",
+  "cover_candidates": [],
+  "cover_suggested_queries": [
+    "Lyon skyline Fourvière Basilica aerial",
+    "Lyon Saone Rhone confluence view"
+  ],
+  "caption": "Which of these 7 Lyon secrets didn't you know? Comment the number 👇\n\n1. Fourvière Basilica\nLyon's leaders vowed in 1870 that if the advancing Prussian army spared the city, they would build something far grander than the small statue already crowning Fourvière hill. The Prussians turned back, and the Basilique Notre-Dame de Fourvière rose between 1872 and 1896, paid for entirely by private donations.\n\n2. The traboules of Vieux Lyon\nLyon's traboules are covered passageways cutting through courtyards and stairwells, built centuries ago by silk merchants to move fabric between streets without rain damage. Roughly 40 are open to walkers today, and the Longue Traboule — crossing four courtyards — let the French Resistance move through Vieux Lyon unseen during the German occupation.\n\n3. Fête des Lumières\nLyon vowed in 1643 to build the Virgin Mary a statue on Fourvière hill if the city was spared the plague. The statue wasn't finished until 1852, and a flood delayed its unveiling three more months — when a storm threatened the rescheduled ceremony on December 8, residents lit candles in their windows anyway. The custom never stopped, and today the Fête des Lumières draws over a million people for four nights of light.\n\n4. Théâtre antique de Fourvière\nCut into the Fourvière hillside in the 1st century BC, the Théâtre antique de Fourvière is one of the oldest Roman theatres in France. It still hosts live audiences every summer for the Nuits de Fourvière festival — the same stone seating people have climbed the hill for since antiquity.\n\n5. The Lumière brothers\nIn 1895, Lyon-born brothers Auguste and Louis Lumière filmed workers leaving their own photographic factory — one of the earliest motion pictures ever shot, and the one usually credited with launching cinema. Their Cinématographe, patented the same year, could both film and project, and its mechanism became the basis for most movie cameras that followed.\n\n6. The Croix-Rousse canuts\nBefore 1801, weaving silk on Lyon's hillside took three or four people per loom. Lyon-born inventor Joseph Marie Jacquard built an automated loom that one person could run with punch cards — and in 1831, the silk workers who ran them, the canuts, revolted over wages anyway, holding the Croix-Rousse district for weeks before the army retook it.\n\n7. Les Halles de Lyon\nA food critic crowned Lyon the 'Capitale Mondiale de la Gastronomie' back in 1935, and the title stuck. Traditional bouchon restaurants still serve the city's signature quenelle, and Les Halles de Lyon — renamed for native chef Paul Bocuse — has sold the same local produce since 1971.\n\n.\n.\n.\n#Lyon #France #TravelFacts #FeteDesLumieres #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Lyon no conocías? Comenta el número 👇\n\n1. Basílica de Fourvière\nLos líderes de Lyon prometieron en 1870 que si el ejército prusiano que avanzaba perdonaba la ciudad, construirían algo mucho más grande que la pequeña estatua que ya coronaba la colina de Fourvière. Los prusianos se retiraron, y la Basílica de Notre-Dame de Fourvière se levantó entre 1872 y 1896, pagada por completo con donaciones privadas.\n\n2. Las traboules de Vieux Lyon\nLas traboules de Lyon son pasajes cubiertos que cruzan patios y escaleras, construidos hace siglos por comerciantes de seda para mover telas entre calles sin que la lluvia las dañara. Hoy hay unas 40 abiertas para caminar, y la Longue Traboule — que cruza cuatro patios — permitió a la Resistencia francesa moverse sin ser vista por el casco viejo durante la ocupación alemana.\n\n3. Fête des Lumières\nLyon prometió en 1643 construirle una estatua a la Virgen María en la colina de Fourvière si la ciudad se salvaba de la peste. La estatua no estuvo lista hasta 1852, y una inundación retrasó su develación tres meses más — cuando una tormenta amenazó la ceremonia reprogramada del 8 de diciembre, los vecinos encendieron velas en sus ventanas igual. La costumbre nunca se detuvo, y hoy la Fête des Lumières reúne a más de un millón de personas durante cuatro noches de luces.\n\n4. Théâtre antique de Fourvière\nExcavado en la colina de Fourvière en el siglo I a.C., el Théâtre antique de Fourvière es uno de los teatros romanos más antiguos de Francia. Todavía recibe público en vivo cada verano para el festival Nuits de Fourvière, en las mismas gradas de piedra que la gente ha subido desde la Antigüedad.\n\n5. Los hermanos Lumière\nEn 1895, los hermanos lioneses Auguste y Louis Lumière filmaron a los trabajadores saliendo de su propia fábrica fotográfica — una de las primeras películas de la historia, y la que suele considerarse el inicio del cine. Su Cinématographe, patentado ese mismo año, podía filmar y proyectar, y su mecanismo se volvió la base de la mayoría de las cámaras de cine que vinieron después.\n\n6. Los canuts de la Croix-Rousse\nAntes de 1801, tejer seda en la colina de Lyon requería tres o cuatro personas por telar. El inventor lionés Joseph Marie Jacquard construyó un telar automático que una sola persona podía operar con tarjetas perforadas — y en 1831, los obreros de la seda que los operaban, los canuts, se rebelaron por los salarios de todos modos, tomando el barrio de la Croix-Rousse durante semanas antes de que el ejército lo recuperara.\n\n7. Les Halles de Lyon\nUn crítico gastronómico coronó a Lyon como la 'Capitale Mondiale de la Gastronomie' en 1935, y el título se quedó. Los restaurantes tradicionales, los bouchons, todavía sirven la quenelle, el platillo insignia de la ciudad, y Les Halles de Lyon — renombrado por el chef lionés Paul Bocuse — vende los mismos productos locales desde 1971.\n\n.\n.\n.\n#Lyon #Francia #DatosCuriosos #FeteDesLumieres #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "Lyon built an entire basilica to make a Prussian army turn back",
+      "headline_es": "Lyon construyó una basílica entera para hacer retroceder a un ejército prusiano",
+      "body_html": "Lyon's leaders vowed in <b>1870</b> that if the advancing Prussian army spared the city, they would build something far grander than the small statue already crowning Fourvière hill. The Prussians turned back, and the <b>Basilique Notre-Dame de Fourvière</b> rose between 1872 and 1896, paid for entirely by private donations.",
+      "body_es": "Los líderes de Lyon prometieron en <b>1870</b> que si el ejército prusiano que avanzaba perdonaba la ciudad, construirían algo mucho más grande que la pequeña estatua que ya coronaba la colina de Fourvière. Los prusianos se retiraron, y la <b>Basílica de Notre-Dame de Fourvière</b> se levantó entre 1872 y 1896, pagada por completo con donaciones privadas.",
+      "hook": "Lyon vowed a grand basilica in 1870 if Prussian troops spared the city — they turned back, it was built.",
+      "hook_es": "Lyon prometió una gran basílica en 1870 si las tropas prusianas perdonaban la ciudad — se retiraron, y la construyeron.",
+      "candidates": [],
+      "suggested_queries": [
+        "Basilique Notre-Dame de Fourviere Lyon",
+        "Fourviere Basilica Lyon exterior"
+      ]
+    },
+    {
+      "slot": "fact2",
+      "headline": "Silk merchants built secret shortcuts that the French Resistance later used to vanish",
+      "headline_es": "Unos comerciantes de seda crearon atajos secretos que la Resistencia francesa usó para desaparecer",
+      "body_html": "Lyon's <b>traboules</b> are covered passageways cutting through courtyards and stairwells, built centuries ago by silk merchants to move fabric between streets without rain damage. Roughly <b>40 are open to walkers today</b>, and the Longue Traboule — crossing four courtyards — let the French Resistance move through Vieux Lyon unseen during the German occupation.",
+      "body_es": "Las <b>traboules</b> de Lyon son pasajes cubiertos que cruzan patios y escaleras, construidos hace siglos por comerciantes de seda para mover telas entre calles sin que la lluvia las dañara. Hoy hay unas <b>40 abiertas</b> para caminar, y la Longue Traboule — que cruza cuatro patios — permitió a la Resistencia francesa moverse sin ser vista por el casco viejo durante la ocupación alemana.",
+      "hook": "Lyon's traboules, covered passageways built by silk merchants, let the French Resistance move through the old quarter unseen in WWII.",
+      "hook_es": "Las traboules de Lyon, pasajes de comerciantes de seda, dejaron a la Resistencia francesa moverse sin ser vista en la Segunda Guerra Mundial.",
+      "candidates": [],
+      "suggested_queries": [
+        "Vieux Lyon traboule passage",
+        "Longue Traboule Rue Saint-Jean Lyon"
+      ]
+    },
+    {
+      "slot": "fact3",
+      "headline": "A flood-delayed statue started a tradition that now fills a million windows with candles",
+      "headline_es": "Una estatua retrasada por una inundación inició una tradición que hoy llena de velas un millón de ventanas",
+      "body_html": "Lyon vowed in 1643 to build the Virgin Mary a statue on Fourvière hill if the city was spared the plague. The statue wasn't finished until <b>1852</b>, and a flood delayed its unveiling three more months — when a storm threatened the rescheduled ceremony on December 8, residents lit candles in their windows anyway. The custom never stopped, and today the <b>Fête des Lumières</b> draws over a million people for four nights of light.",
+      "body_es": "Lyon prometió en 1643 construirle una estatua a la Virgen María en la colina de Fourvière si la ciudad se salvaba de la peste. La estatua no estuvo lista hasta <b>1852</b>, y una inundación retrasó su develación tres meses más — cuando una tormenta amenazó la ceremonia reprogramada del 8 de diciembre, los vecinos encendieron velas en sus ventanas igual. La costumbre nunca se detuvo, y hoy la <b>Fête des Lumières</b> reúne a más de un millón de personas durante cuatro noches de luces.",
+      "hook": "A storm nearly ruined a delayed 1852 unveiling in Lyon — the candles lit anyway became the Fête des Lumières.",
+      "hook_es": "Una tormenta casi arruinó una develación retrasada en Lyon, 1852 — las velas encendidas igual se volvieron la Fête des Lumières.",
+      "candidates": [],
+      "suggested_queries": [
+        "Fete des Lumieres Lyon candles windows",
+        "Fete des Lumieres Lyon night lights"
+      ]
+    },
+    {
+      "slot": "fact4",
+      "headline": "A 2,000-year-old Roman theatre still seats an audience every summer",
+      "headline_es": "Un teatro romano de 2,000 años todavía recibe público cada verano",
+      "body_html": "Cut into the Fourvière hillside in the <b>1st century BC</b>, the Théâtre antique de Fourvière is one of the oldest Roman theatres in France. It still hosts live audiences every summer for the <b>Nuits de Fourvière</b> festival — the same stone seating people have climbed the hill for since antiquity.",
+      "body_es": "Excavado en la colina de Fourvière en el <b>siglo I a.C.</b>, el Théâtre antique de Fourvière es uno de los teatros romanos más antiguos de Francia. Todavía recibe público en vivo cada verano para el festival <b>Nuits de Fourvière</b>, en las mismas gradas de piedra que la gente ha subido desde la Antigüedad.",
+      "hook": "Lyon's Roman theatre, carved into Fourvière hill in the 1st century BC, still hosts a summer festival audience today.",
+      "hook_es": "El teatro romano de Lyon, tallado en la colina de Fourvière en el siglo I a.C., todavía recibe público en un festival de verano.",
+      "candidates": [],
+      "suggested_queries": [
+        "Theatre antique de Fourviere Lyon Roman theatre",
+        "Lyon Roman theatre Fourviere ruins"
+      ]
+    },
+    {
+      "slot": "fact5",
+      "headline": "Cinema itself was born outside a factory in Lyon",
+      "headline_es": "El cine nació afuera de una fábrica en Lyon",
+      "body_html": "In <b>1895</b>, Lyon-born brothers Auguste and Louis Lumière filmed workers leaving their own photographic factory — one of the earliest motion pictures ever shot, and the one usually credited with launching cinema. Their <b>Cinématographe</b>, patented the same year, could both film and project, and its mechanism became the basis for most movie cameras that followed.",
+      "body_es": "En <b>1895</b>, los hermanos lioneses Auguste y Louis Lumière filmaron a los trabajadores saliendo de su propia fábrica fotográfica — una de las primeras películas de la historia, y la que suele considerarse el inicio del cine. Su <b>Cinématographe</b>, patentado ese mismo año, podía filmar y proyectar, y su mecanismo se volvió la base de la mayoría de las cámaras de cine que vinieron después.",
+      "hook": "In 1895, brothers Auguste and Louis Lumière filmed Lyon workers leaving their factory — one of cinema's first films.",
+      "hook_es": "En 1895, los hermanos Lumière filmaron obreros saliendo de su fábrica en Lyon — una de las primeras películas del cine.",
+      "candidates": [],
+      "suggested_queries": [
+        "Institut Lumiere Lyon museum building",
+        "Lumiere brothers factory Lyon Monplaisir"
+      ]
+    },
+    {
+      "slot": "fact6",
+      "headline": "A Lyon inventor built a loom that needed one worker instead of four — then the workers revolted anyway",
+      "headline_es": "Un inventor de Lyon creó un telar que necesitaba una sola persona — y los obreros se rebelaron igual",
+      "body_html": "Before 1801, weaving silk on Lyon's hillside took three or four people per loom. Lyon-born inventor <b>Joseph Marie Jacquard</b> built an automated loom that one person could run with punch cards — and in <b>1831</b>, the silk workers who ran them, the canuts, revolted over wages anyway, holding the Croix-Rousse district for weeks before the army retook it.",
+      "body_es": "Antes de 1801, tejer seda en la colina de Lyon requería tres o cuatro personas por telar. El inventor lionés <b>Joseph Marie Jacquard</b> construyó un telar automático que una sola persona podía operar con tarjetas perforadas — y en <b>1831</b>, los obreros de la seda que los operaban, los canuts, se rebelaron por los salarios de todos modos, tomando el barrio de la Croix-Rousse durante semanas antes de que el ejército lo recuperara.",
+      "hook": "Lyon's canuts ran a one-person Jacquard loom from 1801 — then revolted over wages in 1831 for weeks.",
+      "hook_es": "Los canuts de Lyon operaban un telar de una sola persona — y en 1831 se rebelaron por salarios, semanas enteras.",
+      "candidates": [],
+      "suggested_queries": [
+        "Croix-Rousse Lyon silk weaver canut",
+        "Maison des Canuts Lyon Jacquard loom"
+      ]
+    },
+    {
+      "slot": "fact7",
+      "headline": "France's gastronomic capital has been official since 1935",
+      "headline_es": "La capital gastronómica de Francia es oficial desde 1935",
+      "body_html": "A food critic crowned Lyon the <b>'Capitale Mondiale de la Gastronomie'</b> back in 1935, and the title stuck. Traditional bouchon restaurants still serve the city's signature quenelle, and <b>Les Halles de Lyon</b> — renamed for native chef Paul Bocuse — has sold the same local produce since 1971.",
+      "body_es": "Un crítico gastronómico coronó a Lyon como la <b>'Capitale Mondiale de la Gastronomie'</b> en 1935, y el título se quedó. Los restaurantes tradicionales, los bouchons, todavía sirven la quenelle, el platillo insignia de la ciudad, y <b>Les Halles de Lyon</b> — renombrado por el chef lionés Paul Bocuse — vende los mismos productos locales desde 1971.",
+      "hook": "Lyon has carried the title 'world capital of gastronomy' since 1935, with bouchon restaurants still serving quenelle today.",
+      "hook_es": "Lyon lleva el título de 'capital mundial de la gastronomía' desde 1935, con bouchons que todavía sirven quenelle hoy.",
+      "candidates": [],
+      "suggested_queries": [
+        "Les Halles de Lyon Paul Bocuse market",
+        "Lyon bouchon restaurant quenelle"
+      ]
+    }
+  ]
+}
