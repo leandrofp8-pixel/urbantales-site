@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Capuchin Crypt", "description": "Capuchin Crypt history: why friars decorated six chapels with the bones of about 3,700 brothers, and the message waiting at the end. With an audio story.", "image": "https://urbantales.net/rome/img/capuchin-crypt.jpg", "url": "https://urbantales.net/rome/capuchin-crypt.html", "geo": {"@type": "GeoCoordinates", "latitude": 41.904961799999995, "longitude": 12.488535400000002}, "address": {"@type": "PostalAddress", "addressLocality": "Rome", "addressCountry": "IT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is the Capuchin Crypt decorated with bones?", "acceptedAnswer": {"@type": "Answer", "text": "The friars arranged the remains of their dead brothers as a reminder that life is short, not to shock visitors."}}, {"@type": "Question", "name": "How many people are in the Capuchin Crypt?", "acceptedAnswer": {"@type": "Answer", "text": "The bones of about 3,700 friars, arranged across six small chapels."}}, {"@type": "Question", "name": "Can you take photos in the Capuchin Crypt?", "acceptedAnswer": {"@type": "Answer", "text": "No. Photography isn't allowed inside the crypt."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Rome", "item": "https://urbantales.net/rome.html"}, {"@type": "ListItem", "position": 3, "name": "Capuchin Crypt", "item": "https://urbantales.net/rome/capuchin-crypt.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/rome.html" class="back">Rome guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/rome.html">Rome</a> › Capuchin Crypt</div>
     <h1>Capuchin Crypt: the history, and <em>the message on the wall</em></h1>
     <p class="lede">Under a church on Via Veneto, six small chapels are decorated with the bones of about 3,700 Capuchin friars. It&#x27;s not meant to frighten, but to make you think. Here&#x27;s what you&#x27;re looking at, and what to listen for when you visit.</p>
+    
   </div>
   <figure class="hero"><img src="img/capuchin-crypt.jpg" alt="Capuchin Crypt, Rome" width="1600" height="900"><figcaption>Photo: Anil Öztas · CC BY 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Rom_(IT),_Kapuzinergruft_--_2024_--_0657.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Church built</span><span class="v">1626–1631</span></div><div class="fact"><span class="k">Friars</span><span class="v">≈ 3,700</span></div><div class="fact"><span class="k">Chapels</span><span class="v">6</span></div><div class="fact"><span class="k">Street</span><span class="v">Via Veneto</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Capuchin Crypt story, in the app's voice">
     <audio id="preview" preload="none" src="audio/capuchin-crypt.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Capuchin Crypt story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Brought here in carts</h3><p>When the friars moved to this church in 1631, they brought the remains of their dead brothers from their old friary. Over the following generations the bones were arranged into arches, rosettes and even chandeliers.</p></div></div><div class="story"><span class="n">2</span><div><h3>A message for visitors</h3><p>At the end, a plaque reads, in several languages: &quot;What you are now, we used to be; what we are now, you will be.&quot; That&#x27;s the whole point of the place.</p></div></div><div class="story"><span class="n">3</span><div><h3>Earth from Jerusalem</h3><p>The soil in the chapels is said to have been brought from Jerusalem, a common legend about holy ground in old Roman crypts.</p></div></div>
     <div class="tip"><b>Tip</b>Read the plaque at the end of the corridor before you leave, then walk out onto Via Veneto. With Urban Tales running, the crypt&#x27;s story plays as you reach the church steps.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="spanish-steps.html"><span class="d">≈ 8 min walk</span><h3>Spanish Steps</h3><span class="h">French money, Spanish name</span></a><a class="near" href="trevi-fountain.html"><span class="d">≈ 10 min walk</span><h3>Trevi Fountain</h3><span class="h">A stone vase built to block a barber&#x27;s view</span></a><a class="near" href="sant-ignazio.html"><span class="d">≈ 16 min walk</span><h3>Sant&#x27;Ignazio</h3><span class="h">A dome made of paint</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Capuchin Crypt: common questions</h2><details open><summary>Why is the Capuchin Crypt decorated with bones?</summary><p>The friars arranged the remains of their dead brothers as a reminder that life is short, not to shock visitors.</p></details><details><summary>How many people are in the Capuchin Crypt?</summary><p>The bones of about 3,700 friars, arranged across six small chapels.</p></details><details><summary>Can you take photos in the Capuchin Crypt?</summary><p>No. Photography isn&#x27;t allowed inside the crypt.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Rome</h2><p class="more-links"><a href="colosseum.html">Colosseum</a> · <a href="largo-di-torre-argentina.html">Largo di Torre Argentina</a> · <a href="pantheon.html">Pantheon</a> · <a href="piazza-navona.html">Piazza Navona</a> · <a href="roman-forum.html">Roman Forum</a> · <a href="vittoriano.html">Vittoriano (Altare della Patria)</a></p><a class="city-cta" href="https://urbantales.net/rome.html"><b>Rome audio guide</b><span>Every landmark in Rome, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/rome.html">Rome guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

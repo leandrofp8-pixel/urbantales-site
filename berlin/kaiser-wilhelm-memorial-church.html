@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Kaiser Wilhelm Memorial Church", "description": "Kaiser Wilhelm Memorial Church history: consecrated 1895, bombed in 1943, saved by Berliners' protest, and Eiermann's blue glass church. With an audio story.", "image": "https://urbantales.net/berlin/img/kaiser-wilhelm-memorial-church.jpg", "url": "https://urbantales.net/berlin/kaiser-wilhelm-memorial-church.html", "geo": {"@type": "GeoCoordinates", "latitude": 52.504818, "longitude": 13.335082}, "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is the Kaiser Wilhelm Memorial Church in ruins?", "acceptedAnswer": {"@type": "Answer", "text": "It was badly damaged in an air raid on 23 November 1943, and the ruin was kept as a memorial."}}, {"@type": "Question", "name": "Can you go inside the Kaiser Wilhelm Memorial Church?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, both the memorial hall in the old tower and the new church are open to visitors."}}, {"@type": "Question", "name": "Who designed the new church?", "acceptedAnswer": {"@type": "Answer", "text": "Egon Eiermann; it was built between 1959 and 1963."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Berlin", "item": "https://urbantales.net/berlin.html"}, {"@type": "ListItem", "position": 3, "name": "Kaiser Wilhelm Memorial Church", "item": "https://urbantales.net/berlin/kaiser-wilhelm-memorial-church.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/berlin.html" class="back">Berlin guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/berlin.html">Berlin</a> › Kaiser Wilhelm Memorial Church</div>
     <h1>Kaiser Wilhelm Memorial Church: <em>the hollow tooth</em> of Berlin</h1>
     <p class="lede">A broken tower and a blue glass church stand side by side on Breitscheidplatz. Berliners call the ruin &quot;the hollow tooth&quot;. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/kaiser-wilhelm-memorial-church.jpg" alt="Kaiser Wilhelm Memorial Church, Berlin" width="1600" height="900"><figcaption>Photo: Flocci Nivis · CC BY 4.0 · <a href="https://commons.wikimedia.org/wiki/File:20220812_Kaiser-Wilhelm-Ged%C3%A4chtniskirche.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Consecrated</span><span class="v">1895</span></div><div class="fact"><span class="k">Bombed</span><span class="v">23 Nov 1943</span></div><div class="fact"><span class="k">New church</span><span class="v">1959–1963</span></div><div class="fact"><span class="k">Architect</span><span class="v">Egon Eiermann</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Kaiser Wilhelm Memorial Church story, in the app's voice">
     <audio id="preview" preload="none" src="audio/kaiser-wilhelm-memorial-church.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Kaiser Wilhelm Memorial Church story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Saved by protest</h3><p>Egon Eiermann&#x27;s first plan for a new church meant tearing down the ruined tower. Berliners protested, and the tower was kept as a memorial against war.</p></div></div><div class="story"><span class="n">2</span><div><h3>The blue light</h3><p>The new church&#x27;s walls hold more than 20,000 glass inserts made by Gabriel Loire in Chartres. Inside, the light turns a deep blue.</p></div></div><div class="story"><span class="n">3</span><div><h3>The Stalingrad Madonna</h3><p>Inside the new church hangs a charcoal drawing of the Madonna made by doctor and pastor Kurt Reuber during the siege of Stalingrad at Christmas 1942.</p></div></div>
     <div class="tip"><b>Tip</b>Visit the memorial hall at the base of the old tower to see the surviving mosaics, then step into the new church across the square for the blue light. With Urban Tales running, the church&#x27;s story plays as you reach Breitscheidplatz.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="holocaust-memorial.html"><span class="d">3.1 km away</span><h3>Memorial to the Murdered Jews of Europe</h3><span class="h">No names, no symbols</span></a><a class="near" href="brandenburg-gate.html"><span class="d">3.2 km away</span><h3>Brandenburg Gate</h3><span class="h">The goddess who went to Paris</span></a><a class="near" href="bebelplatz.html"><span class="d">4.2 km away</span><h3>Bebelplatz</h3><span class="h">The night of the fires</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Kaiser Wilhelm Memorial Church: common questions</h2><details open><summary>Why is the Kaiser Wilhelm Memorial Church in ruins?</summary><p>It was badly damaged in an air raid on 23 November 1943, and the ruin was kept as a memorial.</p></details><details><summary>Can you go inside the Kaiser Wilhelm Memorial Church?</summary><p>Yes, both the memorial hall in the old tower and the new church are open to visitors.</p></details><details><summary>Who designed the new church?</summary><p>Egon Eiermann; it was built between 1959 and 1963.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Berlin</h2><p class="more-links"><a href="berlin-cathedral.html">Berlin Cathedral</a> · <a href="tv-tower.html">Berlin TV Tower</a> · <a href="berlin-wall-memorial.html">Berlin Wall Memorial</a> · <a href="humboldt-forum.html">Humboldt Forum</a> · <a href="neue-wache.html">Neue Wache</a> · <a href="red-city-hall.html">Red City Hall (Rotes Rathaus)</a></p><a class="city-cta" href="https://urbantales.net/berlin.html"><b>Berlin audio guide</b><span>Every landmark in Berlin, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/berlin.html">Berlin guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Plaza de Cibeles", "description": "Plaza de Cibeles in plain words: the 1782 fountain, why it was moved, the four palaces around it and Real Madrid's celebrations. With an audio story.", "image": "https://urbantales.net/madrid/img/plaza-de-cibeles.jpg", "url": "https://urbantales.net/madrid/plaza-de-cibeles.html", "geo": {"@type": "GeoCoordinates", "latitude": 40.4193432, "longitude": -3.6930918999999998}, "address": {"@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who is the goddess in the Plaza de Cibeles?", "acceptedAnswer": {"@type": "Answer", "text": "Cybele, a goddess of nature and fertility, on a chariot pulled by two lions."}}, {"@type": "Question", "name": "Why do Real Madrid fans celebrate at Cibeles?", "acceptedAnswer": {"@type": "Answer", "text": "It became their celebration spot; Atlético Madrid fans celebrate at the nearby Neptune fountain."}}, {"@type": "Question", "name": "What building is the Palacio de Cibeles?", "acceptedAnswer": {"@type": "Answer", "text": "Originally Madrid's main post office (1919), and Madrid's City Hall since 2007."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Madrid", "item": "https://urbantales.net/madrid.html"}, {"@type": "ListItem", "position": 3, "name": "Plaza de Cibeles", "item": "https://urbantales.net/madrid/plaza-de-cibeles.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/madrid.html" class="back">Madrid guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/madrid.html">Madrid</a> › Plaza de Cibeles</div>
     <h1>Plaza de Cibeles: <em>the goddess and her lions</em></h1>
     <p class="lede">In the middle of one of Madrid&#x27;s busiest crossroads, the goddess Cybele rides a chariot pulled by two lions. The fountain was carved in 1782 and moved to this spot in 1895.</p>
+    
   </div>
   <figure class="hero"><img src="img/plaza-de-cibeles.jpg" alt="Plaza de Cibeles, Madrid" width="1600" height="900"><figcaption>Photo: Carlos Delgado · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Fuente_de_Cibeles_-_04.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Fountain</span><span class="v">1782</span></div><div class="fact"><span class="k">Designed by</span><span class="v">Ventura Rodríguez</span></div><div class="fact"><span class="k">Moved here</span><span class="v">1895</span></div><div class="fact"><span class="k">City Hall</span><span class="v">Palacio de Cibeles, since 2007</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Plaza de Cibeles story, in the app's voice">
     <audio id="preview" preload="none" src="audio/plaza-de-cibeles.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Plaza de Cibeles story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Moved to the middle</h3><p>The fountain first stood at the side of the road, facing the Palacio de Buenavista. In 1895 it was moved to the centre of the crossroads, which made the roundabout you see.</p></div></div><div class="story"><span class="n">2</span><div><h3>Four palaces</h3><p>The square is ringed by the Palacio de Buenavista (army headquarters), the Banco de España, the Palacio de Linares (Casa de América) and the Palacio de Cibeles, Madrid&#x27;s City Hall since 2007.</p></div></div><div class="story"><span class="n">3</span><div><h3>Real Madrid&#x27;s fountain</h3><p>When Real Madrid wins a big title, players and fans celebrate here, and a player traditionally drapes a scarf and flag on the goddess.</p></div></div>
     <div class="tip"><b>Tip</b>Go up to the viewpoint at the top of the Palacio de Cibeles for a view over the fountain and the Gran Vía. With Urban Tales running, its story plays as you reach the square.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="puerta-de-alcala.html"><span class="d">≈ 6 min walk</span><h3>Puerta de Alcalá</h3><span class="h">The king chose</span></a><a class="near" href="prado-museum.html"><span class="d">≈ 10 min walk</span><h3>Prado Museum</h3><span class="h">Meant for science</span></a><a class="near" href="puerta-del-sol.html"><span class="d">≈ 15 min walk</span><h3>Puerta del Sol</h3><span class="h">A gate facing the sunrise</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Plaza de Cibeles: common questions</h2><details open><summary>Who is the goddess in the Plaza de Cibeles?</summary><p>Cybele, a goddess of nature and fertility, on a chariot pulled by two lions.</p></details><details><summary>Why do Real Madrid fans celebrate at Cibeles?</summary><p>It became their celebration spot; Atlético Madrid fans celebrate at the nearby Neptune fountain.</p></details><details><summary>What building is the Palacio de Cibeles?</summary><p>Originally Madrid&#x27;s main post office (1919), and Madrid&#x27;s City Hall since 2007.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Madrid</h2><p class="more-links"><a href="almudena-cathedral.html">Almudena Cathedral</a> · <a href="mercado-de-san-miguel.html">Mercado de San Miguel</a> · <a href="palacio-de-cristal.html">Palacio de Cristal</a> · <a href="plaza-mayor.html">Plaza Mayor</a> · <a href="royal-palace.html">Royal Palace of Madrid</a> · <a href="temple-of-debod.html">Temple of Debod</a></p><a class="city-cta" href="https://urbantales.net/madrid.html"><b>Madrid audio guide</b><span>Every landmark in Madrid, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/madrid.html">Madrid guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

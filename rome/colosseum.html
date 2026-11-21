@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Colosseum", "description": "Colosseum history in plain words: who built it, what happened inside, why half of it is missing, and what to look for when you visit. With an audio story.", "image": "https://urbantales.net/rome/img/colosseum.jpg", "url": "https://urbantales.net/rome/colosseum.html", "geo": {"@type": "GeoCoordinates", "latitude": 41.8902102, "longitude": 12.4922309}, "address": {"@type": "PostalAddress", "addressLocality": "Rome", "addressCountry": "IT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How old is the Colosseum?", "acceptedAnswer": {"@type": "Answer", "text": "It opened in AD 80, under Emperor Titus, after about a decade of construction begun by his father Vespasian. That makes it more than 1,940 years old."}}, {"@type": "Question", "name": "How many people did the Colosseum hold?", "acceptedAnswer": {"@type": "Answer", "text": "Estimates range from about 50,000 to 80,000 spectators, seated by social rank, with the emperor and senators closest to the arena."}}, {"@type": "Question", "name": "Why is part of the Colosseum missing?", "acceptedAnswer": {"@type": "Answer", "text": "An earthquake in 1349 brought down much of the southern outer wall, and the stone was reused for buildings across Rome for centuries afterwards."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Rome", "item": "https://urbantales.net/rome.html"}, {"@type": "ListItem", "position": 3, "name": "Colosseum", "item": "https://urbantales.net/rome/colosseum.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/rome.html" class="back">Rome guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/rome.html">Rome</a> › Colosseum</div>
     <h1>Colosseum: the history, and <em>the details most visitors walk past</em></h1>
     <p class="lede">The Flavian Amphitheatre opened in AD 80 with 100 days of games, held 50,000 or more people, and spent the Middle Ages as a quarry, a fortress and a housing block. Here&#x27;s what you&#x27;re looking at, and what to listen for when you stand in front of it.</p>
+    
   </div>
   <figure class="hero"><img src="img/colosseum.jpg" alt="Colosseum, Rome" width="1600" height="900"><figcaption>Photo: Nicholas Hartmann · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Rome_Colosseum_exterior_panorama.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Opened</span><span class="v">AD 80</span></div><div class="fact"><span class="k">Built by</span><span class="v">Vespasian &amp; Titus</span></div><div class="fact"><span class="k">Height</span><span class="v">≈ 48 m</span></div><div class="fact"><span class="k">Spectators</span><span class="v">50,000+</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Colosseum story, in the app's voice">
     <audio id="preview" preload="none" src="audio/colosseum.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Colosseum story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Why one side is missing</h3><p>The southern outer ring fell in an earthquake in 1349. For centuries after, the fallen stone was carted away to build palaces, churches and bridges across Rome, which is why the Colosseum looks bitten on one side today.</p></div></div><div class="story"><span class="n">2</span><div><h3>The holes all over the walls</h3><p>The pockmarks covering the travertine aren&#x27;t battle damage. They&#x27;re where medieval builders dug out the iron clamps that held the blocks together, at a time when metal was worth more than ancient monuments.</p></div></div><div class="story"><span class="n">3</span><div><h3>A roof made of sails</h3><p>Sailors from the imperial fleet worked the velarium, a huge awning of canvas stretched over the seats on ropes and wooden masts to shade the crowd. You can still see the stone brackets that held the masts around the top ring.</p></div></div>
     <div class="tip"><b>Tip</b>Walk around to the north side, facing Via dei Fori Imperiali, where the outer ring is still complete. That&#x27;s the only place you see the Colosseum&#x27;s full original height. With Urban Tales running, its story plays as you get close.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="roman-forum.html"><span class="d">≈ 9 min walk</span><h3>Roman Forum</h3><span class="h">Built on a drained swamp</span></a><a class="near" href="vittoriano.html"><span class="d">≈ 15 min walk</span><h3>Vittoriano (Altare della Patria)</h3><span class="h">A neighborhood cleared for it</span></a><a class="near" href="largo-di-torre-argentina.html"><span class="d">≈ 23 min walk</span><h3>Largo di Torre Argentina</h3><span class="h">Where Caesar fell</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Colosseum: common questions</h2><details open><summary>How old is the Colosseum?</summary><p>It opened in AD 80, under Emperor Titus, after about a decade of construction begun by his father Vespasian. That makes it more than 1,940 years old.</p></details><details><summary>How many people did the Colosseum hold?</summary><p>Estimates range from about 50,000 to 80,000 spectators, seated by social rank, with the emperor and senators closest to the arena.</p></details><details><summary>Why is part of the Colosseum missing?</summary><p>An earthquake in 1349 brought down much of the southern outer wall, and the stone was reused for buildings across Rome for centuries afterwards.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Rome</h2><p class="more-links"><a href="capuchin-crypt.html">Capuchin Crypt</a> · <a href="pantheon.html">Pantheon</a> · <a href="piazza-navona.html">Piazza Navona</a> · <a href="sant-ignazio.html">Sant&#x27;Ignazio</a> · <a href="spanish-steps.html">Spanish Steps</a> · <a href="trevi-fountain.html">Trevi Fountain</a></p><a class="city-cta" href="https://urbantales.net/rome.html"><b>Rome audio guide</b><span>Every landmark in Rome, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/rome.html">Rome guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

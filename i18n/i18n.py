@@ -115,14 +115,15 @@ def localize_url(url, lang, pages):
     if m:
         path, rest = m.groups()
         page = path or "index.html"
-        if page in pages:
+        if page in pages or ("/" in page and (ROOT / lang / page).exists()):
             return f"{SITE}/{lang}/" + ("" if page == "index.html" else page) + rest
         return url
     if re.match(r"^(https?:|mailto:|tel:|data:|javascript:|#|/)", url) or not url:
         return url
     page, _, rest = url.partition("#")
     rest = "#" + rest if _ else ""
-    if page in pages:
+    # Landmark pages translated by landmark-pages/build.py live at /<lang>/<city>/<slug>.html (20 Nov 2026).
+    if page in pages or ("/" in page and page.endswith(".html") and (ROOT / lang / page).exists()):
         return f"/{lang}/" + ("" if page == "index.html" else page) + rest
     return "/" + url  # shared asset or untranslated page at the site root
 
@@ -231,7 +232,8 @@ def build(lang):
 def update_sitemap(lang, pages):
     path = ROOT / "sitemap.xml"
     xml = path.read_text("utf-8")
-    xml = re.sub(rf"  <url><loc>{SITE}/{lang}/[^<]*</loc>.*?</url>\n", "", xml)
+    # Only this script's own top-level pages: /es/<city>/<landmark>.html come from landmark-pages/build.py (20 Nov 2026).
+    xml = re.sub(rf"  <url><loc>{SITE}/{lang}/[^/<]*</loc>.*?</url>\n", "", xml)
     today = date.today().isoformat()
     rows = []
     for page in pages:

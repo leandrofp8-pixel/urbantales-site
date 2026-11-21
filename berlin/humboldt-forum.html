@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Humboldt Forum", "description": "Humboldt Forum history: the Hohenzollern palace, its demolition in 1950, East Germany's Palace of the Republic, and the rebuilt baroque facades. With an audio story.", "image": "https://urbantales.net/berlin/img/humboldt-forum.jpg", "url": "https://urbantales.net/berlin/humboldt-forum.html", "geo": {"@type": "GeoCoordinates", "latitude": 52.517252199999994, "longitude": 13.401708699999999}, "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the Humboldt Forum?", "acceptedAnswer": {"@type": "Answer", "text": "A museum and cultural center inside a rebuilt version of the Berlin royal palace."}}, {"@type": "Question", "name": "Why was the Berlin Palace rebuilt?", "acceptedAnswer": {"@type": "Answer", "text": "After reunification, the Bundestag decided to rebuild the palace facades on the site of the demolished Palace of the Republic."}}, {"@type": "Question", "name": "When did the Humboldt Forum open?", "acceptedAnswer": {"@type": "Answer", "text": "In stages between 2020 and 2021."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Berlin", "item": "https://urbantales.net/berlin.html"}, {"@type": "ListItem", "position": 3, "name": "Humboldt Forum", "item": "https://urbantales.net/berlin/humboldt-forum.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/berlin.html" class="back">Berlin guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/berlin.html">Berlin</a> › Humboldt Forum</div>
     <h1>Humboldt Forum: the history, and <em>the palace that came back</em></h1>
     <p class="lede">A royal palace, a communist parliament, and now a museum with baroque walls: few spots in Berlin have changed identity so often. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/humboldt-forum.jpg" alt="Humboldt Forum, Berlin" width="1600" height="900"><figcaption>Photo: Ernstol · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Berliner_Schlo%C3%9F_(2020).jpeg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Palace begun</span><span class="v">1443</span></div><div class="fact"><span class="k">Demolished</span><span class="v">1950</span></div><div class="fact"><span class="k">Opened</span><span class="v">2020–2021</span></div><div class="fact"><span class="k">Architect</span><span class="v">Franco Stella</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Humboldt Forum story, in the app's voice">
     <audio id="preview" preload="none" src="audio/humboldt-forum.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Humboldt Forum story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Palace, parliament, palace</h3><p>East Germany blew up the war-damaged palace in 1950 and built the Palace of the Republic, home of its parliament. Berliners nicknamed it &quot;Erich&#x27;s lamp shop&quot; for its many lights; it was torn down in 2006–2008.</p></div></div><div class="story"><span class="n">2</span><div><h3>Three old sides and one new</h3><p>Three facades copy the baroque palace stone by stone, while the side facing the river is plain and modern, designed by Franco Stella.</p></div></div><div class="story"><span class="n">3</span><div><h3>A museum of the world</h3><p>Inside, the Ethnological Museum and the Museum of Asian Art share the building with an exhibition about Berlin, a choice that still sparks debate about colonial-era collections.</p></div></div>
     <div class="tip"><b>Tip</b>Walk into the Schlüterhof courtyard to see the rebuilt baroque walls up close, then head to the roof terrace for a view of the cathedral and Museum Island. With Urban Tales running, the forum&#x27;s story plays as you reach Schlossplatz.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="berlin-cathedral.html"><span class="d">≈ 3 min walk</span><h3>Berlin Cathedral</h3><span class="h">Not really a cathedral</span></a><a class="near" href="neue-wache.html"><span class="d">≈ 7 min walk</span><h3>Neue Wache</h3><span class="h">A guardhouse like a Roman fort</span></a><a class="near" href="red-city-hall.html"><span class="d">≈ 8 min walk</span><h3>Red City Hall (Rotes Rathaus)</h3><span class="h">Red for the bricks</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Humboldt Forum: common questions</h2><details open><summary>What is the Humboldt Forum?</summary><p>A museum and cultural center inside a rebuilt version of the Berlin royal palace.</p></details><details><summary>Why was the Berlin Palace rebuilt?</summary><p>After reunification, the Bundestag decided to rebuild the palace facades on the site of the demolished Palace of the Republic.</p></details><details><summary>When did the Humboldt Forum open?</summary><p>In stages between 2020 and 2021.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Berlin</h2><p class="more-links"><a href="bebelplatz.html">Bebelplatz</a> · <a href="tv-tower.html">Berlin TV Tower</a> · <a href="berlin-wall-memorial.html">Berlin Wall Memorial</a> · <a href="brandenburg-gate.html">Brandenburg Gate</a> · <a href="kaiser-wilhelm-memorial-church.html">Kaiser Wilhelm Memorial Church</a> · <a href="holocaust-memorial.html">Memorial to the Murdered Jews of Europe</a></p><a class="city-cta" href="https://urbantales.net/berlin.html"><b>Berlin audio guide</b><span>Every landmark in Berlin, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/berlin.html">Berlin guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

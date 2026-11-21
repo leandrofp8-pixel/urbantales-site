@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Plaza de Mayo", "description": "Plaza de Mayo in plain words: why it's named after May 1810, the oldest monument in Buenos Aires, the Mothers' white scarves and what to look for. With an audio story.", "image": "https://urbantales.net/buenos-aires/img/plaza-de-mayo.jpg", "url": "https://urbantales.net/buenos-aires/plaza-de-mayo.html", "geo": {"@type": "GeoCoordinates", "latitude": -34.6083667, "longitude": -58.3722832}, "address": {"@type": "PostalAddress", "addressLocality": "Buenos Aires", "addressCountry": "AR"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is it called Plaza de Mayo?", "acceptedAnswer": {"@type": "Answer", "text": "It's named after the May Revolution of 1810, the week in May when Buenos Aires replaced the Spanish viceroy with its own government, the first step towards independence."}}, {"@type": "Question", "name": "Who are the Mothers of Plaza de Mayo?", "acceptedAnswer": {"@type": "Answer", "text": "Mothers whose children disappeared during Argentina's military dictatorship (1976–1983). They began walking around the square in 1977, wearing white headscarves, and became a worldwide symbol of the search for the disappeared."}}, {"@type": "Question", "name": "What buildings are on Plaza de Mayo?", "acceptedAnswer": {"@type": "Answer", "text": "The Casa Rosada (presidential offices), the Cabildo (the colonial town hall), the Metropolitan Cathedral, and government buildings along the sides."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Buenos Aires", "item": "https://urbantales.net/buenos-aires.html"}, {"@type": "ListItem", "position": 3, "name": "Plaza de Mayo", "item": "https://urbantales.net/buenos-aires/plaza-de-mayo.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/buenos-aires.html" class="back">Buenos Aires guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/buenos-aires.html">Buenos Aires</a> › Plaza de Mayo</div>
     <h1>Plaza de Mayo: <em>where Argentina gathers</em></h1>
     <p class="lede">Laid out in 1580 and renamed after the May Revolution of 1810, Plaza de Mayo is where Buenos Aires celebrates, protests and remembers. The Casa Rosada, the Cabildo and the Cathedral all face it.</p>
+    
   </div>
   <figure class="hero"><img src="img/plaza-de-mayo.jpg" alt="Plaza de Mayo, Buenos Aires" width="1600" height="900"><figcaption>Photo: The Cosmonaut · CC BY-SA 2.5 ca · <a href="https://commons.wikimedia.org/wiki/File:Plaza_de_Mayo_from_the_Cabildo.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Laid out</span><span class="v">1580</span></div><div class="fact"><span class="k">Named after</span><span class="v">May Revolution, 1810</span></div><div class="fact"><span class="k">Oldest monument</span><span class="v">Pirámide de Mayo, 1811</span></div><div class="fact"><span class="k">Around it</span><span class="v">Casa Rosada, Cabildo, Cathedral</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Plaza de Mayo story, in the app's voice">
     <audio id="preview" preload="none" src="audio/plaza-de-mayo.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Plaza de Mayo story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Two squares became one</h3><p>For most of its history this was two squares split by an arcade, the Recova. When the Recova was demolished in 1884, the two halves joined into the single plaza you see.</p></div></div><div class="story"><span class="n">2</span><div><h3>The oldest monument in town</h3><p>The white obelisk in the middle, the Pirámide de Mayo, went up in 1811 for the first anniversary of the revolution. It&#x27;s the oldest monument in Buenos Aires.</p></div></div><div class="story"><span class="n">3</span><div><h3>The white scarves</h3><p>Since 1977, the Mothers of Plaza de Mayo have walked around the pyramid to ask what happened to children who disappeared under the military dictatorship. Their white headscarves are painted on the ground around it.</p></div></div>
     <div class="tip"><b>Tip</b>Look down near the pyramid for the painted white scarves, then cross to the Cathedral: General San Martín&#x27;s mausoleum is inside, guarded by grenadiers. With Urban Tales running, each building&#x27;s story plays as you walk around the square.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="casa-rosada.html"><span class="d">≈ 3 min walk</span><h3>Casa Rosada</h3><span class="h">Lime and cattle blood</span></a><a class="near" href="cafe-tortoni.html"><span class="d">≈ 9 min walk</span><h3>Café Tortoni</h3><span class="h">A new front for a new avenue</span></a><a class="near" href="puente-de-la-mujer.html"><span class="d">≈ 11 min walk</span><h3>Puente de la Mujer</h3><span class="h">A gift to the city</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Plaza de Mayo: common questions</h2><details open><summary>Why is it called Plaza de Mayo?</summary><p>It&#x27;s named after the May Revolution of 1810, the week in May when Buenos Aires replaced the Spanish viceroy with its own government, the first step towards independence.</p></details><details><summary>Who are the Mothers of Plaza de Mayo?</summary><p>Mothers whose children disappeared during Argentina&#x27;s military dictatorship (1976–1983). They began walking around the square in 1977, wearing white headscarves, and became a worldwide symbol of the search for the disappeared.</p></details><details><summary>What buildings are on Plaza de Mayo?</summary><p>The Casa Rosada (presidential offices), the Cabildo (the colonial town hall), the Metropolitan Cathedral, and government buildings along the sides.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Buenos Aires</h2><p class="more-links"><a href="caminito.html">Caminito</a> · <a href="el-ateneo-grand-splendid.html">El Ateneo Grand Splendid</a> · <a href="obelisco.html">Obelisco</a> · <a href="palacio-barolo.html">Palacio Barolo</a> · <a href="recoleta-cemetery.html">Recoleta Cemetery</a> · <a href="teatro-colon.html">Teatro Colón</a></p><a class="city-cta" href="https://urbantales.net/buenos-aires.html"><b>Buenos Aires audio guide</b><span>Every landmark in Buenos Aires, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/buenos-aires.html">Buenos Aires guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

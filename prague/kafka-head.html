@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Kafka's Rotating Head", "description": "David Černý's rotating head of Franz Kafka: 42 moving layers of mirrored steel, 11 meters tall, behind Národní street. When it turns and why. With an audio story.", "image": "https://urbantales.net/prague/img/kafka-head.jpg", "url": "https://urbantales.net/prague/kafka-head.html", "geo": {"@type": "GeoCoordinates", "latitude": 50.0816514, "longitude": 14.420820999999998}, "address": {"@type": "PostalAddress", "addressLocality": "Prague", "addressCountry": "CZ"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Where is the Kafka head in Prague?", "acceptedAnswer": {"@type": "Answer", "text": "Behind the Quadrio shopping center, by Národní třída metro station."}}, {"@type": "Question", "name": "How often does the Kafka head rotate?", "acceptedAnswer": {"@type": "Answer", "text": "It moves in short sequences at regular intervals through the day."}}, {"@type": "Question", "name": "Who made the Kafka head?", "acceptedAnswer": {"@type": "Answer", "text": "Czech artist David Černý, in 2014."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Prague", "item": "https://urbantales.net/prague.html"}, {"@type": "ListItem", "position": 3, "name": "Kafka's Rotating Head", "item": "https://urbantales.net/prague/kafka-head.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/prague.html" class="back">Prague guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/prague.html">Prague</a> › Kafka&#x27;s Rotating Head</div>
     <h1>Kafka's Rotating Head: <em>a face that keeps falling apart</em></h1>
     <p class="lede">Behind a shopping center on Národní street, an 11-meter head of Franz Kafka breaks into 42 spinning layers and comes back together. Here&#x27;s what you&#x27;re looking at, and what to listen for while you wait for it to turn.</p>
+    
   </div>
   <figure class="hero"><img src="img/kafka-head.jpg" alt="Kafka&#x27;s Rotating Head, Prague" width="1600" height="900"><figcaption>Photo: Jindřich Nosek (NoJin) · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:David-%C4%8Cern%C3%BD,-Franz-Kafka,-opposite_orientation-2014).jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Unveiled</span><span class="v">2014</span></div><div class="fact"><span class="k">Artist</span><span class="v">David Černý</span></div><div class="fact"><span class="k">Height</span><span class="v">≈ 11 m</span></div><div class="fact"><span class="k">Layers</span><span class="v">42</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Kafka&#x27;s Rotating Head story, in the app's voice">
     <audio id="preview" preload="none" src="audio/kafka-head.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Kafka&#x27;s Rotating Head story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A face that won&#x27;t hold still</h3><p>The 42 stainless steel layers turn independently, so Kafka&#x27;s face splits, twists and reassembles. Černý meant it to echo Kafka&#x27;s own sense of a self that never quite fits together.</p></div></div><div class="story"><span class="n">2</span><div><h3>Prague&#x27;s provocateur</h3><p>David Černý is also behind the babies crawling up the Žižkov TV Tower and the two men urinating into a pond shaped like the Czech Republic, at the Kafka Museum.</p></div></div><div class="story"><span class="n">3</span><div><h3>Kafka&#x27;s city</h3><p>Kafka was born in 1883 about a kilometer from here, by the Old Town Square, and lived almost his whole life in Prague.</p></div></div>
     <div class="tip"><b>Tip</b>Stand at the corner of the square in front of the Quadrio shopping center and wait for the head to start turning; it moves for a few minutes, then stops. With Urban Tales running, its story plays as you reach the square.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="national-theatre.html"><span class="d">≈ 9 min walk</span><h3>National Theatre</h3><span class="h">Built by the nation</span></a><a class="near" href="astronomical-clock.html"><span class="d">≈ 10 min walk</span><h3>Astronomical Clock</h3><span class="h">The oldest one still working</span></a><a class="near" href="klementinum.html"><span class="d">≈ 11 min walk</span><h3>Klementinum</h3><span class="h">A library you only see from the door</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Kafka&#x27;s Rotating Head: common questions</h2><details open><summary>Where is the Kafka head in Prague?</summary><p>Behind the Quadrio shopping center, by Národní třída metro station.</p></details><details><summary>How often does the Kafka head rotate?</summary><p>It moves in short sequences at regular intervals through the day.</p></details><details><summary>Who made the Kafka head?</summary><p>Czech artist David Černý, in 2014.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Prague</h2><p class="more-links"><a href="charles-bridge.html">Charles Bridge</a> · <a href="golden-lane.html">Golden Lane</a> · <a href="municipal-house.html">Municipal House</a> · <a href="old-town-bridge-tower.html">Old Town Bridge Tower</a> · <a href="prague-castle.html">Prague Castle</a> · <a href="spanish-synagogue.html">Spanish Synagogue</a></p><a class="city-cta" href="https://urbantales.net/prague.html"><b>Prague audio guide</b><span>Every landmark in Prague, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/prague.html">Prague guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

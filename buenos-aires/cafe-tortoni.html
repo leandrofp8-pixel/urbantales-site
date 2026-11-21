@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Café Tortoni", "description": "Café Tortoni in plain words: when it opened, its famous guests, the tango upstairs and what to look for. With an audio story.", "image": "https://urbantales.net/buenos-aires/img/cafe-tortoni.jpg", "url": "https://urbantales.net/buenos-aires/cafe-tortoni.html", "geo": {"@type": "GeoCoordinates", "latitude": -34.6086531, "longitude": -58.3782121}, "address": {"@type": "PostalAddress", "addressLocality": "Buenos Aires", "addressCountry": "AR"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How old is Café Tortoni?", "acceptedAnswer": {"@type": "Answer", "text": "It opened in 1858. It has been in its current building since 1880, and its front on Avenida de Mayo dates from 1898."}}, {"@type": "Question", "name": "Who went to Café Tortoni?", "acceptedAnswer": {"@type": "Answer", "text": "Writers, artists and musicians, including Jorge Luis Borges, Carlos Gardel and Alfonsina Storni."}}, {"@type": "Question", "name": "Is there tango at Café Tortoni?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Tango shows are held in the evening, and the National Tango Academy is in the same building."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Buenos Aires", "item": "https://urbantales.net/buenos-aires.html"}, {"@type": "ListItem", "position": 3, "name": "Café Tortoni", "item": "https://urbantales.net/buenos-aires/cafe-tortoni.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/buenos-aires.html" class="back">Buenos Aires guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/buenos-aires.html">Buenos Aires</a> › Café Tortoni</div>
     <h1>Café Tortoni: <em>coffee since 1858</em></h1>
     <p class="lede">Open since 1858 and in its current building since 1880, Café Tortoni is the most famous café in Buenos Aires: a stained-glass room where writers, artists and tango singers sat for over a century.</p>
+    
   </div>
   <figure class="hero"><img src="img/cafe-tortoni.jpg" alt="Café Tortoni, Buenos Aires" width="1600" height="900"><figcaption>Photo: Whatsinaname Penarc · Public domain · <a href="https://commons.wikimedia.org/wiki/File:Buenos_Aires_Cafe_Tortoni_2.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Opened</span><span class="v">1858</span></div><div class="fact"><span class="k">Avenida de Mayo front</span><span class="v">1898</span></div><div class="fact"><span class="k">Regulars</span><span class="v">Borges, Gardel, Alfonsina Storni</span></div><div class="fact"><span class="k">Upstairs</span><span class="v">National Tango Academy</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Café Tortoni story, in the app's voice">
     <audio id="preview" preload="none" src="audio/cafe-tortoni.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Café Tortoni story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A new front for a new avenue</h3><p>The café moved into this building in 1880, with its door on Rivadavia Street. When Avenida de Mayo opened, it got a new front facing the avenue, finished in 1898 by architect Alejandro Christophersen.</p></div></div><div class="story"><span class="n">2</span><div><h3>A cellar full of artists</h3><p>In the 1920s a circle of painters, writers and musicians met in the cellar, known as La Peña. Today you can still hear tango shows downstairs.</p></div></div><div class="story"><span class="n">3</span><div><h3>Who sat here</h3><p>Jorge Luis Borges, the singer Carlos Gardel and the poet Alfonsina Storni were regulars; you&#x27;ll find their figures at a table inside.</p></div></div>
     <div class="tip"><b>Tip</b>There&#x27;s often a queue outside. Go in the morning or mid-afternoon, and look up at the stained-glass ceiling in the main room. With Urban Tales running, its story plays as you reach the door.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="plaza-de-mayo.html"><span class="d">≈ 9 min walk</span><h3>Plaza de Mayo</h3><span class="h">Two squares became one</span></a><a class="near" href="obelisco.html"><span class="d">≈ 10 min walk</span><h3>Obelisco</h3><span class="h">Why here</span></a><a class="near" href="casa-rosada.html"><span class="d">≈ 11 min walk</span><h3>Casa Rosada</h3><span class="h">Lime and cattle blood</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Café Tortoni: common questions</h2><details open><summary>How old is Café Tortoni?</summary><p>It opened in 1858. It has been in its current building since 1880, and its front on Avenida de Mayo dates from 1898.</p></details><details><summary>Who went to Café Tortoni?</summary><p>Writers, artists and musicians, including Jorge Luis Borges, Carlos Gardel and Alfonsina Storni.</p></details><details><summary>Is there tango at Café Tortoni?</summary><p>Yes. Tango shows are held in the evening, and the National Tango Academy is in the same building.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Buenos Aires</h2><p class="more-links"><a href="caminito.html">Caminito</a> · <a href="el-ateneo-grand-splendid.html">El Ateneo Grand Splendid</a> · <a href="palacio-barolo.html">Palacio Barolo</a> · <a href="puente-de-la-mujer.html">Puente de la Mujer</a> · <a href="recoleta-cemetery.html">Recoleta Cemetery</a> · <a href="teatro-colon.html">Teatro Colón</a></p><a class="city-cta" href="https://urbantales.net/buenos-aires.html"><b>Buenos Aires audio guide</b><span>Every landmark in Buenos Aires, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/buenos-aires.html">Buenos Aires guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

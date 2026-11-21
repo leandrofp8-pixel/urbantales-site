@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Neue Wache", "description": "Neue Wache history: Schinkel's 1818 guardhouse on Unter den Linden, its many memorial meanings, and Käthe Kollwitz's Mother with her Dead Son. With an audio story.", "image": "https://urbantales.net/berlin/img/neue-wache.jpg", "url": "https://urbantales.net/berlin/neue-wache.html", "geo": {"@type": "GeoCoordinates", "latitude": 52.5178902, "longitude": 13.3955281}, "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the Neue Wache?", "acceptedAnswer": {"@type": "Answer", "text": "Germany's central memorial to the victims of war and tyranny, in a former royal guardhouse by Schinkel."}}, {"@type": "Question", "name": "Who made the sculpture inside the Neue Wache?", "acceptedAnswer": {"@type": "Answer", "text": "It's an enlarged version of Käthe Kollwitz's \"Mother with her Dead Son\"."}}, {"@type": "Question", "name": "Is the Neue Wache free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it's free to enter."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Berlin", "item": "https://urbantales.net/berlin.html"}, {"@type": "ListItem", "position": 3, "name": "Neue Wache", "item": "https://urbantales.net/berlin/neue-wache.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/berlin.html" class="back">Berlin guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/berlin.html">Berlin</a> › Neue Wache</div>
     <h1>Neue Wache: the history, and <em>the sculpture under an open sky</em></h1>
     <p class="lede">A small temple-like building on Unter den Linden has been a royal guardhouse and four different memorials. Inside, there is a single sculpture. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/neue-wache.jpg" alt="Neue Wache, Berlin" width="1600" height="900"><figcaption>Photo: Ansgar Koreng · CC BY 3.0 de · <a href="https://commons.wikimedia.org/wiki/File:150214_Neue_Wache_Berlin.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Built</span><span class="v">1816–1818</span></div><div class="fact"><span class="k">Architect</span><span class="v">K. F. Schinkel</span></div><div class="fact"><span class="k">Central memorial</span><span class="v">since 1993</span></div><div class="fact"><span class="k">Sculpture</span><span class="v">Käthe Kollwitz</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Neue Wache story, in the app's voice">
     <audio id="preview" preload="none" src="audio/neue-wache.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Neue Wache story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A guardhouse like a Roman fort</h3><p>Schinkel&#x27;s first major building in Berlin was a guardhouse for the Crown Prince&#x27;s Palace, with a square plan inspired by a Roman military camp and a Doric portico in front.</p></div></div><div class="story"><span class="n">2</span><div><h3>Four meanings in a century</h3><p>It became a memorial to the dead of World War I in 1931, East Germany&#x27;s memorial to the victims of fascism and militarism, and in 1993 Germany&#x27;s central memorial to the victims of war and tyranny.</p></div></div><div class="story"><span class="n">3</span><div><h3>Rain on the mother</h3><p>Inside, Käthe Kollwitz&#x27;s &quot;Mother with her Dead Son&quot; sits beneath an opening in the roof, so rain and snow fall on the sculpture.</p></div></div>
     <div class="tip"><b>Tip</b>Step inside and stand still for a moment: the only light comes from the round opening above the sculpture. With Urban Tales running, the memorial&#x27;s story plays as you walk along Unter den Linden.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="bebelplatz.html"><span class="d">≈ 3 min walk</span><h3>Bebelplatz</h3><span class="h">The night of the fires</span></a><a class="near" href="berlin-cathedral.html"><span class="d">≈ 6 min walk</span><h3>Berlin Cathedral</h3><span class="h">Not really a cathedral</span></a><a class="near" href="humboldt-forum.html"><span class="d">≈ 7 min walk</span><h3>Humboldt Forum</h3><span class="h">Palace, parliament, palace</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Neue Wache: common questions</h2><details open><summary>What is the Neue Wache?</summary><p>Germany&#x27;s central memorial to the victims of war and tyranny, in a former royal guardhouse by Schinkel.</p></details><details><summary>Who made the sculpture inside the Neue Wache?</summary><p>It&#x27;s an enlarged version of Käthe Kollwitz&#x27;s &quot;Mother with her Dead Son&quot;.</p></details><details><summary>Is the Neue Wache free?</summary><p>Yes, it&#x27;s free to enter.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Berlin</h2><p class="more-links"><a href="tv-tower.html">Berlin TV Tower</a> · <a href="berlin-wall-memorial.html">Berlin Wall Memorial</a> · <a href="brandenburg-gate.html">Brandenburg Gate</a> · <a href="kaiser-wilhelm-memorial-church.html">Kaiser Wilhelm Memorial Church</a> · <a href="holocaust-memorial.html">Memorial to the Murdered Jews of Europe</a> · <a href="red-city-hall.html">Red City Hall (Rotes Rathaus)</a></p><a class="city-cta" href="https://urbantales.net/berlin.html"><b>Berlin audio guide</b><span>Every landmark in Berlin, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/berlin.html">Berlin guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

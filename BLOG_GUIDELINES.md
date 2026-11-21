@@ -112,6 +112,11 @@ here (decided 2026-09-02).
 - Internal links: at least 2. One should point to `index.html` or a relevant `{city}.html` page (if
   that city has one — check the repo root for an existing `{city-slug}.html` before assuming), one
   should point to `blog.html`. Related-city posts can link to each other once there are enough posts.
+- "Keep exploring" block (added 2026-11-20, SEO review: posts are our best-ranking pages but barely linked to
+  the rest of the site). Just before `</article>`, copy the `<section class="keep-exploring">` block from the
+  Trevi post: up to 4 links to `{city}/{landmark}.html` pages the post mentions (only pages that exist in the
+  repo), then a link to `{city}.html` with the anchor text "{City} audio guide". Skip the block only when the
+  city has no `{city}.html` page.
 - Headings must nest properly: one `<h1>` (in the hero), then `<h2>`s in order — never skip to `<h3>`
   without an `<h2>` first.
 - Slug (filename) is the primary keyword in kebab-case: `blog-{descriptive-keyword-slug}.html`. Keep

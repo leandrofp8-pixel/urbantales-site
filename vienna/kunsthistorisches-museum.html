@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Kunsthistorisches Museum", "description": "Kunsthistorisches Museum history: built for the Habsburgs' collections in 1891, the twin of the Natural History Museum, Klimt on the staircase and the largest Bruegel collection. With an audio story.", "image": "https://urbantales.net/vienna/img/kunsthistorisches-museum.jpg", "url": "https://urbantales.net/vienna/kunsthistorisches-museum.html", "geo": {"@type": "GeoCoordinates", "latitude": 48.2038016, "longitude": 16.3617874}, "address": {"@type": "PostalAddress", "addressLocality": "Vienna", "addressCountry": "AT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is in the Kunsthistorisches Museum?", "acceptedAnswer": {"@type": "Answer", "text": "The Habsburgs' collections: old master paintings, Egyptian and Greek antiquities, the Kunstkammer and coins."}}, {"@type": "Question", "name": "When did the Kunsthistorisches Museum open?", "acceptedAnswer": {"@type": "Answer", "text": "In 1891, built for Emperor Franz Joseph by Gottfried Semper and Karl von Hasenauer."}}, {"@type": "Question", "name": "Can you see Klimt at the Kunsthistorisches Museum?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, Klimt painted panels above the grand staircase in 1890–91."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Vienna", "item": "https://urbantales.net/vienna.html"}, {"@type": "ListItem", "position": 3, "name": "Kunsthistorisches Museum", "item": "https://urbantales.net/vienna/kunsthistorisches-museum.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/vienna.html" class="back">Vienna guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/vienna.html">Vienna</a> › Kunsthistorisches Museum</div>
     <h1>Kunsthistorisches Museum: the history, and <em>the world's biggest Bruegel room</em></h1>
     <p class="lede">Emperor Franz Joseph built it to put the Habsburgs&#x27; art collections on show, opposite an identical twin full of meteorites and dinosaurs. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/kunsthistorisches-museum.jpg" alt="Kunsthistorisches Museum, Vienna" width="1600" height="900"><figcaption>Photo: Suicasmo · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Main_building_of_the_Kunsthistorisches_Museum_20150827.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Opened</span><span class="v">1891</span></div><div class="fact"><span class="k">Architects</span><span class="v">Semper &amp; Hasenauer</span></div><div class="fact"><span class="k">Bruegels</span><span class="v">12 paintings</span></div><div class="fact"><span class="k">Twin</span><span class="v">Natural History Museum</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Kunsthistorisches Museum story, in the app's voice">
     <audio id="preview" preload="none" src="audio/kunsthistorisches-museum.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Kunsthistorisches Museum story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Identical twins</h3><p>The art museum and the Natural History Museum facing it across Maria-Theresien-Platz are near mirror images, built together to show the empire&#x27;s art on one side and its science on the other.</p></div></div><div class="story"><span class="n">2</span><div><h3>Klimt on the staircase</h3><p>Between the columns of the grand staircase, a young Gustav Klimt, his brother Ernst and Franz Matsch painted the spandrels in 1890–91. Klimt&#x27;s are the women in the Egyptian and Greek panels.</p></div></div><div class="story"><span class="n">3</span><div><h3>The Bruegel room</h3><p>The museum has the world&#x27;s largest collection of paintings by Pieter Bruegel the Elder, including &quot;The Tower of Babel&quot; and &quot;Hunters in the Snow&quot;.</p></div></div>
     <div class="tip"><b>Tip</b>Climb the grand staircase and look up between the columns and arches above it: Klimt&#x27;s panels are there. With Urban Tales running, the museum&#x27;s story plays as you reach Maria-Theresien-Platz.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="hofburg.html"><span class="d">≈ 5 min walk</span><h3>Hofburg</h3><span class="h">Built in layers</span></a><a class="near" href="imperial-treasury.html"><span class="d">≈ 7 min walk</span><h3>Imperial Treasury</h3><span class="h">A crown with eight sides</span></a><a class="near" href="state-hall-national-library.html"><span class="d">≈ 8 min walk</span><h3>State Hall of the National Library</h3><span class="h">An emperor in the middle</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Kunsthistorisches Museum: common questions</h2><details open><summary>What is in the Kunsthistorisches Museum?</summary><p>The Habsburgs&#x27; collections: old master paintings, Egyptian and Greek antiquities, the Kunstkammer and coins.</p></details><details><summary>When did the Kunsthistorisches Museum open?</summary><p>In 1891, built for Emperor Franz Joseph by Gottfried Semper and Karl von Hasenauer.</p></details><details><summary>Can you see Klimt at the Kunsthistorisches Museum?</summary><p>Yes, Klimt painted panels above the grand staircase in 1890–91.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Vienna</h2><p class="more-links"><a href="parliament.html">Austrian Parliament</a> · <a href="burgtheater.html">Burgtheater</a> · <a href="karlskirche.html">Karlskirche</a> · <a href="musikverein.html">Musikverein</a> · <a href="schonbrunn-palace.html">Schönbrunn Palace</a> · <a href="st-stephens-cathedral.html">St. Stephen&#x27;s Cathedral</a></p><a class="city-cta" href="https://urbantales.net/vienna.html"><b>Vienna audio guide</b><span>Every landmark in Vienna, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/vienna.html">Vienna guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

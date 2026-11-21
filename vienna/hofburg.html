@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Hofburg", "description": "Hofburg Palace history in plain words: 700 years of Habsburg rule, the Sisi Museum, the Spanish Riding School, and the President's office today. With an audio story.", "image": "https://urbantales.net/vienna/img/hofburg.jpg", "url": "https://urbantales.net/vienna/hofburg.html", "geo": {"@type": "GeoCoordinates", "latitude": 48.2056578, "longitude": 16.3647803}, "address": {"@type": "PostalAddress", "addressLocality": "Vienna", "addressCountry": "AT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the Hofburg?", "acceptedAnswer": {"@type": "Answer", "text": "The Habsburgs' main palace in Vienna, now home to museums, the Spanish Riding School, the National Library and the President's offices."}}, {"@type": "Question", "name": "Does anyone live in the Hofburg?", "acceptedAnswer": {"@type": "Answer", "text": "No one lives there, but the Austrian President's offices are in the Leopoldine Wing."}}, {"@type": "Question", "name": "What can you visit in the Hofburg?", "acceptedAnswer": {"@type": "Answer", "text": "The Imperial Apartments, the Sisi Museum, the Silver Collection, the Imperial Treasury and the State Hall of the library, among others."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Vienna", "item": "https://urbantales.net/vienna.html"}, {"@type": "ListItem", "position": 3, "name": "Hofburg", "item": "https://urbantales.net/vienna/hofburg.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/vienna.html" class="back">Vienna guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/vienna.html">Vienna</a> › Hofburg</div>
     <h1>Hofburg: the history, and <em>the palace that kept growing</em></h1>
     <p class="lede">For six centuries the Habsburgs ruled from here, adding a wing almost every generation. Today the Austrian President works in the same complex. Here&#x27;s what you&#x27;re looking at, and what to listen for as you walk through it.</p>
+    
   </div>
   <figure class="hero"><img src="img/hofburg.jpg" alt="Hofburg, Vienna" width="1600" height="900"><figcaption>Photo: Diego Delso · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Michaelertrakt,_Hofburg,_Viena,_Austria,_2020-01-31,_DD_127-129_HDR.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Begun</span><span class="v">13th c.</span></div><div class="fact"><span class="k">Imperial seat</span><span class="v">until 1918</span></div><div class="fact"><span class="k">Rooms</span><span class="v">≈ 2,600</span></div><div class="fact"><span class="k">Riding School</span><span class="v">since 1572</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Hofburg story, in the app's voice">
     <audio id="preview" preload="none" src="audio/hofburg.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Hofburg story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Built in layers</h3><p>The oldest part, the Swiss Wing, goes back to the 13th century. The domed Michaelertrakt facing Michaelerplatz was only finished in 1893, more than 600 years later.</p></div></div><div class="story"><span class="n">2</span><div><h3>Sisi&#x27;s private world</h3><p>Empress Elisabeth hated court life. Her apartments here include her own gymnastics equipment, still on the wall, which shocked the court at the time.</p></div></div><div class="story"><span class="n">3</span><div><h3>A hero&#x27;s balcony</h3><p>The balcony of the New Castle on Heldenplatz is where Hitler announced Austria&#x27;s annexation in March 1938. The square below is now the site of official ceremonies and protests alike.</p></div></div>
     <div class="tip"><b>Tip</b>Enter from Michaelerplatz and look down at the Roman ruins in the middle of the square before walking under the dome into the palace courtyards. With Urban Tales running, the palace&#x27;s story plays as you reach the square.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="imperial-treasury.html"><span class="d">≈ 2 min walk</span><h3>Imperial Treasury</h3><span class="h">A crown with eight sides</span></a><a class="near" href="state-hall-national-library.html"><span class="d">≈ 3 min walk</span><h3>State Hall of the National Library</h3><span class="h">An emperor in the middle</span></a><a class="near" href="kunsthistorisches-museum.html"><span class="d">≈ 5 min walk</span><h3>Kunsthistorisches Museum</h3><span class="h">Identical twins</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Hofburg: common questions</h2><details open><summary>What is the Hofburg?</summary><p>The Habsburgs&#x27; main palace in Vienna, now home to museums, the Spanish Riding School, the National Library and the President&#x27;s offices.</p></details><details><summary>Does anyone live in the Hofburg?</summary><p>No one lives there, but the Austrian President&#x27;s offices are in the Leopoldine Wing.</p></details><details><summary>What can you visit in the Hofburg?</summary><p>The Imperial Apartments, the Sisi Museum, the Silver Collection, the Imperial Treasury and the State Hall of the library, among others.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Vienna</h2><p class="more-links"><a href="parliament.html">Austrian Parliament</a> · <a href="burgtheater.html">Burgtheater</a> · <a href="karlskirche.html">Karlskirche</a> · <a href="musikverein.html">Musikverein</a> · <a href="schonbrunn-palace.html">Schönbrunn Palace</a> · <a href="st-stephens-cathedral.html">St. Stephen&#x27;s Cathedral</a></p><a class="city-cta" href="https://urbantales.net/vienna.html"><b>Vienna audio guide</b><span>Every landmark in Vienna, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/vienna.html">Vienna guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

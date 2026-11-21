@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Musikverein", "description": "Musikverein history: the Golden Hall's famous acoustics, Theophil Hansen's design, the Vienna Philharmonic and the New Year's Concert seen by millions. With an audio story.", "image": "https://urbantales.net/vienna/img/musikverein.jpg", "url": "https://urbantales.net/vienna/musikverein.html", "geo": {"@type": "GeoCoordinates", "latitude": 48.200544, "longitude": 16.372359}, "address": {"@type": "PostalAddress", "addressLocality": "Vienna", "addressCountry": "AT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is the Musikverein's Golden Hall famous?", "acceptedAnswer": {"@type": "Answer", "text": "For its acoustics, among the best in the world, and as the home of the Vienna Philharmonic's New Year's Concert."}}, {"@type": "Question", "name": "Can you visit the Musikverein without a concert?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, on a guided tour."}}, {"@type": "Question", "name": "Who designed the Musikverein?", "acceptedAnswer": {"@type": "Answer", "text": "Theophil Hansen; it opened in 1870."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Vienna", "item": "https://urbantales.net/vienna.html"}, {"@type": "ListItem", "position": 3, "name": "Musikverein", "item": "https://urbantales.net/vienna/musikverein.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/vienna.html" class="back">Vienna guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/vienna.html">Vienna</a> › Musikverein</div>
     <h1>Musikverein: the history, and <em>the hall built like a shoebox</em></h1>
     <p class="lede">Home of the Vienna Philharmonic and the New Year&#x27;s Concert, the Golden Hall is often called the best-sounding concert hall in the world. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/musikverein.jpg" alt="Musikverein, Vienna" width="1600" height="900"><figcaption>Photo: de:user:Hieke · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Musikverein_Goldener_Saal.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Opened</span><span class="v">1870</span></div><div class="fact"><span class="k">Architect</span><span class="v">Theophil Hansen</span></div><div class="fact"><span class="k">Golden Hall seats</span><span class="v">≈ 1,700</span></div><div class="fact"><span class="k">New Year&#x27;s Concert</span><span class="v">since 1939</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Musikverein story, in the app's voice">
     <audio id="preview" preload="none" src="audio/musikverein.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Musikverein story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>The shoebox</h3><p>The Golden Hall is long, narrow and tall, a shape later called a shoebox. With wooden floors, a hollow space under the stage and lots of decoration to scatter the sound, it was built before acoustics was a science.</p></div></div><div class="story"><span class="n">2</span><div><h3>Golden women</h3><p>The gilded caryatids along the walls are more than decoration: their curved surfaces help spread the sound evenly across the hall.</p></div></div><div class="story"><span class="n">3</span><div><h3>The concert on every screen</h3><p>The Vienna Philharmonic&#x27;s New Year&#x27;s Concert, played here every New Year&#x27;s Day, is broadcast to around 90 countries.</p></div></div>
     <div class="tip"><b>Tip</b>Even without a concert ticket, the guided tour lets you stand in the Golden Hall; notice how quietly a voice still carries. With Urban Tales running, the building&#x27;s story plays as you reach Karlsplatz.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="karlskirche.html"><span class="d">≈ 4 min walk</span><h3>Karlskirche</h3><span class="h">A promise during the plague</span></a><a class="near" href="state-hall-national-library.html"><span class="d">≈ 12 min walk</span><h3>State Hall of the National Library</h3><span class="h">An emperor in the middle</span></a><a class="near" href="hofburg.html"><span class="d">≈ 13 min walk</span><h3>Hofburg</h3><span class="h">Built in layers</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Musikverein: common questions</h2><details open><summary>Why is the Musikverein&#x27;s Golden Hall famous?</summary><p>For its acoustics, among the best in the world, and as the home of the Vienna Philharmonic&#x27;s New Year&#x27;s Concert.</p></details><details><summary>Can you visit the Musikverein without a concert?</summary><p>Yes, on a guided tour.</p></details><details><summary>Who designed the Musikverein?</summary><p>Theophil Hansen; it opened in 1870.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Vienna</h2><p class="more-links"><a href="parliament.html">Austrian Parliament</a> · <a href="burgtheater.html">Burgtheater</a> · <a href="imperial-treasury.html">Imperial Treasury</a> · <a href="kunsthistorisches-museum.html">Kunsthistorisches Museum</a> · <a href="schonbrunn-palace.html">Schönbrunn Palace</a> · <a href="st-stephens-cathedral.html">St. Stephen&#x27;s Cathedral</a></p><a class="city-cta" href="https://urbantales.net/vienna.html"><b>Vienna audio guide</b><span>Every landmark in Vienna, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/vienna.html">Vienna guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

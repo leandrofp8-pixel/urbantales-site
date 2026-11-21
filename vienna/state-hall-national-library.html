@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "State Hall of the National Library", "description": "Prunksaal (State Hall) of the Austrian National Library: Charles VI's Baroque hall, Daniel Gran's dome, the statues of Habsburg rulers and Prince Eugene's library. With an audio story.", "image": "https://urbantales.net/vienna/img/state-hall-national-library.jpg", "url": "https://urbantales.net/vienna/state-hall-national-library.html", "geo": {"@type": "GeoCoordinates", "latitude": 48.2062609, "longitude": 16.3668953}, "address": {"@type": "PostalAddress", "addressLocality": "Vienna", "addressCountry": "AT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can you visit the State Hall of the Austrian National Library?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, with a ticket; the entrance is on Josefsplatz."}}, {"@type": "Question", "name": "How many books are in the State Hall?", "acceptedAnswer": {"@type": "Answer", "text": "About 200,000 books printed between 1501 and 1850."}}, {"@type": "Question", "name": "Who built the State Hall?", "acceptedAnswer": {"@type": "Answer", "text": "Johann Bernhard Fischer von Erlach designed it for Charles VI; his son Joseph Emanuel completed it."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Vienna", "item": "https://urbantales.net/vienna.html"}, {"@type": "ListItem", "position": 3, "name": "State Hall of the National Library", "item": "https://urbantales.net/vienna/state-hall-national-library.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/vienna.html" class="back">Vienna guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/vienna.html">Vienna</a> › State Hall of the National Library</div>
     <h1>State Hall of the National Library: <em>200,000 books and an emperor</em></h1>
     <p class="lede">One of the most beautiful library halls in the world was built for Emperor Charles VI and still holds 200,000 books printed between 1501 and 1850. Here&#x27;s what you&#x27;re looking at.</p>
+    
   </div>
   <figure class="hero"><img src="img/state-hall-national-library.jpg" alt="State Hall of the National Library, Vienna" width="1600" height="900"><figcaption>Photo: Richard Hopkins · CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:State_Hall_of_the_Austrian_National_Library_NightFall404_1.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Built</span><span class="v">1723–1726</span></div><div class="fact"><span class="k">Length</span><span class="v">≈ 78 m</span></div><div class="fact"><span class="k">Books</span><span class="v">≈ 200,000</span></div><div class="fact"><span class="k">Dome fresco</span><span class="v">Daniel Gran, 1730</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the State Hall of the National Library story, in the app's voice">
     <audio id="preview" preload="none" src="audio/state-hall-national-library.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the State Hall of the National Library story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>An emperor in the middle</h3><p>Under the dome stands Charles VI in marble, surrounded by statues of other Habsburg rulers. The whole hall was built to show off the dynasty&#x27;s learning as much as its power.</p></div></div><div class="story"><span class="n">2</span><div><h3>Prince Eugene&#x27;s books</h3><p>The 15,000 volumes in the central oval belonged to Prince Eugene of Savoy, the general who fought the Ottomans. Many still have their red, blue and yellow leather bindings by subject.</p></div></div><div class="story"><span class="n">3</span><div><h3>The dome that cracked</h3><p>Soon after it was finished, cracks appeared in the dome. court architect Nikolaus Pacassi reinforced it in the 1760s, which is part of why it&#x27;s still standing.</p></div></div>
     <div class="tip"><b>Tip</b>Walk to the center under the dome, then look along the length of the hall in both directions: the two wings are designed as War and Peace. With Urban Tales running, the hall&#x27;s story plays as you reach Josefsplatz.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="imperial-treasury.html"><span class="d">≈ 2 min walk</span><h3>Imperial Treasury</h3><span class="h">A crown with eight sides</span></a><a class="near" href="hofburg.html"><span class="d">≈ 3 min walk</span><h3>Hofburg</h3><span class="h">Built in layers</span></a><a class="near" href="kunsthistorisches-museum.html"><span class="d">≈ 8 min walk</span><h3>Kunsthistorisches Museum</h3><span class="h">Identical twins</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">State Hall of the National Library: common questions</h2><details open><summary>Can you visit the State Hall of the Austrian National Library?</summary><p>Yes, with a ticket; the entrance is on Josefsplatz.</p></details><details><summary>How many books are in the State Hall?</summary><p>About 200,000 books printed between 1501 and 1850.</p></details><details><summary>Who built the State Hall?</summary><p>Johann Bernhard Fischer von Erlach designed it for Charles VI; his son Joseph Emanuel completed it.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Vienna</h2><p class="more-links"><a href="parliament.html">Austrian Parliament</a> · <a href="burgtheater.html">Burgtheater</a> · <a href="karlskirche.html">Karlskirche</a> · <a href="musikverein.html">Musikverein</a> · <a href="schonbrunn-palace.html">Schönbrunn Palace</a> · <a href="st-stephens-cathedral.html">St. Stephen&#x27;s Cathedral</a></p><a class="city-cta" href="https://urbantales.net/vienna.html"><b>Vienna audio guide</b><span>Every landmark in Vienna, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/vienna.html">Vienna guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Puerta del Sol", "description": "Puerta del Sol in plain words: the old city gate, the clock all of Spain watches on New Year's Eve, the 12 grapes and Kilometre Zero. With an audio story.", "image": "https://urbantales.net/madrid/img/puerta-del-sol.jpg", "url": "https://urbantales.net/madrid/puerta-del-sol.html", "geo": {"@type": "GeoCoordinates", "latitude": 40.4169473, "longitude": -3.7035285}, "address": {"@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why do Spaniards eat 12 grapes at Puerta del Sol?", "acceptedAnswer": {"@type": "Answer", "text": "At midnight on New Year's Eve, people eat one grape for each of the 12 chimes of the Puerta del Sol clock, broadcast live across Spain."}}, {"@type": "Question", "name": "What is Kilometre Zero?", "acceptedAnswer": {"@type": "Answer", "text": "A plaque in front of the Real Casa de Correos marking the starting point for measuring Spain's national roads."}}, {"@type": "Question", "name": "Why is it called Puerta del Sol?", "acceptedAnswer": {"@type": "Answer", "text": "It was a gate (puerta) in the city wall, said to have been decorated with a sun because it faced east."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Madrid", "item": "https://urbantales.net/madrid.html"}, {"@type": "ListItem", "position": 3, "name": "Puerta del Sol", "item": "https://urbantales.net/madrid/puerta-del-sol.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/madrid.html" class="back">Madrid guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/madrid.html">Madrid</a> › Puerta del Sol</div>
     <h1>Puerta del Sol: <em>where Spain counts down</em></h1>
     <p class="lede">Puerta del Sol began as a gate in Madrid&#x27;s 15th-century wall. Today every Spanish New Year starts here: the whole country eats twelve grapes to the chimes of the clock on the old Post Office.</p>
+    
   </div>
   <figure class="hero"><img src="img/puerta-del-sol.jpg" alt="Puerta del Sol, Madrid" width="1600" height="900"><figcaption>Photo: Enric · CC BY 4.0 · <a href="https://commons.wikimedia.org/wiki/File:126_Puerta_del_Sol_(Madrid),_al_fons_la_Real_Casa_de_Correos,_seu_de_la_Comunidad_de_Madrid.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Origin</span><span class="v">15th-century city gate</span></div><div class="fact"><span class="k">Post Office built</span><span class="v">1766–1768</span></div><div class="fact"><span class="k">Clock</span><span class="v">1866</span></div><div class="fact"><span class="k">Kilometre Zero</span><span class="v">since 1950</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Puerta del Sol story, in the app's voice">
     <audio id="preview" preload="none" src="audio/puerta-del-sol.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Puerta del Sol story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A gate facing the sunrise</h3><p>The square takes its name from a gate in the old city wall, traditionally said to have been decorated with a sun because it faced east.</p></div></div><div class="story"><span class="n">2</span><div><h3>Twelve grapes</h3><p>The clock on the Real Casa de Correos, given in 1866 by clockmaker José Rodríguez de Losada, rings in the New Year on national TV. Spaniards eat one grape for each chime.</p></div></div><div class="story"><span class="n">3</span><div><h3>Kilometre Zero</h3><p>A plaque on the pavement in front of the building marks Kilometre Zero, the point from which Spain&#x27;s main roads are measured.</p></div></div>
     <div class="tip"><b>Tip</b>Find the Kilometre Zero plaque on the pavement in front of the clock tower, and the bear and strawberry tree statue, Madrid&#x27;s emblem, on the other side. With Urban Tales running, its story plays as you arrive.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="plaza-mayor.html"><span class="d">≈ 6 min walk</span><h3>Plaza Mayor</h3><span class="h">A market outside the walls</span></a><a class="near" href="mercado-de-san-miguel.html"><span class="d">≈ 8 min walk</span><h3>Mercado de San Miguel</h3><span class="h">A church first</span></a><a class="near" href="royal-palace.html"><span class="d">≈ 15 min walk</span><h3>Royal Palace of Madrid</h3><span class="h">A fortress first</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Puerta del Sol: common questions</h2><details open><summary>Why do Spaniards eat 12 grapes at Puerta del Sol?</summary><p>At midnight on New Year&#x27;s Eve, people eat one grape for each of the 12 chimes of the Puerta del Sol clock, broadcast live across Spain.</p></details><details><summary>What is Kilometre Zero?</summary><p>A plaque in front of the Real Casa de Correos marking the starting point for measuring Spain&#x27;s national roads.</p></details><details><summary>Why is it called Puerta del Sol?</summary><p>It was a gate (puerta) in the city wall, said to have been decorated with a sun because it faced east.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Madrid</h2><p class="more-links"><a href="almudena-cathedral.html">Almudena Cathedral</a> · <a href="palacio-de-cristal.html">Palacio de Cristal</a> · <a href="plaza-de-cibeles.html">Plaza de Cibeles</a> · <a href="prado-museum.html">Prado Museum</a> · <a href="puerta-de-alcala.html">Puerta de Alcalá</a> · <a href="temple-of-debod.html">Temple of Debod</a></p><a class="city-cta" href="https://urbantales.net/madrid.html"><b>Madrid audio guide</b><span>Every landmark in Madrid, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/madrid.html">Madrid guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

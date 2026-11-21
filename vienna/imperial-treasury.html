@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Imperial Treasury", "description": "Imperial Treasury (Schatzkammer) in the Hofburg: the Imperial Crown of the Holy Roman Empire, the Austrian Imperial Crown, the 'unicorn horn' and the Holy Lance. With an audio story.", "image": "https://urbantales.net/vienna/img/imperial-treasury.jpg", "url": "https://urbantales.net/vienna/imperial-treasury.html", "geo": {"@type": "GeoCoordinates", "latitude": 48.206739299999995, "longitude": 16.365773}, "address": {"@type": "PostalAddress", "addressLocality": "Vienna", "addressCountry": "AT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Where is the Imperial Crown of the Holy Roman Empire?", "acceptedAnswer": {"@type": "Answer", "text": "In the Imperial Treasury (Schatzkammer) of the Hofburg in Vienna."}}, {"@type": "Question", "name": "How old is the Imperial Crown?", "acceptedAnswer": {"@type": "Answer", "text": "It's usually dated to the second half of the 10th century."}}, {"@type": "Question", "name": "Is there a unicorn horn in Vienna?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, in the Imperial Treasury, but it's a narwhal tusk."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Vienna", "item": "https://urbantales.net/vienna.html"}, {"@type": "ListItem", "position": 3, "name": "Imperial Treasury", "item": "https://urbantales.net/vienna/imperial-treasury.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/vienna.html" class="back">Vienna guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/vienna.html">Vienna</a> › Imperial Treasury</div>
     <h1>Imperial Treasury: the history, and <em>the crown of a thousand years</em></h1>
     <p class="lede">Inside the Hofburg are the crowns, swords and relics of two empires, including the crown used to crown emperors for 800 years. Here&#x27;s what you&#x27;re looking at, and what to look for.</p>
+    
   </div>
   <figure class="hero"><img src="img/imperial-treasury.jpg" alt="Imperial Treasury, Vienna" width="1600" height="900"><figcaption>Photo: Wikimedia Commons · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Reichskrone_Schatzkammer.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Imperial Crown</span><span class="v">≈ 10th c.</span></div><div class="fact"><span class="k">Austrian crown</span><span class="v">1602</span></div><div class="fact"><span class="k">Rooms</span><span class="v">21</span></div><div class="fact"><span class="k">Inside</span><span class="v">the Hofburg</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Imperial Treasury story, in the app's voice">
     <audio id="preview" preload="none" src="audio/imperial-treasury.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Imperial Treasury story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A crown with eight sides</h3><p>The Imperial Crown of the Holy Roman Empire has eight hinged plates instead of a ring, covered with pearls and gems. It was used to crown emperors until 1792.</p></div></div><div class="story"><span class="n">2</span><div><h3>The unicorn</h3><p>One of the treasury&#x27;s most prized objects is a 2.4-meter &quot;unicorn horn&quot;. It&#x27;s actually a narwhal tusk, once believed to have healing powers.</p></div></div><div class="story"><span class="n">3</span><div><h3>The crowns that traveled</h3><p>The Holy Roman Empire&#x27;s regalia were moved from Nuremberg to Vienna in 1796 to keep them from Napoleon, taken back to Nuremberg by the Nazis in 1938, and returned to Vienna after the war.</p></div></div>
     <div class="tip"><b>Tip</b>Walk around the Imperial Crown&#x27;s case to see the enamel plates on its sides, showing biblical kings. With Urban Tales running, the treasury&#x27;s story plays as you reach the Swiss Court of the Hofburg.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="state-hall-national-library.html"><span class="d">≈ 2 min walk</span><h3>State Hall of the National Library</h3><span class="h">An emperor in the middle</span></a><a class="near" href="hofburg.html"><span class="d">≈ 2 min walk</span><h3>Hofburg</h3><span class="h">Built in layers</span></a><a class="near" href="kunsthistorisches-museum.html"><span class="d">≈ 7 min walk</span><h3>Kunsthistorisches Museum</h3><span class="h">Identical twins</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Imperial Treasury: common questions</h2><details open><summary>Where is the Imperial Crown of the Holy Roman Empire?</summary><p>In the Imperial Treasury (Schatzkammer) of the Hofburg in Vienna.</p></details><details><summary>How old is the Imperial Crown?</summary><p>It&#x27;s usually dated to the second half of the 10th century.</p></details><details><summary>Is there a unicorn horn in Vienna?</summary><p>Yes, in the Imperial Treasury, but it&#x27;s a narwhal tusk.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Vienna</h2><p class="more-links"><a href="parliament.html">Austrian Parliament</a> · <a href="burgtheater.html">Burgtheater</a> · <a href="karlskirche.html">Karlskirche</a> · <a href="musikverein.html">Musikverein</a> · <a href="schonbrunn-palace.html">Schönbrunn Palace</a> · <a href="st-stephens-cathedral.html">St. Stephen&#x27;s Cathedral</a></p><a class="city-cta" href="https://urbantales.net/vienna.html"><b>Vienna audio guide</b><span>Every landmark in Vienna, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/vienna.html">Vienna guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>
