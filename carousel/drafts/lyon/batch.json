@@ -1,0 +1,38 @@
+{
+ "badge_num": 47,
+ "flag": "🇫🇷",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "LYON",
+ "caption": "Which of these 7 Lyon secrets didn't you know? Comment the number 👇\n\n1. Fourvière Basilica\nIn 1870, with the Prussian army advancing, Lyon's archbishop vowed to build a grand new sanctuary on Fourvière hill if the city was spared. The Prussians never reached Lyon, and the Basilique Notre-Dame de Fourvière went up from 1872, paid for by public subscription, and was consecrated in 1896.\n\n2. The traboules\nLyon has hundreds of traboules, covered passageways that cut through buildings and courtyards from one street to the next. In the 19th century silk workers used them to carry fabric out of the rain, and in WWII the Resistance used them to slip away from German patrols. The Cour des Voraces in Croix-Rousse is one of the most famous.\n\n3. Fête des Lumières\nIn 1852 Lyon planned to unveil a gilded statue of the Virgin Mary atop the old Fourvière chapel on September 8, but a flood of the Saône pushed it back to December 8. When bad weather threatened that day's celebrations, residents set candles in their windows anyway, and the custom grew into the Fête des Lumières, which now draws well over a million visitors over four December nights.\n\n4. Théâtre antique de Fourvière\nBuilt around 15 BC under Emperor Augustus, the Théâtre antique de Fourvière is often called the oldest Roman theatre in France. Since 1946 it has hosted the Nuits de Fourvière summer festival on the same stone tiers.\n\n5. The Lumière factory\nOn March 19, 1895, Louis Lumière filmed workers leaving the family's photographic factory in Lyon's Monplaisir district, one of the very first motion pictures. That year he and his brother Auguste patented the Cinématographe, a single machine that could film and project. The surviving factory shed is now a cinema, the Hangar du Premier-Film.\n\n6. The canuts of Croix-Rousse\nLyon-born Joseph Marie Jacquard built a loom that read patterns from punched cards, so weavers no longer needed a helper pulling threads by hand. Thousands of them filled the Croix-Rousse workshops, and in November 1831 the silk weavers, the canuts, rose up over pay and briefly took control of Lyon before the army retook it in early December.\n\n7. Les Halles de Lyon Paul Bocuse\nFood writer Curnonsky dubbed Lyon the 'world capital of gastronomy' in 1935, and the city still plays the part, from traditional bouchons serving quenelles to Les Halles de Lyon, the covered market that opened in 1971 and took chef Paul Bocuse's name in 2006.\n\n.\n.\n.\n#Lyon #France #TravelFacts #FeteDesLumieres #UrbanTales",
+ "facts": [
+  {
+   "headline": "A wartime vow built this basilica",
+   "hook": "In 1870, Lyon's archbishop vowed a basilica if the Prussians spared the city. They never arrived, so Fourvière was built."
+  },
+  {
+   "headline": "Hidden passages that silk workers and the Resistance used",
+   "hook": "Lyon's hidden traboules let silk workers carry fabric out of the rain, and later helped the Resistance escape German patrols."
+  },
+  {
+   "headline": "A delayed statue started a festival of a million candles",
+   "hook": "In 1852, residents lit candles in their windows for a delayed Virgin statue unveiling, starting Lyon's Fête des Lumières."
+  },
+  {
+   "headline": "A 2,000-year-old Roman theatre still fills up every summer",
+   "hook": "Built around 15 BC, Lyon's Roman theatre still fills its stone seats for a summer festival held there since 1946."
+  },
+  {
+   "headline": "Cinema was born outside a factory in Lyon",
+   "hook": "In 1895, Louis Lumière filmed workers leaving his family's Lyon factory, one of the first movies ever made."
+  },
+  {
+   "headline": "Lyon's silk weavers once took over the city",
+   "hook": "Jacquard's punch-card loom filled Lyon's silk workshops; in 1831 its weavers, the canuts, revolted and briefly seized the city."
+  },
+  {
+   "headline": "The world's food capital since 1935",
+   "hook": "Lyon was dubbed the world capital of gastronomy in 1935; its covered market now carries chef Paul Bocuse's name."
+  }
+ ]
+}
