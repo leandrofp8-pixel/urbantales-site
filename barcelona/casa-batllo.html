@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Casa Batlló", "description": "Casa Batlló in plain words: the 1875 building Gaudí transformed, the dragon roof, the Block of Discord and what to look for. With an audio story.", "image": "https://urbantales.net/barcelona/img/casa-batllo.jpg", "url": "https://urbantales.net/barcelona/casa-batllo.html", "geo": {"@type": "GeoCoordinates", "latitude": 41.3917, "longitude": 2.164918}, "address": {"@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who built Casa Batlló?", "acceptedAnswer": {"@type": "Answer", "text": "The original building is from 1875. Antoni Gaudí remodelled it for Josep Batlló between 1904 and 1906."}}, {"@type": "Question", "name": "Why is it called the House of Bones?", "acceptedAnswer": {"@type": "Answer", "text": "Because of the façade: the pillars look like bones and the balconies like masks or skulls."}}, {"@type": "Question", "name": "What is the Block of Discord?", "acceptedAnswer": {"@type": "Answer", "text": "A block of Passeig de Gràcia with three Modernista houses by three different architects next to each other: Batlló, Amatller and Lleó Morera."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Barcelona", "item": "https://urbantales.net/barcelona.html"}, {"@type": "ListItem", "position": 3, "name": "Casa Batlló", "item": "https://urbantales.net/barcelona/casa-batllo.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/barcelona.html" class="back">Barcelona guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/barcelona.html">Barcelona</a> › Casa Batlló</div>
     <h1>Casa Batlló: <em>an old house, reborn</em></h1>
     <p class="lede">Casa Batlló wasn&#x27;t built from scratch. Gaudí remodelled an ordinary 1875 apartment building between 1904 and 1906, and turned it into one of the most recognisable façades in the world.</p>
+    
   </div>
   <figure class="hero"><img src="img/casa-batllo.jpg" alt="Casa Batlló, Barcelona" width="1600" height="900"><figcaption>Photo: Monumencelona30 · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Casa_Batll%C3%B3_fa%C3%A7ade.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Address</span><span class="v">Passeig de Gràcia 43</span></div><div class="fact"><span class="k">Original building</span><span class="v">1875</span></div><div class="fact"><span class="k">Gaudí&#x27;s remodel</span><span class="v">1904–1906</span></div><div class="fact"><span class="k">UNESCO</span><span class="v">since 2005</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Casa Batlló story, in the app's voice">
     <audio id="preview" preload="none" src="audio/casa-batllo.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Casa Batlló story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A demolition that didn&#x27;t happen</h3><p>Textile industrialist Josep Batlló bought the building in 1903 and planned to knock it down. He asked Gaudí for a new design instead, and Gaudí rebuilt the façade, the main floor and the roof.</p></div></div><div class="story"><span class="n">2</span><div><h3>Bones and a dragon</h3><p>The balconies look like masks or skulls and the pillars like bones. The scaly roof is often read as the dragon of Saint George, with the small tower and its cross as the lance.</p></div></div><div class="story"><span class="n">3</span><div><h3>The Block of Discord</h3><p>On this stretch of Passeig de Gràcia, three Modernista architects built side by side: Gaudí&#x27;s Casa Batlló, Puig i Cadafalch&#x27;s Casa Amatller and Domènech i Montaner&#x27;s Casa Lleó Morera.</p></div></div>
     <div class="tip"><b>Tip</b>See the façade from the opposite side of Passeig de Gràcia to take in the whole Block of Discord, then come back at dusk when it&#x27;s lit. With Urban Tales running, its story plays as you reach it.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="casa-mila.html"><span class="d">≈ 8 min walk</span><h3>Casa Milà (La Pedrera)</h3><span class="h">A mocking nickname</span></a><a class="near" href="palau-de-la-musica.html"><span class="d">≈ 16 min walk</span><h3>Palau de la Música Catalana</h3><span class="h">A home for a choir</span></a><a class="near" href="barcelona-cathedral.html"><span class="d">≈ 21 min walk</span><h3>Barcelona Cathedral</h3><span class="h">A newer face</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Casa Batlló: common questions</h2><details open><summary>Who built Casa Batlló?</summary><p>The original building is from 1875. Antoni Gaudí remodelled it for Josep Batlló between 1904 and 1906.</p></details><details><summary>Why is it called the House of Bones?</summary><p>Because of the façade: the pillars look like bones and the balconies like masks or skulls.</p></details><details><summary>What is the Block of Discord?</summary><p>A block of Passeig de Gràcia with three Modernista houses by three different architects next to each other: Batlló, Amatller and Lleó Morera.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Barcelona</h2><p class="more-links"><a href="arc-de-triomf.html">Arc de Triomf</a> · <a href="park-guell.html">Park Güell</a> · <a href="placa-reial.html">Plaça Reial</a> · <a href="sagrada-familia.html">Sagrada Família</a> · <a href="sant-pau.html">Sant Pau Recinte Modernista</a> · <a href="santa-maria-del-mar.html">Santa Maria del Mar</a></p><a class="city-cta" href="https://urbantales.net/barcelona.html"><b>Barcelona audio guide</b><span>Every landmark in Barcelona, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/barcelona.html">Barcelona guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

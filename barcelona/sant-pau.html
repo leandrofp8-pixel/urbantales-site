@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Sant Pau Recinte Modernista", "description": "Sant Pau Recinte Modernista in plain words: the 1401 hospital it continued, Domènech i Montaner's pavilions, the tunnels and how to visit. With an audio story.", "image": "https://urbantales.net/barcelona/img/sant-pau.jpg", "url": "https://urbantales.net/barcelona/sant-pau.html", "geo": {"@type": "GeoCoordinates", "latitude": 41.411707199999995, "longitude": 2.1743395}, "address": {"@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Sant Pau still a hospital?", "acceptedAnswer": {"@type": "Answer", "text": "Not the Modernista pavilions. The hospital moved to a new building next door in 2009; the old complex reopened in 2014 as a cultural centre you can visit."}}, {"@type": "Question", "name": "Who designed the Hospital de Sant Pau?", "acceptedAnswer": {"@type": "Answer", "text": "Lluís Domènech i Montaner, who also built the Palau de la Música Catalana."}}, {"@type": "Question", "name": "Is Sant Pau worth visiting?", "acceptedAnswer": {"@type": "Answer", "text": "If you like Gaudí, yes: it's the largest Art Nouveau complex in the world and far less crowded than the Sagrada Família."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Barcelona", "item": "https://urbantales.net/barcelona.html"}, {"@type": "ListItem", "position": 3, "name": "Sant Pau Recinte Modernista", "item": "https://urbantales.net/barcelona/sant-pau.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/barcelona.html" class="back">Barcelona guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/barcelona.html">Barcelona</a> › Sant Pau Recinte Modernista</div>
     <h1>Sant Pau: <em>a hospital designed to heal</em></h1>
     <p class="lede">Built between 1901 and 1930 by Lluís Domènech i Montaner, the Hospital de Sant Pau treated patients until 2009. Its 12 Modernista pavilions, joined by underground tunnels, form the largest Art Nouveau complex in the world.</p>
+    
   </div>
   <figure class="hero"><img src="img/sant-pau.jpg" alt="Sant Pau Recinte Modernista, Barcelona" width="1600" height="900"><figcaption>Photo: Ank Kumar · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:2014-_Hospital_Sant_Pau,_Barcelona,_Spain_(_Ank_Kumar_)_02.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Built</span><span class="v">1901–1930</span></div><div class="fact"><span class="k">Architect</span><span class="v">Lluís Domènech i Montaner</span></div><div class="fact"><span class="k">Hospital until</span><span class="v">2009</span></div><div class="fact"><span class="k">UNESCO</span><span class="v">since 1997</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Sant Pau Recinte Modernista story, in the app's voice">
     <audio id="preview" preload="none" src="audio/sant-pau.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Sant Pau Recinte Modernista story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A hospital since 1401</h3><p>In 1401 six small medieval hospitals merged into the Hospital de la Santa Creu. Five centuries later, the city needed something bigger, and the banker Pau Gil&#x27;s legacy paid for this one.</p></div></div><div class="story"><span class="n">2</span><div><h3>Gardens and tunnels</h3><p>Instead of one big block, Domènech i Montaner designed separate pavilions surrounded by gardens, with light and fresh air, joined by underground galleries for moving patients.</p></div></div><div class="story"><span class="n">3</span><div><h3>From wards to culture</h3><p>When a new hospital opened next door in 2009, the old pavilions were restored. They reopened in 2014 as a cultural centre and offices for international organisations.</p></div></div>
     <div class="tip"><b>Tip</b>It&#x27;s a 15-minute walk up Avinguda de Gaudí from the Sagrada Família: the avenue lines up the two buildings. Go in the morning when the tiles catch the light. With Urban Tales running, its story plays as you arrive.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="sagrada-familia.html"><span class="d">≈ 15 min walk</span><h3>Sagrada Família</h3><span class="h">Not Gaudí&#x27;s project at first</span></a><a class="near" href="park-guell.html"><span class="d">≈ 30 min walk</span><h3>Park Güell</h3><span class="h">Nobody bought</span></a><a class="near" href="casa-mila.html"><span class="d">2.1 km away</span><h3>Casa Milà (La Pedrera)</h3><span class="h">A mocking nickname</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Sant Pau Recinte Modernista: common questions</h2><details open><summary>Is Sant Pau still a hospital?</summary><p>Not the Modernista pavilions. The hospital moved to a new building next door in 2009; the old complex reopened in 2014 as a cultural centre you can visit.</p></details><details><summary>Who designed the Hospital de Sant Pau?</summary><p>Lluís Domènech i Montaner, who also built the Palau de la Música Catalana.</p></details><details><summary>Is Sant Pau worth visiting?</summary><p>If you like Gaudí, yes: it&#x27;s the largest Art Nouveau complex in the world and far less crowded than the Sagrada Família.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Barcelona</h2><p class="more-links"><a href="arc-de-triomf.html">Arc de Triomf</a> · <a href="barcelona-cathedral.html">Barcelona Cathedral</a> · <a href="casa-batllo.html">Casa Batlló</a> · <a href="palau-de-la-musica.html">Palau de la Música Catalana</a> · <a href="placa-reial.html">Plaça Reial</a> · <a href="santa-maria-del-mar.html">Santa Maria del Mar</a></p><a class="city-cta" href="https://urbantales.net/barcelona.html"><b>Barcelona audio guide</b><span>Every landmark in Barcelona, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/barcelona.html">Barcelona guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

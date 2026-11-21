@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Klementinum", "description": "Klementinum history: the Jesuit college, the Baroque Library Hall you view from the door, and the tower that has recorded Prague's weather since 1775. With an audio story.", "image": "https://urbantales.net/prague/img/klementinum.jpg", "url": "https://urbantales.net/prague/klementinum.html", "geo": {"@type": "GeoCoordinates", "latitude": 50.0865979, "longitude": 14.4160186}, "address": {"@type": "PostalAddress", "addressLocality": "Prague", "addressCountry": "CZ"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can you visit the Klementinum library?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, on a guided tour; you see the Baroque Library Hall from its doorway to protect it."}}, {"@type": "Question", "name": "How old is the Klementinum?", "acceptedAnswer": {"@type": "Answer", "text": "The Jesuits arrived in 1556; most of the Baroque complex dates from the 17th and 18th centuries."}}, {"@type": "Question", "name": "What is the Klementinum today?", "acceptedAnswer": {"@type": "Answer", "text": "Home to the National Library of the Czech Republic."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Prague", "item": "https://urbantales.net/prague.html"}, {"@type": "ListItem", "position": 3, "name": "Klementinum", "item": "https://urbantales.net/prague/klementinum.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/prague.html" class="back">Prague guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/prague.html">Prague</a> › Klementinum</div>
     <h1>Klementinum: the history, and <em>the library you can't walk into</em></h1>
     <p class="lede">The second-largest building complex in Prague after the castle was a Jesuit college for two centuries. It holds one of the most beautiful library halls in the world and a tower that has measured the weather since 1775. Here&#x27;s what you&#x27;re looking at.</p>
+    
   </div>
   <figure class="hero"><img src="img/klementinum.jpg" alt="Klementinum, Prague" width="1600" height="900"><figcaption>Photo: Skot · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Clementinum_baroque_library_7.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Jesuits arrive</span><span class="v">1556</span></div><div class="fact"><span class="k">Library Hall</span><span class="v">1722</span></div><div class="fact"><span class="k">Weather records</span><span class="v">since 1775</span></div><div class="fact"><span class="k">Today</span><span class="v">National Library</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Klementinum story, in the app's voice">
     <audio id="preview" preload="none" src="audio/klementinum.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Klementinum story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A library you only see from the door</h3><p>The Baroque Library Hall, opened in 1722 and designed by František Maxmilián Kaňka, holds about 20,000 old volumes and a row of historic globes. To protect it, visitors look in from the doorway on the guided tour.</p></div></div><div class="story"><span class="n">2</span><div><h3>Weather every day since 1775</h3><p>Daily temperature records have been kept at the Astronomical Tower since 1775, one of the longest unbroken weather series in the world.</p></div></div><div class="story"><span class="n">3</span><div><h3>Noon, by a thread of light</h3><p>The Meridian Hall has a thin line on the wall and a small opening: when sunlight crossed the line, it was exactly noon, and a man on the tower waved a flag to tell the city.</p></div></div>
     <div class="tip"><b>Tip</b>Take the guided tour that climbs the Astronomical Tower: the view over the Old Town roofs to the castle is one of the best in Prague. With Urban Tales running, the Klementinum&#x27;s story plays as you reach the courtyard.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="old-town-bridge-tower.html"><span class="d">≈ 3 min walk</span><h3>Old Town Bridge Tower</h3><span class="h">Kings, a saint and a kingfisher</span></a><a class="near" href="charles-bridge.html"><span class="d">≈ 5 min walk</span><h3>Charles Bridge</h3><span class="h">Started on a lucky number</span></a><a class="near" href="astronomical-clock.html"><span class="d">≈ 5 min walk</span><h3>Astronomical Clock</h3><span class="h">The oldest one still working</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Klementinum: common questions</h2><details open><summary>Can you visit the Klementinum library?</summary><p>Yes, on a guided tour; you see the Baroque Library Hall from its doorway to protect it.</p></details><details><summary>How old is the Klementinum?</summary><p>The Jesuits arrived in 1556; most of the Baroque complex dates from the 17th and 18th centuries.</p></details><details><summary>What is the Klementinum today?</summary><p>Home to the National Library of the Czech Republic.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Prague</h2><p class="more-links"><a href="golden-lane.html">Golden Lane</a> · <a href="kafka-head.html">Kafka&#x27;s Rotating Head</a> · <a href="municipal-house.html">Municipal House</a> · <a href="national-theatre.html">National Theatre</a> · <a href="prague-castle.html">Prague Castle</a> · <a href="spanish-synagogue.html">Spanish Synagogue</a></p><a class="city-cta" href="https://urbantales.net/prague.html"><b>Prague audio guide</b><span>Every landmark in Prague, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/prague.html">Prague guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

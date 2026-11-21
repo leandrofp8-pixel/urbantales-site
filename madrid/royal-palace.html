@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Royal Palace of Madrid", "description": "The Royal Palace of Madrid in plain words: the Alcázar that burned in 1734, the 3,418 rooms, the Stradivarius quintet and how to visit. With an audio story.", "image": "https://urbantales.net/madrid/img/royal-palace.jpg", "url": "https://urbantales.net/madrid/royal-palace.html", "geo": {"@type": "GeoCoordinates", "latitude": 40.417955, "longitude": -3.714311999999999}, "address": {"@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does the King of Spain live in the Royal Palace?", "acceptedAnswer": {"@type": "Answer", "text": "No. It's the official residence, but the royal family lives at the Zarzuela Palace outside the centre. The Royal Palace is used for state ceremonies."}}, {"@type": "Question", "name": "How many rooms does the Royal Palace of Madrid have?", "acceptedAnswer": {"@type": "Answer", "text": "3,418, across about 135,000 square metres, which makes it the largest royal palace in Europe by floor area."}}, {"@type": "Question", "name": "What was there before the Royal Palace?", "acceptedAnswer": {"@type": "Answer", "text": "A 9th-century Muslim fortress that became the Royal Alcázar. It burned down on Christmas Eve 1734."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Madrid", "item": "https://urbantales.net/madrid.html"}, {"@type": "ListItem", "position": 3, "name": "Royal Palace of Madrid", "item": "https://urbantales.net/madrid/royal-palace.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/madrid.html" class="back">Madrid guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/madrid.html">Madrid</a> › Royal Palace of Madrid</div>
     <h1>Royal Palace: <em>built on the ashes of a fortress</em></h1>
     <p class="lede">After the old Alcázar burned on Christmas Eve 1734, Spain&#x27;s Bourbon kings built a new palace on the same spot. With 3,418 rooms, it&#x27;s the largest royal palace in Europe by floor area.</p>
+    
   </div>
   <figure class="hero"><img src="img/royal-palace.jpg" alt="Royal Palace of Madrid, Madrid" width="1600" height="900"><figcaption>Photo: Carlos Delgado · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Palacio_Real_de_Madrid_-_13.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Built</span><span class="v">1738–1755</span></div><div class="fact"><span class="k">Rooms</span><span class="v">3,418</span></div><div class="fact"><span class="k">Floor area</span><span class="v">135,000 m²</span></div><div class="fact"><span class="k">Today</span><span class="v">State ceremonies</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Royal Palace of Madrid story, in the app's voice">
     <audio id="preview" preload="none" src="audio/royal-palace.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Royal Palace of Madrid story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A fortress first</h3><p>The palace stands where Muhammad I, Emir of Córdoba, built a fortress in the 9th century. It grew into the Royal Alcázar, the kings&#x27; residence, until it burned down on Christmas Eve 1734.</p></div></div><div class="story"><span class="n">2</span><div><h3>Stone that can&#x27;t burn</h3><p>The new palace was built almost entirely of stone, with very little wood. Work ran from 1738 to 1755, and Charles III was the first king to live in it.</p></div></div><div class="story"><span class="n">3</span><div><h3>Five Stradivarius</h3><p>Its collections include the Royal Armoury and the only complete Stradivarius string quintet in the world, decorated instruments made for the Spanish court.</p></div></div>
     <div class="tip"><b>Tip</b>Arrive at opening time or book online to skip the queue, and look out for the changing of the guard in the Plaza de la Armería. With Urban Tales running, the palace&#x27;s story plays as you reach the square.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="almudena-cathedral.html"><span class="d">≈ 4 min walk</span><h3>Almudena Cathedral</h3><span class="h">No cathedral for a capital</span></a><a class="near" href="mercado-de-san-miguel.html"><span class="d">≈ 9 min walk</span><h3>Mercado de San Miguel</h3><span class="h">A church first</span></a><a class="near" href="plaza-mayor.html"><span class="d">≈ 10 min walk</span><h3>Plaza Mayor</h3><span class="h">A market outside the walls</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Royal Palace of Madrid: common questions</h2><details open><summary>Does the King of Spain live in the Royal Palace?</summary><p>No. It&#x27;s the official residence, but the royal family lives at the Zarzuela Palace outside the centre. The Royal Palace is used for state ceremonies.</p></details><details><summary>How many rooms does the Royal Palace of Madrid have?</summary><p>3,418, across about 135,000 square metres, which makes it the largest royal palace in Europe by floor area.</p></details><details><summary>What was there before the Royal Palace?</summary><p>A 9th-century Muslim fortress that became the Royal Alcázar. It burned down on Christmas Eve 1734.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Madrid</h2><p class="more-links"><a href="palacio-de-cristal.html">Palacio de Cristal</a> · <a href="plaza-de-cibeles.html">Plaza de Cibeles</a> · <a href="prado-museum.html">Prado Museum</a> · <a href="puerta-de-alcala.html">Puerta de Alcalá</a> · <a href="puerta-del-sol.html">Puerta del Sol</a> · <a href="temple-of-debod.html">Temple of Debod</a></p><a class="city-cta" href="https://urbantales.net/madrid.html"><b>Madrid audio guide</b><span>Every landmark in Madrid, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/madrid.html">Madrid guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Karlskirche", "description": "Karlskirche history in plain words: the 1713 plague vow, the two columns inspired by Trajan's Column, and the panoramic elevator into Rottmayr's dome fresco. With an audio story.", "image": "https://urbantales.net/vienna/img/karlskirche.jpg", "url": "https://urbantales.net/vienna/karlskirche.html", "geo": {"@type": "GeoCoordinates", "latitude": 48.198562599999995, "longitude": 16.3716999}, "address": {"@type": "PostalAddress", "addressLocality": "Vienna", "addressCountry": "AT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why was the Karlskirche built?", "acceptedAnswer": {"@type": "Answer", "text": "As a vow by Emperor Charles VI during the plague of 1713, dedicated to St Charles Borromeo."}}, {"@type": "Question", "name": "Can you go up into the dome of the Karlskirche?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, a panoramic elevator and stairs take you into the dome to see the frescoes up close."}}, {"@type": "Question", "name": "Who designed the Karlskirche?", "acceptedAnswer": {"@type": "Answer", "text": "Johann Bernhard Fischer von Erlach; his son Joseph Emanuel completed it in 1737."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Vienna", "item": "https://urbantales.net/vienna.html"}, {"@type": "ListItem", "position": 3, "name": "Karlskirche", "item": "https://urbantales.net/vienna/karlskirche.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/vienna.html" class="back">Vienna guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/vienna.html">Vienna</a> › Karlskirche</div>
     <h1>Karlskirche: the history, and <em>the elevator into the dome</em></h1>
     <p class="lede">An emperor promised a church during the plague of 1713 and kept his word. Today you can ride up into its dome and stand face to face with the frescoes. Here&#x27;s what you&#x27;re looking at.</p>
+    
   </div>
   <figure class="hero"><img src="img/karlskirche.jpg" alt="Karlskirche, Vienna" width="1600" height="900"><figcaption>Photo: Diego Delso · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Iglesia_de_San_Carlos_Borromeo,_Viena,_Austria,_2020-01-31,_DD_164-166_HDR.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Vowed</span><span class="v">1713</span></div><div class="fact"><span class="k">Built</span><span class="v">1716–1737</span></div><div class="fact"><span class="k">Architects</span><span class="v">Fischer von Erlach, father &amp; son</span></div><div class="fact"><span class="k">Dome</span><span class="v">72 m high</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Karlskirche story, in the app's voice">
     <audio id="preview" preload="none" src="audio/karlskirche.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Karlskirche story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A promise during the plague</h3><p>As plague killed thousands in Vienna in 1713, Emperor Charles VI vowed to build a church to St Charles Borromeo, the patron saint of plague victims. Work began in 1716.</p></div></div><div class="story"><span class="n">2</span><div><h3>Two columns from Rome</h3><p>The columns either side of the entrance copy Trajan&#x27;s Column in Rome. Their spiralling reliefs tell the life of St Charles Borromeo, and they also nod to the Pillars of Hercules on the emperor&#x27;s emblem.</p></div></div><div class="story"><span class="n">3</span><div><h3>Into the fresco</h3><p>A panoramic elevator, put in for restoration work, now takes visitors 32 meters up into the dome to see Johann Michael Rottmayr&#x27;s frescoes up close.</p></div></div>
     <div class="tip"><b>Tip</b>Stand at the far edge of the pond in Resselpark: the church reflects in the water, best at dusk when the dome is lit. With Urban Tales running, the church&#x27;s story plays as you reach Karlsplatz.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="musikverein.html"><span class="d">≈ 4 min walk</span><h3>Musikverein</h3><span class="h">The shoebox</span></a><a class="near" href="state-hall-national-library.html"><span class="d">≈ 15 min walk</span><h3>State Hall of the National Library</h3><span class="h">An emperor in the middle</span></a><a class="near" href="kunsthistorisches-museum.html"><span class="d">≈ 15 min walk</span><h3>Kunsthistorisches Museum</h3><span class="h">Identical twins</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Karlskirche: common questions</h2><details open><summary>Why was the Karlskirche built?</summary><p>As a vow by Emperor Charles VI during the plague of 1713, dedicated to St Charles Borromeo.</p></details><details><summary>Can you go up into the dome of the Karlskirche?</summary><p>Yes, a panoramic elevator and stairs take you into the dome to see the frescoes up close.</p></details><details><summary>Who designed the Karlskirche?</summary><p>Johann Bernhard Fischer von Erlach; his son Joseph Emanuel completed it in 1737.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Vienna</h2><p class="more-links"><a href="parliament.html">Austrian Parliament</a> · <a href="burgtheater.html">Burgtheater</a> · <a href="hofburg.html">Hofburg</a> · <a href="imperial-treasury.html">Imperial Treasury</a> · <a href="schonbrunn-palace.html">Schönbrunn Palace</a> · <a href="st-stephens-cathedral.html">St. Stephen&#x27;s Cathedral</a></p><a class="city-cta" href="https://urbantales.net/vienna.html"><b>Vienna audio guide</b><span>Every landmark in Vienna, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/vienna.html">Vienna guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

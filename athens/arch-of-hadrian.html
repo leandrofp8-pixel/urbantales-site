@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Arch of Hadrian", "description": "Arch of Hadrian in Athens in plain words: when it was built, what its two inscriptions say, and what to look for. With an audio story.", "image": "https://urbantales.net/athens/img/arch-of-hadrian.jpg", "url": "https://urbantales.net/athens/arch-of-hadrian.html", "geo": {"@type": "GeoCoordinates", "latitude": 37.970167, "longitude": 23.732039900000004}, "address": {"@type": "PostalAddress", "addressLocality": "Athens", "addressCountry": "GR"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What do the inscriptions on Hadrian's Arch say?", "acceptedAnswer": {"@type": "Answer", "text": "One side reads \"This is Athens, the former city of Theseus\"; the other reads \"This is the city of Hadrian, and not of Theseus.\""}}, {"@type": "Question", "name": "When was Hadrian's Arch built?", "acceptedAnswer": {"@type": "Answer", "text": "Around AD 131 or 132, probably by the people of Athens, to honour the emperor Hadrian."}}, {"@type": "Question", "name": "Where is Hadrian's Arch?", "acceptedAnswer": {"@type": "Answer", "text": "On Amalias Avenue, next to the Temple of Olympian Zeus, about 325 metres southeast of the Acropolis."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Athens", "item": "https://urbantales.net/athens.html"}, {"@type": "ListItem", "position": 3, "name": "Arch of Hadrian", "item": "https://urbantales.net/athens/arch-of-hadrian.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/athens.html" class="back">Athens guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/athens.html">Athens</a> › Arch of Hadrian</div>
     <h1>Arch of Hadrian: the history, and <em>the two inscriptions</em></h1>
     <p class="lede">Built in marble around AD 131–132 to honour the emperor Hadrian, this gateway stands on the road from the old city to the Temple of Olympian Zeus. Here&#x27;s what you&#x27;re looking at, and what to listen for as you walk under it.</p>
+    
   </div>
   <figure class="hero"><img src="img/arch-of-hadrian.jpg" alt="Arch of Hadrian, Athens" width="1600" height="900"><figcaption>Photo: ApostleKtenas · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Adrianus_Gate,Athens-Greece.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Built</span><span class="v">≈ AD 131–132</span></div><div class="fact"><span class="k">Marble</span><span class="v">Pentelic</span></div><div class="fact"><span class="k">Height</span><span class="v">≈ 18 m</span></div><div class="fact"><span class="k">Width</span><span class="v">≈ 13.5 m</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Arch of Hadrian story, in the app's voice">
     <audio id="preview" preload="none" src="audio/arch-of-hadrian.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Arch of Hadrian story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Read both sides</h3><p>The inscription facing the Acropolis says: &quot;This is Athens, the former city of Theseus.&quot; The one facing the Olympieion says: &quot;This is the city of Hadrian, and not of Theseus.&quot;</p></div></div><div class="story"><span class="n">2</span><div><h3>A border that wasn&#x27;t</h3><p>The arch was long thought to divide old Athens from a new Roman quarter. Excavations have shown that wasn&#x27;t so; the inscriptions honour Hadrian as a benefactor of the city.</p></div></div><div class="story"><span class="n">3</span><div><h3>No mortar</h3><p>The marble blocks are held together with metal clamps rather than cement, and have stood that way for almost 1,900 years.</p></div></div>
     <div class="tip"><b>Tip</b>The arch stands on busy Amalias Avenue, so cross with care. The cleanest view is from the Olympieion side; then walk through towards the temple. With Urban Tales running, the arch&#x27;s story plays as you get close.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="temple-of-olympian-zeus.html"><span class="d">≈ 2 min walk</span><h3>Temple of Olympian Zeus</h3><span class="h">Six centuries of stop and start</span></a><a class="near" href="anafiotika.html"><span class="d">≈ 7 min walk</span><h3>Anafiotika</h3><span class="h">Islanders in the capital</span></a><a class="near" href="parthenon.html"><span class="d">≈ 8 min walk</span><h3>Parthenon</h3><span class="h">Blown up in 1687</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Arch of Hadrian: common questions</h2><details open><summary>What do the inscriptions on Hadrian&#x27;s Arch say?</summary><p>One side reads &quot;This is Athens, the former city of Theseus&quot;; the other reads &quot;This is the city of Hadrian, and not of Theseus.&quot;</p></details><details><summary>When was Hadrian&#x27;s Arch built?</summary><p>Around AD 131 or 132, probably by the people of Athens, to honour the emperor Hadrian.</p></details><details><summary>Where is Hadrian&#x27;s Arch?</summary><p>On Amalias Avenue, next to the Temple of Olympian Zeus, about 325 metres southeast of the Acropolis.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Athens</h2><p class="more-links"><a href="erechtheion.html">Erechtheion</a> · <a href="odeon-of-herodes-atticus.html">Odeon of Herodes Atticus</a> · <a href="panathenaic-stadium.html">Panathenaic Stadium</a> · <a href="temple-of-hephaestus.html">Temple of Hephaestus</a> · <a href="tomb-of-the-unknown-soldier.html">Tomb of the Unknown Soldier</a> · <a href="tower-of-the-winds.html">Tower of the Winds</a></p><a class="city-cta" href="https://urbantales.net/athens.html"><b>Athens audio guide</b><span>Every landmark in Athens, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/athens.html">Athens guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

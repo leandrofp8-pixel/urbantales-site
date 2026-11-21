@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Saint-Sulpice", "description": "Saint-Sulpice history: the two mismatched towers, the brass gnomon line used to find Easter, Delacroix's murals and what The Da Vinci Code got wrong. With an audio story.", "image": "https://urbantales.net/paris/img/saint-sulpice.jpg", "url": "https://urbantales.net/paris/saint-sulpice.html", "geo": {"@type": "GeoCoordinates", "latitude": 48.850981399999995, "longitude": 2.3350051}, "address": {"@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the line on the floor of Saint-Sulpice?", "acceptedAnswer": {"@type": "Answer", "text": "A gnomon: a brass meridian line installed in the 1740s to measure the sun's position and fix the date of Easter."}}, {"@type": "Question", "name": "Is Saint-Sulpice in The Da Vinci Code?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, but the novel's \"Rose Line\" story is fiction; the church displays a notice explaining the gnomon's real purpose."}}, {"@type": "Question", "name": "Why are Saint-Sulpice's towers different?", "acceptedAnswer": {"@type": "Answer", "text": "The north tower was rebuilt in the 1770s and the south tower was never completed."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Paris", "item": "https://urbantales.net/paris.html"}, {"@type": "ListItem", "position": 3, "name": "Saint-Sulpice", "item": "https://urbantales.net/paris/saint-sulpice.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/paris.html" class="back">Paris guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/paris.html">Paris</a> › Saint-Sulpice</div>
     <h1>Saint-Sulpice: the history, and <em>the line on the floor</em></h1>
     <p class="lede">Paris&#x27;s second-largest church took more than 130 years to build, has two towers that don&#x27;t match, and a brass line on the floor that a bestseller made famous. Here&#x27;s what you&#x27;re looking at, and what to listen for when you step inside.</p>
+    
   </div>
   <figure class="hero"><img src="img/saint-sulpice.jpg" alt="Saint-Sulpice, Paris" width="1600" height="900"><figcaption>Photo: Cmcmcm1 · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Paris,_Saint-Sulpice,_Au%C3%9Fenansicht_(2).jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Begun</span><span class="v">1646</span></div><div class="fact"><span class="k">Gnomon</span><span class="v">1740s</span></div><div class="fact"><span class="k">Murals</span><span class="v">Delacroix, 1861</span></div><div class="fact"><span class="k">Towers</span><span class="v">2, unmatched</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Saint-Sulpice story, in the app's voice">
     <audio id="preview" preload="none" src="audio/saint-sulpice.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Saint-Sulpice story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>The towers that don&#x27;t match</h3><p>Look up at the facade: the north tower was rebuilt by Chalgrin in the 1770s, the south tower was never finished. Money and the Revolution ran out first.</p></div></div><div class="story"><span class="n">2</span><div><h3>A sundial on the floor</h3><p>A brass line crosses the floor to a marble obelisk. Sunlight through a small hole in a window lands on it at noon, which let the priests fix the exact date of the spring equinox, and so of Easter.</p></div></div><div class="story"><span class="n">3</span><div><h3>What the novel got wrong</h3><p>&quot;The Da Vinci Code&quot; calls the line a pagan &quot;Rose Line&quot;. The church put up a notice to set the record straight: it&#x27;s a scientific instrument from the 18th century, nothing more mysterious.</p></div></div>
     <div class="tip"><b>Tip</b>Go in and turn right to the first chapel to see Delacroix&#x27;s murals, including Jacob wrestling the angel, then follow the brass line across the transept to the obelisk. With Urban Tales running, the church&#x27;s story plays as you reach the square.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="louvre.html"><span class="d">≈ 18 min walk</span><h3>Louvre</h3><span class="h">A castle under the museum</span></a><a class="near" href="notre-dame.html"><span class="d">≈ 18 min walk</span><h3>Notre-Dame</h3><span class="h">The kings who lost their heads</span></a><a class="near" href="centre-pompidou.html"><span class="d">≈ 27 min walk</span><h3>Centre Pompidou</h3><span class="h">Two young architects won</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Saint-Sulpice: common questions</h2><details open><summary>What is the line on the floor of Saint-Sulpice?</summary><p>A gnomon: a brass meridian line installed in the 1740s to measure the sun&#x27;s position and fix the date of Easter.</p></details><details><summary>Is Saint-Sulpice in The Da Vinci Code?</summary><p>Yes, but the novel&#x27;s &quot;Rose Line&quot; story is fiction; the church displays a notice explaining the gnomon&#x27;s real purpose.</p></details><details><summary>Why are Saint-Sulpice&#x27;s towers different?</summary><p>The north tower was rebuilt in the 1770s and the south tower was never completed.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Paris</h2><p class="more-links"><a href="arc-de-triomphe.html">Arc de Triomphe</a> · <a href="eiffel-tower.html">Eiffel Tower</a> · <a href="sacre-coeur.html">Sacré-Cœur</a></p><a class="city-cta" href="https://urbantales.net/paris.html"><b>Paris audio guide</b><span>Every landmark in Paris, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/paris.html">Paris guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

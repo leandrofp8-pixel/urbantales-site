@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Santa Maria del Mar", "description": "Santa Maria del Mar in plain words: how the neighbourhood built it, the bastaixos who carried the stone, the fire of 1936 and what to look for. With an audio story.", "image": "https://urbantales.net/barcelona/img/santa-maria-del-mar.jpg", "url": "https://urbantales.net/barcelona/santa-maria-del-mar.html", "geo": {"@type": "GeoCoordinates", "latitude": 41.383887099999995, "longitude": 2.1820711}, "address": {"@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who built Santa Maria del Mar?", "acceptedAnswer": {"@type": "Answer", "text": "The people of the Ribera neighbourhood: merchants, sailors and the bastaixos, the port porters who carried the stone. It was begun in 1329."}}, {"@type": "Question", "name": "Why is the inside of Santa Maria del Mar so plain?", "acceptedAnswer": {"@type": "Answer", "text": "A fire in 1936, at the start of the Spanish Civil War, destroyed most of its altars and decoration."}}, {"@type": "Question", "name": "Is Santa Maria del Mar the cathedral from the novel?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Ildefonso Falcones' novel Cathedral of the Sea tells the story of its construction."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Barcelona", "item": "https://urbantales.net/barcelona.html"}, {"@type": "ListItem", "position": 3, "name": "Santa Maria del Mar", "item": "https://urbantales.net/barcelona/santa-maria-del-mar.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/barcelona.html" class="back">Barcelona guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/barcelona.html">Barcelona</a> › Santa Maria del Mar</div>
     <h1>Santa Maria del Mar: <em>built by the dockworkers</em></h1>
     <p class="lede">Begun in 1329 in the seafaring Ribera neighbourhood, Santa Maria del Mar was paid for and built by its own parishioners. It&#x27;s one of the purest examples of Catalan Gothic.</p>
+    
   </div>
   <figure class="hero"><img src="img/santa-maria-del-mar.jpg" alt="Santa Maria del Mar, Barcelona" width="1600" height="900"><figcaption>Photo: Alvesgaspar · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Santa_Maria_del_Mar_Barcelona_September_2026-1.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Begun</span><span class="v">1329</span></div><div class="fact"><span class="k">Vault closed</span><span class="v">1345</span></div><div class="fact"><span class="k">Style</span><span class="v">Catalan Gothic</span></div><div class="fact"><span class="k">Built by</span><span class="v">the Ribera parishioners</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Santa Maria del Mar story, in the app's voice">
     <audio id="preview" preload="none" src="audio/santa-maria-del-mar.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Santa Maria del Mar story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>The stone carriers</h3><p>The bastaixos, the port&#x27;s porters, carried stone on their backs from the Montjuïc quarry to the building site. Their figures are on the bronze main doors.</p></div></div><div class="story"><span class="n">2</span><div><h3>Fast for its time</h3><p>The last section of the vault was placed in 1345, only 16 years after work began, and the first mass was said the following year.</p></div></div><div class="story"><span class="n">3</span><div><h3>Why it&#x27;s so bare</h3><p>In 1936, at the start of the Spanish Civil War, the church burned for days and lost its altars and furnishings. The emptiness that&#x27;s left shows off its slender columns and wide space.</p></div></div>
     <div class="tip"><b>Tip</b>Go early or late in the day, when the light through the rose window is softest, and look at the porters on the bronze doors on your way in. With Urban Tales running, its story plays as you reach the square.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="barcelona-cathedral.html"><span class="d">≈ 8 min walk</span><h3>Barcelona Cathedral</h3><span class="h">A newer face</span></a><a class="near" href="palau-de-la-musica.html"><span class="d">≈ 11 min walk</span><h3>Palau de la Música Catalana</h3><span class="h">A home for a choir</span></a><a class="near" href="placa-reial.html"><span class="d">≈ 11 min walk</span><h3>Plaça Reial</h3><span class="h">A square instead of a convent</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Santa Maria del Mar: common questions</h2><details open><summary>Who built Santa Maria del Mar?</summary><p>The people of the Ribera neighbourhood: merchants, sailors and the bastaixos, the port porters who carried the stone. It was begun in 1329.</p></details><details><summary>Why is the inside of Santa Maria del Mar so plain?</summary><p>A fire in 1936, at the start of the Spanish Civil War, destroyed most of its altars and decoration.</p></details><details><summary>Is Santa Maria del Mar the cathedral from the novel?</summary><p>Yes. Ildefonso Falcones&#x27; novel Cathedral of the Sea tells the story of its construction.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Barcelona</h2><p class="more-links"><a href="arc-de-triomf.html">Arc de Triomf</a> · <a href="casa-batllo.html">Casa Batlló</a> · <a href="casa-mila.html">Casa Milà (La Pedrera)</a> · <a href="park-guell.html">Park Güell</a> · <a href="sagrada-familia.html">Sagrada Família</a> · <a href="sant-pau.html">Sant Pau Recinte Modernista</a></p><a class="city-cta" href="https://urbantales.net/barcelona.html"><b>Barcelona audio guide</b><span>Every landmark in Barcelona, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/barcelona.html">Barcelona guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

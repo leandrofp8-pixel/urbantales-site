@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Burgtheater", "description": "Burgtheater history: Maria Theresa's court theater from 1741, the 1888 building on the Ring, its famous acoustics problem, and the Klimt staircase ceilings. With an audio story.", "image": "https://urbantales.net/vienna/img/burgtheater.jpg", "url": "https://urbantales.net/vienna/burgtheater.html", "geo": {"@type": "GeoCoordinates", "latitude": 48.210296199999995, "longitude": 16.36146}, "address": {"@type": "PostalAddress", "addressLocality": "Vienna", "addressCountry": "AT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How old is the Burgtheater?", "acceptedAnswer": {"@type": "Answer", "text": "It was founded in 1741; the current building on the Ring opened in 1888."}}, {"@type": "Question", "name": "Did Klimt paint in the Burgtheater?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, ceilings over the side staircases, with his brother Ernst and Franz Matsch, in the 1880s."}}, {"@type": "Question", "name": "Can you tour the Burgtheater?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, there are guided tours most days."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Vienna", "item": "https://urbantales.net/vienna.html"}, {"@type": "ListItem", "position": 3, "name": "Burgtheater", "item": "https://urbantales.net/vienna/burgtheater.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/vienna.html" class="back">Vienna guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/vienna.html">Vienna</a> › Burgtheater</div>
     <h1>Burgtheater: the history, and <em>the theater that forgot the audience</em></h1>
     <p class="lede">Founded by Maria Theresa in 1741 and moved to the Ring in 1888, the Burgtheater is one of the most important German-language stages. Its first new hall had a flaw nobody expected. Here&#x27;s what you&#x27;re looking at.</p>
+    
   </div>
   <figure class="hero"><img src="img/burgtheater.jpg" alt="Burgtheater, Vienna" width="1600" height="900"><figcaption>Photo: C.Stadler/Bwag · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Wien_-_Burgtheater,_linke_Feststiege.JPG" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Founded</span><span class="v">1741</span></div><div class="fact"><span class="k">On the Ring</span><span class="v">1888</span></div><div class="fact"><span class="k">Reopened</span><span class="v">1955</span></div><div class="fact"><span class="k">Ceilings</span><span class="v">Klimt &amp; Matsch</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Burgtheater story, in the app's voice">
     <audio id="preview" preload="none" src="audio/burgtheater.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Burgtheater story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Beautiful, but deaf</h3><p>The grand new hall of 1888 looked stunning, but from many seats you could hardly hear or see the stage. It was rebuilt in 1897 to fix the sightlines and acoustics.</p></div></div><div class="story"><span class="n">2</span><div><h3>Klimt&#x27;s early work</h3><p>Before his golden period, Gustav Klimt painted ceilings over the side staircases with his brother Ernst and Franz Matsch. He included a self-portrait among the audience at Shakespeare&#x27;s Globe.</p></div></div><div class="story"><span class="n">3</span><div><h3>Rebuilt after the war</h3><p>Bombs and a fire in 1945 gutted the building. It reopened in October 1955, the year Austria regained its independence.</p></div></div>
     <div class="tip"><b>Tip</b>Join a guided tour to see the staircase ceilings; look for Klimt, in a ruff collar, in the Globe Theatre painting. With Urban Tales running, the theater&#x27;s story plays as you reach the Ring.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="parliament.html"><span class="d">≈ 5 min walk</span><h3>Austrian Parliament</h3><span class="h">Greek on purpose</span></a><a class="near" href="imperial-treasury.html"><span class="d">≈ 8 min walk</span><h3>Imperial Treasury</h3><span class="h">A crown with eight sides</span></a><a class="near" href="hofburg.html"><span class="d">≈ 9 min walk</span><h3>Hofburg</h3><span class="h">Built in layers</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Burgtheater: common questions</h2><details open><summary>How old is the Burgtheater?</summary><p>It was founded in 1741; the current building on the Ring opened in 1888.</p></details><details><summary>Did Klimt paint in the Burgtheater?</summary><p>Yes, ceilings over the side staircases, with his brother Ernst and Franz Matsch, in the 1880s.</p></details><details><summary>Can you tour the Burgtheater?</summary><p>Yes, there are guided tours most days.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Vienna</h2><p class="more-links"><a href="karlskirche.html">Karlskirche</a> · <a href="kunsthistorisches-museum.html">Kunsthistorisches Museum</a> · <a href="musikverein.html">Musikverein</a> · <a href="schonbrunn-palace.html">Schönbrunn Palace</a> · <a href="st-stephens-cathedral.html">St. Stephen&#x27;s Cathedral</a> · <a href="state-hall-national-library.html">State Hall of the National Library</a></p><a class="city-cta" href="https://urbantales.net/vienna.html"><b>Vienna audio guide</b><span>Every landmark in Vienna, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/vienna.html">Vienna guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Old Town Bridge Tower", "description": "Old Town Bridge Tower history: the Gothic gate at the end of Charles Bridge, the kings and saints on its east face, the 1648 battle and the view from the top. With an audio story.", "image": "https://urbantales.net/prague/img/old-town-bridge-tower.jpg", "url": "https://urbantales.net/prague/old-town-bridge-tower.html", "geo": {"@type": "GeoCoordinates", "latitude": 50.0862306, "longitude": 14.413614100000002}, "address": {"@type": "PostalAddress", "addressLocality": "Prague", "addressCountry": "CZ"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who built the Old Town Bridge Tower?", "acceptedAnswer": {"@type": "Answer", "text": "Peter Parler's workshop, for Charles IV; it was finished around 1380."}}, {"@type": "Question", "name": "Can you climb the Old Town Bridge Tower?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, there's a gallery at the top reached by 138 steps, with a ticket."}}, {"@type": "Question", "name": "Who are the statues on the Old Town Bridge Tower?", "acceptedAnswer": {"@type": "Answer", "text": "Charles IV and Wenceslas IV with St Vitus, and Saints Adalbert and Sigismund above."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Prague", "item": "https://urbantales.net/prague.html"}, {"@type": "ListItem", "position": 3, "name": "Old Town Bridge Tower", "item": "https://urbantales.net/prague/old-town-bridge-tower.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/prague.html" class="back">Prague guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/prague.html">Prague</a> › Old Town Bridge Tower</div>
     <h1>Old Town Bridge Tower: the history, and <em>the kings on the gate</em></h1>
     <p class="lede">The gate at the Old Town end of Charles Bridge is one of the finest Gothic towers in Europe, and the place where Prague held off a Swedish army. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/old-town-bridge-tower.jpg" alt="Old Town Bridge Tower, Prague" width="1600" height="900"><figcaption>Photo: Scotch Mist · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Prague_Charles_Bridge_2021_04.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Finished</span><span class="v">≈ 1380</span></div><div class="fact"><span class="k">Architect</span><span class="v">Peter Parler</span></div><div class="fact"><span class="k">Battle</span><span class="v">1648</span></div><div class="fact"><span class="k">Steps to top</span><span class="v">138</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Old Town Bridge Tower story, in the app's voice">
     <audio id="preview" preload="none" src="audio/old-town-bridge-tower.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Old Town Bridge Tower story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Kings, a saint and a kingfisher</h3><p>On the east face, Charles IV and his son Wenceslas IV sit on either side of St Vitus, with Saints Adalbert and Sigismund above them. Look for the kingfisher, Wenceslas IV&#x27;s symbol, carved among the decorations.</p></div></div><div class="story"><span class="n">2</span><div><h3>The 1648 battle</h3><p>In the last days of the Thirty Years&#x27; War, Swedish troops took the castle side of the river and tried to cross. Students and townspeople held the tower; the western face, which took the fire, lost its statues.</p></div></div><div class="story"><span class="n">3</span><div><h3>A gate for coronations</h3><p>Bohemian kings passed through this gate on their coronation route from the Old Town up to the castle, the Royal Way.</p></div></div>
     <div class="tip"><b>Tip</b>Stand on the Old Town side, under the gate, and look up at the east face before climbing the 138 steps to the gallery for the view across the bridge to the castle. With Urban Tales running, the tower&#x27;s story plays as you reach it.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="charles-bridge.html"><span class="d">≈ 3 min walk</span><h3>Charles Bridge</h3><span class="h">Started on a lucky number</span></a><a class="near" href="klementinum.html"><span class="d">≈ 3 min walk</span><h3>Klementinum</h3><span class="h">A library you only see from the door</span></a><a class="near" href="astronomical-clock.html"><span class="d">≈ 8 min walk</span><h3>Astronomical Clock</h3><span class="h">The oldest one still working</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Old Town Bridge Tower: common questions</h2><details open><summary>Who built the Old Town Bridge Tower?</summary><p>Peter Parler&#x27;s workshop, for Charles IV; it was finished around 1380.</p></details><details><summary>Can you climb the Old Town Bridge Tower?</summary><p>Yes, there&#x27;s a gallery at the top reached by 138 steps, with a ticket.</p></details><details><summary>Who are the statues on the Old Town Bridge Tower?</summary><p>Charles IV and Wenceslas IV with St Vitus, and Saints Adalbert and Sigismund above.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Prague</h2><p class="more-links"><a href="golden-lane.html">Golden Lane</a> · <a href="kafka-head.html">Kafka&#x27;s Rotating Head</a> · <a href="municipal-house.html">Municipal House</a> · <a href="national-theatre.html">National Theatre</a> · <a href="prague-castle.html">Prague Castle</a> · <a href="spanish-synagogue.html">Spanish Synagogue</a></p><a class="city-cta" href="https://urbantales.net/prague.html"><b>Prague audio guide</b><span>Every landmark in Prague, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/prague.html">Prague guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

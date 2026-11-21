@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Mercado de San Miguel", "description": "Mercado de San Miguel in plain words: the church that stood here, the 1916 iron market hall, its 2009 reinvention and how to visit. With an audio story.", "image": "https://urbantales.net/madrid/img/mercado-de-san-miguel.jpg", "url": "https://urbantales.net/madrid/mercado-de-san-miguel.html", "geo": {"@type": "GeoCoordinates", "latitude": 40.4153794, "longitude": -3.7089697}, "address": {"@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How old is the Mercado de San Miguel?", "acceptedAnswer": {"@type": "Answer", "text": "The iron market hall opened in 1916. The site has been a market since the 19th century."}}, {"@type": "Question", "name": "Is Mercado de San Miguel worth it?", "acceptedAnswer": {"@type": "Answer", "text": "For the building and a quick tasting, yes; it's busy and more expensive than neighbourhood markets."}}, {"@type": "Question", "name": "What was there before the Mercado de San Miguel?", "acceptedAnswer": {"@type": "Answer", "text": "The church of San Miguel de los Octoes, where Lope de Vega was baptised, demolished in 1809."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Madrid", "item": "https://urbantales.net/madrid.html"}, {"@type": "ListItem", "position": 3, "name": "Mercado de San Miguel", "item": "https://urbantales.net/madrid/mercado-de-san-miguel.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/madrid.html" class="back">Madrid guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/madrid.html">Madrid</a> › Mercado de San Miguel</div>
     <h1>Mercado de San Miguel: <em>an iron market reborn</em></h1>
     <p class="lede">Next to the Plaza Mayor, the Mercado de San Miguel is an iron-and-glass market hall from 1916. It sold fresh food for nearly a century, and in 2009 became Madrid&#x27;s first gourmet market.</p>
+    
   </div>
   <figure class="hero"><img src="img/mercado-de-san-miguel.jpg" alt="Mercado de San Miguel, Madrid" width="1600" height="900"><figcaption>Photo: Steven Lek · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Mercado_de_San_Miguel_Madrid_2018.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Opened</span><span class="v">1916</span></div><div class="fact"><span class="k">Architect</span><span class="v">Alfonso Dubé y Díez</span></div><div class="fact"><span class="k">Gourmet market since</span><span class="v">2009</span></div><div class="fact"><span class="k">Next to</span><span class="v">the Plaza Mayor</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Mercado de San Miguel story, in the app's voice">
     <audio id="preview" preload="none" src="audio/mercado-de-san-miguel.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Mercado de San Miguel story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A church first</h3><p>The church of San Miguel de los Octoes stood here, where the playwright Lope de Vega was baptised. It was demolished in 1809 under Joseph Bonaparte, and the square became an open-air market.</p></div></div><div class="story"><span class="n">2</span><div><h3>Iron and glass</h3><p>Hygiene rules pushed cities to cover their markets. This iron hall, inspired by Paris&#x27;s Les Halles, was built between 1913 and 1916.</p></div></div><div class="story"><span class="n">3</span><div><h3>From groceries to tapas</h3><p>For decades locals bought fish and vegetables here. In 2009 it reopened as a market for tapas and food stalls.</p></div></div>
     <div class="tip"><b>Tip</b>It&#x27;s busiest in the evening; come mid-morning for space, and walk round the outside to see the iron frame. With Urban Tales running, its story plays as you walk over from the Plaza Mayor.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="plaza-mayor.html"><span class="d">≈ 2 min walk</span><h3>Plaza Mayor</h3><span class="h">A market outside the walls</span></a><a class="near" href="almudena-cathedral.html"><span class="d">≈ 8 min walk</span><h3>Almudena Cathedral</h3><span class="h">No cathedral for a capital</span></a><a class="near" href="puerta-del-sol.html"><span class="d">≈ 8 min walk</span><h3>Puerta del Sol</h3><span class="h">A gate facing the sunrise</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Mercado de San Miguel: common questions</h2><details open><summary>How old is the Mercado de San Miguel?</summary><p>The iron market hall opened in 1916. The site has been a market since the 19th century.</p></details><details><summary>Is Mercado de San Miguel worth it?</summary><p>For the building and a quick tasting, yes; it&#x27;s busy and more expensive than neighbourhood markets.</p></details><details><summary>What was there before the Mercado de San Miguel?</summary><p>The church of San Miguel de los Octoes, where Lope de Vega was baptised, demolished in 1809.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Madrid</h2><p class="more-links"><a href="palacio-de-cristal.html">Palacio de Cristal</a> · <a href="plaza-de-cibeles.html">Plaza de Cibeles</a> · <a href="prado-museum.html">Prado Museum</a> · <a href="puerta-de-alcala.html">Puerta de Alcalá</a> · <a href="royal-palace.html">Royal Palace of Madrid</a> · <a href="temple-of-debod.html">Temple of Debod</a></p><a class="city-cta" href="https://urbantales.net/madrid.html"><b>Madrid audio guide</b><span>Every landmark in Madrid, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/madrid.html">Madrid guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

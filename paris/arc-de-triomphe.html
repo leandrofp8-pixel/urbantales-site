@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Arc de Triomphe", "description": "Arc de Triomphe history in plain words: why Napoleon ordered it, the names on its walls, the Unknown Soldier and the flame lit every evening. With an audio story.", "image": "https://urbantales.net/paris/img/arc-de-triomphe.jpg", "url": "https://urbantales.net/paris/arc-de-triomphe.html", "geo": {"@type": "GeoCoordinates", "latitude": 48.8737917, "longitude": 2.2950274999999998}, "address": {"@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who built the Arc de Triomphe?", "acceptedAnswer": {"@type": "Answer", "text": "Napoleon ordered it in 1806; it was designed by Jean Chalgrin and finished in 1836 under King Louis-Philippe."}}, {"@type": "Question", "name": "What is under the Arc de Triomphe?", "acceptedAnswer": {"@type": "Answer", "text": "The Tomb of the Unknown Soldier from the First World War, with an eternal flame rekindled every evening at 6.30 pm."}}, {"@type": "Question", "name": "Can you go to the top of the Arc de Triomphe?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, there's a terrace at the top reached by 284 steps, with a ticket."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Paris", "item": "https://urbantales.net/paris.html"}, {"@type": "ListItem", "position": 3, "name": "Arc de Triomphe", "item": "https://urbantales.net/paris/arc-de-triomphe.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/paris.html" class="back">Paris guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/paris.html">Paris</a> › Arc de Triomphe</div>
     <h1>Arc de Triomphe: the history, and <em>the arch Napoleon never saw finished</em></h1>
     <p class="lede">Napoleon ordered the arch after Austerlitz in 1806 and never saw it finished. Today the Unknown Soldier lies beneath it, and a flame is rekindled there every evening. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/arc-de-triomphe.jpg" alt="Arc de Triomphe, Paris" width="1600" height="900"><figcaption>Photo: Wilfredor · CC0 · <a href="https://commons.wikimedia.org/wiki/File:Arc_de_Triomphe_de_l%27%C3%89toile_at_night_vertical_fix.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Ordered</span><span class="v">1806</span></div><div class="fact"><span class="k">Finished</span><span class="v">1836</span></div><div class="fact"><span class="k">Height</span><span class="v">50 m</span></div><div class="fact"><span class="k">Flame since</span><span class="v">1923</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Arc de Triomphe story, in the app's voice">
     <audio id="preview" preload="none" src="audio/arc-de-triomphe.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Arc de Triomphe story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A wooden arch for a wedding</h3><p>When Napoleon married Marie-Louise in 1810, the arch had barely started. A full-size mock-up in wood and painted canvas was put up so the wedding procession could pass under it.</p></div></div><div class="story"><span class="n">2</span><div><h3>Hundreds of names</h3><p>The inner walls carry the names of 128 battles and 660 officers of the Revolution and the Empire, most of them generals. Names that are underlined belong to men who died in battle.</p></div></div><div class="story"><span class="n">3</span><div><h3>The flame relit every evening</h3><p>The Unknown Soldier from the First World War was buried under the arch in 1921. Since 1923 veterans&#x27; associations have rekindled the flame every evening at 6.30 pm, without missing a day, even during the German occupation.</p></div></div>
     <div class="tip"><b>Tip</b>Use the underground passage from the Champs-Élysées, never the roundabout, and be there at 6.30 pm for the rekindling of the flame. With Urban Tales running, the arch&#x27;s story plays as you come up the stairs.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="eiffel-tower.html"><span class="d">≈ 28 min walk</span><h3>Eiffel Tower</h3><span class="h">Built to be taken down</span></a><a class="near" href="louvre.html"><span class="d">3.4 km away</span><h3>Louvre</h3><span class="h">A castle under the museum</span></a><a class="near" href="sacre-coeur.html"><span class="d">3.8 km away</span><h3>Sacré-Cœur</h3><span class="h">Stone that bleaches in the rain</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Arc de Triomphe: common questions</h2><details open><summary>Who built the Arc de Triomphe?</summary><p>Napoleon ordered it in 1806; it was designed by Jean Chalgrin and finished in 1836 under King Louis-Philippe.</p></details><details><summary>What is under the Arc de Triomphe?</summary><p>The Tomb of the Unknown Soldier from the First World War, with an eternal flame rekindled every evening at 6.30 pm.</p></details><details><summary>Can you go to the top of the Arc de Triomphe?</summary><p>Yes, there&#x27;s a terrace at the top reached by 284 steps, with a ticket.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Paris</h2><p class="more-links"><a href="centre-pompidou.html">Centre Pompidou</a> · <a href="notre-dame.html">Notre-Dame</a> · <a href="saint-sulpice.html">Saint-Sulpice</a></p><a class="city-cta" href="https://urbantales.net/paris.html"><b>Paris audio guide</b><span>Every landmark in Paris, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/paris.html">Paris guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

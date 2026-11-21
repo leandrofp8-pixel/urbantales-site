@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Bebelplatz", "description": "Bebelplatz history: Frederick the Great's square, the Nazi book burning of 10 May 1933, and Micha Ullman's underground memorial of empty shelves. With an audio story.", "image": "https://urbantales.net/berlin/img/bebelplatz.jpg", "url": "https://urbantales.net/berlin/bebelplatz.html", "geo": {"@type": "GeoCoordinates", "latitude": 52.516616199999994, "longitude": 13.394147}, "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What happened at Bebelplatz?", "acceptedAnswer": {"@type": "Answer", "text": "On 10 May 1933, the Nazis burned around 20,000 books here, among them works by Heinrich Mann, Freud and Einstein."}}, {"@type": "Question", "name": "Where is the book burning memorial?", "acceptedAnswer": {"@type": "Answer", "text": "In the middle of Bebelplatz, under a glass plate set into the cobblestones."}}, {"@type": "Question", "name": "Who designed the memorial?", "acceptedAnswer": {"@type": "Answer", "text": "The Israeli artist Micha Ullman; it was unveiled in 1995."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Berlin", "item": "https://urbantales.net/berlin.html"}, {"@type": "ListItem", "position": 3, "name": "Bebelplatz", "item": "https://urbantales.net/berlin/bebelplatz.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/berlin.html" class="back">Berlin guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/berlin.html">Berlin</a> › Bebelplatz</div>
     <h1>Bebelplatz: the history, and <em>the empty library under your feet</em></h1>
     <p class="lede">This elegant square was built for the arts and learning, and it&#x27;s where the Nazis burned around 20,000 books in 1933. Here&#x27;s what you&#x27;re looking at, and what to look for in the cobblestones.</p>
+    
   </div>
   <figure class="hero"><img src="img/bebelplatz.jpg" alt="Bebelplatz, Berlin" width="1600" height="900"><figcaption>Photo: Steven1991 · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Bebelplatz,_Berlin,_July_2024.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Laid out</span><span class="v">1740s</span></div><div class="fact"><span class="k">Book burning</span><span class="v">10 May 1933</span></div><div class="fact"><span class="k">Books burned</span><span class="v">≈ 20,000</span></div><div class="fact"><span class="k">Memorial</span><span class="v">1995</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Bebelplatz story, in the app's voice">
     <audio id="preview" preload="none" src="audio/bebelplatz.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Bebelplatz story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>The night of the fires</h3><p>On 10 May 1933, students and professors, cheered on by Joseph Goebbels, burned books by Heinrich Mann, Erich Kästner, Sigmund Freud, Albert Einstein and many others here.</p></div></div><div class="story"><span class="n">2</span><div><h3>The empty library</h3><p>Look down through the glass plate in the square: Micha Ullman&#x27;s memorial is an underground room of empty white shelves, with space for about 20,000 books.</p></div></div><div class="story"><span class="n">3</span><div><h3>Heine&#x27;s warning</h3><p>A plaque nearby quotes Heinrich Heine, writing in 1821: &quot;Where they burn books, they will in the end burn people too.&quot;</p></div></div>
     <div class="tip"><b>Tip</b>Come back after dark, when the underground room glows through the glass. With Urban Tales running, the square&#x27;s story plays as you reach Unter den Linden.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="neue-wache.html"><span class="d">≈ 3 min walk</span><h3>Neue Wache</h3><span class="h">A guardhouse like a Roman fort</span></a><a class="near" href="humboldt-forum.html"><span class="d">≈ 8 min walk</span><h3>Humboldt Forum</h3><span class="h">Palace, parliament, palace</span></a><a class="near" href="berlin-cathedral.html"><span class="d">≈ 9 min walk</span><h3>Berlin Cathedral</h3><span class="h">Not really a cathedral</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Bebelplatz: common questions</h2><details open><summary>What happened at Bebelplatz?</summary><p>On 10 May 1933, the Nazis burned around 20,000 books here, among them works by Heinrich Mann, Freud and Einstein.</p></details><details><summary>Where is the book burning memorial?</summary><p>In the middle of Bebelplatz, under a glass plate set into the cobblestones.</p></details><details><summary>Who designed the memorial?</summary><p>The Israeli artist Micha Ullman; it was unveiled in 1995.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Berlin</h2><p class="more-links"><a href="tv-tower.html">Berlin TV Tower</a> · <a href="berlin-wall-memorial.html">Berlin Wall Memorial</a> · <a href="brandenburg-gate.html">Brandenburg Gate</a> · <a href="kaiser-wilhelm-memorial-church.html">Kaiser Wilhelm Memorial Church</a> · <a href="holocaust-memorial.html">Memorial to the Murdered Jews of Europe</a> · <a href="red-city-hall.html">Red City Hall (Rotes Rathaus)</a></p><a class="city-cta" href="https://urbantales.net/berlin.html"><b>Berlin audio guide</b><span>Every landmark in Berlin, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/berlin.html">Berlin guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

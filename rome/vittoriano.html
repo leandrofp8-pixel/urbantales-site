@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Vittoriano (Altare della Patria)", "description": "Vittoriano (Altare della Patria) history: why it was built, what was demolished for it, the Tomb of the Unknown Soldier, and the view from the top. With an audio story.", "image": "https://urbantales.net/rome/img/vittoriano.jpg", "url": "https://urbantales.net/rome/vittoriano.html", "geo": {"@type": "GeoCoordinates", "latitude": 41.8945976, "longitude": 12.4831269}, "address": {"@type": "PostalAddress", "addressLocality": "Rome", "addressCountry": "IT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the Vittoriano?", "acceptedAnswer": {"@type": "Answer", "text": "A national monument to Victor Emmanuel II, the first king of unified Italy, which also holds the Altar of the Fatherland and the Tomb of the Unknown Soldier."}}, {"@type": "Question", "name": "When was the Vittoriano built?", "acceptedAnswer": {"@type": "Answer", "text": "Construction began in 1885. It was inaugurated in 1911 and finished in 1935."}}, {"@type": "Question", "name": "Can you go to the top of the Vittoriano?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A glass elevator takes visitors to the terrace on the roof, with a ticket."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Rome", "item": "https://urbantales.net/rome.html"}, {"@type": "ListItem", "position": 3, "name": "Vittoriano (Altare della Patria)", "item": "https://urbantales.net/rome/vittoriano.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/rome.html" class="back">Rome guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/rome.html">Rome</a> › Vittoriano (Altare della Patria)</div>
     <h1>Vittoriano: the history, and <em>the neighborhood it replaced</em></h1>
     <p class="lede">The huge white monument on Piazza Venezia honors Italy&#x27;s first king and the Unknown Soldier. Romans have nicknamed it the &quot;typewriter&quot; and the &quot;wedding cake&quot;. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/vittoriano.jpg" alt="Vittoriano (Altare della Patria), Rome" width="1600" height="900"><figcaption>Photo: Paolo Costa Baldi · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Piazza_Venezia_-_Il_Vittoriano_(cropped).jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Started</span><span class="v">1885</span></div><div class="fact"><span class="k">Inaugurated</span><span class="v">1911</span></div><div class="fact"><span class="k">Finished</span><span class="v">1935</span></div><div class="fact"><span class="k">Architect</span><span class="v">Giuseppe Sacconi</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Vittoriano (Altare della Patria) story, in the app's voice">
     <audio id="preview" preload="none" src="audio/vittoriano.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Vittoriano (Altare della Patria) story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>A neighborhood cleared for it</h3><p>To make room, a medieval neighborhood on the slope of the Capitoline Hill was demolished. The bright white marble from Brescia never matched Rome&#x27;s warm travertine, which is part of why the monument divided Romans from the start.</p></div></div><div class="story"><span class="n">2</span><div><h3>The Unknown Soldier</h3><p>In 1921 the body of an unidentified soldier from the First World War was buried at the Altar of the Fatherland, chosen by the mother of a missing soldier from 11 coffins. Two soldiers guard it day and night.</p></div></div><div class="story"><span class="n">3</span><div><h3>A horse big enough for dinner</h3><p>Before the bronze statue of Victor Emmanuel II was put in place, its sculptors held a dinner inside the horse&#x27;s belly. The statue is about 12 meters tall.</p></div></div>
     <div class="tip"><b>Tip</b>Take the glass elevator to the Terrazza delle Quadrighe on the roof for one of the widest views of Rome. With Urban Tales running, the monument&#x27;s story plays as you cross Piazza Venezia.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="roman-forum.html"><span class="d">≈ 6 min walk</span><h3>Roman Forum</h3><span class="h">Built on a drained swamp</span></a><a class="near" href="largo-di-torre-argentina.html"><span class="d">≈ 9 min walk</span><h3>Largo di Torre Argentina</h3><span class="h">Where Caesar fell</span></a><a class="near" href="sant-ignazio.html"><span class="d">≈ 9 min walk</span><h3>Sant&#x27;Ignazio</h3><span class="h">A dome made of paint</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Vittoriano (Altare della Patria): common questions</h2><details open><summary>What is the Vittoriano?</summary><p>A national monument to Victor Emmanuel II, the first king of unified Italy, which also holds the Altar of the Fatherland and the Tomb of the Unknown Soldier.</p></details><details><summary>When was the Vittoriano built?</summary><p>Construction began in 1885. It was inaugurated in 1911 and finished in 1935.</p></details><details><summary>Can you go to the top of the Vittoriano?</summary><p>Yes. A glass elevator takes visitors to the terrace on the roof, with a ticket.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Rome</h2><p class="more-links"><a href="capuchin-crypt.html">Capuchin Crypt</a> · <a href="colosseum.html">Colosseum</a> · <a href="pantheon.html">Pantheon</a> · <a href="piazza-navona.html">Piazza Navona</a> · <a href="spanish-steps.html">Spanish Steps</a> · <a href="trevi-fountain.html">Trevi Fountain</a></p><a class="city-cta" href="https://urbantales.net/rome.html"><b>Rome audio guide</b><span>Every landmark in Rome, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/rome.html">Rome guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Petroleum Fountain (Fuente de Petróleos)", "description": "Fuente de Petróleos (Monument to the Mexican Oil Industry) history: the 1938 oil expropriation, the 1952 fountain by Vicente Mendiola and Juan F. Olaguíbel. With an audio story.", "image": "https://urbantales.net/mexico-city/img/petroleum-fountain.jpg", "url": "https://urbantales.net/mexico-city/petroleum-fountain.html", "geo": {"@type": "GeoCoordinates", "latitude": 19.4275, "longitude": -99.2030556}, "address": {"@type": "PostalAddress", "addressLocality": "Mexico City", "addressCountry": "MX"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does the Fuente de Petróleos commemorate?", "acceptedAnswer": {"@type": "Answer", "text": "The oil expropriation of 18 March 1938 by President Lázaro Cárdenas."}}, {"@type": "Question", "name": "When was the Fuente de Petróleos built?", "acceptedAnswer": {"@type": "Answer", "text": "It was inaugurated on 18 March 1952."}}, {"@type": "Question", "name": "Who designed the Fuente de Petróleos?", "acceptedAnswer": {"@type": "Answer", "text": "Architect Vicente Mendiola with sculptor Juan Fernando Olaguíbel."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Mexico City", "item": "https://urbantales.net/mexico-city.html"}, {"@type": "ListItem", "position": 3, "name": "Petroleum Fountain (Fuente de Petróleos)", "item": "https://urbantales.net/mexico-city/petroleum-fountain.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/mexico-city.html" class="back">Mexico City guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/mexico-city.html">Mexico City</a> › Petroleum Fountain (Fuente de Petróleos)</div>
     <h1>Fuente de Petróleos: the history, and <em>the oil Mexico took back</em></h1>
     <p class="lede">On Paseo de la Reforma, at the gate to Lomas de Chapultepec, a fountain celebrates the day Mexico took its oil back from foreign companies. Here&#x27;s what you&#x27;re looking at.</p>
+    
   </div>
   <figure class="hero"><img src="img/petroleum-fountain.jpg" alt="Petroleum Fountain (Fuente de Petróleos), Mexico City" width="1600" height="900"><figcaption>Photo: Juan Carlos Fonseca Mata · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Fuente_de_Petr%C3%B3leos_-_Ciudad_de_M%C3%A9xico.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Inaugurated</span><span class="v">18 Mar 1952</span></div><div class="fact"><span class="k">Architect</span><span class="v">Vicente Mendiola</span></div><div class="fact"><span class="k">Sculptor</span><span class="v">J. F. Olaguíbel</span></div><div class="fact"><span class="k">Bronze</span><span class="v">≈ 18 tonnes</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Petroleum Fountain (Fuente de Petróleos) story, in the app's voice">
     <audio id="preview" preload="none" src="audio/petroleum-fountain.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Petroleum Fountain (Fuente de Petróleos) story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>The day Mexico took its oil back</h3><p>On 18 March 1938, President Lázaro Cárdenas expropriated the oil industry from foreign companies, mostly American and British.</p></div></div><div class="story"><span class="n">2</span><div><h3>Paid with chickens</h3><p>Mexicans rushed to help pay the compensation, giving money, jewelry and even chickens. The fountain opened on the 14th anniversary, in 1952.</p></div></div><div class="story"><span class="n">3</span><div><h3>The Diana&#x27;s makers</h3><p>Vicente Mendiola and Juan Fernando Olaguíbel, who designed it, were the same pair behind the Diana the Huntress fountain further down Reforma.</p></div></div>
     <div class="tip"><b>Tip</b>It sits in the middle of a busy roundabout, so admire it from the edge, ideally at night when the water and bronze are lit. With Urban Tales running, the fountain&#x27;s story plays as you reach the Glorieta de Petróleos.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="museo-jumex.html"><span class="d">≈ 23 min walk</span><h3>Museo Jumex</h3><span class="h">A juice fortune turned into art</span></a><a class="near" href="museo-soumaya.html"><span class="d">≈ 24 min walk</span><h3>Museo Soumaya</h3><span class="h">Named for Soumaya</span></a><a class="near" href="monument-to-the-revolution.html"><span class="d">5.2 km away</span><h3>Monument to the Revolution</h3><span class="h">The parliament that never was</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Petroleum Fountain (Fuente de Petróleos): common questions</h2><details open><summary>What does the Fuente de Petróleos commemorate?</summary><p>The oil expropriation of 18 March 1938 by President Lázaro Cárdenas.</p></details><details><summary>When was the Fuente de Petróleos built?</summary><p>It was inaugurated on 18 March 1952.</p></details><details><summary>Who designed the Fuente de Petróleos?</summary><p>Architect Vicente Mendiola with sculptor Juan Fernando Olaguíbel.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Mexico City</h2><p class="more-links"><a href="templo-mayor.html">Templo Mayor</a> · <a href="zocalo.html">Zócalo (Plaza de la Constitución)</a></p><a class="city-cta" href="https://urbantales.net/mexico-city.html"><b>Mexico City audio guide</b><span>Every landmark in Mexico City, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/mexico-city.html">Mexico City guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

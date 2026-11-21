@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Sugarloaf Mountain", "description": "Sugarloaf Mountain history in plain words: a 396-metre granite peak, the name from colonial sugar moulds, the 1912 cable car and the James Bond fight on it. With an audio story.", "image": "https://urbantales.net/rio-de-janeiro/img/sugarloaf-mountain.jpg", "url": "https://urbantales.net/rio-de-janeiro/sugarloaf-mountain.html", "geo": {"@type": "GeoCoordinates", "latitude": -22.949258600000004, "longitude": -43.154575699999995}, "address": {"@type": "PostalAddress", "addressLocality": "Rio de Janeiro", "addressCountry": "BR"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How tall is Sugarloaf Mountain?", "acceptedAnswer": {"@type": "Answer", "text": "396 metres above sea level."}}, {"@type": "Question", "name": "When was the Sugarloaf cable car built?", "acceptedAnswer": {"@type": "Answer", "text": "It opened in 1912, the first cable car in Brazil."}}, {"@type": "Question", "name": "Why is it called Sugarloaf?", "acceptedAnswer": {"@type": "Answer", "text": "Its shape resembles the conical moulds used to refine sugar in colonial times."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Rio de Janeiro", "item": "https://urbantales.net/rio-de-janeiro.html"}, {"@type": "ListItem", "position": 3, "name": "Sugarloaf Mountain", "item": "https://urbantales.net/rio-de-janeiro/sugarloaf-mountain.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/rio-de-janeiro.html" class="back">Rio de Janeiro guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/rio-de-janeiro.html">Rio de Janeiro</a> › Sugarloaf Mountain</div>
     <h1>Sugarloaf Mountain: the history, and <em>the cable car that opened in 1912</em></h1>
     <p class="lede">The granite dome at the mouth of Guanabara Bay, reached by one of the world&#x27;s oldest cable cars. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/sugarloaf-mountain.jpg" alt="Sugarloaf Mountain, Rio de Janeiro" width="1600" height="900"><figcaption>Photo: Wilfredor · CC0 · <a href="https://commons.wikimedia.org/wiki/File:Sugarloaf_Cable_Car_viewed_from_Rio_de_Janeiro,_Brazil.jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Height</span><span class="v">396 m</span></div><div class="fact"><span class="k">Rock</span><span class="v">granite</span></div><div class="fact"><span class="k">Cable car</span><span class="v">since 1912</span></div><div class="fact"><span class="k">Stops</span><span class="v">Morro da Urca, then the summit</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Sugarloaf Mountain story, in the app's voice">
     <audio id="preview" preload="none" src="audio/sugarloaf-mountain.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Sugarloaf Mountain story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>Named after sugar</h3><p>The peak&#x27;s shape reminded the Portuguese of the conical clay moulds used to refine sugar in colonial Brazil.</p></div></div><div class="story"><span class="n">2</span><div><h3>A cable car in 1912</h3><p>Engineer Augusto Ferreira Ramos opened the cable car in 1912, the first in Brazil and one of the first in the world.</p></div></div><div class="story"><span class="n">3</span><div><h3>James Bond was here</h3><p>In Moonraker (1979), Roger Moore&#x27;s Bond fights the villain Jaws on top of a Sugarloaf cable car.</p></div></div>
     <div class="tip"><b>Tip</b>Go up about an hour before sunset and stay on the summit as the city lights come on. With Urban Tales running, the mountain&#x27;s story plays as you reach the cable car station in Urca.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="escadaria-selaron.html"><span class="d">4.5 km away</span><h3>Escadaria Selarón</h3><span class="h">It began at his front door</span></a><a class="near" href="arcos-da-lapa.html"><span class="d">4.8 km away</span><h3>Arcos da Lapa</h3><span class="h">Water from the hills</span></a><a class="near" href="theatro-municipal.html"><span class="d">5.0 km away</span><h3>Theatro Municipal</h3><span class="h">A capital that wanted Paris</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Sugarloaf Mountain: common questions</h2><details open><summary>How tall is Sugarloaf Mountain?</summary><p>396 metres above sea level.</p></details><details><summary>When was the Sugarloaf cable car built?</summary><p>It opened in 1912, the first cable car in Brazil.</p></details><details><summary>Why is it called Sugarloaf?</summary><p>Its shape resembles the conical moulds used to refine sugar in colonial times.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Rio de Janeiro</h2><p class="more-links"><a href="christ-the-redeemer.html">Christ the Redeemer</a> · <a href="confeitaria-colombo.html">Confeitaria Colombo</a> · <a href="copacabana-fort.html">Copacabana Fort</a> · <a href="metropolitan-cathedral.html">Metropolitan Cathedral of Rio de Janeiro</a> · <a href="museu-do-amanha.html">Museu do Amanhã</a> · <a href="real-gabinete.html">Real Gabinete Português de Leitura</a></p><a class="city-cta" href="https://urbantales.net/rio-de-janeiro.html"><b>Rio de Janeiro audio guide</b><span>Every landmark in Rio de Janeiro, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/rio-de-janeiro.html">Rio de Janeiro guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>

@@ -56,12 +56,20 @@ details p{margin-top:8px;color:var(--mid)}
 .foot{max-width:820px;margin:0 auto;padding-block:24px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--light)}.foot a{color:var(--mid)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* SEO sections, 20 Nov 2026 */
+.updated{font-size:13px;color:var(--light);margin-top:6px}
+.more-text p+p{margin-top:12px}.more-text,.look,.visit{display:flex;flex-direction:column;gap:12px}
+.look ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}.look li b{color:var(--ink,inherit)}
+.visit-grid{grid-template-columns:repeat(2,1fr)}.visit-grid .v{font-family:inherit;font-size:15px;font-weight:500;line-height:1.45}
+.more-links{line-height:1.9}.more-links a{color:var(--mid)}
+.city-cta{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--orange-soft)}
+.city-cta b{color:var(--orange)}.city-cta span{color:var(--mid);font-size:14px}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TouristAttraction", "name": "Rossio", "description": "Rossio (Praça Dom Pedro IV) history in plain words: centuries of markets, festivals and executions, the 1870 column of Pedro IV, King of Portugal and first Emperor of Brazil, and the wave pavement. With an audio story.", "image": "https://urbantales.net/lisbon/img/rossio.jpg", "url": "https://urbantales.net/lisbon/rossio.html", "geo": {"@type": "GeoCoordinates", "latitude": 38.7138802, "longitude": -9.139051}, "address": {"@type": "PostalAddress", "addressLocality": "Lisbon", "addressCountry": "PT"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is Rossio called Praça Dom Pedro IV?", "acceptedAnswer": {"@type": "Answer", "text": "That's its official name, after Pedro IV, whose statue tops the column; everyone still calls it Rossio."}}, {"@type": "Question", "name": "Who was Dom Pedro IV?", "acceptedAnswer": {"@type": "Answer", "text": "King of Portugal and, as Pedro I, the first Emperor of Brazil, who declared Brazilian independence in 1822."}}, {"@type": "Question", "name": "What is the wave pattern in Rossio?", "acceptedAnswer": {"@type": "Answer", "text": "Portuguese stone pavement (calçada portuguesa) laid in the 1840s, imitating the sea."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Urban Tales", "item": "https://urbantales.net/"}, {"@type": "ListItem", "position": 2, "name": "Lisbon", "item": "https://urbantales.net/lisbon.html"}, {"@type": "ListItem", "position": 3, "name": "Rossio", "item": "https://urbantales.net/lisbon/rossio.html"}]}]</script>
 </head>
 <body>
 <nav class="top">
-  <a href="https://urbantales.net/index.html" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
+  <a href="https://urbantales.net/" class="brand"><img src="../icon.png" alt=""><span>Urban Tales</span></a>
   <a href="https://urbantales.net/lisbon.html" class="back">Lisbon guide</a>
 </nav>
 <main class="wrap">
@@ -69,20 +77,25 @@ details p{margin-top:8px;color:var(--mid)}
     <div class="crumbs"><a href="https://urbantales.net/">Urban Tales</a> › <a href="https://urbantales.net/lisbon.html">Lisbon</a> › Rossio</div>
     <h1>Rossio: the history, and <em>the king who was also an emperor</em></h1>
     <p class="lede">Lisbon&#x27;s main square since the Middle Ages, officially Praça Dom Pedro IV. Here&#x27;s what you&#x27;re looking at, and what to listen for when you get there.</p>
+    
   </div>
   <figure class="hero"><img src="img/rossio.jpg" alt="Rossio, Lisbon" width="1600" height="900"><figcaption>Photo: Sergey Ashmarin · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Rossio_Square_-_Lisbon,_Portugal_-_panoramio_(1).jpg" rel="noopener">Wikimedia Commons</a></figcaption></figure>
   <div class="facts"><div class="fact"><span class="k">Official name</span><span class="v">Praça Dom Pedro IV</span></div><div class="fact"><span class="k">Column</span><span class="v">1870</span></div><div class="fact"><span class="k">Fountains</span><span class="v">2, bronze</span></div><div class="fact"><span class="k">Pavement</span><span class="v">wave pattern, 1840s</span></div></div>
-  <section class="listen" aria-label="Listen to the story">
+  <section class="listen" aria-label="Hear the Rossio story, in the app's voice">
     <audio id="preview" preload="none" src="audio/rossio.mp3"></audio>
     <button class="play" id="play" aria-label="Play a short preview of the story"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="icon" d="M7 4v16l13-8z"/></svg></button>
     <div><div class="t">Hear the Rossio story, in the app's voice</div>
     <div class="s">A short preview. The full story plays on its own when you walk up to it with Urban Tales.</div></div>
     <div class="bar"><a class="badge" href="https://apps.apple.com/app/id6760130598">App Store</a><a class="badge" href="https://play.google.com/store/apps/details?id=com.urbantales.app">Google Play</a><span class="hint">Free to start · 8 languages</span></div>
   </section>
+  
   <section class="stories" aria-labelledby="h-stories"><h2 id="h-stories">Three stories most visitors miss</h2><div class="story"><span class="n">1</span><div><h3>One man, two crowns</h3><p>The statue on the column is Pedro IV, King of Portugal and, as Pedro I, the first Emperor of Brazil, who declared Brazil&#x27;s independence in 1822.</p></div></div><div class="story"><span class="n">2</span><div><h3>Markets, festivals and executions</h3><p>For centuries the square hosted markets, festivals and bullfights, and in darker times the public executions of the Inquisition.</p></div></div><div class="story"><span class="n">3</span><div><h3>The wave under your feet</h3><p>The black-and-white wave pavement, laid in the 1840s, was one of the first big designs in Portuguese stone pavement, the calçada portuguesa.</p></div></div>
     <div class="tip"><b>Tip</b>Have a ginjinha, the cherry liqueur, at one of the tiny bars on the corner of Largo de São Domingos, a few steps away. With Urban Tales running, the square&#x27;s story plays as you walk in.</div></section>
+  
+  
   <section class="nb" aria-labelledby="h-near"><h2 id="h-near">Nearby landmarks</h2><div class="nearby"><a class="near" href="santa-justa-lift.html"><span class="d">≈ 3 min walk</span><h3>Santa Justa Lift</h3><span class="h">Not Eiffel&#x27;s work</span></a><a class="near" href="sao-jorge-castle.html"><span class="d">≈ 8 min walk</span><h3>São Jorge Castle</h3><span class="h">The Moorish citadel</span></a><a class="near" href="lisbon-cathedral.html"><span class="d">≈ 11 min walk</span><h3>Lisbon Cathedral</h3><span class="h">Built over a mosque</span></a></div></section>
   <section aria-labelledby="h-faq"><h2 id="h-faq">Rossio: common questions</h2><details open><summary>Why is Rossio called Praça Dom Pedro IV?</summary><p>That&#x27;s its official name, after Pedro IV, whose statue tops the column; everyone still calls it Rossio.</p></details><details><summary>Who was Dom Pedro IV?</summary><p>King of Portugal and, as Pedro I, the first Emperor of Brazil, who declared Brazilian independence in 1822.</p></details><details><summary>What is the wave pattern in Rossio?</summary><p>Portuguese stone pavement (calçada portuguesa) laid in the 1840s, imitating the sea.</p></details></section>
+  <section class="nb" aria-labelledby="h-more"><h2 id="h-more">More in Lisbon</h2><p class="more-links"><a href="belem-tower.html">Belém Tower</a> · <a href="jeronimos-monastery.html">Jerónimos Monastery</a> · <a href="miradouro-de-santa-luzia.html">Miradouro de Santa Luzia</a> · <a href="monument-to-the-discoveries.html">Monument to the Discoveries</a> · <a href="praca-do-comercio.html">Praça do Comércio</a> · <a href="aqueduct.html">Águas Livres Aqueduct</a></p><a class="city-cta" href="https://urbantales.net/lisbon.html"><b>Lisbon audio guide</b><span>Every landmark in Lisbon, with the story the app tells you there.</span></a></section>
 </main>
 <footer class="foot"><p>© Urban Tales · <a href="https://urbantales.net/lisbon.html">Lisbon guide</a> · <a href="https://urbantales.net/blog.html">Blog</a> · <a href="https://urbantales.net/privacy.html">Privacy</a></p></footer>
 <script>
