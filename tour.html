@@ -265,11 +265,18 @@ function render({ days, city, title, creator, deepLink, audio }) {
   // Open in the app when installed, else the store (the app stores the id and offers the trip after sign-in).
   const open = document.getElementById('openBtn');
   open.textContent = WEBPLAN ? S.openPlan : S.follow; document.getElementById('ctaSub').textContent = S.followSub;
-  document.querySelectorAll('.badges a').forEach(a => a.addEventListener('click', () => webTrack('store_click', { where: 'badges', store: a.dataset.store })));
+  // 3.7.0: carry the trip across an install. The app reads this once on its first launch and offers the trip after
+  // sign-in (utils/tripHandoff.js). Must run inside a tap; failures are fine (older browsers).
+  const copyTrip = () => {
+    const m = deepLink.match(/\/\/(bundle|tour)\?id=([A-Za-z0-9-]+)/);
+    if (m && navigator.clipboard) navigator.clipboard.writeText(`UTTRIP:${m[1] === 'bundle' ? 'b' : 't'}:${m[2]}`).catch(() => {});
+  };
+  document.querySelectorAll('.badges a').forEach(a => a.addEventListener('click', () => { copyTrip(); webTrack('store_click', { where: 'badges', store: a.dataset.store }); }));
   webTrack('plan_view');
   open.addEventListener('click', (e) => {
     e.preventDefault();
     webTrack('cta_app', { where: 'sticky' });
+    copyTrip();
     const t = setTimeout(() => { location.href = store; }, 1400);
     window.addEventListener('pagehide', () => clearTimeout(t), { once: true });
     location.href = deepLink;
