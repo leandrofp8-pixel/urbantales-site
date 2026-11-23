@@ -1,0 +1,39 @@
+{
+ "badge_num": 49,
+ "flag": "🇩🇰",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "COPENHAGUE",
+ "caption": "¿Cuál de estos 7 secretos de Copenhague no conocías? Comenta el número 👇\n\n1. Rundetårn\nTerminada en 1642, la Rundetårn es el observatorio en funcionamiento más antiguo de Europa y no tiene escaleras: una rampa en espiral da 7,5 vueltas alrededor de su núcleo hueco, pensada para que un caballo con carruaje llegara a la biblioteca y al observatorio.\n\n2. La Sirenita\nInaugurada en 1913, con el rostro de una bailarina y el cuerpo inspirado en la esposa del escultor, la Sirenita de bronce fue decapitada dos veces, en 1964 y en 1998. La primera cabeza nunca apareció.\n\n3. Nyhavn\nHans Christian Andersen vivió en tres casas distintas de Nyhavn a lo largo de cuatro décadas: el número 20, donde publicó sus primeros cuentos en 1835, el 67 durante unos 20 años y el 18 en sus últimos años.\n\n4. Tivoli Gardens\nInaugurado en 1843, Tivoli Gardens es el segundo parque de diversiones en funcionamiento más antiguo del mundo. Walt Disney lo visitó en 1951 y tomó notas mientras imaginaba Disneylandia, y volvió en años posteriores.\n\n5. Christiania\nEn 1971, un grupo de okupas se instaló en una base militar abandonada y fundó la Ciudad Libre de Christiania, una comunidad autónoma cuyas reglas aún prohíben autos, armas y drogas duras. En 2012 los residentes compraron legalmente el terreno.\n\n6. La Iglesia de Mármol\nLa Iglesia de Federico (la Iglesia de Mármol) se empezó en 1749, pero las obras se detuvieron en 1770 porque el mármol salía demasiado caro, y quedó como una ruina inacabada durante más de un siglo. El financiero C.F. Tietgen pagó para terminarla, sobre todo con piedra caliza más barata, y abrió en 1894.\n\n7. Strøget\nCuando Strøget se cerró a los autos en 1962, su recorrido de 1.1 kilómetros entre la Plaza del Ayuntamiento y Kongens Nytorv se convirtió en la calle peatonal más larga del mundo en ese momento. Desde entonces, otras ciudades la superaron.\n\n.\n.\n.\n#Copenhague #Dinamarca #DatosCuriosos #Viajes #UrbanTales",
+ "facts": [
+  {
+   "headline": "Esta torre no tiene escaleras, solo una rampa en espiral",
+   "hook": "La Rundetårn, terminada en 1642, no tiene escaleras: una rampa en espiral permitía subir a caballo hasta su observatorio."
+  },
+  {
+   "headline": "La estatua más famosa de Copenhague ha perdido la cabeza dos veces",
+   "hook": "Inaugurada en 1913, la Sirenita ha sido decapitada dos veces por vándalos, y la primera cabeza robada nunca apareció."
+  },
+  {
+   "headline": "Un escritor vivió en este puerto en tres direcciones distintas",
+   "hook": "Hans Christian Andersen vivió en tres casas distintas del colorido puerto de Nyhavn, y las tres siguen en pie."
+  },
+  {
+   "headline": "Este parque de diversiones inspiró a Walt Disney",
+   "hook": "Tivoli Gardens abrió en 1843, y Walt Disney tomó notas aquí en 1951 mientras imaginaba lo que sería Disneylandia."
+  },
+  {
+   "headline": "Unos okupas fundaron su propio pueblo autónomo dentro de la ciudad",
+   "hook": "En 1971, unos okupas tomaron una base militar abandonada y fundaron Christiania, una comunidad autónoma con sus propias reglas."
+  },
+  {
+   "headline": "Esta iglesia tardó 145 años en terminarse",
+   "hook": "La Iglesia de Mármol fue una ruina inacabada más de un siglo, hasta que un financiero la terminó en 1894."
+  },
+  {
+   "headline": "Esta fue la calle peatonal más larga del mundo",
+   "hook": "Al cerrarse a los autos en 1962, Strøget fue la calle peatonal más larga del mundo en ese momento."
+  }
+ ],
+ "lang": "es"
+}
