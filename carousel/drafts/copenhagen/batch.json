@@ -1,0 +1,38 @@
+{
+ "badge_num": 49,
+ "flag": "🇩🇰",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "COPENHAGEN",
+ "caption": "Which of these 7 Copenhagen secrets didn't you know? Comment the number 👇\n\n1. Rundetårn\nFinished in 1642, Rundetårn is Europe's oldest functioning observatory, and it has no staircase: a spiral ramp winds 7.5 times around its hollow core, built so a horse and carriage could reach the library and observatory.\n\n2. The Little Mermaid\nUnveiled in 1913, with a ballerina's face and the sculptor's wife as the model for her body, the bronze Little Mermaid has been beheaded twice, in 1964 and 1998. The first head was never recovered.\n\n3. Nyhavn\nHans Christian Andersen lived in three different houses on Nyhavn over four decades: No. 20, where his first fairy tales came out in 1835, No. 67 for about 20 years, and No. 18 in his last years.\n\n4. Tivoli Gardens\nOpened in 1843, Tivoli Gardens is the world's second-oldest operating amusement park. Walt Disney visited in 1951 and filled notebooks with ideas while he was dreaming up Disneyland, and he came back in later years.\n\n5. Christiania\nIn 1971, squatters moved into an abandoned military base and declared Freetown Christiania, a self-governing community whose own rules still ban cars, weapons and hard drugs. Residents bought the land legally in 2012.\n\n6. The Marble Church\nWork on Frederik's Church (the Marble Church) began in 1749 but stopped in 1770 when the marble got too expensive, and it stood as an unfinished ruin for over a century. Financier C.F. Tietgen paid to finish it, mostly in cheaper limestone, and it opened in 1894.\n\n7. Strøget\nWhen Strøget was closed to cars in 1962, its 1.1-kilometer run from City Hall Square to Kongens Nytorv became the longest pedestrian street in the world at the time. Other cities have since built longer ones.\n\n.\n.\n.\n#Copenhagen #Denmark #TravelFacts #LittleMermaid #UrbanTales",
+ "facts": [
+  {
+   "headline": "This tower has no stairs, just a spiral ramp",
+   "hook": "Rundetårn, finished in 1642, has no stairs: a spiral ramp lets horses and carriages climb to its observatory."
+  },
+  {
+   "headline": "Copenhagen's most famous statue has lost her head twice",
+   "hook": "Unveiled in 1913, the Little Mermaid has been beheaded twice by vandals, and the first stolen head was never found."
+  },
+  {
+   "headline": "One writer lived on this harbor at three different addresses",
+   "hook": "Hans Christian Andersen lived at three different addresses along Nyhavn's colorful harbor, and all three houses still stand."
+  },
+  {
+   "headline": "This amusement park inspired Walt Disney",
+   "hook": "Tivoli Gardens opened in 1843, and Walt Disney took notes here in 1951 while he was dreaming up Disneyland."
+  },
+  {
+   "headline": "Squatters founded their own self-governing town inside the city",
+   "hook": "In 1971, squatters took over an abandoned military base and founded Christiania, a self-governing town with its own rules."
+  },
+  {
+   "headline": "This church took 145 years to finish",
+   "hook": "The Marble Church sat as an unfinished ruin for over a century, until a financier completed it in 1894."
+  },
+  {
+   "headline": "This was once the world's longest pedestrian street",
+   "hook": "When cars were banned from Strøget in 1962, its 1.1-kilometer stretch became the world's longest pedestrian street at the time."
+  }
+ ]
+}

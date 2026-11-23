@@ -46,12 +46,28 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 45 | Hong Kong |
 | 46 | Lyon |
 | 47 | Lyon |
+| 48 | Copenhagen |
+| 49 | Copenhagen |
 
 ## Next batch
 
-**#48 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#50 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
+
+Note (2026-11-23, Copenhagen batch): drafted as #48 (no `copenhagen.html` page and no
+`screen-copenhagen-*-map.png` screenshot in the main site repo — the generic app screen was used
+for the CTA slide, flagged in `draft.json`). All 7 facts (Rundetårn's stairless spiral ramp, the
+Little Mermaid's two beheadings, Hans Christian Andersen's three Nyhavn addresses, Tivoli Gardens
+inspiring Walt Disney, Freetown Christiania's 1971 founding, the Marble Church's ~150-year
+construction gap, and Strøget's 1962 pedestrianization) were researched and verified via web
+search this run. Photo sourcing was blocked again for the same recurring commons.wikimedia.org
+network-policy reason as batches #8-#13, #28/#29, #30, #32, #34, #36, #38, #40/#41, #42/#43/#44/#45
+and #46/#47 — confirmed via curl showing the agent proxy returning a 403 on the CONNECT tunnel to
+commons.wikimedia.org. No attempt was made this run to request a network/environment change, since
+this is an unattended scheduled run and every past attempt at that was auto-refused for lack of a
+live approver; `suggested_queries` are left in `draft.json` for whoever sources the photos by hand,
+same as recent batches.
 
 Note (2026-11-20, Lyon batch): drafted as #46 (no `lyon.html` page in the main site repo — the only
 existing Lyon page is the blog post `blog-lyon-fete-des-lumieres-fourviere-walk.html`, published
