@@ -1,0 +1,93 @@
+{
+  "badge_num": 48,
+  "city": "COPENHAGEN",
+  "flag": "🇩🇰",
+  "cta_screenshot": "screen-generic-narration-style.png",
+  "cta_screenshot_note": "No Copenhagen map screenshot in the repo (no screen-copenhagen-*-map.png file, and no copenhagen.html landing page either); using the generic app screen per GUIDELINES.md.",
+  "style": "minimal",
+  "photo_sourcing_blocked": true,
+  "photo_sourcing_note": "This cloud session's network egress policy denies commons.wikimedia.org (confirmed via curl -> 'CONNECT tunnel failed, response 403 Forbidden (agent proxy: no rule or network setting allows this host)'). This is the same recurring block noted in topics.md for batches #8-#13, #28/#29, #30, #32, #34, #36, #38, #40/#41, #42/#43/#44/#45 and #46/#47 (Lyon) — no attempt was made to request a network/environment change this run, since this is an unattended scheduled run and every past attempt at that was auto-refused for lack of a live approver. No candidate photos could be downloaded this run; 'candidates' arrays are empty and 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access. All 7 facts were researched and verified via WebSearch, which is not subject to this block.",
+  "caption": "Which of these 7 Copenhagen secrets didn't you know? Comment the number 👇\n\n1. Rundetårn\nBuilt in 1642 as Europe's oldest surviving functioning observatory, Rundetårn has no staircase at all — just a 209-meter spiral ramp winding 7.5 times around a hollow core, built wide enough for a horse and cart to haul books and telescopes to the top.\n\n2. The Little Mermaid\nUnveiled in 1913 and modeled on a ballerina's face and the sculptor's wife's body, the bronze Little Mermaid has been beheaded twice — in 1964 and 1998 — with the first head never recovered.\n\n3. Nyhavn\nHans Christian Andersen lived in three different houses along Nyhavn's colorful waterfront over four decades — No. 20 in the 1830s, No. 67 for his longest stretch, and No. 18 until shortly before his death in 1875.\n\n4. Tivoli Gardens\nOpened in 1843, Tivoli Gardens is the world's second-oldest operating amusement park — and after visiting in 1951, Walt Disney returned again and again, later echoing founder Georg Carstensen's own line that 'it will never be finished' when describing Disneyland.\n\n5. Christiania\nIn 1971, squatters moved into an abandoned military base and declared Freetown Christiania, a self-governing community that still bans cars, guns, and hard drugs under its own rules — residents legally bought the land in 2012.\n\n6. The Marble Church\nConstruction on Frederik's Church (the Marble Church) stalled for almost 150 years after funds ran out, leaving it a crumbling ruin — until financier C.F. Tietgen paid to finish it in 1894, swapping the planned marble for cheaper limestone.\n\n7. Strøget\nWhen Strøget was pedestrianized in 1962, its roughly 1.1-kilometer run became the longest pedestrian street in the world at the time — a title it has since lost, but the mile of shops between City Hall Square and Kongens Nytorv is still Scandinavia's busiest.\n\n.\n.\n.\n#Copenhagen #Denmark #TravelFacts #LittleMermaid #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Copenhague no conocías? Comenta el número 👇\n\n1. Rundetårn\nConstruida en 1642 como el observatorio en funcionamiento más antiguo de Europa, el Rundetårn no tiene escaleras: solo una rampa en espiral de 209 metros que gira 7,5 veces alrededor de un núcleo hueco, lo bastante ancha para que un caballo con carreta subiera libros y telescopios.\n\n2. La Sirenita\nDevelada en 1913 e inspirada en el rostro de una bailarina y el cuerpo de la esposa del escultor, la Sirenita de bronce fue decapitada dos veces — en 1964 y 1998 — y la primera cabeza robada nunca se recuperó.\n\n3. Nyhavn\nHans Christian Andersen vivió en tres casas distintas sobre el colorido muelle de Nyhavn durante cuatro décadas: el número 20 en la década de 1830, el número 67 por más tiempo, y el número 18 hasta poco antes de morir en 1875.\n\n4. Tivoli Gardens\nAbierto en 1843, Tivoli Gardens es el segundo parque de diversiones en funcionamiento más antiguo del mundo — y tras visitarlo en 1951, Walt Disney volvió una y otra vez, repitiendo después la frase de su fundador Georg Carstensen de que 'nunca estará terminado' al describir Disneylandia.\n\n5. Christiania\nEn 1971, un grupo de okupas tomó una base militar abandonada y fundó Freetown Christiania, una comunidad autónoma que aún prohíbe autos, armas y drogas duras bajo sus propias reglas — los residentes compraron legalmente el terreno en 2012.\n\n6. La Iglesia de Mármol\nLa construcción de la Iglesia de Frederik (la Iglesia de Mármol) se detuvo casi 150 años por falta de fondos, dejándola en ruinas — hasta que el financiero C.F. Tietgen pagó para terminarla en 1894, cambiando el mármol planeado por piedra caliza más barata.\n\n7. Strøget\nCuando Strøget se peatonalizó en 1962, su tramo de unos 1.1 kilómetros se convirtió en la calle peatonal más larga del mundo de la época — un título que ya perdió, pero ese kilómetro de tiendas entre la Plaza del Ayuntamiento y Kongens Nytorv sigue siendo el más transitado de Escandinavia.\n\n.\n.\n.\n#Copenhague #Dinamarca #DatosCuriosos #LaSirenita #UrbanTales",
+  "facts": [
+    {
+      "slot": "fact1",
+      "headline": "This tower has no stairs — just a spiral ramp",
+      "headline_es": "Esta torre no tiene escaleras, solo una rampa en espiral",
+      "body_html": "Built in <b>1642</b> as Europe's oldest surviving functioning observatory, Rundetårn has no staircase at all — just a <b>209-meter spiral ramp</b> winding 7.5 times around a hollow core, built wide enough for a horse and cart to haul books and telescopes to the top.",
+      "body_es": "Construida en <b>1642</b> como el observatorio en funcionamiento más antiguo de Europa, el Rundetårn no tiene escaleras: solo una <b>rampa en espiral de 209 metros</b> que gira 7,5 veces alrededor de un núcleo hueco, lo bastante ancha para que un caballo con carreta subiera libros y telescopios.",
+      "hook": "Rundetårn, built in 1642 as Europe's oldest working observatory, has no stairs: just a spiral ramp wide enough for a horse.",
+      "hook_es": "El Rundetårn, de 1642 y el observatorio más antiguo de Europa en uso, no tiene escaleras: solo una rampa en espiral para caballos.",
+      "candidates": [],
+      "suggested_queries": ["Rundetaarn Round Tower Copenhagen spiral ramp interior", "Rundetaarn Round Tower Copenhagen exterior tower"]
+    },
+    {
+      "slot": "fact2",
+      "headline": "Copenhagen's most famous statue has lost her head twice",
+      "headline_es": "La estatua más famosa de Copenhague ha perdido la cabeza dos veces",
+      "body_html": "Unveiled in <b>1913</b> and modeled on a ballerina's face and the sculptor's wife's body, the bronze Little Mermaid has been <b>beheaded twice</b> — in 1964 and 1998 — with the first head never recovered.",
+      "body_es": "Develada en <b>1913</b> e inspirada en el rostro de una bailarina y el cuerpo de la esposa del escultor, la Sirenita de bronce fue <b>decapitada dos veces</b> — en 1964 y 1998 — y la primera cabeza robada nunca se recuperó.",
+      "hook": "Unveiled in 1913, Copenhagen's Little Mermaid statue has been beheaded twice by vandals, and the first stolen head was never found.",
+      "hook_es": "Develada en 1913, la Sirenita de bronce de Copenhague ha sido decapitada dos veces por vándalos, y la primera cabeza nunca se encontró.",
+      "candidates": [],
+      "suggested_queries": ["Little Mermaid statue Copenhagen Langelinie", "Little Mermaid bronze statue Copenhagen close up"]
+    },
+    {
+      "slot": "fact3",
+      "headline": "One writer lived on this harbor at three different addresses",
+      "headline_es": "Un escritor vivió en este puerto en tres direcciones distintas",
+      "body_html": "Hans Christian Andersen lived in <b>three different houses</b> along Nyhavn's colorful waterfront over four decades — No. 20 in the 1830s, No. 67 for his longest stretch, and No. 18 until shortly before his death in 1875.",
+      "body_es": "Hans Christian Andersen vivió en <b>tres casas distintas</b> sobre el colorido muelle de Nyhavn durante cuatro décadas: el número 20 en la década de 1830, el número 67 por más tiempo, y el número 18 hasta poco antes de morir en 1875.",
+      "hook": "Hans Christian Andersen lived at three different addresses along Nyhavn's colorful harbor across four decades, just doors apart each move.",
+      "hook_es": "Hans Christian Andersen vivió en tres direcciones distintas sobre el puerto de Nyhavn a lo largo de cuatro décadas, siempre a pocas puertas.",
+      "candidates": [],
+      "suggested_queries": ["Nyhavn Copenhagen colorful houses canal", "Nyhavn Copenhagen harbor boats daytime"]
+    },
+    {
+      "slot": "fact4",
+      "headline": "This amusement park inspired Walt Disney himself",
+      "headline_es": "Este parque de diversiones inspiró al propio Walt Disney",
+      "body_html": "Opened in <b>1843</b>, Tivoli Gardens is the world's second-oldest operating amusement park — and after visiting in 1951, Walt Disney returned again and again, later echoing founder Georg Carstensen's own line that <b>'it will never be finished'</b> when describing Disneyland.",
+      "body_es": "Abierto en <b>1843</b>, Tivoli Gardens es el segundo parque de diversiones en funcionamiento más antiguo del mundo — y tras visitarlo en 1951, Walt Disney volvió una y otra vez, repitiendo después la frase de su fundador Georg Carstensen de que <b>'nunca estará terminado'</b> al describir Disneylandia.",
+      "hook": "Tivoli Gardens opened in 1843, and after Walt Disney visited in 1951 he kept returning for ideas that shaped Disneyland.",
+      "hook_es": "Tivoli Gardens abrió en 1843, y tras visitarlo en 1951 Walt Disney volvió varias veces por ideas que después moldearon Disneylandia.",
+      "candidates": [],
+      "suggested_queries": ["Tivoli Gardens Copenhagen night lights", "Tivoli Gardens Copenhagen entrance gate"]
+    },
+    {
+      "slot": "fact5",
+      "headline": "Squatters founded their own self-governing town inside the city",
+      "headline_es": "Unos okupas fundaron su propio pueblo autónomo dentro de la ciudad",
+      "body_html": "In <b>1971</b>, squatters moved into an abandoned military base and declared Freetown Christiania, a self-governing community that still bans cars, guns, and hard drugs under its own rules — residents legally bought the land in <b>2012</b>.",
+      "body_es": "En <b>1971</b>, un grupo de okupas tomó una base militar abandonada y fundó Freetown Christiania, una comunidad autónoma que aún prohíbe autos, armas y drogas duras bajo sus propias reglas — los residentes compraron legalmente el terreno en <b>2012</b>.",
+      "hook": "In 1971, squatters took an abandoned military base and founded Freetown Christiania, a self-governing town still living by its own rules.",
+      "hook_es": "En 1971, unos okupas tomaron una base militar abandonada y fundaron Christiania, una comunidad autónoma que todavía vive bajo sus propias reglas.",
+      "candidates": [],
+      "suggested_queries": ["Freetown Christiania Copenhagen entrance street art", "Christiania Copenhagen colorful buildings"]
+    },
+    {
+      "slot": "fact6",
+      "headline": "This church stood roofless for nearly 150 years",
+      "headline_es": "Esta iglesia estuvo sin techo durante casi 150 años",
+      "body_html": "Construction on <b>Frederik's Church</b> (the Marble Church) stalled for almost <b>150 years</b> after funds ran out, leaving it a crumbling ruin — until financier C.F. Tietgen paid to finish it in <b>1894</b>, swapping the planned marble for cheaper limestone.",
+      "body_es": "La construcción de la <b>Iglesia de Frederik</b> (la Iglesia de Mármol) se detuvo casi <b>150 años</b> por falta de fondos, dejándola en ruinas — hasta que el financiero C.F. Tietgen pagó para terminarla en <b>1894</b>, cambiando el mármol planeado por piedra caliza más barata.",
+      "hook": "Copenhagen's Marble Church sat roofless for nearly 150 years before a financier finally paid to finish it in 1894.",
+      "hook_es": "La Iglesia de Mármol de Copenhague quedó sin techo casi 150 años, hasta que un financiero pagó para terminarla en 1894.",
+      "candidates": [],
+      "suggested_queries": ["Marble Church Frederiks Kirke Copenhagen dome", "Marmorkirken Copenhagen exterior"]
+    },
+    {
+      "slot": "fact7",
+      "headline": "This street held the world record before anyone called it that",
+      "headline_es": "Esta calle tuvo el récord mundial antes de que alguien lo llamara así",
+      "body_html": "When Strøget was pedestrianized in <b>1962</b>, its roughly 1.1-kilometer run became the <b>longest pedestrian street in the world</b> at the time — a title it has since lost, but the mile of shops between City Hall Square and Kongens Nytorv is still Scandinavia's busiest.",
+      "body_es": "Cuando Strøget se peatonalizó en <b>1962</b>, su tramo de unos 1.1 kilómetros se convirtió en la <b>calle peatonal más larga del mundo</b> de la época — un título que ya perdió, pero ese kilómetro de tiendas entre la Plaza del Ayuntamiento y Kongens Nytorv sigue siendo el más transitado de Escandinavia.",
+      "hook": "When Strøget turned pedestrian in 1962, its 1.1-kilometer stretch was briefly the longest pedestrian street in the world.",
+      "hook_es": "Cuando Strøget se peatonalizó en 1962, su tramo de 1.1 kilómetros fue brevemente la calle peatonal más larga del mundo.",
+      "candidates": [],
+      "suggested_queries": ["Stroget Copenhagen pedestrian shopping street", "Stroget Copenhagen Kobmagergade street view"]
+    }
+  ],
+  "cover_candidates": [],
+  "cover_suggested_queries": ["Copenhagen skyline aerial canals", "Copenhagen harbor aerial colorful houses"]
+}
