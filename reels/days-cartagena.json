@@ -1,0 +1,195 @@
+{
+ "slug": "days-cartagena",
+ "landmark": "Cartagena · 2 days",
+ "city": "Cartagena",
+ "series": "days",
+ "story": "Cartagena en 2 días según el plan real de la app: el Castillo de San Felipe a las 7, antes del calor, y Getsemaní; luego la ciudad amurallada y las murallas al atardecer en vez del mediodía",
+ "sources": [
+  "https://www.eluniversal.com.co/cartagena/2026/02/23/entrada-gratis-al-castillo-de-san-felipe-en-2026-fechas-y-requisitos/",
+  "https://www.nomadotravel.app/es/attractions/cartagena-city-walls",
+  "https://www.pexels.com/video/aerial-view-of-cartagena-s-historic-skyline-30391239/",
+  "https://www.pexels.com/video/vuelo-de-drone-sobre-cartagena-de-indias-26591189/",
+  "https://www.pexels.com/video/an-aerial-view-of-a-city-with-a-large-building-26591186/",
+  "https://www.pexels.com/video/drone-footage-of-castillo-de-san-felipe-de-barajas-3940080/",
+  "https://www.pexels.com/video/san-felipe-castle-in-colombia-4300698/",
+  "https://www.pexels.com/video/vuelo-de-drone-sobre-cartagena-de-indias-26591191/",
+  "https://www.pexels.com/video/aerial-historic-drone-colombia-3940070/",
+  "https://www.pexels.com/video/aerial-shot-of-colombian-houses-3940075/",
+  "https://www.pexels.com/video/drone-footage-of-a-clock-tower-in-cartagena-3940065/",
+  "https://www.pexels.com/video/drone-footage-of-the-belfry-of-cathedral-of-cartagena-3940082/",
+  "https://www.pexels.com/video/drone-footage-of-the-belfry-of-cathedral-of-cartagena-3940072/",
+  "https://www.pexels.com/video/vuelo-con-drone-sobre-cartagena-26591103/",
+  "https://www.pexels.com/video/drone-footage-of-colombian-houses-3940083/",
+  "https://www.pexels.com/video/calles-de-cartagena-barrio-san-diego-27600235/",
+  "https://www.pexels.com/video/drone-footage-of-cartagena-city-3940064/",
+  "https://www.pexels.com/video/colombia-atardecer-botes-centrohistorico-4299532/",
+  "https://www.pexels.com/video/drone-shot-of-the-city-by-the-sea-4299523/"
+ ],
+ "week": "2026-11-21",
+ "created": "2026-11-21T10:29",
+ "media_sha": "6dd35a49571d81b7d8f76194b39d7b2dbd8cc80a",
+ "ig_lang": "es",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6dd35a49571d81b7d8f76194b39d7b2dbd8cc80a/reels/days-cartagena-en.mp4",
+  "caption": "Most people see Cartagena in the wrong order. Which day would you swap? 👇\n\nTwo days that beat the crowds: San Felipe Castle at 7 am, before the heat, and the old city walls at sunset instead of midday.\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#cartagena #colombiatravel #cartagenadeindias #traveltips #urbantales"
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6dd35a49571d81b7d8f76194b39d7b2dbd8cc80a/reels/days-cartagena-es.mp4",
+  "caption": "La mayoría recorre Cartagena en el orden equivocado. ¿Qué día cambiarías? 👇\n\nDos días para ganarle a las multitudes: el Castillo de San Felipe a las 7 de la mañana, antes del calor, y las murallas al atardecer, no al mediodía.\n\n¿Lo quieres para tus fechas y tu ritmo? Urban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas. Link en la bio.\n.\n.\n.\n#cartagena #cartagenadeindias #colombia #tipsdeviaje #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-30391239.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-cartagena-s-historic-skyline-30391239/",
+   "author": "willington j urrea g",
+   "w": 1280,
+   "h": 720,
+   "dur": 37,
+   "query": "Cartagena Colombia aerial"
+  },
+  {
+   "file": "pexels-3940072.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-the-belfry-of-cathedral-of-cartagena-3940072/",
+   "author": "Enrique",
+   "w": 1280,
+   "h": 720,
+   "dur": 28,
+   "query": "Cartagena Colombia aerial"
+  },
+  {
+   "file": "pexels-26591189.mp4",
+   "url": "https://www.pexels.com/video/vuelo-de-drone-sobre-cartagena-de-indias-26591189/",
+   "author": "Suarez Media",
+   "w": 1280,
+   "h": 720,
+   "dur": 94,
+   "query": "Cartagena Colombia aerial"
+  },
+  {
+   "file": "pexels-3940082.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-the-belfry-of-cathedral-of-cartagena-3940082/",
+   "author": "Enrique",
+   "w": 1280,
+   "h": 720,
+   "dur": 24,
+   "query": "Cartagena Colombia aerial"
+  },
+  {
+   "file": "pexels-26591186.mp4",
+   "url": "https://www.pexels.com/video/an-aerial-view-of-a-city-with-a-large-building-26591186/",
+   "author": "Suarez Media",
+   "w": 1280,
+   "h": 720,
+   "dur": 53,
+   "query": "Castillo San Felipe Cartagena"
+  },
+  {
+   "file": "pexels-4300698.mp4",
+   "url": "https://www.pexels.com/video/san-felipe-castle-in-colombia-4300698/",
+   "author": "LUIS ADOLFO BURGOS",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Castillo San Felipe Cartagena"
+  },
+  {
+   "file": "pexels-3940080.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-castillo-de-san-felipe-de-barajas-3940080/",
+   "author": "Enrique",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Castillo San Felipe Cartagena"
+  },
+  {
+   "file": "pexels-26591191.mp4",
+   "url": "https://www.pexels.com/video/vuelo-de-drone-sobre-cartagena-de-indias-26591191/",
+   "author": "Suarez Media",
+   "w": 1280,
+   "h": 720,
+   "dur": 32,
+   "query": "Castillo San Felipe Cartagena"
+  },
+  {
+   "file": "pexels-3940070.mp4",
+   "url": "https://www.pexels.com/video/aerial-historic-drone-colombia-3940070/",
+   "author": "Enrique",
+   "w": 1280,
+   "h": 720,
+   "dur": 27,
+   "query": "Getsemani Cartagena"
+  },
+  {
+   "file": "pexels-26591103.mp4",
+   "url": "https://www.pexels.com/video/vuelo-con-drone-sobre-cartagena-26591103/",
+   "author": "Suarez Media",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Cartagena clock tower"
+  },
+  {
+   "file": "pexels-3940065.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-a-clock-tower-in-cartagena-3940065/",
+   "author": "Enrique",
+   "w": 1280,
+   "h": 720,
+   "dur": 37,
+   "query": "Cartagena clock tower"
+  },
+  {
+   "file": "pexels-27600235.mp4",
+   "url": "https://www.pexels.com/video/calles-de-cartagena-barrio-san-diego-27600235/",
+   "author": "Julián Armando Santos",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Cartagena walled city street"
+  },
+  {
+   "file": "pexels-3940075.mp4",
+   "url": "https://www.pexels.com/video/aerial-shot-of-colombian-houses-3940075/",
+   "author": "Enrique",
+   "w": 1280,
+   "h": 720,
+   "dur": 30,
+   "query": "Cartagena walled city street"
+  },
+  {
+   "file": "pexels-3940064.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-cartagena-city-3940064/",
+   "author": "Enrique",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Cartagena cathedral"
+  },
+  {
+   "file": "pexels-3940083.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-colombian-houses-3940083/",
+   "author": "Enrique",
+   "w": 1280,
+   "h": 720,
+   "dur": 26,
+   "query": "Cartagena cathedral"
+  },
+  {
+   "file": "pexels-4299532.mp4",
+   "url": "https://www.pexels.com/video/colombia-atardecer-botes-centrohistorico-4299532/",
+   "author": "LUIS ADOLFO BURGOS",
+   "w": 1280,
+   "h": 720,
+   "dur": 26,
+   "query": "Cartagena city walls sunset"
+  },
+  {
+   "file": "pexels-4299523.mp4",
+   "url": "https://www.pexels.com/video/drone-shot-of-the-city-by-the-sea-4299523/",
+   "author": "LUIS ADOLFO BURGOS",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Cartagena city walls sunset"
+  }
+ ]
+}

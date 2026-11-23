@@ -1,0 +1,196 @@
+{
+ "slug": "days-amsterdam",
+ "landmark": "Amsterdam · 3 days",
+ "city": "Amsterdam",
+ "series": "days",
+ "story": "Amsterdam in 3 days from the app's real plan: Vondelpark and the Rijksmuseum (time slot required), Anne Frank House (tickets online only, released Tuesdays six weeks ahead) to the A'DAM Lookout, then Rembrandt's house, NEMO (usually closed Mondays) and the Skinny Bridge",
+ "sources": [
+  "https://www.rijksmuseum.nl/en/visit/faq",
+  "https://www.annefrank.org/en/museum/tickets/",
+  "https://www.nemosciencemuseum.nl/en/visit/opening-times/",
+  "https://www.pexels.com/video/aerial-view-of-amsterdam-canals-at-daytime-31532147/",
+  "https://www.pexels.com/video/stunning-aerial-view-of-amsterdam-canal-31532135/",
+  "https://www.pexels.com/video/people-walking-and-cycling-at-vondelpark-in-amsterdam-12539822/",
+  "https://www.pexels.com/video/ice-skating-at-rijksmuseum-amsterdam-in-winter-40779769/",
+  "https://www.pexels.com/video/amsterdam-munt-tower-on-a-clear-day-40261968/",
+  "https://www.pexels.com/video/bustling-amsterdam-street-with-munttoren-40261956/",
+  "https://www.pexels.com/video/scenic-aerial-view-of-amsterdam-canal-31532133/",
+  "https://www.pexels.com/video/a-panoramic-view-of-the-dam-square-5156932/",
+  "https://www.pexels.com/video/flock-of-birds-flying-outside-buildings-15249210/",
+  "https://www.pexels.com/video/historic-gothic-architecture-in-amsterdam-35647095/",
+  "https://www.pexels.com/video/scenic-amsterdam-canal-with-ferry-boat-40319723/",
+  "https://www.pexels.com/video/scenic-view-of-amsterdam-riverfront-with-landmarks-40319814/",
+  "https://www.pexels.com/video/aerial-view-of-amsterdam-canals-and-sunset-31532143/",
+  "https://www.pexels.com/video/scenic-amsterdam-canal-boat-tour-40319831/",
+  "https://www.pexels.com/video/rowers-by-nemo-science-museum-amsterdam-40284334/",
+  "https://www.pexels.com/video/scenic-view-of-iconic-drawbridge-at-sunset-34275876/",
+  "https://www.pexels.com/video/cyclists-crossing-historic-bridge-in-amsterdam-40153728/"
+ ],
+ "week": "2026-11-21",
+ "created": "2026-11-21T10:29",
+ "media_sha": "6dd35a49571d81b7d8f76194b39d7b2dbd8cc80a",
+ "ig_lang": "en",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6dd35a49571d81b7d8f76194b39d7b2dbd8cc80a/reels/days-amsterdam-en.mp4",
+  "caption": "Most people see Amsterdam in the wrong order. Which day would you swap? 👇\n\nThree days that beat the crowds: book a Rijksmuseum time slot first, get Anne Frank House tickets online on Tuesdays (six weeks ahead), and skip NEMO on Mondays.\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#amsterdam #amsterdamitinerary #netherlands #traveltips #urbantales"
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6dd35a49571d81b7d8f76194b39d7b2dbd8cc80a/reels/days-amsterdam-es.mp4",
+  "caption": "La mayoría recorre Ámsterdam en el orden equivocado. ¿Qué día cambiarías? 👇\n\nTres días para ganarle a las multitudes: reserva tu horario en el Rijksmuseum, compra los boletos de la Casa de Ana Frank en línea los martes (seis semanas antes) y evita NEMO en lunes.\n\n¿Lo quieres para tus fechas y tu ritmo? Urban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas. Link en la bio.\n.\n.\n.\n#amsterdam #viajeaeuropa #tipsdeviaje #itinerario #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-31532147.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-amsterdam-canals-at-daytime-31532147/",
+   "author": "Cody Douglas",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Amsterdam canal aerial"
+  },
+  {
+   "file": "pexels-31532133.mp4",
+   "url": "https://www.pexels.com/video/scenic-aerial-view-of-amsterdam-canal-31532133/",
+   "author": "Cody Douglas",
+   "w": 1280,
+   "h": 720,
+   "dur": 29,
+   "query": "Amsterdam canal aerial"
+  },
+  {
+   "file": "pexels-31532135.mp4",
+   "url": "https://www.pexels.com/video/stunning-aerial-view-of-amsterdam-canal-31532135/",
+   "author": "Cody Douglas",
+   "w": 1280,
+   "h": 720,
+   "dur": 31,
+   "query": "Amsterdam canal aerial"
+  },
+  {
+   "file": "pexels-31532143.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-amsterdam-canals-and-sunset-31532143/",
+   "author": "Cody Douglas",
+   "w": 1280,
+   "h": 720,
+   "dur": 53,
+   "query": "Amsterdam canal aerial"
+  },
+  {
+   "file": "pexels-12539822.mp4",
+   "url": "https://www.pexels.com/video/people-walking-and-cycling-at-vondelpark-in-amsterdam-12539822/",
+   "author": "Mikhail Fesenko",
+   "w": 1280,
+   "h": 720,
+   "dur": 71,
+   "query": "Vondelpark"
+  },
+  {
+   "file": "pexels-40779769.mp4",
+   "url": "https://www.pexels.com/video/ice-skating-at-rijksmuseum-amsterdam-in-winter-40779769/",
+   "author": "Netherland.Lens",
+   "w": 720,
+   "h": 1280,
+   "dur": 20,
+   "query": "Rijksmuseum Amsterdam"
+  },
+  {
+   "file": "pexels-40261968.mp4",
+   "url": "https://www.pexels.com/video/amsterdam-munt-tower-on-a-clear-day-40261968/",
+   "author": "Anh Nguyen",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Munttoren Amsterdam"
+  },
+  {
+   "file": "pexels-40261956.mp4",
+   "url": "https://www.pexels.com/video/bustling-amsterdam-street-with-munttoren-40261956/",
+   "author": "Anh Nguyen",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Munttoren Amsterdam"
+  },
+  {
+   "file": "pexels-40319831.mp4",
+   "url": "https://www.pexels.com/video/scenic-amsterdam-canal-boat-tour-40319831/",
+   "author": "Anh Nguyen",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Begijnhof Amsterdam"
+  },
+  {
+   "file": "pexels-5156932.mp4",
+   "url": "https://www.pexels.com/video/a-panoramic-view-of-the-dam-square-5156932/",
+   "author": "Abdel Achkouk",
+   "w": 1280,
+   "h": 720,
+   "dur": 17,
+   "query": "Dam Square Amsterdam"
+  },
+  {
+   "file": "pexels-15249210.mp4",
+   "url": "https://www.pexels.com/video/flock-of-birds-flying-outside-buildings-15249210/",
+   "author": "Natália Falsetti",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Dam Square Amsterdam"
+  },
+  {
+   "file": "pexels-35647095.mp4",
+   "url": "https://www.pexels.com/video/historic-gothic-architecture-in-amsterdam-35647095/",
+   "author": "Japanese girl  in europe",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Oude Kerk Amsterdam"
+  },
+  {
+   "file": "pexels-40319723.mp4",
+   "url": "https://www.pexels.com/video/scenic-amsterdam-canal-with-ferry-boat-40319723/",
+   "author": "Anh Nguyen",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Amsterdam ferry IJ"
+  },
+  {
+   "file": "pexels-40319814.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-amsterdam-riverfront-with-landmarks-40319814/",
+   "author": "Anh Nguyen",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Amsterdam ferry IJ"
+  },
+  {
+   "file": "pexels-40284334.mp4",
+   "url": "https://www.pexels.com/video/rowers-by-nemo-science-museum-amsterdam-40284334/",
+   "author": "Anh Nguyen",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "NEMO science museum Amsterdam"
+  },
+  {
+   "file": "pexels-34275876.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-iconic-drawbridge-at-sunset-34275876/",
+   "author": "AlinkaS",
+   "w": 720,
+   "h": 1280,
+   "dur": 28,
+   "query": "Magere Brug Amsterdam"
+  },
+  {
+   "file": "pexels-40153728.mp4",
+   "url": "https://www.pexels.com/video/cyclists-crossing-historic-bridge-in-amsterdam-40153728/",
+   "author": "Phalgunn Maharishi",
+   "w": 1366,
+   "h": 720,
+   "dur": 8,
+   "query": "Magere Brug Amsterdam"
+  }
+ ]
+}

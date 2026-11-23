@@ -1,0 +1,165 @@
+{
+ "slug": "days-seville",
+ "landmark": "Seville · 2 days",
+ "city": "Seville",
+ "series": "days",
+ "story": "Sevilla en 2 días según el plan real de la app: el Alcázar a las 9:30 con horario reservado, Plaza de España y María Luisa; luego Torre del Oro, Catedral y Giralda (domingo abre a las 14:30), Casa de Pilatos y las Setas al atardecer",
+ "sources": [
+  "https://www.alcazarsevilla.org/",
+  "https://www.catedraldesevilla.es/visita-cultural/horarios-y-tarifas/",
+  "https://www.pexels.com/video/nighttime-view-of-seville-metropol-parasol-40557285/",
+  "https://www.pexels.com/video/scenic-river-cruise-boat-on-calm-urban-river-40556652/",
+  "https://www.pexels.com/video/panoramic-view-of-seville-landmark-plaza-33602131/",
+  "https://www.pexels.com/video/plaza-de-espana-bustling-with-tourists-in-seville-40556570/",
+  "https://www.pexels.com/video/panoramic-view-of-plaza-de-espana-seville-40557096/",
+  "https://www.pexels.com/video/tranquil-view-of-plaza-de-espana-with-rowboats-40556419/",
+  "https://www.pexels.com/video/majestic-architecture-of-plaza-de-espana-41067341/",
+  "https://www.pexels.com/video/horse-drawn-carriage-in-urban-park-setting-40556440/",
+  "https://www.pexels.com/video/majestic-view-of-torre-del-oro-in-seville-40557167/",
+  "https://www.pexels.com/video/golden-tower-of-seville-with-palm-trees-40520218/",
+  "https://www.pexels.com/video/majestic-gothic-architecture-in-seville-40556623/",
+  "https://www.pexels.com/video/low-angle-shot-of-seville-cathedral-5238449/",
+  "https://www.pexels.com/video/modern-architectural-marvel-in-urban-setting-40556657/",
+  "https://www.pexels.com/video/unique-architecture-of-metropol-parasol-seville-40556474/"
+ ],
+ "week": "2026-11-21",
+ "created": "2026-11-21T10:29",
+ "media_sha": "6dd35a49571d81b7d8f76194b39d7b2dbd8cc80a",
+ "ig_lang": "es",
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6dd35a49571d81b7d8f76194b39d7b2dbd8cc80a/reels/days-seville-en.mp4",
+  "caption": "Most people see Seville in the wrong order. Which day would you swap? 👇\n\nTwo days that beat the crowds: the Alcázar at 9:30 with a time slot booked online, and the Cathedral and Giralda any day but Sunday morning (Sunday visits start at 2:30 pm).\n\nWant it for your own dates and pace? Urban Tales plans your trip in a minute and tells you the story of every stop as you walk. Link in bio.\n.\n.\n.\n#seville #sevilla #spaintravel #traveltips #urbantales"
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6dd35a49571d81b7d8f76194b39d7b2dbd8cc80a/reels/days-seville-es.mp4",
+  "caption": "La mayoría recorre Sevilla en el orden equivocado. ¿Qué día cambiarías? 👇\n\nDos días para ganarle a las multitudes: el Alcázar a las 9:30 con horario reservado en línea, y la Catedral y la Giralda cualquier mañana menos el domingo (ese día abren a las 14:30).\n\n¿Lo quieres para tus fechas y tu ritmo? Urban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas. Link en la bio.\n.\n.\n.\n#sevilla #viajeaespaña #tipsdeviaje #itinerario #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-40557285.mp4",
+   "url": "https://www.pexels.com/video/nighttime-view-of-seville-metropol-parasol-40557285/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 20,
+   "query": "Seville city aerial"
+  },
+  {
+   "file": "pexels-40556652.mp4",
+   "url": "https://www.pexels.com/video/scenic-river-cruise-boat-on-calm-urban-river-40556652/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "Seville city aerial"
+  },
+  {
+   "file": "pexels-41067341.mp4",
+   "url": "https://www.pexels.com/video/majestic-architecture-of-plaza-de-espana-41067341/",
+   "author": "A.S. Kacar",
+   "w": 720,
+   "h": 1280,
+   "dur": 21,
+   "query": "Real Alcazar Seville"
+  },
+  {
+   "file": "pexels-40556570.mp4",
+   "url": "https://www.pexels.com/video/plaza-de-espana-bustling-with-tourists-in-seville-40556570/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Plaza de España Seville"
+  },
+  {
+   "file": "pexels-40557096.mp4",
+   "url": "https://www.pexels.com/video/panoramic-view-of-plaza-de-espana-seville-40557096/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Plaza de España Seville"
+  },
+  {
+   "file": "pexels-40556440.mp4",
+   "url": "https://www.pexels.com/video/horse-drawn-carriage-in-urban-park-setting-40556440/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 5,
+   "query": "Maria Luisa Park Seville"
+  },
+  {
+   "file": "pexels-40520218.mp4",
+   "url": "https://www.pexels.com/video/golden-tower-of-seville-with-palm-trees-40520218/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "Torre del Oro Seville"
+  },
+  {
+   "file": "pexels-40557167.mp4",
+   "url": "https://www.pexels.com/video/majestic-view-of-torre-del-oro-in-seville-40557167/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Torre del Oro Seville"
+  },
+  {
+   "file": "pexels-40556623.mp4",
+   "url": "https://www.pexels.com/video/majestic-gothic-architecture-in-seville-40556623/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Seville Cathedral Giralda"
+  },
+  {
+   "file": "pexels-5238449.mp4",
+   "url": "https://www.pexels.com/video/low-angle-shot-of-seville-cathedral-5238449/",
+   "author": "Alvaro Lama",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "Seville Cathedral Giralda"
+  },
+  {
+   "file": "pexels-33602131.mp4",
+   "url": "https://www.pexels.com/video/panoramic-view-of-seville-landmark-plaza-33602131/",
+   "author": "Dark Astraal",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Seville Cathedral Giralda"
+  },
+  {
+   "file": "pexels-40556474.mp4",
+   "url": "https://www.pexels.com/video/unique-architecture-of-metropol-parasol-seville-40556474/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Setas de Sevilla Metropol Parasol"
+  },
+  {
+   "file": "pexels-40556657.mp4",
+   "url": "https://www.pexels.com/video/modern-architectural-marvel-in-urban-setting-40556657/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Setas de Sevilla Metropol Parasol"
+  },
+  {
+   "file": "pexels-40556419.mp4",
+   "url": "https://www.pexels.com/video/tranquil-view-of-plaza-de-espana-with-rowboats-40556419/",
+   "author": "Ludovic Delot",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Seville Alcazar gardens"
+  }
+ ]
+}
