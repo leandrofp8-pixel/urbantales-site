@@ -1,0 +1,99 @@
+{
+ "slug": "prague-astronomical-clock",
+ "format": "B",
+ "landmark": "Prague Astronomical Clock (Orloj)",
+ "city": "Prague",
+ "story": "Legend says the councillors had Master Hanuš blinded so he could never build another, and he stopped the clock in revenge; in fact it dates from 1410 (Mikuláš of Kadaň), and every hour its skeleton still rings the bell.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Prague_astronomical_clock",
+  "https://prague.eu/en/about-the-old-town-astronomical-clock/",
+  "https://www.visitczechia.com/en-us/things-to-do/places/landmarks/urban-architecture/c-prague-astronomical-clock"
+ ],
+ "week": "2026-W48",
+ "created": "2026-11-23T18:54",
+ "media_sha": "b15eb7f03e9a10c2c2d58e6c049fe44bfa2c16cd",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/b15eb7f03e9a10c2c2d58e6c049fe44bfa2c16cd/reels/prague-astronomical-clock-es.mp4",
+  "caption": "La ciudad mandó cegar a su creador. ¿Lo adivinaste antes del final? 👇\n\nCuenta la leyenda que los concejales de Praga dejaron ciego al maestro Hanuš para que no construyera otro reloj igual, y que él, en venganza, lo detuvo. La historia real es más antigua: el reloj ya funcionaba en 1410, obra del relojero Mikuláš de Kadaň. Y cada hora, un esqueleto sigue tocando su campana.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas.\n.\n.\n.\n#Praga #RelojAstronomico #Orloj #historia #UrbanTales",
+  "dm": "En mayo de 1945, durante el levantamiento de Praga, los disparos alemanes incendiaron el Ayuntamiento de la Ciudad Vieja y el reloj sufrió graves daños: sus figuras de madera se quemaron. Volvió a funcionar recién en 1948. Y los praguenses todavía repiten una vieja leyenda: si el reloj se descuida, la ciudad sufrirá."
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/b15eb7f03e9a10c2c2d58e6c049fe44bfa2c16cd/reels/prague-astronomical-clock-en.mp4",
+  "caption": "The city had its maker blinded. Did you guess it before the end? 👇\n\nLegend says Prague's councillors had Master Hanuš blinded so he could never build another clock like it, and that he stopped it in revenge. The real story is older: the clock was already running in 1410, made by clockmaker Mikuláš of Kadaň. Every hour, a skeleton still rings its bell.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past.\n.\n.\n.\n#Prague #AstronomicalClock #Orloj #history #UrbanTales",
+  "dm": "In May 1945, during the Prague uprising, German fire set the Old Town Hall ablaze and the clock was badly damaged: its wooden figures burned. It only ran again in 1948. And locals still repeat an old legend: if the clock is neglected, the city will suffer."
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-34650944.mp4",
+   "url": "https://www.pexels.com/video/prague-astronomical-clock-tower-in-daylight-34650944/",
+   "author": "Jovana De Obaldia",
+   "w": 720,
+   "h": 1280,
+   "dur": 14,
+   "query": "Prague Astronomical Clock"
+  },
+  {
+   "file": "pexels-34900858.mp4",
+   "url": "https://www.pexels.com/video/prague-astronomical-clock-with-tourist-crowd-34900858/",
+   "author": "Airam Dato-on",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Prague Astronomical Clock"
+  },
+  {
+   "file": "pexels-34650781.mp4",
+   "url": "https://www.pexels.com/video/historic-prague-old-town-square-with-clock-tower-34650781/",
+   "author": "Jovana De Obaldia",
+   "w": 720,
+   "h": 1280,
+   "dur": 14,
+   "query": "Old Town Square Prague"
+  },
+  {
+   "file": "pexels-34900975.mp4",
+   "url": "https://www.pexels.com/video/tourists-exploring-old-town-square-in-prague-city-34900975/",
+   "author": "Airam Dato-on",
+   "w": 720,
+   "h": 1280,
+   "dur": 12,
+   "query": "Old Town Square Prague"
+  },
+  {
+   "file": "pexels-38556815.mp4",
+   "url": "https://www.pexels.com/video/crowded-old-town-square-in-prague-38556815/",
+   "author": "Samborskaya Anastasia",
+   "w": 1280,
+   "h": 720,
+   "dur": 24,
+   "query": "Old Town Square Prague"
+  },
+  {
+   "file": "pexels-34900974.mp4",
+   "url": "https://www.pexels.com/video/tourists-exploring-old-town-square-prague-34900974/",
+   "author": "Airam Dato-on",
+   "w": 720,
+   "h": 1280,
+   "dur": 23,
+   "query": "Old Town Square Prague"
+  },
+  {
+   "file": "pexels-5920065.mp4",
+   "url": "https://www.pexels.com/video/a-low-angle-shot-of-a-historical-monument-5920065/",
+   "author": "SK Movies & Photos",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Old Town Square Prague"
+  },
+  {
+   "file": "pexels-37649032.mp4",
+   "url": "https://www.pexels.com/video/tourists-at-old-town-hall-prague-37649032/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 18,
+   "query": "Old Town Square Prague"
+  }
+ ]
+}

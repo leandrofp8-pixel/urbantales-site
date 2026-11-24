@@ -1,0 +1,83 @@
+{
+ "slug": "cdmx-torre-latinoamericana",
+ "format": "A",
+ "landmark": "Torre Latinoamericana (skip: Palacio de Bellas Artes, ~200 m away)",
+ "city": "Mexico City",
+ "story": "Built on the soft soil of the old lake bed on 361 piles driven 33 m deep; just after opening (1956) it survived the July 1957 earthquake that toppled the Angel of Independence, and it held again in 1985.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Torre_Latinoamericana",
+  "https://www.chilango.com/ciudad/por-que-no-se-cayo-la-torre-latino/",
+  "https://www.nmas.com.mx/cultura/1957-el-terremoto-que-tiro-al-angel-de-la-independencia/",
+  "https://en.wikipedia.org/wiki/1957_Guerrero_earthquake",
+  "https://www.openstreetmap.org (Nominatim: Palacio de Bellas Artes to Torre Latinoamericana, 194 m)"
+ ],
+ "week": "2026-W48",
+ "created": "2026-11-23T18:54",
+ "media_sha": "b15eb7f03e9a10c2c2d58e6c049fe44bfa2c16cd",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/b15eb7f03e9a10c2c2d58e6c049fe44bfa2c16cd/reels/cdmx-torre-latinoamericana-es.mp4",
+  "caption": "Todos hacen fila en Bellas Artes. ¿Qué lugar escondido contamos después? 👇\n\nA doscientos metros está la Torre Latinoamericana, construida sobre el suelo blando de un antiguo lago y apoyada en 361 pilotes de 33 metros. En 1957, recién inaugurada, el terremoto que derribó al Ángel de la Independencia la dejó en pie, y en 1985 volvió a resistir.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas.\n.\n.\n.\n#CiudadDeMexico #TorreLatinoamericana #BellasArtes #historia #UrbanTales",
+  "dm": "Después del terremoto de 1957, el American Institute of Steel Construction premió a la Torre Latinoamericana como el edificio más alto jamás expuesto a una fuerza sísmica tan grande. Sus ingenieros, los hermanos Leonardo y Adolfo Zeevaert, estudiaron el suelo antes de diseñarla. Hoy puedes subir a su mirador del piso 44 y ver Bellas Artes desde arriba."
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/b15eb7f03e9a10c2c2d58e6c049fe44bfa2c16cd/reels/cdmx-torre-latinoamericana-en.mp4",
+  "caption": "Everyone queues at Bellas Artes. Which hidden spot should we tell next? 👇\n\n200 metres away stands the Torre Latinoamericana, built on the soft soil of an old lake bed and resting on 361 piles driven 33 metres deep. In 1957, just after it opened, the earthquake that toppled the Angel of Independence left it standing, and in 1985 it held again.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past.\n.\n.\n.\n#MexicoCity #TorreLatinoamericana #BellasArtes #history #UrbanTales",
+  "dm": "After the 1957 earthquake, the American Institute of Steel Construction gave the Torre Latinoamericana an award as the tallest building ever exposed to such a huge seismic force. Its engineers, brothers Leonardo and Adolfo Zeevaert, studied the soil before designing it. Today you can ride up to its observation deck on the 44th floor and look down on Bellas Artes."
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-30138495.mp4",
+   "url": "https://www.pexels.com/video/bustling-street-scene-at-bellas-artes-mexico-city-30138495/",
+   "author": "Israyosoy S.",
+   "w": 1280,
+   "h": 720,
+   "dur": 15,
+   "query": "Palacio de Bellas Artes"
+  },
+  {
+   "file": "pexels-28584268.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-torre-latinoamericana-mexico-city-28584268/",
+   "author": "Kuiyibo Campos",
+   "w": 720,
+   "h": 1280,
+   "dur": 27,
+   "query": "Torre Latinoamericana"
+  },
+  {
+   "file": "pexels-29148918.mp4",
+   "url": "https://www.pexels.com/video/busy-street-scene-with-landmark-tower-view-29148918/",
+   "author": "Julio Lopez",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Torre Latinoamericana"
+  },
+  {
+   "file": "pexels-20601999.mp4",
+   "url": "https://www.pexels.com/video/a-tall-building-with-people-walking-around-it-20601999/",
+   "author": "Israyosoy S.",
+   "w": 720,
+   "h": 1280,
+   "dur": 107,
+   "query": "Torre Latinoamericana"
+  },
+  {
+   "file": "pexels-39879904.mp4",
+   "url": "https://www.pexels.com/video/bustling-mexico-city-street-near-iconic-landmark-39879904/",
+   "author": "Diana Reyes",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Palacio Barolo"
+  },
+  {
+   "file": "pexels-30138552.mp4",
+   "url": "https://www.pexels.com/video/exploring-mexico-city-s-iconic-landmarks-30138552/",
+   "author": "Israyosoy S.",
+   "w": 1280,
+   "h": 720,
+   "dur": 59,
+   "query": "Palacio Barolo"
+  }
+ ]
+}
