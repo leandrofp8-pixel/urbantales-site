@@ -1,0 +1,39 @@
+{
+ "badge_num": 51,
+ "flag": "🇮🇹",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "MILÁN",
+ "caption": "¿Cuál de estos 7 secretos de Milán no conocías? Comenta el número 👇\n\n1. Duomo de Milán\nLa construcción del Duomo de Milán empezó en 1386, y la última de sus cinco puertas de bronce se inauguró recién en 1965, la fecha que por convención marca el fin de la obra.\n\n2. Galería Vittorio Emanuele II\nEn el piso de la Galería Vittorio Emanuele II hay un toro de mosaico del escudo de Turín sobre el que los visitantes giran con el talón, porque según la leyenda da suerte. Lo hace tanta gente que la ciudad tuvo que restaurar el toro otra vez en 2026.\n\n3. La Última Cena\nCuando las bombas aliadas cayeron sobre el refectorio de Santa Maria delle Grazie en agosto de 1943, el techo y una pared lateral se derrumbaron, pero el muro con La Última Cena de Leonardo da Vinci, reforzado con sacos de arena y andamios, quedó en pie.\n\n4. Naviglio Grande\nEl mármol del Duomo llegaba en barco desde las canteras de Candoglia por el canal Naviglio Grande, cada bloque marcado AUF (ad usum fabricae, \"para la obra\") para pasar los peajes sin pagar. Los milaneses dicen que de ahí viene la expresión \"a ufo\", que significa \"gratis\".\n\n5. Castillo Sforzesco\nEn 2025, investigadores del Politécnico de Milán revelaron que un radar de penetración había mapeado pasajes ocultos bajo el Castillo Sforzesco, y algunos podrían coincidir con los túneles militares secretos que Leonardo da Vinci dibujó cuando trabajaba para la corte de los Sforza.\n\n6. Teatro alla Scala\nLos habituales de la galería alta de La Scala, los loggionisti, son famosos por abuchear a los cantantes que no están a la altura. En 2006, el tenor estrella Roberto Alagna abandonó el escenario en plena Aida tras sus abucheos, y su suplente tuvo que salir corriendo en jeans.\n\n7. San Bernardino alle Ossa\nEl osario de San Bernardino alle Ossa nació en 1210 como un cuarto para los huesos de un cementerio de hospital que ya no daba abasto. Hoy sus paredes están cubiertas de cráneos y huesos, bajo un fresco de 1695 de Sebastiano Ricci.\n\n.\n.\n.\n#Milán #Italia #DatosCuriosos #Viajes #UrbanTales",
+ "lang": "es",
+ "facts": [
+  {
+   "headline": "Esta catedral tardó casi 600 años en terminarse",
+   "hook": "Las obras del Duomo de Milán empezaron en 1386, y su última puerta de bronce se inauguró recién en 1965."
+  },
+  {
+   "headline": "Gira sobre este toro de mosaico y, según la leyenda, tendrás suerte",
+   "hook": "Según la leyenda, girar sobre este toro de mosaico da suerte: tantos turistas lo hicieron que se restauró en 2026."
+  },
+  {
+   "headline": "Unos sacos de arena salvaron una de las pinturas más famosas del mundo",
+   "hook": "En 1943 las bombas destrozaron este refectorio, pero sacos de arena contra un muro salvaron La Última Cena de Leonardo."
+  },
+  {
+   "headline": "El mármol del Duomo entraba a Milán sin pagar peaje",
+   "hook": "El mármol del Duomo llegaba en barco por este canal, marcado AUF para no pagar ningún peaje en el camino."
+  },
+  {
+   "headline": "Un radar encontró túneles que Leonardo dibujó hace 500 años",
+   "hook": "Un radar mapeó túneles ocultos bajo el Castillo Sforzesco, y algunos coinciden con pasajes secretos que dibujó Leonardo da Vinci."
+  },
+  {
+   "headline": "La galería alta de este teatro es famosa por abuchear cantantes",
+   "hook": "En 2006, los abucheos de la galería de La Scala hicieron que un tenor abandonara el escenario en plena ópera."
+  },
+  {
+   "headline": "Esta capilla está decorada con cráneos humanos",
+   "hook": "Las paredes de esta capilla están cubiertas de cráneos y huesos humanos, reunidos desde 1210 de un cementerio saturado."
+  }
+ ]
+}

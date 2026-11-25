@@ -1,117 +1,141 @@
 {
-  "badge_num": 50,
+  "badge_num": 51,
   "city": "MILAN",
   "flag": "🇮🇹",
   "cta_screenshot": "screen-generic-narration-style.png",
   "cta_screenshot_note": "No Milan map screenshot in the repo (no screen-milan-*-map.png file, and no milan.html landing page either); using the generic app screen per GUIDELINES.md.",
   "style": "minimal",
-  "photo_sourcing_blocked": true,
-  "photo_sourcing_note": "This cloud session's network egress policy denies commons.wikimedia.org: curl against the Commons API returns 'CONNECT tunnel failed, response 403 (agent proxy: no rule or network setting allows this host)', confirmed on 2026-11-25 right before writing this batch. No Pexels API key is available in this environment either. This is the same recurring block noted in topics.md for batches #8-#13, #28/#29, #30, #32, #34, #36, #38, #40/#41, #42/#43/#44/#45, #46/#47 and #48/#49. No attempt was made to request a network/environment change this run, since this is an unattended scheduled run and every past attempt at that was auto-refused for lack of a live approver (per the 2026-11-16 and 2026-11-11 notes in topics.md). All 'candidates' arrays below are empty; 'suggested_queries' lists the exact Commons search terms to run from an environment with open network access, per GUIDELINES.md's instruction to note the gap rather than block the batch. Every fact below was still verified via web search before writing (sources: Wikipedia/Britannica on Milan Cathedral's 1386-1965 construction; Atlas Obscura/Domus/Smithsonian on the Galleria's bull mosaic ritual and its 2026 restoration; Mentalfloss/Aleteia/The Art Newspaper on The Last Supper surviving the August 1943 bombing; Britannica/Wikipedia on Leonardo da Vinci's 1482 work on the Naviglio Grande's locks, noting his role is documented as rebuilding/improving existing lock designs rather than inventing the lock; GreekReporter/ArtNet/IET on the 2025 ground-penetrating-radar find of tunnels under Castello Sforzesco matching Leonardo's circa-1495 sketches; History Today/Classical Music/Wikipedia on La Scala's loggionisti booing tradition; ArchDaily/Arup/Stefano Boeri Architetti on Bosco Verticale's ~800 trees and 2014 International Highrise Award).",
-  "caption": "Which of these 7 Milan secrets didn't you know? Comment the number 👇\n\n1. Duomo di Milano\nConstruction on Milan's Duomo began in 1386, and workers didn't hang the last of its five bronze doors until 1965 — nearly six centuries later, one of the slowest cathedral builds in history.\n\n2. Galleria Vittorio Emanuele II\nSet into the floor of this glass-domed arcade, a mosaic bull symbolizing Turin gets spun on by visitors' heels for luck. The ritual has worn the tile down so often the city restored it again in 2026.\n\n3. The Last Supper\nWhen Allied bombs destroyed most of this refectory in August 1943, the wall carrying Leonardo da Vinci's The Last Supper held because it had been shored up with sandbags — the roof and other walls were blown apart around it.\n\n4. Naviglio Grande\nAs Milan's ducal engineer starting in 1482, Leonardo da Vinci rebuilt and added locks to the Naviglio Grande, Europe's oldest navigable canal. Boats and canal-side bars still run along the route today.\n\n5. Castello Sforzesco\nRumored since the 1490s, secret tunnels beneath Sforza Castle were only confirmed in 2025, when ground-penetrating radar found passages matching sketches Leonardo da Vinci drew around 1495.\n\n6. Teatro alla Scala\nRegulars in La Scala's upper gallery, nicknamed the loggionisti, have booed underwhelming singers for decades — a storming walkout in 2006 and a skipped high note in 2000 both made international headlines.\n\n7. Bosco Verticale\nMilan's \"vertical forest\" stacks roughly 800 trees and thousands of shrubs across two residential towers. In 2014 it won the International Highrise Award as the world's \"most beautiful and innovative\" skyscraper.\n\n.\n.\n.\n#Milan #Italy #TravelFacts #Duomo #UrbanTales",
-  "caption_es": "¿Cuál de estos 7 secretos de Milán no conocías? Comenta el número 👇\n\n1. Duomo di Milano\nLa construcción del Duomo de Milán empezó en 1386, y los obreros no colocaron la última de sus cinco puertas de bronce hasta 1965 — casi seis siglos después, una de las construcciones de catedral más lentas de la historia.\n\n2. Galería Vittorio Emanuele II\nEn el piso de esta galería de cúpula de vidrio hay un toro de mosaico que simboliza a Turín, sobre el que los visitantes giran el talón para la buena suerte. El ritual ha desgastado tanto el mosaico que la ciudad lo restauró de nuevo en 2026.\n\n3. La Última Cena\nCuando las bombas aliadas destruyeron la mayor parte de este refectorio en agosto de 1943, el muro que sostenía La Última Cena de Leonardo da Vinci resistió porque había sido reforzado con sacos de arena — el techo y las demás paredes quedaron destruidos a su alrededor.\n\n4. Naviglio Grande\nComo ingeniero ducal de Milán desde 1482, Leonardo da Vinci reconstruyó y agregó esclusas al Naviglio Grande, el canal navegable más antiguo de Europa. Barcos y bares junto al canal siguen recorriendo esa misma ruta hoy.\n\n5. Castello Sforzesco\nSe rumoraba desde la década de 1490 que había túneles secretos bajo el Castillo Sforzesco, pero solo se confirmaron en 2025, cuando un radar de penetración encontró pasajes que coinciden con bocetos que Leonardo da Vinci dibujó alrededor de 1495.\n\n6. Teatro alla Scala\nLos habituales de la galería alta de La Scala, apodados los loggionisti, llevan décadas abucheando a cantantes que no dan la talla — una salida furiosa en 2006 y una nota aguda que un tenor se saltó en 2000 fueron noticia mundial.\n\n7. Bosco Verticale\nEl \"bosque vertical\" de Milán reúne cerca de 800 árboles y miles de arbustos repartidos en dos torres residenciales. En 2014 ganó el International Highrise Award como el rascacielos \"más hermoso e innovador\" del mundo.\n\n.\n.\n.\n#Milán #Italia #DatosCuriosos #Viajes #UrbanTales",
+  "photo_sourcing_blocked": false,
+  "photo_sourcing_note": "Photos sourced from Wikimedia Commons on 2026-11-25 by the local finisher; see photo-credits.txt.",
+  "caption": "Which of these 7 Milan secrets didn't you know? Comment the number 👇\n\n1. Duomo di Milano\nConstruction on the Duomo di Milano began in 1386, and the last of its five bronze doors wasn't inaugurated until 1965, the date that by convention marks the cathedral as finished.\n\n2. Galleria Vittorio Emanuele II\nSet into the floor of the Galleria Vittorio Emanuele II, a mosaic bull from Turin's coat of arms gets spun on by visitors' heels, since legend says it brings luck. So many people do it that the city had to restore the bull again in 2026.\n\n3. The Last Supper\nWhen Allied bombs hit the refectory of Santa Maria delle Grazie in August 1943, the roof and a side wall collapsed, but the wall with Leonardo da Vinci's The Last Supper, braced with sandbags and scaffolding, stayed standing.\n\n4. Naviglio Grande\nMarble for the Duomo came from the Candoglia quarries by boat, along the Naviglio Grande canal, each block stamped AUF (ad usum fabricae, \"for the building works\") so it passed every toll for free. Locals say that's the origin of the Milanese expression \"a ufo\", meaning \"for free\".\n\n5. Castello Sforzesco\nIn 2025, Politecnico di Milano researchers revealed that ground-penetrating radar had mapped hidden passages beneath Sforza Castle, some of which may match the secret military tunnels Leonardo da Vinci sketched while working for the Sforza court.\n\n6. Teatro alla Scala\nRegulars in La Scala's top gallery, the loggionisti, are famous for booing singers who fall short. In 2006, star tenor Roberto Alagna walked off stage mid-Aida after their boos, and his understudy had to rush on in jeans.\n\n7. San Bernardino alle Ossa\nThe ossuary of San Bernardino alle Ossa began in 1210 as a room for bones from an overflowing hospital cemetery. Today its walls are lined with skulls and bones, under a 1695 ceiling fresco by Sebastiano Ricci.\n\n.\n.\n.\n#Milan #Italy #TravelFacts #Duomo #UrbanTales",
+  "caption_es": "¿Cuál de estos 7 secretos de Milán no conocías? Comenta el número 👇\n\n1. Duomo de Milán\nLa construcción del Duomo de Milán empezó en 1386, y la última de sus cinco puertas de bronce se inauguró recién en 1965, la fecha que por convención marca el fin de la obra.\n\n2. Galería Vittorio Emanuele II\nEn el piso de la Galería Vittorio Emanuele II hay un toro de mosaico del escudo de Turín sobre el que los visitantes giran con el talón, porque según la leyenda da suerte. Lo hace tanta gente que la ciudad tuvo que restaurar el toro otra vez en 2026.\n\n3. La Última Cena\nCuando las bombas aliadas cayeron sobre el refectorio de Santa Maria delle Grazie en agosto de 1943, el techo y una pared lateral se derrumbaron, pero el muro con La Última Cena de Leonardo da Vinci, reforzado con sacos de arena y andamios, quedó en pie.\n\n4. Naviglio Grande\nEl mármol del Duomo llegaba en barco desde las canteras de Candoglia por el canal Naviglio Grande, cada bloque marcado AUF (ad usum fabricae, \"para la obra\") para pasar los peajes sin pagar. Los milaneses dicen que de ahí viene la expresión \"a ufo\", que significa \"gratis\".\n\n5. Castillo Sforzesco\nEn 2025, investigadores del Politécnico de Milán revelaron que un radar de penetración había mapeado pasajes ocultos bajo el Castillo Sforzesco, y algunos podrían coincidir con los túneles militares secretos que Leonardo da Vinci dibujó cuando trabajaba para la corte de los Sforza.\n\n6. Teatro alla Scala\nLos habituales de la galería alta de La Scala, los loggionisti, son famosos por abuchear a los cantantes que no están a la altura. En 2006, el tenor estrella Roberto Alagna abandonó el escenario en plena Aida tras sus abucheos, y su suplente tuvo que salir corriendo en jeans.\n\n7. San Bernardino alle Ossa\nEl osario de San Bernardino alle Ossa nació en 1210 como un cuarto para los huesos de un cementerio de hospital que ya no daba abasto. Hoy sus paredes están cubiertas de cráneos y huesos, bajo un fresco de 1695 de Sebastiano Ricci.\n\n.\n.\n.\n#Milán #Italia #DatosCuriosos #Viajes #UrbanTales",
   "facts": [
     {
       "slot": "fact1",
       "headline": "This cathedral took almost 600 years to finish",
       "headline_es": "Esta catedral tardó casi 600 años en terminarse",
-      "body_html": "Construction on the <b>Duomo di Milano</b> began in <b>1386</b>, and workers didn't hang the last of its five bronze doors until <b>1965</b> — nearly six centuries later, one of the slowest cathedral builds in history.",
-      "body_es": "La construcción del <b>Duomo de Milán</b> empezó en <b>1386</b>, y los obreros no colocaron la última de sus cinco puertas de bronce hasta <b>1965</b> — casi seis siglos después, una de las construcciones de catedral más lentas de la historia.",
-      "hook": "Construction on Milan's Duomo began in 1386, and the last of its five bronze doors wasn't installed until 1965.",
-      "hook_es": "La construcción del Duomo de Milán empezó en 1386, y la última de sus cinco puertas de bronce no se instaló hasta 1965.",
-      "candidates": [],
-      "suggested_queries": [
-        "Milan Duomo cathedral facade",
-        "Duomo di Milano rooftop statues"
+      "body_html": "Construction on the <b>Duomo di Milano</b> began in <b>1386</b>, and the last of its five bronze doors wasn't inaugurated until <b>1965</b>, the date that by convention marks the cathedral as finished.",
+      "body_es": "La construcción del <b>Duomo de Milán</b> empezó en <b>1386</b>, y la última de sus cinco puertas de bronce se inauguró recién en <b>1965</b>, la fecha que por convención marca el fin de la obra.",
+      "hook": "Work on Milan's Duomo began in 1386, and its last bronze door was only inaugurated in 1965.",
+      "hook_es": "Las obras del Duomo de Milán empezaron en 1386, y su última puerta de bronce se inauguró recién en 1965.",
+      "candidates": [
+        {
+          "file": "fact1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Duomo_Di_Milano,_Front_Facade,_Milan,_Italy.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Saptarshi Pal"
+        }
       ]
     },
     {
       "slot": "fact2",
       "headline": "Spin on this mosaic bull and legend says you'll get lucky",
-      "headline_es": "Gira sobre este toro de mosaico y la leyenda dice que tendrás suerte",
-      "body_html": "Set into the floor of the <b>Galleria Vittorio Emanuele II</b>, a mosaic bull symbolizing Turin gets spun on by visitors' heels for luck — the ritual has worn the design down so often the city restored it again in <b>2026</b>.",
-      "body_es": "En el piso de la <b>Galería Vittorio Emanuele II</b> hay un toro de mosaico que simboliza a Turín, sobre el que los visitantes giran el talón para la buena suerte — el ritual ha desgastado tanto el diseño que la ciudad lo restauró de nuevo en <b>2026</b>.",
-      "hook": "Inside the Galleria's glass arcade, tourists spin three times on a mosaic bull's heel for luck, wearing the tile down.",
-      "hook_es": "Dentro de la galería de cúpula de vidrio, los turistas giran tres veces el talón sobre un toro de mosaico para la suerte, desgastando la pieza.",
-      "candidates": [],
-      "suggested_queries": [
-        "Galleria Vittorio Emanuele II bull mosaic floor",
-        "Galleria Vittorio Emanuele II interior Milan"
+      "headline_es": "Gira sobre este toro de mosaico y, según la leyenda, tendrás suerte",
+      "body_html": "Set into the floor of the <b>Galleria Vittorio Emanuele II</b>, a mosaic bull from Turin's coat of arms gets spun on by visitors' heels, since legend says it brings luck. So many people do it that the city had to restore the bull again in <b>2026</b>.",
+      "body_es": "En el piso de la <b>Galería Vittorio Emanuele II</b> hay un toro de mosaico del escudo de Turín sobre el que los visitantes giran con el talón, porque según la leyenda da suerte. Lo hace tanta gente que la ciudad tuvo que restaurar el toro otra vez en <b>2026</b>.",
+      "hook": "Legend says spinning on this mosaic bull brings luck; so many tourists do it that Milan restored it in 2026.",
+      "hook_es": "Según la leyenda, girar sobre este toro de mosaico da suerte: tantos turistas lo hicieron que se restauró en 2026.",
+      "candidates": [
+        {
+          "file": "fact2.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:GalleriaToro.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Robre62"
+        }
       ]
     },
     {
       "slot": "fact3",
-      "headline": "A sandbag wall saved one of art's most famous paintings",
-      "headline_es": "Un muro de sacos de arena salvó una de las pinturas más famosas del arte",
-      "body_html": "When Allied bombs destroyed most of the refectory housing Leonardo da Vinci's <b>The Last Supper</b> in <b>August 1943</b>, the wall carrying the mural held because it had been shored up with sandbags — the roof and other walls were blown apart around it.",
-      "body_es": "Cuando las bombas aliadas destruyeron la mayor parte del refectorio que albergaba <b>La Última Cena</b> de Leonardo da Vinci en <b>agosto de 1943</b>, el muro que sostenía el mural resistió porque había sido reforzado con sacos de arena — el techo y las demás paredes quedaron destruidos a su alrededor.",
-      "hook": "Allied bombs flattened this refectory in 1943, but sandbags propped against one wall saved Leonardo's Last Supper mural intact.",
-      "hook_es": "Las bombas aliadas destruyeron este refectorio en 1943, pero los sacos de arena contra un muro salvaron intacto el mural de La Última Cena.",
-      "candidates": [],
-      "suggested_queries": [
-        "Santa Maria delle Grazie Milan exterior",
-        "Cenacolo Vinciano refectory Milan"
+      "headline": "Sandbags saved one of the most famous paintings in the world",
+      "headline_es": "Unos sacos de arena salvaron una de las pinturas más famosas del mundo",
+      "body_html": "When Allied bombs hit the refectory of <b>Santa Maria delle Grazie</b> in <b>August 1943</b>, the roof and a side wall collapsed, but the wall with Leonardo da Vinci's <b>The Last Supper</b>, braced with sandbags and scaffolding, stayed standing.",
+      "body_es": "Cuando las bombas aliadas cayeron sobre el refectorio de <b>Santa Maria delle Grazie</b> en <b>agosto de 1943</b>, el techo y una pared lateral se derrumbaron, pero el muro con <b>La Última Cena</b> de Leonardo da Vinci, reforzado con sacos de arena y andamios, quedó en pie.",
+      "hook": "In 1943 Allied bombs wrecked this refectory, but sandbags braced against one wall saved Leonardo's Last Supper.",
+      "hook_es": "En 1943 las bombas destrozaron este refectorio, pero sacos de arena contra un muro salvaron La Última Cena de Leonardo.",
+      "candidates": [
+        {
+          "file": "fact3.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_(1452-1519)_-_The_Last_Supper_(1495-1498).jpg",
+          "license": "Public domain",
+          "artist": "Leonardo da Vinci"
+        }
       ]
     },
     {
       "slot": "fact4",
-      "headline": "Leonardo da Vinci engineered this canal's lock system",
-      "headline_es": "Leonardo da Vinci diseñó el sistema de esclusas de este canal",
-      "body_html": "As Milan's ducal engineer starting in <b>1482</b>, Leonardo da Vinci rebuilt and added locks to the <b>Naviglio Grande</b>, Europe's oldest navigable canal — boats and canal-side bars still run along the route he helped design.",
-      "body_es": "Como ingeniero ducal de Milán desde <b>1482</b>, Leonardo da Vinci reconstruyó y agregó esclusas al <b>Naviglio Grande</b>, el canal navegable más antiguo de Europa — barcos y bares junto al canal siguen recorriendo la ruta que ayudó a diseñar.",
-      "hook": "As Milan's ducal engineer starting in 1482, Leonardo da Vinci rebuilt and added locks to the Naviglio Grande canal.",
-      "hook_es": "Como ingeniero ducal de Milán desde 1482, Leonardo da Vinci reconstruyó y agregó esclusas al canal Naviglio Grande.",
-      "candidates": [],
-      "suggested_queries": [
-        "Naviglio Grande Milan canal",
-        "Naviglio Grande Milan locks boats"
+      "headline": "The Duomo's marble sailed into Milan toll-free",
+      "headline_es": "El mármol del Duomo entraba a Milán sin pagar peaje",
+      "body_html": "Marble for the Duomo came from the Candoglia quarries by boat, along the <b>Naviglio Grande</b> canal, each block stamped <b>AUF</b> (ad usum fabricae, \"for the building works\") so it passed every toll for free. Locals say that's the origin of the Milanese expression \"a ufo\", meaning \"for free\".",
+      "body_es": "El mármol del Duomo llegaba en barco desde las canteras de Candoglia por el canal <b>Naviglio Grande</b>, cada bloque marcado <b>AUF</b> (ad usum fabricae, \"para la obra\") para pasar los peajes sin pagar. Los milaneses dicen que de ahí viene la expresión \"a ufo\", que significa \"gratis\".",
+      "hook": "The Duomo's marble arrived by boat on this canal, stamped AUF so it skipped every toll along the way.",
+      "hook_es": "El mármol del Duomo llegaba en barco por este canal, marcado AUF para no pagar ningún peaje en el camino.",
+      "candidates": [
+        {
+          "file": "fact4.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:4045_-_Milano_-_Naviglio_Grande_-_Foto_Giovanni_Dall%27Orto,_7-July-2007.jpg",
+          "license": "CC BY-SA 2.5 it",
+          "artist": "G.dallorto"
+        }
       ]
     },
     {
       "slot": "fact5",
-      "headline": "Radar just confirmed tunnels Leonardo sketched 500 years ago",
-      "headline_es": "Un radar acaba de confirmar túneles que Leonardo bocetó hace 500 años",
-      "body_html": "Once one of Europe's largest citadels, <b>Sforza Castle</b> has been rumored to hide secret passages since the 1490s — in <b>2025</b>, ground-penetrating radar finally found tunnels beneath it that match sketches Leonardo da Vinci drew around 1495.",
-      "body_es": "Alguna vez una de las ciudadelas más grandes de Europa, se rumoraba desde la década de 1490 que el <b>Castillo Sforzesco</b> escondía pasajes secretos — en <b>2025</b>, un radar de penetración finalmente encontró túneles bajo el castillo que coinciden con bocetos que Leonardo da Vinci dibujó alrededor de 1495.",
-      "hook": "Rumored since the 1490s, secret tunnels beneath Sforza Castle were confirmed in 2025, matching sketches Leonardo da Vinci once drew.",
-      "hook_es": "Rumoreados desde la década de 1490, los túneles secretos bajo el Castillo Sforzesco se confirmaron en 2025, coincidiendo con bocetos de Leonardo da Vinci.",
-      "candidates": [],
-      "suggested_queries": [
-        "Castello Sforzesco Milan courtyard",
-        "Sforza Castle Milan tower"
+      "headline": "Radar found tunnels Leonardo sketched 500 years ago",
+      "headline_es": "Un radar encontró túneles que Leonardo dibujó hace 500 años",
+      "body_html": "In <b>2025</b>, Politecnico di Milano researchers revealed that ground-penetrating radar had mapped hidden passages beneath <b>Sforza Castle</b>, some of which may match the secret military tunnels <b>Leonardo da Vinci</b> sketched while working for the Sforza court.",
+      "body_es": "En <b>2025</b>, investigadores del Politécnico de Milán revelaron que un radar de penetración había mapeado pasajes ocultos bajo el <b>Castillo Sforzesco</b>, y algunos podrían coincidir con los túneles militares secretos que <b>Leonardo da Vinci</b> dibujó cuando trabajaba para la corte de los Sforza.",
+      "hook": "Radar recently mapped hidden tunnels under Sforza Castle, some matching secret passages Leonardo da Vinci sketched over 500 years ago.",
+      "hook_es": "Un radar mapeó túneles ocultos bajo el Castillo Sforzesco, y algunos coinciden con pasajes secretos que dibujó Leonardo da Vinci.",
+      "candidates": [
+        {
+          "file": "fact5.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Castello_Sforzesco_(Milan)_-_main_entrance.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Terragio67"
+        }
       ]
     },
     {
       "slot": "fact6",
       "headline": "This opera house's top gallery is famous for booing singers",
-      "headline_es": "La galería alta de este teatro de ópera es famosa por abuchear cantantes",
-      "body_html": "Regulars in <b>La Scala</b>'s upper gallery, nicknamed the <b>loggionisti</b>, have booed underwhelming singers off the stage for decades — a storming walkout in 2006 and a skipped high note in 2000 both made international headlines.",
-      "body_es": "Los habituales de la galería alta de <b>La Scala</b>, apodados los <b>loggionisti</b>, llevan décadas abucheando a cantantes del escenario — una salida furiosa en 2006 y una nota aguda que un tenor se saltó en 2000 fueron noticia mundial.",
-      "hook": "La Scala's gallery regulars, the loggionisti, are famous for booing singers who falter, once driving a tenor off stage mid-show.",
-      "hook_es": "Los habituales de la galería de La Scala, los loggionisti, son famosos por abuchear a cantantes que fallan, y una vez hicieron huir a un tenor.",
-      "candidates": [],
-      "suggested_queries": [
-        "Teatro alla Scala Milan interior",
-        "Teatro alla Scala facade Milan"
+      "headline_es": "La galería alta de este teatro es famosa por abuchear cantantes",
+      "body_html": "Regulars in <b>La Scala</b>'s top gallery, the <b>loggionisti</b>, are famous for booing singers who fall short. In <b>2006</b>, star tenor Roberto Alagna walked off stage mid-Aida after their boos, and his understudy had to rush on in jeans.",
+      "body_es": "Los habituales de la galería alta de <b>La Scala</b>, los <b>loggionisti</b>, son famosos por abuchear a los cantantes que no están a la altura. En <b>2006</b>, el tenor estrella Roberto Alagna abandonó el escenario en plena Aida tras sus abucheos, y su suplente tuvo que salir corriendo en jeans.",
+      "hook": "La Scala's top-gallery regulars boo so fiercely that in 2006 a star tenor walked off stage mid-opera.",
+      "hook_es": "En 2006, los abucheos de la galería de La Scala hicieron que un tenor abandonara el escenario en plena ópera.",
+      "candidates": [
+        {
+          "file": "fact6.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Teatro_alla_Scala_interior_Milan.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Wolfgang Moroder"
+        }
       ]
     },
     {
       "slot": "fact7",
-      "headline": "These two towers hold a forest of 800 trees",
-      "headline_es": "Estas dos torres sostienen un bosque de 800 árboles",
-      "body_html": "Milan's <b>Bosco Verticale</b> stacks roughly <b>800 trees</b> and thousands of shrubs across two residential towers — in <b>2014</b> it won the International Highrise Award as the world's \"most beautiful and innovative\" skyscraper.",
-      "body_es": "El <b>Bosco Verticale</b> de Milán reúne cerca de <b>800 árboles</b> y miles de arbustos repartidos en dos torres residenciales — en <b>2014</b> ganó el International Highrise Award como el rascacielos \"más hermoso e innovador\" del mundo.",
-      "hook": "Milan's Bosco Verticale towers hold roughly 800 trees and thousands of plants, winning a 2014 award for most beautiful skyscraper.",
-      "hook_es": "Las torres Bosco Verticale de Milán sostienen cerca de 800 árboles y miles de plantas, y ganaron un premio en 2014 como el rascacielos más hermoso.",
-      "candidates": [],
-      "suggested_queries": [
-        "Bosco Verticale Milan towers",
-        "Bosco Verticale Milan Porta Nuova"
+      "headline": "This chapel is decorated with human skulls",
+      "headline_es": "Esta capilla está decorada con cráneos humanos",
+      "body_html": "The ossuary of <b>San Bernardino alle Ossa</b> began in <b>1210</b> as a room for bones from an overflowing hospital cemetery. Today its walls are lined with skulls and bones, under a <b>1695</b> ceiling fresco by Sebastiano Ricci.",
+      "body_es": "El osario de <b>San Bernardino alle Ossa</b> nació en <b>1210</b> como un cuarto para los huesos de un cementerio de hospital que ya no daba abasto. Hoy sus paredes están cubiertas de cráneos y huesos, bajo un fresco de <b>1695</b> de Sebastiano Ricci.",
+      "hook": "The walls of this Milan chapel are lined with human skulls and bones, collected since 1210 from an overflowing cemetery.",
+      "hook_es": "Las paredes de esta capilla están cubiertas de cráneos y huesos humanos, reunidos desde 1210 de un cementerio saturado.",
+      "candidates": [
+        {
+          "file": "fact7.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Wall_of_the_Ossuary_of_San_Bernardino_alle_Ossa,_Milan.jpg",
+          "license": "CC0",
+          "artist": "Julian Lupyan"
+        }
       ]
     }
   ],
-  "cover_candidates": [],
-  "cover_suggested_queries": [
-    "Milan skyline Duomo aerial",
-    "Milan skyline Porta Nuova towers"
+  "cover_candidates": [
+    {
+      "file": "cover.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Milano_-_Vista_panoramica_verso_i_grattacieli_di_Porta_Nuova.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Antonio Mette"
+    }
   ]
 }

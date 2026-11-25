@@ -1,0 +1,38 @@
+{
+ "badge_num": 51,
+ "flag": "🇮🇹",
+ "cta_screenshot": "screen-generic-narration-style.png",
+ "style": "minimal",
+ "city": "MILAN",
+ "caption": "Which of these 7 Milan secrets didn't you know? Comment the number 👇\n\n1. Duomo di Milano\nConstruction on the Duomo di Milano began in 1386, and the last of its five bronze doors wasn't inaugurated until 1965, the date that by convention marks the cathedral as finished.\n\n2. Galleria Vittorio Emanuele II\nSet into the floor of the Galleria Vittorio Emanuele II, a mosaic bull from Turin's coat of arms gets spun on by visitors' heels, since legend says it brings luck. So many people do it that the city had to restore the bull again in 2026.\n\n3. The Last Supper\nWhen Allied bombs hit the refectory of Santa Maria delle Grazie in August 1943, the roof and a side wall collapsed, but the wall with Leonardo da Vinci's The Last Supper, braced with sandbags and scaffolding, stayed standing.\n\n4. Naviglio Grande\nMarble for the Duomo came from the Candoglia quarries by boat, along the Naviglio Grande canal, each block stamped AUF (ad usum fabricae, \"for the building works\") so it passed every toll for free. Locals say that's the origin of the Milanese expression \"a ufo\", meaning \"for free\".\n\n5. Castello Sforzesco\nIn 2025, Politecnico di Milano researchers revealed that ground-penetrating radar had mapped hidden passages beneath Sforza Castle, some of which may match the secret military tunnels Leonardo da Vinci sketched while working for the Sforza court.\n\n6. Teatro alla Scala\nRegulars in La Scala's top gallery, the loggionisti, are famous for booing singers who fall short. In 2006, star tenor Roberto Alagna walked off stage mid-Aida after their boos, and his understudy had to rush on in jeans.\n\n7. San Bernardino alle Ossa\nThe ossuary of San Bernardino alle Ossa began in 1210 as a room for bones from an overflowing hospital cemetery. Today its walls are lined with skulls and bones, under a 1695 ceiling fresco by Sebastiano Ricci.\n\n.\n.\n.\n#Milan #Italy #TravelFacts #Duomo #UrbanTales",
+ "facts": [
+  {
+   "headline": "This cathedral took almost 600 years to finish",
+   "hook": "Work on Milan's Duomo began in 1386, and its last bronze door was only inaugurated in 1965."
+  },
+  {
+   "headline": "Spin on this mosaic bull and legend says you'll get lucky",
+   "hook": "Legend says spinning on this mosaic bull brings luck; so many tourists do it that Milan restored it in 2026."
+  },
+  {
+   "headline": "Sandbags saved one of the most famous paintings in the world",
+   "hook": "In 1943 Allied bombs wrecked this refectory, but sandbags braced against one wall saved Leonardo's Last Supper."
+  },
+  {
+   "headline": "The Duomo's marble sailed into Milan toll-free",
+   "hook": "The Duomo's marble arrived by boat on this canal, stamped AUF so it skipped every toll along the way."
+  },
+  {
+   "headline": "Radar found tunnels Leonardo sketched 500 years ago",
+   "hook": "Radar recently mapped hidden tunnels under Sforza Castle, some matching secret passages Leonardo da Vinci sketched over 500 years ago."
+  },
+  {
+   "headline": "This opera house's top gallery is famous for booing singers",
+   "hook": "La Scala's top-gallery regulars boo so fiercely that in 2006 a star tenor walked off stage mid-opera."
+  },
+  {
+   "headline": "This chapel is decorated with human skulls",
+   "hook": "The walls of this Milan chapel are lined with human skulls and bones, collected since 1210 from an overflowing cemetery."
+  }
+ ]
+}
