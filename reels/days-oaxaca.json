@@ -1,0 +1,126 @@
+{
+ "slug": "days-oaxaca",
+ "landmark": "Oaxaca · 2 days",
+ "city": "Oaxaca",
+ "series": "days",
+ "hook_style": "time",
+ "hook_type": "unpopular",
+ "story": "Monte Albán at 8 a.m. when it opens, before the heat; Day 2 the centre from the Ethnobotanical Garden (guided tours only) past Santo Domingo to the Zócalo and the Benito Juárez market.",
+ "sources": [
+  "https://www.adn40.mx/mexico/2026-09-26/con-tu-tarjeta-inapam-entras-gratis-a-monte-alban-en-oaxaca-asi-se-llega-desde-el-centro-y-esto-cuesta-si-no-tienes-la-credencial-en-septiembre-2026/",
+  "https://www.mexicodesconocido.com.mx/jardin-etnobotanico-de-oaxaca-un-espacio-para-fotografiar.html",
+  "https://www.escapadah.com/destinos/2022/8/29/consejos-para-asistir-al-jardin-etnobotanico-de-oaxaca-4434.html",
+  "https://urbantales.net/tour.html?bundle=bd678269-b07a-4b1d-9785-e9802c880caf&lang=es"
+ ],
+ "week": "2026-11-25",
+ "created": "2026-11-25T15:49",
+ "media_sha": "6e6faa459de1ec6e06e9598b9996762f20aad796",
+ "ig_lang": "es",
+ "tour": {
+  "share_url": "https://urbantales.net/tour.html?bundle=bd678269-b07a-4b1d-9785-e9802c880caf&lang=es",
+  "bundle": "bd678269-b07a-4b1d-9785-e9802c880caf",
+  "lang": "es"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6e6faa459de1ec6e06e9598b9996762f20aad796/reels/days-oaxaca-en.mp4",
+  "caption": "Be at Monte Albán at 8 and it's yours. Unpopular opinion: 2 days in Oaxaca is enough. 👇\n\nTwo days that beat the crowds: Monte Albán when it opens at 8, before the heat, and the Ethnobotanical Garden, which you can only enter on a guided tour.\n\nUrban Tales plans your trip in a minute and tells you the story of every stop as you walk.\n.\n.\n.\n#oaxaca #montealban #mexicotravel #traveltips #urbantales",
+  "dm": "Oaxaca · 2 days\nDay 1: Monte Albán at 8 a.m. → Site museum → South Platform\nDay 2: Ethnobotanical Garden → Museum of Cultures → Santo Domingo → Andador Turístico → Cathedral → Zócalo → Benito Juárez Market\nTip: the Ethnobotanical Garden is guided tours only; check the times before you go."
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6e6faa459de1ec6e06e9598b9996762f20aad796/reels/days-oaxaca-es.mp4",
+  "caption": "Llega a Monte Albán a las 8 y es tuyo. Opinión impopular: 2 días bastan en Oaxaca. 👇\n\nDos días para ganarle a las multitudes: Monte Albán a las 8, cuando abre y antes del calor, y el Jardín Etnobotánico, al que solo se entra con visita guiada.\n\nUrban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas.\n.\n.\n.\n#oaxaca #montealban #viajaramexico #tipsdeviaje #urbantales",
+  "dm": "Oaxaca · 2 días\nDía 1: Monte Albán a las 8 → Museo de sitio → Plataforma Sur\nDía 2: Jardín Etnobotánico → Museo de las Culturas → Santo Domingo → Andador Turístico → Catedral → Zócalo → Mercado Benito Juárez\nTip: al Jardín Etnobotánico solo se entra con visita guiada; consulta los horarios antes de ir."
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-39885994.mp4",
+   "url": "https://www.pexels.com/video/monte-alban-ancient-ruins-in-oaxaca-39885994/",
+   "author": "Juanjo Menta",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Monte Alban"
+  },
+  {
+   "file": "pexels-17853969.mp4",
+   "url": "https://www.pexels.com/video/the-church-is-surrounded-by-plants-and-grass-17853969/",
+   "author": "Ali  Alcántara",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "Santo Domingo Oaxaca"
+  },
+  {
+   "file": "pexels-37455151.mp4",
+   "url": "https://www.pexels.com/video/majestic-palm-and-historic-church-in-oaxaca-37455151/",
+   "author": "leo soto",
+   "w": 1280,
+   "h": 720,
+   "dur": 22,
+   "query": "Santo Domingo Oaxaca"
+  },
+  {
+   "file": "pexels-38810428.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-vibrant-oaxaca-cityscape-38810428/",
+   "author": "Amar  Preciado",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Santo Domingo Oaxaca"
+  },
+  {
+   "file": "pexels-17853964.mp4",
+   "url": "https://www.pexels.com/video/a-street-at-night-with-people-walking-and-cars-driving-17853964/",
+   "author": "Ali  Alcántara",
+   "w": 1920,
+   "h": 1080,
+   "dur": 14,
+   "query": "Oaxaca street"
+  },
+  {
+   "file": "pexels-33643502.mp4",
+   "url": "https://www.pexels.com/video/charming-street-in-oaxaca-with-historic-buildings-33643502/",
+   "author": "leo soto",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Oaxaca street"
+  },
+  {
+   "file": "pexels-17853966.mp4",
+   "url": "https://www.pexels.com/video/a-taxi-cab-is-parked-on-the-street-at-night-17853966/",
+   "author": "Ali  Alcántara",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Oaxaca street"
+  },
+  {
+   "file": "pexels-38810423.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-oaxaca-city-at-twilight-38810423/",
+   "author": "Amar  Preciado",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "Oaxaca market"
+  },
+  {
+   "file": "pexels-31348672.mp4",
+   "url": "https://www.pexels.com/video/sunset-over-oaxaca-cityscape-with-mountains-31348672/",
+   "author": "Milagros Guemes",
+   "w": 1280,
+   "h": 720,
+   "dur": 27,
+   "query": "Oaxaca city"
+  },
+  {
+   "file": "pexels-19468974.mp4",
+   "url": "https://www.pexels.com/video/macedonio-alcala-oaxaca-19468974/",
+   "author": "Francisco Rodríguez",
+   "w": 1280,
+   "h": 720,
+   "dur": 78,
+   "query": "Oaxaca city"
+  }
+ ]
+}

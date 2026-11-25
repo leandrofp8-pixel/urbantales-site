@@ -1,0 +1,179 @@
+{
+ "slug": "days-granada",
+ "landmark": "Granada · 2 days",
+ "city": "Granada",
+ "series": "days",
+ "hook_style": "wrong_order",
+ "hook_type": "own_story",
+ "story": "Day 1 the Alhambra (Nasrid Palaces only at the time on your ticket), Day 2 El Bañuelo (free on Sundays), cathedral and the Albaicín up to San Nicolás at sunset.",
+ "sources": [
+  "https://www.alhambra-patronato.es/en/visit/opening-hours-and-prices",
+  "https://www.alhambra-patronato.es/en/visita/monumentos-andalusies-visita-general",
+  "https://urbantales.net/tour.html?bundle=684b61f8-0d8f-48c1-9fa9-115869f31483&lang=es"
+ ],
+ "week": "2026-11-25",
+ "created": "2026-11-25T15:49",
+ "media_sha": "6e6faa459de1ec6e06e9598b9996762f20aad796",
+ "ig_lang": "es",
+ "tour": {
+  "share_url": "https://urbantales.net/tour.html?bundle=684b61f8-0d8f-48c1-9fa9-115869f31483&lang=es",
+  "bundle": "684b61f8-0d8f-48c1-9fa9-115869f31483",
+  "lang": "es"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6e6faa459de1ec6e06e9598b9996762f20aad796/reels/days-granada-en.mp4",
+  "caption": "Most people see Granada in the wrong order. Which spot would you go back to? 👇\n\nTwo days that beat the crowds: the Nasrid Palaces only at the time on your ticket, so book early, and El Bañuelo free on Sundays before San Nicolás at sunset.\n\nUrban Tales plans your trip in a minute and tells you the story of every stop as you walk.\n.\n.\n.\n#granada #alhambra #spaintravel #traveltips #urbantales",
+  "dm": "Granada · 2 days\nDay 1: Puerta de las Granadas → Nasrid Palaces → Alhambra → Carmen de los Mártires\nDay 2: El Bañuelo → Royal Chapel → Cathedral → Dar al-Horra Palace → Mirador de San Nicolás at sunset\nTip: you can only enter the Nasrid Palaces at the time on your ticket, so book it early."
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6e6faa459de1ec6e06e9598b9996762f20aad796/reels/days-granada-es.mp4",
+  "caption": "La mayoría recorre Granada en el orden equivocado. ¿Qué rincón repetirías? 👇\n\nDos días para ganarle a las multitudes: los Palacios Nazaríes solo a la hora de tu boleto, así que resérvalo con tiempo, y El Bañuelo gratis los domingos antes del atardecer en San Nicolás.\n\nUrban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas.\n.\n.\n.\n#granada #alhambra #viajeaespaña #tipsdeviaje #urbantales",
+  "dm": "Granada · 2 días\nDía 1: Puerta de las Granadas → Palacios Nazaríes → Alhambra → Carmen de los Mártires\nDía 2: El Bañuelo → Capilla Real → Catedral → Palacio de Dar al-Horra → Mirador de San Nicolás al atardecer\nTip: a los Palacios Nazaríes solo entras a la hora de tu boleto; resérvalo con tiempo."
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-39243752.mp4",
+   "url": "https://www.pexels.com/video/majestic-alhambra-reflection-pool-scene-39243752/",
+   "author": "Tuba Din",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Alhambra Granada"
+  },
+  {
+   "file": "pexels-35390620.mp4",
+   "url": "https://www.pexels.com/video/alhambra-palace-reflection-in-tranquil-pool-35390620/",
+   "author": "Korkut Mamet",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Alhambra Granada"
+  },
+  {
+   "file": "pexels-38090993.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-historic-granada-cityscape-38090993/",
+   "author": "Ramon Karolan",
+   "w": 1280,
+   "h": 720,
+   "dur": 99,
+   "query": "Alhambra Granada"
+  },
+  {
+   "file": "pexels-37015145.mp4",
+   "url": "https://www.pexels.com/video/serene-courtyard-view-at-famous-spanish-landmark-37015145/",
+   "author": "Elif Topal",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Alhambra Granada"
+  },
+  {
+   "file": "pexels-41067637.mp4",
+   "url": "https://www.pexels.com/video/moorish-architecture-at-alhambra-palace-41067637/",
+   "author": "A.S. Kacar",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Nasrid Palaces Alhambra"
+  },
+  {
+   "file": "pexels-35390740.mp4",
+   "url": "https://www.pexels.com/video/intricate-alhambra-architecture-granada-35390740/",
+   "author": "Korkut Mamet",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Nasrid Palaces Alhambra"
+  },
+  {
+   "file": "pexels-35390775.mp4",
+   "url": "https://www.pexels.com/video/intricate-alhambra-ceiling-details-granada-35390775/",
+   "author": "Korkut Mamet",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Nasrid Palaces Alhambra"
+  },
+  {
+   "file": "pexels-10520784.mp4",
+   "url": "https://www.pexels.com/video/medieval-architecture-in-granada-10520784/",
+   "author": "Nat  Fernandez",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Granada cathedral"
+  },
+  {
+   "file": "pexels-10520787.mp4",
+   "url": "https://www.pexels.com/video/medieval-architecture-in-granada-under-clear-sky-10520787/",
+   "author": "Nat  Fernandez",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Granada cathedral"
+  },
+  {
+   "file": "pexels-4384962.mp4",
+   "url": "https://www.pexels.com/video/drone-shot-of-the-city-4384962/",
+   "author": "João Pinheiro",
+   "w": 1280,
+   "h": 720,
+   "dur": 5,
+   "query": "Albaicin Granada"
+  },
+  {
+   "file": "pexels-41062397.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-granada-s-historic-architecture-41062397/",
+   "author": "A.S. Kacar",
+   "w": 1280,
+   "h": 720,
+   "dur": 26,
+   "query": "Albaicin Granada"
+  },
+  {
+   "file": "pexels-4384960.mp4",
+   "url": "https://www.pexels.com/video/drone-shot-of-the-city-near-the-mountains-4384960/",
+   "author": "João Pinheiro",
+   "w": 1280,
+   "h": 720,
+   "dur": 4,
+   "query": "Albaicin Granada"
+  },
+  {
+   "file": "pexels-4384956.mp4",
+   "url": "https://www.pexels.com/video/houses-near-the-mountains-4384956/",
+   "author": "João Pinheiro",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "Mirador San Nicolas Alhambra"
+  },
+  {
+   "file": "pexels-4384969.mp4",
+   "url": "https://www.pexels.com/video/drone-shot-of-the-city-4384969/",
+   "author": "João Pinheiro",
+   "w": 1280,
+   "h": 720,
+   "dur": 5,
+   "query": "Granada Spain city"
+  },
+  {
+   "file": "pixabay-126864.mp4",
+   "url": "https://pixabay.com/videos/id-126864/",
+   "author": "MilanWulf",
+   "w": 3840,
+   "h": 2160,
+   "dur": 15,
+   "query": "Granada Spain city"
+  },
+  {
+   "file": "pixabay-126868.mp4",
+   "url": "https://pixabay.com/videos/id-126868/",
+   "author": "MilanWulf",
+   "w": 3840,
+   "h": 2160,
+   "dur": 35,
+   "query": "Granada Spain city"
+  }
+ ]
+}
