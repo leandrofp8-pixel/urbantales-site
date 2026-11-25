@@ -1,0 +1,109 @@
+{
+ "slug": "amsterdam-westerkerk",
+ "format": "A",
+ "landmark": "Westerkerk (skip: Anne Frank House, ~70 m away)",
+ "city": "Amsterdam",
+ "story": "From the Secret Annex, Anne Frank heard the Westertoren clock chime every quarter hour and wrote that it comforted her, especially at night; Rembrandt was buried in the church in 1669 as a poor man, and nobody knows exactly where his grave is.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Westerkerk",
+  "https://www.sparknotes.com/lit/annefrank/section3/",
+  "https://www.shmoop.com/study-guides/diary-of-anne-frank/saturday-july-11-1942.html",
+  "https://www.openstreetmap.org (Nominatim: Anne Frank Huis to Westerkerk, 68 m)"
+ ],
+ "week": "2026-W48",
+ "created": "2026-11-23T18:54",
+ "media_sha": "1eba486461aeb65e8133992ad85cabfac525efc4",
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/1eba486461aeb65e8133992ad85cabfac525efc4/reels/amsterdam-westerkerk-es.mp4",
+  "caption": "En la casa de Ana Frank, todos hacen fila. ¿Qué lugar escondido contamos después? 👇\n\nA setenta metros está la Westerkerk. Desde su escondite, Ana Frank oía el reloj de su torre cada cuarto de hora y escribió que le hacía compañía, sobre todo de noche. Rembrandt fue enterrado aquí en 1669, pero nadie sabe exactamente dónde.\n\nCada monumento tiene una historia así. Urban Tales te la cuenta mientras caminas.\n.\n.\n.\n#Amsterdam #Westerkerk #Rembrandt #historia #UrbanTales",
+  "dm": "La corona en lo alto de la torre de la Westerkerk es la corona imperial de Maximiliano I de Austria, repintada en su azul original en 2006. La campana de las horas pesa 7.509 kilos, la más grande de Ámsterdam. Y su carillón es el único de la ciudad que suena día y noche, a pedido de los vecinos del Jordaan."
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/1eba486461aeb65e8133992ad85cabfac525efc4/reels/amsterdam-westerkerk-en.mp4",
+  "caption": "At Anne Frank's house, everyone queues. Which hidden spot should we tell next? 👇\n\n70 metres away stands the Westerkerk. From her hiding place, Anne Frank could hear its tower clock every quarter of an hour, and wrote that it comforted her, especially at night. Rembrandt was buried here in 1669, but nobody knows exactly where.\n\nEvery landmark has a story like this. Urban Tales plays them as you walk past.\n.\n.\n.\n#Amsterdam #Westerkerk #Rembrandt #history #UrbanTales",
+  "dm": "The crown on top of the Westerkerk tower is the imperial crown of Maximilian I of Austria, repainted in its original blue in 2006. The tower's hour bell weighs 7,509 kilos, the largest in Amsterdam. And its carillon is the only one in the city that chimes day and night, kept that way at the request of the neighbours in the Jordaan."
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-40319800.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-westerkerk-by-amsterdam-canal-40319800/",
+   "author": "Anh Nguyen",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Westerkerk Amsterdam"
+  },
+  {
+   "file": "pexels-40319678.mp4",
+   "url": "https://www.pexels.com/video/serene-amsterdam-canal-with-iconic-church-view-40319678/",
+   "author": "Anh Nguyen",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Westerkerk Amsterdam"
+  },
+  {
+   "file": "pexels-40319696.mp4",
+   "url": "https://www.pexels.com/video/rainy-day-in-amsterdam-with-tram-and-church-40319696/",
+   "author": "Anh Nguyen",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Westerkerk Amsterdam"
+  },
+  {
+   "file": "pexels-40319690.mp4",
+   "url": "https://www.pexels.com/video/charming-amsterdam-street-scene-with-cyclists-40319690/",
+   "author": "Anh Nguyen",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Anne Frank House"
+  },
+  {
+   "file": "pexels-31532164.mp4",
+   "url": "https://www.pexels.com/video/scenic-canal-boat-ride-in-amsterdam-31532164/",
+   "author": "Cody Douglas",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Prinsengracht Amsterdam"
+  },
+  {
+   "file": "pexels-40319831.mp4",
+   "url": "https://www.pexels.com/video/scenic-amsterdam-canal-boat-tour-40319831/",
+   "author": "Anh Nguyen",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Prinsengracht Amsterdam"
+  },
+  {
+   "file": "pexels-28349554.mp4",
+   "url": "https://www.pexels.com/video/amsterdam-28349554/",
+   "author": "BAE  JUN",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Prinsengracht Amsterdam"
+  },
+  {
+   "file": "pexels-40319682.mp4",
+   "url": "https://www.pexels.com/video/scenic-amsterdam-canal-and-historic-architecture-40319682/",
+   "author": "Anh Nguyen",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Prinsengracht Amsterdam"
+  },
+  {
+   "file": "pexels-40319697.mp4",
+   "url": "https://www.pexels.com/video/rainy-day-at-amsterdam-s-historic-church-40319697/",
+   "author": "Anh Nguyen",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Amsterdam church tower canal"
+  }
+ ]
+}
