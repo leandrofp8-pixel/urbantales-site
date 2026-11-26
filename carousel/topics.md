@@ -48,12 +48,29 @@ so the next batch never repeats a city. See `carousel/GUIDELINES.md` for the ful
 | 47 | Lyon |
 | 48 | Copenhagen |
 | 49 | Copenhagen |
+| 50 | Milan |
+| 51 | Milan |
 
 ## Next batch
 
-**#50 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
+**#52 — city TBD.** Pick a city not in the Published list above. Prefer one that also has a
 `{city}.html` page in the main site repo where possible (bonus, not required — this series is
 independent of the blog).
+
+Note (2026-11-25, Milan batch): drafted as #50 (no `milan.html` page and no
+`screen-milan-*-map.png` screenshot in the main site repo — the generic app screen was used for
+the CTA slide, flagged in `draft.json`). All 7 facts (the Duomo's nearly six-century construction,
+the Galleria's bull mosaic luck ritual, sandbags saving The Last Supper in the 1943 bombing,
+Leonardo da Vinci's 1482 work on the Naviglio Grande's locks, the 2025 radar find of tunnels under
+Sforza Castle matching Leonardo's sketches, La Scala's loggionisti booing tradition, and Bosco
+Verticale's ~800 trees) were researched and verified via web search this run. Photo sourcing was
+blocked again for the same recurring commons.wikimedia.org network-policy reason as batches
+#8-#13, #28/#29, #30, #32, #34, #36, #38, #40/#41, #42/#43/#44/#45, #46/#47 and #48/#49 —
+re-confirmed via curl showing the agent proxy returning a 403 on the CONNECT tunnel to
+commons.wikimedia.org ("no rule or network setting allows this host"). No attempt was made this
+run to request a network/environment change, since this is an unattended scheduled run and every
+past attempt at that was auto-refused for lack of a live approver; `suggested_queries` are left in
+`draft.json` for whoever sources the photos by hand, same as recent batches.
 
 Note (2026-11-23, Copenhagen batch): drafted as #48 (no `copenhagen.html` page and no
 `screen-copenhagen-*-map.png` screenshot in the main site repo — the generic app screen was used
