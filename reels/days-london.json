@@ -1,0 +1,244 @@
+{
+ "slug": "days-london",
+ "landmark": "London · 3 days",
+ "city": "London",
+ "series": "days",
+ "hook_style": "mistake",
+ "hook_type": "pick_one",
+ "story": "The mistake is Westminster Abbey on a Sunday (worship only); Day 1 royal Westminster, Day 2 the City with the free Sky Garden booked ahead, Day 3 the free National Gallery (open till 9 on Fridays) and Hyde Park.",
+ "sources": [
+  "https://www.westminster-abbey.org/faq/",
+  "https://www.westminster-abbey.org/visit-us",
+  "https://skygarden.london/booking",
+  "https://www.nationalgallery.org.uk/visiting/plan-your-visit",
+  "https://urbantales.net/tour.html?bundle=483b1df9-c4f0-4f23-9ac7-d79b9845449a&lang=en"
+ ],
+ "week": "2026-11-25",
+ "created": "2026-11-25T15:49",
+ "media_sha": "6e6faa459de1ec6e06e9598b9996762f20aad796",
+ "ig_lang": "en",
+ "tour": {
+  "share_url": "https://urbantales.net/tour.html?bundle=483b1df9-c4f0-4f23-9ac7-d79b9845449a&lang=en",
+  "bundle": "483b1df9-c4f0-4f23-9ac7-d79b9845449a",
+  "lang": "en"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6e6faa459de1ec6e06e9598b9996762f20aad796/reels/days-london-en.mp4",
+  "caption": "The mistake: Westminster Abbey on a Sunday. Sky Garden or the London Eye? 👇\n\nThree days that beat the crowds: the Abbey any day but Sunday (it's worship only), the free Sky Garden booked up to three weeks ahead, and the National Gallery, free and open until 9 on Fridays.\n\nUrban Tales plans your trip in a minute and tells you the story of every stop as you walk.\n.\n.\n.\n#london #londonitinerary #londontravel #traveltips #urbantales",
+  "dm": "London · 3 days\nDay 1: Buckingham Palace → Westminster Abbey → Big Ben → London Eye\nDay 2: St Paul's Cathedral → Sky Garden → Tower of London → Tower Bridge at sunset\nDay 3: Trafalgar Square → National Gallery → Hyde Park → V&A Museum\nTip: the Abbey is worship-only on Sundays, and the free Sky Garden slots open three weeks ahead."
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6e6faa459de1ec6e06e9598b9996762f20aad796/reels/days-london-es.mp4",
+  "caption": "El error: la Abadía de Westminster en domingo. ¿Sky Garden o London Eye? 👇\n\nTres días para ganarle a las multitudes: la Abadía cualquier día menos domingo (solo abre para el culto), el Sky Garden gratis reservando hasta con tres semanas de anticipación, y la National Gallery, gratis y abierta hasta las 9 los viernes.\n\nUrban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas.\n.\n.\n.\n#londres #viajealondres #tipsdeviaje #europa #urbantales",
+  "dm": "Londres · 3 días\nDía 1: Palacio de Buckingham → Abadía de Westminster → Big Ben → London Eye\nDía 2: Catedral de San Pablo → Sky Garden → Torre de Londres → Tower Bridge al atardecer\nDía 3: Trafalgar Square → National Gallery → Hyde Park → Museo V&A\nTip: la Abadía solo abre para el culto los domingos, y el Sky Garden (gratis) se reserva hasta con tres semanas de anticipación."
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-11664503.mp4",
+   "url": "https://www.pexels.com/video/flowers-near-street-by-buckingham-palace-11664503/",
+   "author": "JR Bradbury",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Buckingham Palace"
+  },
+  {
+   "file": "pexels-12695092.mp4",
+   "url": "https://www.pexels.com/video/cyclists-on-street-by-buckingham-palace-12695092/",
+   "author": "Martyn Day",
+   "w": 1280,
+   "h": 720,
+   "dur": 17,
+   "query": "Buckingham Palace"
+  },
+  {
+   "file": "pexels-12170061.mp4",
+   "url": "https://www.pexels.com/video/westminster-abbey-in-london-12170061/",
+   "author": "Boyan Minchev",
+   "w": 1280,
+   "h": 720,
+   "dur": 123,
+   "query": "Westminster Abbey"
+  },
+  {
+   "file": "pexels-3206891.mp4",
+   "url": "https://www.pexels.com/video/people-standing-outside-westminster-abbey-3206891/",
+   "author": "George Morina",
+   "w": 720,
+   "h": 1280,
+   "dur": 4,
+   "query": "Westminster Abbey"
+  },
+  {
+   "file": "pexels-13986779.mp4",
+   "url": "https://www.pexels.com/video/people-walking-near-big-ben-13986779/",
+   "author": "Boyan Minchev",
+   "w": 720,
+   "h": 1280,
+   "dur": 32,
+   "query": "Big Ben London"
+  },
+  {
+   "file": "pexels-29300154.mp4",
+   "url": "https://www.pexels.com/video/big-ben-westminster-tower-on-a-cloudy-day-29300154/",
+   "author": "Stephan Leuzinger",
+   "w": 720,
+   "h": 1280,
+   "dur": 15,
+   "query": "Big Ben London"
+  },
+  {
+   "file": "pexels-17631897.mp4",
+   "url": "https://www.pexels.com/video/london-eye-london-england-17631897/",
+   "author": "George Morina",
+   "w": 1280,
+   "h": 720,
+   "dur": 20,
+   "query": "London Eye"
+  },
+  {
+   "file": "pexels-13987042.mp4",
+   "url": "https://www.pexels.com/video/ferris-wheel-in-london-13987042/",
+   "author": "Boyan Minchev",
+   "w": 1280,
+   "h": 720,
+   "dur": 32,
+   "query": "London Eye"
+  },
+  {
+   "file": "pexels-3679656.mp4",
+   "url": "https://www.pexels.com/video/visiting-the-saint-paul-cathedral-in-london-3679656/",
+   "author": "Bhargava Marripati",
+   "w": 1280,
+   "h": 720,
+   "dur": 12,
+   "query": "St Paul's Cathedral London"
+  },
+  {
+   "file": "pexels-6138314.mp4",
+   "url": "https://www.pexels.com/video/st-paul-s-cathedral-dome-6138314/",
+   "author": "Sam Jae",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "St Paul's Cathedral London"
+  },
+  {
+   "file": "pexels-39835784.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-london-skyline-with-river-thames-39835784/",
+   "author": "Tatianaa Co",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Sky Garden London"
+  },
+  {
+   "file": "pexels-35222059.mp4",
+   "url": "https://www.pexels.com/video/sunny-day-view-of-london-skyline-and-thames-35222059/",
+   "author": "Dominik Gryzbon",
+   "w": 1280,
+   "h": 720,
+   "dur": 23,
+   "query": "Sky Garden London"
+  },
+  {
+   "file": "pexels-7197886.mp4",
+   "url": "https://www.pexels.com/video/wide-angle-shot-of-london-bridge-7197886/",
+   "author": "Giang",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Tower of London"
+  },
+  {
+   "file": "pexels-34482623.mp4",
+   "url": "https://www.pexels.com/video/timelapse-of-tower-bridge-in-london-34482623/",
+   "author": "Anatolii Grytsenko",
+   "w": 1280,
+   "h": 720,
+   "dur": 40,
+   "query": "Tower Bridge"
+  },
+  {
+   "file": "pexels-5331592.mp4",
+   "url": "https://www.pexels.com/video/city-buildings-england-urban-5331592/",
+   "author": "George Morina",
+   "w": 1280,
+   "h": 720,
+   "dur": 24,
+   "query": "Tower Bridge"
+  },
+  {
+   "file": "pexels-27027215.mp4",
+   "url": "https://www.pexels.com/video/trafalgar-square-fountain-27027215/",
+   "author": "Wellington Silva",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Trafalgar Square"
+  },
+  {
+   "file": "pexels-27027173.mp4",
+   "url": "https://www.pexels.com/video/trafalgar-square-and-nelson-column-27027173/",
+   "author": "Wellington Silva",
+   "w": 1280,
+   "h": 720,
+   "dur": 18,
+   "query": "Trafalgar Square"
+  },
+  {
+   "file": "pexels-5814762.mp4",
+   "url": "https://www.pexels.com/video/people-at-the-national-gallery-in-central-london-5814762/",
+   "author": "Videogrammer .com",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "National Gallery London"
+  },
+  {
+   "file": "pexels-3206659.mp4",
+   "url": "https://www.pexels.com/video/people-gathering-in-trafalgar-square-in-london-3206659/",
+   "author": "George Morina",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "National Gallery London"
+  },
+  {
+   "file": "pexels-3699515.mp4",
+   "url": "https://www.pexels.com/video/people-activities-in-london-hyde-park-3699515/",
+   "author": "George Morina",
+   "w": 1280,
+   "h": 720,
+   "dur": 12,
+   "query": "Hyde Park London"
+  },
+  {
+   "file": "pexels-36882229.mp4",
+   "url": "https://www.pexels.com/video/serene-day-at-hyde-park-lake-london-36882229/",
+   "author": "George Morina",
+   "w": 1260,
+   "h": 540,
+   "dur": 10,
+   "query": "Hyde Park London"
+  },
+  {
+   "file": "pexels-5962995.mp4",
+   "url": "https://www.pexels.com/video/people-at-the-park-5962995/",
+   "author": "George Morina",
+   "w": 1280,
+   "h": 720,
+   "dur": 31,
+   "query": "Hyde Park London"
+  },
+  {
+   "file": "pexels-855761.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-a-city-855761/",
+   "author": "Pixabay",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "London aerial city"
+  }
+ ]
+}

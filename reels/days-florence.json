@@ -1,0 +1,263 @@
+{
+ "slug": "days-florence",
+ "landmark": "Florence · 3 days",
+ "city": "Florence",
+ "series": "days",
+ "hook_style": "dont",
+ "hook_type": "dilemma",
+ "story": "Don't start at the Duomo (opens 10:15): Day 1 Ponte Vecchio and the Uffizi at 8:15 (closed Mondays) to Piazzale Michelangelo at sunset, Day 2 the Duomo (closed to visitors on Sundays) and the David, Day 3 Boboli, Pitti and the booked dome climb.",
+ "sources": [
+  "https://www.uffizi.it/en/the-uffizi",
+  "https://www.european-traveler.com/italy/tickets-and-opening-hours-for-visiting-the-duomo-sights-in-florence",
+  "https://florencetips.com/duomo.html",
+  "https://duomo.firenze.it/en/720/brune",
+  "https://www.ricksteves.com/watch-read-listen/read/articles/making-museum-reservations-in-florence",
+  "https://urbantales.net/tour.html?bundle=037893e5-075f-473d-aebb-c98809f516aa&lang=en"
+ ],
+ "week": "2026-11-25",
+ "created": "2026-11-25T15:49",
+ "media_sha": "6e6faa459de1ec6e06e9598b9996762f20aad796",
+ "ig_lang": "en",
+ "tour": {
+  "share_url": "https://urbantales.net/tour.html?bundle=037893e5-075f-473d-aebb-c98809f516aa&lang=en",
+  "bundle": "037893e5-075f-473d-aebb-c98809f516aa",
+  "lang": "en"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6e6faa459de1ec6e06e9598b9996762f20aad796/reels/days-florence-en.mp4",
+  "caption": "Don't start Florence at the Duomo. Skipping the dome climb: smart or a mistake? 👇\n\nThree days that beat the crowds: the Uffizi at 8:15 (closed Mondays), the cathedral free but closed to visitors on Sundays, and the 463-step dome climb booked ahead.\n\nUrban Tales plans your trip in a minute and tells you the story of every stop as you walk.\n.\n.\n.\n#florence #firenze #italytravel #traveltips #urbantales",
+  "dm": "Florence · 3 days\nDay 1: Ponte Vecchio → Uffizi at 8:15 → Piazza della Signoria → Santa Croce → Piazzale Michelangelo at sunset\nDay 2: Santa Maria Novella → Central Market → Duomo → Accademia\nDay 3: Boboli Gardens → Pitti Palace → Palazzo Vecchio → Brunelleschi's dome\nTip: the Uffizi is closed on Mondays, and the dome climb needs a booked time slot."
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/6e6faa459de1ec6e06e9598b9996762f20aad796/reels/days-florence-es.mp4",
+  "caption": "No empieces Florencia por el Duomo. ¿Saltarte la cúpula: inteligente o error? 👇\n\nTres días para ganarle a las multitudes: la Uffizi a las 8:15 (cierra los lunes), la catedral gratis pero cerrada a visitantes los domingos, y la cúpula de 463 escalones con horario reservado.\n\nUrban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas.\n.\n.\n.\n#florencia #italia #viajeaitalia #tipsdeviaje #urbantales",
+  "dm": "Florencia · 3 días\nDía 1: Ponte Vecchio → Uffizi a las 8:15 → Piazza della Signoria → Santa Croce → Piazzale Michelangelo al atardecer\nDía 2: Santa Maria Novella → Mercado Central → Duomo → Galería de la Academia\nDía 3: Jardines de Bóboli → Palacio Pitti → Palazzo Vecchio → Cúpula de Brunelleschi\nTip: la Uffizi cierra los lunes y la cúpula se sube con horario reservado."
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-30351604.mp4",
+   "url": "https://www.pexels.com/video/scenic-boat-ride-by-ponte-vecchio-in-florence-30351604/",
+   "author": "Dani  Mota",
+   "w": 720,
+   "h": 1280,
+   "dur": 17,
+   "query": "Ponte Vecchio Florence"
+  },
+  {
+   "file": "pexels-36484571.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-ponte-vecchio-florence-36484571/",
+   "author": "Alberto Escalona",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Ponte Vecchio Florence"
+  },
+  {
+   "file": "pexels-38405589.mp4",
+   "url": "https://www.pexels.com/video/historic-ponte-vecchio-in-florence-at-sunset-38405589/",
+   "author": "Ch  Jawad",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Ponte Vecchio Florence"
+  },
+  {
+   "file": "pexels-5978923.mp4",
+   "url": "https://www.pexels.com/video/video-of-a-palazzo-vecchio-during-daytime-5978923/",
+   "author": "Stefano Barbieri",
+   "w": 1280,
+   "h": 720,
+   "dur": 12,
+   "query": "Piazza della Signoria"
+  },
+  {
+   "file": "pexels-36704807.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-palazzo-vecchio-in-florence-36704807/",
+   "author": "Nicoló Monterotondo",
+   "w": 720,
+   "h": 1280,
+   "dur": 31,
+   "query": "Piazza della Signoria"
+  },
+  {
+   "file": "pexels-38851709.mp4",
+   "url": "https://www.pexels.com/video/santa-croce-basilica-in-florence-italy-38851709/",
+   "author": "Marlon Castor",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Santa Croce Florence"
+  },
+  {
+   "file": "pexels-11481154.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-cathedral-in-florence-11481154/",
+   "author": "Simone Bergamasco",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Piazzale Michelangelo Florence sunset"
+  },
+  {
+   "file": "pexels-5979048.mp4",
+   "url": "https://www.pexels.com/video/overlooking-view-florence-italy-5979048/",
+   "author": "Stefano Barbieri",
+   "w": 1280,
+   "h": 720,
+   "dur": 17,
+   "query": "Piazzale Michelangelo Florence sunset"
+  },
+  {
+   "file": "pexels-40691329.mp4",
+   "url": "https://www.pexels.com/video/bustling-piazza-del-duomo-in-florence-40691329/",
+   "author": "Earth Photart",
+   "w": 1280,
+   "h": 720,
+   "dur": 12,
+   "query": "Santa Maria Novella Florence"
+  },
+  {
+   "file": "pexels-39761571.mp4",
+   "url": "https://www.pexels.com/video/stunning-view-of-giotto-s-campanile-in-florence-39761571/",
+   "author": "Lena Netkach",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Santa Maria Novella Florence"
+  },
+  {
+   "file": "pexels-38405592.mp4",
+   "url": "https://www.pexels.com/video/duomo-di-firenze-architectural-details-at-sunset-38405592/",
+   "author": "Ch  Jawad",
+   "w": 720,
+   "h": 1280,
+   "dur": 13,
+   "query": "Florence Duomo cathedral"
+  },
+  {
+   "file": "pexels-36484574.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-iconic-florence-cathedral-36484574/",
+   "author": "Alberto Escalona",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Florence Duomo cathedral"
+  },
+  {
+   "file": "pexels-38405595.mp4",
+   "url": "https://www.pexels.com/video/florence-skyline-with-cathedral-view-38405595/",
+   "author": "Ch  Jawad",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Florence Duomo cathedral"
+  },
+  {
+   "file": "pexels-36837366.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-florence-with-iconic-duomo-36837366/",
+   "author": "Simone Bergamasco",
+   "w": 1280,
+   "h": 720,
+   "dur": 24,
+   "query": "Florence Duomo cathedral"
+  },
+  {
+   "file": "pexels-31523888.mp4",
+   "url": "https://www.pexels.com/video/michelangelo-s-david-in-florence-italy-31523888/",
+   "author": "Maurice Supple",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Michelangelo David statue"
+  },
+  {
+   "file": "pexels-36830793.mp4",
+   "url": "https://www.pexels.com/video/michelangelo-s-david-in-florence-museum-36830793/",
+   "author": "Jesús Agudelo Martínez",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Michelangelo David statue"
+  },
+  {
+   "file": "pexels-29900452.mp4",
+   "url": "https://www.pexels.com/video/stunning-night-view-of-palazzo-vecchio-florence-29900452/",
+   "author": "Mihaela Claudia  Puscas",
+   "w": 1280,
+   "h": 720,
+   "dur": 23,
+   "query": "Palazzo Vecchio Florence"
+  },
+  {
+   "file": "pexels-29602487.mp4",
+   "url": "https://www.pexels.com/video/neptune-fountain-in-piazza-della-signoria-at-night-29602487/",
+   "author": "Mihaela Claudia  Puscas",
+   "w": 720,
+   "h": 1280,
+   "dur": 16,
+   "query": "Palazzo Vecchio Florence"
+  },
+  {
+   "file": "pexels-36484573.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-florence-and-ponte-vecchio-36484573/",
+   "author": "Alberto Escalona",
+   "w": 1280,
+   "h": 720,
+   "dur": 22,
+   "query": "Florence dome climb view"
+  },
+  {
+   "file": "pexels-38019489.mp4",
+   "url": "https://www.pexels.com/video/stunning-aerial-view-of-florence-s-historic-rooftops-38019489/",
+   "author": "Andre",
+   "w": 720,
+   "h": 1280,
+   "dur": 12,
+   "query": "Florence dome climb view"
+  },
+  {
+   "file": "pexels-36484575.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-florence-cathedral-dome-at-sunrise-36484575/",
+   "author": "Alberto Escalona",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Florence dome climb view"
+  },
+  {
+   "file": "pexels-36484572.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-florence-with-duomo-36484572/",
+   "author": "Alberto Escalona",
+   "w": 1280,
+   "h": 720,
+   "dur": 19,
+   "query": "Florence Italy aerial"
+  },
+  {
+   "file": "pexels-38405591.mp4",
+   "url": "https://www.pexels.com/video/intricate-frescoes-of-florence-duomo-dome-38405591/",
+   "author": "Ch  Jawad",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Boboli Florence"
+  },
+  {
+   "file": "pexels-39761569.mp4",
+   "url": "https://www.pexels.com/video/vibrant-scene-at-florence-s-duomo-cathedral-39761569/",
+   "author": "Lena Netkach",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Santa Maria Novella"
+  },
+  {
+   "file": "pexels-38405593.mp4",
+   "url": "https://www.pexels.com/video/iconic-florence-cathedral-at-dawn-38405593/",
+   "author": "Ch  Jawad",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Santa Maria Novella"
+  }
+ ]
+}
