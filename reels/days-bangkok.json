@@ -1,0 +1,207 @@
+{
+ "slug": "days-bangkok",
+ "landmark": "Bangkok · 3 days",
+ "city": "Bangkok",
+ "series": "days",
+ "hook_style": "save",
+ "hook_type": "unpopular",
+ "story": "Day 1 Grand Palace at opening (no sleeveless tops or shorts), ferry to Wat Arun, Chinatown at dusk; Day 2 Skywalk, centralwOrld, Jim Thompson House (guided tour only, included), Victory Monument; Day 3 ICONSIAM, Wat Traimit, Lumphini, a sunset slot at Mahanakhon booked ahead, Asiatique.",
+ "sources": [
+  "https://royalgrandpalace.th/en/visit/practical-information",
+  "https://jimthompsonhouse.org/",
+  "https://www.civitatis.com/en/bangkok/mahanakhon-skywalk-ticket",
+  "https://www.kkday.com/en/product/20739",
+  "https://urbantales.net/tour.html?bundle=723af70e-92e2-4dc4-83a2-91d71a904137&lang=en"
+ ],
+ "week": "2026-11-28",
+ "created": "2026-11-28T13:26",
+ "media_sha": "e806273519554f918c1e7973d7831d8777cc11f5",
+ "ig_lang": "en",
+ "tour": {
+  "share_url": "https://urbantales.net/tour.html?bundle=723af70e-92e2-4dc4-83a2-91d71a904137&lang=en",
+  "bundle": "723af70e-92e2-4dc4-83a2-91d71a904137",
+  "lang": "en"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/e806273519554f918c1e7973d7831d8777cc11f5/reels/days-bangkok-en.mp4",
+  "caption": "Save this before you go to Bangkok. Unpopular opinion: Wat Arun beats the Grand Palace. 👇\n\nThree days that beat the crowds: the Grand Palace at opening with shoulders and knees covered, the Jim Thompson House (guided tour only, included in the ticket), and a sunset slot at King Power Mahanakhon booked ahead.\n\nUrban Tales plans your trip in a minute and tells you the story of every stop as you walk.\n.\n.\n.\n#bangkok #thailand #thailandtravel #traveltips #urbantales",
+  "dm": "Bangkok · 3 days\nDay 1: Grand Palace at opening → City Pillar Shrine → ferry to Wat Arun → Chinatown (Yaowarat) at dusk\nDay 2: Ratchaprasong Skywalk → centralwOrld → Jim Thompson House → Victory Monument\nDay 3: ICONSIAM → Wat Traimit → Lumphini Park → King Power Mahanakhon → Asiatique\nTip: no sleeveless tops or shorts at the Grand Palace."
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/e806273519554f918c1e7973d7831d8777cc11f5/reels/days-bangkok-es.mp4",
+  "caption": "Guarda esto antes de ir a Bangkok. Opinión impopular: Wat Arun supera al Gran Palacio. 👇\n\nTres días para ganarle a las multitudes: el Gran Palacio a la apertura y sin camisetas sin mangas ni shorts, la Casa de Jim Thompson (solo con guía, incluida en la entrada) y un horario al atardecer en King Power Mahanakhon reservado antes.\n\nUrban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas.\n.\n.\n.\n#bangkok #tailandia #viajes #tipsdeviaje #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-29490941.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-bangkok-s-lush-urban-landscape-29490941/",
+   "author": "LayG Traveller",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "Bangkok skyline aerial"
+  },
+  {
+   "file": "pexels-8302396.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-high-rise-buildings-8302396/",
+   "author": "Mikhail Nilov",
+   "w": 1366,
+   "h": 720,
+   "dur": 18,
+   "query": "Bangkok skyline aerial"
+  },
+  {
+   "file": "pexels-34499359.mp4",
+   "url": "https://www.pexels.com/video/exploring-the-grand-palace-s-iconic-roofs-34499359/",
+   "author": "Fasim Raja",
+   "w": 1280,
+   "h": 720,
+   "dur": 5,
+   "query": "Grand Palace Bangkok"
+  },
+  {
+   "file": "pexels-34499360.mp4",
+   "url": "https://www.pexels.com/video/exploring-the-grand-palace-bangkok-34499360/",
+   "author": "Fasim Raja",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "Grand Palace Bangkok"
+  },
+  {
+   "file": "pexels-31120136.mp4",
+   "url": "https://www.pexels.com/video/stunning-aerial-view-of-chao-phraya-river-in-bangkok-31120136/",
+   "author": "LayG Traveller",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "Grand Palace Bangkok"
+  },
+  {
+   "file": "pexels-36401541.mp4",
+   "url": "https://www.pexels.com/video/historic-wat-arun-temple-in-bangkok-36401541/",
+   "author": "bizarreaudio",
+   "w": 540,
+   "h": 1160,
+   "dur": 15,
+   "query": "Wat Arun"
+  },
+  {
+   "file": "pexels-36401542.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-wat-arun-in-bangkok-36401542/",
+   "author": "bizarreaudio",
+   "w": 540,
+   "h": 1160,
+   "dur": 17,
+   "query": "Wat Arun"
+  },
+  {
+   "file": "pexels-29799110.mp4",
+   "url": "https://www.pexels.com/video/vibrant-nightlife-in-bangkok-s-chinatown-29799110/",
+   "author": "LayG Traveller",
+   "w": 1280,
+   "h": 720,
+   "dur": 4,
+   "query": "Yaowarat Chinatown Bangkok night"
+  },
+  {
+   "file": "pexels-29799115.mp4",
+   "url": "https://www.pexels.com/video/vibrant-nightlife-in-bangkok-s-chinatown-29799115/",
+   "author": "LayG Traveller",
+   "w": 1280,
+   "h": 720,
+   "dur": 3,
+   "query": "Yaowarat Chinatown Bangkok night"
+  },
+  {
+   "file": "pexels-6175145.mp4",
+   "url": "https://www.pexels.com/video/panoramic-view-of-street-in-bangkok-6175145/",
+   "author": "Francesco Navarro",
+   "w": 1280,
+   "h": 720,
+   "dur": 11,
+   "query": "Bangkok skywalk BTS"
+  },
+  {
+   "file": "pexels-34881051.mp4",
+   "url": "https://www.pexels.com/video/vibrant-urban-traffic-in-bangkok-cityscape-34881051/",
+   "author": "Thailandello Channel",
+   "w": 1280,
+   "h": 720,
+   "dur": 23,
+   "query": "Bangkok skywalk BTS"
+  },
+  {
+   "file": "pexels-12451741.mp4",
+   "url": "https://www.pexels.com/video/traffic-in-ratchathewi-district-bangkok-12451741/",
+   "author": "Markus Winkler",
+   "w": 1280,
+   "h": 720,
+   "dur": 30,
+   "query": "Victory Monument Bangkok"
+  },
+  {
+   "file": "pexels-17088013.mp4",
+   "url": "https://www.pexels.com/video/a-view-of-a-busy-intersection-with-cars-and-buses-17088013/",
+   "author": "Phatphicha L.",
+   "w": 1280,
+   "h": 720,
+   "dur": 22,
+   "query": "Victory Monument Bangkok"
+  },
+  {
+   "file": "pexels-32153615.mp4",
+   "url": "https://www.pexels.com/video/night-view-of-iconsiam-with-cruise-in-bangkok-32153615/",
+   "author": "Khan ishaan",
+   "w": 1280,
+   "h": 720,
+   "dur": 47,
+   "query": "ICONSIAM"
+  },
+  {
+   "file": "pexels-29490944.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-vibrant-bangkok-city-park-29490944/",
+   "author": "LayG Traveller",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Lumphini Park"
+  },
+  {
+   "file": "pexels-8302329.mp4",
+   "url": "https://www.pexels.com/video/push-in-shot-of-lumphini-park-8302329/",
+   "author": "Mikhail Nilov",
+   "w": 1366,
+   "h": 720,
+   "dur": 16,
+   "query": "Lumphini Park"
+  },
+  {
+   "file": "pexels-6003895.mp4",
+   "url": "https://www.pexels.com/video/city-view-from-a-highrise-balcony-6003895/",
+   "author": "Thana Chantorn",
+   "w": 720,
+   "h": 1280,
+   "dur": 11,
+   "query": "Mahanakhon Bangkok"
+  },
+  {
+   "file": "pexels-31387522.mp4",
+   "url": "https://www.pexels.com/video/modern-skyline-with-infinity-pool-at-dusk-31387522/",
+   "author": "Vincent Rivaud",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Mahanakhon Bangkok"
+  },
+  {
+   "file": "pexels-31136806.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-bangkok-s-majestic-skyline-31136806/",
+   "author": "LayG Traveller",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Asiatique Bangkok"
+  }
+ ]
+}

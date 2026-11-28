@@ -1,0 +1,197 @@
+{
+ "slug": "days-berlin",
+ "landmark": "Berlin · 3 days",
+ "city": "Berlin",
+ "series": "days",
+ "hook_style": "wrong_order",
+ "hook_type": "dilemma",
+ "story": "Day 1 Aquarium, Zoo (one combined ticket, same day) and Victory Column; Day 2 Checkpoint Charlie to the Reichstag dome (free, register in advance); Day 3 Wall Memorial to the TV Tower (timed ticket online, often sells out) and Alexanderplatz.",
+ "sources": [
+  "https://shop.aquarium-berlin.de/en/article/189",
+  "https://www.bundestag.de/en/visittheBundestag/dome/registration-245686",
+  "https://www.visitberlin.de/en/tickets/fast-view-ticket-berlin-tv-tower",
+  "https://urbantales.net/tour.html?bundle=33353529-60ec-406b-829b-7e96f7190c84&lang=en"
+ ],
+ "week": "2026-11-28",
+ "created": "2026-11-28T13:26",
+ "media_sha": "e806273519554f918c1e7973d7831d8777cc11f5",
+ "ig_lang": "en",
+ "tour": {
+  "share_url": "https://urbantales.net/tour.html?bundle=33353529-60ec-406b-829b-7e96f7190c84&lang=en",
+  "bundle": "33353529-60ec-406b-829b-7e96f7190c84",
+  "lang": "en"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/e806273519554f918c1e7973d7831d8777cc11f5/reels/days-berlin-en.mp4",
+  "caption": "Most people see Berlin in the wrong order. The Zoo on day one: smart or a mistake? 👇\n\nThree days that beat the crowds: one combined ticket for the Zoo and Aquarium (same day), the free Reichstag dome registered in advance, and a timed TV Tower ticket booked online.\n\nUrban Tales plans your trip in a minute and tells you the story of every stop as you walk.\n.\n.\n.\n#berlin #berlintravel #germanytravel #traveltips #urbantales",
+  "dm": "Berlin · 3 days\nDay 1: Aquarium → Zoo → Victory Column\nDay 2: Checkpoint Charlie → Topography of Terror → Potsdamer Platz → Holocaust Memorial → Brandenburg Gate → Reichstag dome\nDay 3: Berlin Wall Memorial → Cathedral → DDR Museum → TV Tower → Alexanderplatz\nTip: the Reichstag dome is free, but register online in advance."
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/e806273519554f918c1e7973d7831d8777cc11f5/reels/days-berlin-es.mp4",
+  "caption": "La mayoría recorre Berlín en el orden equivocado. El Zoo el día uno: ¿acierto o error? 👇\n\nTres días para ganarle a las multitudes: una entrada combinada para el Zoo y el Acuario (el mismo día), la cúpula del Reichstag gratis con registro previo y la Torre de TV con entrada con horario comprada en línea.\n\nUrban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas.\n.\n.\n.\n#berlin #alemania #viajes #tipsdeviaje #urbantales"
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-34640566.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-berlin-cityscape-with-berliner-dom-34640566/",
+   "author": "alexandddrovna",
+   "w": 720,
+   "h": 1280,
+   "dur": 7,
+   "query": "Berlin aerial city"
+  },
+  {
+   "file": "pexels-856760.mp4",
+   "url": "https://www.pexels.com/video/television-tower-view-856760/",
+   "author": "Pixabay",
+   "w": 1280,
+   "h": 720,
+   "dur": 30,
+   "query": "Berlin aerial city"
+  },
+  {
+   "file": "pexels-16549384.mp4",
+   "url": "https://www.pexels.com/video/a-group-of-donkeys-in-a-pen-in-front-of-a-building-16549384/",
+   "author": "Vitaliy Todo",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Berlin Zoo"
+  },
+  {
+   "file": "pexels-35526283.mp4",
+   "url": "https://www.pexels.com/video/elephants-in-a-snowy-berlin-zoo-setting-35526283/",
+   "author": "Memory Lane",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Berlin Zoo"
+  },
+  {
+   "file": "pexels-16549481.mp4",
+   "url": "https://www.pexels.com/video/a-penguin-swimming-in-a-pond-with-green-algae-16549481/",
+   "author": "Vitaliy Todo",
+   "w": 1280,
+   "h": 720,
+   "dur": 12,
+   "query": "Aquarium Berlin"
+  },
+  {
+   "file": "pexels-13687298.mp4",
+   "url": "https://www.pexels.com/video/golden-statue-in-berlin-13687298/",
+   "author": "Jess",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Victory Column Berlin"
+  },
+  {
+   "file": "pexels-40063150.mp4",
+   "url": "https://www.pexels.com/video/majestic-victory-column-in-berlin-skyline-40063150/",
+   "author": "Ivan Chumak",
+   "w": 1280,
+   "h": 720,
+   "dur": 44,
+   "query": "Victory Column Berlin"
+  },
+  {
+   "file": "pexels-40194917.mp4",
+   "url": "https://www.pexels.com/video/vibrant-city-life-at-potsdamer-platz-berlin-40194917/",
+   "author": "Ivan Chumak",
+   "w": 1280,
+   "h": 720,
+   "dur": 13,
+   "query": "Potsdamer Platz"
+  },
+  {
+   "file": "pexels-40194927.mp4",
+   "url": "https://www.pexels.com/video/vibrant-day-at-berlin-s-potsdamer-platz-40194927/",
+   "author": "Ivan Chumak",
+   "w": 1280,
+   "h": 720,
+   "dur": 22,
+   "query": "Potsdamer Platz"
+  },
+  {
+   "file": "pexels-39482524.mp4",
+   "url": "https://www.pexels.com/video/memorial-to-the-murdered-jews-of-europe-39482524/",
+   "author": "Ivan Chumak",
+   "w": 1280,
+   "h": 720,
+   "dur": 6,
+   "query": "Holocaust Memorial Berlin"
+  },
+  {
+   "file": "pexels-36600485.mp4",
+   "url": "https://www.pexels.com/video/iconic-brandenburg-gate-at-dusk-36600485/",
+   "author": "Ivan Chumak",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Brandenburg Gate"
+  },
+  {
+   "file": "pexels-40043201.mp4",
+   "url": "https://www.pexels.com/video/reichstag-dome-in-berlin-architectural-marvel-40043201/",
+   "author": "Ivan Chumak",
+   "w": 1280,
+   "h": 720,
+   "dur": 32,
+   "query": "Reichstag dome"
+  },
+  {
+   "file": "pexels-4551936.mp4",
+   "url": "https://www.pexels.com/video/the-reichstag-building-at-night-4551936/",
+   "author": "cottonbro studio",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "Reichstag dome"
+  },
+  {
+   "file": "pexels-34640563.mp4",
+   "url": "https://www.pexels.com/video/scenic-view-of-berlin-cathedral-germany-34640563/",
+   "author": "alexandddrovna",
+   "w": 720,
+   "h": 1280,
+   "dur": 10,
+   "query": "Berlin Cathedral"
+  },
+  {
+   "file": "pexels-36871094.mp4",
+   "url": "https://www.pexels.com/video/stunning-view-of-berlin-cathedral-in-autumn-light-36871094/",
+   "author": "Jakob  Nowotni",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Berlin Cathedral"
+  },
+  {
+   "file": "pexels-37492507.mp4",
+   "url": "https://www.pexels.com/video/berlin-tv-tower-against-overcast-sky-37492507/",
+   "author": "Nuray",
+   "w": 720,
+   "h": 1280,
+   "dur": 9,
+   "query": "Berlin TV Tower"
+  },
+  {
+   "file": "pexels-41115530.mp4",
+   "url": "https://www.pexels.com/video/tram-passing-by-berlin-s-iconic-tv-tower-41115530/",
+   "author": "Smitha Nittur",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Alexanderplatz"
+  },
+  {
+   "file": "pexels-39024163.mp4",
+   "url": "https://www.pexels.com/video/urban-street-scene-with-pedestrians-and-traffic-39024163/",
+   "author": "Ivan Chumak",
+   "w": 1280,
+   "h": 720,
+   "dur": 25,
+   "query": "Bernauer Strasse Berlin Wall"
+  }
+ ]
+}
