@@ -1,0 +1,161 @@
+{
+ "slug": "days-valencia",
+ "landmark": "Valencia · 2 days",
+ "city": "Valencia",
+ "series": "days",
+ "hook_style": "time",
+ "hook_type": "own_story",
+ "story": "Central Market at 7:30 when it opens (closed Sundays), then the Silk Exchange, Cathedral, Serranos Towers and Turia at sunset; Day 2 Gulliver Park, City of Arts and Sciences, Oceanogràfic (dolphin show half an hour early for a seat) and the Assut de l'Or bridge.",
+ "sources": [
+  "https://www.visitvalencia.com/en/what-to-do-valencia/valencian-culture/monuments-in-valencia/central-market",
+  "https://www.valencia.es/es/-/infociudad-mercado-central",
+  "https://oceanografic.org/en/?p=41618",
+  "https://urbantales.net/tour.html?bundle=e3c4ad6b-8f3f-462f-a8a1-3d50318617f5&lang=es"
+ ],
+ "week": "2026-11-28",
+ "created": "2026-11-28T13:26",
+ "media_sha": "e806273519554f918c1e7973d7831d8777cc11f5",
+ "ig_lang": "es",
+ "tour": {
+  "share_url": "https://urbantales.net/tour.html?bundle=e3c4ad6b-8f3f-462f-a8a1-3d50318617f5&lang=es",
+  "bundle": "e3c4ad6b-8f3f-462f-a8a1-3d50318617f5",
+  "lang": "es"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/e806273519554f918c1e7973d7831d8777cc11f5/reels/days-valencia-en.mp4",
+  "caption": "Be at Valencia's Central Market at 7:30. What's the first thing you'd eat there? 👇\n\nTwo days that beat the crowds: the Central Market when it opens at 7:30 (never on a Sunday, it's closed), and the Oceanogràfic's dolphin show half an hour early to get a seat.\n\nUrban Tales plans your trip in a minute and tells you the story of every stop as you walk.\n.\n.\n.\n#valencia #valenciaspain #spaintravel #traveltips #urbantales"
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/e806273519554f918c1e7973d7831d8777cc11f5/reels/days-valencia-es.mp4",
+  "caption": "Llega al Mercado Central de Valencia a las 7:30. ¿Qué comerías primero? 👇\n\nDos días para ganarle a las multitudes: el Mercado Central a las 7:30, cuando abre (nunca en domingo, está cerrado), y el espectáculo de delfines del Oceanogràfic media hora antes para tener asiento.\n\nUrban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas.\n.\n.\n.\n#valencia #españa #viajes #tipsdeviaje #urbantales",
+  "dm": "Valencia · 2 días\nDía 1: Mercado Central a las 7:30 → Lonja de la Seda → Catedral → Torres de Serranos → Jardín del Turia\nDía 2: Parque Gulliver → Ciudad de las Artes y las Ciencias → Oceanogràfic → Pont de l'Assut de l'Or\nTip: el mercado cierra los domingos."
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-41322985.mp4",
+   "url": "https://www.pexels.com/video/stunning-aerial-view-of-valencia-cityscape-41322985/",
+   "author": "Marcel Rueenaufer",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Valencia Spain aerial"
+  },
+  {
+   "file": "pexels-37705687.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-valencia-street-in-summer-37705687/",
+   "author": "Brendon Spring",
+   "w": 1280,
+   "h": 720,
+   "dur": 24,
+   "query": "Valencia Spain aerial"
+  },
+  {
+   "file": "pexels-35006522.mp4",
+   "url": "https://www.pexels.com/video/central-market-valencia-interior-architecture-35006522/",
+   "author": "iker abner uranga ortega",
+   "w": 720,
+   "h": 1280,
+   "dur": 6,
+   "query": "Mercado Central Valencia"
+  },
+  {
+   "file": "pexels-37461953.mp4",
+   "url": "https://www.pexels.com/video/historic-tower-with-catalan-flag-waving-37461953/",
+   "author": "Vasyl D",
+   "w": 720,
+   "h": 1280,
+   "dur": 8,
+   "query": "Lonja de la Seda Valencia"
+  },
+  {
+   "file": "pexels-37662751.mp4",
+   "url": "https://www.pexels.com/video/medieval-fortress-with-waving-flag-37662751/",
+   "author": "Paul Bredt",
+   "w": 720,
+   "h": 1280,
+   "dur": 23,
+   "query": "Lonja de la Seda Valencia"
+  },
+  {
+   "file": "pexels-19798521.mp4",
+   "url": "https://www.pexels.com/video/valencia-city-square-19798521/",
+   "author": "Atlantic Ambience",
+   "w": 1280,
+   "h": 720,
+   "dur": 9,
+   "query": "Valencia Cathedral"
+  },
+  {
+   "file": "pexels-37683889.mp4",
+   "url": "https://www.pexels.com/video/torre-de-serranos-in-valencia-spain-37683889/",
+   "author": "Paul Bredt",
+   "w": 720,
+   "h": 1280,
+   "dur": 17,
+   "query": "Valencia Cathedral"
+  },
+  {
+   "file": "pexels-41288393.mp4",
+   "url": "https://www.pexels.com/video/sunlit-city-park-walking-path-in-evening-41288393/",
+   "author": "Evgenij Mikhailov",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Turia gardens Valencia"
+  },
+  {
+   "file": "pexels-35006519.mp4",
+   "url": "https://www.pexels.com/video/futuristic-architecture-at-city-of-arts-and-sciences-35006519/",
+   "author": "iker abner uranga ortega",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "City of Arts and Sciences Valencia"
+  },
+  {
+   "file": "pexels-19996484.mp4",
+   "url": "https://www.pexels.com/video/ciudad-de-las-artes-y-las-ciencias-19996484/",
+   "author": "La Doncella Audiovisual",
+   "w": 1280,
+   "h": 720,
+   "dur": 47,
+   "query": "City of Arts and Sciences Valencia"
+  },
+  {
+   "file": "pexels-19798518.mp4",
+   "url": "https://www.pexels.com/video/valencia-city-of-arts-and-science-19798518/",
+   "author": "Atlantic Ambience",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "City of Arts and Sciences Valencia"
+  },
+  {
+   "file": "pexels-35901358.mp4",
+   "url": "https://www.pexels.com/video/city-of-arts-and-sciences-in-valencia-spain-35901358/",
+   "author": "Maksym  Parovenko",
+   "w": 720,
+   "h": 1280,
+   "dur": 21,
+   "query": "Oceanografic Valencia"
+  },
+  {
+   "file": "pexels-40118851.mp4",
+   "url": "https://www.pexels.com/video/modern-architecture-outdoors-with-lush-greenery-40118851/",
+   "author": "Gizem Erim",
+   "w": 720,
+   "h": 1280,
+   "dur": 5,
+   "query": "Valencia aquarium"
+  },
+  {
+   "file": "pexels-34709543.mp4",
+   "url": "https://www.pexels.com/video/man-in-wheelchair-at-valencia-s-city-of-arts-34709543/",
+   "author": "Maksym  Parovenko",
+   "w": 720,
+   "h": 1280,
+   "dur": 24,
+   "query": "Gulliver Valencia"
+  }
+ ]
+}

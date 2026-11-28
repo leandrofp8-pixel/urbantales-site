@@ -1,0 +1,135 @@
+{
+ "slug": "days-guanajuato",
+ "landmark": "Guanajuato · 2 days",
+ "city": "Guanajuato",
+ "series": "days",
+ "hook_style": "mistake",
+ "hook_type": "pick_one",
+ "story": "The mistake: the Alhóndiga de Granaditas on a Monday (open Tuesday to Sunday). Day 1 Callejón del Beso, Mercado Hidalgo, Alhóndiga, Mummy Museum; Day 2 Diego Rivera's house, Basilica, Jardín de la Unión, Teatro Juárez and the funicular right behind it up to the Pípila at sunset.",
+ "sources": [
+  "https://lugares.inah.gob.mx/en/node/4245",
+  "https://escapadas.mexicodesconocido.com.mx/atractivos/museo-regional-de-alhondiga-de-granaditas/",
+  "https://www.lonelyplanet.com/points-of-interest/funicular/1025615",
+  "https://atlasobscura.com/places/funicular-de-guanajuato-mexico",
+  "https://urbantales.net/tour.html?bundle=6525b081-4aee-4985-8a71-dad8715c9ca6&lang=es"
+ ],
+ "week": "2026-11-28",
+ "created": "2026-11-28T13:26",
+ "media_sha": "e806273519554f918c1e7973d7831d8777cc11f5",
+ "ig_lang": "es",
+ "tour": {
+  "share_url": "https://urbantales.net/tour.html?bundle=6525b081-4aee-4985-8a71-dad8715c9ca6&lang=es",
+  "bundle": "6525b081-4aee-4985-8a71-dad8715c9ca6",
+  "lang": "es"
+ },
+ "en": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/e806273519554f918c1e7973d7831d8777cc11f5/reels/days-guanajuato-en.mp4",
+  "caption": "The mistake in Guanajuato: the Alhóndiga on a Monday. Funicular or walk up? 👇\n\nTwo days that beat the crowds: the Alhóndiga de Granaditas from Tuesday to Sunday (closed Mondays), and the funicular right behind the Teatro Juárez up to the Pípila at sunset.\n\nUrban Tales plans your trip in a minute and tells you the story of every stop as you walk.\n.\n.\n.\n#guanajuato #mexico #mexicotravel #traveltips #urbantales"
+ },
+ "es": {
+  "video": "https://raw.githubusercontent.com/leandrofp8-pixel/urbantales-site/e806273519554f918c1e7973d7831d8777cc11f5/reels/days-guanajuato-es.mp4",
+  "caption": "El error en Guanajuato: la Alhóndiga en lunes. ¿Funicular o subes a pie? 👇\n\nDos días para ganarle a las multitudes: la Alhóndiga de Granaditas de martes a domingo (cierra los lunes) y el funicular, justo detrás del Teatro Juárez, para subir al Pípila al atardecer.\n\nUrban Tales planea tu viaje en un minuto y te cuenta la historia de cada parada mientras caminas.\n.\n.\n.\n#guanajuato #mexico #viajes #tipsdeviaje #urbantales",
+  "dm": "Guanajuato · 2 días\nDía 1: Callejón del Beso → Mercado Hidalgo → Alhóndiga de Granaditas → Museo de las Momias\nDía 2: Casa Museo Diego Rivera → Basílica → Jardín de la Unión → Teatro Juárez → Funicular → Pípila al atardecer\nTip: la Alhóndiga cierra los lunes."
+ },
+ "footage_credits": [
+  {
+   "file": "pexels-12328658.mp4",
+   "url": "https://www.pexels.com/video/view-from-hill-on-mexico-city-12328658/",
+   "author": "Davis Arenas",
+   "w": 1280,
+   "h": 720,
+   "dur": 8,
+   "query": "Guanajuato Mexico aerial"
+  },
+  {
+   "file": "pexels-33112852.mp4",
+   "url": "https://www.pexels.com/video/vibrant-aerial-view-of-guanajuato-cityscape-33112852/",
+   "author": "Juan TM",
+   "w": 1280,
+   "h": 720,
+   "dur": 16,
+   "query": "Guanajuato Mexico aerial"
+  },
+  {
+   "file": "pexels-16620277.mp4",
+   "url": "https://www.pexels.com/video/a-woman-walking-down-a-set-of-stairs-16620277/",
+   "author": "Davis Arenas",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Callejon del Beso Guanajuato"
+  },
+  {
+   "file": "pexels-16620270.mp4",
+   "url": "https://www.pexels.com/video/a-view-of-a-city-from-a-building-16620270/",
+   "author": "Davis Arenas",
+   "w": 1280,
+   "h": 720,
+   "dur": 7,
+   "query": "Guanajuato streets"
+  },
+  {
+   "file": "pexels-39910296.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-guanajuato-s-colorful-architecture-39910296/",
+   "author": "Juanjo Menta",
+   "w": 1280,
+   "h": 720,
+   "dur": 10,
+   "query": "Guanajuato streets"
+  },
+  {
+   "file": "pexels-29835231.mp4",
+   "url": "https://www.pexels.com/video/drone-aerial-view-of-guanajuato-city-cathedral-29835231/",
+   "author": "Juan TM",
+   "w": 1280,
+   "h": 720,
+   "dur": 50,
+   "query": "Guanajuato streets"
+  },
+  {
+   "file": "pexels-29835233.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-guanajuato-basilica-29835233/",
+   "author": "Juan TM",
+   "w": 1280,
+   "h": 720,
+   "dur": 31,
+   "query": "Basilica Guanajuato"
+  },
+  {
+   "file": "pexels-33112855.mp4",
+   "url": "https://www.pexels.com/video/guanajuato-aerial-view-of-iconic-architecture-33112855/",
+   "author": "Juan TM",
+   "w": 1280,
+   "h": 720,
+   "dur": 14,
+   "query": "Basilica Guanajuato"
+  },
+  {
+   "file": "pexels-9588721.mp4",
+   "url": "https://www.pexels.com/video/drone-footage-of-teatro-juarez-in-mexico-9588721/",
+   "author": "Ismael Nieto",
+   "w": 1280,
+   "h": 720,
+   "dur": 43,
+   "query": "Teatro Juarez Guanajuato"
+  },
+  {
+   "file": "pexels-37070256.mp4",
+   "url": "https://www.pexels.com/video/aerial-view-of-monument-in-guanajuato-mexico-37070256/",
+   "author": "Yehosh García",
+   "w": 720,
+   "h": 1280,
+   "dur": 30,
+   "query": "Pipila Guanajuato view"
+  },
+  {
+   "file": "pexels-16151020.mp4",
+   "url": "https://www.pexels.com/video/monumento-al-pipila-16151020/",
+   "author": "Yehosh García",
+   "w": 1280,
+   "h": 720,
+   "dur": 27,
+   "query": "Pipila Guanajuato view"
+  }
+ ]
+}
